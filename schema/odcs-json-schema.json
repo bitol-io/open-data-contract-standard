@@ -239,11 +239,205 @@
         },
         "logicalType": {
           "type": "string",
-          "description": "The logical column datatype."
+          "description": "The logical column data type.",
+          "enum": ["string", "date", "number", "integer", "object", "array", "boolean"]
+        },
+        "logicalTypeOptions": {
+          "type": "object",
+          "description": "Additional optional metadata to describe the logical type.",
+          "properties": {
+            "enum": {
+              "type": "array",
+              "items": {
+              },
+              "minItems": 1,
+              "uniqueItems": false,
+              "description": "Set of possible values."
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "logicalType": {
+                    "const": "string"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "minLength": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Minimum length of the string."
+                  },
+                  "maxLength": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Maximum length of the string."
+                  },
+                  "pattern": {
+                    "type": "string",
+                    "format": "regex",
+                    "description": "Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (https://262.ecma-international.org/5.1/#sec-15.10.1)."
+                  },
+                  "format": {
+                    "type": "string",
+                    "examples": ["password", "byte", "binary", "email", "uuid", "uri", "hostname", "ipv4", "ipv6"],
+                    "description": "Provides extra context about what format the string follows."
+                  }
+                }
+              }
+            },{
+              "if": {
+                "properties": {
+                  "logicalType": {
+                    "const": "date"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "format": {
+                    "type": "string",
+                    "examples": ["yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "HH:mm:ss"],
+                    "description": "Format of the date. Follows the format as prescribed by [JDK DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). For example, format 'yyyy-MM-dd'."
+                  },
+                  "exclusiveMaximum": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If set to true, all values are strictly less than the maximum value (values < maximum). Otherwise, less than or equal to the maximum value (values <= maximum)."
+                  },
+                  "maximum": {
+                    "type": "string",
+                    "description": "All date values are less than or equal to this value (values <= maximum)."
+                  },
+                  "exclusiveMinimum": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If set to true, all values are strictly greater than the minimum value (values > minimum). Otherwise, greater than or equal to the minimum value (values >= minimum)."
+                  },
+                  "minimum": {
+                    "type": "string",
+                    "description": "All date values are greater than or equal to this value (values >= minimum)."
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "anyOf": [
+                  {
+                    "properties": {
+                      "logicalType": {
+                        "const": "number"
+                      }
+                    }
+                  },
+                  {
+                    "properties": {
+                      "logicalType": {
+                        "const": "integer"
+                      }
+                    }
+                  }
+                ]
+              },
+              "then": {
+                "properties": {
+                  "multipleOf": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "description": "Values must be multiples of this number. For example, multiple of 5 has valid values 0, 5, 10, -5."
+                  },
+                  "maximum": {
+                    "type": "number",
+                    "description": "All values are less than or equal to this value (values <= maximum)."
+                  },
+                  "exclusiveMaximum": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If set to true, all values are strictly less than the maximum value (values < maximum). Otherwise, less than or equal to the maximum value (values <= maximum)."
+                  },
+                  "minimum": {
+                    "type": "number",
+                    "description": "All values are greater than or equal to this value (values >= minimum)."
+                  },
+                  "exclusiveMinimum": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If set to true, all values are strictly greater than the minimum value (values > minimum). Otherwise, greater than or equal to the minimum value (values >= minimum)."
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "logicalType": {
+                    "const": "object"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "maxProperties": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Maximum number of properties."
+                  },
+                  "minProperties": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "default": 0,
+                    "description": "Minimum number of properties."
+                  },
+                  "required": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "description": "Property names that are required to exist in the object."
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "logicalType": {
+                    "const": "array"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "maxItems": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Maximum number of items."
+                  },
+                  "minItems": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "default": 0,
+                    "description": "Minimum number of items"
+                  },
+                  "uniqueItems": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If set to true, all items in the array are unique."
+                  }
+                }
+              }
+            }
+          ]
         },
         "physicalType": {
           "type": "string",
-          "description": "The physical column datatype."
+          "description": "The physical column data type in the data source. For example, VARCHAR(2), DOUBLE, INT."
         },
         "description": {
           "type": "string",

@@ -1,0 +1,63 @@
+version: 1.0.0
+kind: DataContract
+uuid: 53581432-6c55-4ba2-a65f-72344a91553a
+type: tables
+status: current
+datasetName: my_table
+quantumName: my_quantum
+dataset:
+  - table: transactions_tbl
+    description: Provides core payment metrics
+    dataGranularity: Aggregation on columns txn_ref_dt, pmt_txn_id
+    columns:
+      - column: account_id
+        physicalType: string
+        logicalType: string
+        logicalTypeOptions:
+          minLength: 11
+          maxLength: 11
+          pattern: ACC[0-9]{8}
+      - column: txn_ref_date
+        physicalType: date
+        logicalType: date
+        logicalTypeOptions:
+          minLength: 10
+          maxLength: 10
+          format: yyyy-MM-dd
+      - column: txn_timestamp
+        physicalType: timestamp
+        logicalType: date
+        logicalTypeOptions:
+          minLength: 19
+          maxLength: 19
+          format: "yyyy-MM-dd HH:mm:ss"
+      - column: amount
+        physicalType: double
+        logicalType: number
+        logicalTypeOptions:
+          minimum: 0
+      - column: age
+        physicalType: int
+        logicalType: integer
+        logicalTypeOptions:
+          minimum: 18
+          maximum: 100
+          exclusiveMaximum: true
+      - column: is_open
+        physicalType: bool
+        logicalType: boolean
+      - column: latest_txns
+        physicalType: list
+        logicalType: array
+        logicalTypeOptions:
+          minItems: 0
+          maxItems: 3
+          uniqueItems: true
+      - column: customer_details
+        physicalType: json
+        logicalType: object
+        logicalTypeOptions:
+          required:
+            - num_children
+            - date_of_birth
+          maxProperties: 5
