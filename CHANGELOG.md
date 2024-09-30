@@ -73,6 +73,8 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * Explicit reference to Data QoS.
 * **Changes** to custom and other properties:
   * `systemInstance` is not supported anymore, if needed, consider a custom property.
+* **Changes** to license
+  * Include license, code of conduct, and contributor license agreement from Community Specification
 
 
 # v2.2.2 - 2024-05-23 - APPROVED
