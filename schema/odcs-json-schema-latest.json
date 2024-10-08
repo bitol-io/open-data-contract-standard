@@ -28,11 +28,6 @@
       "type": "string",
       "description": "Name of the data contract."
     },
-    "type": {
-      "type": "string",
-      "description": "Identifies the types of objects in the dataset. For BigQuery or any other database, the expected value would be Tables.",
-      "examples": ["Tables"]
-    },
     "tenant": {
       "type": "string",
       "description": "Indicates the property the data is primarily associated with. Value is case insensitive."
@@ -2133,7 +2128,7 @@
     },
     "AuthoritativeDefinitions": {
       "type": "array",
-      "description": "List of links to sources that provide more details on the table; examples would be a link to an external definition, a training video, a GitHub repo, Collibra, or another tool. Authoritative definitions follow the same structure in the standard.",
+      "description": "List of links to sources that provide more details on the dataset; examples would be a link to an external definition, a training video, a GitHub repo, Collibra, or another tool. Authoritative definitions follow the same structure in the standard.",
       "items": {
         "type": "object",
         "properties": {
@@ -2211,25 +2206,25 @@
       "properties": {
         "username": {
           "type": "string",
-          "description": "The team's username or email."
+          "description": "The user's username or email."
         },
         "role": {
           "type": "string",
-          "description": "The team's job role; Examples might be owner, data steward. There is no limit on the role."
+          "description": "The user's job role; Examples might be owner, data steward. There is no limit on the role."
         },
         "dateIn": {
           "type": "string",
           "format": "date",
-          "description": "The date when the user became a team."
+          "description": "The date when the user joined the team."
         },
         "dateOut": {
           "type": "string",
           "format": "date",
-          "description": "The date when the user ceased to be a team"
+          "description": "The date when the user ceased to be part of the team."
         },
         "replacedByUsername": {
           "type": "string",
-          "description": "The username of the user who replaced the team"
+          "description": "The username of the user who replaced the previous user."
         }
       }
     },

@@ -591,10 +591,15 @@ team:
 ```
 
 ### Definitions
-The UX label is the label used in the UI and other user experiences. It is not limited to BlueRacket.
 
-| Key                     | UX label           | Required | Description                                                                                       |
-
+| Key                     | UX label             | Required | Description                                                                                |
+|-------------------------|----------------------|----------|--------------------------------------------------------------------------------------------|
+| team                    | Team                 | No       | Object                                                                                     |
+| team.username           | Username             | No       | The user's username or email.                                                              |
+| team.role               | Role                 | No       | The user's job role; Examples might be owner, data steward. There is no limit on the role. |
+| team.dateIn             | Date In              | No       | The date when the user joined the team.                                                    |
+| team.dateOut            | Date Out             | No       | The date when the user ceased to be part of the team.                                      |
+| team.replacedByUsername | Replaced By Username | No       | The username of the user who replaced the previous user.                                   |
 
 ## Roles
 This section lists the roles that a consumer may need to access the dataset depending on the type of access they require.
@@ -636,9 +641,9 @@ roles:
 ## <a id="sla"/> Service-Level Agreement (SLA)
 This section describes the service-level agreements (SLA). 
 
-* Use the `Table.Column` to indicate the number to do the checks on, as in `SELECT txn_ref_dt FROM tab1`.
-* Separate multiple table.columns by a comma, as in `table1.col1`, `table2.col1`, `table1.col2`.
-* If there is only one table in the contract, the table name is not required.
+* Use the `Object.Element` to indicate the number to do the checks on, as in `SELECT txn_ref_dt FROM tab1`.
+* Separate multiple object.element by a comma, as in `table1.col1`, `table2.col1`, `table1.col2`.
+* If there is only one object in the contract, the object name is not required.
 
 ### Example
 
