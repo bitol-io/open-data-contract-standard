@@ -1,0 +1,43 @@
+version: 1.0.0
+kind: DataContract
+uuid: 53581432-6c55-4ba2-a65f-72344a91553a
+type: tables
+status: current
+datasetName: my_table
+quantumName: my_quantum
+dataset:
+  - table: tbl
+    columns:
+    - column: rcvr_cntry_code
+      businessName: Receiver country code
+      logicalType: string
+      physicalType: varchar(2)
+      isPrimaryKey: true
+      primaryKeyPosition: 1
+      partitionStatus: true
+      partitionKeyPosition: 1
+      clusterStatus: false
+    - column: rcvr_id
+      businessName: Receiver identification number
+      logicalType: string
+      physicalType: varchar(20)
+      isPrimaryKey: true
+      primaryKeyPosition: 2
+      partitionStatus: false
+      clusterStatus: false
+    - column: year
+      businessName: Year of transaction
+      logicalType: integer
+      physicalType: int
+      isPrimaryKey: false
+      partitionStatus: true
+      partitionKeyPosition: 2
+      clusterStatus: true
+      clusterKeyPosition: 1
+    - column: amount
+      businessName: Transaction amount
+      logicalType: double
+      physicalType: double
+      isPrimaryKey: false
+      partitionStatus: false
+      clusterStatus: false

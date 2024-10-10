@@ -1,0 +1,38 @@
+version: 1.0.0
+kind: DataContract
+uuid: 53581432-6c55-4ba2-a65f-72344a91553a
+type: tables
+status: current
+datasetName: my_table
+quantumName: my_quantum
+dataset: []
+# SLA
+slaDefaultColumn: tab1.txn_ref_dt # Optional, default value is partitionColumn.
+slaProperties:
+  - property: latency # Property, see list of values in DP QoS
+    value: 4
+    unit: d # d, day, days for days; y, yr, years for years
+    column: tab1.txn_ref_dt # This would not be needed as it is the same table.column as the default one
+  - property: generalAvailability
+    value: 2022-05-12T09:30:10-08:00
+  - property: endOfSupport
+    value: 2032-05-12T09:30:10-08:00
+  - property: endOfLife
+    value: 2042-05-12T09:30:10-08:00
+  - property: retention
+    value: 3
+    unit: y
+    column: tab1.txn_ref_dt
+  - property: frequency
+    value: 1
+    valueExt: 1
+    unit: d
+    column: tab1.txn_ref_dt
+  - property: timeOfAvailability
+    value: 09:00-08:00
+    column: tab1.txn_ref_dt
+    driver: regulatory # Describes the importance of the SLA: [regulatory|analytics|operational|...]
+  - property: timeOfAvailability
+    value: 08:00-08:00
+    column: tab1.txn_ref_dt
+    driver: analytics
