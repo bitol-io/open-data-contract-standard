@@ -1,0 +1,27 @@
+version: 1.0.0
+apiVersion: v3.0.0
+kind: DataContract
+id: 53581432-6c55-4ba2-a65f-72344a91553a
+type: tables
+status: current
+name: my_table
+dataProduct: my_quantum
+schema:
+  - name: Air_Quality
+    description: Air quality of the city of New York
+    authoritativeDefinitions:
+      - url: https://catalog.data.gov/dataset/air-quality
+        type: Reference definition on Data.gov
+    dataGranularityDescription: Raw records
+    properties:
+    - name: UniqueID
+      primaryKey: true
+      businessName: Unique identifier
+      logicalType: number
+      physicalType: int
+      quality:
+      - description: This column should not contain null values
+        dimension: completeness
+        severity: error
+        rule: nullCheck
+        businessImpact: operational

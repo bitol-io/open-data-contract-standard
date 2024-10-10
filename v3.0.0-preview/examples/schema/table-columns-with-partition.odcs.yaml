@@ -1,0 +1,39 @@
+version: 1.0.0
+kind: DataContract
+id: 53581432-6c55-4ba2-a65f-72344a91553c
+type: tables
+status: current
+name: my_table
+dataProduct: my_quantum
+apiVersion: v3.0.0
+schema:
+  - name: tbl
+    properties:
+      - name: rcvr_cntry_code
+        businessName: Receiver country code
+        logicalType: string
+        physicalType: varchar(2)
+        primaryKey: true
+        primaryKeyPosition: 1
+        partitioned: true
+        partitionKeyPosition: 1
+      - name: rcvr_id
+        businessName: Receiver identification number
+        logicalType: string
+        physicalType: varchar(20)
+        primaryKey: true
+        primaryKeyPosition: 2
+        partitioned: false
+      - name: year
+        businessName: Year of transaction
+        logicalType: integer
+        physicalType: int
+        primaryKey: false
+        partitioned: true
+        partitionKeyPosition: 2
+      - name: amount
+        businessName: Transaction amount
+        logicalType: number
+        physicalType: double
+        primaryKey: false
+        partitioned: false

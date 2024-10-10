@@ -1,0 +1,10 @@
+version: 1.0.0
+apiVersion: v3.0.0
+kind: DataContract
+id: abc123
+status: pending
+servers:
+  - server: my-azure
+    type: azure
+    location: az://my-data-location
+    format: parquet
