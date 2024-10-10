@@ -7,7 +7,7 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 # Open Data Contract Standard
 
 ## Executive Summary
-This document describes the keys and values expected in a YAML data contract, per the **Open Data Contract Standard**. It is divided in multiple sections: [fundamentals (fka demographics)](#fundamentals), [schema](#schema), [data quality](#data-quality), [pricing](#pricing), [team](#team), [roles](#roles), [service-level agreement](#sla), and [other/custom properties](#custom-properties). Each section starts with at least an example followed by definition of each field/key.
+This document describes the keys and values expected in a YAML data contract, per the **Open Data Contract Standard**. It is divided in multiple sections: [fundamentals (fka demographics)](#fundamentals), [schema](#schema), [data quality](#data-quality), [Support & communication channels](#support), [pricing](#pricing), [team](#team), [roles](#roles), [service-level agreement](#sla), [Infrastructures & servers](#servers) and [other/custom properties](#custom-properties). Each section starts with at least an example followed by definition of each field/key.
 
 
 ## Table of content
@@ -63,21 +63,21 @@ tags: null
 
 ### Definitions
 
-| Key                     | UX label         | Required | Description                                                                              |
-|-------------------------|------------------|----------|------------------------------------------------------------------------------------------|
-| apiVersion              | Standard version | Yes      | Version of the standard used to build data contract. Default value is `v3.0.0`.          |
-| kind                    | Kind             | Yes      | The kind of file this is. Valid value is `DataContract`.                                 |
-| id                      | ID               | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.  |
-| name                    | Name             | No       | Name of the data contract.                                                               |
-| version                 | Version          | Yes      | Current version of the data contract.                                                    |
-| status                  | Status           | Yes      | Current status of the data contract.                                                     |
-| tenant                  | Tenant           | No       | Indicates the property the data is primarily associated with. Value is case insensitive. |
-| domain                  | Domain           | No       | Name of the logical data domain.                                                         |
-| dataProduct             | Data Product     | No       | Name of the data product.                                                                |
-| description             | Description      | No       | Object containing the descriptions.                                                      |
-| description.purpose     | Purpose          | No       | Intended purpose for the provided data.                                                  |
-| description.limitations | Limitations      | No       | Technical, compliance, and legal limitations for data use.                               |
-| description.usage       | Usage            | No       | Recommended usage of the data.                                                           |
+| Key                     | UX label         | Required | Description                                                                                    |
+|-------------------------|------------------|----------|------------------------------------------------------------------------------------------------|
+| apiVersion              | Standard version | Yes      | Version of the standard used to build data contract. Default value is `v3.0.0`.                |
+| kind                    | Kind             | Yes      | The kind of file this is. Valid value is `DataContract`.                                       |
+| id                      | ID               | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.        |
+| name                    | Name             | No       | Name of the data contract.                                                                     |
+| version                 | Version          | Yes      | Current version of the data contract.                                                          |
+| status                  | Status           | Yes      | Current status of the data contract. Valid values are `production`, `test`, or `development`.  |
+| tenant                  | Tenant           | No       | Indicates the property the data is primarily associated with. Value is case insensitive.       |
+| domain                  | Domain           | No       | Name of the logical data domain.                                                               |
+| dataProduct             | Data Product     | No       | Name of the data product.                                                                      |
+| description             | Description      | No       | Object containing the descriptions.                                                            |
+| description.purpose     | Purpose          | No       | Intended purpose for the provided data.                                                        |
+| description.limitations | Limitations      | No       | Technical, compliance, and legal limitations for data use.                                     |
+| description.usage       | Usage            | No       | Recommended usage of the data.                                                                 |
 
 
 ## <a id="schema"/> Schema 
@@ -221,7 +221,7 @@ Note: the description needs to be updated.
 | physicalName             | Physical Name                | No       | Physical name.                                                                                                                                                                                                         |
 | description              | Description                  | No       | Description of the element.                                                                                                                                                                                            |
 | businessName             | Business Name                | No       | The business name of the element.                                                                                                                                                                                      |
-| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more details on the table; examples would be a link to an external definition, a training video, a GitHub repo, Collibra, or another tool. See `authoritativeDefinitions` below. |
+| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more details on the element; examples would be a link to an external definition.   See `authoritativeDefinitions` below. |
 | tags                     | Tags                         | No       | A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level.                                                                                                    |
 
 #### Applicable to Objects
@@ -246,8 +246,9 @@ Some keys are more applicable when the described property is a column.
 | unique                   | Unique                       | No       | Indicates if the element contains unique values; possible values are true and false. Default is false.                                                                                                                                |
 | partitioned              | Partitioned                  | No       | Indicates if the element is partitioned; possible values are true and false.                                                                                                                                                          |
 | partitionKeyPosition     | Partition Key Position       | No       | If element is used for partitioning, the position of the partition element. Starts from 1. Example of `country, year` being partition columns, `country` has partitionKeyPosition 1 and `year` partitionKeyPosition 2. Default to -1. |
-| classification           | Classification               | No       | Can be anything, like confidential, restricted, and public to more advanced categorization. Some companies like PayPal, use data classification indicating the class of data in the column; expected values are 1, 2, 3, 4, or 5.     |
-| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more detail on element logic or values; examples would be URL to a GitHub repo, Collibra, on another tool.                                                                                      |
+| classification           | Classification               | No       | Can be anything, like confidential, restricted, and public to more advanced categorization.                                                                                                    
+                                       |
+| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more detail on element logic or values; examples would be URL to a git repo, documentation, a data catalog or another tool.                                                                                      |
 | encryptedName            | Encrypted Name               | No       | The element name within the dataset that contains the encrypted element value. For example, unencrypted element `email_address` might have an encryptedName of `email_address_encrypt`.                                               |
 | transformSourceObjects   | Transform Sources            | No       | List of objects in the data source used in the transformation.                                                                                                                                                                        |
 | transformLogic           | Transform Logic              | No       | Logic used in the column transformation.                                                                                                                                                                                              |
@@ -286,11 +287,11 @@ Additional metadata options to more accurately define the data type.
 
 ### Authoritative definitions
 
-Updated in ODCS (Open Data Contract Standard) v2.2.1.
+Reference to an external definition on element logic or values.
 
 | Key  | UX label          | Required | Description                                                                                                                                                             |
 |------|-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| type | Definition type   | Yes      | Type of definition for authority: v2.2.1 adds standard values: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. |
+| type | Definition type   | Yes      | Type of definition for authority.  Valid values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. |
 | url  | URL to definition | Yes      | URL to the authority.                                                                                                                                                   |
 
 
@@ -548,7 +549,7 @@ support:
 
 
 ## Pricing
-This section covers pricing when you bill your customer for using this data product. Pricing is experimental in v2.1.1 of the data contract.
+This section covers pricing when you bill your customer for using this data product. 
 
 ### Example
 
@@ -591,7 +592,7 @@ team:
 ```
 
 ### Definitions
-The UX label is the label used in the UI and other user experiences. It is not limited to BlueRacket.
+The UX label is the label used in the UI and other user experiences. 
 
 | Key                     | UX label           | Required | Description                                                                                       |
 
