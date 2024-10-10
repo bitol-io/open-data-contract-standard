@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
@@ -27,10 +25,8 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-open-in-new-tab mike
-      - run: pip install mkdocs-material
-      - run: pip install "mkdocs-material[imaging]"
-      - run: bash script/build_docs.sh
+      - run: pip install mkdocs-material mkdocs-open-in-new-tab "mkdocs-material[imaging]" mike
+      - run: bash src/script/build_docs.sh
       - run: |
           latest_tag=$(git describe --tags --abbrev=0)
           mike deploy --push --update-aliases "$latest_tag" latest

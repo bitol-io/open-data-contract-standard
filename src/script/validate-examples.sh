@@ -11,7 +11,7 @@ json_schema_version=${JSON_SCHEMA_VERSION:-v3.0.0}
 num_failed_validation=0
 
 echo "Checking if $json_schema_version JSON schema is valid"
-if ajv compile --spec=draft2019 -c ajv-formats -s "${script_dir}/../schema/odcs-json-schema-${json_schema_version}.json"; then
+if ajv compile --spec=draft2019 -c ajv-formats -s "${script_dir}/../../schema/odcs-json-schema-${json_schema_version}.json"; then
   echo -e "${GREEN}Valid JSON schema${NC}"
 else
   echo -e "${RED}Invalid JSON schema, exiting${NC}"
@@ -20,7 +20,7 @@ fi
 
 echo -e "Validating example ODCS files based on ${json_schema_version} JSON schema"
 for file in docs/examples/*/*.yaml; do
-  if ajv validate --spec=draft2019 -c ajv-formats -s "${script_dir}/../schema/odcs-json-schema-${json_schema_version}.json" -d "${script_dir}/../${file}"; then
+  if ajv validate --spec=draft2019 -c ajv-formats -s "${script_dir}/../../schema/odcs-json-schema-${json_schema_version}.json" -d "${script_dir}/../../${file}"; then
     echo -e "${GREEN}Passed validation, file=${file}${NC}"
   else
     num_failed_validation=$((num_failed_validation+1))

@@ -15,4 +15,4 @@ jobs:
         run: |
           npm i -g ajv-cli ajv-formats
       - name: Validate examples
-        run: bash script/validate-examples.sh
+        run: bash src/script/validate-examples.sh
