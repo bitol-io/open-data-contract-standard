@@ -25,12 +25,16 @@ Discover the [Open Data Contract Standard](docs/README.md). This file contains s
 ### The basics of a data contract
 A data contract defines the agreement between a data producer and consumers. A data contract contains several sections:
 
-* [Fundamentals](docs/README.md#demographics).
-* [Schema](docs/README.md#dataset-and-schema).
-* [Data quality](docs/README.md#data-quality-).
-* [Service-level agreement (SLA)](docs/README.md#service-level-agreement).
-* [Security & stakeholders](docs/README.md#stakeholders).
-* [Custom properties](docs/README.md#other-properties).
+* [Fundamentals](docs/README.md#fundamentals).
+* [Schema](docs/README.md#schema).
+* [Data quality](docs/README.md#data-quality).
+* [Support & communication channels](docs/README.md#support)
+* [Pricing](docs/README.md#pricing)
+* [Team](docs/README.md#team)
+* [Roles](docs/README.md#roles)
+* [Service-level agreement (SLA)](docs/README.md#sla).
+* [Infrastructures & servers](docs/README.md#servers)
+* [Custom properties](docs/README.md#custom-properties).
 
 ![Data contract schema](docs/img/data-contract-diagram-latest.svg "Data contract schema")
 
