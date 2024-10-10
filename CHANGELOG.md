@@ -196,4 +196,3 @@ Removed the weight for system ratings from the data contract. Their default valu
 * System rating weightage.
 * Ratings:
   * System, user, etc.
-
