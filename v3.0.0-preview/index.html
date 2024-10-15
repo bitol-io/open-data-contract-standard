@@ -1500,7 +1500,7 @@
 
 <h1 id="open-data-contract-standard">Open Data Contract Standard</h1>
 <h2 id="executive-summary">Executive Summary</h2>
-<p>This document describes the keys and values expected in a YAML data contract, per the <strong>Open Data Contract Standard</strong>. It is divided in multiple sections: <a href="#fundamentals">fundamentals (fka demographics)</a>, <a href="#schema">schema</a>, <a href="#data-quality">data quality</a>, <a href="#pricing">pricing</a>, <a href="#team">team</a>, <a href="#roles">roles</a>, <a href="#sla">service-level agreement</a>, and <a href="#custom-properties">other/custom properties</a>. Each section starts with at least an example followed by definition of each field/key.</p>
+<p>This document describes the keys and values expected in a YAML data contract, per the <strong>Open Data Contract Standard</strong>. It is divided in multiple sections: <a href="#fundamentals">fundamentals (fka demographics)</a>, <a href="#schema">schema</a>, <a href="#data-quality">data quality</a>, <a href="#support">Support &amp; communication channels</a>, <a href="#pricing">pricing</a>, <a href="#team">team</a>, <a href="#roles">roles</a>, <a href="#sla">service-level agreement</a>, <a href="#servers">Infrastructures &amp; servers</a> and <a href="#custom-properties">other/custom properties</a>. Each section starts with at least an example followed by definition of each field/key.</p>
 <h2 id="table-of-content">Table of content</h2>
 <ol>
 <li><a href="#fundamentals">Fundamentals (fka demographics)</a></li>
@@ -1591,7 +1591,7 @@
 <td>status</td>
 <td>Status</td>
 <td>Yes</td>
-<td>Current status of the data contract.</td>
+<td>Current status of the data contract. Valid values are <code>production</code>, <code>test</code>, or <code>development</code>.</td>
 </tr>
 <tr>
 <td>tenant</td>
@@ -1806,7 +1806,7 @@
 <td>authoritativeDefinitions</td>
 <td>Authoritative Definitions</td>
 <td>No</td>
-<td>List of links to sources that provide more details on the table; examples would be a link to an external definition, a training video, a GitHub repo, Collibra, or another tool. See <code>authoritativeDefinitions</code> below.</td>
+<td>List of links to sources that provide more details on the element; examples would be a link to an external definition.   See <code>authoritativeDefinitions</code> below.</td>
 </tr>
 <tr>
 <td>tags</td>
@@ -1911,13 +1911,19 @@
 <td>classification</td>
 <td>Classification</td>
 <td>No</td>
-<td>Can be anything, like confidential, restricted, and public to more advanced categorization. Some companies like PayPal, use data classification indicating the class of data in the column; expected values are 1, 2, 3, 4, or 5.</td>
+<td>Can be anything, like confidential, restricted, and public to more advanced categorization.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>authoritativeDefinitions</td>
 <td>Authoritative Definitions</td>
 <td>No</td>
-<td>List of links to sources that provide more detail on element logic or values; examples would be URL to a GitHub repo, Collibra, on another tool.</td>
+<td>List of links to sources that provide more detail on element logic or values; examples would be URL to a git repo, documentation, a data catalog or another tool.</td>
 </tr>
 <tr>
 <td>encryptedName</td>
@@ -2126,7 +2132,7 @@
 </tbody>
 </table>
 <h3 id="authoritative-definitions">Authoritative definitions</h3>
-<p>Updated in ODCS (Open Data Contract Standard) v2.2.1.</p>
+<p>Reference to an external definition on element logic or values.</p>
 <table>
 <thead>
 <tr>
@@ -2141,7 +2147,7 @@
 <td>type</td>
 <td>Definition type</td>
 <td>Yes</td>
-<td>Type of definition for authority: v2.2.1 adds standard values: <code>businessDefinition</code>, <code>transformationImplementation</code>, <code>videoTutorial</code>, <code>tutorial</code>, and <code>implementation</code>.</td>
+<td>Type of definition for authority.  Valid values are: <code>businessDefinition</code>, <code>transformationImplementation</code>, <code>videoTutorial</code>, <code>tutorial</code>, and <code>implementation</code>.</td>
 </tr>
 <tr>
 <td>url</td>
@@ -2553,7 +2559,7 @@
 </tbody>
 </table>
 <h2 id="pricing">Pricing</h2>
-<p>This section covers pricing when you bill your customer for using this data product. Pricing is experimental in v2.1.1 of the data contract.</p>
+<p>This section covers pricing when you bill your customer for using this data product. </p>
 <h3 id="example_1">Example</h3>
 <div class="language-YAML highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nt">price</span><span class="p">:</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="nt">priceAmount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9.95</span>
@@ -2616,6 +2622,7 @@
 </span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">    </span><span class="nt">dateIn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-10-01</span>
 </span></code></pre></div>
 <h3 id="definitions_5">Definitions</h3>
+<p>The UX label is the label used in the UI and other user experiences. </p>
 <table>
 <thead>
 <tr>
