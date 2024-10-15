@@ -981,14 +981,6 @@
             "type": "string",
             "description": "Staging directory."
           },
-          "stream": {
-            "type": "string",
-            "description": "Name of the data stream."
-          },
-          "topic": {
-            "type": "string",
-            "description": "Topic name."
-          },
           "warehouse": {
             "type": "string",
             "description": "Name of the cluster or warehouse."
@@ -1004,10 +996,6 @@
             "type": "string",
             "description": "The bootstrap server of the kafka cluster."
           },
-          "topic": {
-            "type": "string",
-            "description": "The topic name."
-          },
           "format": {
             "type": "string",
             "description": "The format of the messages.",
@@ -1016,8 +1004,7 @@
           }
         },
         "required": [
-          "host",
-          "topic"
+          "host"
         ]
       },
       "KinesisServer": {
@@ -1025,10 +1012,6 @@
         "title": "KinesisDataStreamsServer",
         "description": "Kinesis Data Streams Server",
         "properties": {
-          "stream": {
-            "type": "string",
-            "description": "The name of the Kinesis data stream."
-          },
           "region": {
             "type": "string",
             "description": "AWS region.",
@@ -1045,10 +1028,7 @@
               "protobuf"
             ]
           }
-        },
-        "required": [
-          "stream"
-        ]
+        }
       },
       "LocalServer": {
         "type": "object",
@@ -1198,15 +1178,10 @@
           "project": {
             "type": "string",
             "description": "The GCP project name."
-          },
-          "topic": {
-            "type": "string",
-            "description": "The topic name."
           }
         },
         "required": [
-          "project",
-          "topic"
+          "project"
         ]
       },
       "RedshiftServer": {
