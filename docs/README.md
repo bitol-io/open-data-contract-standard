@@ -495,7 +495,7 @@ Bitol has the ambition of creating a library of common data quality rules. Join 
 
 
 ## <a id="support"/> Support & communication channels
-Support and communication channels help consumers find help regarding their use of the data contract. In version 3, ODCS opens the 
+Support and communication channels help consumers find help regarding their use of the data contract.  
 
 ### Examples
 
