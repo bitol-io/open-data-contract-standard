@@ -881,7 +881,6 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | Key          | UX Label        | Required   | Description                                                |
 |--------------|-----------------|------------|------------------------------------------------------------|
 | host   | Host      | Yes        | The bootstrap server of the kafka cluster.                                              |
-| topic   | Topic      | Yes        | The topic name.                                              |
 | format   | Format      | No         | The format of the messages.                                              |
 
 #### <a id="kinesis-server"/>Amazon Kinesis
@@ -939,7 +938,6 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | Key          | UX Label        | Required   | Description                                                |
 |--------------|-----------------|------------|------------------------------------------------------------|
 | project   | Project      | Yes        | The GCP project name.                                              |
-| topic   | Topic      | Yes        | The topic name.                                              |
 
 #### <a id="redshift-server"/>Amazon Redshift Server
 [Amazon Redshift](https://aws.amazon.com/redshift/) is a power data driven decisions with the best price-performance cloud data warehouse.
@@ -1040,7 +1038,6 @@ Secure File Transfer Protocol (SFTP) is a network protocol that enables secure a
 | serviceName  | Servicename       | No         | Name of the service.                                                        |
 | stagingDir   | Staging directory | No         | Staging directory.                                                        |
 | stream       | Stream            | No         | Name of the data stream.                                              |
-| topic        | Topic             | No         | Topic name.                                                                  |
 | warehouse    | Warehouse         | No         | Name of the cluster or warehouse.                                              |
 
 If you need another property, use [custom properties](#custom-properties).
