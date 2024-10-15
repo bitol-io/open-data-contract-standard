@@ -2616,8 +2616,54 @@
 </span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">    </span><span class="nt">dateIn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-10-01</span>
 </span></code></pre></div>
 <h3 id="definitions_5">Definitions</h3>
-<p>The UX label is the label used in the UI and other user experiences. It is not limited to BlueRacket.</p>
-<p>| Key                     | UX label           | Required | Description                                                                                       |</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>team</td>
+<td>Team</td>
+<td>No</td>
+<td>Object</td>
+</tr>
+<tr>
+<td>team.username</td>
+<td>Username</td>
+<td>No</td>
+<td>The user's username or email.</td>
+</tr>
+<tr>
+<td>team.role</td>
+<td>Role</td>
+<td>No</td>
+<td>The user's job role; Examples might be owner, data steward. There is no limit on the role.</td>
+</tr>
+<tr>
+<td>team.dateIn</td>
+<td>Date In</td>
+<td>No</td>
+<td>The date when the user joined the team.</td>
+</tr>
+<tr>
+<td>team.dateOut</td>
+<td>Date Out</td>
+<td>No</td>
+<td>The date when the user ceased to be part of the team.</td>
+</tr>
+<tr>
+<td>team.replacedByUsername</td>
+<td>Replaced By Username</td>
+<td>No</td>
+<td>The username of the user who replaced the previous user.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="roles">Roles</h2>
 <p>This section lists the roles that a consumer may need to access the dataset depending on the type of access they require.</p>
 <h3 id="example_3">Example</h3>
@@ -2691,9 +2737,9 @@
 <h2 id="service-level-agreement-sla"><a id="sla"/> Service-Level Agreement (SLA)</h2>
 <p>This section describes the service-level agreements (SLA). </p>
 <ul>
-<li>Use the <code>Table.Column</code> to indicate the number to do the checks on, as in <code>SELECT txn_ref_dt FROM tab1</code>.</li>
-<li>Separate multiple table.columns by a comma, as in <code>table1.col1</code>, <code>table2.col1</code>, <code>table1.col2</code>.</li>
-<li>If there is only one table in the contract, the table name is not required.</li>
+<li>Use the <code>Object.Element</code> to indicate the number to do the checks on, as in <code>SELECT txn_ref_dt FROM tab1</code>.</li>
+<li>Separate multiple object.element by a comma, as in <code>table1.col1</code>, <code>table2.col1</code>, <code>table1.col2</code>.</li>
+<li>If there is only one object in the contract, the object name is not required.</li>
 </ul>
 <h3 id="example_4">Example</h3>
 <div class="language-YAML highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nt">slaDefaultElement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tab1.txn_ref_dt</span><span class="w"> </span><span class="c1"># Optional, default value is partitionColumn.</span>

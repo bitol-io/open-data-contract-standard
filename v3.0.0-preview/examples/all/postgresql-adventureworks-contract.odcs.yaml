@@ -1,13 +1,13 @@
 version: "1.0.0"
 apiVersion: "v3.0.0"
 id: "6aeafdc1-ed62-4c8f-bf0a-da1061c98cdb"
-type: "tables"
 status: "Development"
 kind: "DataContract"
 description: {}
 schema:  
   - name: "department"
     physicalName: "department"
+    physicalType: "table"
     description: "Lookup table containing the departments within the Adventure Works\
       \ Cycles company."
     properties:
@@ -56,6 +56,7 @@ schema:
       required: false
   - name: "employee"
     physicalName: "employee"
+    physicalType: "table"
     description: "Employee information such as salary, department, and title."
     properties:
     - name: "businessentityid"
@@ -225,6 +226,7 @@ schema:
       required: false
   - name: "employeedepartmenthistory"
     physicalName: "employeedepartmenthistory"
+    physicalType: "table"
     description: "Employee department transfers."
     properties:
     - name: "businessentityid"
@@ -296,6 +298,7 @@ schema:
       required: false
   - name: "employeepayhistory"
     physicalName: "employeepayhistory"
+    physicalType: "table"
     description: "Employee pay history."
     properties:
     - name: "businessentityid"
@@ -354,6 +357,7 @@ schema:
       required: false
   - name: "jobcandidate"
     physicalName: "jobcandidate"
+    physicalType: "table"
     description: "Résumés submitted to Human Resources by job applicants."
     properties:
     - name: "jobcandidateid"
@@ -402,6 +406,7 @@ schema:
       required: false
   - name: "shift"
     physicalName: "shift"
+    physicalType: "table"
     description: "Work shift lookup table."
     properties:
     - name: "shiftid"
@@ -460,6 +465,7 @@ schema:
       required: false
   - name: "address"
     physicalName: "address"
+    physicalType: "table"
     description: "Street address information for customers, employees, and vendors."
     properties:
     - name: "addressid"
@@ -562,6 +568,7 @@ schema:
       required: false
   - name: "addresstype"
     physicalName: "addresstype"
+    physicalType: "table"
     description: "Types of addresses stored in the Address table."
     properties:
     - name: "addresstypeid"
@@ -608,6 +615,7 @@ schema:
       required: false
   - name: "businessentity"
     physicalName: "businessentity"
+    physicalType: "table"
     description: "Source of the ID that connects vendors, customers, and employees\
       \ with address and contact information."
     properties:
@@ -644,6 +652,7 @@ schema:
       required: false
   - name: "businessentityaddress"
     physicalName: "businessentityaddress"
+    physicalType: "table"
     description: "Cross-reference table mapping customers, vendors, and employees\
       \ to their addresses."
     properties:
@@ -702,6 +711,7 @@ schema:
       required: false
   - name: "businessentitycontact"
     physicalName: "businessentitycontact"
+    physicalType: "table"
     description: "Cross-reference table mapping stores, vendors, and employees to\
       \ people"
     properties:
@@ -760,6 +770,7 @@ schema:
       required: false
   - name: "contacttype"
     physicalName: "contacttype"
+    physicalType: "table"
     description: "Lookup table containing the types of business entity contacts."
     properties:
     - name: "contacttypeid"
@@ -796,6 +807,7 @@ schema:
       required: false
   - name: "countryregion"
     physicalName: "countryregion"
+    physicalType: "table"
     description: "Lookup table containing the ISO standard codes for countries and\
       \ regions."
     properties:
@@ -833,6 +845,7 @@ schema:
       required: false
   - name: "emailaddress"
     physicalName: "emailaddress"
+    physicalType: "table"
     description: "Where to send a person email."
     properties:
     - name: "businessentityid"
@@ -891,6 +904,7 @@ schema:
       required: false
   - name: "password"
     physicalName: "password"
+    physicalType: "table"
     description: "One way hashed authentication information"
     properties:
     - name: "businessentityid"
@@ -948,6 +962,7 @@ schema:
       required: false
   - name: "person"
     physicalName: "person"
+    physicalType: "table"
     description: "Human beings involved with AdventureWorks: employees, customer contacts,\
       \ and vendor contacts."
     properties:
@@ -1103,6 +1118,7 @@ schema:
       required: false
   - name: "personphone"
     physicalName: "personphone"
+    physicalType: "table"
     description: "Telephone number and type of a person."
     properties:
     - name: "businessentityid"
@@ -1150,6 +1166,7 @@ schema:
       required: false
   - name: "phonenumbertype"
     physicalName: "phonenumbertype"
+    physicalType: "table"
     description: "Type of phone number of a person."
     properties:
     - name: "phonenumbertypeid"
@@ -1186,6 +1203,7 @@ schema:
       required: false
   - name: "stateprovince"
     physicalName: "stateprovince"
+    physicalType: "table"
     description: "State and province lookup table."
     properties:
     - name: "stateprovinceid"
@@ -1278,6 +1296,7 @@ schema:
       required: false
   - name: "billofmaterials"
     physicalName: "billofmaterials"
+    physicalType: "table"
     description: "Items required to make bicycles and bicycle subassemblies. It identifies\
       \ the heirarchical relationship between a parent product and its components."
     properties:
@@ -1381,6 +1400,7 @@ schema:
       required: false
   - name: "culture"
     physicalName: "culture"
+    physicalType: "table"
     description: "Lookup table containing the languages in which some AdventureWorks\
       \ data is stored."
     properties:
@@ -1418,6 +1438,7 @@ schema:
       required: false
   - name: "document"
     physicalName: "document"
+    physicalType: "table"
     description: "Product maintenance documents."
     properties:
     - name: "title"
@@ -1566,6 +1587,7 @@ schema:
       required: false
   - name: "illustration"
     physicalName: "illustration"
+    physicalType: "table"
     description: "Bicycle assembly diagrams."
     properties:
     - name: "illustrationid"
@@ -1602,6 +1624,7 @@ schema:
       required: false
   - name: "location"
     physicalName: "location"
+    physicalType: "table"
     description: "Product inventory and manufacturing locations."
     properties:
     - name: "locationid"
@@ -1660,6 +1683,7 @@ schema:
       required: false
   - name: "product"
     physicalName: "product"
+    physicalType: "table"
     description: "Products sold or used in the manfacturing of sold products."
     properties:
     - name: "productid"
@@ -1938,6 +1962,7 @@ schema:
       required: false
   - name: "productcategory"
     physicalName: "productcategory"
+    physicalType: "table"
     description: "High-level product categorization."
     properties:
     - name: "productcategoryid"
@@ -1984,6 +2009,7 @@ schema:
       required: false
   - name: "productcosthistory"
     physicalName: "productcosthistory"
+    physicalType: "table"
     description: "Changes in the cost of a product over time."
     properties:
     - name: "productid"
@@ -2042,6 +2068,7 @@ schema:
       required: false
   - name: "productdescription"
     physicalName: "productdescription"
+    physicalType: "table"
     description: "Product descriptions in several languages."
     properties:
     - name: "productdescriptionid"
@@ -2088,6 +2115,7 @@ schema:
       required: false
   - name: "productdocument"
     physicalName: "productdocument"
+    physicalType: "table"
     description: "Cross-reference table mapping products to related product documents."
     properties:
     - name: "productid"
@@ -2124,6 +2152,7 @@ schema:
       required: false
   - name: "productinventory"
     physicalName: "productinventory"
+    physicalType: "table"
     description: "Product inventory information."
     properties:
     - name: "productid"
@@ -2203,6 +2232,7 @@ schema:
       required: false
   - name: "productlistpricehistory"
     physicalName: "productlistpricehistory"
+    physicalType: "table"
     description: "Changes in the list price of a product over time."
     properties:
     - name: "productid"
@@ -2261,6 +2291,7 @@ schema:
       required: false
   - name: "productmodel"
     physicalName: "productmodel"
+    physicalType: "table"
     description: "Product model classification."
     properties:
     - name: "productmodelid"
@@ -2329,6 +2360,7 @@ schema:
       required: false
   - name: "productmodelillustration"
     physicalName: "productmodelillustration"
+    physicalType: "table"
     description: "Cross-reference table mapping product models and illustrations."
     properties:
     - name: "productmodelid"
@@ -2365,6 +2397,7 @@ schema:
       required: false
   - name: "productmodelproductdescriptionculture"
     physicalName: "productmodelproductdescriptionculture"
+    physicalType: "table"
     description: "Cross-reference table mapping product descriptions and the language\
       \ the description is written in."
     properties:
@@ -2413,6 +2446,7 @@ schema:
       required: false
   - name: "productphoto"
     physicalName: "productphoto"
+    physicalType: "table"
     description: "Product images."
     properties:
     - name: "productphotoid"
@@ -2482,6 +2516,7 @@ schema:
       required: false
   - name: "productproductphoto"
     physicalName: "productproductphoto"
+    physicalType: "table"
     description: "Cross-reference table mapping products and product photos."
     properties:
     - name: "productid"
@@ -2530,6 +2565,7 @@ schema:
       required: false
   - name: "productreview"
     physicalName: "productreview"
+    physicalType: "table"
     description: "Customer reviews of products they have purchased."
     properties:
     - name: "productreviewid"
@@ -2622,6 +2658,7 @@ schema:
       required: false
   - name: "productsubcategory"
     physicalName: "productsubcategory"
+    physicalType: "table"
     description: "Product subcategories. See ProductCategory table."
     properties:
     - name: "productsubcategoryid"
@@ -2679,6 +2716,7 @@ schema:
       required: false
   - name: "scrapreason"
     physicalName: "scrapreason"
+    physicalType: "table"
     description: "Manufacturing failure reasons lookup table."
     properties:
     - name: "scrapreasonid"
@@ -2715,6 +2753,7 @@ schema:
       required: false
   - name: "transactionhistory"
     physicalName: "transactionhistory"
+    physicalType: "table"
     description: "Record of each purchase order, sales order, or work order transaction\
       \ year to date."
     properties:
@@ -2819,6 +2858,7 @@ schema:
       required: false
   - name: "transactionhistoryarchive"
     physicalName: "transactionhistoryarchive"
+    physicalType: "table"
     description: "Transactions for previous years."
     properties:
     - name: "transactionid"
@@ -2922,6 +2962,7 @@ schema:
       required: false
   - name: "unitmeasure"
     physicalName: "unitmeasure"
+    physicalType: "table"
     description: "Unit of measure lookup table."
     properties:
     - name: "unitmeasurecode"
@@ -2958,6 +2999,7 @@ schema:
       required: false
   - name: "workorder"
     physicalName: "workorder"
+    physicalType: "table"
     description: "Manufacturing work orders."
     properties:
     - name: "workorderid"
@@ -3060,6 +3102,7 @@ schema:
       required: false
   - name: "workorderrouting"
     physicalName: "workorderrouting"
+    physicalType: "table"
     description: "Work order details."
     properties:
     - name: "workorderid"
@@ -3196,6 +3239,7 @@ schema:
       required: false
   - name: "productvendor"
     physicalName: "productvendor"
+    physicalType: "table"
     description: "Cross-reference table mapping vendors with the products they supply."
     properties:
     - name: "productid"
@@ -3321,6 +3365,7 @@ schema:
       required: false
   - name: "purchaseorderdetail"
     physicalName: "purchaseorderdetail"
+    physicalType: "table"
     description: "Individual products associated with a specific purchase order. See\
       \ PurchaseOrderHeader."
     properties:
@@ -3424,6 +3469,7 @@ schema:
       required: false
   - name: "purchaseorderheader"
     physicalName: "purchaseorderheader"
+    physicalType: "table"
     description: "General purchase order information. See PurchaseOrderDetail."
     properties:
     - name: "purchaseorderid"
@@ -3563,6 +3609,7 @@ schema:
       required: false
   - name: "shipmethod"
     physicalName: "shipmethod"
+    physicalType: "table"
     description: "Shipping company lookup table."
     properties:
     - name: "shipmethodid"
@@ -3631,6 +3678,7 @@ schema:
       required: false
   - name: "vendor"
     physicalName: "vendor"
+    physicalType: "table"
     description: "Companies from whom Adventure Works Cycles purchases parts or other\
       \ goods."
     properties:
@@ -3725,6 +3773,7 @@ schema:
       required: false
   - name: "countryregioncurrency"
     physicalName: "countryregioncurrency"
+    physicalType: "table"
     description: "Cross-reference table mapping ISO currency codes to a country or\
       \ region."
     properties:
@@ -3762,6 +3811,7 @@ schema:
       required: false
   - name: "creditcard"
     physicalName: "creditcard"
+    physicalType: "table"
     description: "Customer credit card information."
     properties:
     - name: "creditcardid"
@@ -3831,6 +3881,7 @@ schema:
       required: false
   - name: "currency"
     physicalName: "currency"
+    physicalType: "table"
     description: "Lookup table containing standard ISO currencies."
     properties:
     - name: "currencycode"
@@ -3867,6 +3918,7 @@ schema:
       required: false
   - name: "currencyrate"
     physicalName: "currencyrate"
+    physicalType: "table"
     description: "Currency exchange rates."
     properties:
     - name: "currencyrateid"
@@ -3947,6 +3999,7 @@ schema:
       required: false
   - name: "customer"
     physicalName: "customer"
+    physicalType: "table"
     description: "Current customer information. Also see the Person and Store tables."
     properties:
     - name: "customerid"
@@ -4016,6 +4069,7 @@ schema:
       required: false
   - name: "personcreditcard"
     physicalName: "personcreditcard"
+    physicalType: "table"
     description: "Cross-reference table mapping people to their credit card information\
       \ in the CreditCard table."
     properties:
@@ -4053,6 +4107,7 @@ schema:
       required: false
   - name: "salesorderdetail"
     physicalName: "salesorderdetail"
+    physicalType: "table"
     description: "Individual products associated with a specific sales order. See\
       \ SalesOrderHeader."
     properties:
@@ -4166,6 +4221,7 @@ schema:
       required: false
   - name: "salesorderheader"
     physicalName: "salesorderheader"
+    physicalType: "table"
     description: "General sales order information."
     properties:
     - name: "salesorderid"
@@ -4445,6 +4501,7 @@ schema:
       required: false
   - name: "salesorderheadersalesreason"
     physicalName: "salesorderheadersalesreason"
+    physicalType: "table"
     description: "Cross-reference table mapping sales orders to sales reason codes."
     properties:
     - name: "salesorderid"
@@ -4481,6 +4538,7 @@ schema:
       required: false
   - name: "salesperson"
     physicalName: "salesperson"
+    physicalType: "table"
     description: "Sales representative current information."
     properties:
     - name: "businessentityid"
@@ -4582,6 +4640,7 @@ schema:
       required: false
   - name: "salespersonquotahistory"
     physicalName: "salespersonquotahistory"
+    physicalType: "table"
     description: "Sales performance tracking."
     properties:
     - name: "businessentityid"
@@ -4639,6 +4698,7 @@ schema:
       required: false
   - name: "salesreason"
     physicalName: "salesreason"
+    physicalType: "table"
     description: "Lookup table of customer purchase reasons."
     properties:
     - name: "salesreasonid"
@@ -4686,6 +4746,7 @@ schema:
       required: false
   - name: "salestaxrate"
     physicalName: "salestaxrate"
+    physicalType: "table"
     description: "Tax rate lookup table."
     properties:
     - name: "salestaxrateid"
@@ -4766,6 +4827,7 @@ schema:
       required: false
   - name: "salesterritory"
     physicalName: "salesterritory"
+    physicalType: "table"
     description: "Sales territory lookup table."
     properties:
     - name: "territoryid"
@@ -4878,6 +4940,7 @@ schema:
       required: false
   - name: "salesterritoryhistory"
     physicalName: "salesterritoryhistory"
+    physicalType: "table"
     description: "Sales representative transfers to other sales territories."
     properties:
     - name: "businessentityid"
@@ -4946,6 +5009,7 @@ schema:
       required: false
   - name: "shoppingcartitem"
     physicalName: "shoppingcartitem"
+    physicalType: "table"
     description: "Contains online customer orders until the order is submitted or\
       \ cancelled."
     properties:
@@ -5016,6 +5080,7 @@ schema:
       required: false
   - name: "specialoffer"
     physicalName: "specialoffer"
+    physicalType: "table"
     description: "Sale discounts lookup table."
     properties:
     - name: "specialofferid"
@@ -5139,6 +5204,7 @@ schema:
       required: false
   - name: "specialofferproduct"
     physicalName: "specialofferproduct"
+    physicalType: "table"
     description: "Cross-reference table mapping products to special offer discounts."
     properties:
     - name: "specialofferid"
@@ -5185,6 +5251,7 @@ schema:
       required: false
   - name: "store"
     physicalName: "store"
+    physicalType: "table"
     description: "Customers (resellers) of Adventure Works products."
     properties:
     - name: "businessentityid"

@@ -2,7 +2,6 @@ version: 1.0.0
 apiVersion: v3.0.0
 kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
-type: tables
 status: current
 name: my_table
 dataProduct: my_quantum

@@ -1,7 +1,6 @@
 version: 1.0.0
 kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
-type: tables
 status: current
 name: my_table
 dataProduct: my_quantum
@@ -10,6 +9,7 @@ schema:
   - name: transactions_tbl
     description: Provides core payment metrics
     dataGranularityDescription: Aggregation on names txn_ref_dt, pmt_txn_id
+    physicalType: table
     properties:
       - name: account_id
         physicalType: string
