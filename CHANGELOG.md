@@ -83,8 +83,8 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * Change `price.priceAmount` data type from `string` to `number`.
   * Change `slaProperties.value` data type from `string` to `oneOf[string, number]`.
   * Change `slaProperties.valueExt` data type from `string` to `oneOf[string, number]`.
-* Update [examples](docs/examples) to adhere to JSON schema.
-* Full example from README directs to [full-example.yaml](docs/examples/all/full-example.yaml).
+* Update [examples](docs/examples/README.md) to adhere to JSON schema.
+* Full example from README directs to [full-example.yaml](docs/examples/all/full-example.odcs.yaml).
 * Add in mkdocs for creating a [documentation website](https://bitol-io.github.io/open-data-contract-standard/). Check [building-doc.md](building-doc.md).
 * Add vendors page [vendors.md](vendors.md). Feel free to add anyone there.
 

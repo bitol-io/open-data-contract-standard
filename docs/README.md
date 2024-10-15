@@ -7,7 +7,12 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 # Open Data Contract Standard
 
 ## Executive Summary
-This document describes the keys and values expected in a YAML data contract, per the **Open Data Contract Standard**. It is divided in multiple sections: [fundamentals (fka demographics)](#fundamentals), [schema](#schema), [data quality](#data-quality), [Support & communication channels](#support), [pricing](#pricing), [team](#team), [roles](#roles), [service-level agreement](#sla), [Infrastructures & servers](#servers) and [other/custom properties](#custom-properties). Each section starts with at least an example followed by definition of each field/key.
+This document describes the keys and values expected in a YAML data contract, per the **Open Data Contract Standard**. 
+It is divided in multiple sections: [fundamentals (fka demographics)](#fundamentals), [schema](#schema), 
+[data quality](#data-quality), [Support & communication channels](#support-and-communication-channels), [pricing](#pricing), [team](#team), 
+[roles](#roles), [service-level agreement](#service-level-agreement-sla), [Infrastructures & servers](#infrastructure-and-servers) and 
+[other/custom properties](#custom-properties). Each section starts with at least an example followed by definition of 
+each field/key.
 
 
 ## Table of content
@@ -15,12 +20,12 @@ This document describes the keys and values expected in a YAML data contract, pe
 1. [Fundamentals (fka demographics)](#fundamentals)
 1. [Schema](#schema)
 1. [Data quality](#data-quality)
-1. [Support & communication channels](#support)
+1. [Support & communication channels](#support-and-communication-channels)
 1. [Pricing](#pricing)
 1. [Team](#team)
 1. [Roles](#roles)
-1. [Service-level agreement](#sla)
-1. [Infrastructures & servers](#servers)
+1. [Service-level agreement](#service-level-agreement-sla)
+1. [Infrastructures & servers](#infrastructure-and-servers)
 1. [Custom & other properties](#custom-properties)
 1. [Examples](#full-example)
 
@@ -76,7 +81,7 @@ tags: null
 | description.usage       | Usage            | No       | Recommended usage of the data.                                                                 |
 
 
-## <a id="schema"/> Schema 
+## Schema
 This section describes the schema of the data contract. It is the support for data quality, which is detailed in the next section. Schema supports both a business representation of your data and a physical implementation. It allows to tie them together.
 
 In ODCS v3, the schema has evolved from the table and column representation, therefore the schema introduces a new terminology:
@@ -201,9 +206,7 @@ schema:
 
 ### Definitions
 
-Note: the description needs to be updated.
-
-#### Schema
+#### Schema (top level)
 
 | Key                                                    | UX label                     | Required | Description                                                                                                                                                                                                                                           |
 |--------------------------------------------------------|------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -243,9 +246,8 @@ Some keys are more applicable when the described property is a column.
 | unique                   | Unique                       | No       | Indicates if the element contains unique values; possible values are true and false. Default is false.                                                                                                                                |
 | partitioned              | Partitioned                  | No       | Indicates if the element is partitioned; possible values are true and false.                                                                                                                                                          |
 | partitionKeyPosition     | Partition Key Position       | No       | If element is used for partitioning, the position of the partition element. Starts from 1. Example of `country, year` being partition columns, `country` has partitionKeyPosition 1 and `year` partitionKeyPosition 2. Default to -1. |
-| classification           | Classification               | No       | Can be anything, like confidential, restricted, and public to more advanced categorization.                                                                                                    
-                                       |
-| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more detail on element logic or values; examples would be URL to a git repo, documentation, a data catalog or another tool.                                                                                      |
+| classification           | Classification               | No       | Can be anything, like confidential, restricted, and public to more advanced categorization.                                                                                                                                           |
+| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more detail on element logic or values; examples would be URL to a git repo, documentation, a data catalog or another tool.                                                                     |
 | encryptedName            | Encrypted Name               | No       | The element name within the dataset that contains the encrypted element value. For example, unencrypted element `email_address` might have an encryptedName of `email_address_encrypt`.                                               |
 | transformSourceObjects   | Transform Sources            | No       | List of objects in the data source used in the transformation.                                                                                                                                                                        |
 | transformLogic           | Transform Logic              | No       | Logic used in the column transformation.                                                                                                                                                                                              |
@@ -286,13 +288,13 @@ Additional metadata options to more accurately define the data type.
 
 Reference to an external definition on element logic or values.
 
-| Key  | UX label          | Required | Description                                                                                                                                                             |
-|------|-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Key  | UX label          | Required | Description                                                                                                                                                   |
+|------|-------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | type | Definition type   | Yes      | Type of definition for authority.  Valid values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. |
-| url  | URL to definition | Yes      | URL to the authority.                                                                                                                                                   |
+| url  | URL to definition | Yes      | URL to the authority.                                                                                                                                         |
 
 
-## Data quality 
+## Data quality
 This section describes data quality rules & parameters. They are tightly linked to the schema described in the previous section.
 
 Data quality rules support different levels/stages of data quality attributes:
@@ -420,28 +422,28 @@ quality:
 Acronyms:
 * DQ: data quality.
 
-|Key                             |UX label                  |Required| Description                                                                                                                                                                         |
-|--------------------------------|--------------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|quality                         |Quality                   | No     | Quality tag with all the relevant information for rule setup and execution.                                                                                                         |
-|quality.name                    |Name                      | No     | A short name for the rule.                                                                                                                                                          |
-|quality.description             |Description               | No     | Describe the quality check to be completed.                                                                                                                                         |
-|quality.type                    |Type                      | No     | Type of DQ rule. Valid values are `library` (default), `text`, `sql`, and `custom`.                                                                                                |
-|quality.rule                    |Rule name                 | No     | Required for `library` DQ rules: the name of the rule to be executed.                                                                                                              |
-|quality.\<operator>             |See below                 | No     | Multiple values are allowed for the **property**, the value is the one to compare to.                                                                                               |
-|quality.unit                    |Unit                      | No     | Unit the rule is using, popular values are `rows` or `percent`, but any value is allowed.                                                                                           |
-|quality.validValues             |Valid values              | No     | Static list of valid values.                                                                                                                                                        |
-|quality.query                   |SQL Query                 | No     | Required for `sql` DQ rules: the SQL query to be executed. Note that it should match the target SQL engine/database, no transalation service are provided here.                     |
-|quality.engine                  |Third-party DQ Engine     | No     | Required for `custom` DQ rule: name of the third-party engine being used. Any value is authorized here but common values are `soda`, `greatExpectations`, `montecarlo`, etc.        |
-|quality.implementation          |Third-party Implementation| No     | A text (non-parsed) block of code required for the third-party DQ engine to run.                                                                                                    |
-|quality.dimension               |Dimension                 | No     | The key performance indicator (KPI) or dimension for data quality. Valid values are listed after the table.                                                                         |
-|quality.method                  |Method                    | No     | Values are open and include `reconciliation`.                                                                                                                                       |
-|quality.severity                |Severity                  | No     | The severity of the DQ rule.                                                                                                                                                        |
-|quality.businessImpact          |Business Impact           | No     | Consequences of the rule failure.                                                                                                                                                   |
-|quality.customProperties        |Custom Properties         | No     | Additional properties required for rulee execution. Follows the same structure as any custom properties block.                                                                      |
-|quality.tags                    |Tags                      | No     | Tags. Follows the same structure as any tags property.                                                                                                                              |
-|quality.authoritativeDefinitions|Authoritative Definitions | No     | Authoritative definitions indicate the link to external definition. Follows the same structure as any authoritative definitions block.                                              |
-|quality.scheduler               |Scheduler                 | No     | Name of the scheduler, can be `cron` or any tool your organization support.                                                                                                         |
-|quality.schedule                |Scheduler Configuration   | No     | Configuration information for the scheduling tool, for `cron` a possible value is `0 20 * * *`.                                                                                     |
+| Key                              | UX label                   | Required | Description                                                                                                                                                                  |
+|----------------------------------|----------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| quality                          | Quality                    | No       | Quality tag with all the relevant information for rule setup and execution.                                                                                                  |
+| quality.name                     | Name                       | No       | A short name for the rule.                                                                                                                                                   |
+| quality.description              | Description                | No       | Describe the quality check to be completed.                                                                                                                                  |
+| quality.type                     | Type                       | No       | Type of DQ rule. Valid values are `library` (default), `text`, `sql`, and `custom`.                                                                                          |
+| quality.rule                     | Rule name                  | No       | Required for `library` DQ rules: the name of the rule to be executed.                                                                                                        |
+| quality.\<operator>              | See below                  | No       | Multiple values are allowed for the **property**, the value is the one to compare to.                                                                                        |
+| quality.unit                     | Unit                       | No       | Unit the rule is using, popular values are `rows` or `percent`, but any value is allowed.                                                                                    |
+| quality.validValues              | Valid values               | No       | Static list of valid values.                                                                                                                                                 |
+| quality.query                    | SQL Query                  | No       | Required for `sql` DQ rules: the SQL query to be executed. Note that it should match the target SQL engine/database, no transalation service are provided here.              |
+| quality.engine                   | Third-party DQ Engine      | No       | Required for `custom` DQ rule: name of the third-party engine being used. Any value is authorized here but common values are `soda`, `greatExpectations`, `montecarlo`, etc. |
+| quality.implementation           | Third-party Implementation | No       | A text (non-parsed) block of code required for the third-party DQ engine to run.                                                                                             |
+| quality.dimension                | Dimension                  | No       | The key performance indicator (KPI) or dimension for data quality. Valid values are listed after the table.                                                                  |
+| quality.method                   | Method                     | No       | Values are open and include `reconciliation`.                                                                                                                                |
+| quality.severity                 | Severity                   | No       | The severity of the DQ rule.                                                                                                                                                 |
+| quality.businessImpact           | Business Impact            | No       | Consequences of the rule failure.                                                                                                                                            |
+| quality.customProperties         | Custom Properties          | No       | Additional properties required for rulee execution. Follows the same structure as any custom properties block.                                                               |
+| quality.tags                     | Tags                       | No       | Tags. Follows the same structure as any tags property.                                                                                                                       |
+| quality.authoritativeDefinitions | Authoritative Definitions  | No       | Authoritative definitions indicate the link to external definition. Follows the same structure as any authoritative definitions block.                                       |
+| quality.scheduler                | Scheduler                  | No       | Name of the scheduler, can be `cron` or any tool your organization support.                                                                                                  |
+| quality.schedule                 | Scheduler Configuration    | No       | Configuration information for the scheduling tool, for `cron` a possible value is `0 20 * * *`.                                                                              |
 
 #### Valid Values for Dimension
 Those data quality dimensions are used for classification and reporting in data quality. Valid values are:
@@ -457,16 +459,16 @@ Those data quality dimensions are used for classification and reporting in data 
 #### Valid Properties for Operator
 The operator specifies the condition to validate the rule.
 
-|Operator                 |Expected Value     |Math Symbol  |Example                     |
-|-------------------------|-------------------|-------------|----------------------------|
-|`mustBe`	                |number             | `=`         |`mustBe: 5`                 |
-|`mustNotBe`              |number             | `<>`, `≠`   |`mustNotBe: 3.14`           |
-|`mustBeGreaterThan`      |number             | `>`         |`mustBeGreaterThan: 59`     |
-|`mustBeGreaterOrEqualTo` |number             | `>=`, `≥`   |`mustBeGreaterOrEqualTo: 60`|
-|`mustBeLessThan`         |number             | `<`         |`mustBeLessThan: 1000`      |
-|`mustBeLessOrEqualTo`    |number             | `<=`, `≤`   |`mustBeLessOrEqualTo: 999`  |
-|`mustBeBetween`          |list of two numbers|	`⊂`         |`mustBeBetween: [0, 100]`   |
-|`mustNotBeBetween`       |list of two numbers|	`⊄`         |`mustNotBeBetween: [0, 100]`|
+| Operator                 | Expected Value      | Math Symbol | Example                      |
+|--------------------------|---------------------|-------------|------------------------------|
+| `mustBe`	                | number              | `=`         | `mustBe: 5`                  |
+| `mustNotBe`              | number              | `<>`, `≠`   | `mustNotBe: 3.14`            |
+| `mustBeGreaterThan`      | number              | `>`         | `mustBeGreaterThan: 59`      |
+| `mustBeGreaterOrEqualTo` | number              | `>=`, `≥`   | `mustBeGreaterOrEqualTo: 60` |
+| `mustBeLessThan`         | number              | `<`         | `mustBeLessThan: 1000`       |
+| `mustBeLessOrEqualTo`    | number              | `<=`, `≤`   | `mustBeLessOrEqualTo: 999`   |
+| `mustBeBetween`          | list of two numbers | 	`⊂`        | `mustBeBetween: [0, 100]`    |
+| `mustNotBeBetween`       | list of two numbers | 	`⊄`        | `mustNotBeBetween: [0, 100]` |
 
 `mustBeBetween` is the equivalent to `mustBeGreaterThan` and `mustBeLessThan`.
 
@@ -494,10 +496,12 @@ quality:
 Bitol has the ambition of creating a library of common data quality rules. Join the working group around [RFC #0012](https://github.com/bitol-io/tsc/blob/main/rfcs/0012-implicit-dq-rules.md).
 
 
-## <a id="support"/> Support & communication channels
+## Support and Communication Channels
 Support and communication channels help consumers find help regarding their use of the data contract.  
 
 ### Examples
+
+#### Minimal example
 
 ```yaml
 support:
@@ -506,6 +510,8 @@ support:
   - channel: channel-name-or-identifier # Simple distribution list
     url: mailto:datacontract-ann@bitol.io
 ```
+
+#### Full example
 
 ```yaml
 support:
@@ -637,7 +643,7 @@ roles:
 | roles.secondLevelApprovers | 2nd Level Approvers | No       | The name(s) of the second-level approver(s) of the role.             |
 
 
-## <a id="sla"/> Service-Level Agreement (SLA)
+## Service-Level Agreement (SLA)
 This section describes the service-level agreements (SLA). 
 
 * Use the `Object.Element` to indicate the number to do the checks on, as in `SELECT txn_ref_dt FROM tab1`.
@@ -691,7 +697,7 @@ slaProperties:
 | slaProperties.element  | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas. |
 | slaProperties.driver   | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.  |
 
-## <a id="servers"/> Infrastructure & Servers
+## Infrastructure and Servers
 
 The `servers` element describes where the data protected by this data contract is *physically* located. That metadata helps to know where the data is so that a data consumer can discover the data and a platform engineer can automate access.
 
@@ -736,138 +742,138 @@ Each server type can be customized with different properties such as `host`, `po
 If your server is not in the list, please use [custom](#custom-server) and suggest it as an improvement. Possible values for `type` are:
 
 - [api](#api-server)
-- [athena](#athena-server)
+- [athena](#amazon-athena-server)
 - [azure](#azure-server)
-- [bigquery](#bigquery-server)
+- [bigquery](#google-bigquery)
 - [clickhouse](#clickhouse-server)
 - [databricks](#databricks-server)
-- [db2](#ibmdb2-server)
+- [db2](#ibm-db2-server)
 - [denodo](#denodo-server)
 - [dremio](#dremio-server)
 - [duckdb](#duckdb-server)
-- [glue](#glue-server)
-- [cloudsql](#googlecloudsql-server)
-- [informix](#informix-server)
+- [glue](#amazon-glue)
+- [cloudsql](#google-cloud-sql)
+- [informix](#ibm-informix-and-hcl-informix)
 - [kafka](#kafka-server)
-- [kinesis](#kinesis-server)
-- [local](#local-server)
+- [kinesis](#amazon-kinesis)
+- [local](#local-files)
 - [mysql](#mysql-server)
-- [oracle](#oracle-server)
-- [postgresql](#postgres-server)
+- [oracle](#oracle)
+- [postgresql](#postgresql)
 - [presto](#presto-server)
-- [pubsub](#pubsub-server)
-- [redshift](#redshift-server)
-- [s3](#s3-server)
+- [pubsub](#google-pubsub)
+- [redshift](#amazon-redshift-server)
+- [s3](#amazon-s3-server-and-compatible-servers)
 - [sftp](#sftp-server)
-- [snowflake](#snowflake-server)
-- [sqlserver](#sqlserver-server)
+- [snowflake](#snowflake)
+- [sqlserver](#microsoft-sql-server)
 - [synapse](#synapse-server)
 - [trino](#trino-server)
 - [vertica](#vertica-server)
 
-## API Server
+### API Server
 
 | Key            | UX Label   | Required   | Description                                                                                                                                                      |
 |----------------|------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **location**   | Location   | Yes        | URL to the API                                                                                                                                                   |
 
 
-#### <a id="athena-server"/>Amazon Athena Server
+#### Amazon Athena Server
 [Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL. With a few actions in the AWS Management Console, you can point Athena at your data stored in Amazon S3 and begin using standard SQL to run ad-hoc queries and get results in seconds.
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| schema   | Schema      | Yes        | Identify the schema in the data source in which your tables exist.                                              |
-| stagingDir   | Stagingdir      | No         | Amazon Athena automatically stores query results and metadata information for each query that runs in a query result location that you can specify in Amazon S3.                                              |
-| catalog   | Catalog      | No         | Identify the name of the Data Source, also referred to as a Catalog.                                              |
-| regionName   | Regionname      | No         | The region your AWS account uses.                                              |
+| Key        | UX Label          | Required | Description                                                                                                                                                      |
+|------------|-------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| schema     | Schema            | Yes      | Identify the schema in the data source in which your tables exist.                                                                                               |
+| stagingDir | Staging Directory | No       | Amazon Athena automatically stores query results and metadata information for each query that runs in a query result location that you can specify in Amazon S3. |
+| catalog    | Catalog           | No       | Identify the name of the Data Source, also referred to as a Catalog.                                                                                             |
+| regionName | Region Name       | No       | The region your AWS account uses.                                                                                                                                |
 
-#### <a id="azure-server"/>Azure Server
+#### Azure Server
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| location   | Location      | Yes        | Fully qualified path to Azure Blob Storage or Azure Data Lake Storage (ADLS), supports globs.                                              |
-| format   | Format      | Yes        | File format.                                              |
-| delimiter   | Delimiter      | No         | Only for format = json. How multiple json documents are delimited within one file                                              |
+| Key       | UX Label  | Required | Description                                                                                   |
+|-----------|-----------|----------|-----------------------------------------------------------------------------------------------|
+| location  | Location  | Yes      | Fully qualified path to Azure Blob Storage or Azure Data Lake Storage (ADLS), supports globs. |
+| format    | Format    | Yes      | File format.                                                                                  |
+| delimiter | Delimiter | No       | Only for format = json. How multiple json documents are delimited within one file             |
 
-#### <a id="bigquery-server"/>Google BigQuery
+#### Google BigQuery
 [BigQuery](https://cloud.google.com/bigquery) is a fully managed, AI-ready data analytics platform that helps you maximize value from your data and is designed to be multi-engine, multi-format, and multi-cloud.
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| project   | Project      | Yes        | The Google Cloud Platform (GCP) project name.                                              |
-| dataset   | Dataset      | Yes        | The GCP dataset name.                                              |
+| Key     | UX Label | Required | Description                                   |
+|---------|----------|----------|-----------------------------------------------|
+| project | Project  | Yes      | The Google Cloud Platform (GCP) project name. |
+| dataset | Dataset  | Yes      | The GCP dataset name.                         |
 
-#### <a id="clickhouse-server"/>ClickHouse Server
+#### ClickHouse Server
 [ClickHouse](https://clickhouse.com/) is an open-source column-oriented database management system that allows generating analytical data reports in real-time.
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host   | Host      | Yes        | The host of the ClickHouse server.                                              |
-| port   | Port      | Yes        | The port to the ClickHouse server.                                              |
-| database   | Database      | Yes        | The name of the database.                                              |
+| Key      | UX Label | Required | Description                        |
+|----------|----------|----------|------------------------------------|
+| host     | Host     | Yes      | The host of the ClickHouse server. |
+| port     | Port     | Yes      | The port to the ClickHouse server. |
+| database | Database | Yes      | The name of the database.          |
 
-#### <a id="googlecloudsql-server"/>Google Cloud SQL
+#### Google Cloud SQL
 [Google Cloud SQL](https://cloud.google.com/sql) is a fully managed, cost-effective relational database service for PostgreSQL, MySQL, and SQL Server.
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host   | Host      | Yes        | The host of the Google Cloud SQL server.                                              |
-| port   | Port      | Yes        | The port of the Google Cloud SQL server.                                              |
-| database   | Database      | Yes        | The name of the database.                                              |
-| schema   | Schema      | Yes        | The name of the schema.                                              |
+| Key      | UX Label | Required | Description                              |
+|----------|----------|----------|------------------------------------------|
+| host     | Host     | Yes      | The host of the Google Cloud SQL server. |
+| port     | Port     | Yes      | The port of the Google Cloud SQL server. |
+| database | Database | Yes      | The name of the database.                |
+| schema   | Schema   | Yes      | The name of the schema.                  |
 
-#### <a id="databricks-server"/>Databricks Server
+#### Databricks Server
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| catalog   | Catalog      | Yes        | The name of the Hive or Unity catalog                                              |
-| schema   | Schema      | Yes        | The schema name in the catalog                                              |
-| host   | Host      | No         | The Databricks host                                              |
+| Key     | UX Label | Required | Description                           |
+|---------|----------|----------|---------------------------------------|
+| catalog | Catalog  | Yes      | The name of the Hive or Unity catalog |
+| schema  | Schema   | Yes      | The schema name in the catalog        |
+| host    | Host     | No       | The Databricks host                   |
 
-#### <a id="ibmdb2-server"/>IBM Db2 Server
+#### IBM Db2 Server
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host   | Host      | Yes        | The host of the IBM DB2 server.                                              |
-| port   | Port      | Yes        | The port of the IBM DB2 server.                                              |
-| database   | Database      | Yes        | The name of the database.                                              |
-| schema   | Schema      | No         | The name of the schema.                                              |
+| Key      | UX Label | Required | Description                     |
+|----------|----------|----------|---------------------------------|
+| host     | Host     | Yes      | The host of the IBM DB2 server. |
+| port     | Port     | Yes      | The port of the IBM DB2 server. |
+| database | Database | Yes      | The name of the database.       |
+| schema   | Schema   | No       | The name of the schema.         |
 
-#### <a id="denodo-server"/>Denodo Server
+#### Denodo Server
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host   | Host      | Yes        | The host of the Denodo server.                                              |
-| port   | Port      | Yes        | The port of the Denodo server.                                              |
-| database   | Database      | No         | The name of the database.                                              |
+| Key      | UX Label | Required | Description                    |
+|----------|----------|----------|--------------------------------|
+| host     | Host     | Yes      | The host of the Denodo server. |
+| port     | Port     | Yes      | The port of the Denodo server. |
+| database | Database | No       | The name of the database.      |
 
-#### <a id="dremio-server"/>Dremio Server
+#### Dremio Server
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host   | Host      | Yes        | The host of the Dremio server.                                              |
-| port   | Port      | Yes        | The port of the Dremio server.                                              |
-| schema   | Schema      | No         | The name of the schema.                                              |
+| Key    | UX Label | Required | Description                    |
+|--------|----------|----------|--------------------------------|
+| host   | Host     | Yes      | The host of the Dremio server. |
+| port   | Port     | Yes      | The port of the Dremio server. |
+| schema | Schema   | No       | The name of the schema.        |
 
-#### <a id="duckdb-server"/>DuckDB Server
+#### DuckDB Server
 [DuckDB](https://duckdb.org/) supports a feature-rich SQL dialect complemented with deep integrations into client APIs.
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| database   | Database      | Yes        | Path to duckdb database file.                                              |
-| schema   | Schema      | No         | The name of the schema.                                              |
+| Key      | UX Label | Required | Description                   |
+|----------|----------|----------|-------------------------------|
+| database | Database | Yes      | Path to duckdb database file. |
+| schema   | Schema   | No       | The name of the schema.       |
 
-#### <a id="glue-server"/>Amazon Glue 
+#### Amazon Glue
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| account   | Account      | Yes        | The AWS Glue account                                              |
-| database   | Database      | Yes        | The AWS Glue database name                                              |
-| location   | Location      | No         | The AWS S3 path. Must be in the form of a URL.                                              |
-| format   | Format      | No         | The format of the files                                              |
+| Key      | UX Label | Required | Description                                    |
+|----------|----------|----------|------------------------------------------------|
+| account  | Account  | Yes      | The AWS Glue account                           |
+| database | Database | Yes      | The AWS Glue database name                     |
+| location | Location | No       | The AWS S3 path. Must be in the form of a URL. |
+| format   | Format   | No       | The format of the files                        |
 
-#### <a id="informix-server"/>IBM Informix & HCL Informix
+#### IBM Informix and HCL Informix
 [IBM Informix](https://www.ibm.com/products/informix) is a high performance, always-on, highly scalable and easily embeddable enterprise-class database optimized for the most demanding transactional and analytics workloads. As an object-relational engine, IBM Informix seamlessly integrates the best of relational and object-oriented capabilities enabling the flexible modeling of complex data structures and relationships.
 
 | Key          | UX Label        | Required   | Description                                                |
@@ -876,177 +882,177 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | port         | Port            | No         | The port to the Informix server. Defaults to 9088.         |
 | database     | Database        | Yes        | The name of the database.                                  |
 
-#### <a id="kafka-server"/>Kafka Server
+#### Kafka Server
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host   | Host      | Yes        | The bootstrap server of the kafka cluster.                                              |
-| topic   | Topic      | Yes        | The topic name.                                              |
-| format   | Format      | No         | The format of the messages.                                              |
+| Key    | UX Label | Required | Description                                |
+|--------|----------|----------|--------------------------------------------|
+| host   | Host     | Yes      | The bootstrap server of the kafka cluster. |
+| topic  | Topic    | Yes      | The topic name.                            |
+| format | Format   | No       | The format of the messages.                |
 
-#### <a id="kinesis-server"/>Amazon Kinesis
+#### Amazon Kinesis
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| stream   | Stream      | Yes        | The name of the Kinesis data stream.                                              |
-| region   | Region      | No         | AWS region.                                              |
-| format   | Format      | No         | The format of the record                                              |
+| Key    | UX Label | Required | Description                          |
+|--------|----------|----------|--------------------------------------|
+| stream | Stream   | Yes      | The name of the Kinesis data stream. |
+| region | Region   | No       | AWS region.                          |
+| format | Format   | No       | The format of the record             |
 
-#### <a id="local-server"/>Local Files
+#### Local Files
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| path   | Path      | Yes        | The relative or absolute path to the data file(s).                                              |
-| format   | Format      | Yes        | The format of the file(s)                                              |
+| Key    | UX Label | Required | Description                                        |
+|--------|----------|----------|----------------------------------------------------|
+| path   | Path     | Yes      | The relative or absolute path to the data file(s). |
+| format | Format   | Yes      | The format of the file(s)                          |
 
-#### <a id="mysql-server"/>MySQL Server
+#### MySQL Server
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host      | Host      | Yes        | The host of the MySql server.                                           |
-| port   | Port      | No        | The port of the MySql server. Defaults to 3306.                         |
-| database   | Database      | Yes        | The name of the database.                                              |
+| Key      | UX Label | Required | Description                                     |
+|----------|----------|----------|-------------------------------------------------|
+| host     | Host     | Yes      | The host of the MySql server.                   |
+| port     | Port     | No       | The port of the MySql server. Defaults to 3306. |
+| database | Database | Yes      | The name of the database.                       |
 
-#### <a id="oracle-server"/>Oracle
+#### Oracle
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host   | Host      | Yes        | The host to the Oracle server                                              |
-| port   | Port      | Yes        | The port to the Oracle server.                                              |
-| serviceName   | Service Name      | Yes        | The name of the service.                                              |
+| Key         | UX Label     | Required | Description                    |
+|-------------|--------------|----------|--------------------------------|
+| host        | Host         | Yes      | The host to the Oracle server  |
+| port        | Port         | Yes      | The port to the Oracle server. |
+| serviceName | Service Name | Yes      | The name of the service.       |
 
-#### <a id="postgresql-server"/>PostgreSQL
+#### PostgreSQL
 [PostgreSQL](https://www.postgresql.org/) is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host         | Host      | Yes        | The host to the PostgreSQL server                                              |
-| port         | Port      | No        | The port to the PostgreSQL server. Defaults to 5432.                                   |
-| database     | Database      | Yes        | The name of the database.                                              |
-| schema       | Schema      | No        | The name of the schema in the database.                                              |
+| Key      | UX Label | Required | Description                                          |
+|----------|----------|----------|------------------------------------------------------|
+| host     | Host     | Yes      | The host to the PostgreSQL server                    |
+| port     | Port     | No       | The port to the PostgreSQL server. Defaults to 5432. |
+| database | Database | Yes      | The name of the database.                            |
+| schema   | Schema   | No       | The name of the schema in the database.              |
 
-#### <a id="presto-server"/>Presto Server
+#### Presto Server
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host   | Host      | Yes        | The host to the Presto server                                              |
-| catalog   | Catalog      | No         | The name of the catalog.                                              |
-| schema   | Schema      | No         | The name of the schema.                                              |
+| Key     | UX Label | Required | Description                   |
+|---------|----------|----------|-------------------------------|
+| host    | Host     | Yes      | The host to the Presto server |
+| catalog | Catalog  | No       | The name of the catalog.      |
+| schema  | Schema   | No       | The name of the schema.       |
 
-#### <a id="pubsub-server"/>Google Pub/Sub
+#### Google Pub/Sub
 [Google Cloud](https://cloud.google.com/pubsub) service to Ingest events for streaming into BigQuery, data lakes or operational databases.
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| project   | Project      | Yes        | The GCP project name.                                              |
-| topic   | Topic      | Yes        | The topic name.                                              |
+| Key     | UX Label | Required | Description           |
+|---------|----------|----------|-----------------------|
+| project | Project  | Yes      | The GCP project name. |
+| topic   | Topic    | Yes      | The topic name.       |
 
-#### <a id="redshift-server"/>Amazon Redshift Server
+#### Amazon Redshift Server
 [Amazon Redshift](https://aws.amazon.com/redshift/) is a power data driven decisions with the best price-performance cloud data warehouse.
 
-| Key          | UX Label        | Required | Description                                                |
-|--------------|-----------------|----------|------------------------------------------------------------|
-| database   | Database      | Yes      | The name of the database.                                              |
-| schema   | Schema      | Yes      | The name of the schema.                                              |
-| host   | Host      | No        | An optional string describing the server.                                              |
-| region   | Region      | No       | AWS region of Redshift server.                                              |
-| account   | Account      | No       | The account used by the server.                                              |
+| Key      | UX Label | Required | Description                               |
+|----------|----------|----------|-------------------------------------------|
+| database | Database | Yes      | The name of the database.                 |
+| schema   | Schema   | Yes      | The name of the schema.                   |
+| host     | Host     | No       | An optional string describing the server. |
+| region   | Region   | No       | AWS region of Redshift server.            |
+| account  | Account  | No       | The account used by the server.           |
 
-#### <a id="s3-server"/>Amazon S3 Server and Compatible Servers
+#### Amazon S3 Server and Compatible Servers
 [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) is an object storage service offering industry-leading scalability, data availability, security, and performance. Millions of customers of all sizes and industries store, manage, analyze, and protect any amount of data for virtually any use case, such as data lakes, cloud-native applications, and mobile apps. Other vendors have implemented a compatible implementation of S3.
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| location   | Location      | Yes        | S3 URL, starting with `s3://`                                              |
-| endpointUrl   | Endpointurl      | No         | The server endpoint for S3-compatible servers.                                              |
-| format   | Format      | No         | File format.                                              |
-| delimiter   | Delimiter      | No         | Only for format = json. How multiple json documents are delimited within one file                                              |
+| Key         | UX Label     | Required | Description                                                                       |
+|-------------|--------------|----------|-----------------------------------------------------------------------------------|
+| location    | Location     | Yes      | S3 URL, starting with `s3://`                                                     |
+| endpointUrl | Endpoint URL | No       | The server endpoint for S3-compatible servers.                                    |
+| format      | Format       | No       | File format.                                                                      |
+| delimiter   | Delimiter    | No       | Only for format = json. How multiple json documents are delimited within one file |
 
-#### <a id="sftp-server"/>SFTP Server
+#### SFTP Server
 Secure File Transfer Protocol (SFTP) is a network protocol that enables secure and encrypted file transfers between a client and a server.
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| location   | Location      | Yes        | SFTP URL, starting with `sftp://`. The URL should include the port number.                                             |
-| format   | Format      | No         | File format.                                              |
-| delimiter   | Delimiter      | No         | Only for format = json. How multiple json documents are delimited within one file                                              |
+| Key       | UX Label  | Required | Description                                                                       |
+|-----------|-----------|----------|-----------------------------------------------------------------------------------|
+| location  | Location  | Yes      | SFTP URL, starting with `sftp://`. The URL should include the port number.        |
+| format    | Format    | No       | File format.                                                                      |
+| delimiter | Delimiter | No       | Only for format = json. How multiple json documents are delimited within one file |
 
-#### <a id="snowflake-server"/>Snowflake
+#### Snowflake
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host   | Host      | Yes        | The host to the Snowflake server                                              |
-| port   | Port      | Yes        | The port to the Snowflake server.                                              |
-| account   | Account      | Yes        | The Snowflake account used by the server.                                              |
-| database   | Database      | Yes        | The name of the database.                                              |
-| warehouse   | Warehouse      | Yes        | The name of the cluster of resources that is a Snowflake virtual warehouse.                                              |
-| schema   | Schema      | Yes        | The name of the schema.                                              |
+| Key       | UX Label  | Required | Description                                                                 |
+|-----------|-----------|----------|-----------------------------------------------------------------------------|
+| host      | Host      | Yes      | The host to the Snowflake server                                            |
+| port      | Port      | Yes      | The port to the Snowflake server.                                           |
+| account   | Account   | Yes      | The Snowflake account used by the server.                                   |
+| database  | Database  | Yes      | The name of the database.                                                   |
+| warehouse | Warehouse | Yes      | The name of the cluster of resources that is a Snowflake virtual warehouse. |
+| schema    | Schema    | Yes      | The name of the schema.                                                     |
 
-#### <a id="sqlserver-server"/>Microsoft SQL Server
+#### Microsoft SQL Server
 [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) is a proprietary relational database management system developed by Microsoft. 
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host   | Host      | Yes        | The host to the database server                                              |
-| port   | Port      | No         | The port to the database server. Defaults to 1433.                                             |
-| database   | Database      | Yes        | The name of the database.                                              |
-| schema   | Schema      | Yes        | The name of the schema in the database.                                              |
+| Key      | UX Label | Required | Description                                        |
+|----------|----------|----------|----------------------------------------------------|
+| host     | Host     | Yes      | The host to the database server                    |
+| port     | Port     | No       | The port to the database server. Defaults to 1433. |
+| database | Database | Yes      | The name of the database.                          |
+| schema   | Schema   | Yes      | The name of the schema in the database.            |
 
-#### <a id="synapse-server"/>Synapse Server
+#### Synapse Server
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host   | Host      | Yes        | The host of the Synapse server.                                              |
-| port   | Port      | Yes        | The port of the Synapse server.                                              |
-| database   | Database      | Yes        | The name of the database.                                              |
+| Key      | UX Label | Required | Description                     |
+|----------|----------|----------|---------------------------------|
+| host     | Host     | Yes      | The host of the Synapse server. |
+| port     | Port     | Yes      | The port of the Synapse server. |
+| database | Database | Yes      | The name of the database.       |
 
-#### <a id="trino-server"/>Trino Server
+#### Trino Server
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host   | Host      | Yes        | The Trino host URL.                                              |
-| port   | Port      | Yes        | The Trino port.                                              |
-| catalog   | Catalog      | Yes        | The name of the catalog.                                              |
-| schema   | Schema      | Yes        | The name of the schema in the database.                                              |
+| Key     | UX Label | Required | Description                             |
+|---------|----------|----------|-----------------------------------------|
+| host    | Host     | Yes      | The Trino host URL.                     |
+| port    | Port     | Yes      | The Trino port.                         |
+| catalog | Catalog  | Yes      | The name of the catalog.                |
+| schema  | Schema   | Yes      | The name of the schema in the database. |
 
-#### <a id="vertica-server"/>Vertica Server
+#### Vertica Server
 
-| Key          | UX Label        | Required   | Description                                                |
-|--------------|-----------------|------------|------------------------------------------------------------|
-| host   | Host      | Yes        | The host of the Vertica server.                                              |
-| port   | Port      | Yes        | The port of the Vertica server.                                              |
-| database   | Database      | Yes        | The name of the database.                                              |
-| schema   | Schema      | Yes        | The name of the schema.                                              |
+| Key      | UX Label | Required | Description                     |
+|----------|----------|----------|---------------------------------|
+| host     | Host     | Yes      | The host of the Vertica server. |
+| port     | Port     | Yes      | The port of the Vertica server. |
+| database | Database | Yes      | The name of the database.       |
+| schema   | Schema   | Yes      | The name of the schema.         |
 
-#### <a id="custom-server"/>Custom Server
+#### Custom Server
 
-| Key          | UX Label          | Required   | Description                                                         |
-|--------------|-------------------|------------|---------------------------------------------------------------------|
-| account      | Account           | No         | Account used by the server.                                         |
-| catalog      | Catalog           | No         | Name of the catalog.                                                |
-| database     | Database          | No         | Name of the database.                                               |
-| dataset      | Dataset           | No         | Name of the dataset.                                                |
-| delimiter    | Delimiter         | No         | Delimiter.                                                          |
-| endpointUrl  | Endpoint URL      | No         | Server endpoint.                                                    |
-| format       | Format            | No         | File format.                                                        |
-| host         | Host              | No         | Host name or IP address.                                            |
-| location     | Location          | No         | A URL to a location.                                                |
-| path         | Path              | No         | Relative or absolute path to the data file(s).                              |
-| port         | Port              | No         | Port to the server. No default value is assumed for custom servers. |
-| project      | Project           | No         | Project name.                                                        |
-| region       | Region            | No         | Cloud region.                                                        |
-| regionName   | Regionname        | No         | Region name.                                                         |
-| schema       | Schema            | No         | Name of the schema.                                                        |
-| serviceName  | Servicename       | No         | Name of the service.                                                        |
-| stagingDir   | Staging directory | No         | Staging directory.                                                        |
-| stream       | Stream            | No         | Name of the data stream.                                              |
-| topic        | Topic             | No         | Topic name.                                                                  |
-| warehouse    | Warehouse         | No         | Name of the cluster or warehouse.                                              |
+| Key         | UX Label          | Required | Description                                                         |
+|-------------|-------------------|----------|---------------------------------------------------------------------|
+| account     | Account           | No       | Account used by the server.                                         |
+| catalog     | Catalog           | No       | Name of the catalog.                                                |
+| database    | Database          | No       | Name of the database.                                               |
+| dataset     | Dataset           | No       | Name of the dataset.                                                |
+| delimiter   | Delimiter         | No       | Delimiter.                                                          |
+| endpointUrl | Endpoint URL      | No       | Server endpoint.                                                    |
+| format      | Format            | No       | File format.                                                        |
+| host        | Host              | No       | Host name or IP address.                                            |
+| location    | Location          | No       | A URL to a location.                                                |
+| path        | Path              | No       | Relative or absolute path to the data file(s).                      |
+| port        | Port              | No       | Port to the server. No default value is assumed for custom servers. |
+| project     | Project           | No       | Project name.                                                       |
+| region      | Region            | No       | Cloud region.                                                       |
+| regionName  | Region Name       | No       | Region name.                                                        |
+| schema      | Schema            | No       | Name of the schema.                                                 |
+| serviceName | Service Name      | No       | Name of the service.                                                |
+| stagingDir  | Staging Directory | No       | Staging directory.                                                  |
+| stream      | Stream            | No       | Name of the data stream.                                            |
+| topic       | Topic             | No       | Topic name.                                                         |
+| warehouse   | Warehouse         | No       | Name of the cluster or warehouse.                                   |
 
 If you need another property, use [custom properties](#custom-properties).
 
 
-## <a id="custom-properties"/> Custom Properties
+## Custom Properties
 This section covers custom properties you may find in a data contract.
 
 ### Example
