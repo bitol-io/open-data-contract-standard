@@ -54,10 +54,6 @@ description:
   limitations: null
   usage: null
 
-# Data Quality
-quality: null # See more information below
-
-# Tags
 tags: null
 ```
 
@@ -221,7 +217,8 @@ Note: the description needs to be updated.
 | physicalName             | Physical Name                | No       | Physical name.                                                                                                                                                                                                         |
 | description              | Description                  | No       | Description of the element.                                                                                                                                                                                            |
 | businessName             | Business Name                | No       | The business name of the element.                                                                                                                                                                                      |
-| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more details on the element; examples would be a link to an external definition.   See `authoritativeDefinitions` below. |
+| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more details on the table; examples would be a link to an external definition, a training video, a GitHub repo, Collibra, or another tool. See `authoritativeDefinitions` below. |
+| quality                  | Quality                      | No       | List of data quality attributes.                                                                                                                                                                                       |
 | tags                     | Tags                         | No       | A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level.                                                                                                    |
 
 #### Applicable to Objects
