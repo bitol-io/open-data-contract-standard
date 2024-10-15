@@ -1,7 +1,6 @@
 version: 1.0.0
 kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
-type: tables
 status: current
 name: my_quantum
 apiVersion: v3.0.0
@@ -9,6 +8,7 @@ schema:
   - name: tbl
     description: Provides core payment metrics
     dataGranularityDescription: Aggregation on columns txn_ref_dt, pmt_txn_id
+    physicalType: table
     properties:
       - name: txn_ref_dt
         businessName: Transaction reference date
