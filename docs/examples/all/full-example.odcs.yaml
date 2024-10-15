@@ -15,8 +15,6 @@ tenant: ClimateQuantumInc
 kind: DataContract
 apiVersion: v3.0.0 # Standard version (follows semantic versioning)
 
-type: tables
-
 # Infrastructure & servers
 servers:
   - server: my-postgres
@@ -30,6 +28,7 @@ servers:
 schema:
   - name: tbl
     physicalName: tbl_1
+    physicalType: table
     description: Provides core payment metrics
     authoritativeDefinitions:
       - url: https://catalog.data.gov/dataset/air-quality
