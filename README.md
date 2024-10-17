@@ -28,12 +28,12 @@ A data contract defines the agreement between a data producer and consumers. A d
 * [Fundamentals](docs/README.md#fundamentals).
 * [Schema](docs/README.md#schema).
 * [Data quality](docs/README.md#data-quality).
-* [Support & communication channels](docs/README.md#support)
+* [Support & communication channels](docs/README.md#support-and-communication-channels)
 * [Pricing](docs/README.md#pricing)
 * [Team](docs/README.md#team)
 * [Roles](docs/README.md#roles)
-* [Service-level agreement (SLA)](docs/README.md#sla).
-* [Infrastructures & servers](docs/README.md#servers)
+* [Service-level agreement (SLA)](docs/README.md#service-level-agreement-sla).
+* [Infrastructures & servers](docs/README.md#infrastructure-and-servers)
 * [Custom properties](docs/README.md#custom-properties).
 
 ![Data contract schema](docs/img/data-contract-diagram-latest.svg "Data contract schema")
@@ -49,7 +49,7 @@ validation of your YAML files. Links below show how you can import the schema:
 - [VS Code](https://code.visualstudio.com/docs/languages/json#_json-schemas-and-settings)
 
 ## Articles and Other Resources
-Check out the [resources](./resources.md) page.
+Check out the [resources](resources.md) page.
 
 ## Contributing to the project
 Check out the [CONTRIBUTING](./CONTRIBUTING.md) page.
