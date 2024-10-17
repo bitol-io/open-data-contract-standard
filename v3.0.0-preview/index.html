@@ -558,9 +558,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#schema_1" class="md-nav__link">
+  <a href="#schema-top-level" class="md-nav__link">
     <span class="md-ellipsis">
-      Schema
+      Schema (top level)
     </span>
   </a>
   
@@ -820,13 +820,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#support-communication-channels" class="md-nav__link">
+  <a href="#support-and-communication-channels" class="md-nav__link">
     <span class="md-ellipsis">
-      Support &amp; communication channels
+      Support and Communication Channels
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Support & communication channels">
+    <nav class="md-nav" aria-label="Support and Communication Channels">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -835,6 +835,30 @@
       Examples
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimal-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimal example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -985,13 +1009,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#infrastructure-servers" class="md-nav__link">
+  <a href="#infrastructure-and-servers" class="md-nav__link">
     <span class="md-ellipsis">
-      Infrastructure &amp; Servers
+      Infrastructure and Servers
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Infrastructure & Servers">
+    <nav class="md-nav" aria-label="Infrastructure and Servers">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1036,12 +1060,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#api-server" class="md-nav__link">
     <span class="md-ellipsis">
       API Server
@@ -1151,9 +1170,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ibm-informix-hcl-informix" class="md-nav__link">
+  <a href="#ibm-informix-and-hcl-informix" class="md-nav__link">
     <span class="md-ellipsis">
-      IBM Informix &amp; HCL Informix
+      IBM Informix and HCL Informix
     </span>
   </a>
   
@@ -1316,6 +1335,11 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#custom-properties" class="md-nav__link">
@@ -1384,7 +1408,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#full-example" class="md-nav__link">
+  <a href="#full-example_1" class="md-nav__link">
     <span class="md-ellipsis">
       Full example
     </span>
@@ -1500,18 +1524,23 @@
 
 <h1 id="open-data-contract-standard">Open Data Contract Standard</h1>
 <h2 id="executive-summary">Executive Summary</h2>
-<p>This document describes the keys and values expected in a YAML data contract, per the <strong>Open Data Contract Standard</strong>. It is divided in multiple sections: <a href="#fundamentals">fundamentals (fka demographics)</a>, <a href="#schema">schema</a>, <a href="#data-quality">data quality</a>, <a href="#support">Support &amp; communication channels</a>, <a href="#pricing">pricing</a>, <a href="#team">team</a>, <a href="#roles">roles</a>, <a href="#sla">service-level agreement</a>, <a href="#servers">Infrastructures &amp; servers</a> and <a href="#custom-properties">other/custom properties</a>. Each section starts with at least an example followed by definition of each field/key.</p>
+<p>This document describes the keys and values expected in a YAML data contract, per the <strong>Open Data Contract Standard</strong>. 
+It is divided in multiple sections: <a href="#fundamentals">fundamentals (fka demographics)</a>, <a href="#schema">schema</a>, 
+<a href="#data-quality">data quality</a>, <a href="#support-and-communication-channels">Support &amp; communication channels</a>, <a href="#pricing">pricing</a>, <a href="#team">team</a>, 
+<a href="#roles">roles</a>, <a href="#service-level-agreement-sla">service-level agreement</a>, <a href="#infrastructure-and-servers">Infrastructures &amp; servers</a> and 
+<a href="#custom-properties">other/custom properties</a>. Each section starts with at least an example followed by definition of 
+each field/key.</p>
 <h2 id="table-of-content">Table of content</h2>
 <ol>
 <li><a href="#fundamentals">Fundamentals (fka demographics)</a></li>
 <li><a href="#schema">Schema</a></li>
 <li><a href="#data-quality">Data quality</a></li>
-<li><a href="#support">Support &amp; communication channels</a></li>
+<li><a href="#support-and-communication-channels">Support &amp; communication channels</a></li>
 <li><a href="#pricing">Pricing</a></li>
 <li><a href="#team">Team</a></li>
 <li><a href="#roles">Roles</a></li>
-<li><a href="#sla">Service-level agreement</a></li>
-<li><a href="#servers">Infrastructures &amp; servers</a></li>
+<li><a href="#service-level-agreement-sla">Service-level agreement</a></li>
+<li><a href="#infrastructure-and-servers">Infrastructures &amp; servers</a></li>
 <li><a href="#custom-properties">Custom &amp; other properties</a></li>
 <li><a href="#full-example">Examples</a></li>
 </ol>
@@ -1633,7 +1662,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="schema"><a id="schema"/> Schema</h2>
+<h2 id="schema">Schema</h2>
 <p>This section describes the schema of the data contract. It is the support for data quality, which is detailed in the next section. Schema supports both a business representation of your data and a physical implementation. It allows to tie them together.</p>
 <p>In ODCS v3, the schema has evolved from the table and column representation, therefore the schema introduces a new terminology:</p>
 <ul>
@@ -1743,8 +1772,7 @@
 </span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">              </span><span class="nt">physicalType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VARCHAR(15)</span>
 </span></code></pre></div>
 <h3 id="definitions_1">Definitions</h3>
-<p>Note: the description needs to be updated.</p>
-<h4 id="schema_1">Schema</h4>
+<h4 id="schema-top-level">Schema (top level)</h4>
 <table>
 <thead>
 <tr>
@@ -1920,12 +1948,6 @@
 <td>Classification</td>
 <td>No</td>
 <td>Can be anything, like confidential, restricted, and public to more advanced categorization.</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>authoritativeDefinitions</td>
@@ -2479,15 +2501,17 @@
 </span></code></pre></div>
 <h4 id="library-rules">Library Rules</h4>
 <p>Bitol has the ambition of creating a library of common data quality rules. Join the working group around <a href="https://github.com/bitol-io/tsc/blob/main/rfcs/0012-implicit-dq-rules.md">RFC #0012</a>.</p>
-<h2 id="support-communication-channels"><a id="support"/> Support &amp; communication channels</h2>
+<h2 id="support-and-communication-channels">Support and Communication Channels</h2>
 <p>Support and communication channels help consumers find help regarding their use of the data contract.  </p>
 <h3 id="examples_1">Examples</h3>
+<h4 id="minimal-example">Minimal example</h4>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nt">support</span><span class="p">:</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">channel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">channel-name-or-identifier</span><span class="w"> </span><span class="c1"># Simple Slack communication channel</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://aidaug.slack.com/archives/C05UZRSBKLY</span>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">channel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">channel-name-or-identifier</span><span class="w"> </span><span class="c1"># Simple distribution list</span>
 </span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mailto:datacontract-ann@bitol.io</span>
 </span></code></pre></div>
+<h4 id="full-example">Full example</h4>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nt">support</span><span class="p">:</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">channel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">channel-name-or-identifier</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">teams</span>
@@ -2749,7 +2773,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="service-level-agreement-sla"><a id="sla"/> Service-Level Agreement (SLA)</h2>
+<h2 id="service-level-agreement-sla">Service-Level Agreement (SLA)</h2>
 <p>This section describes the service-level agreements (SLA). </p>
 <ul>
 <li>Use the <code>Object.Element</code> to indicate the number to do the checks on, as in <code>SELECT txn_ref_dt FROM tab1</code>.</li>
@@ -2848,7 +2872,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="infrastructure-servers"><a id="servers"/> Infrastructure &amp; Servers</h2>
+<h2 id="infrastructure-and-servers">Infrastructure and Servers</h2>
 <p>The <code>servers</code> element describes where the data protected by this data contract is <em>physically</em> located. That metadata helps to know where the data is so that a data consumer can discover the data and a platform engineer can automate access.</p>
 <p>An entry in <code>servers</code> describes a single dataset on a specific environment and a specific technology. The <code>servers</code> element can contain multiple servers, each with its own configuration.</p>
 <p>The typical ways of using the top level <code>servers</code> element are as follows:
@@ -2882,36 +2906,36 @@
 <p>If your server is not in the list, please use <a href="#custom-server">custom</a> and suggest it as an improvement. Possible values for <code>type</code> are:</p>
 <ul>
 <li><a href="#api-server">api</a></li>
-<li><a href="#athena-server">athena</a></li>
+<li><a href="#amazon-athena-server">athena</a></li>
 <li><a href="#azure-server">azure</a></li>
-<li><a href="#bigquery-server">bigquery</a></li>
+<li><a href="#google-bigquery">bigquery</a></li>
 <li><a href="#clickhouse-server">clickhouse</a></li>
 <li><a href="#databricks-server">databricks</a></li>
-<li><a href="#ibmdb2-server">db2</a></li>
+<li><a href="#ibm-db2-server">db2</a></li>
 <li><a href="#denodo-server">denodo</a></li>
 <li><a href="#dremio-server">dremio</a></li>
 <li><a href="#duckdb-server">duckdb</a></li>
-<li><a href="#glue-server">glue</a></li>
-<li><a href="#googlecloudsql-server">cloudsql</a></li>
-<li><a href="#informix-server">informix</a></li>
+<li><a href="#amazon-glue">glue</a></li>
+<li><a href="#google-cloud-sql">cloudsql</a></li>
+<li><a href="#ibm-informix-and-hcl-informix">informix</a></li>
 <li><a href="#kafka-server">kafka</a></li>
-<li><a href="#kinesis-server">kinesis</a></li>
-<li><a href="#local-server">local</a></li>
+<li><a href="#amazon-kinesis">kinesis</a></li>
+<li><a href="#local-files">local</a></li>
 <li><a href="#mysql-server">mysql</a></li>
-<li><a href="#oracle-server">oracle</a></li>
-<li><a href="#postgres-server">postgresql</a></li>
+<li><a href="#oracle">oracle</a></li>
+<li><a href="#postgresql">postgresql</a></li>
 <li><a href="#presto-server">presto</a></li>
-<li><a href="#pubsub-server">pubsub</a></li>
-<li><a href="#redshift-server">redshift</a></li>
-<li><a href="#s3-server">s3</a></li>
+<li><a href="#google-pubsub">pubsub</a></li>
+<li><a href="#amazon-redshift-server">redshift</a></li>
+<li><a href="#amazon-s3-server-and-compatible-servers">s3</a></li>
 <li><a href="#sftp-server">sftp</a></li>
-<li><a href="#snowflake-server">snowflake</a></li>
-<li><a href="#sqlserver-server">sqlserver</a></li>
+<li><a href="#snowflake">snowflake</a></li>
+<li><a href="#microsoft-sql-server">sqlserver</a></li>
 <li><a href="#synapse-server">synapse</a></li>
 <li><a href="#trino-server">trino</a></li>
 <li><a href="#vertica-server">vertica</a></li>
 </ul>
-<h2 id="api-server">API Server</h2>
+<h3 id="api-server">API Server</h3>
 <table>
 <thead>
 <tr>
@@ -2930,7 +2954,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="amazon-athena-server"><a id="athena-server"/>Amazon Athena Server</h4>
+<h4 id="amazon-athena-server">Amazon Athena Server</h4>
 <p><a href="https://docs.aws.amazon.com/athena/latest/ug/what-is.html">Amazon Athena</a> is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL. With a few actions in the AWS Management Console, you can point Athena at your data stored in Amazon S3 and begin using standard SQL to run ad-hoc queries and get results in seconds.</p>
 <table>
 <thead>
@@ -2950,7 +2974,7 @@
 </tr>
 <tr>
 <td>stagingDir</td>
-<td>Stagingdir</td>
+<td>Staging Directory</td>
 <td>No</td>
 <td>Amazon Athena automatically stores query results and metadata information for each query that runs in a query result location that you can specify in Amazon S3.</td>
 </tr>
@@ -2962,13 +2986,13 @@
 </tr>
 <tr>
 <td>regionName</td>
-<td>Regionname</td>
+<td>Region Name</td>
 <td>No</td>
 <td>The region your AWS account uses.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="azure-server"><a id="azure-server"/>Azure Server</h4>
+<h4 id="azure-server">Azure Server</h4>
 <table>
 <thead>
 <tr>
@@ -2999,7 +3023,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="google-bigquery"><a id="bigquery-server"/>Google BigQuery</h4>
+<h4 id="google-bigquery">Google BigQuery</h4>
 <p><a href="https://cloud.google.com/bigquery">BigQuery</a> is a fully managed, AI-ready data analytics platform that helps you maximize value from your data and is designed to be multi-engine, multi-format, and multi-cloud.</p>
 <table>
 <thead>
@@ -3025,7 +3049,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="clickhouse-server"><a id="clickhouse-server"/>ClickHouse Server</h4>
+<h4 id="clickhouse-server">ClickHouse Server</h4>
 <p><a href="https://clickhouse.com/">ClickHouse</a> is an open-source column-oriented database management system that allows generating analytical data reports in real-time.</p>
 <table>
 <thead>
@@ -3057,7 +3081,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="google-cloud-sql"><a id="googlecloudsql-server"/>Google Cloud SQL</h4>
+<h4 id="google-cloud-sql">Google Cloud SQL</h4>
 <p><a href="https://cloud.google.com/sql">Google Cloud SQL</a> is a fully managed, cost-effective relational database service for PostgreSQL, MySQL, and SQL Server.</p>
 <table>
 <thead>
@@ -3095,7 +3119,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="databricks-server"><a id="databricks-server"/>Databricks Server</h4>
+<h4 id="databricks-server">Databricks Server</h4>
 <table>
 <thead>
 <tr>
@@ -3126,7 +3150,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="ibm-db2-server"><a id="ibmdb2-server"/>IBM Db2 Server</h4>
+<h4 id="ibm-db2-server">IBM Db2 Server</h4>
 <table>
 <thead>
 <tr>
@@ -3163,7 +3187,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="denodo-server"><a id="denodo-server"/>Denodo Server</h4>
+<h4 id="denodo-server">Denodo Server</h4>
 <table>
 <thead>
 <tr>
@@ -3194,7 +3218,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="dremio-server"><a id="dremio-server"/>Dremio Server</h4>
+<h4 id="dremio-server">Dremio Server</h4>
 <table>
 <thead>
 <tr>
@@ -3225,7 +3249,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="duckdb-server"><a id="duckdb-server"/>DuckDB Server</h4>
+<h4 id="duckdb-server">DuckDB Server</h4>
 <p><a href="https://duckdb.org/">DuckDB</a> supports a feature-rich SQL dialect complemented with deep integrations into client APIs.</p>
 <table>
 <thead>
@@ -3251,7 +3275,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="amazon-glue"><a id="glue-server"/>Amazon Glue</h4>
+<h4 id="amazon-glue">Amazon Glue</h4>
 <table>
 <thead>
 <tr>
@@ -3288,7 +3312,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="ibm-informix-hcl-informix"><a id="informix-server"/>IBM Informix &amp; HCL Informix</h4>
+<h4 id="ibm-informix-and-hcl-informix">IBM Informix and HCL Informix</h4>
 <p><a href="https://www.ibm.com/products/informix">IBM Informix</a> is a high performance, always-on, highly scalable and easily embeddable enterprise-class database optimized for the most demanding transactional and analytics workloads. As an object-relational engine, IBM Informix seamlessly integrates the best of relational and object-oriented capabilities enabling the flexible modeling of complex data structures and relationships.</p>
 <table>
 <thead>
@@ -3320,7 +3344,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="kafka-server"><a id="kafka-server"/>Kafka Server</h4>
+<h4 id="kafka-server">Kafka Server</h4>
 <table>
 <thead>
 <tr>
@@ -3345,7 +3369,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="amazon-kinesis"><a id="kinesis-server"/>Amazon Kinesis</h4>
+<h4 id="amazon-kinesis">Amazon Kinesis</h4>
 <table>
 <thead>
 <tr>
@@ -3376,7 +3400,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="local-files"><a id="local-server"/>Local Files</h4>
+<h4 id="local-files">Local Files</h4>
 <table>
 <thead>
 <tr>
@@ -3401,7 +3425,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="mysql-server"><a id="mysql-server"/>MySQL Server</h4>
+<h4 id="mysql-server">MySQL Server</h4>
 <table>
 <thead>
 <tr>
@@ -3432,7 +3456,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="oracle"><a id="oracle-server"/>Oracle</h4>
+<h4 id="oracle">Oracle</h4>
 <table>
 <thead>
 <tr>
@@ -3463,7 +3487,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="postgresql"><a id="postgresql-server"/>PostgreSQL</h4>
+<h4 id="postgresql">PostgreSQL</h4>
 <p><a href="https://www.postgresql.org/">PostgreSQL</a> is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.</p>
 <table>
 <thead>
@@ -3501,7 +3525,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="presto-server"><a id="presto-server"/>Presto Server</h4>
+<h4 id="presto-server">Presto Server</h4>
 <table>
 <thead>
 <tr>
@@ -3532,7 +3556,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="google-pubsub"><a id="pubsub-server"/>Google Pub/Sub</h4>
+<h4 id="google-pubsub">Google Pub/Sub</h4>
 <p><a href="https://cloud.google.com/pubsub">Google Cloud</a> service to Ingest events for streaming into BigQuery, data lakes or operational databases.</p>
 <table>
 <thead>
@@ -3552,7 +3576,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="amazon-redshift-server"><a id="redshift-server"/>Amazon Redshift Server</h4>
+<h4 id="amazon-redshift-server">Amazon Redshift Server</h4>
 <p><a href="https://aws.amazon.com/redshift/">Amazon Redshift</a> is a power data driven decisions with the best price-performance cloud data warehouse.</p>
 <table>
 <thead>
@@ -3596,7 +3620,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="amazon-s3-server-and-compatible-servers"><a id="s3-server"/>Amazon S3 Server and Compatible Servers</h4>
+<h4 id="amazon-s3-server-and-compatible-servers">Amazon S3 Server and Compatible Servers</h4>
 <p><a href="https://aws.amazon.com/s3/">Amazon Simple Storage Service (Amazon S3)</a> is an object storage service offering industry-leading scalability, data availability, security, and performance. Millions of customers of all sizes and industries store, manage, analyze, and protect any amount of data for virtually any use case, such as data lakes, cloud-native applications, and mobile apps. Other vendors have implemented a compatible implementation of S3.</p>
 <table>
 <thead>
@@ -3616,7 +3640,7 @@
 </tr>
 <tr>
 <td>endpointUrl</td>
-<td>Endpointurl</td>
+<td>Endpoint URL</td>
 <td>No</td>
 <td>The server endpoint for S3-compatible servers.</td>
 </tr>
@@ -3634,7 +3658,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="sftp-server"><a id="sftp-server"/>SFTP Server</h4>
+<h4 id="sftp-server">SFTP Server</h4>
 <p>Secure File Transfer Protocol (SFTP) is a network protocol that enables secure and encrypted file transfers between a client and a server.</p>
 <table>
 <thead>
@@ -3666,7 +3690,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="snowflake"><a id="snowflake-server"/>Snowflake</h4>
+<h4 id="snowflake">Snowflake</h4>
 <table>
 <thead>
 <tr>
@@ -3715,7 +3739,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="microsoft-sql-server"><a id="sqlserver-server"/>Microsoft SQL Server</h4>
+<h4 id="microsoft-sql-server">Microsoft SQL Server</h4>
 <p><a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">Microsoft SQL Server</a> is a proprietary relational database management system developed by Microsoft. </p>
 <table>
 <thead>
@@ -3753,7 +3777,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="synapse-server"><a id="synapse-server"/>Synapse Server</h4>
+<h4 id="synapse-server">Synapse Server</h4>
 <table>
 <thead>
 <tr>
@@ -3784,7 +3808,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="trino-server"><a id="trino-server"/>Trino Server</h4>
+<h4 id="trino-server">Trino Server</h4>
 <table>
 <thead>
 <tr>
@@ -3821,7 +3845,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="vertica-server"><a id="vertica-server"/>Vertica Server</h4>
+<h4 id="vertica-server">Vertica Server</h4>
 <table>
 <thead>
 <tr>
@@ -3858,7 +3882,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="custom-server"><a id="custom-server"/>Custom Server</h4>
+<h4 id="custom-server">Custom Server</h4>
 <table>
 <thead>
 <tr>
@@ -3949,7 +3973,7 @@
 </tr>
 <tr>
 <td>regionName</td>
-<td>Regionname</td>
+<td>Region Name</td>
 <td>No</td>
 <td>Region name.</td>
 </tr>
@@ -3961,13 +3985,13 @@
 </tr>
 <tr>
 <td>serviceName</td>
-<td>Servicename</td>
+<td>Service Name</td>
 <td>No</td>
 <td>Name of the service.</td>
 </tr>
 <tr>
 <td>stagingDir</td>
-<td>Staging directory</td>
+<td>Staging Directory</td>
 <td>No</td>
 <td>Staging directory.</td>
 </tr>
@@ -3986,7 +4010,7 @@
 </tbody>
 </table>
 <p>If you need another property, use <a href="#custom-properties">custom properties</a>.</p>
-<h2 id="custom-properties"><a id="custom-properties"/> Custom Properties</h2>
+<h2 id="custom-properties">Custom Properties</h2>
 <p>This section covers custom properties you may find in a data contract.</p>
 <h3 id="example_5">Example</h3>
 <div class="language-YAML highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nt">customProperties</span><span class="p">:</span>
@@ -4052,7 +4076,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="full-example">Full example</h2>
+<h2 id="full-example_1">Full example</h2>
 <p><a href="examples/all/full-example.odcs.yaml">Check full example here.</a></p>
 <p>All trademarks are the property of their respective owners. </p>
 
