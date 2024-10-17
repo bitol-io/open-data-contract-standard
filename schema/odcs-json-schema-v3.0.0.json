@@ -1476,6 +1476,9 @@
         },
         "tags": {
           "$ref": "#/$defs/Tags"
+        },
+        "customProperties": {
+          "$ref": "#/$defs/CustomProperties"
         }
       }
     },
