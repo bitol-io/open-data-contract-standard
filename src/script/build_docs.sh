@@ -25,5 +25,5 @@ END
   base_path="${f//docs\/examples\//}"
   escaped_header="${base_path//\//\\/}"
   replacement_link="${escaped_header//odcs.yaml/md}"
-  sed -i '' -e "s/$escaped_header/$replacement_link/g" docs/examples/README.md
+  sed -i -e "s/$escaped_header/$replacement_link/g" docs/examples/README.md
 done
