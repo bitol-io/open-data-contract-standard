@@ -23,5 +23,5 @@ END
   echo "$content" > "$markdown_file_path"
   escaped_header="${header//\//\\/}"
   replacement_link="${escaped_header//odcs.yaml/md}"
-  sed -i '' -e "s/$escaped_header/$replacement_link/g" docs/examples/README.md
+  sed -i -e "s/$escaped_header/$replacement_link/g" docs/examples/README.md
 done
