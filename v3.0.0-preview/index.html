@@ -1058,7 +1058,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Specific Server Properties & Types">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#api-server" class="md-nav__link">
@@ -1067,8 +1068,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="API Server">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#amazon-athena-server" class="md-nav__link">
@@ -2189,11 +2189,13 @@ each field/key.</p>
 </table>
 <h2 id="data-quality">Data quality</h2>
 <p>This section describes data quality rules &amp; parameters. They are tightly linked to the schema described in the previous section.</p>
-<p>Data quality rules support different levels/stages of data quality attributes:
-  - <strong>Text</strong>: A human-readable text that describes the quality of the data.
-  - <strong>Library</strong> rules: A maintained library of commonly-used predefined quality attributes such as <code>rowCount</code>, <code>unique</code>, <code>freshness</code>, and more.
-  - <strong>SQL</strong>: An individual SQL query that returns a value that can be compared. Can be extended to <code>Python</code> or other.
-  - <strong>Custom</strong>: Quality attributes that are vendor-specific, such as Soda, Great Expectations, dbt tests, or Montecarlo monitors.</p>
+<p>Data quality rules support different levels/stages of data quality attributes:</p>
+<ul>
+<li><strong>Text</strong>: A human-readable text that describes the quality of the data.</li>
+<li><strong>Library</strong> rules: A maintained library of commonly-used predefined quality attributes such as <code>rowCount</code>, <code>unique</code>, <code>freshness</code>, and more.</li>
+<li><strong>SQL</strong>: An individual SQL query that returns a value that can be compared. Can be extended to <code>Python</code> or other.</li>
+<li><strong>Custom</strong>: Quality attributes that are vendor-specific, such as Soda, Great Expectations, dbt tests, or Montecarlo monitors.</li>
+</ul>
 <h3 id="text">Text</h3>
 <p>A human-readable text that describes the quality of the data. Later in the development process, these might be translated into an executable check (such as <code>sql</code>), a library rule, or checked through an AI engine.</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">quality</span><span class="p">:</span>
@@ -2935,7 +2937,7 @@ each field/key.</p>
 <li><a href="#trino-server">trino</a></li>
 <li><a href="#vertica-server">vertica</a></li>
 </ul>
-<h3 id="api-server">API Server</h3>
+<h4 id="api-server">API Server</h4>
 <table>
 <thead>
 <tr>
