@@ -299,6 +299,7 @@ Reference to an external definition on element logic or values.
 This section describes data quality rules & parameters. They are tightly linked to the schema described in the previous section.
 
 Data quality rules support different levels/stages of data quality attributes:
+
   - __Text__: A human-readable text that describes the quality of the data.
   - __Library__ rules: A maintained library of commonly-used predefined quality attributes such as `rowCount`, `unique`, `freshness`, and more.
   - __SQL__: An individual SQL query that returns a value that can be compared. Can be extended to `Python` or other.
@@ -772,7 +773,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 - [trino](#trino-server)
 - [vertica](#vertica-server)
 
-### API Server
+#### API Server
 
 | Key            | UX Label   | Required   | Description                                                                                                                                                      |
 |----------------|------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
