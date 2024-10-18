@@ -10,7 +10,8 @@ echo "Creating markdown file for each example"
 for f in docs/examples/**/*.yaml; do
   yaml_content=$(cat "$f")
   markdown_file_path="${f//odcs.yaml/md}"
-  header="${f//docs\/examples\//}"
+  file_name=$(basename "$f" .odcs.yaml)
+  header=$(echo "${file_name//\-/ }" | sed -e "s/\b\(.\)/\u\1/g")
   echo "Creating file: $markdown_file_path"
   content=$(cat <<-END
 # ${header}
@@ -21,7 +22,8 @@ ${yaml_content}
 END
 )
   echo "$content" > "$markdown_file_path"
-  escaped_header="${header//\//\\/}"
+  base_path="${f//docs\/examples\//}"
+  escaped_header="${base_path//\//\\/}"
   replacement_link="${escaped_header//odcs.yaml/md}"
-  sed -i -e "s/$escaped_header/$replacement_link/g" docs/examples/README.md
+  sed -i '' -e "s/$escaped_header/$replacement_link/g" docs/examples/README.md
 done

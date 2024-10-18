@@ -27,7 +27,7 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material mkdocs-open-in-new-tab "mkdocs-material[imaging]" mike
+      - run: pip install mkdocs-material mkdocs-open-in-new-tab "mkdocs-material[imaging]" mkdocs-awesome-pages-plugin mike
       - run: bash src/script/build_docs.sh
       - run: |
           latest_tag=$(git describe --tags --abbrev=0)

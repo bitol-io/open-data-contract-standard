@@ -17,46 +17,46 @@ This folder contains mainly excerpts of data contracts to illustrate specific se
 
 ## Full example
 
-- [Full example](all/full-example.odcs.yaml)
-- [Postgres AdventureWorks](all/postgresql-adventureworks-contract.odcs.yaml)
+- [Full example](all/full-example.md)
+- [Postgres AdventureWorks](all/postgresql-adventureworks-contract.md)
 
 ## Fundamentals
 
-- [Table and column](fundamentals/table-column-description.odcs.yaml)
+- [Table and column](fundamentals/table-column-description.md)
 
 ## Dataset and schema
 
-- [All schema types](schema/all-schema-types.odcs.yaml)
-- [Data types](data-types/all-data-types.odcs.yaml)
-- [Table with single column](schema/table-column.odcs.yaml)
-- [Table with columns and partitioning](schema/table-columns-with-partition.odcs.yaml)
+- [All schema types](schema/all-schema-types.md)
+- [Data types](data-types/all-data-types.md)
+- [Table with single column](schema/table-column.md)
+- [Table with columns and partitioning](schema/table-columns-with-partition.md)
 
 ## Data quality 
 
-- [Column accuracy](quality/column-accuracy.odcs.yaml)
-- [Column completeness](quality/column-completeness.odcs.yaml)
-- [Column custom](quality/column-custom.odcs.yaml)
-- [Column validity](quality/column-validity.odcs.yaml)
+- [Column accuracy](quality/column-accuracy.md)
+- [Column completeness](quality/column-completeness.md)
+- [Column custom](quality/column-custom.md)
+- [Column validity](quality/column-validity.md)
 
 ## Server
 
-- [Azure server](server/azure-server.odcs.yaml)
-- [Kafka server](server/kafka-server.odcs.yaml)
+- [Azure server](server/azure-server.md)
+- [Kafka server](server/kafka-server.md)
 
 ## Pricing
 This section covers pricing when you bill your customer for using this data product. 
 
 ## Stakeholders
 
-- [Stakeholders example](stakeholders/basic-four-dpo.odcs.yaml)
+- [Stakeholders example](stakeholders/basic-four-dpo.md)
 
 ## Roles
 
-- [Service and operational roles](roles/service-and-operational-roles.odcs.yaml)
+- [Service and operational roles](roles/service-and-operational-roles.md)
 
 ## Service-level agreement
 
-- [Database SLA](sla/database-table-sla.odcs.yaml)
+- [Database SLA](sla/database-table-sla.md)
 
 ## Other properties
 Coming soon.

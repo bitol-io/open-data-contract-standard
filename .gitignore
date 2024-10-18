@@ -3,3 +3,10 @@
 .idea
 site
 *.iml
+.cache
+
+docs/changelog.md
+docs/contributing.md
+docs/home.md
+docs/vendors.md
+docs/examples/**/*.md
