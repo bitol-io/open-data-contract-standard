@@ -19,7 +19,7 @@ following section:
 
 ```json
     {
-      "name": "Open Data Contract Standard (ODCS))",
+      "name": "Open Data Contract Standard (ODCS)",
       ...,
       "versions": {
         "<new_version>": "https://github.com/bitol-io/open-data-contract-standard/blob/main/schema/odcs-json-schema-<new_version>.json",

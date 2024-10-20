@@ -1,0 +1,18 @@
+name: validate-examples
+on:
+  push:
+    branches: ["*"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+      - name: Install ajv
+        run: |
+          npm i -g ajv-cli ajv-formats
+      - name: Validate examples
+        run: bash src/script/validate-examples.sh

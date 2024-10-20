@@ -20,11 +20,26 @@ schema:
       logicalType: number
       physicalType: int
       quality:
-      - rule: minCheck
+      - type: custom
         description: This column should not contain values under 100000
         dimension: conformity
         severity: error
         businessImpact: operational
-        customProperties:
-          - property: min
-            value: 100000
+        engine: soda
+        implementation: |
+          type: duplicate_percent
+          columns:
+            - carrier
+            - shipment_numer
+          must_be_less_than: 1.0
+      - type: custom
+        dimension: uniqueness
+        severity: error
+        businessImpact: operational
+        engine: soda
+        implementation:
+          type: duplicate_percent
+          columns:
+            - carrier
+            - shipment_numer
+          must_be_less_than: 1.0

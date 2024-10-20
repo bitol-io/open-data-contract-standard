@@ -6,184 +6,159 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 # Open Data Contract Standard
 
-## Executive summary
-This document describes the keys and values expected in a YAML data contract, per the **Open Data Contract Standard**. It is divided in multiple sections: [demographics](#demographics), [dataset & schema](#dataset-and-schema), [data quality](#data-quality), [pricing](#pricing), [stakeholders](#stakeholders), [roles](#roles), [service-level agreement](#service-level-agreement), and [other properties](#other-properties). Each section starts with at least an example followed by definition of each field/key.
+## Executive Summary
+This document describes the keys and values expected in a YAML data contract, per the **Open Data Contract Standard**. 
+It is divided in multiple sections: [fundamentals (fka demographics)](#fundamentals), [schema](#schema), 
+[data quality](#data-quality), [Support & communication channels](#support-and-communication-channels), [pricing](#pricing), [team](#team), 
+[roles](#roles), [service-level agreement](#service-level-agreement-sla), [Infrastructures & servers](#infrastructure-and-servers) and 
+[other/custom properties](#custom-properties). Each section starts with at least an example followed by definition of 
+each field/key.
+
 
 ## Table of content
 
-* [Fundamentals & demographics](#demographics)
-* [Datasets & schema](#dataset-and-schema)
-* [Data quality](#data-quality)
-* [Pricing](#pricing)
-* [Stakeholders](#stakeholders)
-* [Roles](#roles)
-* [Service-level agreement](#service-level-agreement)
-* [Other properties](#other-properties)
-* [Full example](#full-example)
+1. [Fundamentals (fka demographics)](#fundamentals)
+1. [Schema](#schema)
+1. [Data quality](#data-quality)
+1. [Support & communication channels](#support-and-communication-channels)
+1. [Pricing](#pricing)
+1. [Team](#team)
+1. [Roles](#roles)
+1. [Service-level agreement](#service-level-agreement-sla)
+1. [Infrastructures & servers](#infrastructure-and-servers)
+1. [Custom & other properties](#custom-properties)
+1. [Examples](#full-example-1)
+
 
 ## Notes
 
 * This contract is containing example values, we reviewed very carefully the consistency of those values, but we cannot guarantee that there are no errors. If you spot one, please raise an [issue](https://github.com/AIDAUserGroup/open-data-contract-standard/issues).
 * Some fields have `null` value: even if it is equivalent to not having the field in the contract, we wanted to have the field for illustration purpose.
-* This contract leverages BigQuery but should be **platform agnostic**. If you think it is not the case, please raise an [issue](https://github.com/AIDAUserGroup/open-data-contract-standard/issues).
+* This contract should be **platform agnostic**. If you think it is not the case, please raise an [issue](https://github.com/AIDAUserGroup/open-data-contract-standard/issues).
 
-## Demographics
+
+## Fundamentals
 This section contains general information about the contract.
 
 ### Example
 
 ```YAML
-# What's this data contract about?
-datasetDomain: seller # Domain
-quantumName: my quantum # Data product name
-userConsumptionMode: Analytical
-version: 1.1.0 # Version (follows semantic versioning)
-status: current
-uuid: 53581432-6c55-4ba2-a65f-72344a91553a
+apiVersion: 3.0.0 # Standard version
+kind: DataContract
 
-# Lots of information
+id: 53581432-6c55-4ba2-a65f-72344a91553a
+name: seller_payments_v1
+version: 1.1.0 # Data Contract Version 
+status: production
+domain: seller
+dataProduct: payments
+tenant: ClimateQuantumInc
+
 description:
   purpose: Views built on top of the seller tables.
   limitations: null
   usage: null
-tenant: ClimateQuantumInc
 
-# Getting support
-productDl: product-dl@ClimateQuantum.org
-productSlackChannel: '#product-help'
-productFeedbackUrl: null
-
-# Physical parts / GCP / BigQuery specific
-sourcePlatform: googleCloudPlatform
-sourceSystem: bigQuery
-project: edw # BQ dataset
-datasetName: access_views # BQ dataset
-
-kind: DataContract
-apiVersion: 2.3.0 # Standard version (follows semantic versioning, previously known as templateVersion)
-
-type: tables
-
-# Physical access
-driver: null
-driverVersion: null
-server: null
-database: pypl-edw.pp_access_views
-username: '${env.username}'
-password: '${env.password}'
-schedulerAppName: name_coming_from_scheduler # NEW 2.1.0 Required if you want to schedule stuff, comes from DataALM.
-
-# Data Quality
-quality: null # See more information below
-
-# Tags
 tags: null
 ```
 
 ### Definitions
 
-| Key                     | UX label                 | Required | Description                                                                                                                                                                                                                                                                                                                                      |
-|-------------------------|--------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| datasetDomain           | Dataset domain           | No       | Name of the logical domain dataset the contract describes. This field is only required for output data contracts. Examples: `imdb_ds_aggregate`, `receiver_profile_out`,  `transaction_profile_out`.                                                                                                                                             |
-| quantumName             | Quantum name             | Yes      | The name of the data quantum or data product.                                                                                                                                                                                                                                                                                                    |
-| userConsumptionMode     | Consumption mode         | No       | List of data modes for which the dataset may be used.  Expected sample values might be `analytical` or `operational`. <br/>Note: in the future, this will probably be replaced by ports.                                                                                                                                                         |
-| version                 | Version                  | Yes      | Current version of the data contract.                                                                                                                                                                                                                                                                                                            |
-| status                  | Status                   | Yes      | Current status of the dataset. Valid values are `production`, `test`, or `development`.                                                                                                                                                                                                                                                          |
-| uuid                    | Identifier               | Yes      | A unique identifier used to reduce the risk of dataset name collisions; initially the UUID will be created using a UUID generator tool ([example](https://www.uuidgenerator.net/)). However, we may want to develop a method that accepts a seed value using a combination of fields–such as name, kind and source–to create a repeatable value. |
-| description             | Description              | No       | Object.                                                                                                                                                                                                                                                                                                                                          |
-| description.purpose     | Purpose                  | No       | Purpose of the dataset, table, or column (depending on the level); the key may appear at the dataset, table, or column level.                                                                                                                                                                                                                    |
-| description.limitations | Limitations              | No       | Limitations of the dataset, table, or column (depending on the level); the key may appear at the dataset, table, or column level.                                                                                                                                                                                                                |
-| description.usage       | Usage                    | No       | Intended usage of the dataset, table, or column (depending on the level); the key may appear at the dataset, table, or column level.                                                                                                                                                                                                             |
-| tenant                  | Tenant                   | No       | Indicates the property the data is primarily associated with. Value is case insensitive.                                                                                                                                                                                                                                                         |
-| productDl               | E-mail distribution list | No       | The email distribution list (DL) of the persons or team responsible for maintaining the dataset.                                                                                                                                                                                                                                                 |
-| productSlackChannel     | Support Slack channel    | No       | Slack channel of the team responsible for maintaining the dataset.                                                                                                                                                                                                                                                                               |
-| productFeedbackUrl      | Feedback URL             | No       | The URL for submitting feedback to the team responsible for maintaining the dataset.                                                                                                                                                                                                                                                             |
-| sourcePlatform          | Source platform          | No       | The platform where the dataset resides. Expected value is GoogleCloudPlatform, IBMCloud, Azure...                                                                                                                                                                                                                                                |
-| sourceSystem            | Source system            | No       | The system where the dataset resides. Expected value can be BigQuery.                                                                                                                                                                                                                                                                            |
-| project                 | Project                  | No       | Associated cloud project name, can be used for billing or administrative purpose. Used to be datasetProject.                                                                                                                                                                                                                                     |
-| datasetName             | Dataset name             | No       | May be required in cloud instance like GCP BigQuery dataset name.                                                                                                                                                                                                                                                                                |
-| server                  | Server                   | No       | The server where the dataset resides.                                                                                                                                                                                                                                                                                                            |
-| kind                    | Kind                     | Yes      | The kind of file this is. Valid value is `DataContract`.                                                                                                                                                                                                                                                                                         |
-| apiVersion              | Standard version         | No       | Version of the standard used to build data contract. Default value is v2.2.2.                                                                                                                                                                                                                                                                    |
-| type                    | Type                     | Yes      | Identifies the types of objects in the dataset. For BigQuery or any other database, the expected value would be Tables.                                                                                                                                                                                                                          |
-| driver                  | Driver                   | No       | The connection driver required to connect to the dataset.                                                                                                                                                                                                                                                                                        |
-| driverVersion           | Driver version           | No       | The version of the connection driver to be used to connect to the dataset.                                                                                                                                                                                                                                                                       |
-| username                | Username                 | No       | User credentials for connecting to the dataset; how the credentials will be stored/passed is outside of the scope of the contract.                                                                                                                                                                                                               |
-| password                | Password                 | No       | User credentials for connecting to the dataset; how the credentials will be stored/passed is out of the scope of this contract.                                                                                                                                                                                                                  |                                                                                                                                                                                            
-| schedulerAppName        | Scheduler App Name       | No       | Required if you want to schedule stuff. The name of the application used to schedule jobs                                                                                                                                                                                                                                                        |  
+| Key                     | UX label         | Required | Description                                                                                    |
+|-------------------------|------------------|----------|------------------------------------------------------------------------------------------------|
+| apiVersion              | Standard version | Yes      | Version of the standard used to build data contract. Default value is `v3.0.0`.                |
+| kind                    | Kind             | Yes      | The kind of file this is. Valid value is `DataContract`.                                       |
+| id                      | ID               | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.        |
+| name                    | Name             | No       | Name of the data contract.                                                                     |
+| version                 | Version          | Yes      | Current version of the data contract.                                                          |
+| status                  | Status           | Yes      | Current status of the data contract. Valid values are `production`, `test`, or `development`.  |
+| tenant                  | Tenant           | No       | Indicates the property the data is primarily associated with. Value is case insensitive.       |
+| domain                  | Domain           | No       | Name of the logical data domain.                                                               |
+| dataProduct             | Data Product     | No       | Name of the data product.                                                                      |
+| description             | Description      | No       | Object containing the descriptions.                                                            |
+| description.purpose     | Purpose          | No       | Intended purpose for the provided data.                                                        |
+| description.limitations | Limitations      | No       | Technical, compliance, and legal limitations for data use.                                     |
+| description.usage       | Usage            | No       | Recommended usage of the data.                                                                 |
 
-## Dataset and schema
-This section describes the dataset and the schema of the data contract. It is the support for data quality, which is detailed in the next section.
 
-### Example
+## Schema
+This section describes the schema of the data contract. It is the support for data quality, which is detailed in the next section. Schema supports both a business representation of your data and a physical implementation. It allows to tie them together.
+
+In ODCS v3, the schema has evolved from the table and column representation, therefore the schema introduces a new terminology:
+
+* **Objects** are a structure of data: a table in a RDBMS system, a document in a NoSQL database, and so on.
+* **Properties** are attributes of an object: a column in a table, a field in a payload, and so on.
+* **Elements** are either an object or a property.
+
+Figure 1 illustrates those terms with a basic relational database.
+
+<img src=img/elements-of-schema-odcs-v3.svg width=800/>
+
+*Figure 1: elements of the schema in ODCS v3.*
+
+### Examples
+
+#### Complete schema
 
 ```YAML
-dataset:
-  - table: tbl
-    physicalName: tbl_1 # NEW in v2.1.0, Optional, default value is table name + version separated by underscores, as table_1_2_0
-    priorTableName: null # if needed
+schema:
+  - name: tbl
+    logicalType: object
+    physicalType: table
+    physicalName: tbl_1 
     description: Provides core payment metrics 
-    authoritativeDefinitions: # NEW in v2.2.0, inspired by the column-level authoritative links
+    authoritativeDefinitions: 
       - url: https://catalog.data.gov/dataset/air-quality 
         type: businessDefinition
       - url: https://youtu.be/jbY1BKFj9ec
         type: videoTutorial
     tags: null
-    dataGranularity: Aggregation on columns txn_ref_dt, pmt_txn_id
-    columns:
-      - column: txn_ref_dt
-        isPrimaryKey: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
-        primaryKeyPosition: -1
+    dataGranularityDescription: Aggregation on columns txn_ref_dt, pmt_txn_id
+    properties:
+      - name: txn_ref_dt
         businessName: transaction reference date
         logicalType: date
         physicalType: date
-        isNullable: false
         description: null
-        partitionStatus: true
+        partitioned: true
         partitionKeyPosition: 1
-        clusterStatus: false
-        clusterKeyPosition: -1
-        criticalDataElementStatus: false
+        criticalDataElement: false
         tags: []
         classification: public
-        transformSourceTables:
+        transformSourceObjects:
           - table_name_1
           - table_name_2
           - table_name_3
         transformLogic: sel t1.txn_dt as txn_ref_dt from table_name_1 as t1, table_name_2 as t2, table_name_3 as t3 where t1.txn_dt=date-3
         transformDescription: Defines the logic in business terms. 
-        sampleValues:
+        examples:
           - 2022-10-03
           - 2020-01-28
-      - column: rcvr_id
-        isPrimaryKey: true # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+      - name: rcvr_id
+        primaryKey: true 
         primaryKeyPosition: 1
         businessName: receiver id
         logicalType: string
         physicalType: varchar(18)
-        isNullable: false
+        required: false
         description: A description for column rcvr_id.
-        partitionStatus: false
+        partitioned: false
         partitionKeyPosition: -1
-        clusterStatus: true
-        clusterKeyPosition: 1
-        criticalDataElementStatus: false
+        criticalDataElement: false
         tags: []
         classification: restricted
-        encryptedColumnName: enc_rcvr_id
-      - column: rcvr_cntry_code
-        isPrimaryKey: false # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
+        encryptedName: enc_rcvr_id
+      - name: rcvr_cntry_code
+        primaryKey: false 
         primaryKeyPosition: -1
         businessName: receiver country code
         logicalType: string
         physicalType: varchar(2)
-        isNullable: false
+        required: false
         description: null
-        partitionStatus: false
+        partitioned: false
         partitionKeyPosition: -1
-        clusterStatus: false
-        clusterKeyPosition: -1
-        criticalDataElementStatus: false
+        criticalDataElement: false
         tags: []
         classification: public
         authoritativeDefinitions:
@@ -193,163 +168,393 @@ dataset:
             type: transformationImplementation
           - url: jdbc:postgresql://localhost:5432/adventureworks/tbl_1/rcvr_cntry_code
             type: implementation
-        encryptedColumnName: rcvr_cntry_code_encrypted
+        encryptedName: rcvr_cntry_code_encrypted
+```
+
+#### Simple Array
+
+```yaml
+schema:
+  - name: AnObject
+    logicalType: object
+    properties:
+      - name: street_lines
+        logicalType: array 
+        items:
+          logicalType: string
+```
+
+#### Array of Objects
+
+```yaml
+schema:
+  - name: AnotherObject
+    logicalType: object
+    properties:
+      - name: x
+        logicalType: array
+        items:
+          logicalType: object
+          properties:
+            - name: id
+              logicalType: string 
+              physicalType: VARCHAR(40)
+            - name: zip
+              logicalType: string
+              physicalType: VARCHAR(15)
 ```
 
 ### Definitions
+
+#### Schema (top level)
 
 | Key                                                    | UX label                     | Required | Description                                                                                                                                                                                                                                           |
 |--------------------------------------------------------|------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| dataset                                                | Dataset                      | Yes      | Array. A list of tables within the dataset to be cataloged.                                                                                                                                                                                           |
-| dataset.table                                          | Table                        | Yes      | Name of the table being cataloged; the value should only contain the table name. Do not include the project or dataset name in the value.                                                                                                             |
-| dataset.table.physicalName                             | Physical Name                | No       | Physical name of the table, default value is table name + version separated by underscores, as `table_1_2_0`.                                                                                                                                         |
-| dataset.table.priorTableName                           | Prior Table Name             | No       | Name of the previous version of the dataset, if applicable.                                                                                                                                                                                           |
-| dataset.table.description                              | Description                  | No       | Description of the dataset.                                                                                                                                                                                                                           |
-| dataset.table.authoritativeDefinitions                 | Authoritative Definitions    | No       | List of links to sources that provide more details on the table; examples would be a link to an external definition, a training video, a GitHub repo, Collibra, or another tool. Authoritative definitions follow the same structure in the standard. |
-| dataset.table.dataGranularity                          | Data Granularity             | No       | Granular level of the data in the table. Example would be `pmt_txn_id`.                                                                                                                                                                               |
-| dataset.table.columns                                  | Columns                      | Yes      | Array. A list of columns in the table.                                                                                                                                                                                                                |
-| dataset.table.columns.column                           | Column                       | Yes      | The name of the column.                                                                                                                                                                                                                               |
-| dataset.table.columns.column.isPrimaryKey              | Primary Key                  | No       | Boolean value specifying whether the column is primary or not. Default is false.                                                                                                                                                                      |
-| dataset.table.columns.column.primaryKeyPosition        | Primary Key Position         | No       | If column is a primary key, the position of the primary key column. Starts from 1. Example of `account_id, name` being primary key columns, `account_id` has primaryKeyPosition 1 and `name` primaryKeyPosition 2. Default to -1.                     |
-| dataset.table.columns.column.businessName              | Business Name                | No       | The business name of the column.                                                                                                                                                                                                                      |
-| dataset.table.columns.column.logicalType               | Logical Type                 | Yes      | The logical column datatype.                                                                                                                                                                                                                          |
-| dataset.table.columns.column.physicalType              | Physical Type                | Yes      | The physical column datatype.                                                                                                                                                                                                                         |
-| dataset.table.columns.column.description               | Description                  | No       | Description of the column.                                                                                                                                                                                                                            |
-| dataset.table.columns.column.isNullable                | Nullable                     | No       | Indicates if the column may contain Null values; possible values are true and false. Default is false.                                                                                                                                                |
-| dataset.table.columns.column.isUnique                  | Unique                       | No       | Indicates if the column contains unique values; possible values are true and false. Default is false.                                                                                                                                                 |
-| dataset.table.columns.column.partitionStatus           | Partition Status             | No       | Indicates if the column is partitioned; possible values are true and false.                                                                                                                                                                           |
-| dataset.table.columns.column.partitionKeyPosition      | Partition Key Position       | No       | If column is used for partitioning, the position of the partition column. Starts from 1. Example of `country, year` being partition columns, `country` has partitionKeyPosition 1 and `year` partitionKeyPosition 2. Default to -1.                   |
-| dataset.table.columns.column.clusterStatus             | Cluster Status               | No       | Indicates of the column is clustered; possible values are true and false.                                                                                                                                                                             |
-| dataset.table.columns.column.clusterKeyPosition        | Cluster Key Position         | No       | If column is used for clustering, the position of the cluster column. Starts from 1. Example of `year, date` being cluster columns, `year` has clusterKeyPosition 1 and `date` clusterKeyPosition 2. Default to -1.                                   |
-| dataset.table.columns.column.classification            | Classification               | No       | Can be anything, like confidential, restricted, and public to more advanced categorization. Some companies like PayPal, use data classification indicating the class of data in the column; expected values are 1, 2, 3, 4, or 5.                     |
-| dataset.table.columns.column.authoritativeDefinitions  | Authoritative Definitions    | No       | List of links to sources that provide more detail on column logic or values; examples would be URL to a GitHub repo, Collibra, on another tool.                                                                                                       |
-| dataset.table.columns.column.encryptedColumnName       | Encrypted Column Name        | No       | The column name within the table that contains the encrypted column value. For example, unencrypted column `email_address` might have an encryptedColumnName of `email_address_encrypt`.                                                              |
-| dataset.table.columns.column.transformSourceTables     | Transform Source Tables      | No       | List of sources used in column transformation.                                                                                                                                                                                                        |
-| dataset.table.columns.column.transformLogic            | Transform Logic              | No       | Logic used in the column transformation.                                                                                                                                                                                                              |
-| dataset.table.columns.column.transformDescription      | Transform Description        | No       | Describes the transform logic in very simple terms.                                                                                                                                                                                                   |
-| dataset.table.columns.column.sampleValues              | Sample Values                | No       | List of sample column values.                                                                                                                                                                                                                         |
-| dataset.table.columns.column.criticalDataElementStatus | Critical Data Element Status | No       | True or false indicator; If element is considered a critical data element (CDE) then true else false.                                                                                                                                                 |
-| dataset.table.columns.column.tags                      | Tags                         | No       | A list of tags that may be assigned to the dataset, table or column; the tags keyword may appear at any level.                                                                                                                                        |
-                                                                                                                  |
+| schema                                                 | schema                       | Yes      | Array. A list of elements within the schema to be cataloged.                                                                                                                                                                                          |
 
-### Authorative definitions
+#### Applicable to Elements (either Objects or Properties)
 
-Updated in ODCS (Open Data Contract Standard) v2.2.1.
+| Key                      | UX label                     | Required | Description                                                                                                                                                                                                            |
+|--------------------------|------------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| name                     | Name                         | Yes      | Name of the element.                                                                                                                                                                                                   |
+| physicalName             | Physical Name                | No       | Physical name.                                                                                                                                                                                                         |
+| description              | Description                  | No       | Description of the element.                                                                                                                                                                                            |
+| businessName             | Business Name                | No       | The business name of the element.                                                                                                                                                                                      |
+| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more details on the table; examples would be a link to an external definition, a training video, a GitHub repo, Collibra, or another tool. See `authoritativeDefinitions` below. |
+| quality                  | Quality                      | No       | List of data quality attributes.                                                                                                                                                                                       |
+| tags                     | Tags                         | No       | A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level.                                                                                                    |
+| customProperties         | Custom Properties            | No       | Custom properties that are not part of the standard.                                                                                                                                                                   |
 
-| Key  | UX label          | Required | Description                                                                                                                                                             |
-|------|-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| type | Definition type   | Yes      | Type of definition for authority: v2.2.1 adds standard values: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. |
-| url  | URL to definition | Yes      | URL to the authority.                                                                                                                                                   |
+#### Applicable to Objects
 
-## Data quality 
+| Key                                                    | UX label                     | Required | Description                                                                          |
+|--------------------------------------------------------|------------------------------|----------|--------------------------------------------------------------------------------------|
+| dataGranularityDescription                             | Data Granularity             | No       | Granular level of the data in the object. Example would be "Aggregation by country." |
+
+#### Applicable to Properties
+
+Some keys are more applicable when the described property is a column. 
+
+| Key                      | UX label                     | Required | Description                                                                                                                                                                                                                           |
+|--------------------------|------------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| primaryKey               | Primary Key                  | No       | Boolean value specifying whether the field is primary or not. Default is false.                                                                                                                                                       |
+| primaryKeyPosition       | Primary Key Position         | No       | If field is a primary key, the position of the primary key element. Starts from 1. Example of `account_id, name` being primary key columns, `account_id` has primaryKeyPosition 1 and `name` primaryKeyPosition 2. Default to -1.     |
+| logicalType              | Logical Type                 | Yes      | The logical field datatype. One of `string`, `date`, `number`, `integer`, `object`, `array` or `boolean`.                                                                                                                             |
+| logicalTypeOptions       | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [here](#logical-type-options) for more details about supported options for each `logicalType`.                                                                         |
+| physicalType             | Physical Type                | Yes      | The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT.                                                                                                                                              |
+| description              | Description                  | No       | Description of the element.                                                                                                                                                                                                           |
+| required                 | Required                     | No       | Indicates if the element may contain Null values; possible values are true and false. Default is false.                                                                                                                               |
+| unique                   | Unique                       | No       | Indicates if the element contains unique values; possible values are true and false. Default is false.                                                                                                                                |
+| partitioned              | Partitioned                  | No       | Indicates if the element is partitioned; possible values are true and false.                                                                                                                                                          |
+| partitionKeyPosition     | Partition Key Position       | No       | If element is used for partitioning, the position of the partition element. Starts from 1. Example of `country, year` being partition columns, `country` has partitionKeyPosition 1 and `year` partitionKeyPosition 2. Default to -1. |
+| classification           | Classification               | No       | Can be anything, like confidential, restricted, and public to more advanced categorization.                                                                                                                                           |
+| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more detail on element logic or values; examples would be URL to a git repo, documentation, a data catalog or another tool.                                                                     |
+| encryptedName            | Encrypted Name               | No       | The element name within the dataset that contains the encrypted element value. For example, unencrypted element `email_address` might have an encryptedName of `email_address_encrypt`.                                               |
+| transformSourceObjects   | Transform Sources            | No       | List of objects in the data source used in the transformation.                                                                                                                                                                        |
+| transformLogic           | Transform Logic              | No       | Logic used in the column transformation.                                                                                                                                                                                              |
+| transformDescription     | Transform Description        | No       | Describes the transform logic in very simple terms.                                                                                                                                                                                   |
+| examples                 | Example Values               | No       | List of sample element values.                                                                                                                                                                                                        |
+| criticalDataElement      | Critical Data Element Status | No       | True or false indicator; If element is considered a critical data element (CDE) then true else false.                                                                                                                                 |
+| items                    | Items                        | No       | List of items in an array (only applicable when `logicalType: array`)                                                                                                                                                                 |
+
+### Logical Type Options
+
+Additional metadata options to more accurately define the data type.
+
+| Data Type      | Key              | UX Label           | Required | Description                                                                                                                                                                                           |
+|----------------|------------------|--------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| array          | maxItems         | Maximum Items      | No       | Maximum number of items.                                                                                                                                                                              |
+| array          | minItems         | Minimum Items      | No       | Minimum number of items.                                                                                                                                                                              |
+| array          | uniqueItems      | Unique Items       | No       | If set to true, all items in the array are unique.                                                                                                                                                    |
+| date           | format           | Format             | No       | Format of the date. Follows the format as prescribed by [JDK DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). For example, format 'yyyy-MM-dd'. |
+| date           | exclusiveMaximum | Exclusive Maximum  | No       | If set to true, all values are strictly less than the maximum value (values < maximum). Otherwise, less than or equal to the maximum value (values <= maximum).                                       |
+| date           | exclusiveMinimum | Exclusive Minimum  | No       | If set to true, all values are strictly greater than the minimum value (values > minimum). Otherwise, greater than or equal to the minimum value (values >= minimum).                                 |
+| date           | maximum          | Maximum            | No       | All date values are less than or equal to this value (values <= maximum).                                                                                                                             |
+| date           | minimum          | Minimum            | No       | All date values are greater than or equal to this value (values >= minimum).                                                                                                                          |
+| integer/number | exclusiveMaximum | Exclusive Maximum  | No       | If set to true, all values are strictly less than the maximum value (values < maximum). Otherwise, less than or equal to the maximum value (values <= maximum).                                       |
+| integer/number | exclusiveMinimum | Exclusive Minimum  | No       | If set to true, all values are strictly greater than the minimum value (values > minimum). Otherwise, greater than or equal to the minimum value (values >= minimum).                                 |
+| integer/number | format           | Format             | No       | Format of the value in terms of how many bits of space it can use and whether it is signed or unsigned (follows the Rust integer types).                                                              |
+| integer/number | maximum          | Maximum            | No       | All values are less than or equal to this value (values <= maximum).                                                                                                                                  |
+| integer/number | minimum          | Minimum            | No       | All values are greater than or equal to this value (values >= minimum).                                                                                                                               |
+| integer/number | multipleOf       | Multiple Of        | No       | Values must be multiples of this number. For example, multiple of 5 has valid values 0, 5, 10, -5.                                                                                                    |
+| object         | maxProperties    | Maximum Properties | No       | Maximum number of properties.                                                                                                                                                                         |
+| object         | minProperties    | Minimum Properties | No       | Minimum number of properties.                                                                                                                                                                         |
+| object         | required         | Required           | No       | Property names that are required to exist in the object.                                                                                                                                              |
+| string         | format           | Format             | No       | Provides extra context about what format the string follows. For example, password, byte, binary, email, uuid, uri, hostname, ipv4, ipv6.                                                             |
+| string         | maxLength        | Maximum Length     | No       | Maximum length of the string.                                                                                                                                                                         |
+| string         | minLength        | Minimum Length     | No       | Minimum length of the string.                                                                                                                                                                         |
+| string         | pattern          | Pattern            | No       | Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (https://262.ecma-international.org/5.1/#sec-15.10.1).                                              |
+
+### Authoritative definitions
+
+Reference to an external definition on element logic or values.
+
+| Key  | UX label          | Required | Description                                                                                                                                                   |
+|------|-------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| type | Definition type   | Yes      | Type of definition for authority.  Valid values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. |
+| url  | URL to definition | Yes      | URL to the authority.                                                                                                                                         |
+
+
+## Data quality
 This section describes data quality rules & parameters. They are tightly linked to the schema described in the previous section.
 
-### Example of data quality at the dataset level
+Data quality rules support different levels/stages of data quality attributes:
 
-Note:
-* This example relies on a data quality tool called Elevate. It should be easily transformed to any other tool. If you have questions, please raise an [issue](https://github.com/AIDAUserGroup/open-data-contract-standard/issues).
-* The Open Data Contract Standard has a provision for supporting multiple data quality tools.
+  - __Text__: A human-readable text that describes the quality of the data.
+  - __Library__ rules: A maintained library of commonly-used predefined quality attributes such as `rowCount`, `unique`, `freshness`, and more.
+  - __SQL__: An individual SQL query that returns a value that can be compared. Can be extended to `Python` or other.
+  - __Custom__: Quality attributes that are vendor-specific, such as Soda, Great Expectations, dbt tests, or Montecarlo monitors.
 
-```YAML
-dataset:
-  - table: tab1
-# ...
-    quality:
-      - code: countCheck # Required, name of the rule
-        templateName: CountCheck # NEW in v2.1.0 Required
-        description: Ensure row count is within expected volume range       # Optional
-        toolName: Elevate # Required
-        toolRuleName: DQ.rw.tab1.CountCheck # NEW in v2.1.0 Optional (Available only to the users who can change in source code edition)
-        dimension: completeness                                             # Optional
-        type: reconciliation                                                # Optional NEW in v2.1.0 default value for column level check - dataQuality and for table level reconciliation
-        severity: error                                                     # Optional NEW in v2.1.0, default value is error
-        businessImpact: operational                                         # Optional NEW in v2.1.0
-        scheduleCronExpression: 0 20 * * *                                  # Optional NEW in v2.1.0 default schedule - every day 10 a.m. UTC
-      - code: distinctCheck    
-        description: enforce distinct values
-        toolName: Elevate
-        templateName: DistinctCheck
-        dimension: completeness
-        toolRuleName: DQ.rw.tab1.DistinctCheck
-        columns:
-          - txn_ref_dt
-          - rcvr_id
-        column: null
-        type: reconciliation
-        severity: error
-        businessImpact: operational
-        scheduleCronExpression: 0 20 * * *
-        customProperties:                     
-          - property: FIELD_NAME
-            value: rcvr_id
-          - property: FILTER_CONDITIONS
-            value: 1>0
-      - code: piiCheck
-        description: null
-        toolName: Elevate
-        templateName: PIICheck
-        toolRuleName: DQ.rw.tab1_2_0_0.piiCheck
-        type: dataQuality
-        severity: error
-        businessImpact: operational
-        scheduleCronExpression: 0 20 * * *
-        customProperties:                     
-          - property: FIELD_NAME
-            value:
-          - property: FILTER_CONDITIONS
-            value:
+### Text
+A human-readable text that describes the quality of the data. Later in the development process, these might be translated into an executable check (such as `sql`), a library rule, or checked through an AI engine.
+
+```yaml
+quality:
+  - type: text
+    description: The email address was verified by the system.
 ```
 
-### Example of data quality at the column level
+### Library
+ODCS will provide a set of predefined rules commonly used in data quality checks, designed to be compatible with all major data quality engines. This simplifies the work for data engineers by eliminating the need to manually write SQL queries.
 
-```YAML
-dataset:
-  - table: tab1
-      - column: rcvr_id
-        isPrimaryKey: true # NEW in v2.1.0, Optional, default value is false, indicates whether the column is primary key in the table.
-        businessName: receiver id
-# ...
-        quality:
-          - code: nullCheck
-            templateName: NullCheck
-            description: column should not contain null values
-            toolName: Elevate
-            toolRuleName: DQ.rw.tab1_2_0_0.rcvr_cntry_code.NullCheck
-            dimension: completeness # dropdown 7 values
-            type: dataQuality
-            severity: error
-            businessImpact: operational
-            scheduleCronExpression: 0 20 * * *
-            customProperties:
-              - property: FIELD_NAME
-                value:
-              - property: COMPARE_TO
-                value:
-              - property: COMPARISON_TYPE
-                value: Greater than
+#### Property-level
+Those examples apply at the property level, such as column, field, etc.
+
+##### Duplicate count on rows
+No more than 10 duplicate names.
+
+```yaml
+quality:
+- type: library # optional and default value for data quality rules
+  rule: duplicateCount
+  mustBeLessThan: 10
+  name: Fewer than 10 duplicate names
+  unit: rows
+```
+
+##### Duplicate count on %
+Duplicates should be less than 1%.
+
+```yaml
+quality:
+- rule: duplicateCount
+  mustBeLessThan: 1
+  unit: percent
+```
+
+##### Valid values
+Valid values from a static list.
+
+```yaml
+quality:
+- rule: validValues
+  validValues: ['pounds']
+```
+
+#### Object-level
+This example applies at the object level (like a table or a view).
+
+##### Row count
+The number of rows must be between 100 and 120.
+
+```yaml
+quality:
+  - rule: rowCount
+    mustBeBetween: [100, 120]
+    name: Verify row count range
+```
+
+### SQL
+A single SQL query that returns either a numeric or boolean value for comparison. The query must be written in the SQL dialect specific to the provided server. `${object}` and `${property}` are automatically replaced by the current object (in the case of SQL on a relational database, the table or view name) and the current property name (in the case of SQL on a relational database, the column).
+
+```yaml
+quality:
+  - type: sql 
+    query: |
+      SELECT COUNT(*) FROM ${object} WHERE ${property} IS NOT NULL
+    mustBeLessThan: 3600    
+```
+
+### Custom
+Custom rules allow for vendor-specific checks, including tools like Soda, Great Expectations, dbt-tests, Montecarlo, and others. Any format for properties is acceptable, whether it's written in YAML, JSON, XML, or even uuencoded binary. They are an intermediate step before the vendor accepts ODCS natively.
+
+#### Soda Example
+
+```yaml
+quality:
+- type: custom
+  engine: soda
+  implementation: |
+        type: duplicate_percent  # Block
+        columns:                 # passed as-is
+          - carrier              # to the tool
+          - shipment_numer       # (Soda in this situation)
+        must_be_less_than: 1.0   #
+```
+
+#### Great Expectation Example
+
+```yaml
+quality:
+- type: custom
+  engine: greatExpectations
+  implementation: |
+    type: expect_table_row_count_to_be_between # Block
+    kwargs:                                    # passed as-is
+      minValue: 10000                          # to the tool
+      maxValue: 50000                          # (Great Expectations in this situation)
+```
+
+### Scheduling
+The data contract can contain scheduling information for executing the rules. You can use `schedule` and `scheduler` for those operation. In previous versions of ODCS, the only allowed scheduler was cron and its syntax was `scheduleCronExpression`. 
+
+```yaml
+quality:
+  - type: sql 
+    query: |
+      SELECT COUNT(*) FROM ${object} WHERE ${property} IS NOT NULL
+    mustBeLessThan: 3600    
+    scheduler: cron
+    schedule: 0 20 * * *
+```
+
+
+### Definitions
+
+Acronyms:
+* DQ: data quality.
+
+| Key                              | UX label                   | Required | Description                                                                                                                                                                  |
+|----------------------------------|----------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| quality                          | Quality                    | No       | Quality tag with all the relevant information for rule setup and execution.                                                                                                  |
+| quality.name                     | Name                       | No       | A short name for the rule.                                                                                                                                                   |
+| quality.description              | Description                | No       | Describe the quality check to be completed.                                                                                                                                  |
+| quality.type                     | Type                       | No       | Type of DQ rule. Valid values are `library` (default), `text`, `sql`, and `custom`.                                                                                          |
+| quality.rule                     | Rule name                  | No       | Required for `library` DQ rules: the name of the rule to be executed.                                                                                                        |
+| quality.\<operator>              | See below                  | No       | Multiple values are allowed for the **property**, the value is the one to compare to.                                                                                        |
+| quality.unit                     | Unit                       | No       | Unit the rule is using, popular values are `rows` or `percent`, but any value is allowed.                                                                                    |
+| quality.validValues              | Valid values               | No       | Static list of valid values.                                                                                                                                                 |
+| quality.query                    | SQL Query                  | No       | Required for `sql` DQ rules: the SQL query to be executed. Note that it should match the target SQL engine/database, no transalation service are provided here.              |
+| quality.engine                   | Third-party DQ Engine      | No       | Required for `custom` DQ rule: name of the third-party engine being used. Any value is authorized here but common values are `soda`, `greatExpectations`, `montecarlo`, etc. |
+| quality.implementation           | Third-party Implementation | No       | A text (non-parsed) block of code required for the third-party DQ engine to run.                                                                                             |
+| quality.dimension                | Dimension                  | No       | The key performance indicator (KPI) or dimension for data quality. Valid values are listed after the table.                                                                  |
+| quality.method                   | Method                     | No       | Values are open and include `reconciliation`.                                                                                                                                |
+| quality.severity                 | Severity                   | No       | The severity of the DQ rule.                                                                                                                                                 |
+| quality.businessImpact           | Business Impact            | No       | Consequences of the rule failure.                                                                                                                                            |
+| quality.customProperties         | Custom Properties          | No       | Additional properties required for rulee execution. Follows the same structure as any custom properties block.                                                               |
+| quality.tags                     | Tags                       | No       | Tags. Follows the same structure as any tags property.                                                                                                                       |
+| quality.authoritativeDefinitions | Authoritative Definitions  | No       | Authoritative definitions indicate the link to external definition. Follows the same structure as any authoritative definitions block.                                       |
+| quality.scheduler                | Scheduler                  | No       | Name of the scheduler, can be `cron` or any tool your organization support.                                                                                                  |
+| quality.schedule                 | Scheduler Configuration    | No       | Configuration information for the scheduling tool, for `cron` a possible value is `0 20 * * *`.                                                                              |
+
+#### Valid Values for Dimension
+Those data quality dimensions are used for classification and reporting in data quality. Valid values are:
+
+  * `accuracy` (synonym `ac`),
+  * `completeness` (synonym `cp`),
+  * `conformity` (synonym `cf`),
+  * `consistency` (synonym `cs`),
+  * `coverage` (synonym `cv`),
+  * `timeliness` (synonym `tm`),
+  * `uniqueness` (synonym `uq`).
+
+#### Valid Properties for Operator
+The operator specifies the condition to validate the rule.
+
+| Operator                 | Expected Value      | Math Symbol | Example                      |
+|--------------------------|---------------------|-------------|------------------------------|
+| `mustBe`	                | number              | `=`         | `mustBe: 5`                  |
+| `mustNotBe`              | number              | `<>`, `≠`   | `mustNotBe: 3.14`            |
+| `mustBeGreaterThan`      | number              | `>`         | `mustBeGreaterThan: 59`      |
+| `mustBeGreaterOrEqualTo` | number              | `>=`, `≥`   | `mustBeGreaterOrEqualTo: 60` |
+| `mustBeLessThan`         | number              | `<`         | `mustBeLessThan: 1000`       |
+| `mustBeLessOrEqualTo`    | number              | `<=`, `≤`   | `mustBeLessOrEqualTo: 999`   |
+| `mustBeBetween`          | list of two numbers | 	`⊂`        | `mustBeBetween: [0, 100]`    |
+| `mustNotBeBetween`       | list of two numbers | 	`⊄`        | `mustNotBeBetween: [0, 100]` |
+
+`mustBeBetween` is the equivalent to `mustBeGreaterThan` and `mustBeLessThan`.
+
+```yaml
+quality:
+  - type: sql 
+    query: |
+      SELECT COUNT(*) FROM ${table} WHERE ${column} IS NOT NULL
+    mustBeBetween: [0, 100]    
+```
+
+is equivalent to:
+
+```yaml
+quality:
+  - type: sql 
+    query: |
+      SELECT COUNT(*) FROM ${table} WHERE ${column} IS NOT NULL
+    mustBeGreaterThan: 0
+    mustBeLessThan: 100    
+```
+
+
+#### Library Rules
+Bitol has the ambition of creating a library of common data quality rules. Join the working group around [RFC #0012](https://github.com/bitol-io/tsc/blob/main/rfcs/0012-implicit-dq-rules.md).
+
+
+## Support and Communication Channels
+Support and communication channels help consumers find help regarding their use of the data contract.  
+
+### Examples
+
+#### Minimal example
+
+```yaml
+support:
+  - channel: channel-name-or-identifier # Simple Slack communication channel
+    url: https://aidaug.slack.com/archives/C05UZRSBKLY
+  - channel: channel-name-or-identifier # Simple distribution list
+    url: mailto:datacontract-ann@bitol.io
+```
+
+#### Full example
+
+```yaml
+support:
+  - channel: channel-name-or-identifier
+    tool: teams
+    scope: interactive
+    url: https://bitol.io/teams/channel/my-data-contract-interactive
+  - channel: channel-name-or-identifier
+    tool: teams
+    scope: announcements
+    url: https://bitol.io/teams/channel/my-data-contract-announcements
+    invitationUrl: https://bitol.io/teams/channel/my-data-contract-announcements-invit
+  - channel: channel-name-or-identifier-for-all-announcement
+    description: All announcement for all data contracts
+    tool: teams
+    scope: announcements
+    url: https://bitol.io/teams/channel/all-announcements
+  - channel: channel-name-or-identifier
+    tool: email
+    scope: announcements
+    url: mailto:datacontract-ann@bitol.io
+  - channel: channel-name-or-identifier
+    tool: ticket
+    url: https://bitol.io/ticket/my-product
 ```
 
 ### Definitions
 
-| Key                            | UX label            | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                              |
-|--------------------------------|---------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| quality                        | Quality             | No       | Quality tag with all the relevant information for rule setup and execution.                                                                                                                                                                                                                                                                                                                                                              |
-| quality.code                   | Quality Code        | No       | The Rosewall data quality code(s) indicating which quality checks need to be performed at the dataset, table, or column level. The quality keyword may appear at any level. Some quality checks require parameters, so the check can be completed (e.g., a list of fields used to identify a distinct row). Therefore, some quality checks may be followed by a single value or an array. See the appendix for a link to quality checks. |
-| quality.templateName           | Template Name       | Yes      | The template name that indicates what is the equivalent template from the tool.                                                                                                                                                                                                                                                                                                                                                          |
-| quality.description            | Description         | No       | Describe the quality check to be completed.                                                                                                                                                                                                                                                                                                                                                                                              |
-| quality.toolName               | Tool Name           | Yes      | Name of the tool used to complete the quality check; Most will be Elevate initially.                                                                                                                                                                                                                                                                                                                                                     |
-| quality.toolRuleName           | Tool Rule Name      | No       | Name of the quality tool's rule created to complete the quality check.                                                                                                                                                                                                                                                                                                                                                                   |
-| quality.dimension              | Dimension           | No       | The key performance indicator (KPI) or dimension for data quality.                                                                                                                                                                                                                                                                                                                                                                       |
-| quality.columns                | Columns             | No       | List of columns to be used in the quality check.                                                                                                                                                                                                                                                                                                                                                                                         |
-| quality.column                 | Column              | No       | To be used in lieu of quality.columns when only a single column is required for the quality check.                                                                                                                                                                                                                                                                                                                                       |
-| quality.type                   | Type                | No       | The type of quality check.                                                                                                                                                                                                                                                                                                                                                                                                               |
-| quality.severity               | Severity            | No       | The severity of the quality rule.                                                                                                                                                                                                                                                                                                                                                                                                        |
-| quality.businessImpact         | Business Impact     | No       | Consequences of the rule failure.                                                                                                                                                                                                                                                                                                                                                                                                        |
-| quality.scheduleCronExpression | Schedule Expression | No       | Rule execution schedule details.                                                                                                                                                                                                                                                                                                                                                                                                         |
-| quality.customProperties       | Custom Properties   | No       | Additional properties required for rule execution.                                                                                                                                                                                                                                                                                                                                                                                       |
+| Key                   | UX label       | Required | Description                                                                                                                       |
+|-----------------------|----------------|----------|-----------------------------------------------------------------------------------------------------------------------------------|
+| support               | Support        | No       | Top level for support channels.                                                                                                   |
+| support.channel       | Channel        | Yes      | Channel name or identifier.                                                                                                       |
+| support.url           | Channel URL    | Yes      | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                             |
+| support.description   | Description    | No       | Description of the channel, free text.                                                                                            |
+| support.tool          | Tool           | No       | Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, or `other`.                                        |
+| support.scope         | Scope          | No       | Scope can be: `interactive`, `announcements`, `issues`.                                                                           |
+| support.invitationUrl | Invitation URL | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax). |
+
 
 ## Pricing
-This section covers pricing when you bill your customer for using this data product. Pricing is experimental in v2.1.1 of the data contract.
+This section covers pricing when you bill your customer for using this data product. 
 
 ### Example
 
@@ -370,12 +575,12 @@ price:
 | price.priceUnit     | Price Unit         | No       | The unit of measure for calculating cost. Examples megabyte, gigabyte. |
 
 
-## Stakeholders
-This section lists stakeholders and the history of their relation with this data contract.
+## Team
+This section lists team members and the history of their relation with this data contract. In v2.x, this section was called stakeholders.
 
 ### Example
 ```YAML
-stakeholders:
+team:
   - username: ceastwood
     role: Data Scientist
     dateIn: 2022-08-02
@@ -387,21 +592,21 @@ stakeholders:
   - username: daustin
     role: Owner
     comment: Keeper of the grail
+    name: David Austin
     dateIn: 2022-10-01
 ```
 
 ### Definitions
-The UX label is the label used in the UI and other user experiences. It is not limited to BlueRacket.
+The UX label is the label used in the UI and other user experiences. 
 
-| Key                             | UX label                   | Required | Description                                                                                       |
-|---------------------------------|----------------------------|----------|---------------------------------------------------------------------------------------------------|
-| stakeholders                    | Stakeholders               | No       | Array                                                                                             |
-| stakeholders.username           | Username                   | No       | The stakeholder's username or email.                                                              |
-| stakeholders.role               | Role                       | No       | The stakeholder's job role; Examples might be owner, data steward. There is no limit on the role. |
-| stakeholders.dateIn             | Date In                    | No       | The date when the user became a stakeholder.                                                      |
-| stakeholders.dateOut            | Date Out                   | No       | The date when the user ceased to be a stakeholder                                                 |
-| stakeholders.replacedByUsername | Replaced By Username       | No       | The username of the user who replaced the stakeholder                                             |
-
+| Key                     | UX label             | Required | Description                                                                                |
+|-------------------------|----------------------|----------|--------------------------------------------------------------------------------------------|
+| team                    | Team                 | No       | Object                                                                                     |
+| team.username           | Username             | No       | The user's username or email.                                                              |
+| team.role               | Role                 | No       | The user's job role; Examples might be owner, data steward. There is no limit on the role. |
+| team.dateIn             | Date In              | No       | The date when the user joined the team.                                                    |
+| team.dateOut            | Date Out             | No       | The date when the user ceased to be part of the team.                                      |
+| team.replacedByUsername | Replaced By Username | No       | The username of the user who replaced the previous user.                                   |
 
 ## Roles
 This section lists the roles that a consumer may need to access the dataset depending on the type of access they require.
@@ -430,30 +635,32 @@ roles:
 
 ### Definitions
 
-| Key                        | UX label            | Required | Description                                                                                                                                           |
-|----------------------------|---------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| roles                      | Roles               | Yes      | Array. A list of roles that will provide user access to the dataset.                                                                                  |
-| roles.role                 | Role                | Yes      | Name of the IAM role that provides access to the dataset; the value will generally come directly from the "BQ dataset to IAM roles mapping" document. |
-| roles.access               | Access              | Yes      | The type of access provided by the IAM role; the value will generally come directly from the "BQ dataset to IAM roles mapping" document.              |
-| roles.firstLevelApprovers  | 1st Level Approvers | No       | The name(s) of the first-level approver(s) of the role; the value will generally come directly from the "BQ dataset to IAM roles mapping" document.   |
-| roles.secondLevelApprovers | 2nd Level Approvers | No       | The name(s) of the second-level approver(s) of the role; the value will generally come directly from the "BQ dataset to IAM roles mapping" document.  |
+| Key                        | UX label            | Required | Description                                                          |
+|----------------------------|---------------------|----------|----------------------------------------------------------------------|
+| roles                      | Roles               | No       | Array. A list of roles that will provide user access to the dataset. |
+| roles.role                 | Role                | Yes      | Name of the IAM role that provides access to the dataset.            |
+| roles.description          | Description         | No       | Description of the IAM role and its permissions.                     |
+| roles.access               | Access              | No       | The type of access provided by the IAM role.                         |
+| roles.firstLevelApprovers  | 1st Level Approvers | No       | The name(s) of the first-level approver(s) of the role.              |
+| roles.secondLevelApprovers | 2nd Level Approvers | No       | The name(s) of the second-level approver(s) of the role.             |
 
-## Service-level agreement
-This section describes the service-level agreements (SLA). SLA have been extended in version v2.1.0.
 
-* Use the `Table.Column` to indicate the number to do the checks on, as in `SELECT txn_ref_dt FROM tab1`.
-* Separate multiple table.columns by a comma, as in `table1.col1`, `table2.col1`, `table1.col2`.
-* If there is only one table in the contract, the table name is not required.
+## Service-Level Agreement (SLA)
+This section describes the service-level agreements (SLA). 
+
+* Use the `Object.Element` to indicate the number to do the checks on, as in `SELECT txn_ref_dt FROM tab1`.
+* Separate multiple object.element by a comma, as in `table1.col1`, `table2.col1`, `table1.col2`.
+* If there is only one object in the contract, the object name is not required.
 
 ### Example
 
 ```YAML
-slaDefaultColumn: tab1.txn_ref_dt # Optional, default value is partitionColumn.
+slaDefaultElement: tab1.txn_ref_dt # Optional, default value is partitionColumn.
 slaProperties:
   - property: latency # Property, see list of values in DP QoS
     value: 4
     unit: d # d, day, days for days; y, yr, years for years
-    column: tab1.txn_ref_dt # This would not be needed as it is the same table.column as the default one
+    element: tab1.txn_ref_dt # This would not be needed as it is the same table.column as the default one
   - property: generalAvailability
     value: 2022-05-12T09:30:10-08:00
   - property: endOfSupport
@@ -463,37 +670,389 @@ slaProperties:
   - property: retention
     value: 3
     unit: y
-    column: tab1.txn_ref_dt
+    element: tab1.txn_ref_dt
   - property: frequency
     value: 1
     valueExt: 1
     unit: d
-    column: tab1.txn_ref_dt
+    element: tab1.txn_ref_dt
   - property: timeOfAvailability
     value: 09:00-08:00
-    column: tab1.txn_ref_dt
+    element: tab1.txn_ref_dt
     driver: regulatory # Describes the importance of the SLA: [regulatory|analytics|operational|...]
   - property: timeOfAvailability
     value: 08:00-08:00
-    column: tab1.txn_ref_dt
+    element: tab1.txn_ref_dt
     driver: analytics
 ```
 
 ### Definitions
 
-| Key                    | UX label              | Required                       | Description                                                                                                                |
-|------------------------|-----------------------|--------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| slaDefaultColumn       | Default SLA column(s) | No                             | Columns (using the Table.Column notation) to do the checks on. By default, it is the partition column.                     |
-| slaProperties          | SLA                   | No                             | A list of key/value pairs for SLA specific properties. There is no limit on the type of properties (more details to come). |
-| slaProperties.property | Property              | Yes                            | Specific property in SLA, check the periodic table. May requires units (more details to come).                             |
-| slaProperties.value    | Value                 | Yes                            | Agreement value. The label will change based on the property itself.                                                       |
-| slaProperties.valueExt | Extended value        | No - unless needed by property | Extended agreement value. The label will change based on the property itself.                                              |
-| slaProperties.unit     | Unit                  | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.                                    |
-| slaProperties.column   | Column(s)             | No                             | Column(s) to check on. Multiple columns should be extremely rare and, if so, separated by commas.                          |
-| slaProperties.driver   | Driver                | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.                         |
+| Key                    | UX label               | Required                       | Description                                                                                         |
+|------------------------|------------------------|--------------------------------|-----------------------------------------------------------------------------------------------------|
+| slaDefaultElement      | Default SLA element(s) | No                             | Element (using the element path notation) to do the checks on.                                      |
+| slaProperties          | SLA                    | No                             | A list of key/value pairs for SLA specific properties. There is no limit on the type of properties. |
+| slaProperties.property | Property               | Yes                            | Specific property in SLA, check the Data QoS periodic table. May requires units.                    |
+| slaProperties.value    | Value                  | Yes                            | Agreement value. The label will change based on the property itself.                                |
+| slaProperties.valueExt | Extended value         | No - unless needed by property | Extended agreement value. The label will change based on the property itself.                       |
+| slaProperties.unit     | Unit                   | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.             |
+| slaProperties.element  | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas. |
+| slaProperties.driver   | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.  |
 
-## Other properties
-This section covers other properties you may find in a data contract.
+## Infrastructure and Servers
+
+The `servers` element describes where the data protected by this data contract is *physically* located. That metadata helps to know where the data is so that a data consumer can discover the data and a platform engineer can automate access.
+
+An entry in `servers` describes a single dataset on a specific environment and a specific technology. The `servers` element can contain multiple servers, each with its own configuration.
+
+The typical ways of using the top level `servers` element are as follows:
+- **Single Server:** The data contract protects a specific dataset at a specific location. *Example:* a CSV file on an SFTP server.
+- **Multiple Environments:** The data contract makes sure that the data is protected in all environments. *Example:* a data product with data in a dev(elopment), UAT, and prod(uction) environment on Databricks.
+- **Different Technologies:** The data contract makes sure that regardless of the offered technology, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content.
+- **Different Technologies and Multiple Environments:** The data contract makes sure that regardless of the offered technology and environment, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content in dev(elopment), UAT, and prod(uction).
+
+### General Server Structure
+
+Each server in the schema has the following structure:
+
+```yaml
+servers:
+  - type: <server-type>
+    description: <server-description>
+    environment: <server-environment>
+    <server-type-specific-fields> # according to the server type
+    roles:
+      - <role-details>
+    customProperties:
+      - <custom-properties>
+```
+
+#### Common Server Properties
+
+- **type**: The type of server. Valid values include various server technologies like `athena`, `bigquery`, `postgresql`, etc.
+- **description**: A description of the server.
+- **environment**: The environment where the server operates (e.g., `prod`, `dev`, `uat`). There are no set values.
+- **roles**: An optional array of roles that have access to the server.
+- **customProperties**: Any additional custom properties specific to the server.
+
+### Specific Server Properties
+
+Each server type can be customized with different properties such as `host`, `port`, `database`, and `schema`, depending on the server technology in use. Refer to the specific documentation for each server type for additional configurations.
+
+### Specific Server Properties & Types
+
+If your server is not in the list, please use [custom](#custom-server) and suggest it as an improvement. Possible values for `type` are:
+
+- [api](#api-server)
+- [athena](#amazon-athena-server)
+- [azure](#azure-server)
+- [bigquery](#google-bigquery)
+- [clickhouse](#clickhouse-server)
+- [databricks](#databricks-server)
+- [db2](#ibm-db2-server)
+- [denodo](#denodo-server)
+- [dremio](#dremio-server)
+- [duckdb](#duckdb-server)
+- [glue](#amazon-glue)
+- [cloudsql](#google-cloud-sql)
+- [informix](#ibm-informix-and-hcl-informix)
+- [kafka](#kafka-server)
+- [kinesis](#amazon-kinesis)
+- [local](#local-files)
+- [mysql](#mysql-server)
+- [oracle](#oracle)
+- [postgresql](#postgresql)
+- [presto](#presto-server)
+- [pubsub](#google-pubsub)
+- [redshift](#amazon-redshift-server)
+- [s3](#amazon-s3-server-and-compatible-servers)
+- [sftp](#sftp-server)
+- [snowflake](#snowflake)
+- [sqlserver](#microsoft-sql-server)
+- [synapse](#synapse-server)
+- [trino](#trino-server)
+- [vertica](#vertica-server)
+
+#### API Server
+
+| Key            | UX Label   | Required   | Description                                                                                                                                                      |
+|----------------|------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **location**   | Location   | Yes        | URL to the API                                                                                                                                                   |
+
+
+#### Amazon Athena Server
+[Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL. With a few actions in the AWS Management Console, you can point Athena at your data stored in Amazon S3 and begin using standard SQL to run ad-hoc queries and get results in seconds.
+
+| Key        | UX Label          | Required | Description                                                                                                                                                      |
+|------------|-------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| schema     | Schema            | Yes      | Identify the schema in the data source in which your tables exist.                                                                                               |
+| stagingDir | Staging Directory | No       | Amazon Athena automatically stores query results and metadata information for each query that runs in a query result location that you can specify in Amazon S3. |
+| catalog    | Catalog           | No       | Identify the name of the Data Source, also referred to as a Catalog.                                                                                             |
+| regionName | Region Name       | No       | The region your AWS account uses.                                                                                                                                |
+
+#### Azure Server
+
+| Key       | UX Label  | Required | Description                                                                                   |
+|-----------|-----------|----------|-----------------------------------------------------------------------------------------------|
+| location  | Location  | Yes      | Fully qualified path to Azure Blob Storage or Azure Data Lake Storage (ADLS), supports globs. |
+| format    | Format    | Yes      | File format.                                                                                  |
+| delimiter | Delimiter | No       | Only for format = json. How multiple json documents are delimited within one file             |
+
+#### Google BigQuery
+[BigQuery](https://cloud.google.com/bigquery) is a fully managed, AI-ready data analytics platform that helps you maximize value from your data and is designed to be multi-engine, multi-format, and multi-cloud.
+
+| Key     | UX Label | Required | Description                                   |
+|---------|----------|----------|-----------------------------------------------|
+| project | Project  | Yes      | The Google Cloud Platform (GCP) project name. |
+| dataset | Dataset  | Yes      | The GCP dataset name.                         |
+
+#### ClickHouse Server
+[ClickHouse](https://clickhouse.com/) is an open-source column-oriented database management system that allows generating analytical data reports in real-time.
+
+| Key      | UX Label | Required | Description                        |
+|----------|----------|----------|------------------------------------|
+| host     | Host     | Yes      | The host of the ClickHouse server. |
+| port     | Port     | Yes      | The port to the ClickHouse server. |
+| database | Database | Yes      | The name of the database.          |
+
+#### Google Cloud SQL
+[Google Cloud SQL](https://cloud.google.com/sql) is a fully managed, cost-effective relational database service for PostgreSQL, MySQL, and SQL Server.
+
+| Key      | UX Label | Required | Description                              |
+|----------|----------|----------|------------------------------------------|
+| host     | Host     | Yes      | The host of the Google Cloud SQL server. |
+| port     | Port     | Yes      | The port of the Google Cloud SQL server. |
+| database | Database | Yes      | The name of the database.                |
+| schema   | Schema   | Yes      | The name of the schema.                  |
+
+#### Databricks Server
+
+| Key     | UX Label | Required | Description                           |
+|---------|----------|----------|---------------------------------------|
+| catalog | Catalog  | Yes      | The name of the Hive or Unity catalog |
+| schema  | Schema   | Yes      | The schema name in the catalog        |
+| host    | Host     | No       | The Databricks host                   |
+
+#### IBM Db2 Server
+
+| Key      | UX Label | Required | Description                     |
+|----------|----------|----------|---------------------------------|
+| host     | Host     | Yes      | The host of the IBM DB2 server. |
+| port     | Port     | Yes      | The port of the IBM DB2 server. |
+| database | Database | Yes      | The name of the database.       |
+| schema   | Schema   | No       | The name of the schema.         |
+
+#### Denodo Server
+
+| Key      | UX Label | Required | Description                    |
+|----------|----------|----------|--------------------------------|
+| host     | Host     | Yes      | The host of the Denodo server. |
+| port     | Port     | Yes      | The port of the Denodo server. |
+| database | Database | No       | The name of the database.      |
+
+#### Dremio Server
+
+| Key    | UX Label | Required | Description                    |
+|--------|----------|----------|--------------------------------|
+| host   | Host     | Yes      | The host of the Dremio server. |
+| port   | Port     | Yes      | The port of the Dremio server. |
+| schema | Schema   | No       | The name of the schema.        |
+
+#### DuckDB Server
+[DuckDB](https://duckdb.org/) supports a feature-rich SQL dialect complemented with deep integrations into client APIs.
+
+| Key      | UX Label | Required | Description                   |
+|----------|----------|----------|-------------------------------|
+| database | Database | Yes      | Path to duckdb database file. |
+| schema   | Schema   | No       | The name of the schema.       |
+
+#### Amazon Glue
+
+| Key      | UX Label | Required | Description                                    |
+|----------|----------|----------|------------------------------------------------|
+| account  | Account  | Yes      | The AWS Glue account                           |
+| database | Database | Yes      | The AWS Glue database name                     |
+| location | Location | No       | The AWS S3 path. Must be in the form of a URL. |
+| format   | Format   | No       | The format of the files                        |
+
+#### IBM Informix and HCL Informix
+[IBM Informix](https://www.ibm.com/products/informix) is a high performance, always-on, highly scalable and easily embeddable enterprise-class database optimized for the most demanding transactional and analytics workloads. As an object-relational engine, IBM Informix seamlessly integrates the best of relational and object-oriented capabilities enabling the flexible modeling of complex data structures and relationships.
+
+| Key          | UX Label        | Required   | Description                                                |
+|--------------|-----------------|------------|------------------------------------------------------------|
+| host         | Host            | Yes        | The host to the Informix server.                           |
+| port         | Port            | No         | The port to the Informix server. Defaults to 9088.         |
+| database     | Database        | Yes        | The name of the database.                                  |
+
+#### Kafka Server
+
+| Key    | UX Label | Required | Description                                |
+|--------|----------|----------|--------------------------------------------|
+| host   | Host     | Yes      | The bootstrap server of the kafka cluster. |
+| format | Format   | No       | The format of the messages.                |
+
+#### Amazon Kinesis
+
+| Key    | UX Label | Required | Description                          |
+|--------|----------|----------|--------------------------------------|
+| stream | Stream   | Yes      | The name of the Kinesis data stream. |
+| region | Region   | No       | AWS region.                          |
+| format | Format   | No       | The format of the record             |
+
+#### Local Files
+
+| Key    | UX Label | Required | Description                                        |
+|--------|----------|----------|----------------------------------------------------|
+| path   | Path     | Yes      | The relative or absolute path to the data file(s). |
+| format | Format   | Yes      | The format of the file(s)                          |
+
+#### MySQL Server
+
+| Key      | UX Label | Required | Description                                     |
+|----------|----------|----------|-------------------------------------------------|
+| host     | Host     | Yes      | The host of the MySql server.                   |
+| port     | Port     | No       | The port of the MySql server. Defaults to 3306. |
+| database | Database | Yes      | The name of the database.                       |
+
+#### Oracle
+
+| Key         | UX Label     | Required | Description                    |
+|-------------|--------------|----------|--------------------------------|
+| host        | Host         | Yes      | The host to the Oracle server  |
+| port        | Port         | Yes      | The port to the Oracle server. |
+| serviceName | Service Name | Yes      | The name of the service.       |
+
+#### PostgreSQL
+[PostgreSQL](https://www.postgresql.org/) is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
+
+| Key      | UX Label | Required | Description                                          |
+|----------|----------|----------|------------------------------------------------------|
+| host     | Host     | Yes      | The host to the PostgreSQL server                    |
+| port     | Port     | No       | The port to the PostgreSQL server. Defaults to 5432. |
+| database | Database | Yes      | The name of the database.                            |
+| schema   | Schema   | No       | The name of the schema in the database.              |
+
+#### Presto Server
+
+| Key     | UX Label | Required | Description                   |
+|---------|----------|----------|-------------------------------|
+| host    | Host     | Yes      | The host to the Presto server |
+| catalog | Catalog  | No       | The name of the catalog.      |
+| schema  | Schema   | No       | The name of the schema.       |
+
+#### Google Pub/Sub
+[Google Cloud](https://cloud.google.com/pubsub) service to Ingest events for streaming into BigQuery, data lakes or operational databases.
+
+| Key     | UX Label | Required | Description           |
+|---------|----------|----------|-----------------------|
+| project | Project  | Yes      | The GCP project name. |
+
+#### Amazon Redshift Server
+[Amazon Redshift](https://aws.amazon.com/redshift/) is a power data driven decisions with the best price-performance cloud data warehouse.
+
+| Key      | UX Label | Required | Description                               |
+|----------|----------|----------|-------------------------------------------|
+| database | Database | Yes      | The name of the database.                 |
+| schema   | Schema   | Yes      | The name of the schema.                   |
+| host     | Host     | No       | An optional string describing the server. |
+| region   | Region   | No       | AWS region of Redshift server.            |
+| account  | Account  | No       | The account used by the server.           |
+
+#### Amazon S3 Server and Compatible Servers
+[Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) is an object storage service offering industry-leading scalability, data availability, security, and performance. Millions of customers of all sizes and industries store, manage, analyze, and protect any amount of data for virtually any use case, such as data lakes, cloud-native applications, and mobile apps. Other vendors have implemented a compatible implementation of S3.
+
+| Key         | UX Label     | Required | Description                                                                       |
+|-------------|--------------|----------|-----------------------------------------------------------------------------------|
+| location    | Location     | Yes      | S3 URL, starting with `s3://`                                                     |
+| endpointUrl | Endpoint URL | No       | The server endpoint for S3-compatible servers.                                    |
+| format      | Format       | No       | File format.                                                                      |
+| delimiter   | Delimiter    | No       | Only for format = json. How multiple json documents are delimited within one file |
+
+#### SFTP Server
+Secure File Transfer Protocol (SFTP) is a network protocol that enables secure and encrypted file transfers between a client and a server.
+
+| Key       | UX Label  | Required | Description                                                                       |
+|-----------|-----------|----------|-----------------------------------------------------------------------------------|
+| location  | Location  | Yes      | SFTP URL, starting with `sftp://`. The URL should include the port number.        |
+| format    | Format    | No       | File format.                                                                      |
+| delimiter | Delimiter | No       | Only for format = json. How multiple json documents are delimited within one file |
+
+#### Snowflake
+
+| Key       | UX Label  | Required | Description                                                                 |
+|-----------|-----------|----------|-----------------------------------------------------------------------------|
+| host      | Host      | Yes      | The host to the Snowflake server                                            |
+| port      | Port      | Yes      | The port to the Snowflake server.                                           |
+| account   | Account   | Yes      | The Snowflake account used by the server.                                   |
+| database  | Database  | Yes      | The name of the database.                                                   |
+| warehouse | Warehouse | Yes      | The name of the cluster of resources that is a Snowflake virtual warehouse. |
+| schema    | Schema    | Yes      | The name of the schema.                                                     |
+
+#### Microsoft SQL Server
+[Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) is a proprietary relational database management system developed by Microsoft. 
+
+| Key      | UX Label | Required | Description                                        |
+|----------|----------|----------|----------------------------------------------------|
+| host     | Host     | Yes      | The host to the database server                    |
+| port     | Port     | No       | The port to the database server. Defaults to 1433. |
+| database | Database | Yes      | The name of the database.                          |
+| schema   | Schema   | Yes      | The name of the schema in the database.            |
+
+#### Synapse Server
+
+| Key      | UX Label | Required | Description                     |
+|----------|----------|----------|---------------------------------|
+| host     | Host     | Yes      | The host of the Synapse server. |
+| port     | Port     | Yes      | The port of the Synapse server. |
+| database | Database | Yes      | The name of the database.       |
+
+#### Trino Server
+
+| Key     | UX Label | Required | Description                             |
+|---------|----------|----------|-----------------------------------------|
+| host    | Host     | Yes      | The Trino host URL.                     |
+| port    | Port     | Yes      | The Trino port.                         |
+| catalog | Catalog  | Yes      | The name of the catalog.                |
+| schema  | Schema   | Yes      | The name of the schema in the database. |
+
+#### Vertica Server
+
+| Key      | UX Label | Required | Description                     |
+|----------|----------|----------|---------------------------------|
+| host     | Host     | Yes      | The host of the Vertica server. |
+| port     | Port     | Yes      | The port of the Vertica server. |
+| database | Database | Yes      | The name of the database.       |
+| schema   | Schema   | Yes      | The name of the schema.         |
+
+#### Custom Server
+
+| Key         | UX Label          | Required | Description                                                         |
+|-------------|-------------------|----------|---------------------------------------------------------------------|
+| account     | Account           | No       | Account used by the server.                                         |
+| catalog     | Catalog           | No       | Name of the catalog.                                                |
+| database    | Database          | No       | Name of the database.                                               |
+| dataset     | Dataset           | No       | Name of the dataset.                                                |
+| delimiter   | Delimiter         | No       | Delimiter.                                                          |
+| endpointUrl | Endpoint URL      | No       | Server endpoint.                                                    |
+| format      | Format            | No       | File format.                                                        |
+| host        | Host              | No       | Host name or IP address.                                            |
+| location    | Location          | No       | A URL to a location.                                                |
+| path        | Path              | No       | Relative or absolute path to the data file(s).                      |
+| port        | Port              | No       | Port to the server. No default value is assumed for custom servers. |
+| project     | Project           | No       | Project name.                                                       |
+| region      | Region            | No       | Cloud region.                                                       |
+| regionName  | Region Name       | No       | Region name.                                                        |
+| schema      | Schema            | No       | Name of the schema.                                                 |
+| serviceName | Service Name      | No       | Name of the service.                                                |
+| stagingDir  | Staging Directory | No       | Staging directory.                                                  |
+| stream      | Stream            | No       | Name of the data stream.                                            |
+| warehouse   | Warehouse         | No       | Name of the cluster or warehouse.                                   |
+
+If you need another property, use [custom properties](#custom-properties).
+
+
+## Custom Properties
+This section covers custom properties you may find in a data contract.
 
 ### Example
 
@@ -505,11 +1064,7 @@ customProperties:
     value: property.value
   - property: dataprocClusterName # Used for specific applications like Elevate
     value: [cluster name]
-
-systemInstance: instance.ClimateQuantum.org
-contractCreatedTs: 2022-11-15 02:59:43
 ```
-
 
 ### Definitions
 
@@ -518,10 +1073,27 @@ contractCreatedTs: 2022-11-15 02:59:43
 | customProperties          | Custom Properties    | No       | A list of key/value pairs for custom properties. Initially created to support the REF ruleset property.           |
 | customProperties.property | Property             | No       | The name of the key. Names should be in camel case–the same as if they were permanent properties in the contract. |
 | customProperties.value    | Value                | No       | The value of the key.                                                                                             |
-| systemInstance            | System Instance      | No       | System Instance name where the dataset resides.                                                                   |
-| contractCreatedTs         | Contract Created UTC | No       | Timestamp in UTC of when the data contract was created.                                                           |
 
+
+## Other Properties
+This section covers other properties you may find in a data contract.
+
+### Example
+
+```YAML
+contractCreatedTs: 2024-09-17T11:58:08Z
+```
+
+
+### Other properties definition
+
+| Key                       | UX label             | Required | Description                                                             |
+|---------------------------|----------------------|----------|-------------------------------------------------------------------------|
+| contractCreatedTs         | Contract Created UTC | No       | Timestamp in UTC of when the data contract was created, using ISO 8601. |
 
 ## Full example
 
 [Check full example here.](examples/all/full-example.odcs.yaml)
+
+
+All trademarks are the property of their respective owners. 

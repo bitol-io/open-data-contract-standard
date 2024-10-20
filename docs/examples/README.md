@@ -1,7 +1,7 @@
 # Examples of Data Contracts
 
 ## Executive summary
-This folder contains mainly excerpt of data contracts to illustrate specific sections & behaviors.
+This folder contains mainly excerpts of data contracts to illustrate specific sections & behaviors.
 
 ## Table of content
 * [Full example](#full-example)
@@ -9,6 +9,7 @@ This folder contains mainly excerpt of data contracts to illustrate specific sec
 * [Datasets & schema](#dataset-and-schema)
 * [Data quality](#data-quality)
 * [Pricing](#pricing)
+* [Server](#server)
 * [Stakeholders](#stakeholders)
 * [Roles](#roles)
 * [Service-level agreement](#service-level-agreement)
@@ -25,6 +26,8 @@ This folder contains mainly excerpt of data contracts to illustrate specific sec
 
 ## Dataset and schema
 
+- [All schema types](schema/all-schema-types.odcs.yaml)
+- [Data types](data-types/all-data-types.odcs.yaml)
 - [Table with single column](schema/table-column.odcs.yaml)
 - [Table with columns and partitioning](schema/table-columns-with-partition.odcs.yaml)
 
@@ -32,10 +35,16 @@ This folder contains mainly excerpt of data contracts to illustrate specific sec
 
 - [Column accuracy](quality/column-accuracy.odcs.yaml)
 - [Column completeness](quality/column-completeness.odcs.yaml)
+- [Column custom](quality/column-custom.odcs.yaml)
 - [Column validity](quality/column-validity.odcs.yaml)
 
+## Server
+
+- [Azure server](server/azure-server.odcs.yaml)
+- [Kafka server](server/kafka-server.odcs.yaml)
+
 ## Pricing
-This section covers pricing when you bill your customer for using this data product. Pricing is experimental in v2.2.0 of the data contract.
+This section covers pricing when you bill your customer for using this data product. 
 
 ## Stakeholders
 
