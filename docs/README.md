@@ -643,6 +643,7 @@ roles:
 | roles.access               | Access              | No       | The type of access provided by the IAM role.                         |
 | roles.firstLevelApprovers  | 1st Level Approvers | No       | The name(s) of the first-level approver(s) of the role.              |
 | roles.secondLevelApprovers | 2nd Level Approvers | No       | The name(s) of the second-level approver(s) of the role.             |
+| roles.customProperties              | Custom Properties   | No       | Any custom properties.                                               |
 
 
 ## Service-Level Agreement (SLA)
