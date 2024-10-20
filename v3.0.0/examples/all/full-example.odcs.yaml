@@ -1,0 +1,233 @@
+# What's this data contract about?
+domain: seller # Domain
+dataProduct: my quantum # Data product name
+version: 1.1.0 # Version (follows semantic versioning)
+status: current
+id: 53581432-6c55-4ba2-a65f-72344a91553a
+
+# Lots of information
+description:
+  purpose: Views built on top of the seller tables.
+  limitations: Data based on seller perspective, no buyer information
+  usage: Predict sales over time
+tenant: ClimateQuantumInc
+
+kind: DataContract
+apiVersion: v3.0.0 # Standard version (follows semantic versioning)
+
+# Infrastructure & servers
+servers:
+  - server: my-postgres
+    type: postgres
+    host: localhost
+    port: 5432
+    database: pypl-edw
+    schema: pp_access_views
+
+# Dataset, schema and quality
+schema:
+  - name: tbl
+    physicalName: tbl_1
+    physicalType: table
+    description: Provides core payment metrics
+    authoritativeDefinitions:
+      - url: https://catalog.data.gov/dataset/air-quality
+        type: businessDefinition
+      - url: https://youtu.be/jbY1BKFj9ec
+        type: videoTutorial
+    tags: [ ]
+    dataGranularityDescription: Aggregation on columns txn_ref_dt, pmt_txn_id
+    properties:
+      - name: txn_ref_dt
+        primaryKey: false
+        primaryKeyPosition: -1
+        businessName: transaction reference date
+        logicalType: date
+        physicalType: date
+        required: false
+        description: Reference date for transaction
+        partitioned: true
+        partitionKeyPosition: 1
+        criticalDataElement: false
+        tags: [ ]
+        classification: public
+        transformSourceObjects:
+          - table_name_1
+          - table_name_2
+          - table_name_3
+        transformLogic: sel t1.txn_dt as txn_ref_dt from table_name_1 as t1, table_name_2 as t2, table_name_3 as t3 where t1.txn_dt=date-3
+        transformDescription: defines the logic in business terms; logic for dummies
+        examples:
+          - "2022-10-03"
+          - "2020-01-28"
+        customProperties:
+          - property: anonymizationStrategy
+            value: none
+      - name: rcvr_id
+        primaryKey: true
+        primaryKeyPosition: 1
+        businessName: receiver id
+        logicalType: string
+        physicalType: varchar(18)
+        required: false
+        description: A description for column rcvr_id.
+        partitioned: false
+        partitionKeyPosition: -1
+        criticalDataElement: false
+        tags: [ ]
+        classification: restricted
+      - name: rcvr_cntry_code
+        primaryKey: false
+        primaryKeyPosition: -1
+        businessName: receiver country code
+        logicalType: string
+        physicalType: varchar(2)
+        required: false
+        description: Country code
+        partitioned: false
+        partitionKeyPosition: -1
+        criticalDataElement: false
+        tags: [ ]
+        classification: public
+        authoritativeDefinitions:
+          - url: https://collibra.com/asset/742b358f-71a5-4ab1-bda4-dcdba9418c25
+            type: businessDefinition
+          - url: https://github.com/myorg/myrepo
+            type: transformationImplementation
+          - url: jdbc:postgresql://localhost:5432/adventureworks/tbl_1/rcvr_cntry_code
+            type: implementation
+        encryptedName: rcvr_cntry_code_encrypted
+        quality:
+          - rule: nullCheck
+            description: column should not contain null values
+            dimension: completeness # dropdown 7 values
+            type: library
+            severity: error
+            businessImpact: operational
+            schedule: 0 20 * * *
+            scheduler: cron
+            customProperties:
+              - property: FIELD_NAME
+                value:
+              - property: COMPARE_TO
+                value:
+              - property: COMPARISON_TYPE
+                value: Greater than
+    quality:
+      - rule: countCheck
+        type: library
+        description: Ensure row count is within expected volume range
+        dimension: completeness
+        method: reconciliation
+        severity: error
+        businessImpact: operational
+        schedule: 0 20 * * *
+        scheduler: cron
+    customProperties:
+      - property: business-key
+        value:
+          - txn_ref_dt
+          - rcvr_id
+
+
+# Pricing
+price:
+  priceAmount: 9.95
+  priceCurrency: USD
+  priceUnit: megabyte
+
+
+# Team
+team:
+  - username: ceastwood
+    role: Data Scientist
+    dateIn: "2022-08-02"
+    dateOut: "2022-10-01"
+    replacedByUsername: mhopper
+  - username: mhopper
+    role: Data Scientist
+    dateIn: "2022-10-01"
+  - username: daustin
+    role: Owner
+    comment: Keeper of the grail
+    dateIn: "2022-10-01"
+
+
+# Roles
+roles:
+  - role: microstrategy_user_opr
+    access: read
+    firstLevelApprovers: Reporting Manager
+    secondLevelApprovers: 'mandolorian'
+  - role: bq_queryman_user_opr
+    access: read
+    firstLevelApprovers: Reporting Manager
+    secondLevelApprovers: na
+  - role: risk_data_access_opr
+    access: read
+    firstLevelApprovers: Reporting Manager
+    secondLevelApprovers: 'dathvador'
+  - role: bq_unica_user_opr
+    access: write
+    firstLevelApprovers: Reporting Manager
+    secondLevelApprovers: 'mickey'
+
+# SLA
+slaDefaultElement: tab1.txn_ref_dt
+slaProperties:
+  - property: latency # Property, see list of values in DP QoS
+    value: 4
+    unit: d # d, day, days for days; y, yr, years for years
+    element: tab1.txn_ref_dt # This would not be needed as it is the same table.column as the default one
+  - property: generalAvailability
+    value: "2022-05-12T09:30:10-08:00"
+  - property: endOfSupport
+    value: "2032-05-12T09:30:10-08:00"
+  - property: endOfLife
+    value: "2042-05-12T09:30:10-08:00"
+  - property: retention
+    value: 3
+    unit: y
+    element: tab1.txn_ref_dt
+  - property: frequency
+    value: 1
+    valueExt: 1
+    unit: d
+    element: tab1.txn_ref_dt
+  - property: timeOfAvailability
+    value: 09:00-08:00
+    element: tab1.txn_ref_dt
+    driver: regulatory # Describes the importance of the SLA: [regulatory|analytics|operational|...]
+  - property: timeOfAvailability
+    value: 08:00-08:00
+    element: tab1.txn_ref_dt
+    driver: analytics
+
+
+# Support
+support:
+  - channel: '#product-help' # Simple Slack communication channel
+    tool: slack
+    url: https://aidaug.slack.com/archives/C05UZRSBKLY
+  - channel: datacontract-ann # Simple distribution list
+    tool: email
+    url: mailto:datacontract-ann@bitol.io
+  - channel: Feedback  # Product Feedback
+    description: General Product Feedback (Public)
+    url: https://product-feedback.com
+
+# Tags
+tags:
+  - transactions
+
+
+# Custom properties
+customProperties:
+  - property: refRulesetName
+    value: gcsc.ruleset.name
+  - property: somePropertyName
+    value: property.value
+  - property: dataprocClusterName # Used for specific applications like Elevate
+    value: [ cluster name ]
+
+contractCreatedTs: "2022-11-15T02:59:43+00:00"
