@@ -2,7 +2,7 @@ name: docs-site-deploy
 on:
   push:
     tags:
-      - *
+      - '*'
     branches:
       - main
 permissions:
