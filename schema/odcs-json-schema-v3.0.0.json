@@ -2228,9 +2228,6 @@
         "secondLevelApprovers": {
           "type": "string",
           "description": "The name(s) of the second-level approver(s) of the role."
-        },
-        "customProperties": {
-          "$ref": "#/$defs/CustomProperties"
         }
       },
       "required": ["role"]
