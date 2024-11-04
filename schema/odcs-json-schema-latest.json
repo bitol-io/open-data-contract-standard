@@ -37,8 +37,7 @@
     },
     "status": {
       "type": "string",
-      "description": "Current status of the dataset. Valid values are `production`, `test`, or `development`.",
-      "examples": ["production", "test", "development"]
+      "description": "Current status of the dataset."
     },
     "servers": {
       "type": "array",

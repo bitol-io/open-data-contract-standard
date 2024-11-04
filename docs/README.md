@@ -64,21 +64,21 @@ tags: null
 
 ### Definitions
 
-| Key                     | UX label         | Required | Description                                                                                    |
-|-------------------------|------------------|----------|------------------------------------------------------------------------------------------------|
-| apiVersion              | Standard version | Yes      | Version of the standard used to build data contract. Default value is `v3.0.0`.                |
-| kind                    | Kind             | Yes      | The kind of file this is. Valid value is `DataContract`.                                       |
-| id                      | ID               | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.        |
-| name                    | Name             | No       | Name of the data contract.                                                                     |
-| version                 | Version          | Yes      | Current version of the data contract.                                                          |
-| status                  | Status           | Yes      | Current status of the data contract. Valid values are `production`, `test`, or `development`.  |
-| tenant                  | Tenant           | No       | Indicates the property the data is primarily associated with. Value is case insensitive.       |
-| domain                  | Domain           | No       | Name of the logical data domain.                                                               |
-| dataProduct             | Data Product     | No       | Name of the data product.                                                                      |
-| description             | Description      | No       | Object containing the descriptions.                                                            |
-| description.purpose     | Purpose          | No       | Intended purpose for the provided data.                                                        |
-| description.limitations | Limitations      | No       | Technical, compliance, and legal limitations for data use.                                     |
-| description.usage       | Usage            | No       | Recommended usage of the data.                                                                 |
+| Key                     | UX label         | Required | Description                                                                                   |
+|-------------------------|------------------|----------|-----------------------------------------------------------------------------------------------|
+| apiVersion              | Standard version | Yes      | Version of the standard used to build data contract. Default value is `v3.0.0`.               |
+| kind                    | Kind             | Yes      | The kind of file this is. Valid value is `DataContract`.                                      |
+| id                      | ID               | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.       |
+| name                    | Name             | No       | Name of the data contract.                                                                    |
+| version                 | Version          | Yes      | Current version of the data contract.                                                         |
+| status                  | Status           | Yes      | Current status of the data contract. |
+| tenant                  | Tenant           | No       | Indicates the property the data is primarily associated with. Value is case insensitive.      |
+| domain                  | Domain           | No       | Name of the logical data domain.                                                              |
+| dataProduct             | Data Product     | No       | Name of the data product.                                                                     |
+| description             | Description      | No       | Object containing the descriptions.                                                           |
+| description.purpose     | Purpose          | No       | Intended purpose for the provided data.                                                       |
+| description.limitations | Limitations      | No       | Technical, compliance, and legal limitations for data use.                                    |
+| description.usage       | Usage            | No       | Recommended usage of the data.                                                                |
 
 
 ## Schema
