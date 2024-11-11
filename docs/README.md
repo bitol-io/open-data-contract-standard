@@ -64,21 +64,24 @@ tags: null
 
 ### Definitions
 
-| Key                     | UX label         | Required | Description                                                                                   |
-|-------------------------|------------------|----------|-----------------------------------------------------------------------------------------------|
-| apiVersion              | Standard version | Yes      | Version of the standard used to build data contract. Default value is `v3.0.0`.               |
-| kind                    | Kind             | Yes      | The kind of file this is. Valid value is `DataContract`.                                      |
-| id                      | ID               | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.       |
-| name                    | Name             | No       | Name of the data contract.                                                                    |
-| version                 | Version          | Yes      | Current version of the data contract.                                                         |
-| status                  | Status           | Yes      | Current status of the data contract. |
-| tenant                  | Tenant           | No       | Indicates the property the data is primarily associated with. Value is case insensitive.      |
-| domain                  | Domain           | No       | Name of the logical data domain.                                                              |
-| dataProduct             | Data Product     | No       | Name of the data product.                                                                     |
-| description             | Description      | No       | Object containing the descriptions.                                                           |
-| description.purpose     | Purpose          | No       | Intended purpose for the provided data.                                                       |
-| description.limitations | Limitations      | No       | Technical, compliance, and legal limitations for data use.                                    |
-| description.usage       | Usage            | No       | Recommended usage of the data.                                                                |
+| Key                                  | UX label                  | Required | Description                                                                                                                                                                                |
+|--------------------------------------|---------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| apiVersion                           | Standard version          | Yes      | Version of the standard used to build data contract. Default value is `v3.0.0`.                                                                                                            |
+| kind                                 | Kind                      | Yes      | The kind of file this is. Valid value is `DataContract`.                                                                                                                                   |
+| id                                   | ID                        | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.                                                                                                    |
+| name                                 | Name                      | No       | Name of the data contract.                                                                                                                                                                 |
+| version                              | Version                   | Yes      | Current version of the data contract.                                                                                                                                                      |
+| status                               | Status                    | Yes      | Current status of the data contract.                                                                                                                                                       |
+| tenant                               | Tenant                    | No       | Indicates the property the data is primarily associated with. Value is case insensitive.                                                                                                   |
+| domain                               | Domain                    | No       | Name of the logical data domain.                                                                                                                                                           |
+| dataProduct                          | Data Product              | No       | Name of the data product.                                                                                                                                                                  |
+| authoritativeDefinitions | Authoritative Definitions | No       | List of links to sources that provide more details on the data contract.                                                                                                                   |
+| description                          | Description               | No       | Object containing the descriptions.                                                                                                                                                        |
+| description.purpose                  | Purpose                   | No       | Intended purpose for the provided data.                                                                                                                                                    |
+| description.limitations              | Limitations               | No       | Technical, compliance, and legal limitations for data use.                                                                                                                                 |
+| description.usage                    | Usage                     | No       | Recommended usage of the data.                                                                                                                                                             |
+| description.authoritativeDefinitions | Authoritative Definitions | No       | List of links to sources that provide more details on the dataset; examples would be a link to privacy statement, terms and conditions, license agreements, data catalog, or another tool. |
+| description.customProperties         | Custom Properties         | No       | Custom properties that are not part of the standard.                                                                                                                                       |
 
 
 ## Schema
@@ -214,16 +217,16 @@ schema:
 
 #### Applicable to Elements (either Objects or Properties)
 
-| Key                      | UX label                     | Required | Description                                                                                                                                                                                                            |
-|--------------------------|------------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| name                     | Name                         | Yes      | Name of the element.                                                                                                                                                                                                   |
-| physicalName             | Physical Name                | No       | Physical name.                                                                                                                                                                                                         |
-| description              | Description                  | No       | Description of the element.                                                                                                                                                                                            |
-| businessName             | Business Name                | No       | The business name of the element.                                                                                                                                                                                      |
-| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more details on the table; examples would be a link to an external definition, a training video, a GitHub repo, Collibra, or another tool. See `authoritativeDefinitions` below. |
-| quality                  | Quality                      | No       | List of data quality attributes.                                                                                                                                                                                       |
-| tags                     | Tags                         | No       | A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level.                                                                                                    |
-| customProperties         | Custom Properties            | No       | Custom properties that are not part of the standard.                                                                                                                                                                   |
+| Key                      | UX label                     | Required | Description                                                                                                                                                                                                           |
+|--------------------------|------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| name                     | Name                         | Yes      | Name of the element.                                                                                                                                                                                                  |
+| physicalName             | Physical Name                | No       | Physical name.                                                                                                                                                                                                        |
+| description              | Description                  | No       | Description of the element.                                                                                                                                                                                           |
+| businessName             | Business Name                | No       | The business name of the element.                                                                                                                                                                                     |
+| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more details on the table; examples would be a link to an external definition, a training video, a git repo, data catalog, or another tool. See `authoritativeDefinitions` below. |
+| quality                  | Quality                      | No       | List of data quality attributes.                                                                                                                                                                                      |
+| tags                     | Tags                         | No       | A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level.                                                                                                   |
+| customProperties         | Custom Properties            | No       | Custom properties that are not part of the standard.                                                                                                                                                                  |
 
 #### Applicable to Objects
 
@@ -734,7 +737,7 @@ servers:
 - **description**: A description of the server.
 - **environment**: The environment where the server operates (e.g., `prod`, `dev`, `uat`). There are no set values.
 - **roles**: An optional array of roles that have access to the server.
-- **customProperties**: Any additional custom properties specific to the server.
+- **customProperties**: Any additional custom properties specific to the server that are not part of the standard.
 
 ### Specific Server Properties
 
