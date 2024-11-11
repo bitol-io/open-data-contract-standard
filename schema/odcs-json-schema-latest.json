@@ -37,7 +37,10 @@
     },
     "status": {
       "type": "string",
-      "description": "Current status of the dataset."
+      "description": "Current status of the dataset.",
+      "examples": [
+        "proposed", "in development", "active", "deprecated", "retired"
+      ]
     },
     "servers": {
       "type": "array",
