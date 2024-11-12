@@ -71,7 +71,7 @@ tags: null
 | id                      | ID               | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.                                    |
 | name                    | Name             | No       | Name of the data contract.                                                                                                 |
 | version                 | Version          | Yes      | Current version of the data contract.                                                                                      |
-| status                  | Status           | Yes      | Current status of the data contract. Examples are "proposed", "in development", "active", "deprecated", "retired". |
+| status                  | Status           | Yes      | Current status of the data contract. Examples are "proposed", "draft", "active", "deprecated", "retired". |
 | tenant                  | Tenant           | No       | Indicates the property the data is primarily associated with. Value is case insensitive.                                   |
 | domain                  | Domain           | No       | Name of the logical data domain.                                                                                           |
 | dataProduct             | Data Product     | No       | Name of the data product.                                                                                                  |
