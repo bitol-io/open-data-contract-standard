@@ -2,7 +2,7 @@ version: 1.0.0
 apiVersion: v3.0.0
 kind: DataContract
 id: abc123
-status: pending
+status: in development
 schema:
   - name: Orders
     physicalName: orders.avro.v1

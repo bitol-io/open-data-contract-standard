@@ -2,7 +2,7 @@
 domain: seller # Domain
 dataProduct: my quantum # Data product name
 version: 1.1.0 # Version (follows semantic versioning)
-status: current
+status: active
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 
 # Lots of information

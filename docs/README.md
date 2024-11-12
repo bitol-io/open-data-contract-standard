@@ -49,7 +49,7 @@ kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 name: seller_payments_v1
 version: 1.1.0 # Data Contract Version 
-status: production
+status: active
 domain: seller
 dataProduct: payments
 tenant: ClimateQuantumInc
@@ -71,7 +71,7 @@ tags: null
 | id                                   | ID                        | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.                                                                                                    |
 | name                                 | Name                      | No       | Name of the data contract.                                                                                                                                                                 |
 | version                              | Version                   | Yes      | Current version of the data contract.                                                                                                                                                      |
-| status                               | Status                    | Yes      | Current status of the data contract.                                                                                                                                                       |
+| status                               | Status                    | Yes      | Current status of the data contract. Examples are "proposed", "draft", "active", "deprecated", "retired".                                                                                                                                                      |
 | tenant                               | Tenant                    | No       | Indicates the property the data is primarily associated with. Value is case insensitive.                                                                                                   |
 | domain                               | Domain                    | No       | Name of the logical data domain.                                                                                                                                                           |
 | dataProduct                          | Data Product              | No       | Name of the data product.                                                                                                                                                                  |
@@ -82,6 +82,7 @@ tags: null
 | description.usage                    | Usage                     | No       | Recommended usage of the data.                                                                                                                                                             |
 | description.authoritativeDefinitions | Authoritative Definitions | No       | List of links to sources that provide more details on the dataset; examples would be a link to privacy statement, terms and conditions, license agreements, data catalog, or another tool. |
 | description.customProperties         | Custom Properties         | No       | Custom properties that are not part of the standard.                                                                                                                                       |
+
 
 
 ## Schema
