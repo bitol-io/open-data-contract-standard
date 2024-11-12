@@ -39,7 +39,7 @@
       "type": "string",
       "description": "Current status of the dataset.",
       "examples": [
-        "proposed", "in development", "active", "deprecated", "retired"
+        "proposed", "draft", "active", "deprecated", "retired"
       ]
     },
     "servers": {
