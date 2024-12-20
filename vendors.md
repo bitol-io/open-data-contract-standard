@@ -14,7 +14,7 @@ catalogs, data quality platforms, security tools, and more.
 * [Data Contract Playground](https://data-catering.github.io/data-contract-playground/) - Playground site for creating, exporting and validating data contracts
 * [DQC.ai | DQ PLATFORM](https://www.dqc.ai/dqc-platform) - [Enhancing Data Quality with ODCS: A Standard Ensured by the DQ Platform
   ](https://www.dqc.ai/post/enhancing-data-quality-with-odcs-a-standard-ensured-by-the-dq-platform)
-* [Meta Analysis](https://www.meta-analysis.fr/en/home/) - Governance repository & Data Catalog, supports ODCS via a [flexible metamodel and open API] (https://www.meta-analysis.fr/en/article-en/open-data-contract-standard-adoption/) . 
+* [Meta Analysis](https://www.meta-analysis.fr/en/home/) - Governance repository & Data Catalog, supports ODCS via a [flexible metamodel and open API](https://www.meta-analysis.fr/en/article-en/open-data-contract-standard-adoption/) . 
 
 ## Service providers
 
