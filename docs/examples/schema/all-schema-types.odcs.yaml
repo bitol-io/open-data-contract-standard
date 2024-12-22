@@ -3,7 +3,7 @@ kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 status: active
 name: my_quantum
-apiVersion: v3.0.0
+apiVersion: v3.0.1
 schema:
   - name: tbl
     logicalType: object

@@ -16,7 +16,7 @@ description:
 tenant: ClimateQuantumInc
 
 kind: DataContract
-apiVersion: v3.0.0 # Standard version (follows semantic versioning)
+apiVersion: v3.0.1 # Standard version (follows semantic versioning)
 
 # Infrastructure & servers
 servers:
