@@ -7,7 +7,7 @@ LIGHT_BLUE='\033[1;34m'
 NC='\033[0m'
 
 script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-json_schema_version=${JSON_SCHEMA_VERSION:-v3.0.0}
+json_schema_version=${JSON_SCHEMA_VERSION:-v3.0.1}
 num_failed_validation=0
 
 echo "Checking if $json_schema_version JSON schema is valid"
