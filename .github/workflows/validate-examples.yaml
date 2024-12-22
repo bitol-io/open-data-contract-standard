@@ -1,5 +1,7 @@
 name: validate-examples
 on:
+  pull_request:
+    branches: ["*"]
   push:
     branches: ["*"]
 
