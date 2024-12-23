@@ -82,7 +82,7 @@ schema:
       criticalDataElement: false
       primaryKey: false
       required: false
-      tag: ['sensitive']
+      tags: ['sensitive']
     - name: "loginid"
       logicalType: "string"
       physicalType: "varchar[256]"
@@ -116,7 +116,7 @@ schema:
       criticalDataElement: false
       primaryKey: false
       required: false
-      tag: ['sensitive']
+      tags: ['sensitive']
     - name: "maritalstatus"
       logicalType: "string"
       physicalType: "bpchar"
