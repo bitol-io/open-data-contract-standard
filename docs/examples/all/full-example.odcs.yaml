@@ -35,7 +35,7 @@ schema:
         type: businessDefinition
       - url: https://youtu.be/jbY1BKFj9ec
         type: videoTutorial
-    tags: [ ]
+    tags: [ 'finance', 'payments']
     dataGranularityDescription: Aggregation on columns txn_ref_dt, pmt_txn_id
     properties:
       - name: txn_ref_dt
@@ -74,7 +74,7 @@ schema:
         partitioned: false
         partitionKeyPosition: -1
         criticalDataElement: false
-        tags: [ ]
+        tags: [ 'uid' ]
         classification: restricted
       - name: rcvr_cntry_code
         primaryKey: false
