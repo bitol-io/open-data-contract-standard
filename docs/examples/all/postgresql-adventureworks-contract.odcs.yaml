@@ -1,10 +1,10 @@
 version: "1.0.0"
 apiVersion: "v3.0.0"
 id: "6aeafdc1-ed62-4c8f-bf0a-da1061c98cdb"
-status: "Development"
+status: active
 kind: "DataContract"
 description: {}
-schema:  
+schema:
   - name: "department"
     physicalName: "department"
     physicalType: "table"

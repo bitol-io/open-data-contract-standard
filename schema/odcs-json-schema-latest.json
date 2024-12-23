@@ -37,8 +37,10 @@
     },
     "status": {
       "type": "string",
-      "description": "Current status of the dataset. Valid values are `production`, `test`, or `development`.",
-      "examples": ["production", "test", "development"]
+      "description": "Current status of the dataset.",
+      "examples": [
+        "proposed", "draft", "active", "deprecated", "retired"
+      ]
     },
     "servers": {
       "type": "array",
@@ -66,6 +68,12 @@
         "limitations": {
           "type": "string",
           "description": "Limitations of the dataset."
+        },
+        "authoritativeDefinitions": {
+          "$ref": "#/$defs/AuthoritativeDefinitions"
+        },
+        "customProperties": {
+          "$ref": "#/$defs/CustomProperties"
         }
       }
     },
@@ -110,6 +118,9 @@
       "items": {
         "$ref": "#/$defs/ServiceLevelAgreementProperty"
       }
+    },
+    "authoritativeDefinitions": {
+      "$ref": "#/$defs/AuthoritativeDefinitions"
     },
     "customProperties": {
       "$ref": "#/$defs/CustomProperties"
@@ -2106,7 +2117,7 @@
     },
     "AuthoritativeDefinitions": {
       "type": "array",
-      "description": "List of links to sources that provide more details on the dataset; examples would be a link to an external definition, a training video, a GitHub repo, Collibra, or another tool. Authoritative definitions follow the same structure in the standard.",
+      "description": "List of links to sources that provide more details on the dataset; examples would be a link to an external definition, a training video, a git repo, data catalog, or another tool. Authoritative definitions follow the same structure in the standard.",
       "items": {
         "type": "object",
         "properties": {
@@ -2228,6 +2239,9 @@
         "secondLevelApprovers": {
           "type": "string",
           "description": "The name(s) of the second-level approver(s) of the role."
+        },
+        "customProperties": {
+          "$ref": "#/$defs/CustomProperties"
         }
       },
       "required": ["role"]

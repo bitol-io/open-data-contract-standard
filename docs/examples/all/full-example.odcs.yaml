@@ -2,7 +2,7 @@
 domain: seller # Domain
 dataProduct: my quantum # Data product name
 version: 1.1.0 # Version (follows semantic versioning)
-status: current
+status: active
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 
 # Lots of information
@@ -10,6 +10,9 @@ description:
   purpose: Views built on top of the seller tables.
   limitations: Data based on seller perspective, no buyer information
   usage: Predict sales over time
+  authoritativeDefinitions:
+    type: privacy-statement
+    url: https://example.com/gdpr.pdf
 tenant: ClimateQuantumInc
 
 kind: DataContract
