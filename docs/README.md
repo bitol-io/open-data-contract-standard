@@ -59,7 +59,7 @@ description:
   limitations: null
   usage: null
 
-tags: null
+tags: ['finance']
 ```
 
 ### Definitions
@@ -116,7 +116,7 @@ schema:
         type: businessDefinition
       - url: https://youtu.be/jbY1BKFj9ec
         type: videoTutorial
-    tags: null
+    tags: ['finance']
     dataGranularityDescription: Aggregation on columns txn_ref_dt, pmt_txn_id
     properties:
       - name: txn_ref_dt
@@ -218,16 +218,17 @@ schema:
 
 #### Applicable to Elements (either Objects or Properties)
 
-| Key                      | UX label                     | Required | Description                                                                                                                                                                                                           |
-|--------------------------|------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| name                     | Name                         | Yes      | Name of the element.                                                                                                                                                                                                  |
-| physicalName             | Physical Name                | No       | Physical name.                                                                                                                                                                                                        |
-| description              | Description                  | No       | Description of the element.                                                                                                                                                                                           |
-| businessName             | Business Name                | No       | The business name of the element.                                                                                                                                                                                     |
-| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more details on the table; examples would be a link to an external definition, a training video, a git repo, data catalog, or another tool. See `authoritativeDefinitions` below. |
-| quality                  | Quality                      | No       | List of data quality attributes.                                                                                                                                                                                      |
-| tags                     | Tags                         | No       | A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level.                                                                                                   |
-| customProperties         | Custom Properties            | No       | Custom properties that are not part of the standard.                                                                                                                                                                  |
+
+| Key                      | UX label                     | Required | Description                                                                                                                                                                                                                   |
+|--------------------------|------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| name                     | Name                         | Yes      | Name of the element.                                                                                                                                                                                                          |
+| physicalName             | Physical Name                | No       | Physical name.                                                                                                                                                                                                                |
+| description              | Description                  | No       | Description of the element.                                                                                                                                                                                                   |
+| businessName             | Business Name                | No       | The business name of the element.                                                                                                                                                                                             |
+| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more details on the table; examples would be a link to an external definition, a training video, a GitHub repo, Collibra, or another tool. See `authoritativeDefinitions` below.        |
+| quality                  | Quality                      | No       | List of data quality attributes.                                                                                                                                                                                              |
+| tags                     | Tags                         | No       | A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`. |
+| customProperties         | Custom Properties            | No       | Custom properties that are not part of the standard.                                                                                                                                                                          |
 
 #### Applicable to Objects
 
