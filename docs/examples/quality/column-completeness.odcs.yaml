@@ -13,6 +13,7 @@ schema:
         type: Reference definition on Data.gov
     dataGranularityDescription: Raw records
     physicalType: table
+    tags: ['nyc', 'regional']
     properties:
     - name: UniqueID
       primaryKey: true
