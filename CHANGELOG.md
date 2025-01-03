@@ -8,12 +8,13 @@ This document tracks the history and evolution of the **Open Data Contract Stand
 
 # v3.0.1 - 2024-12-22 - APPROVED
 
-* Added field `authoritativeDefinitions`
-* Added field `description.customProperties`
-* Added field `description.authoritativeDefinitions`
-* Added field `role.customProperties`
+* Added field `authoritativeDefinitions` into JSON schema
+* Added field `description.customProperties`  into JSON schema
+* Added field `description.authoritativeDefinitions`  into JSON schema
+* Added field `role.customProperties`  into JSON schema
 * Updated `status` field to include examples
 * Updated `authoritativeDefinitions` description to be vendor agnostic
+* Updated `tags` description and included examples
 
 # v3.0.0 - 2024-10-21 - APPROVED
 
