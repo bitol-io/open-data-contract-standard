@@ -2,7 +2,7 @@
 domain: seller # Domain
 dataProduct: my quantum # Data product name
 version: 1.1.0 # Version (follows semantic versioning)
-status: current
+status: active
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 
 # Lots of information
@@ -10,10 +10,13 @@ description:
   purpose: Views built on top of the seller tables.
   limitations: Data based on seller perspective, no buyer information
   usage: Predict sales over time
+  authoritativeDefinitions:
+    - type: privacy-statement
+      url: https://example.com/gdpr.pdf
 tenant: ClimateQuantumInc
 
 kind: DataContract
-apiVersion: v3.0.0 # Standard version (follows semantic versioning)
+apiVersion: v3.0.1 # Standard version (follows semantic versioning)
 
 # Infrastructure & servers
 servers:
@@ -35,7 +38,7 @@ schema:
         type: businessDefinition
       - url: https://youtu.be/jbY1BKFj9ec
         type: videoTutorial
-    tags: [ ]
+    tags: [ 'finance', 'payments']
     dataGranularityDescription: Aggregation on columns txn_ref_dt, pmt_txn_id
     properties:
       - name: txn_ref_dt
@@ -74,7 +77,7 @@ schema:
         partitioned: false
         partitionKeyPosition: -1
         criticalDataElement: false
-        tags: [ ]
+        tags: [ 'uid' ]
         classification: restricted
       - name: rcvr_cntry_code
         primaryKey: false
