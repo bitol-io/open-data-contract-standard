@@ -1,8 +1,8 @@
 version: 1.0.0
-apiVersion: v3.0.0
+apiVersion: v3.0.1
 kind: DataContract
 id: abc123
-status: pending
+status: in development
 servers:
   - server: my-azure
     type: azure

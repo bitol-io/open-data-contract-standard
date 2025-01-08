@@ -1,9 +1,9 @@
 version: 1.0.0
 kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
-status: current
+status: active
 name: my_quantum
-apiVersion: v3.0.0
+apiVersion: v3.0.1
 schema:
   - name: tbl
     logicalType: object
@@ -15,7 +15,7 @@ schema:
         type: businessDefinition
       - url: https://youtu.be/jbY1BKFj9ec
         type: videoTutorial
-    tags: []
+    tags: ['finance']
     dataGranularityDescription: Aggregation on columns txn_ref_dt, pmt_txn_id
     properties:
       - name: txn_ref_dt
