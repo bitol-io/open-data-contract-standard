@@ -16,9 +16,9 @@
     },
     "apiVersion": {
       "type": "string",
-      "default": "v3.0.0",
-      "description": "Version of the standard used to build data contract. Default value is v3.0.0.",
-      "enum": ["v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
+      "default": "v3.0.1",
+      "description": "Version of the standard used to build data contract. Default value is v3.0.1.",
+      "enum": ["v3.0.1", "v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
     },
     "id": {
       "type": "string",
@@ -37,8 +37,10 @@
     },
     "status": {
       "type": "string",
-      "description": "Current status of the dataset. Valid values are `production`, `test`, or `development`.",
-      "examples": ["production", "test", "development"]
+      "description": "Current status of the dataset.",
+      "examples": [
+        "proposed", "draft", "active", "deprecated", "retired"
+      ]
     },
     "servers": {
       "type": "array",
@@ -66,6 +68,12 @@
         "limitations": {
           "type": "string",
           "description": "Limitations of the dataset."
+        },
+        "authoritativeDefinitions": {
+          "$ref": "#/$defs/AuthoritativeDefinitions"
+        },
+        "customProperties": {
+          "$ref": "#/$defs/CustomProperties"
         }
       }
     },
@@ -110,6 +118,9 @@
       "items": {
         "$ref": "#/$defs/ServiceLevelAgreementProperty"
       }
+    },
+    "authoritativeDefinitions": {
+      "$ref": "#/$defs/AuthoritativeDefinitions"
     },
     "customProperties": {
       "$ref": "#/$defs/CustomProperties"
@@ -1901,7 +1912,8 @@
     },
     "Tags": {
       "type": "array",
-      "description": "A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level.",
+      "description": "A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`.",
+      "examples": ["finance", "sensitive", "employee_record"],
       "items": {
         "type": "string"
       }
@@ -2106,7 +2118,7 @@
     },
     "AuthoritativeDefinitions": {
       "type": "array",
-      "description": "List of links to sources that provide more details on the dataset; examples would be a link to an external definition, a training video, a GitHub repo, Collibra, or another tool. Authoritative definitions follow the same structure in the standard.",
+      "description": "List of links to sources that provide more details on the dataset; examples would be a link to an external definition, a training video, a git repo, data catalog, or another tool. Authoritative definitions follow the same structure in the standard.",
       "items": {
         "type": "object",
         "properties": {
@@ -2228,6 +2240,9 @@
         "secondLevelApprovers": {
           "type": "string",
           "description": "The name(s) of the second-level approver(s) of the role."
+        },
+        "customProperties": {
+          "$ref": "#/$defs/CustomProperties"
         }
       },
       "required": ["role"]

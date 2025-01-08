@@ -1,4 +1,4 @@
-apiVersion: v3.0.0
+apiVersion: v3.0.1
 kind: DataContract
 id: orders
 status: production
