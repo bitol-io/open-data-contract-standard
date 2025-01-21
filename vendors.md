@@ -19,4 +19,5 @@ catalogs, data quality platforms, security tools, and more.
 ## Service providers
 
 * [AbeaData](https://abeadata.com) - Consulting & training on data contracts.
+* [Andrew Jones](https://andrew-jones.com) Independant consulting & training on data contracts.
   
