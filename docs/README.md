@@ -722,7 +722,8 @@ Each server in the schema has the following structure:
 
 ```yaml
 servers:
-  - type: <server-type>
+  - server: my-server-name
+    type: <server-type>
     description: <server-description>
     environment: <server-environment>
     <server-type-specific-fields> # according to the server type
@@ -734,11 +735,14 @@ servers:
 
 #### Common Server Properties
 
-- **type**: The type of server. Valid values include various server technologies like `athena`, `bigquery`, `postgresql`, etc.
-- **description**: A description of the server.
-- **environment**: The environment where the server operates (e.g., `prod`, `dev`, `uat`). There are no set values.
-- **roles**: An optional array of roles that have access to the server.
-- **customProperties**: Any additional custom properties specific to the server that are not part of the standard.
+| Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                            |
+|------------------|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                              |
+| type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, databricks, denodo, dremio, duckdb, glue, cloudsql, db2, informix, kafka, kinesis, local, mysql, oracle, postgresql, postgres, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, custom. |
+| description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                             |
+| environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                 |
+| roles            | Roles             | No       | List of roles that have access to the server. Check [roles](#roles) section for more details.                                                                                                                                                                                                          |
+| customProperties | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                   |
 
 ### Specific Server Properties
 
