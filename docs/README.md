@@ -305,7 +305,7 @@ schema:
   - name: event_date
     logicalType: date
     logicalTypeOptions:
-      - format: "YYYY-MM-DD"
+      - format: "yyyy-MM-dd"
     examples:
       - "2024-07-10"
 
@@ -313,7 +313,7 @@ schema:
   - name: created_at
     logicalType: date
     logicalTypeOptions:
-      - format: "YYYY-MM-DDTHH:MM:SSZ"
+      - format: "yyyy-MM-ddTHH:mm:ssZ"
     examples:
       - "2024-03-10T14:22:35Z"
 
@@ -321,7 +321,7 @@ schema:
   - name: event_start_time
     logicalType: date
     logicalTypeOptions:
-      - format: "HH:MM:SS"
+      - format: "HH:mm:ss"
     examples:
       - "08:30:00"
 
