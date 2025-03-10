@@ -289,6 +289,44 @@ Additional metadata options to more accurately define the data type.
 | string         | minLength        | Minimum Length     | No       | Minimum length of the string.                                                                                                                                                                         |
 | string         | pattern          | Pattern            | No       | Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (https://262.ecma-international.org/5.1/#sec-15.10.1).                                              |
 
+#### Expressing Date / Datetime / Timezone information
+
+Given the complexity of handling various date and time formats (e.g., date, datetime, time, timestamp, timestamp with and without timezone), the existing `logicalType` options currently support only `date`. To specify additional temporal details, `logicalType` should be used in conjunction with `logicalTypeOptions.format` to define the desired format.
+
+``` yaml
+version: 1.0.0
+kind: DataContract
+id: 53581432-6c55-4ba2-a65f-72344a91553a
+status: active
+name: date_example
+apiVersion: v3.0.1
+schema:
+  # Date Only 
+  - name: event_date
+    logicalType: date
+    logicalTypeOptions:
+      - format: "YYYY-MM-DD"
+    examples:
+      - "2024-07-10"
+
+  # Date & Time (UTC)  
+  - name: created_at
+    logicalType: date
+    logicalTypeOptions:
+      - format: "YYYY-MM-DDTHH:MM:SSZ"
+    examples:
+      - "2024-03-10T14:22:35Z"
+
+  # Time Only 
+  - name: event_start_time
+    logicalType: date
+    logicalTypeOptions:
+      - format: "HH:MM:SS"
+    examples:
+      - "08:30:00"
+
+```
+
 ### Authoritative definitions
 
 Reference to an external definition on element logic or values.
