@@ -6,6 +6,10 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 This document tracks the history and evolution of the **Open Data Contract Standard**.
 
+# v3.0.2
+
+* Added field `physicalName` for the properties in JSON schema.
+
 # v3.0.1 - 2024-12-22 - APPROVED
 
 * Added field `authoritativeDefinitions` into JSON schema

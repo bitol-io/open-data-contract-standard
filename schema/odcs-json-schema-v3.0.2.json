@@ -1555,6 +1555,11 @@
           "type": "string",
           "description": "The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT."
         },
+        "physicalName": {
+          "type": "string",
+          "description": "Physical name.",
+          "examples": ["col_str_a"]
+        },
         "required": {
           "type": "boolean",
           "default": false,
