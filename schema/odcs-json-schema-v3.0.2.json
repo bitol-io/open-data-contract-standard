@@ -16,9 +16,9 @@
     },
     "apiVersion": {
       "type": "string",
-      "default": "v3.0.1",
-      "description": "Version of the standard used to build data contract. Default value is v3.0.1.",
-      "enum": ["v3.0.1", "v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
+      "default": "v3.0.2",
+      "description": "Version of the standard used to build data contract. Default value is v3.0.2.",
+      "enum": ["v3.0.2","v3.0.1", "v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
     },
     "id": {
       "type": "string",
