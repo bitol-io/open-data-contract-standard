@@ -9,6 +9,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
 # v3.0.2
 
 * Added field `physicalName` for the properties in JSON schema.
+* Explicitly specifies `YYYY-MM-DDTHH:mm:ss.SSSZ` for default date format.
 
 # v3.0.1 - 2024-12-22 - APPROVED
 
