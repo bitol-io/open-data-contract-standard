@@ -291,7 +291,7 @@ Additional metadata options to more accurately define the data type.
 
 #### Expressing Date / Datetime / Timezone information
 
-Given the complexity of handling various date and time formats (e.g., date, datetime, time, timestamp, timestamp with and without timezone), the existing `logicalType` options currently support only `date`. To specify additional temporal details, `logicalType` should be used in conjunction with `logicalTypeOptions.format` to define the desired format.
+Given the complexity of handling various date and time formats (e.g., date, datetime, time, timestamp, timestamp with and without timezone), the existing `logicalType` options currently support only `date`. To specify additional temporal details, `logicalType` should be used in conjunction with `logicalTypeOptions.format`  or `physicalType` to define the desired format. Using `physicalType` allows for definition of your data-source specific data type.  
 
 ``` yaml
 version: 1.0.0
@@ -324,6 +324,15 @@ schema:
       - format: "HH:mm:ss"
     examples:
       - "08:30:00"
+
+    # Physical Type with Date & Time (UTC)
+  - name: event_date
+    logicalType: date
+    physicalType: DATETIME
+    logicalTypeOptions:
+      - format: yyyy-MM-ddTHH:mm:ssZ"
+    examples:
+      - "2024-03-10T14:22:35Z"
 
 ```
 
