@@ -642,7 +642,7 @@ team:
     dateIn: 2022-10-01
   - username: daustin
     role: Owner
-    comment: Keeper of the grail
+    description: Keeper of the grail
     name: David Austin
     dateIn: 2022-10-01
 ```
@@ -655,6 +655,7 @@ The UX label is the label used in the UI and other user experiences.
 | team                    | Team                 | No       | Object                                                                                     |
 | team.username           | Username             | No       | The user's username or email.                                                              |
 | team.name               | Name                 | No       | The user's name.                                                                           |
+| team.description        | Description          | No       | The user's name.                                                                           |
 | team.role               | Role                 | No       | The user's job role; Examples might be owner, data steward. There is no limit on the role. |
 | team.dateIn             | Date In              | No       | The date when the user joined the team.                                                    |
 | team.dateOut            | Date Out             | No       | The date when the user ceased to be part of the team.                                      |

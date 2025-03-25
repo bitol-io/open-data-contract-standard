@@ -154,7 +154,7 @@ team:
     dateIn: "2022-10-01"
   - username: daustin
     role: Owner
-    comment: Keeper of the grail
+    description: Keeper of the grail
     dateIn: "2022-10-01"
 
 
