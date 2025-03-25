@@ -43,7 +43,7 @@ This section contains general information about the contract.
 ### Example
 
 ```YAML
-apiVersion: v3.0.1 # Standard version
+apiVersion: v3.0.2 # Standard version
 kind: DataContract
 
 id: 53581432-6c55-4ba2-a65f-72344a91553a
@@ -66,7 +66,7 @@ tags: ['finance']
 
 | Key                                  | UX label                  | Required | Description                                                                                                                                                                                |
 |--------------------------------------|---------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| apiVersion                           | Standard version          | Yes      | Version of the standard used to build data contract. Default value is `v3.0.1`.                                                                                                            |
+| apiVersion                           | Standard version          | Yes      | Version of the standard used to build data contract. Default value is `v3.0.2`.                                                                                                            |
 | kind                                 | Kind                      | Yes      | The kind of file this is. Valid value is `DataContract`.                                                                                                                                   |
 | id                                   | ID                        | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.                                                                                                    |
 | name                                 | Name                      | No       | Name of the data contract.                                                                                                                                                                 |
@@ -299,7 +299,7 @@ kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 status: active
 name: date_example
-apiVersion: v3.0.1
+apiVersion: v3.0.2
 schema:
   # Date Only 
   - name: event_date
@@ -654,6 +654,7 @@ The UX label is the label used in the UI and other user experiences.
 |-------------------------|----------------------|----------|--------------------------------------------------------------------------------------------|
 | team                    | Team                 | No       | Object                                                                                     |
 | team.username           | Username             | No       | The user's username or email.                                                              |
+| team.name               | Name                 | No       | The user's name.                                                                           |
 | team.role               | Role                 | No       | The user's job role; Examples might be owner, data steward. There is no limit on the role. |
 | team.dateIn             | Date In              | No       | The date when the user joined the team.                                                    |
 | team.dateOut            | Date Out             | No       | The date when the user ceased to be part of the team.                                      |

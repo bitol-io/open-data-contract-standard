@@ -2201,7 +2201,18 @@
       "properties": {
         "username": {
           "type": "string",
-          "description": "The user's username or email."
+          "description": "The user's username or email.",
+          "examples": [
+            "mail@example.com",
+            "uid12345678"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The user's name.",
+          "examples": [
+            "Jane Doe"
+          ]
         },
         "role": {
           "type": "string",
