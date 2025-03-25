@@ -20,4 +20,4 @@ catalogs, data quality platforms, security tools, and more.
 
 * [AbeaData](https://abeadata.com) - Consulting & training on data contracts.
 * [Andrew Jones](https://andrew-jones.com) Independant consulting & training on data contracts.
-  
+* [AgileLab](https://www.agilelab.it) Data consulting firm helping enterprise customers adopt data contracts.
