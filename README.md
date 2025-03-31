@@ -13,7 +13,7 @@ Welcome!
 Thanks for your interest and for taking the time to come here! ❤️
 
 ## Executive summary
-This standard describes a structure for a **data contract**. Its current version is v3.0.1. It is available for you as an Apache 2.0 license. Contributions are welcome!
+This standard describes a structure for a **data contract**. Its current version is v3.0.2. It is available for you as an Apache 2.0 license. Contributions are welcome!
 
 ## Discover the open standard
 A reader-friendly version of the standard can be found on its [dedicated site](https://bitol-io.github.io/open-data-contract-standard/).
