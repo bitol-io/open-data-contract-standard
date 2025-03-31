@@ -1,5 +1,5 @@
 version: 1.0.0
-apiVersion: v3.0.1
+apiVersion: v3.0.2
 kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 status: active

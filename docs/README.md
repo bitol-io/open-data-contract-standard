@@ -43,7 +43,7 @@ This section contains general information about the contract.
 ### Example
 
 ```YAML
-apiVersion: v3.0.1 # Standard version
+apiVersion: v3.0.2 # Standard version
 kind: DataContract
 
 id: 53581432-6c55-4ba2-a65f-72344a91553a
@@ -66,7 +66,7 @@ tags: ['finance']
 
 | Key                                  | UX label                  | Required | Description                                                                                                                                                                                |
 |--------------------------------------|---------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| apiVersion                           | Standard version          | Yes      | Version of the standard used to build data contract. Default value is `v3.0.1`.                                                                                                            |
+| apiVersion                           | Standard version          | Yes      | Version of the standard used to build data contract. Default value is `v3.0.2`.                                                                                                            |
 | kind                                 | Kind                      | Yes      | The kind of file this is. Valid value is `DataContract`.                                                                                                                                   |
 | id                                   | ID                        | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.                                                                                                    |
 | name                                 | Name                      | No       | Name of the data contract.                                                                                                                                                                 |
@@ -243,9 +243,9 @@ Some keys are more applicable when the described property is a column.
 |--------------------------|------------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | primaryKey               | Primary Key                  | No       | Boolean value specifying whether the field is primary or not. Default is false.                                                                                                                                                       |
 | primaryKeyPosition       | Primary Key Position         | No       | If field is a primary key, the position of the primary key element. Starts from 1. Example of `account_id, name` being primary key columns, `account_id` has primaryKeyPosition 1 and `name` primaryKeyPosition 2. Default to -1.     |
-| logicalType              | Logical Type                 | Yes      | The logical field datatype. One of `string`, `date`, `number`, `integer`, `object`, `array` or `boolean`.                                                                                                                             |
+| logicalType              | Logical Type                 | No       | The logical field datatype. One of `string`, `date`, `number`, `integer`, `object`, `array` or `boolean`.                                                                                                                             |
 | logicalTypeOptions       | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [here](#logical-type-options) for more details about supported options for each `logicalType`.                                                                         |
-| physicalType             | Physical Type                | Yes      | The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT.                                                                                                                                              |
+| physicalType             | Physical Type                | No       | The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT.                                                                                                                                              |
 | description              | Description                  | No       | Description of the element.                                                                                                                                                                                                           |
 | required                 | Required                     | No       | Indicates if the element may contain Null values; possible values are true and false. Default is false.                                                                                                                               |
 | unique                   | Unique                       | No       | Indicates if the element contains unique values; possible values are true and false. Default is false.                                                                                                                                |
@@ -270,7 +270,7 @@ Additional metadata options to more accurately define the data type.
 | array          | maxItems         | Maximum Items      | No       | Maximum number of items.                                                                                                                                                                              |
 | array          | minItems         | Minimum Items      | No       | Minimum number of items.                                                                                                                                                                              |
 | array          | uniqueItems      | Unique Items       | No       | If set to true, all items in the array are unique.                                                                                                                                                    |
-| date           | format           | Format             | No       | Format of the date. Follows the format as prescribed by [JDK DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). For example, format 'yyyy-MM-dd'. |
+| date           | format           | Format             | No       | Format of the date. Follows the format as prescribed by [JDK DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). Default value is using ISO 8601: 'YYYY-MM-DDTHH:mm:ss.SSSZ'. For example, format 'yyyy-MM-dd'. |
 | date           | exclusiveMaximum | Exclusive Maximum  | No       | If set to true, all values are strictly less than the maximum value (values < maximum). Otherwise, less than or equal to the maximum value (values <= maximum).                                       |
 | date           | exclusiveMinimum | Exclusive Minimum  | No       | If set to true, all values are strictly greater than the minimum value (values > minimum). Otherwise, greater than or equal to the minimum value (values >= minimum).                                 |
 | date           | maximum          | Maximum            | No       | All date values are less than or equal to this value (values <= maximum).                                                                                                                             |
@@ -288,6 +288,53 @@ Additional metadata options to more accurately define the data type.
 | string         | maxLength        | Maximum Length     | No       | Maximum length of the string.                                                                                                                                                                         |
 | string         | minLength        | Minimum Length     | No       | Minimum length of the string.                                                                                                                                                                         |
 | string         | pattern          | Pattern            | No       | Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (https://262.ecma-international.org/5.1/#sec-15.10.1).                                              |
+
+#### Expressing Date / Datetime / Timezone information
+
+Given the complexity of handling various date and time formats (e.g., date, datetime, time, timestamp, timestamp with and without timezone), the existing `logicalType` options currently support only `date`. To specify additional temporal details, `logicalType` should be used in conjunction with `logicalTypeOptions.format`  or `physicalType` to define the desired format. Using `physicalType` allows for definition of your data-source specific data type.  
+
+``` yaml
+version: 1.0.0
+kind: DataContract
+id: 53581432-6c55-4ba2-a65f-72344a91553a
+status: active
+name: date_example
+apiVersion: v3.0.2
+schema:
+  # Date Only 
+  - name: event_date
+    logicalType: date
+    logicalTypeOptions:
+      - format: "yyyy-MM-dd"
+    examples:
+      - "2024-07-10"
+
+  # Date & Time (UTC)  
+  - name: created_at
+    logicalType: date
+    logicalTypeOptions:
+      - format: "yyyy-MM-ddTHH:mm:ssZ"
+    examples:
+      - "2024-03-10T14:22:35Z"
+
+  # Time Only 
+  - name: event_start_time
+    logicalType: date
+    logicalTypeOptions:
+      - format: "HH:mm:ss"
+    examples:
+      - "08:30:00"
+
+    # Physical Type with Date & Time (UTC)
+  - name: event_date
+    logicalType: date
+    physicalType: DATETIME
+    logicalTypeOptions:
+      - format: yyyy-MM-ddTHH:mm:ssZ"
+    examples:
+      - "2024-03-10T14:22:35Z"
+
+```
 
 ### Authoritative definitions
 
@@ -595,7 +642,7 @@ team:
     dateIn: 2022-10-01
   - username: daustin
     role: Owner
-    comment: Keeper of the grail
+    description: Keeper of the grail
     name: David Austin
     dateIn: 2022-10-01
 ```
@@ -607,6 +654,8 @@ The UX label is the label used in the UI and other user experiences.
 |-------------------------|----------------------|----------|--------------------------------------------------------------------------------------------|
 | team                    | Team                 | No       | Object                                                                                     |
 | team.username           | Username             | No       | The user's username or email.                                                              |
+| team.name               | Name                 | No       | The user's name.                                                                           |
+| team.description        | Description          | No       | The user's name.                                                                           |
 | team.role               | Role                 | No       | The user's job role; Examples might be owner, data steward. There is no limit on the role. |
 | team.dateIn             | Date In              | No       | The date when the user joined the team.                                                    |
 | team.dateOut            | Date Out             | No       | The date when the user ceased to be part of the team.                                      |
@@ -722,7 +771,8 @@ Each server in the schema has the following structure:
 
 ```yaml
 servers:
-  - type: <server-type>
+  - server: my-server-name
+    type: <server-type>
     description: <server-description>
     environment: <server-environment>
     <server-type-specific-fields> # according to the server type
@@ -734,11 +784,14 @@ servers:
 
 #### Common Server Properties
 
-- **type**: The type of server. Valid values include various server technologies like `athena`, `bigquery`, `postgresql`, etc.
-- **description**: A description of the server.
-- **environment**: The environment where the server operates (e.g., `prod`, `dev`, `uat`). There are no set values.
-- **roles**: An optional array of roles that have access to the server.
-- **customProperties**: Any additional custom properties specific to the server that are not part of the standard.
+| Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                            |
+|------------------|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                              |
+| type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, databricks, denodo, dremio, duckdb, glue, cloudsql, db2, informix, kafka, kinesis, local, mysql, oracle, postgresql, postgres, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, custom. |
+| description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                             |
+| environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                 |
+| roles            | Roles             | No       | List of roles that have access to the server. Check [roles](#roles) section for more details.                                                                                                                                                                                                          |
+| customProperties | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                   |
 
 ### Specific Server Properties
 
