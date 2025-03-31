@@ -5,7 +5,7 @@ status: active
 name: my_table
 dataProduct: my_quantum
 schema: []
-apiVersion: v3.0.1
+apiVersion: v3.0.2
 roles:
   - role: microstrategy_user_opr
     access: read

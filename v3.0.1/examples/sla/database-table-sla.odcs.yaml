@@ -1,5 +1,5 @@
 version: 1.0.0
-apiVersion: v3.0.1
+apiVersion: v3.0.2
 kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 status: active
@@ -27,7 +27,7 @@ slaProperties:
     value: 1
     valueExt: 1
     unit: d
-    column: tab1.txn_ref_dt
+    element: tab1.txn_ref_dt
   - property: timeOfAvailability
     value: 09:00-08:00
     element: tab1.txn_ref_dt

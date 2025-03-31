@@ -16,7 +16,7 @@ description:
 tenant: ClimateQuantumInc
 
 kind: DataContract
-apiVersion: v3.0.1 # Standard version (follows semantic versioning)
+apiVersion: v3.0.2 # Standard version (follows semantic versioning)
 
 # Infrastructure & servers
 servers:
@@ -32,6 +32,7 @@ schema:
   - name: tbl
     physicalName: tbl_1
     physicalType: table
+    businessName: Core Payment Metrics
     description: Provides core payment metrics
     authoritativeDefinitions:
       - url: https://catalog.data.gov/dataset/air-quality
@@ -41,7 +42,8 @@ schema:
     tags: [ 'finance', 'payments']
     dataGranularityDescription: Aggregation on columns txn_ref_dt, pmt_txn_id
     properties:
-      - name: txn_ref_dt
+      - name: transaction_reference_date
+        physicalName: txn_ref_dt
         primaryKey: false
         primaryKeyPosition: -1
         businessName: transaction reference date
@@ -152,7 +154,7 @@ team:
     dateIn: "2022-10-01"
   - username: daustin
     role: Owner
-    comment: Keeper of the grail
+    description: Keeper of the grail
     dateIn: "2022-10-01"
 
 
