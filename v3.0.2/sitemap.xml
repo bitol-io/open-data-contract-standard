@@ -2,98 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/changelog/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/contributing/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/home/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/vendors/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/all/full-example/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/all/postgresql-adventureworks-contract/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/data-types/all-data-types/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/fundamentals/table-column-description/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/quality/column-accuracy/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/quality/column-completeness/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/quality/column-custom/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/quality/column-validity/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/roles/service-and-operational-roles/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/schema/all-schema-types/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/schema/kafka-schema/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/schema/kafka-schemaregistry/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/schema/table-column/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/schema/table-columns-with-partition/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/server/azure-server/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/server/kafka-server/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/sla/database-table-sla/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
     <url>
          <loc>https://bitol-io.github.io/open-data-contract-standard/v3.0.2/examples/stakeholders/basic-four-dpo/</loc>
-         <lastmod>2025-03-31</lastmod>
+         <lastmod>2025-04-01</lastmod>
     </url>
 </urlset>
