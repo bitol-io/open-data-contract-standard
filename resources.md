@@ -2,6 +2,9 @@
 
 ## Articles
 
+* 2025-04-01 - [How I Learned to Stop Worrying and Love the Data Contract](https://medium.com/@mcgeehan/how-i-learned-to-stop-worrying-and-love-the-data-contract-c72f197c6f30)
+* 2025-02-14 - [Data Product vs. Data Contract: What’s the Difference?](https://medium.com/data-mesh-learning/data-product-vs-data-contract-whats-the-difference-d39e82cf8ed3)
+* 2025-02-09 - [Data Contract vs. Data Product Specifications](https://medium.com/@andrea_gioia/data-contract-vs-data-product-specifications-8ffa3cc16725)
 * 2024-09-30 - [Data Contracts in Action: Tools](https://medium.com/data-engineer-things/data-contracts-in-action-tools-303bc7fbceb5)
 * 2024-07-17 - [Data Contracts in Action: Testing](https://medium.com/@pflooky/data-contracts-in-action-testing-111631338657)
 * 2024-06-12 - [The Future of Data Management: An Enabler of AI Development? A Basic Illustration with RAG, Open Standards, and Data Contracts](https://blog.owulveryck.info/2024/06/12/the-future-of-data-management-an-enabler-of-ai-development-a-basic-illustration-with-rag-open-standards-and-data-contracts.html)
@@ -32,4 +35,7 @@ If you spot a book about the Open Data Contract Standard, make a pull request!
 
 ## Videos
 
+* 2025-03-28 - [What is a Data Contract? - DataFriday 5x01](https://www.youtube.com/watch?v=Iq6SxdsIHHE)
+* 2024-01-02 - [What is a Data Contract? from IBM Technology](https://www.youtube.com/watch?v=-n3OD-ml_k0)
+* 
 If you spot a video about the Open Data Contract Standard, make a pull request! 
