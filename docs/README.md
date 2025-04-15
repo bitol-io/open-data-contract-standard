@@ -738,6 +738,7 @@ slaProperties:
     value: 08:00-08:00
     element: tab1.txn_ref_dt
     driver: analytics
+    description: We are 24/7 available
 ```
 
 ### Definitions
@@ -752,6 +753,7 @@ slaProperties:
 | slaProperties.unit     | Unit                   | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.             |
 | slaProperties.element  | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas. |
 | slaProperties.driver   | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.  |
+| slaProperties.description     | Description            | No                             | The description of the SLA                                                                          |
 
 ## Infrastructure and Servers
 
