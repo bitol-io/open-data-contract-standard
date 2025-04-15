@@ -2310,6 +2310,10 @@
           "type": "string",
           "description": "Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.",
           "examples": ["regulatory", "analytics", "operational"]
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the SLA property."
         }
       },
       "required": ["property", "value"]
