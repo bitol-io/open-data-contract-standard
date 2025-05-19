@@ -36,7 +36,7 @@ A data contract defines the agreement between a data producer and consumers. A d
 * [Infrastructures & servers](docs/README.md#infrastructure-and-servers)
 * [Custom properties](docs/README.md#custom-properties).
 
-![Data contract schema](docs/img/data-contract-diagram-latest.svg "Data contract schema")
+![Data contract schema](docs/img/data-contract-diagram-latest.png "Data contract schema")
 
 *Figure 1: illustration of a data contract, its principal contributors, sections, and usage.*
 
