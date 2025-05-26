@@ -265,29 +265,29 @@ Some keys are more applicable when the described property is a column.
 
 Additional metadata options to more accurately define the data type.
 
-| Data Type      | Key              | UX Label           | Required | Description                                                                                                                                                                                           |
-|----------------|------------------|--------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| array          | maxItems         | Maximum Items      | No       | Maximum number of items.                                                                                                                                                                              |
-| array          | minItems         | Minimum Items      | No       | Minimum number of items.                                                                                                                                                                              |
-| array          | uniqueItems      | Unique Items       | No       | If set to true, all items in the array are unique.                                                                                                                                                    |
-| date           | format           | Format             | No       | Format of the date. Follows the format as prescribed by [JDK DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). Default value is using ISO 8601: 'YYYY-MM-DDTHH:mm:ss.SSSZ'. For example, format 'yyyy-MM-dd'. |
-| date           | exclusiveMaximum | Exclusive Maximum  | No       | If set to true, all values are strictly less than the maximum value (values < maximum). Otherwise, less than or equal to the maximum value (values <= maximum).                                       |
-| date           | exclusiveMinimum | Exclusive Minimum  | No       | If set to true, all values are strictly greater than the minimum value (values > minimum). Otherwise, greater than or equal to the minimum value (values >= minimum).                                 |
-| date           | maximum          | Maximum            | No       | All date values are less than or equal to this value (values <= maximum).                                                                                                                             |
-| date           | minimum          | Minimum            | No       | All date values are greater than or equal to this value (values >= minimum).                                                                                                                          |
-| integer/number | exclusiveMaximum | Exclusive Maximum  | No       | If set to true, all values are strictly less than the maximum value (values < maximum). Otherwise, less than or equal to the maximum value (values <= maximum).                                       |
-| integer/number | exclusiveMinimum | Exclusive Minimum  | No       | If set to true, all values are strictly greater than the minimum value (values > minimum). Otherwise, greater than or equal to the minimum value (values >= minimum).                                 |
-| integer/number | format           | Format             | No       | Format of the value in terms of how many bits of space it can use and whether it is signed or unsigned (follows the Rust integer types).                                                              |
-| integer/number | maximum          | Maximum            | No       | All values are less than or equal to this value (values <= maximum).                                                                                                                                  |
-| integer/number | minimum          | Minimum            | No       | All values are greater than or equal to this value (values >= minimum).                                                                                                                               |
-| integer/number | multipleOf       | Multiple Of        | No       | Values must be multiples of this number. For example, multiple of 5 has valid values 0, 5, 10, -5.                                                                                                    |
-| object         | maxProperties    | Maximum Properties | No       | Maximum number of properties.                                                                                                                                                                         |
-| object         | minProperties    | Minimum Properties | No       | Minimum number of properties.                                                                                                                                                                         |
-| object         | required         | Required           | No       | Property names that are required to exist in the object.                                                                                                                                              |
-| string         | format           | Format             | No       | Provides extra context about what format the string follows. For example, password, byte, binary, email, uuid, uri, hostname, ipv4, ipv6.                                                             |
-| string         | maxLength        | Maximum Length     | No       | Maximum length of the string.                                                                                                                                                                         |
-| string         | minLength        | Minimum Length     | No       | Minimum length of the string.                                                                                                                                                                         |
-| string         | pattern          | Pattern            | No       | Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (https://262.ecma-international.org/5.1/#sec-15.10.1).                                              |
+| Data Type      | Key              | UX Label           | Required | Description                                                                                                                                                                                                                                                          |
+|----------------|------------------|--------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| array          | maxItems         | Maximum Items      | No       | Maximum number of items.                                                                                                                                                                                                                                             |
+| array          | minItems         | Minimum Items      | No       | Minimum number of items.                                                                                                                                                                                                                                             |
+| array          | uniqueItems      | Unique Items       | No       | If set to true, all items in the array are unique.                                                                                                                                                                                                                   |
+| date           | format           | Format             | No       | Format of the date. Follows the format as prescribed by [JDK DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). Default value is using ISO 8601: 'YYYY-MM-DDTHH:mm:ss.SSSZ'. For example, format 'yyyy-MM-dd'.   |
+| date           | exclusiveMaximum | Exclusive Maximum  | No       | If set to true, all values are strictly less than the maximum value (values < maximum). Otherwise, less than or equal to the maximum value (values <= maximum).                                                                                                      |
+| date           | exclusiveMinimum | Exclusive Minimum  | No       | If set to true, all values are strictly greater than the minimum value (values > minimum). Otherwise, greater than or equal to the minimum value (values >= minimum).                                                                                                |
+| date           | maximum          | Maximum            | No       | All date values are less than or equal to this value (values <= maximum).                                                                                                                                                                                            |
+| date           | minimum          | Minimum            | No       | All date values are greater than or equal to this value (values >= minimum).                                                                                                                                                                                         |
+| integer/number | exclusiveMaximum | Exclusive Maximum  | No       | If set to true, all values are strictly less than the maximum value (values < maximum). Otherwise, less than or equal to the maximum value (values <= maximum).                                                                                                      |
+| integer/number | exclusiveMinimum | Exclusive Minimum  | No       | If set to true, all values are strictly greater than the minimum value (values > minimum). Otherwise, greater than or equal to the minimum value (values >= minimum).                                                                                                |
+| integer/number | format           | Format             | No       | Format of the value in terms of how many bits of space it can use and whether it is signed or unsigned (follows the Rust integer types).                                                                                                                             |
+| integer/number | maximum          | Maximum            | No       | All values are less than or equal to this value (values <= maximum).                                                                                                                                                                                                 |
+| integer/number | minimum          | Minimum            | No       | All values are greater than or equal to this value (values >= minimum).                                                                                                                                                                                              |
+| integer/number | multipleOf       | Multiple Of        | No       | Values must be multiples of this number. For example, multiple of 5 has valid values 0, 5, 10, -5.                                                                                                                                                                   |
+| object         | maxProperties    | Maximum Properties | No       | Maximum number of properties.                                                                                                                                                                                                                                        |
+| object         | minProperties    | Minimum Properties | No       | Minimum number of properties.                                                                                                                                                                                                                                        |
+| object         | required         | Required           | No       | Property names that are required to exist in the object.                                                                                                                                                                                                             |
+| string         | format           | Format             | No       | Provides extra context about what format the string follows. For example, password, byte, binary, email, uuid, uri, hostname, ipv4, ipv6.                                                                                                                            |
+| string         | maxLength        | Maximum Length     | No       | Maximum length of the string.                                                                                                                                                                                                                                        |
+| string         | minLength        | Minimum Length     | No       | Minimum length of the string.                                                                                                                                                                                                                                        |
+| string         | pattern          | Pattern            | No       | Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (https://262.ecma-international.org/5.1/#sec-15.10.1).                                                                                                             |
 
 #### Expressing Date / Datetime / Timezone information
 
@@ -337,14 +337,13 @@ schema:
 ```
 
 ### Authoritative definitions
-
 Reference to an external definition on element logic or values.
 
-| Key  | UX label          | Required | Description                                                                                                                                                   |
-|------|-------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| type | Definition type   | Yes      | Type of definition for authority.  Valid values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. |
-| url  | URL to definition | Yes      | URL to the authority.                                                                                                                                         |
-
+| Key                           | UX label          | Required | Description                                                                                                                                                   |
+|-------------------------------|-------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| authoritativeDefinitions      | Link              | No       | A list of type/link pairs for authoritative definitions.                                                                                                      |
+| authoritativeDefinitions.type | Definition type   | Yes      | Type of definition for authority.  Valid values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. |
+| authoritativeDefinitions.url  | URL to definition | Yes      | URL to the authority.                                                                                                                                         |
 
 ## Data quality
 This section describes data quality rules & parameters. They are tightly linked to the schema described in the previous section.
@@ -520,8 +519,8 @@ The operator specifies the condition to validate the rule.
 | `mustBeGreaterOrEqualTo` | number              | `>=`, `≥`   | `mustBeGreaterOrEqualTo: 60` |
 | `mustBeLessThan`         | number              | `<`         | `mustBeLessThan: 1000`       |
 | `mustBeLessOrEqualTo`    | number              | `<=`, `≤`   | `mustBeLessOrEqualTo: 999`   |
-| `mustBeBetween`          | list of two numbers | 	`⊂`        | `mustBeBetween: [0, 100]`    |
-| `mustNotBeBetween`       | list of two numbers | 	`⊄`        | `mustNotBeBetween: [0, 100]` |
+| `mustBeBetween`          | list of two numbers | `⊂`         | `mustBeBetween: [0, 100]`    |
+| `mustNotBeBetween`       | list of two numbers | `⊄`         | `mustNotBeBetween: [0, 100]` |
 
 `mustBeBetween` is the equivalent to `mustBeGreaterThan` and `mustBeLessThan`.
 
@@ -593,15 +592,15 @@ support:
 
 ### Definitions
 
-| Key                   | UX label       | Required | Description                                                                                                                       |
-|-----------------------|----------------|----------|-----------------------------------------------------------------------------------------------------------------------------------|
-| support               | Support        | No       | Top level for support channels.                                                                                                   |
-| support.channel       | Channel        | Yes      | Channel name or identifier.                                                                                                       |
-| support.url           | Channel URL    | Yes      | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                             |
-| support.description   | Description    | No       | Description of the channel, free text.                                                                                            |
-| support.tool          | Tool           | No       | Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, or `other`.                                        |
-| support.scope         | Scope          | No       | Scope can be: `interactive`, `announcements`, `issues`.                                                                           |
-| support.invitationUrl | Invitation URL | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax). |
+| Key                   | UX label       | Required | Description                                                                                                                         |
+|-----------------------|----------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
+| support               | Support        | No       | Top level for support channels.                                                                                                     |
+| support.channel       | Channel        | Yes      | Channel name or identifier.                                                                                                         |
+| support.url           | Channel URL    | Yes      | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                               |
+| support.description   | Description    | No       | Description of the channel, free text.                                                                                              |
+| support.tool          | Tool           | No       | Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, or `other`.                                          |
+| support.scope         | Scope          | No       | Scope can be: `interactive`, `announcements`, `issues`.                                                                             |
+| support.invitationUrl | Invitation URL | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax).   |
 
 
 ## Pricing
@@ -775,7 +774,7 @@ servers:
     type: <server-type>
     description: <server-description>
     environment: <server-environment>
-    <server-type-specific-fields> # according to the server type
+    <server-type-specific-fields> # according to the server type, see below
     roles:
       - <role-details>
     customProperties:
