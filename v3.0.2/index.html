@@ -3255,13 +3255,19 @@ each field/key.</p>
 </thead>
 <tbody>
 <tr>
-<td>type</td>
+<td>authoritativeDefinitions</td>
+<td>Link</td>
+<td>No</td>
+<td>A list of type/link pairs for authoritative definitions.</td>
+</tr>
+<tr>
+<td>authoritativeDefinitions.type</td>
 <td>Definition type</td>
 <td>Yes</td>
 <td>Type of definition for authority.  Valid values are: <code>businessDefinition</code>, <code>transformationImplementation</code>, <code>videoTutorial</code>, <code>tutorial</code>, and <code>implementation</code>.</td>
 </tr>
 <tr>
-<td>url</td>
+<td>authoritativeDefinitions.url</td>
 <td>URL to definition</td>
 <td>Yes</td>
 <td>URL to the authority.</td>
@@ -3988,7 +3994,7 @@ each field/key.</p>
 </span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;server-type&gt;</span>
 </span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;server-description&gt;</span>
 </span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;server-environment&gt;</span>
-</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">&lt;server-type-specific-fields&gt;</span><span class="w"> </span><span class="c1"># according to the server type</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">&lt;server-type-specific-fields&gt;</span><span class="w"> </span><span class="c1"># according to the server type, see below</span>
 </span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
 </span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;role-details&gt;</span>
 </span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="w">    </span><span class="nt">customProperties</span><span class="p">:</span>
