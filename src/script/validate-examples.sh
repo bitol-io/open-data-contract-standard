@@ -20,7 +20,7 @@ fi
 
 echo -e "Validating example ODCS files based on ${json_schema_version} JSON schema"
 for file in docs/examples/*/*.yaml; do
-  if ajv validate --spec=draft2019 -c ajv-formats -s "${script_dir}/../../schema/odcs-json-schema-${json_schema_version}.json" -d "${script_dir}/../../${file}"; then
+  if ajv validate --spec=draft2019 --all-errors -c ajv-formats -s "${script_dir}/../../schema/odcs-json-schema-${json_schema_version}.json" -d "${script_dir}/../../${file}"; then
     echo -e "${GREEN}Passed validation, file=${file}${NC}"
   else
     num_failed_validation=$((num_failed_validation+1))
