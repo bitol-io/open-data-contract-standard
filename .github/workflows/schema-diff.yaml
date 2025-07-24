@@ -30,26 +30,37 @@ jobs:
       - name: Run schema diff analysis
         id: schema-diff
         run: |
-          # Capture the diff output to stderr (which will be used for the comment)
-          # and also capture the exit code
-          if output=$(bash src/script/schema-diff.sh 2>&1); then
+          # Run the schema diff script and capture output
+          bash src/script/schema-diff.sh > diff_output.txt 2>&1 || true
+          
+          # Read the output file and set it as an output variable
+          if [ -f diff_output.txt ]; then
             echo "diff_output<<EOF" >> $GITHUB_OUTPUT
-            echo "$output" >> $GITHUB_OUTPUT
+            cat diff_output.txt >> $GITHUB_OUTPUT
             echo "EOF" >> $GITHUB_OUTPUT
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-          else
-            echo "diff_output<<EOF" >> $GITHUB_OUTPUT
-            echo "$output" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
-            echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
       
       - name: Comment on PR
-        if: always() && steps.schema-diff.outputs.diff_output != ''
+        if: always()
         uses: actions/github-script@v7
         with:
           script: |
-            const diffOutput = `${{ steps.schema-diff.outputs.diff_output }}`;
+            // Read the diff output from file
+            const fs = require('fs');
+            let diffOutput = '';
+            
+            try {
+              if (fs.existsSync('diff_output.txt')) {
+                diffOutput = fs.readFileSync('diff_output.txt', 'utf8').trim();
+              }
+            } catch (error) {
+              console.log('No diff output file found or error reading file');
+            }
+            
+            if (!diffOutput) {
+              console.log('No diff output to comment');
+              return;
+            }
             
             // Check if this is a new comment or update existing one
             const { data: comments } = await github.rest.issues.listComments({
@@ -63,15 +74,13 @@ jobs:
               comment.body.includes('## Schema Diff Analysis')
             );
             
-            const commentBody = diffOutput;
-            
             if (botComment) {
               // Update existing comment
               await github.rest.issues.updateComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 comment_id: botComment.id,
-                body: commentBody
+                body: diffOutput
               });
             } else {
               // Create new comment
@@ -79,6 +88,6 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
-                body: commentBody
+                body: diffOutput
               });
             } 
