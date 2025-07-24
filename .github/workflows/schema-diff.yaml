@@ -6,6 +6,10 @@ on:
     paths:
       - 'schema/odcs-json-schema-*.json'
 
+permissions:
+  pull-requests: write
+  contents: read
+
 jobs:
   schema-diff:
     runs-on: ubuntu-latest
