@@ -44,6 +44,7 @@ jobs:
         if: always()
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.PR_TOKEN }}
           script: |
             // Read the diff output from file
             const fs = require('fs');
