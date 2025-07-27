@@ -17,19 +17,19 @@ NC='\033[0m' # No Color
 
 # Function to print colored output
 print_info() {
-    echo -e "${BLUE}[INFO]${NC} $1"
+    echo -e "${BLUE}[INFO]${NC} $1" >&2
 }
 
 print_success() {
-    echo -e "${GREEN}[SUCCESS]${NC} $1"
+    echo -e "${GREEN}[SUCCESS]${NC} $1" >&2
 }
 
 print_warning() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
+    echo -e "${YELLOW}[WARNING]${NC} $1" >&2
 }
 
 print_error() {
-    echo -e "${RED}[ERROR]${NC} $1"
+    echo -e "${RED}[ERROR]${NC} $1" >&2
 }
 
 # Function to get the latest schema file
@@ -88,32 +88,32 @@ generate_diff() {
     local diff_output
     if diff_output=$(diff -u "$temp_old" "$temp_new" 2>/dev/null); then
         print_success "No differences found between schema files"
-        echo "## Schema Diff Analysis" >&2
-        echo "" >&2
-        echo "✅ **No changes detected** between $(basename "$old_file") and $(basename "$new_file")" >&2
+        echo "## Schema Diff Analysis"
+        echo ""
+        echo "✅ **No changes detected** between $(basename "$old_file") and $(basename "$new_file")"
     else
         print_info "Differences found between schema files"
-        echo "## Schema Diff Analysis" >&2
-        echo "" >&2
-        echo "📋 **Schema Changes Detected**" >&2
-        echo "" >&2
-        echo "**Files compared:**" >&2
-        echo "- Previous: \`$(basename "$old_file")\`" >&2
-        echo "- New: \`$(basename "$new_file")\`" >&2
-        echo "" >&2
-        echo "**Diff:**" >&2
-        echo '```diff' >&2
-        echo "$diff_output" >&2
-        echo '```' >&2
+        echo "## Schema Diff Analysis"
+        echo ""
+        echo "📋 **Schema Changes Detected**"
+        echo ""
+        echo "**Files compared:**"
+        echo "- Previous: \`$(basename "$old_file")\`"
+        echo "- New: \`$(basename "$new_file")\`"
+        echo ""
+        echo "**Diff:**"
+        echo '```diff'
+        echo "$diff_output"
+        echo '```'
         
         # Count changes
         local additions=$(echo "$diff_output" | grep -c '^+' || echo "0")
         local deletions=$(echo "$diff_output" | grep -c '^-' || echo "0")
         
-        echo "" >&2
-        echo "**Summary:**" >&2
-        echo "- Additions: $additions lines" >&2
-        echo "- Deletions: $deletions lines" >&2
+        echo ""
+        echo "**Summary:**"
+        echo "- Additions: $additions lines"
+        echo "- Deletions: $deletions lines"
     fi
     
     # Clean up temporary files
