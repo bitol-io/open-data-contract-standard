@@ -6,6 +6,24 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 This document tracks the history and evolution of the **Open Data Contract Standard**.
 
+# v3.1.0 - 2025-07-27 - PROPOSED
+
+* **Breaking change** to schema:
+  * Alter `exclusiveMaximum` and `exclusiveMinimum` for `integer/number` logical data type to be `number` instead of `boolean`. [Conforms with JSON Schema specification](https://json-schema.org/understanding-json-schema/reference/numeric#range).
+  * Alter `exclusiveMaximum` and `exclusiveMinimum` for `date` logical data type to be `string` instead of `boolean`.
+  * No additional or unevaluated properties are allowed for the following sections of the schema:
+    * `authoritativeDefinitions`
+    * `customProperties`
+    * `dataQuality`
+    * `dataQualityCheck`
+    * `price`
+    * `role`
+    * `schemaElement`
+    * `server`
+    * `slaProperties`
+    * `support`
+    * `team`
+
 # v3.0.2 - 2024-03-31 - APPROVED
 
 * Added field `physicalName` for the properties in JSON schema.
