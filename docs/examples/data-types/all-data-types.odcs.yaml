@@ -22,7 +22,7 @@ schema:
         physicalType: date
         logicalType: date
         logicalTypeOptions:
-          minimum: "2020-01-01"
+          exclusiveMinimum: "2020-01-01"
           maximum: "2021-01-01"
           format: yyyy-MM-dd
       - name: txn_timestamp
@@ -43,8 +43,7 @@ schema:
         logicalType: integer
         logicalTypeOptions:
           minimum: 18
-          maximum: 100
-          exclusiveMaximum: true
+          exclusiveMaximum: 100
           format: i64
       - name: is_open
         physicalType: bool
