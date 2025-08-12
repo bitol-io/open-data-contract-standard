@@ -14,6 +14,8 @@
 | James Peterson                                                             |                                         | Contributor          |
 | [Bart Vandekerckhove](https://www.linkedin.com/in/bartvandekerckhove/)     | [Raito](https://www.raito.io/)          | Contributor          |
 | [Peter Flook](https://www.linkedin.com/in/peter-flook-bbb20ab2/)           | [Data Catering](https://data.catering/) | Contributor          |
+| [Dr. Simon Harrer](https://www.linkedin.com/in/simonharrer/)                                                           |[Entropy Data](https://www.entropy-data.com)| TSC Member          |
+| [Jochen Christ]([https://www.linkedin.com/in/simonharrer/](https://www.linkedin.com/in/jochenchrist/))                                                           |[Entropy Data](https://www.entropy-data.com)| TSC Member          |
 | Alpesh Pandya                                                              || Contributor          |
 | Andrea Gioia                                                               || Contributor          |
 | Andrew Jones                                                               || Contributor          |
@@ -31,7 +33,6 @@
 | Jochen Christ                                                              || Contributor          |
 | Todd Nemanich                                                              || Contributor          |
 | Praveen Guduri                                                             || Contributor          |
-| Dr. Simon Harrer                                                           || Contributor          |
 | Guillaume HEIN                                                             || Contributor          |
 | Tom De Wolf                                                                || Contributor          |
 | Venkatesh Bandarapu                                                        || Contributor          |
