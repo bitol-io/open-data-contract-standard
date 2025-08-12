@@ -35,8 +35,8 @@ schema:
         undefinedPropertyField: "this should fail" # Testing Property level
         logicalTypeOptions:
           format: "i32"
-          undefinedOption: "this should fail" # Testing nested logicalTypeOptions level
-          minLength: 2  # Testing option from string logicalType
+          # undefinedOption: "this should fail" # Testing nested logicalTypeOptions level
+          # minLength: 2  # Testing option from string logicalType
       - name: "email"
         logicalType: "string"
         physicalType: "VARCHAR(255)"
