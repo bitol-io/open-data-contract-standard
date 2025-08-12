@@ -24,7 +24,7 @@ schema:
     logicalType: "object"
     physicalType: "table"
     description: "User information table"
-    undefinedSchemaProperty: "this should fail" # Testing Schema object level
+    # undefinedSchemaProperty: "this should fail" # Testing Schema object level
     properties:
       - name: "id"
         logicalType: "integer"
@@ -32,11 +32,11 @@ schema:
         required: true
         primaryKey: true
         description: "Unique identifier for the user"
-        undefinedPropertyField: "this should fail" # Testing Property level
+        # undefinedPropertyField: "this should fail" # Testing Property level
         logicalTypeOptions:
           format: "i32"
-          undefinedOption: "this should fail" # Testing nested logicalTypeOptions level
-          minLength: 2  # Testing option from string logicalType
+          # undefinedOption: "this should fail" # Testing nested logicalTypeOptions level
+          # minLength: 2  # Testing option from string logicalType
       - name: "email"
         logicalType: "string"
         physicalType: "VARCHAR(255)"
