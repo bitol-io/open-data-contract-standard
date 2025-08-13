@@ -23,6 +23,14 @@ This document tracks the history and evolution of the **Open Data Contract Stand
     * `slaProperties`
     * `support`
     * `team`
+* **Changes** to ServerSource:
+  * AzureServer `format` not longer an enum of `parquet`, `delta`, `json`, `csv`, but rather a string with the same examples.
+  * AzureServer `delimiter` not longer an enum of `new_line`, `array`, but rather a string with the same examples.
+  * S3Server `format` not longer an enum of `parquet`, `delta`, `json`, `csv`, but rather a string with the same examples.
+  * S3Server `delimiter` not longer an enum of `new_line`, `array`, but rather a string with the same examples.
+  * SftpServer `format` not longer an enum of `parquet`, `delta`, `json`, `csv`, but rather a string with the same examples.
+  * SftpServer `delimiter` not longer an enum of `new_line`, `array`, but rather a string with the same examples.
+
 
 # v3.0.2 - 2024-03-31 - APPROVED
 
