@@ -647,7 +647,7 @@
             },
             "format": {
               "type": "string",
-              "enum": [
+              "examples": [
                 "parquet",
                 "delta",
                 "json",
@@ -657,7 +657,7 @@
             },
             "delimiter": {
               "type": "string",
-              "enum": [
+              "examples": [
                 "new_line",
                 "array"
               ],
@@ -1243,7 +1243,7 @@
             },
             "format": {
               "type": "string",
-              "enum": [
+              "examples": [
                 "parquet",
                 "delta",
                 "json",
@@ -1253,7 +1253,7 @@
             },
             "delimiter": {
               "type": "string",
-              "enum": [
+              "examples": [
                 "new_line",
                 "array"
               ],
@@ -1279,7 +1279,7 @@
             },
             "format": {
               "type": "string",
-              "enum": [
+              "examples": [
                 "parquet",
                 "delta",
                 "json",
@@ -1289,7 +1289,7 @@
             },
             "delimiter": {
               "type": "string",
-              "enum": [
+              "examples": [
                 "new_line",
                 "array"
               ],
