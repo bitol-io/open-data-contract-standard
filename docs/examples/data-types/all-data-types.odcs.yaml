@@ -27,11 +27,28 @@ schema:
           format: yyyy-MM-dd
       - name: txn_timestamp
         physicalType: timestamp
-        logicalType: date
+        logicalType: timestamp
         logicalTypeOptions:
           minimum: "2020-01-01 00:00:00"
           maximum: "2021-01-01 00:00:00"
           format: "yyyy-MM-dd HH:mm:ss"
+      - name: txn_timestamp_tz
+        physicalType: timestamp
+        logicalType: timestamp
+        logicalTypeOptions:
+          minimum: "2020-01-01 00:00:00+10:00"
+          maximum: "2021-01-01 00:00:00+10:00"
+          format: "yyyy-MM-dd HH:mm:ssZ"
+          timezone: true
+          defaultTimezone: "Australia/Sydney"
+      - name: txn_time
+        physicalType: time
+        logicalType: time
+        logicalTypeOptions:
+          minimum: "00:00:00"
+          maximum: "23:59:59"
+          format: "HH:mm:ss"
+          timezone: false
       - name: amount
         physicalType: double
         logicalType: number
