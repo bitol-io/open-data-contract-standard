@@ -23,6 +23,9 @@ This document tracks the history and evolution of the **Open Data Contract Stand
     * `slaProperties`
     * `support`
     * `team`
+* **Changes** to logicalType and logicalTypeOptions:
+  * Add `timestamp` and `time` to `logicalType` options.
+  * Add `timezone` and `defaultTimezone` to `logicalTypeOptions` options for `timestamp` and `time`.
 * **Changes** to ServerSource:
   * AzureServer `format` not longer an enum of `parquet`, `delta`, `json`, `csv`, but rather a string with the same examples.
   * AzureServer `delimiter` not longer an enum of `new_line`, `array`, but rather a string with the same examples.

@@ -1547,7 +1547,7 @@
           "logicalType": {
             "type": "string",
             "description": "The logical element data type.",
-            "enum": ["string", "date", "number", "integer", "object", "array", "boolean"]
+            "enum": ["string", "date", "timestamp", "time", "number", "integer", "object", "array", "boolean"]
           },
           "logicalTypeOptions": {
             "type": "object",
@@ -1698,6 +1698,66 @@
                     "minimum": {
                       "type": "string",
                       "description": "All date values are greater than or equal to this value (values >= minimum)."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "anyOf": [
+                {
+                  "properties": {
+                    "logicalType": {
+                      "const": "timestamp"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "logicalType": {
+                      "const": "time"
+                    }
+                  }
+                }
+              ]
+            },
+            "then": {
+              "properties": {
+                "logicalTypeOptions": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "format": {
+                      "type": "string",
+                      "examples": ["yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "HH:mm:ss"],
+                      "description": "Format of the date. Follows the format as prescribed by [JDK DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). For example, format 'yyyy-MM-dd'."
+                    },
+                    "exclusiveMaximum": {
+                      "type": "string",
+                      "description": "All values must be strictly less than this value (values < exclusiveMaximum)."
+                    },
+                    "maximum": {
+                      "type": "string",
+                      "description": "All date values are less than or equal to this value (values <= maximum)."
+                    },
+                    "exclusiveMinimum": {
+                      "type": "string",
+                      "description": "All values must be strictly greater than this value (values > exclusiveMinimum)."
+                    },
+                    "minimum": {
+                      "type": "string",
+                      "description": "All date values are greater than or equal to this value (values >= minimum)."
+                    },
+                    "timezone": {
+                      "type": "boolean",
+                      "description": "Whether the timestamp defines the timezone or not. If true, timezone information is included in the timestamp."
+                    },
+                    "defaultTimezone": {
+                      "type": "string",
+                      "description": "The default timezone of the timestamp. If timezone is not defined, the default timezone UTC is used.",
+                      "default": "Etc/UTC"
                     }
                   }
                 }
