@@ -243,7 +243,7 @@ Some keys are more applicable when the described property is a column.
 |--------------------------|------------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | primaryKey               | Primary Key                  | No       | Boolean value specifying whether the field is primary or not. Default is false.                                                                                                                                                       |
 | primaryKeyPosition       | Primary Key Position         | No       | If field is a primary key, the position of the primary key element. Starts from 1. Example of `account_id, name` being primary key columns, `account_id` has primaryKeyPosition 1 and `name` primaryKeyPosition 2. Default to -1.     |
-| logicalType              | Logical Type                 | No       | The logical field datatype. One of `string`, `date`, `number`, `integer`, `object`, `array` or `boolean`.                                                                                                                             |
+| logicalType              | Logical Type                 | No       | The logical field datatype. One of `string`, `date`, `timestamp`, `time`, `number`, `integer`, `object`, `array` or `boolean`.                                                                                                                             |
 | logicalTypeOptions       | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [here](#logical-type-options) for more details about supported options for each `logicalType`.                                                                         |
 | physicalType             | Physical Type                | No       | The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT.                                                                                                                                              |
 | description              | Description                  | No       | Description of the element.                                                                                                                                                                                                           |
@@ -270,13 +270,15 @@ Additional metadata options to more accurately define the data type.
 | array          | maxItems         | Maximum Items      | No       | Maximum number of items.                                                                                                                                                                                                                                             |
 | array          | minItems         | Minimum Items      | No       | Minimum number of items.                                                                                                                                                                                                                                             |
 | array          | uniqueItems      | Unique Items       | No       | If set to true, all items in the array are unique.                                                                                                                                                                                                                   |
-| date           | format           | Format             | No       | Format of the date. Follows the format as prescribed by [JDK DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). Default value is using ISO 8601: 'YYYY-MM-DDTHH:mm:ss.SSSZ'. For example, format 'yyyy-MM-dd'.   |
-| date           | exclusiveMaximum | Exclusive Maximum  | No       | If set to true, all values are strictly less than the maximum value (values < maximum). Otherwise, less than or equal to the maximum value (values <= maximum).                                                                                                      |
-| date           | exclusiveMinimum | Exclusive Minimum  | No       | If set to true, all values are strictly greater than the minimum value (values > minimum). Otherwise, greater than or equal to the minimum value (values >= minimum).                                                                                                |
-| date           | maximum          | Maximum            | No       | All date values are less than or equal to this value (values <= maximum).                                                                                                                                                                                            |
-| date           | minimum          | Minimum            | No       | All date values are greater than or equal to this value (values >= minimum).                                                                                                                                                                                         |
-| integer/number | exclusiveMaximum | Exclusive Maximum  | No       | If set to true, all values are strictly less than the maximum value (values < maximum). Otherwise, less than or equal to the maximum value (values <= maximum).                                                                                                      |
-| integer/number | exclusiveMinimum | Exclusive Minimum  | No       | If set to true, all values are strictly greater than the minimum value (values > minimum). Otherwise, greater than or equal to the minimum value (values >= minimum).                                                                                                |
+| date/timestamp/time           | format           | Format             | No       | Format of the date. Follows the format as prescribed by [JDK DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). Default value is using ISO 8601: 'YYYY-MM-DDTHH:mm:ss.SSSZ'. For example, format 'yyyy-MM-dd'.   |
+| date/timestamp/time          | exclusiveMaximum | Exclusive Maximum  | No       | All values must be strictly less than this value (values < exclusiveMaximum).                                                                                                      |
+| date/timestamp/time           | exclusiveMinimum | Exclusive Minimum  | No       | All values must be strictly greater than this value (values > exclusiveMinimum).                                                                                                |
+| date/timestamp/time           | maximum          | Maximum            | No       | All date values are less than or equal to this value (values <= maximum).                                                                                                                                                                                            |
+| date/timestamp/time           | minimum          | Minimum            | No       | All date values are greater than or equal to this value (values >= minimum).                                                                                                                                                                                         |
+| timestamp/time           | timezone         | Timezone           | No       | Whether the timestamp defines the timezone or not. If true, timezone information is included in the timestamp.                                                                                                                                                     |
+| timestamp/time           | defaultTimezone  | Default Timezone   | No       | The default timezone of the timestamp. If timezone is not defined, the default timezone UTC is used.                                                                                                                                                              |
+| integer/number | exclusiveMaximum | Exclusive Maximum  | No       | All values must be strictly less than this value (values < exclusiveMaximum).                                                                                                      |
+| integer/number | exclusiveMinimum | Exclusive Minimum  | No       | All values must be strictly greater than this value (values > exclusiveMinimum).                                                                                                |
 | integer/number | format           | Format             | No       | Format of the value in terms of how many bits of space it can use and whether it is signed or unsigned (follows the Rust integer types).                                                                                                                             |
 | integer/number | maximum          | Maximum            | No       | All values are less than or equal to this value (values <= maximum).                                                                                                                                                                                                 |
 | integer/number | minimum          | Minimum            | No       | All values are greater than or equal to this value (values >= minimum).                                                                                                                                                                                              |
@@ -291,7 +293,7 @@ Additional metadata options to more accurately define the data type.
 
 #### Expressing Date / Datetime / Timezone information
 
-Given the complexity of handling various date and time formats (e.g., date, datetime, time, timestamp, timestamp with and without timezone), the existing `logicalType` options currently support only `date`. To specify additional temporal details, `logicalType` should be used in conjunction with `logicalTypeOptions.format`  or `physicalType` to define the desired format. Using `physicalType` allows for definition of your data-source specific data type.  
+Given the complexity of handling various date and time formats (e.g., date, datetime, time, timestamp, timestamp with and without timezone), the existing `logicalType` options currently support  `date`, `timestamp`, and `time`. To specify additional temporal details, `logicalType` should be used in conjunction with `logicalTypeOptions.format`  or `physicalType` to define the desired format. Using `physicalType` allows for definition of your data-source specific data type.  
 
 ``` yaml
 version: 1.0.0
@@ -305,32 +307,42 @@ schema:
   - name: event_date
     logicalType: date
     logicalTypeOptions:
-      - format: "yyyy-MM-dd"
+      format: "yyyy-MM-dd"
     examples:
       - "2024-07-10"
 
   # Date & Time (UTC)  
   - name: created_at
-    logicalType: date
+    logicalType: timestamp
     logicalTypeOptions:
-      - format: "yyyy-MM-ddTHH:mm:ssZ"
+      format: "yyyy-MM-ddTHH:mm:ssZ"
     examples:
       - "2024-03-10T14:22:35Z"
 
+  # Date & Time (Australia/Sydney)  
+  - name: created_at_sydney
+    logicalType: timestamp
+    logicalTypeOptions:
+      format: "yyyy-MM-ddTHH:mm:ssZ"
+      timezone: true
+      defaultTimezone: "Australia/Sydney"
+    examples:
+      - "2024-03-10T14:22:35+10:00"
+
   # Time Only 
   - name: event_start_time
-    logicalType: date
+    logicalType: time
     logicalTypeOptions:
-      - format: "HH:mm:ss"
+      format: "HH:mm:ss"
     examples:
       - "08:30:00"
 
     # Physical Type with Date & Time (UTC)
   - name: event_date
-    logicalType: date
+    logicalType: timestamp
     physicalType: DATETIME
     logicalTypeOptions:
-      - format: yyyy-MM-ddTHH:mm:ssZ"
+      format: "yyyy-MM-ddTHH:mm:ssZ"
     examples:
       - "2024-03-10T14:22:35Z"
 
