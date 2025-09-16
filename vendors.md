@@ -20,5 +20,6 @@ catalogs, data quality platforms, security tools, and more.
 ## Service providers
 
 * [AbeaData](https://abeadata.com) - Consulting & training on data contracts.
+* [ACA Group](https://acagroup.be/en/services/data-mesh/) - Data Mesh, Data Product, Data Contracts expert consultancy.
 * [Andrew Jones](https://andrew-jones.com) Independant consulting & training on data contracts.
 * [AgileLab](https://www.agilelab.it) Data consulting firm helping enterprise customers adopt data contracts.
