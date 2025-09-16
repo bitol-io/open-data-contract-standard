@@ -1520,6 +1520,13 @@
               "$ref": "#/$defs/SchemaProperty"
             }
           },
+          "relationships": {
+            "type": "array",
+            "description": "A list of relationships to other properties. Each relationship can have a 'from', 'to' and 'type' field.",
+            "items": {
+              "$ref": "#/$defs/Relationship"
+            }
+          },
           "quality": {
             "$ref": "#/$defs/DataQualityChecks"
           }
@@ -1617,6 +1624,13 @@
             "type": "boolean",
             "default": false,
             "description": "True or false indicator; If element is considered a critical data element (CDE) then true else false."
+          },
+          "relationships": {
+            "type": "array",
+            "description": "A list of relationships to other properties. When defined at property level, the 'from' field is implicit.",
+            "items": {
+              "$ref": "#/$defs/Relationship"
+            }
           },
           "quality": {
             "$ref": "#/$defs/DataQualityChecks"
@@ -2443,6 +2457,55 @@
             "type": "null"
           }
         ]
+      },
+      "Relationship": {
+        "type": "object",
+        "description": "Defines a relationship between properties, typically for foreign key constraints.",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of relationship. Defaults to 'foreignKey'.",
+            "default": "foreignKey",
+            "enum": ["foreignKey"]
+          },
+          "from": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "Source property reference using schema.property notation."
+              },
+              {
+                "type": "array",
+                "description": "Array of source properties for composite keys.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "description": "Source property or properties. Optional when defined at property level."
+          },
+          "to": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "Target property reference using schema.property notation."
+              },
+              {
+                "type": "array",
+                "description": "Array of target properties for composite keys.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "description": "Target property or properties to reference."
+          },
+          "customProperties": {
+            "$ref": "#/$defs/CustomProperties"
+          }
+        },
+        "required": ["to"],
+        "additionalProperties": false
       }
     }
   }

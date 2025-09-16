@@ -1,0 +1,71 @@
+version: "1.0.0"
+apiVersion: "v3.0.2"
+kind: "DataContract"
+id: "strict-test-002"
+name: "Strict Schema Test Invalid"
+status: "active"
+# undefinedRootProperty: "this should fail" # Testing root level
+servers:
+  - server: "test-server"
+    type: "postgresql"
+    host: "localhost"
+    port: 5432
+    database: "testdb"
+    schema: "public"
+    description: "Test PostgreSQL server"
+    undefinedServerProperty: "this should fail" # Testing Server object level
+    customProperties:
+      - property: "validCustomProp"
+        value: "this is fine"
+      - undefinedCustomProp: "this should fail" # Testing CustomProperties array item level
+schema:
+  - name: "users"
+    physicalName: "users_table"
+    logicalType: "object"
+    physicalType: "table"
+    description: "User information table"
+    # undefinedSchemaProperty: "this should fail" # Testing Schema object level
+    properties:
+      - name: "id"
+        logicalType: "integer"
+        physicalType: "INT"
+        required: true
+        primaryKey: true
+        description: "Unique identifier for the user"
+        # undefinedPropertyField: "this should fail" # Testing Property level
+        logicalTypeOptions:
+          format: "i32"
+          # undefinedOption: "this should fail" # Testing nested logicalTypeOptions level
+          # minLength: 2  # Testing option from string logicalType
+      - name: "email"
+        logicalType: "string"
+        physicalType: "VARCHAR(255)"
+        required: true
+        description: "User's email address"
+        quality:
+          - name: "email_check"
+            type: "library"
+            dimension: "accuracy"
+            rule: "validValues"
+            undefinedQualityProp: "this should fail" # Testing quality check level
+            query: SELECT * FROM table # Testing option from type sql
+roles:
+  - role: abc123
+    underfinedRoleProp: fail
+authoritativeDefinitions:
+  - url: http://localhost:8080
+    type: businessDefinition
+    underfinedAuthDefProp: fail
+support:
+  - channel: channel1
+    url: http://localhost:8080
+    underfinedSupportProp: fail
+price:
+  underfinedPriceProp: fail
+team:
+  - username: user123
+    underfinedTeamProp: fail
+slaProperties:
+  - property: slaProp
+    value: 123
+    underfinedSlaProp: fail
