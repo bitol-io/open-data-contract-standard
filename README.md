@@ -5,6 +5,9 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 ---
 
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8149/badge)](https://www.bestpractices.dev/projects/8149)
+  <a href="https://github.com/bitol-io/open-data-contract-standard">
+    <img alt="Stars" src="https://img.shields.io/github/stars/bitol-io/open-data-contract-standard" /></a>
+  <a href="https://jgp.ai/dmlslack" rel="nofollow"><img src="https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&amp;style=social" alt="Slack Status" data-canonical-src="https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&amp;style=social" style="max-width: 100%;"></a>
 
 # Open Data Contract Standard (ODCS)
 
