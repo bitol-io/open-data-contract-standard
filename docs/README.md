@@ -363,7 +363,7 @@ This section describes data quality rules & parameters. They are tightly linked 
 Data quality rules support different levels/stages of data quality attributes:
 
   - __Text__: A human-readable text that describes the quality of the data.
-  - __Library__ :A maintained library of commonly used predefined quality metrics such as `rowCount`, `nullValues`, `invalidValues`, and more.
+  - __Library__ : A maintained library of commonly used quality metrics such as `rowCount`, `nullValues`, `invalidValues`, and more.
   - __SQL__: An individual SQL query that returns a value that can be compared.
   - __Custom__: Quality attributes that are vendor-specific, such as Soda, Great Expectations, dbt tests, dbx, or Montecarlo monitors.
 
