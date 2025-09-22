@@ -2117,8 +2117,7 @@
                 "description": "Must be equal to the value to be valid. When using numbers, it is equivalent to '='."
               }
             },
-            "required": ["mustBe"],
-            "additionalProperties": false
+            "required": ["mustBe"]
           },
           {
             "properties": {
@@ -2126,8 +2125,7 @@
                 "description": "Must not be equal to the value to be valid. When using numbers, it is equivalent to '!='."
               }
             },
-            "required": ["mustNotBe"],
-            "additionalProperties": false
+            "required": ["mustNotBe"]
           },
           {
             "properties": {
@@ -2136,8 +2134,7 @@
                 "description": "Must be greater than the value to be valid. It is equivalent to '>'."
               }
             },
-            "required": ["mustBeGreaterThan"],
-            "additionalProperties": false
+            "required": ["mustBeGreaterThan"]
           },
           {
             "properties": {
@@ -2146,8 +2143,7 @@
                 "description": "Must be greater than or equal to the value to be valid. It is equivalent to '>='."
               }
             },
-            "required": ["mustBeGreaterOrEqualTo"],
-            "additionalProperties": false
+            "required": ["mustBeGreaterOrEqualTo"]
           },
           {
             "properties": {
@@ -2156,8 +2152,7 @@
                 "description": "Must be less than the value to be valid. It is equivalent to '<'."
               }
             },
-            "required": ["mustBeLessThan"],
-            "additionalProperties": false
+            "required": ["mustBeLessThan"]
           },
           {
             "properties": {
@@ -2166,8 +2161,7 @@
                 "description": "Must be less than or equal to the value to be valid. It is equivalent to '<='."
               }
             },
-            "required": ["mustBeLessOrEqualTo"],
-            "additionalProperties": false
+            "required": ["mustBeLessOrEqualTo"]
           },
           {
             "properties": {
@@ -2182,8 +2176,7 @@
                 }
               }
             },
-            "required": ["mustBeBetween"],
-            "additionalProperties": false
+            "required": ["mustBeBetween"]
           },
           {
             "properties": {
@@ -2198,8 +2191,7 @@
                 }
               }
             },
-            "required": ["mustNotBeBetween"],
-            "additionalProperties": false
+            "required": ["mustNotBeBetween"]
           }
         ]
       },
