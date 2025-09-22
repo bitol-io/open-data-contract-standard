@@ -410,8 +410,16 @@ properties:
 ```
 
 
-#### Property-level
-Those metrics apply at the property level, such as column, field, etc.
+#### Metrics
+
+| Metric | Level | Description                                                    | Arguments                                                        | Arguments Example                                                    |
+|--------|--------|----------------------------------------------------------------|------------------------------------------------------------------|----------------------------------------------------------------------|
+| `nullValues` | Property | Counts null values in a column/field                           | None                                                             |                                                                      |
+| `missingValues` | Property | Counts values considered as missing (empty strings, N/A, etc.) | `missingValues`: Array of values considered missing              | `missingValues: [null, '', 'N/A']`                                   |
+| `invalidValues` | Property | Counts values that don't match valid criteria                  | `validValues`: Array of valid values<br>`pattern`: Regex pattern | `validValues: ['pounds', 'kg']`<br>`pattern: '^[A-Z]{2}[0-9]{2}...'` |
+| `duplicateValues` | Property | Counts duplicate values in a column                            | None                                                             |                                                                      |
+| `duplicateValues` | Schema | Counts duplicate values across multiple columns                | `properties`: Array of property names                            | `properties: ['tenant_id', 'order_id']`                              |
+| `rowCount` | Schema | Counts total number of rows in a table/object store            | None                                                             |                                                                      |
 
 ##### Null Values
 
@@ -511,12 +519,7 @@ properties:
       unit: percent
 ```
 
-
-#### Object-level
-
-This example applies at the object level (like a table or a view).
-
-##### Row count
+##### Row count (Schema-Level)
 Calculates the number of rows (usually in a table) and compares it to an absolute operator.
 
 ```yaml
@@ -527,7 +530,7 @@ schema:
         mustBeBetween: [100, 120]
 ```
 
-##### Duplicates
+##### Duplicates (Schema-Level)
 
 Checks for duplicate rows based on a combination of properties.
 This is useful for validating compound keys where uniqueness is defined not by a single column but by multiple columns together.

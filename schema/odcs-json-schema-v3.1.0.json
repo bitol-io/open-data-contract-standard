@@ -2011,6 +2011,14 @@
             "type": "string",
             "examples": ["reconciliation"]
           },
+          "rule": {
+            "type": "string",
+            "deprecated": "Use metric instead"
+          },
+          "arguments": {
+            "type": "object",
+            "description": "Additional arguments for the metric, if needed."
+          },
           "name": {
             "type": "string",
             "description": "Name of the data quality check."
@@ -2048,11 +2056,24 @@
         "allOf": [
           {
             "if": {
-              "properties": {
-                "type": {
-                  "const": "library"
+              "anyOf": [
+                {
+                  "properties": {
+                    "type": {
+                      "const": "library"
+                    }
+                  },
+                  "required": ["type"]
+                },
+                {
+                  "properties": {
+                    "metric": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["metric"]
                 }
-              }
+              ]
             },
             "then": {
               "$ref": "#/$defs/DataQualityLibrary"
@@ -2094,14 +2115,10 @@
           "$ref": "#/$defs/DataQuality"
         }
       },
-      "DataQualityLibrary": {
+      "DataQualityOperators": {
         "type": "object",
+        "description": "Common comparison operators for data quality checks.",
         "properties": {
-          "rule": {
-            "type": "string",
-            "description": "Define a data quality check based on the predefined rules as per ODCS.",
-            "examples": ["duplicateCount", "validValues", "rowCount"]
-          },
           "mustBe": {
             "description": "Must be equal to the value to be valid. When using numbers, it is equivalent to '='."
           },
@@ -2144,11 +2161,30 @@
               "type": "number"
             }
           }
-        },
-        "required": ["rule"]
+        }
+      },
+      "DataQualityLibrary": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/$defs/DataQualityOperators"
+          }
+        ],
+        "properties": {
+          "metric": {
+            "type": "string",
+            "description": "Define a data quality check based on the predefined metrics as per ODCS.",
+            "enum": ["nullValues", "missingValues", "invalidValues", "duplicateValues", "rowCount"]
+          }
+        }
       },
       "DataQualitySql": {
         "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/$defs/DataQualityOperators"
+          }
+        ],
         "properties": {
           "query": {
             "type": "string",
