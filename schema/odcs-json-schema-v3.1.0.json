@@ -16,9 +16,9 @@
       },
       "apiVersion": {
         "type": "string",
-        "default": "v3.0.2",
-        "description": "Version of the standard used to build data contract. Default value is v3.0.2.",
-        "enum": ["v3.0.2","v3.0.1", "v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
+        "default": "v3.1.0",
+        "description": "Version of the standard used to build data contract. Default value is v3.1.0.",
+        "enum": ["v3.1.0","v3.0.2","v3.0.1", "v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
       },
       "id": {
         "type": "string",
@@ -2011,14 +2011,6 @@
             "type": "string",
             "examples": ["reconciliation"]
           },
-          "rule": {
-            "type": "string",
-            "deprecated": "Use metric instead"
-          },
-          "arguments": {
-            "type": "object",
-            "description": "Additional arguments for the metric, if needed."
-          },
           "name": {
             "type": "string",
             "description": "Name of the data quality check."
@@ -2118,50 +2110,98 @@
       "DataQualityOperators": {
         "type": "object",
         "description": "Common comparison operators for data quality checks.",
-        "properties": {
-          "mustBe": {
-            "description": "Must be equal to the value to be valid. When using numbers, it is equivalent to '='."
+        "oneOf": [
+          {
+            "properties": {
+              "mustBe": {
+                "description": "Must be equal to the value to be valid. When using numbers, it is equivalent to '='."
+              }
+            },
+            "required": ["mustBe"],
+            "additionalProperties": false
           },
-          "mustNotBe": {
-            "description": "Must not be equal to the value to be valid. When using numbers, it is equivalent to '!='."
+          {
+            "properties": {
+              "mustNotBe": {
+                "description": "Must not be equal to the value to be valid. When using numbers, it is equivalent to '!='."
+              }
+            },
+            "required": ["mustNotBe"],
+            "additionalProperties": false
           },
-          "mustBeGreaterThan": {
-            "type": "number",
-            "description": "Must be greater than the value to be valid. It is equivalent to '>'."
+          {
+            "properties": {
+              "mustBeGreaterThan": {
+                "type": "number",
+                "description": "Must be greater than the value to be valid. It is equivalent to '>'."
+              }
+            },
+            "required": ["mustBeGreaterThan"],
+            "additionalProperties": false
           },
-          "mustBeGreaterOrEqualTo": {
-            "type": "number",
-            "description": "Must be greater than or equal to the value to be valid. It is equivalent to '>='."
+          {
+            "properties": {
+              "mustBeGreaterOrEqualTo": {
+                "type": "number",
+                "description": "Must be greater than or equal to the value to be valid. It is equivalent to '>='."
+              }
+            },
+            "required": ["mustBeGreaterOrEqualTo"],
+            "additionalProperties": false
           },
-          "mustBeLessThan": {
-            "type": "number",
-            "description": "Must be less than the value to be valid. It is equivalent to '<'."
+          {
+            "properties": {
+              "mustBeLessThan": {
+                "type": "number",
+                "description": "Must be less than the value to be valid. It is equivalent to '<'."
+              }
+            },
+            "required": ["mustBeLessThan"],
+            "additionalProperties": false
           },
-          "mustBeLessOrEqualTo": {
-            "type": "number",
-            "description": "Must be less than or equal to the value to be valid. It is equivalent to '<='."
+          {
+            "properties": {
+              "mustBeLessOrEqualTo": {
+                "type": "number",
+                "description": "Must be less than or equal to the value to be valid. It is equivalent to '<='."
+              }
+            },
+            "required": ["mustBeLessOrEqualTo"],
+            "additionalProperties": false
           },
-          "mustBeBetween": {
-            "type": "array",
-            "description": "Must be between the two numbers to be valid. Smallest number first in the array.",
-            "minItems": 2,
-            "maxItems": 2,
-            "uniqueItems": true,
-            "items": {
-              "type": "number"
-            }
+          {
+            "properties": {
+              "mustBeBetween": {
+                "type": "array",
+                "description": "Must be between the two numbers to be valid. Smallest number first in the array.",
+                "minItems": 2,
+                "maxItems": 2,
+                "uniqueItems": true,
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": ["mustBeBetween"],
+            "additionalProperties": false
           },
-          "mustNotBeBetween": {
-            "type": "array",
-            "description": "Must not be between the two numbers to be valid. Smallest number first in the array.",
-            "minItems": 2,
-            "maxItems": 2,
-            "uniqueItems": true,
-            "items": {
-              "type": "number"
-            }
+          {
+            "properties": {
+              "mustNotBeBetween": {
+                "type": "array",
+                "description": "Must not be between the two numbers to be valid. Smallest number first in the array.",
+                "minItems": 2,
+                "maxItems": 2,
+                "uniqueItems": true,
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": ["mustNotBeBetween"],
+            "additionalProperties": false
           }
-        }
+        ]
       },
       "DataQualityLibrary": {
         "type": "object",
@@ -2175,8 +2215,18 @@
             "type": "string",
             "description": "Define a data quality check based on the predefined metrics as per ODCS.",
             "enum": ["nullValues", "missingValues", "invalidValues", "duplicateValues", "rowCount"]
+          },
+          "rule": {
+            "type": "string",
+            "deprecated": true,
+            "description": "Use metric instead"
+          },
+          "arguments": {
+            "type": "object",
+            "description": "Additional arguments for the metric, if needed."
           }
-        }
+        },
+        "required": ["metric"]
       },
       "DataQualitySql": {
         "type": "object",
