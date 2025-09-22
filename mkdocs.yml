@@ -28,7 +28,7 @@ theme:
     - toc.integrate
     - toc.follow
   palette:
-    scheme: slate  
+    scheme: slate
   icon:
     repo: fontawesome/brands/git-alt
 
