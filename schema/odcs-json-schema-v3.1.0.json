@@ -1522,9 +1522,9 @@
           },
           "relationships": {
             "type": "array",
-            "description": "A list of relationships to other properties. Each relationship can have a 'from', 'to' and 'type' field.",
+            "description": "A list of relationships to other properties. Each relationship must have 'from', 'to' and optionally 'type' field.",
             "items": {
-              "$ref": "#/$defs/Relationship"
+              "$ref": "#/$defs/RelationshipSchemaLevel"
             }
           },
           "quality": {
@@ -1627,9 +1627,9 @@
           },
           "relationships": {
             "type": "array",
-            "description": "A list of relationships to other properties. When defined at property level, the 'from' field is implicit.",
+            "description": "A list of relationships to other properties. When defined at property level, the 'from' field is implicit and should not be specified.",
             "items": {
-              "$ref": "#/$defs/Relationship"
+              "$ref": "#/$defs/RelationshipPropertyLevel"
             }
           },
           "quality": {
@@ -2458,9 +2458,9 @@
           }
         ]
       },
-      "Relationship": {
+      "RelationshipBase": {
         "type": "object",
-        "description": "Defines a relationship between properties, typically for foreign key constraints.",
+        "description": "Base definition for relationships between properties, typically for foreign key constraints.",
         "properties": {
           "type": {
             "type": "string",
@@ -2479,10 +2479,11 @@
                 "description": "Array of source properties for composite keys.",
                 "items": {
                   "type": "string"
-                }
+                },
+                "minItems": 1
               }
             ],
-            "description": "Source property or properties. Optional when defined at property level."
+            "description": "Source property or properties."
           },
           "to": {
             "oneOf": [
@@ -2495,7 +2496,8 @@
                 "description": "Array of target properties for composite keys.",
                 "items": {
                   "type": "string"
-                }
+                },
+                "minItems": 1
               }
             ],
             "description": "Target property or properties to reference."
@@ -2503,9 +2505,62 @@
           "customProperties": {
             "$ref": "#/$defs/CustomProperties"
           }
-        },
-        "required": ["to"],
-        "additionalProperties": false
+        }
+      },
+      "RelationshipSchemaLevel": {
+        "description": "Relationship definition at schema level, requiring both 'from' and 'to' fields with matching types.",
+        "allOf": [
+          { "$ref": "#/$defs/RelationshipBase" },
+          { "required": ["from", "to"] },
+          {
+            "oneOf": [
+              {
+                "description": "Single-column relationship - both fields must be strings",
+                "properties": {
+                  "from": { "type": "string" },
+                  "to": { "type": "string" }
+                }
+              },
+              {
+                "description": "Composite key relationship - both fields must be arrays with matching lengths",
+                "properties": {
+                  "from": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "minItems": 1
+                  },
+                  "to": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "minItems": 1
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "unevaluatedProperties": false
+      },
+      "RelationshipPropertyLevel": {
+        "description": "Relationship definition at property level, where 'from' is implicitly the current property.",
+        "allOf": [
+          { "$ref": "#/$defs/RelationshipBase" },
+          { "required": ["to"] },
+          { 
+            "not": {
+              "required": ["from"]
+            },
+            "errorMessage": "The 'from' field must not be specified at property level as it is implicitly derived from the property context"
+          }
+        ],
+        "unevaluatedProperties": false
+      },
+      "Relationship": {
+        "description": "Compatibility wrapper for relationship definitions.",
+        "oneOf": [
+          { "$ref": "#/$defs/RelationshipSchemaLevel" },
+          { "$ref": "#/$defs/RelationshipPropertyLevel" }
+        ]
       }
     }
   }

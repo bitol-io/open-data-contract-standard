@@ -431,30 +431,37 @@ Properties can define relationships to other properties, enabling you to specify
 #### Quick Overview
 
 Relationships can be defined in two ways:
-1. **At the property level** - Define relationships directly on a property (the `from` field is implicit)
+1. **At the property level** - Define relationships directly on a property (the `from` field is implicit and must NOT be specified)
 2. **At the schema level** - Define relationships between any properties (both `from` and `to` are required)
+
+#### Important Rules
+
+- **Property-level relationships**: The `from` field is implicit (derived from the property context) and must NOT be specified
+- **Schema-level relationships**: Both `from` and `to` fields are required
+- **Type consistency**: Both `from` and `to` must be the same type - either both strings (single column) or both arrays (composite keys). Mixing types is not allowed
+- **Array length validation**: When using arrays for composite keys, both arrays must have the same number of elements. This is validated at runtime by implementations
 
 #### Field Definitions
 
 | Key | UX Label | Required | Description |
 |-----|----------|----------|-------------|
-| relationships | Relationships | No | Array of relationship definitions for a property |
+| relationships | Relationships | No | Array of relationship definitions |
 | relationships.type | Type | No | Type of relationship (defaults to `foreignKey`) |
 | relationships.to | To | Yes | Target property reference using `schema.property` notation |
-| relationships.from | From | Yes* | Source property reference (*optional at property level) |
+| relationships.from | From | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
 | relationships.customProperties | Custom Properties | No | Additional metadata about the relationship |
 
 #### Reference Notation
 
 - **Simple reference**: `users.id` - References the `id` property in the `users` schema
 - **Nested reference**: `accounts.address.street` - References nested properties
-- **Composite keys**: Use yaml arrays to define composite keys
+- **Composite keys**: Use arrays to define composite keys (arrays must have matching lengths)
 
 ### Examples
 
 #### Example 1: Simple Foreign Key (Property Level)
 
-When defining a relationship at the property level, the `from` field is implicit:
+When defining a relationship at the property level, the `from` field is implicit and must NOT be specified:
 
 ```yaml
 schema:
@@ -463,6 +470,7 @@ schema:
       - name: user_id
         relationships:
           - to: accounts.owner_id  # 'from' is implicit (users.user_id)
+            # Note: DO NOT include 'from' field at property level
 ```
 
 #### Example 2: Multiple Relationships
@@ -481,14 +489,14 @@ schema:
 
 #### Example 3: Schema-Level Relationships
 
-Define relationships at the schema level when you need explicit `from` and `to`:
+Define relationships at the schema level when you need explicit `from` and `to`. Both fields are REQUIRED at this level:
 
 ```yaml
 schema:
   - name: users
     relationships:
-      - from: users.account_id
-        to: accounts.id
+      - from: users.account_id  # Required at schema level
+        to: accounts.id         # Required at schema level
         type: foreignKey
 ```
 
@@ -507,19 +515,72 @@ schema:
 
 #### Example 5: Composite Keys
 
-For composite foreign keys, use arrays:
+For composite foreign keys, use arrays. **Important**: Both `from` and `to` must be arrays with the same number of elements (validated at runtime):
 
 ```yaml
 schema:
   - name: order_items
     relationships:
       - type: foreignKey
-        from: 
+        from:                           # Array (must match 'to' length)
           - order_items.order_id
           - order_items.product_id
-        to: 
+        to:                             # Array (must match 'from' length)
           - product_inventory.order_id
           - product_inventory.product_id
+          
+      # Supports composite keys with any number of columns
+      - type: foreignKey
+        from:                           
+          - order_items.warehouse_id
+          - order_items.order_id
+          - order_items.line_num
+        to:                             
+          - warehouse_inventory.warehouse_id
+          - warehouse_inventory.order_id
+          - warehouse_inventory.line_num
+```
+
+#### Example 6: Invalid Configurations
+
+Here are examples of invalid configurations that will be rejected:
+
+```yaml
+# INVALID: 'from' specified at property level
+schema:
+  - name: users
+    properties:
+      - name: user_id
+        relationships:
+          - from: users.user_id  # ERROR: 'from' not allowed at property level
+            to: accounts.id
+
+# INVALID: Mismatched array types
+schema:
+  - name: orders
+    relationships:
+      - from: orders.id          # ERROR: 'from' is string but 'to' is array
+        to: 
+          - items.order_id
+          - items.line_num
+
+# INVALID: Different array lengths (caught at runtime)
+schema:
+  - name: orders
+    relationships:
+      - from:                    # 'from' has 2 elements
+          - orders.id
+          - orders.customer_id
+        to:                      # 'to' has 3 elements (runtime validation will fail)
+          - items.order_id
+          - items.customer_id
+          - items.line_num
+
+# INVALID: Missing 'from' at schema level
+schema:
+  - name: orders
+    relationships:
+      - to: customers.id         # ERROR: 'from' is required at schema level
 ```
 
 #### Complete Example
