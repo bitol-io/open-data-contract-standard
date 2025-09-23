@@ -515,7 +515,7 @@ schema:
 
 #### Example 5: Composite Keys
 
-For composite foreign keys, use arrays. **Important**: Both `from` and `to` must be arrays with the same number of elements (validated at runtime):
+For composite foreign keys, use arrays. **Important**: Both `from` and `to` must be arrays with the same number of elements:
 
 ```yaml
 schema:
@@ -529,16 +529,6 @@ schema:
           - product_inventory.order_id
           - product_inventory.product_id
           
-      # Supports composite keys with any number of columns
-      - type: foreignKey
-        from:                           
-          - order_items.warehouse_id
-          - order_items.order_id
-          - order_items.line_num
-        to:                             
-          - warehouse_inventory.warehouse_id
-          - warehouse_inventory.order_id
-          - warehouse_inventory.line_num
 ```
 
 #### Example 6: Invalid Configurations

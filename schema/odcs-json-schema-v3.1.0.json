@@ -2508,6 +2508,7 @@
         }
       },
       "RelationshipSchemaLevel": {
+        "type": "object",
         "description": "Relationship definition at schema level, requiring both 'from' and 'to' fields with matching types.",
         "allOf": [
           { "$ref": "#/$defs/RelationshipBase" },
@@ -2542,15 +2543,16 @@
         "unevaluatedProperties": false
       },
       "RelationshipPropertyLevel": {
+        "type": "object",
         "description": "Relationship definition at property level, where 'from' is implicitly the current property.",
         "allOf": [
           { "$ref": "#/$defs/RelationshipBase" },
-          { "required": ["to"] },
+          { "type": "object", "required": ["to"] },
           { 
             "not": {
               "required": ["from"]
             },
-            "errorMessage": "The 'from' field must not be specified at property level as it is implicitly derived from the property context"
+            "description": "The 'from' field must not be specified at property level as it is implicitly derived from the property context"
           }
         ],
         "unevaluatedProperties": false
