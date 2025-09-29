@@ -380,7 +380,7 @@ Where:
 
 ### External Contract References
 
-To identify an  contract, use one of these formats:
+To identify a contract, use one of these formats:
 
 ```yaml
 # Same folder as current contract
