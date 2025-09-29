@@ -597,6 +597,12 @@ schema:
                 value: "one-to-many"
               - property: label
                 value: "manages"
+
+          # To external contract (from is implicit)
+          - to: https://example.com/data-contract-v1.yaml#profiles.user_id
+            customProperties:
+              - property: description
+                value: "Externally referenced contract"
       
       - name: account_number
     
