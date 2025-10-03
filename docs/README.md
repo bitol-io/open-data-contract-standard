@@ -7,13 +7,13 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 # Open Data Contract Standard
 
 ## Executive Summary
-This document describes the keys and values expected in a YAML data contract, per the **Open Data Contract Standard**. 
-It is divided in multiple sections: [fundamentals (fka demographics)](#fundamentals), [schema](#schema), 
-[data quality](#data-quality), [Support & communication channels](#support-and-communication-channels), [pricing](#pricing), [team](#team), 
-[roles](#roles), [service-level agreement](#service-level-agreement-sla), [Infrastructures & servers](#infrastructure-and-servers) and 
-[other/custom properties](#custom-properties). Each section starts with at least an example followed by definition of 
-each field/key.
 
+This document describes the keys and values expected in a YAML data contract, per the **Open Data Contract Standard**.
+It is divided in multiple sections: [fundamentals (fka demographics)](#fundamentals), [schema](#schema),
+[data quality](#data-quality), [Support & communication channels](#support-and-communication-channels), [pricing](#pricing), [team](#team),
+[roles](#roles), [service-level agreement](#service-level-agreement-sla), [Infrastructures & servers](#infrastructure-and-servers) and
+[other/custom properties](#custom-properties). Each section starts with at least an example followed by definition of
+each field/key.
 
 ## Table of content
 
@@ -29,15 +29,14 @@ each field/key.
 1. [Custom & other properties](#custom-properties)
 1. [Examples](#full-example-1)
 
-
 ## Notes
 
 * This contract is containing example values, we reviewed very carefully the consistency of those values, but we cannot guarantee that there are no errors. If you spot one, please raise an [issue](https://github.com/AIDAUserGroup/open-data-contract-standard/issues).
 * Some fields have `null` value: even if it is equivalent to not having the field in the contract, we wanted to have the field for illustration purpose.
 * This contract should be **platform agnostic**. If you think it is not the case, please raise an [issue](https://github.com/AIDAUserGroup/open-data-contract-standard/issues).
 
-
 ## Fundamentals
+
 This section contains general information about the contract.
 
 ### Example
@@ -48,7 +47,7 @@ kind: DataContract
 
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 name: seller_payments_v1
-version: 1.1.0 # Data Contract Version 
+version: 1.1.0 # Data Contract Version
 status: active
 domain: seller
 dataProduct: payments
@@ -64,28 +63,27 @@ tags: ['finance']
 
 ### Definitions
 
-| Key                                  | UX label                  | Required | Description                                                                                                                                                                                                                   |
-|--------------------------------------|---------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| apiVersion                           | Standard version          | Yes      | Version of the standard used to build data contract. Default value is `v3.0.2`.                                                                                                                                               |
-| kind                                 | Kind                      | Yes      | The kind of file this is. Valid value is `DataContract`.                                                                                                                                                                      |
-| id                                   | ID                        | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.                                                                                                                                       |
-| name                                 | Name                      | No       | Name of the data contract.                                                                                                                                                                                                    |
-| version                              | Version                   | Yes      | Current version of the data contract.                                                                                                                                                                                         |
-| status                               | Status                    | Yes      | Current status of the data contract. Examples are "proposed", "draft", "active", "deprecated", "retired".                                                                                                                     |
-| tenant                               | Tenant                    | No       | Indicates the property the data is primarily associated with. Value is case insensitive.                                                                                                                                      |
-| tags                                 | Tags                      | No       | A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`. |
-| domain                               | Domain                    | No       | Name of the logical data domain.                                                                                                                                                                                              |
-| dataProduct                          | Data Product              | No       | Name of the data product.                                                                                                                                                                                                     |
-| authoritativeDefinitions             | Authoritative Definitions | No       | List of links to sources that provide more details on the data contract.                                                                                                                                                      |
-| description                          | Description               | No       | Object containing the descriptions.                                                                                                                                                                                           |
-| description.purpose                  | Purpose                   | No       | Intended purpose for the provided data.                                                                                                                                                                                       |
-| description.limitations              | Limitations               | No       | Technical, compliance, and legal limitations for data use.                                                                                                                                                                    |
-| description.usage                    | Usage                     | No       | Recommended usage of the data.                                                                                                                                                                                                |
-| description.authoritativeDefinitions | Authoritative Definitions | No       | List of links to sources that provide more details on the dataset; examples would be a link to privacy statement, terms and conditions, license agreements, data catalog, or another tool.                                    |
-| description.customProperties         | Custom Properties         | No       | Custom properties that are not part of the standard.                                                                                                                                                                          |
-
+| Key                                  | UX label                  | Required | Description                                                                                                                                                                                |
+|--------------------------------------|---------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| apiVersion                           | Standard version          | Yes      | Version of the standard used to build data contract. Default value is `v3.0.2`.                                                                                                            |
+| kind                                 | Kind                      | Yes      | The kind of file this is. Valid value is `DataContract`.                                                                                                                                   |
+| id                                   | ID                        | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.                                                                                                    |
+| name                                 | Name                      | No       | Name of the data contract.                                                                                                                                                                 |
+| version                              | Version                   | Yes      | Current version of the data contract.                                                                                                                                                      |
+| status                               | Status                    | Yes      | Current status of the data contract. Examples are "proposed", "draft", "active", "deprecated", "retired".                                                                                  |
+| tenant                               | Tenant                    | No       | Indicates the property the data is primarily associated with. Value is case insensitive.                                                                                                   |
+| domain                               | Domain                    | No       | Name of the logical data domain.                                                                                                                                                           |
+| dataProduct                          | Data Product              | No       | Name of the data product.                                                                                                                                                                  |
+| authoritativeDefinitions             | Authoritative Definitions | No       | List of links to sources that provide more details on the data contract.                                                                                                                   |
+| description                          | Description               | No       | Object containing the descriptions.                                                                                                                                                        |
+| description.purpose                  | Purpose                   | No       | Intended purpose for the provided data.                                                                                                                                                    |
+| description.limitations              | Limitations               | No       | Technical, compliance, and legal limitations for data use.                                                                                                                                 |
+| description.usage                    | Usage                     | No       | Recommended usage of the data.                                                                                                                                                             |
+| description.authoritativeDefinitions | Authoritative Definitions | No       | List of links to sources that provide more details on the dataset; examples would be a link to privacy statement, terms and conditions, license agreements, data catalog, or another tool. |
+| description.customProperties         | Custom Properties         | No       | Custom properties that are not part of the standard.                                                                                                                                       |
 
 ## Schema
+
 This section describes the schema of the data contract. It is the support for data quality, which is detailed in the next section. Schema supports both a business representation of your data and a physical implementation. It allows to tie them together.
 
 In ODCS v3, the schema has evolved from the table and column representation, therefore the schema introduces a new terminology:
@@ -109,10 +107,10 @@ schema:
   - name: tbl
     logicalType: object
     physicalType: table
-    physicalName: tbl_1 
-    description: Provides core payment metrics 
-    authoritativeDefinitions: 
-      - url: https://catalog.data.gov/dataset/air-quality 
+    physicalName: tbl_1
+    description: Provides core payment metrics
+    authoritativeDefinitions:
+      - url: https://catalog.data.gov/dataset/air-quality
         type: businessDefinition
       - url: https://youtu.be/jbY1BKFj9ec
         type: videoTutorial
@@ -134,12 +132,12 @@ schema:
           - table_name_2
           - table_name_3
         transformLogic: sel t1.txn_dt as txn_ref_dt from table_name_1 as t1, table_name_2 as t2, table_name_3 as t3 where t1.txn_dt=date-3
-        transformDescription: Defines the logic in business terms. 
+        transformDescription: Defines the logic in business terms.
         examples:
           - 2022-10-03
           - 2020-01-28
       - name: rcvr_id
-        primaryKey: true 
+        primaryKey: true
         primaryKeyPosition: 1
         businessName: receiver id
         logicalType: string
@@ -153,7 +151,7 @@ schema:
         classification: restricted
         encryptedName: enc_rcvr_id
       - name: rcvr_cntry_code
-        primaryKey: false 
+        primaryKey: false
         primaryKeyPosition: -1
         businessName: receiver country code
         logicalType: string
@@ -183,7 +181,7 @@ schema:
     logicalType: object
     properties:
       - name: street_lines
-        logicalType: array 
+        logicalType: array
         items:
           logicalType: string
 ```
@@ -201,7 +199,7 @@ schema:
           logicalType: object
           properties:
             - name: id
-              logicalType: string 
+              logicalType: string
               physicalType: VARCHAR(40)
             - name: zip
               logicalType: string
@@ -237,14 +235,14 @@ schema:
 
 #### Applicable to Properties
 
-Some keys are more applicable when the described property is a column. 
+Some keys are more applicable when the described property is a column.
 
 | Key                      | UX label                     | Required | Description                                                                                                                                                                                                                           |
 |--------------------------|------------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | primaryKey               | Primary Key                  | No       | Boolean value specifying whether the field is primary or not. Default is false.                                                                                                                                                       |
 | primaryKeyPosition       | Primary Key Position         | No       | If field is a primary key, the position of the primary key element. Starts from 1. Example of `account_id, name` being primary key columns, `account_id` has primaryKeyPosition 1 and `name` primaryKeyPosition 2. Default to -1.     |
 | logicalType              | Logical Type                 | No       | The logical field datatype. One of `string`, `date`, `timestamp`, `time`, `number`, `integer`, `object`, `array` or `boolean`.                                                                                                                             |
-| logicalTypeOptions       | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [here](#logical-type-options) for more details about supported options for each `logicalType`.                                                                         |
+| logicalTypeOptions       | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [logical type options](#logical-type-options) for more details about supported options for each `logicalType`.                                                                         |
 | physicalType             | Physical Type                | No       | The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT.                                                                                                                                              |
 | description              | Description                  | No       | Description of the element.                                                                                                                                                                                                           |
 | required                 | Required                     | No       | Indicates if the element may contain Null values; possible values are true and false. Default is false.                                                                                                                               |
@@ -289,11 +287,11 @@ Additional metadata options to more accurately define the data type.
 | string         | format           | Format             | No       | Provides extra context about what format the string follows. For example, password, byte, binary, email, uuid, uri, hostname, ipv4, ipv6.                                                                                                                            |
 | string         | maxLength        | Maximum Length     | No       | Maximum length of the string.                                                                                                                                                                                                                                        |
 | string         | minLength        | Minimum Length     | No       | Minimum length of the string.                                                                                                                                                                                                                                        |
-| string         | pattern          | Pattern            | No       | Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (https://262.ecma-international.org/5.1/#sec-15.10.1).                                                                                                             |
+| string         | pattern          | Pattern            | No       | Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (<https://262.ecma-international.org/5.1/#sec-15.10.1>).                                                                                                             |
 
 #### Expressing Date / Datetime / Timezone information
 
-Given the complexity of handling various date and time formats (e.g., date, datetime, time, timestamp, timestamp with and without timezone), the existing `logicalType` options currently support  `date`, `timestamp`, and `time`. To specify additional temporal details, `logicalType` should be used in conjunction with `logicalTypeOptions.format`  or `physicalType` to define the desired format. Using `physicalType` allows for definition of your data-source specific data type.  
+Given the complexity of handling various date and time formats (e.g., date, datetime, time, timestamp, timestamp with and without timezone), the existing `logicalType` options currently support  `date`, `timestamp`, and `time`. To specify additional temporal details, `logicalType` should be used in conjunction with `logicalTypeOptions.format`  or `physicalType` to define the desired format. Using `physicalType` allows for definition of your data-source specific data type.
 
 ``` yaml
 version: 1.0.0
@@ -303,7 +301,7 @@ status: active
 name: date_example
 apiVersion: v3.0.2
 schema:
-  # Date Only 
+  # Date Only
   - name: event_date
     logicalType: date
     logicalTypeOptions:
@@ -311,7 +309,7 @@ schema:
     examples:
       - "2024-07-10"
 
-  # Date & Time (UTC)  
+  # Date & Time (UTC)
   - name: created_at
     logicalType: timestamp
     logicalTypeOptions:
@@ -319,7 +317,7 @@ schema:
     examples:
       - "2024-03-10T14:22:35Z"
 
-  # Date & Time (Australia/Sydney)  
+  # Date & Time (Australia/Sydney)
   - name: created_at_sydney
     logicalType: timestamp
     logicalTypeOptions:
@@ -329,7 +327,7 @@ schema:
     examples:
       - "2024-03-10T14:22:35+10:00"
 
-  # Time Only 
+  # Time Only
   - name: event_start_time
     logicalType: time
     logicalTypeOptions:
@@ -349,6 +347,7 @@ schema:
 ```
 
 ### Authoritative definitions
+
 Reference to an external definition on element logic or values.
 
 | Key                           | UX label          | Required | Description                                                                                                                                                   |
@@ -358,16 +357,18 @@ Reference to an external definition on element logic or values.
 | authoritativeDefinitions.url  | URL to definition | Yes      | URL to the authority.                                                                                                                                         |
 
 ## Data quality
+
 This section describes data quality rules & parameters. They are tightly linked to the schema described in the previous section.
 
 Data quality rules support different levels/stages of data quality attributes:
 
-  - __Text__: A human-readable text that describes the quality of the data.
-  - __Library__ rules: A maintained library of commonly-used predefined quality attributes such as `rowCount`, `unique`, `freshness`, and more.
-  - __SQL__: An individual SQL query that returns a value that can be compared. Can be extended to `Python` or other.
-  - __Custom__: Quality attributes that are vendor-specific, such as Soda, Great Expectations, dbt tests, or Montecarlo monitors.
+* **Text**: A human-readable text that describes the quality of the data.
+* **Library** rules: A maintained library of commonly-used predefined quality attributes such as `rowCount`, `unique`, `freshness`, and more.
+* **SQL**: An individual SQL query that returns a value that can be compared. Can be extended to `Python` or other.
+* **Custom**: Quality attributes that are vendor-specific, such as Soda, Great Expectations, dbt tests, or Montecarlo monitors.
 
 ### Text
+
 A human-readable text that describes the quality of the data. Later in the development process, these might be translated into an executable check (such as `sql`), a library rule, or checked through an AI engine.
 
 ```yaml
@@ -377,12 +378,15 @@ quality:
 ```
 
 ### Library
+
 ODCS will provide a set of predefined rules commonly used in data quality checks, designed to be compatible with all major data quality engines. This simplifies the work for data engineers by eliminating the need to manually write SQL queries.
 
 #### Property-level
+
 Those examples apply at the property level, such as column, field, etc.
 
 ##### Duplicate count on rows
+
 No more than 10 duplicate names.
 
 ```yaml
@@ -395,6 +399,7 @@ quality:
 ```
 
 ##### Duplicate count on %
+
 Duplicates should be less than 1%.
 
 ```yaml
@@ -405,6 +410,7 @@ quality:
 ```
 
 ##### Valid values
+
 Valid values from a static list.
 
 ```yaml
@@ -414,9 +420,11 @@ quality:
 ```
 
 #### Object-level
+
 This example applies at the object level (like a table or a view).
 
 ##### Row count
+
 The number of rows must be between 100 and 120.
 
 ```yaml
@@ -427,17 +435,19 @@ quality:
 ```
 
 ### SQL
-A single SQL query that returns either a numeric or boolean value for comparison. The query must be written in the SQL dialect specific to the provided server. `${object}` and `${property}` are automatically replaced by the current object (in the case of SQL on a relational database, the table or view name) and the current property name (in the case of SQL on a relational database, the column).
+
+A single SQL query that returns either a numeric or boolean value for comparison. The query must be written in the SQL dialect specific to the provided server. `{object}` and `{property}` are automatically replaced by the current object (in the case of SQL on a relational database, the table or view name) and the current property name (in the case of SQL on a relational database, the column).
 
 ```yaml
 quality:
-  - type: sql 
+  - type: sql
     query: |
-      SELECT COUNT(*) FROM ${object} WHERE ${property} IS NOT NULL
-    mustBeLessThan: 3600    
+      SELECT COUNT(*) FROM {object} WHERE {property} IS NOT NULL
+    mustBeLessThan: 3600
 ```
 
 ### Custom
+
 Custom rules allow for vendor-specific checks, including tools like Soda, Great Expectations, dbt-tests, Montecarlo, and others. Any format for properties is acceptable, whether it's written in YAML, JSON, XML, or even uuencoded binary. They are an intermediate step before the vendor accepts ODCS natively.
 
 #### Soda Example
@@ -468,22 +478,23 @@ quality:
 ```
 
 ### Scheduling
-The data contract can contain scheduling information for executing the rules. You can use `schedule` and `scheduler` for those operation. In previous versions of ODCS, the only allowed scheduler was cron and its syntax was `scheduleCronExpression`. 
+
+The data contract can contain scheduling information for executing the rules. You can use `schedule` and `scheduler` for those operation. In previous versions of ODCS, the only allowed scheduler was cron and its syntax was `scheduleCronExpression`.
 
 ```yaml
 quality:
-  - type: sql 
+  - type: sql
     query: |
-      SELECT COUNT(*) FROM ${object} WHERE ${property} IS NOT NULL
-    mustBeLessThan: 3600    
+      SELECT COUNT(*) FROM {object} WHERE {property} IS NOT NULL
+    mustBeLessThan: 3600
     scheduler: cron
     schedule: 0 20 * * *
 ```
 
-
 ### Definitions
 
 Acronyms:
+
 * DQ: data quality.
 
 | Key                              | UX label                   | Required | Description                                                                                                                                                                  |
@@ -510,22 +521,24 @@ Acronyms:
 | quality.schedule                 | Scheduler Configuration    | No       | Configuration information for the scheduling tool, for `cron` a possible value is `0 20 * * *`.                                                                              |
 
 #### Valid Values for Dimension
+
 Those data quality dimensions are used for classification and reporting in data quality. Valid values are:
 
-  * `accuracy` (synonym `ac`),
-  * `completeness` (synonym `cp`),
-  * `conformity` (synonym `cf`),
-  * `consistency` (synonym `cs`),
-  * `coverage` (synonym `cv`),
-  * `timeliness` (synonym `tm`),
-  * `uniqueness` (synonym `uq`).
+* `accuracy` (synonym `ac`),
+* `completeness` (synonym `cp`),
+* `conformity` (synonym `cf`),
+* `consistency` (synonym `cs`),
+* `coverage` (synonym `cv`),
+* `timeliness` (synonym `tm`),
+* `uniqueness` (synonym `uq`).
 
 #### Valid Properties for Operator
+
 The operator specifies the condition to validate the rule.
 
 | Operator                 | Expected Value      | Math Symbol | Example                      |
 |--------------------------|---------------------|-------------|------------------------------|
-| `mustBe`	                | number              | `=`         | `mustBe: 5`                  |
+| `mustBe`                 | number              | `=`         | `mustBe: 5`                  |
 | `mustNotBe`              | number              | `<>`, `≠`   | `mustNotBe: 3.14`            |
 | `mustBeGreaterThan`      | number              | `>`         | `mustBeGreaterThan: 59`      |
 | `mustBeGreaterOrEqualTo` | number              | `>=`, `≥`   | `mustBeGreaterOrEqualTo: 60` |
@@ -538,30 +551,30 @@ The operator specifies the condition to validate the rule.
 
 ```yaml
 quality:
-  - type: sql 
+  - type: sql
     query: |
-      SELECT COUNT(*) FROM ${table} WHERE ${column} IS NOT NULL
-    mustBeBetween: [0, 100]    
+      SELECT COUNT(*) FROM {table} WHERE {column} IS NOT NULL
+    mustBeBetween: [0, 100]
 ```
 
 is equivalent to:
 
 ```yaml
 quality:
-  - type: sql 
+  - type: sql
     query: |
-      SELECT COUNT(*) FROM ${table} WHERE ${column} IS NOT NULL
+      SELECT COUNT(*) FROM {table} WHERE {column} IS NOT NULL
     mustBeGreaterThan: 0
-    mustBeLessThan: 100    
+    mustBeLessThan: 100
 ```
 
-
 #### Library Rules
+
 Bitol has the ambition of creating a library of common data quality rules. Join the working group around [RFC #0012](https://github.com/bitol-io/tsc/blob/main/rfcs/0012-implicit-dq-rules.md).
 
-
 ## Support and Communication Channels
-Support and communication channels help consumers find help regarding their use of the data contract.  
+
+Support and communication channels help consumers find help regarding their use of the data contract.
 
 ### Examples
 
@@ -614,9 +627,9 @@ support:
 | support.scope         | Scope          | No       | Scope can be: `interactive`, `announcements`, `issues`.                                                                             |
 | support.invitationUrl | Invitation URL | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax).   |
 
-
 ## Pricing
-This section covers pricing when you bill your customer for using this data product. 
+
+This section covers pricing when you bill your customer for using this data product.
 
 ### Example
 
@@ -636,11 +649,12 @@ price:
 | price.priceCurrency | Price Currency     | No       | Currency of the subscription price in `price.priceAmount`.             |
 | price.priceUnit     | Price Unit         | No       | The unit of measure for calculating cost. Examples megabyte, gigabyte. |
 
-
 ## Team
+
 This section lists team members and the history of their relation with this data contract. In v2.x, this section was called stakeholders.
 
 ### Example
+
 ```YAML
 team:
   - username: ceastwood
@@ -659,7 +673,8 @@ team:
 ```
 
 ### Definitions
-The UX label is the label used in the UI and other user experiences. 
+
+The UX label is the label used in the UI and other user experiences.
 
 | Key                     | UX label             | Required | Description                                                                                |
 |-------------------------|----------------------|----------|--------------------------------------------------------------------------------------------|
@@ -673,6 +688,7 @@ The UX label is the label used in the UI and other user experiences.
 | team.replacedByUsername | Replaced By Username | No       | The username of the user who replaced the previous user.                                   |
 
 ## Roles
+
 This section lists the roles that a consumer may need to access the dataset depending on the type of access they require.
 
 ### Example
@@ -709,9 +725,9 @@ roles:
 | roles.secondLevelApprovers | 2nd Level Approvers | No       | The name(s) of the second-level approver(s) of the role.             |
 | roles.customProperties     | Custom Properties   | No       | Any custom properties.                                               |
 
-
 ## Service-Level Agreement (SLA)
-This section describes the service-level agreements (SLA). 
+
+This section describes the service-level agreements (SLA).
 
 * Use the `Object.Element` to indicate the number to do the checks on, as in `SELECT txn_ref_dt FROM tab1`.
 * Separate multiple object.element by a comma, as in `table1.col1`, `table2.col1`, `table1.col2`.
@@ -771,10 +787,11 @@ The `servers` element describes where the data protected by this data contract i
 An entry in `servers` describes a single dataset on a specific environment and a specific technology. The `servers` element can contain multiple servers, each with its own configuration.
 
 The typical ways of using the top level `servers` element are as follows:
-- **Single Server:** The data contract protects a specific dataset at a specific location. *Example:* a CSV file on an SFTP server.
-- **Multiple Environments:** The data contract makes sure that the data is protected in all environments. *Example:* a data product with data in a dev(elopment), UAT, and prod(uction) environment on Databricks.
-- **Different Technologies:** The data contract makes sure that regardless of the offered technology, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content.
-- **Different Technologies and Multiple Environments:** The data contract makes sure that regardless of the offered technology and environment, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content in dev(elopment), UAT, and prod(uction).
+
+* **Single Server:** The data contract protects a specific dataset at a specific location. *Example:* a CSV file on an SFTP server.
+* **Multiple Environments:** The data contract makes sure that the data is protected in all environments. *Example:* a data product with data in a dev(elopment), UAT, and prod(uction) environment on Databricks.
+* **Different Technologies:** The data contract makes sure that regardless of the offered technology, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content.
+* **Different Technologies and Multiple Environments:** The data contract makes sure that regardless of the offered technology and environment, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content in dev(elopment), UAT, and prod(uction).
 
 ### General Server Structure
 
@@ -812,35 +829,35 @@ Each server type can be customized with different properties such as `host`, `po
 
 If your server is not in the list, please use [custom](#custom-server) and suggest it as an improvement. Possible values for `type` are:
 
-- [api](#api-server)
-- [athena](#amazon-athena-server)
-- [azure](#azure-server)
-- [bigquery](#google-bigquery)
-- [clickhouse](#clickhouse-server)
-- [databricks](#databricks-server)
-- [db2](#ibm-db2-server)
-- [denodo](#denodo-server)
-- [dremio](#dremio-server)
-- [duckdb](#duckdb-server)
-- [glue](#amazon-glue)
-- [cloudsql](#google-cloud-sql)
-- [informix](#ibm-informix-and-hcl-informix)
-- [kafka](#kafka-server)
-- [kinesis](#amazon-kinesis)
-- [local](#local-files)
-- [mysql](#mysql-server)
-- [oracle](#oracle)
-- [postgresql](#postgresql)
-- [presto](#presto-server)
-- [pubsub](#google-pubsub)
-- [redshift](#amazon-redshift-server)
-- [s3](#amazon-s3-server-and-compatible-servers)
-- [sftp](#sftp-server)
-- [snowflake](#snowflake)
-- [sqlserver](#microsoft-sql-server)
-- [synapse](#synapse-server)
-- [trino](#trino-server)
-- [vertica](#vertica-server)
+* [api](#api-server)
+* [athena](#amazon-athena-server)
+* [azure](#azure-server)
+* [bigquery](#google-bigquery)
+* [clickhouse](#clickhouse-server)
+* [databricks](#databricks-server)
+* [db2](#ibm-db2-server)
+* [denodo](#denodo-server)
+* [dremio](#dremio-server)
+* [duckdb](#duckdb-server)
+* [glue](#amazon-glue)
+* [cloudsql](#google-cloud-sql)
+* [informix](#ibm-informix-and-hcl-informix)
+* [kafka](#kafka-server)
+* [kinesis](#amazon-kinesis)
+* [local](#local-files)
+* [mysql](#mysql-server)
+* [oracle](#oracle)
+* [postgresql](#postgresql)
+* [presto](#presto-server)
+* [pubsub](#google-pubsub)
+* [redshift](#amazon-redshift-server)
+* [s3](#amazon-s3-server-and-compatible-servers)
+* [sftp](#sftp-server)
+* [snowflake](#snowflake)
+* [sqlserver](#microsoft-sql-server)
+* [synapse](#synapse-server)
+* [trino](#trino-server)
+* [vertica](#vertica-server)
 
 #### API Server
 
@@ -848,8 +865,8 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 |----------------|------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **location**   | Location   | Yes        | URL to the API                                                                                                                                                   |
 
-
 #### Amazon Athena Server
+
 [Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL. With a few actions in the AWS Management Console, you can point Athena at your data stored in Amazon S3 and begin using standard SQL to run ad-hoc queries and get results in seconds.
 
 | Key        | UX Label          | Required | Description                                                                                                                                                      |
@@ -868,6 +885,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | delimiter | Delimiter | No       | Only for format = json. How multiple json documents are delimited within one file             |
 
 #### Google BigQuery
+
 [BigQuery](https://cloud.google.com/bigquery) is a fully managed, AI-ready data analytics platform that helps you maximize value from your data and is designed to be multi-engine, multi-format, and multi-cloud.
 
 | Key     | UX Label | Required | Description                                   |
@@ -876,6 +894,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | dataset | Dataset  | Yes      | The GCP dataset name.                         |
 
 #### ClickHouse Server
+
 [ClickHouse](https://clickhouse.com/) is an open-source column-oriented database management system that allows generating analytical data reports in real-time.
 
 | Key      | UX Label | Required | Description                        |
@@ -885,6 +904,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | database | Database | Yes      | The name of the database.          |
 
 #### Google Cloud SQL
+
 [Google Cloud SQL](https://cloud.google.com/sql) is a fully managed, cost-effective relational database service for PostgreSQL, MySQL, and SQL Server.
 
 | Key      | UX Label | Required | Description                              |
@@ -928,6 +948,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | schema | Schema   | No       | The name of the schema.        |
 
 #### DuckDB Server
+
 [DuckDB](https://duckdb.org/) supports a feature-rich SQL dialect complemented with deep integrations into client APIs.
 
 | Key      | UX Label | Required | Description                   |
@@ -945,6 +966,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | format   | Format   | No       | The format of the files                        |
 
 #### IBM Informix and HCL Informix
+
 [IBM Informix](https://www.ibm.com/products/informix) is a high performance, always-on, highly scalable and easily embeddable enterprise-class database optimized for the most demanding transactional and analytics workloads. As an object-relational engine, IBM Informix seamlessly integrates the best of relational and object-oriented capabilities enabling the flexible modeling of complex data structures and relationships.
 
 | Key          | UX Label        | Required   | Description                                                |
@@ -992,6 +1014,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | serviceName | Service Name | Yes      | The name of the service.       |
 
 #### PostgreSQL
+
 [PostgreSQL](https://www.postgresql.org/) is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
 
 | Key      | UX Label | Required | Description                                          |
@@ -1010,6 +1033,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | schema  | Schema   | No       | The name of the schema.       |
 
 #### Google Pub/Sub
+
 [Google Cloud](https://cloud.google.com/pubsub) service to Ingest events for streaming into BigQuery, data lakes or operational databases.
 
 | Key     | UX Label | Required | Description           |
@@ -1017,6 +1041,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | project | Project  | Yes      | The GCP project name. |
 
 #### Amazon Redshift Server
+
 [Amazon Redshift](https://aws.amazon.com/redshift/) is a power data driven decisions with the best price-performance cloud data warehouse.
 
 | Key      | UX Label | Required | Description                               |
@@ -1028,6 +1053,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | account  | Account  | No       | The account used by the server.           |
 
 #### Amazon S3 Server and Compatible Servers
+
 [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) is an object storage service offering industry-leading scalability, data availability, security, and performance. Millions of customers of all sizes and industries store, manage, analyze, and protect any amount of data for virtually any use case, such as data lakes, cloud-native applications, and mobile apps. Other vendors have implemented a compatible implementation of S3.
 
 | Key         | UX Label     | Required | Description                                                                       |
@@ -1038,6 +1064,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | delimiter   | Delimiter    | No       | Only for format = json. How multiple json documents are delimited within one file |
 
 #### SFTP Server
+
 Secure File Transfer Protocol (SFTP) is a network protocol that enables secure and encrypted file transfers between a client and a server.
 
 | Key       | UX Label  | Required | Description                                                                       |
@@ -1058,7 +1085,8 @@ Secure File Transfer Protocol (SFTP) is a network protocol that enables secure a
 | schema    | Schema    | Yes      | The name of the schema.                                                     |
 
 #### Microsoft SQL Server
-[Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) is a proprietary relational database management system developed by Microsoft. 
+
+[Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) is a proprietary relational database management system developed by Microsoft.
 
 | Key      | UX Label | Required | Description                                        |
 |----------|----------|----------|----------------------------------------------------|
@@ -1119,8 +1147,8 @@ Secure File Transfer Protocol (SFTP) is a network protocol that enables secure a
 
 If you need another property, use [custom properties](#custom-properties).
 
-
 ## Custom Properties
+
 This section covers custom properties you may find in a data contract.
 
 ### Example
@@ -1143,8 +1171,8 @@ customProperties:
 | customProperties.property | Property             | No       | The name of the key. Names should be in camel case–the same as if they were permanent properties in the contract. |
 | customProperties.value    | Value                | No       | The value of the key.                                                                                             |
 
-
 ## Other Properties
+
 This section covers other properties you may find in a data contract.
 
 ### Example
@@ -1152,7 +1180,6 @@ This section covers other properties you may find in a data contract.
 ```YAML
 contractCreatedTs: 2024-09-17T11:58:08Z
 ```
-
 
 ### Other properties definition
 
@@ -1164,5 +1191,4 @@ contractCreatedTs: 2024-09-17T11:58:08Z
 
 [Check full example here.](examples/all/full-example.odcs.yaml)
 
-
-All trademarks are the property of their respective owners. 
+All trademarks are the property of their respective owners.

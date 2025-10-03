@@ -24,18 +24,19 @@
 * 2023-05-05 - [Jonathan Neo (j__neo ) on Reddit](https://www.reddit.com/r/dataengineering/comments/137glbo/comment/jixw5hj/?utm_source=reddit&utm_medium=web2x&context=3)
 * 2023-05-01 - [PayPal open sources its data contract template](https://jgp.ai/2023/05/01/paypal-open-sources-its-data-contract-template/)
 
-If you spot an article about the Open Data Contract Standard, make a pull request! 
+If you spot an article about the Open Data Contract Standard, make a pull request!
 
 ## Books
 
 * 2024-09-01 - **Implementing Data Mesh**, [O'Reilly](https://www.oreilly.com/library/view/implementing-data-mesh/9781098156213/), [Amazon](https://amzn.to/3ysN3Jf): in Chapter 5, ODCS is extensively used & described.
 * 2024-01-20 - **Data Contracts for all ages**, [Amazon](https://amzn.to/3Wl1My1).
 
-If you spot a book about the Open Data Contract Standard, make a pull request! 
+If you spot a book about the Open Data Contract Standard, make a pull request!
 
 ## Videos
 
 * 2025-03-28 - [What is a Data Contract? - DataFriday 5x01](https://www.youtube.com/watch?v=Iq6SxdsIHHE)
 * 2024-01-02 - [What is a Data Contract? from IBM Technology](https://www.youtube.com/watch?v=-n3OD-ml_k0)
-* 
-If you spot a video about the Open Data Contract Standard, make a pull request! 
+*
+
+If you spot a video about the Open Data Contract Standard, make a pull request!

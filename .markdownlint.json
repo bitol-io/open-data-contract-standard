@@ -1,0 +1,17 @@
+
+{
+    "comment": "Markdown Lint Rules",
+    "default": true,
+    "MD007": {
+      "indent": 4
+    },
+    "MD013": false,
+    "MD025": {
+      "front_matter_title": ""
+    },
+    "MD029": {
+      "style": "one_or_ordered"
+    },
+    "MD033": false,
+    "MD024": false
+  }
