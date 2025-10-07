@@ -16,7 +16,7 @@ description:
 tenant: ClimateQuantumInc
 
 kind: DataContract
-apiVersion: v3.0.2 # Standard version (follows semantic versioning)
+apiVersion: v3.1.0 # Standard version (follows semantic versioning)
 
 # Infrastructure & servers
 servers:
@@ -124,9 +124,10 @@ schema:
             type: implementation
         encryptedName: rcvr_cntry_code_encrypted
         quality:
-          - rule: nullCheck
+          - metric: nullValues
+            mustBe: 0
             description: column should not contain null values
-            dimension: completeness # dropdown 7 values
+            dimension: completeness
             type: library
             severity: error
             businessImpact: operational
@@ -140,7 +141,8 @@ schema:
               - property: COMPARISON_TYPE
                 value: Greater than
     quality:
-      - rule: countCheck
+      - metric: rowCount
+        mustBeGreaterThan: 1000000
         type: library
         description: Ensure row count is within expected volume range
         dimension: completeness

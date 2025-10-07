@@ -632,12 +632,12 @@ This section describes data quality rules & parameters. They are tightly linked 
 Data quality rules support different levels/stages of data quality attributes:
 
   - __Text__: A human-readable text that describes the quality of the data.
-  - __Library__ rules: A maintained library of commonly-used predefined quality attributes such as `rowCount`, `unique`, `freshness`, and more.
-  - __SQL__: An individual SQL query that returns a value that can be compared. Can be extended to `Python` or other.
-  - __Custom__: Quality attributes that are vendor-specific, such as Soda, Great Expectations, dbt tests, or Montecarlo monitors.
+  - __Library__ : A maintained library of commonly used quality metrics such as `rowCount`, `nullValues`, `invalidValues`, and more.
+  - __SQL__: An individual SQL query that returns a value that can be compared.
+  - __Custom__: Quality attributes that are vendor-specific, such as Soda, Great Expectations, dbt tests, dbx, or Montecarlo monitors.
 
 ### Text
-A human-readable text that describes the quality of the data. Later in the development process, these might be translated into an executable check (such as `sql`), a library rule, or checked through an AI engine.
+A human-readable text that describes the quality of the data. Later in the development process, these might be translated into an executable check (such as `sql`), a library metric, or checked through an AI engine.
 
 ```yaml
 quality:
@@ -646,53 +646,175 @@ quality:
 ```
 
 ### Library
-ODCS will provide a set of predefined rules commonly used in data quality checks, designed to be compatible with all major data quality engines. This simplifies the work for data engineers by eliminating the need to manually write SQL queries.
+ODCS provides a set of predefined metrics commonly used in data quality checks, designed to be compatible with all major data quality engines. This simplifies the work for data engineers by eliminating the need to manually write SQL queries.
 
-#### Property-level
-Those examples apply at the property level, such as column, field, etc.
+The type for library metrics is `library`, which can be omitted, if a `metric` property is defined.
 
-##### Duplicate count on rows
+These metrics return a numeric value come with an operator to compare if the metric is valid and in the expected range.
+
+Some metrics require additional parameters, which can be defined in the `arguments` property.
+
+Example:
+
+```yaml
+properties:
+  - name: order_id
+    quality:
+      - type: library
+        metric: nullValues 
+        mustBe: 0
+        unit: rows
+        description: "There must be no null values in the column."
+```
+
+is equalized to:
+
+```yaml
+properties:
+  - name: order_id
+    quality:
+      - metric: nullValues 
+        mustBe: 0
+        description: "There must be no null values in the column."
+```
+
+
+#### Metrics
+
+| Metric | Level | Description                                                    | Arguments                                                        | Arguments Example                                                    |
+|--------|--------|----------------------------------------------------------------|------------------------------------------------------------------|----------------------------------------------------------------------|
+| `nullValues` | Property | Counts null values in a column/field                           | None                                                             |                                                                      |
+| `missingValues` | Property | Counts values considered as missing (empty strings, N/A, etc.) | `missingValues`: Array of values considered missing              | `missingValues: [null, '', 'N/A']`                                   |
+| `invalidValues` | Property | Counts values that don't match valid criteria                  | `validValues`: Array of valid values<br>`pattern`: Regex pattern | `validValues: ['pounds', 'kg']`<br>`pattern: '^[A-Z]{2}[0-9]{2}...'` |
+| `duplicateValues` | Property | Counts duplicate values in a column                            | None                                                             |                                                                      |
+| `duplicateValues` | Schema | Counts duplicate values across multiple columns                | `properties`: Array of property names                            | `properties: ['tenant_id', 'order_id']`                              |
+| `rowCount` | Schema | Counts total number of rows in a table/object store            | None                                                             |                                                                      |
+
+##### Null Values
+
+Check that the count of null values is within range.
+
+```yaml
+properties:
+  - name: customer_id
+    quality:
+    - metric: nullValues
+      mustBe: 0
+      description: "There must be no null values in the column."
+```
+
+Example with percent:
+
+```yaml
+properties:
+  - name: order_status
+    quality:
+    - metric: nullValues
+      mustBeLessThan: 1
+      unit: percent
+      description: "There must be less than 1% null values in the column."
+```
+
+
+##### Missing Values
+
+Check that the missing values are within range.
+
+In the argument `missingValues`, a list of values that are considered to be missing.
+
+```yaml
+properties:
+  - name: email_address
+    quality:
+    - metric: missingValues
+      arguments:
+        missingValues: [null, '', 'N/A', 'n/a']
+      mustBeLessThan: 100
+      unit: rows # rows (default) or percent
+```
+
+
+##### Invalid Values
+
+Check that the value is within a defined set or matching a pattern.
+
+```yaml
+properties:
+  - name: line_item_unit
+    quality:
+      - metric: invalidValues
+        arguments:
+          validValues: ['pounds', 'kg']
+        mustBeLessThan: 5
+        unit: rows
+```
+
+Using a pattern:
+
+```yaml
+properties:
+  - name: iban
+    quality:
+    - metric: invalidValues
+      mustBe: 0
+      description: "The value must be an IBAN."
+      arguments:
+      pattern: '^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$'
+```
+
+
+##### Duplicate Values
+
 No more than 10 duplicate names.
 
 ```yaml
-quality:
-- type: library # optional and default value for data quality rules
-  rule: duplicateCount
-  mustBeLessThan: 10
-  name: Fewer than 10 duplicate names
-  unit: rows
+properties:
+  - name: email_address
+    quality:
+    - metric: duplicateValues
+      mustBeLessThan: 10
+      unit: rows
+      description: "There must be less than 10 duplicate values in the column."
 ```
 
-##### Duplicate count on %
 Duplicates should be less than 1%.
 
 ```yaml
-quality:
-- rule: duplicateCount
-  mustBeLessThan: 1
-  unit: percent
+properties:
+  - name: phone_number
+    quality:
+    - metric: duplicateValues
+      mustBeLessThan: 1
+      unit: percent
 ```
 
-##### Valid values
-Valid values from a static list.
+##### Row count (Schema-Level)
+Calculates the number of rows (usually in a table) and compares it to an absolute operator.
 
 ```yaml
-quality:
-- rule: validValues
-  validValues: ['pounds']
+schema:
+  - name: orders
+    quality:
+      - metric: rowCount
+        mustBeBetween: [100, 120]
 ```
 
-#### Object-level
-This example applies at the object level (like a table or a view).
+##### Duplicates (Schema-Level)
 
-##### Row count
-The number of rows must be between 100 and 120.
+Checks for duplicate rows based on a combination of properties.
+This is useful for validating compound keys where uniqueness is defined not by a single column but by multiple columns together.
 
 ```yaml
-quality:
-  - rule: rowCount
-    mustBeBetween: [100, 120]
-    name: Verify row count range
+schema:
+  - name: orders
+    quality:
+      - description: The combination of tenant_id and order_id must be unique
+        metric: duplicateValues
+        mustBe: 0
+        arguments:
+          properties: # Properties refer to the property in the schema.
+            - tenant_id
+            - order_id
 ```
 
 ### SQL
@@ -761,10 +883,11 @@ Acronyms:
 | quality.name                     | Name                       | No       | A short name for the rule.                                                                                                                                                   |
 | quality.description              | Description                | No       | Describe the quality check to be completed.                                                                                                                                  |
 | quality.type                     | Type                       | No       | Type of DQ rule. Valid values are `library` (default), `text`, `sql`, and `custom`.                                                                                          |
-| quality.rule                     | Rule name                  | No       | Required for `library` DQ rules: the name of the rule to be executed.                                                                                                        |
+| quality.metric                   | Metric name                | No       | Required for `library`: the name of the metric to be calculated and compared.                                                                                                |
+| quality.rule                     | Rule name                  | No       | Deprecated, use `metric` instead.                                                                                                                                            |
+| quality.arguments                | Arguments                  | No       | Additional arguments for the metric, if needed.                                                                                                                              |
 | quality.\<operator>              | See below                  | No       | Multiple values are allowed for the **property**, the value is the one to compare to.                                                                                        |
-| quality.unit                     | Unit                       | No       | Unit the rule is using, popular values are `rows` or `percent`, but any value is allowed.                                                                                    |
-| quality.validValues              | Valid values               | No       | Static list of valid values.                                                                                                                                                 |
+| quality.unit                     | Unit                       | No       | Unit the rule is using, popular values are `rows` or `percent`.                                                                                                              |
 | quality.query                    | SQL Query                  | No       | Required for `sql` DQ rules: the SQL query to be executed. Note that it should match the target SQL engine/database, no transalation service are provided here.              |
 | quality.engine                   | Third-party DQ Engine      | No       | Required for `custom` DQ rule: name of the third-party engine being used. Any value is authorized here but common values are `soda`, `greatExpectations`, `montecarlo`, etc. |
 | quality.implementation           | Third-party Implementation | No       | A text (non-parsed) block of code required for the third-party DQ engine to run.                                                                                             |
@@ -790,7 +913,7 @@ Those data quality dimensions are used for classification and reporting in data 
   * `uniqueness` (synonym `uq`).
 
 #### Valid Properties for Operator
-The operator specifies the condition to validate the rule.
+The operator specifies the condition to validate a metric or result of a SQL query.
 
 | Operator                 | Expected Value      | Math Symbol | Example                      |
 |--------------------------|---------------------|-------------|------------------------------|
@@ -800,8 +923,8 @@ The operator specifies the condition to validate the rule.
 | `mustBeGreaterOrEqualTo` | number              | `>=`, `≥`   | `mustBeGreaterOrEqualTo: 60` |
 | `mustBeLessThan`         | number              | `<`         | `mustBeLessThan: 1000`       |
 | `mustBeLessOrEqualTo`    | number              | `<=`, `≤`   | `mustBeLessOrEqualTo: 999`   |
-| `mustBeBetween`          | list of two numbers | `⊂`         | `mustBeBetween: [0, 100]`    |
-| `mustNotBeBetween`       | list of two numbers | `⊄`         | `mustNotBeBetween: [0, 100]` |
+| `mustBeBetween`          | list of two numbers | `∈`         | `mustBeBetween: [0, 100]`    |
+| `mustNotBeBetween`       | list of two numbers | `∉`         | `mustNotBeBetween: [0, 100]` |
 
 `mustBeBetween` is the equivalent to `mustBeGreaterThan` and `mustBeLessThan`.
 
@@ -823,10 +946,6 @@ quality:
     mustBeGreaterThan: 0
     mustBeLessThan: 100    
 ```
-
-
-#### Library Rules
-Bitol has the ambition of creating a library of common data quality rules. Join the working group around [RFC #0012](https://github.com/bitol-io/tsc/blob/main/rfcs/0012-implicit-dq-rules.md).
 
 
 ## Support and Communication Channels
