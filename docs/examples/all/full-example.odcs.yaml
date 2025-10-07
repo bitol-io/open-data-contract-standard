@@ -283,13 +283,19 @@ slaProperties:
 support:
   - channel: '#product-help' # Simple Slack communication channel
     tool: slack
-    url: https://aidaug.slack.com/archives/C05UZRSBKLY
   - channel: datacontract-ann # Simple distribution list
     tool: email
     url: mailto:datacontract-ann@bitol.io
   - channel: Feedback  # Product Feedback
     description: General Product Feedback (Public)
     url: https://product-feedback.com
+  - channel: 'product-issues'
+    tool: teams
+    scope: issues
+    customProperties:
+    - property: servicehours
+      value: 9-5 CET
+
 
 # Tags
 tags:

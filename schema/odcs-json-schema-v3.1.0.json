@@ -2352,20 +2352,23 @@
           },
           "tool": {
             "type": "string",
-            "description": "Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, or `other`.",
-            "examples": ["email", "slack", "teams", "discord", "ticket", "other"]
+            "description": "Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, `googlechat`, or `other`.",
+            "examples": ["email", "slack", "teams", "discord", "ticket", "googlechat","other"]
           },
           "scope": {
             "type": "string",
-            "description": "Scope can be: `interactive`, `announcements`, `issues`.",
-            "examples": ["interactive", "announcements", "issues"]
+            "description": "Scope can be: `interactive`, `announcements`, `issues`, `notifications`.",
+            "examples": ["interactive", "announcements", "issues", "notifications"]
           },
           "invitationUrl": {
             "type": "string",
             "description": "Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax)."
+          },
+          "customProperties": {
+            "$ref": "#/$defs/CustomProperties"
           }
         },
-        "required": ["channel", "url"],
+        "required": ["channel"],
         "additionalProperties": false
       },
       "Pricing": {
