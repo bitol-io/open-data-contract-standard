@@ -19,6 +19,7 @@ each field/key.
 
 1. [Fundamentals (fka demographics)](#fundamentals)
 1. [Schema](#schema)
+1. [References](#references)
 1. [Data quality](#data-quality)
 1. [Support & communication channels](#support-and-communication-channels)
 1. [Pricing](#pricing)
@@ -356,6 +357,274 @@ Reference to an external definition on element logic or values.
 | authoritativeDefinitions      | Link              | No       | A list of type/link pairs for authoritative definitions.                                                                                                      |
 | authoritativeDefinitions.type | Definition type   | Yes      | Type of definition for authority.  Valid values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. |
 | authoritativeDefinitions.url  | URL to definition | Yes      | URL to the authority.                                                                                                                                         |
+
+## References
+This section describes how to reference elements within a data contract schema. References enable you to create relationships between different parts of your data contract. 
+
+
+> [!IMPORTANT]
+> References are currently only supported within schema properties for foreign key relationships.
+
+
+### Reference Structure
+
+A fully formatted reference follows this structure:
+```yaml
+<file><anchor><item-path-within-contract>
+```
+
+Where:
+- **`<file>`**: Path to the contract file (optional for same-contract references)
+- **`<anchor>`**: '#' symbol to mark entry into a contract (optional for same-contract)
+- **`<item-path-within-contract>`**: The defined path within the contract
+
+### External Contract References
+
+To identify a contract, use one of these formats:
+
+```yaml
+# Same folder as current contract
+data-contract-v1.yaml
+
+# Full path
+file:///path/to/data-contract-v1.yaml
+
+# URL
+https://example.com/data-contract-v1.yaml
+
+# Relative path
+../../path/to/data-contract-v1.yaml
+```
+### Reference Examples
+
+#### External Contract References
+```yaml
+# Reference to an element in an external contract
+'external-contract.yaml#schema.my-table'
+
+# Reference to a specific column in an external contract
+'external-contract.yaml#schema.my-table.my-column'
+```
+
+#### Same Contract References
+When referencing elements within the same contract, the file component can be omitted. 
+
+```yaml
+# Full reference within same contract
+'#schema.my-table.my-column'
+
+# File and anchor can be omitted for same contract
+'schema.my-table.my-column'
+```
+
+### Shorthand Notation
+
+For improved readability, ODCS supports the following shorthand notation when referencing properties within the same schema. The shorthand notation allows for a more concise way to define relationships. It can be used in the `to` and `from` fields of a relationship.
+The shorthand notation is `<schema_name>.<property_name>`.
+
+These shorthand options are only available for properties within the same data contract.
+
+### Relationships between properties (Foreign Keys)
+
+Properties can define relationships to other properties, enabling you to specify foreign key constraints and other data relationships. Relationships use the reference mechanism from RFC 9.
+
+#### Quick Overview
+
+Relationships can be defined in two ways:
+1. **At the property level** - Define relationships directly on a property (the `from` field is implicit and must NOT be specified)
+2. **At the schema level** - Define relationships between any properties (both `from` and `to` are required)
+
+#### Important Rules
+
+- **Property-level relationships**: The `from` field is implicit (derived from the property context) and must NOT be specified
+- **Schema-level relationships**: Both `from` and `to` fields are required
+- **Type consistency**: Both `from` and `to` must be the same type - either both strings (single column) or both arrays (composite keys). Mixing types is not allowed
+- **Array length validation**: When using arrays for composite keys, both arrays must have the same number of elements. This is validated at runtime by implementations
+
+#### Field Definitions
+
+| Key | UX Label | Required | Description |
+|-----|----------|----------|-------------|
+| relationships | Relationships | No | Array of relationship definitions |
+| relationships.type | Type | No | Type of relationship (defaults to `foreignKey`) |
+| relationships.to | To | Yes | Target property reference using `schema.property` notation |
+| relationships.from | From | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
+| relationships.customProperties | Custom Properties | No | Additional metadata about the relationship |
+
+#### Reference Notation
+
+- **Simple reference**: `users.id` - References the `id` property in the `users` schema
+- **Nested reference**: `accounts.address.street` - References nested properties
+- **Composite keys**: Use arrays to define composite keys (arrays must have matching lengths)
+
+### Examples
+
+#### Example 1: Simple Foreign Key (Property Level)
+
+When defining a relationship at the property level, the `from` field is implicit and must NOT be specified:
+
+```yaml
+schema:
+  - name: users
+    properties:
+      - name: user_id
+        relationships:
+          - to: accounts.owner_id  # 'from' is implicit (users.user_id)
+            # Note: DO NOT include 'from' field at property level
+```
+
+#### Example 2: Multiple Relationships
+
+A property can have multiple relationships:
+
+```yaml
+schema:
+  - name: orders
+    properties:
+      - name: customer_id
+        relationships:
+          - to: customers.id
+          - to: loyalty_members.customer_id
+```
+
+#### Example 3: Schema-Level Relationships
+
+Define relationships at the schema level when you need explicit `from` and `to`. Both fields are REQUIRED at this level:
+
+```yaml
+schema:
+  - name: users
+    relationships:
+      - from: users.account_id  # Required at schema level
+        to: accounts.id         # Required at schema level
+        type: foreignKey
+```
+
+#### Example 4: Nested Properties
+
+Reference nested properties using dot notation:
+
+```yaml
+schema:
+  - name: users
+    properties:
+      - name: id
+        relationships:
+          - to: accounts.address.postal_code
+```
+
+#### Example 5: Composite Keys
+
+For composite foreign keys, use arrays. **Important**: Both `from` and `to` must be arrays with the same number of elements:
+
+```yaml
+schema:
+  - name: order_items
+    relationships:
+      - type: foreignKey
+        from:                           # Array (must match 'to' length)
+          - order_items.order_id
+          - order_items.product_id
+        to:                             # Array (must match 'from' length)
+          - product_inventory.order_id
+          - product_inventory.product_id
+          
+```
+
+#### Example 6: Invalid Configurations
+
+Here are examples of invalid configurations that will be rejected:
+
+```yaml
+# INVALID: 'from' specified at property level
+schema:
+  - name: users
+    properties:
+      - name: user_id
+        relationships:
+          - from: users.user_id  # ERROR: 'from' not allowed at property level
+            to: accounts.id
+
+# INVALID: Mismatched array types
+schema:
+  - name: orders
+    relationships:
+      - from: orders.id          # ERROR: 'from' is string but 'to' is array
+        to: 
+          - items.order_id
+          - items.line_num
+
+# INVALID: Different array lengths (caught at runtime)
+schema:
+  - name: orders
+    relationships:
+      - from:                    # 'from' has 2 elements
+          - orders.id
+          - orders.customer_id
+        to:                      # 'to' has 3 elements (runtime validation will fail)
+          - items.order_id
+          - items.customer_id
+          - items.line_num
+
+# INVALID: Missing 'from' at schema level
+schema:
+  - name: orders
+    relationships:
+      - to: customers.id         # ERROR: 'from' is required at schema level
+```
+
+#### Complete Example
+
+Here's a comprehensive example showing various relationship patterns:
+
+```yaml
+schema:
+  - name: users
+    properties:
+      - name: id
+        relationships:
+          # Simple foreign key (from is implicit)
+          - to: accounts.user_id
+          
+          # With explicit from field
+          - from: users.id
+            to: profiles.user_id
+            
+          # With custom properties
+          - to: departments.manager_id
+            customProperties:
+              - property: cardinality
+                value: "one-to-many"
+              - property: label
+                value: "manages"
+
+          # To external contract (from is implicit)
+          - to: https://example.com/data-contract-v1.yaml#profiles.user_id
+            customProperties:
+              - property: description
+                value: "Externally referenced contract"
+      
+      - name: account_number
+    
+    # Schema-level composite key relationship
+    relationships:
+      - type: foreignKey
+        from: 
+          - users.id
+          - users.account_number
+        to:
+          - accounts.user_id
+          - accounts.account_number
+  
+  - name: accounts
+    properties:
+      - name: user_id
+      - name: account_number
+      - name: address
+        properties:
+          - name: street
+          - name: postal_code
+```
 
 ## Data quality
 This section describes data quality rules & parameters. They are tightly linked to the schema described in the previous section.

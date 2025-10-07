@@ -8,6 +8,18 @@ This document tracks the history and evolution of the **Open Data Contract Stand
 
 # v3.1.0 - 2025-07-27 - PROPOSED
 
+* **New feature** - Relationships (Foreign Keys):
+  * Add `relationships` array field to both `SchemaObject` and `SchemaProperty` to define foreign key relationships.
+  * Support for property-level relationships where `from` field is implicit.
+  * Support for schema-level relationships with explicit `from` and `to` fields.
+  * Support for composite foreign keys using arrays in `from` and `to` fields.
+  * Support for nested property references using dot notation (e.g., `accounts.address.street`).
+  * Add `customProperties` to relationships for metadata like cardinality, labels, and descriptions.
+  * New `Relationship` definition in JSON schema with fields:
+    * `type`: Type of relationship (defaults to `foreignKey`)
+    * `from`: Source property reference (optional at property level)
+    * `to`: Target property reference (required)
+    * `customProperties`: Additional metadata
 * **Breaking change** to schema:
   * Alter `exclusiveMaximum` and `exclusiveMinimum` for `integer/number` logical data type to be `number` instead of `boolean`. [Conforms with JSON Schema specification](https://json-schema.org/understanding-json-schema/reference/numeric#range).
   * Alter `exclusiveMaximum` and `exclusiveMinimum` for `date` logical data type to be `string` instead of `boolean`.
