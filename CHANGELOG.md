@@ -8,7 +8,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
 
 # v3.1.0 - 2025-07-27 - PROPOSED
 
-* **New feature** - Relationships (Foreign Keys):
+* **Adds** Relationships (Foreign Keys):
   * Add `relationships` array field to both `SchemaObject` and `SchemaProperty` to define foreign key relationships.
   * Support for property-level relationships where `from` field is implicit.
   * Support for schema-level relationships with explicit `from` and `to` fields.
@@ -40,6 +40,8 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * Add `timezone` and `defaultTimezone` to `logicalTypeOptions` options for `timestamp` and `time`.
 * **Changes** to Quality
   * Add a maintained library of commonly used quality metrics `rowCount`, `nullValues`, `invalidValues`, `duplicateValues`, and  `missingValues`.
+* **Changes** to SLA:
+  * Add optional `description` field to SLA entries for human-readable context.
 * **Changes** to Servers:
   * AzureServer `format` not longer an enum of `parquet`, `delta`, `json`, `csv`, but rather a string with the same examples.
   * AzureServer `delimiter` not longer an enum of `new_line`, `array`, but rather a string with the same examples.
