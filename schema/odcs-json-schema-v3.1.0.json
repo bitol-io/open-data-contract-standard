@@ -2322,6 +2322,10 @@
               "type": "string",
               "description": "Type of definition for authority: v2.3 adds standard values: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`.",
               "examples": ["businessDefinition", "transformationImplementation", "videoTutorial", "tutorial", "implementation"]
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of the authoritative definition for humans."
             }
           },
           "required": ["url", "type"],
@@ -2532,6 +2536,10 @@
           "value": {
             "$ref": "#/$defs/AnyType",
             "description": "The value of the key."
+          },
+          "description" : {
+            "type": "string",
+            "description": "Description of the custom property."
           }
         },
         "required": ["property", "value"],
