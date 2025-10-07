@@ -20,6 +20,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
     * `from`: Source property reference (optional at property level)
     * `to`: Target property reference (required)
     * `customProperties`: Additional metadata
+  * Add `hive` as a server type
 * **Breaking change** to schema:
   * Alter `exclusiveMaximum` and `exclusiveMinimum` for `integer/number` logical data type to be `number` instead of `boolean`. [Conforms with JSON Schema specification](https://json-schema.org/understanding-json-schema/reference/numeric#range).
   * Alter `exclusiveMaximum` and `exclusiveMinimum` for `date` logical data type to be `string` instead of `boolean`.
