@@ -243,7 +243,7 @@ Some keys are more applicable when the described property is a column.
 | primaryKey               | Primary Key                  | No       | Boolean value specifying whether the field is primary or not. Default is false.                                                                                                                                                       |
 | primaryKeyPosition       | Primary Key Position         | No       | If field is a primary key, the position of the primary key element. Starts from 1. Example of `account_id, name` being primary key columns, `account_id` has primaryKeyPosition 1 and `name` primaryKeyPosition 2. Default to -1.     |
 | logicalType              | Logical Type                 | No       | The logical field datatype. One of `string`, `date`, `timestamp`, `time`, `number`, `integer`, `object`, `array` or `boolean`.                                                                                                                             |
-| logicalTypeOptions       | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [here](#logical-type-options) for more details about supported options for each `logicalType`.                                                                         |
+| logicalTypeOptions       | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [Logical Type Options](#logical-type-options) for more details about supported options for each `logicalType`.                                                                         |
 | physicalType             | Physical Type                | No       | The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT.                                                                                                                                              |
 | description              | Description                  | No       | Description of the element.                                                                                                                                                                                                           |
 | required                 | Required                     | No       | Indicates if the element may contain Null values; possible values are true and false. Default is false.                                                                                                                               |
@@ -358,24 +358,25 @@ Reference to an external definition on element logic or values.
 | authoritativeDefinitions.url  | URL to definition | Yes      | URL to the authority.                                                                                                                                         |
 
 ## References
-This section describes how to reference elements within a data contract schema. References enable you to create relationships between different parts of your data contract. 
 
+This section describes how to reference elements within a data contract schema. References enable you to create relationships between different parts of your data contract.
 
 > [!IMPORTANT]
 > References are currently only supported within schema properties for foreign key relationships.
 
-
 ### Reference Structure
 
 A fully formatted reference follows this structure:
+
 ```yaml
 <file><anchor><item-path-within-contract>
 ```
 
 Where:
-- **`<file>`**: Path to the contract file (optional for same-contract references)
-- **`<anchor>`**: '#' symbol to mark entry into a contract (optional for same-contract)
-- **`<item-path-within-contract>`**: The defined path within the contract
+
+* **`<file>`**: Path to the contract file (optional for same-contract references)
+* **`<anchor>`**: '#' symbol to mark entry into a contract (optional for same-contract)
+* **`<item-path-within-contract>`**: The defined path within the contract
 
 ### External Contract References
 
@@ -394,9 +395,11 @@ https://example.com/data-contract-v1.yaml
 # Relative path
 ../../path/to/data-contract-v1.yaml
 ```
+
 ### Reference Examples
 
 #### External Contract References
+
 ```yaml
 # Reference to an element in an external contract
 'external-contract.yaml#schema.my-table'
@@ -406,7 +409,8 @@ https://example.com/data-contract-v1.yaml
 ```
 
 #### Same Contract References
-When referencing elements within the same contract, the file component can be omitted. 
+
+When referencing elements within the same contract, the file component can be omitted.
 
 ```yaml
 # Full reference within same contract
@@ -430,15 +434,16 @@ Properties can define relationships to other properties, enabling you to specify
 #### Quick Overview
 
 Relationships can be defined in two ways:
+
 1. **At the property level** - Define relationships directly on a property (the `from` field is implicit and must NOT be specified)
 2. **At the schema level** - Define relationships between any properties (both `from` and `to` are required)
 
 #### Important Rules
 
-- **Property-level relationships**: The `from` field is implicit (derived from the property context) and must NOT be specified
-- **Schema-level relationships**: Both `from` and `to` fields are required
-- **Type consistency**: Both `from` and `to` must be the same type - either both strings (single column) or both arrays (composite keys). Mixing types is not allowed
-- **Array length validation**: When using arrays for composite keys, both arrays must have the same number of elements. This is validated at runtime by implementations
+* **Property-level relationships**: The `from` field is implicit (derived from the property context) and must NOT be specified
+* **Schema-level relationships**: Both `from` and `to` fields are required
+* **Type consistency**: Both `from` and `to` must be the same type - either both strings (single column) or both arrays (composite keys). Mixing types is not allowed
+* **Array length validation**: When using arrays for composite keys, both arrays must have the same number of elements. This is validated at runtime by implementations
 
 #### Field Definitions
 
@@ -452,9 +457,9 @@ Relationships can be defined in two ways:
 
 #### Reference Notation
 
-- **Simple reference**: `users.id` - References the `id` property in the `users` schema
-- **Nested reference**: `accounts.address.street` - References nested properties
-- **Composite keys**: Use arrays to define composite keys (arrays must have matching lengths)
+* **Simple reference**: `users.id` - References the `id` property in the `users` schema
+* **Nested reference**: `accounts.address.street` - References nested properties
+* **Composite keys**: Use arrays to define composite keys (arrays must have matching lengths)
 
 ### Examples
 
@@ -527,7 +532,7 @@ schema:
         to:                             # Array (must match 'from' length)
           - product_inventory.order_id
           - product_inventory.product_id
-          
+
 ```
 
 #### Example 6: Invalid Configurations
@@ -549,7 +554,7 @@ schema:
   - name: orders
     relationships:
       - from: orders.id          # ERROR: 'from' is string but 'to' is array
-        to: 
+        to:
           - items.order_id
           - items.line_num
 
@@ -584,11 +589,11 @@ schema:
         relationships:
           # Simple foreign key (from is implicit)
           - to: accounts.user_id
-          
+
           # With explicit from field
           - from: users.id
             to: profiles.user_id
-            
+
           # With custom properties
           - to: departments.manager_id
             customProperties:
@@ -602,19 +607,19 @@ schema:
             customProperties:
               - property: description
                 value: "Externally referenced contract"
-      
+
       - name: account_number
-    
+
     # Schema-level composite key relationship
     relationships:
       - type: foreignKey
-        from: 
+        from:
           - users.id
           - users.account_number
         to:
           - accounts.user_id
           - accounts.account_number
-  
+
   - name: accounts
     properties:
       - name: user_id
@@ -631,12 +636,13 @@ This section describes data quality rules & parameters. They are tightly linked 
 
 Data quality rules support different levels/stages of data quality attributes:
 
-  - __Text__: A human-readable text that describes the quality of the data.
-  - __Library__ : A maintained library of commonly used quality metrics such as `rowCount`, `nullValues`, `invalidValues`, and more.
-  - __SQL__: An individual SQL query that returns a value that can be compared.
-  - __Custom__: Quality attributes that are vendor-specific, such as Soda, Great Expectations, dbt tests, dbx, or Montecarlo monitors.
+* **Text**: A human-readable text that describes the quality of the data.
+* **Library** : A maintained library of commonly used quality metrics such as `rowCount`, `nullValues`, `invalidValues`, and more.
+* **SQL**: An individual SQL query that returns a value that can be compared.
+* **Custom**: Quality attributes that are vendor-specific, such as Soda, Great Expectations, dbt tests, dbx, or Montecarlo monitors.
 
 ### Text
+
 A human-readable text that describes the quality of the data. Later in the development process, these might be translated into an executable check (such as `sql`), a library metric, or checked through an AI engine.
 
 ```yaml
@@ -646,6 +652,7 @@ quality:
 ```
 
 ### Library
+
 ODCS provides a set of predefined metrics commonly used in data quality checks, designed to be compatible with all major data quality engines. This simplifies the work for data engineers by eliminating the need to manually write SQL queries.
 
 The type for library metrics is `library`, which can be omitted, if a `metric` property is defined.
@@ -661,7 +668,7 @@ properties:
   - name: order_id
     quality:
       - type: library
-        metric: nullValues 
+        metric: nullValues
         mustBe: 0
         unit: rows
         description: "There must be no null values in the column."
@@ -673,11 +680,10 @@ is equalized to:
 properties:
   - name: order_id
     quality:
-      - metric: nullValues 
+      - metric: nullValues
         mustBe: 0
         description: "There must be no null values in the column."
 ```
-
 
 #### Metrics
 
@@ -715,7 +721,6 @@ properties:
       description: "There must be less than 1% null values in the column."
 ```
 
-
 ##### Missing Values
 
 Check that the missing values are within range.
@@ -732,7 +737,6 @@ properties:
       mustBeLessThan: 100
       unit: rows # rows (default) or percent
 ```
-
 
 ##### Invalid Values
 
@@ -762,7 +766,6 @@ properties:
       pattern: '^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$'
 ```
 
-
 ##### Duplicate Values
 
 No more than 10 duplicate names.
@@ -789,6 +792,7 @@ properties:
 ```
 
 ##### Row count (Schema-Level)
+
 Calculates the number of rows (usually in a table) and compares it to an absolute operator.
 
 ```yaml
@@ -917,6 +921,7 @@ Those data quality dimensions are used for classification and reporting in data 
 * `uniqueness` (synonym `uq`).
 
 #### Valid Properties for Operator
+
 The operator specifies the condition to validate a metric or result of a SQL query.
 
 | Operator                 | Expected Value      | Math Symbol | Example                      |
@@ -950,7 +955,6 @@ quality:
     mustBeGreaterThan: 0
     mustBeLessThan: 100
 ```
-
 
 ## Support and Communication Channels
 
@@ -1210,36 +1214,36 @@ Each server type can be customized with different properties such as `host`, `po
 
 If your server is not in the list, please use [custom](#custom-server) and suggest it as an improvement. Possible values for `type` are:
 
-- [api](#api-server)
-- [athena](#amazon-athena-server)
-- [azure](#azure-server)
-- [bigquery](#google-bigquery)
-- [clickhouse](#clickhouse-server)
-- [cloudsql](#google-cloud-sql)
-- [databricks](#databricks-server)
-- [db2](#ibm-db2-server)
-- [denodo](#denodo-server)
-- [dremio](#dremio-server)
-- [duckdb](#duckdb-server)
-- [glue](#amazon-glue)
-- [hive](#hive)
-- [informix](#ibm-informix-and-hcl-informix)
-- [kafka](#kafka-server)
-- [kinesis](#amazon-kinesis)
-- [local](#local-files)
-- [mysql](#mysql-server)
-- [oracle](#oracle)
-- [postgresql](#postgresql)
-- [presto](#presto-server)
-- [pubsub](#google-pubsub)
-- [redshift](#amazon-redshift-server)
-- [s3](#amazon-s3-server-and-compatible-servers)
-- [sftp](#sftp-server)
-- [snowflake](#snowflake)
-- [sqlserver](#microsoft-sql-server)
-- [synapse](#synapse-server)
-- [trino](#trino-server)
-- [vertica](#vertica-server)
+* [api](#api-server)
+* [athena](#amazon-athena-server)
+* [azure](#azure-server)
+* [bigquery](#google-bigquery)
+* [clickhouse](#clickhouse-server)
+* [cloudsql](#google-cloud-sql)
+* [databricks](#databricks-server)
+* [db2](#ibm-db2-server)
+* [denodo](#denodo-server)
+* [dremio](#dremio-server)
+* [duckdb](#duckdb-server)
+* [glue](#amazon-glue)
+* [hive](#hive)
+* [informix](#ibm-informix-and-hcl-informix)
+* [kafka](#kafka-server)
+* [kinesis](#amazon-kinesis)
+* [local](#local-files)
+* [mysql](#mysql-server)
+* [oracle](#oracle)
+* [postgresql](#postgresql)
+* [presto](#presto-server)
+* [pubsub](#google-pubsub)
+* [redshift](#amazon-redshift-server)
+* [s3](#amazon-s3-server-and-compatible-servers)
+* [sftp](#sftp-server)
+* [snowflake](#snowflake)
+* [sqlserver](#microsoft-sql-server)
+* [synapse](#synapse-server)
+* [trino](#trino-server)
+* [vertica](#vertica-server)
 
 #### API Server
 
@@ -1348,6 +1352,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | format   | Format   | No       | The format of the files                        |
 
 #### Hive
+
 [Apache Hive](https://hive.apache.org/) is a distributed, fault-tolerant data warehouse system that enables analytics at massive scale. Built on top of Apache Hadoop, Hive allows users to read, write, and manage petabytes of data using SQL-like queries through HiveQL, with native support for cloud storage systems and enterprise-grade security features.
 
 | Key          | UX Label        | Required   | Description                                     |
@@ -1355,7 +1360,6 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | host         | Host            | Yes        | The host to the Hive server.                    |
 | port         | Port            | No         | The port to the Hive server. Defaults to 10000. |
 | database     | Database        | Yes        | The name of the Hive database.                  |
-
 
 #### IBM Informix and HCL Informix
 
