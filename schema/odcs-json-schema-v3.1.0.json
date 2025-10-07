@@ -2502,6 +2502,11 @@
             "type": "string",
             "description": "Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.",
             "examples": ["regulatory", "analytics", "operational"]
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the SLA for humans.",
+            "examples": ["99.9% of the time, data is available by 6 AM UTC"]
           }
         },
         "required": ["property", "value"],
