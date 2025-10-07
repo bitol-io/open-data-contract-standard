@@ -52,7 +52,8 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * Added HiveServer with type `hive`
 * **Deprecations**:
   * `slaDefaultElement` is deprecated, and will be removed in ODCS 4.0 (see RFC 21)   
-
+* **Changes** to custom properties and authoritative definitions:
+  * Add `description` field to both `customProperties` and `authoritativeDefinitions`.
 
 # v3.0.2 - 2024-03-31 - APPROVED
 

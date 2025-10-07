@@ -352,11 +352,12 @@ schema:
 ### Authoritative definitions
 Reference to an external definition on element logic or values.
 
-| Key                           | UX label          | Required | Description                                                                                                                                                   |
-|-------------------------------|-------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| authoritativeDefinitions      | Link              | No       | A list of type/link pairs for authoritative definitions.                                                                                                      |
-| authoritativeDefinitions.type | Definition type   | Yes      | Type of definition for authority.  Valid values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. |
-| authoritativeDefinitions.url  | URL to definition | Yes      | URL to the authority.                                                                                                                                         |
+| Key                                  | UX label          | Required | Description                                                                                                                                                   |
+|--------------------------------------|-------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| authoritativeDefinitions             | Link              | No       | A list of type/link pairs for authoritative definitions.                                                                                                      |
+| authoritativeDefinitions.type        | Definition type   | Yes      | Type of definition for authority.  Valid values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. |
+| authoritativeDefinitions.url         | URL to definition | Yes      | URL to the authority.                                                                                                                                         |
+| authoritativeDefinitions.description | Description       | No       | Description for humans                                                                                                                                        |
 
 ## References
 This section describes how to reference elements within a data contract schema. References enable you to create relationships between different parts of your data contract. 
@@ -1531,17 +1532,19 @@ customProperties:
     value: gcsc.ruleset.name
   - property: somePropertyName
     value: property.value
-  - property: dataprocClusterName # Used for specific applications like Elevate
+  - property: dataprocClusterName # Used for specific applications
     value: [cluster name]
+    description: Cluster name for specific applications
 ```
 
 ### Definitions
 
-| Key                       | UX label             | Required | Description                                                                                                       |
-|---------------------------|----------------------|----------|-------------------------------------------------------------------------------------------------------------------|
-| customProperties          | Custom Properties    | No       | A list of key/value pairs for custom properties. Initially created to support the REF ruleset property.           |
-| customProperties.property | Property             | No       | The name of the key. Names should be in camel case–the same as if they were permanent properties in the contract. |
-| customProperties.value    | Value                | No       | The value of the key.                                                                                             |
+| Key                          | UX label          | Required | Description                                                                                                       |
+|------------------------------|-------------------|----------|-------------------------------------------------------------------------------------------------------------------|
+| customProperties             | Custom Properties | No       | A list of key/value pairs for custom properties. Initially created to support the REF ruleset property.           |
+| customProperties.property    | Property          | No       | The name of the key. Names should be in camel case–the same as if they were permanent properties in the contract. |
+| customProperties.value       | Value             | No       | The value of the key.                                                                                             |
+| customProperties.description | Description       | No       | Description for humans.                                                                                           |
 
 
 ## Other Properties
