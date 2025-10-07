@@ -795,14 +795,14 @@ servers:
 
 #### Common Server Properties
 
-| Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                            |
-|------------------|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                              |
-| type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, databricks, denodo, dremio, duckdb, glue, cloudsql, db2, informix, kafka, kinesis, local, mysql, oracle, postgresql, postgres, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, custom. |
-| description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                             |
-| environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                 |
-| roles            | Roles             | No       | List of roles that have access to the server. Check [roles](#roles) section for more details.                                                                                                                                                                                                          |
-| customProperties | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                   |
+| Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                                              |
+|------------------|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                                |
+| type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica. |
+| description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                               |
+| environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                                   |
+| roles            | Roles             | No       | List of roles that have access to the server. Check [roles](#roles) section for more details.                                                                                                                                                                                                                            |
+| customProperties | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                                     |
 
 ### Specific Server Properties
 
@@ -817,13 +817,14 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 - [azure](#azure-server)
 - [bigquery](#google-bigquery)
 - [clickhouse](#clickhouse-server)
+- [cloudsql](#google-cloud-sql)
 - [databricks](#databricks-server)
 - [db2](#ibm-db2-server)
 - [denodo](#denodo-server)
 - [dremio](#dremio-server)
 - [duckdb](#duckdb-server)
 - [glue](#amazon-glue)
-- [cloudsql](#google-cloud-sql)
+- [hive](#hive)
 - [informix](#ibm-informix-and-hcl-informix)
 - [kafka](#kafka-server)
 - [kinesis](#amazon-kinesis)
@@ -943,6 +944,16 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | database | Database | Yes      | The AWS Glue database name                     |
 | location | Location | No       | The AWS S3 path. Must be in the form of a URL. |
 | format   | Format   | No       | The format of the files                        |
+
+#### Hive
+[Apache Hive](https://hive.apache.org/) is a distributed, fault-tolerant data warehouse system that enables analytics at massive scale. Built on top of Apache Hadoop, Hive allows users to read, write, and manage petabytes of data using SQL-like queries through HiveQL, with native support for cloud storage systems and enterprise-grade security features.
+
+| Key          | UX Label        | Required   | Description                                     |
+|--------------|-----------------|------------|-------------------------------------------------|
+| host         | Host            | Yes        | The host to the Hive server.                    |
+| port         | Port            | No         | The port to the Hive server. Defaults to 10000. |
+| database     | Database        | Yes        | The name of the Hive database.                  |
+
 
 #### IBM Informix and HCL Informix
 [IBM Informix](https://www.ibm.com/products/informix) is a high performance, always-on, highly scalable and easily embeddable enterprise-class database optimized for the most demanding transactional and analytics workloads. As an object-relational engine, IBM Informix seamlessly integrates the best of relational and object-oriented capabilities enabling the flexible modeling of complex data structures and relationships.

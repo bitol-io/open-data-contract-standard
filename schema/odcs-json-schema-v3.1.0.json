@@ -148,7 +148,7 @@
             "description": "Type of the server.",
             "enum": [
               "api", "athena", "azure", "bigquery", "clickhouse", "databricks", "denodo", "dremio",
-              "duckdb", "glue", "cloudsql", "db2", "informix", "kafka", "kinesis", "local",
+              "duckdb", "glue", "cloudsql", "db2", "hive", "informix", "kafka", "kinesis", "local",
               "mysql", "oracle", "postgresql", "postgres", "presto", "pubsub",
               "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "trino", "vertica", "custom"
             ]
@@ -334,6 +334,20 @@
             "if": {
               "properties": {
                 "type": {
+                  "const": "hive"
+                }
+              },
+              "required": ["type"]
+            },
+            "then": {
+              "$ref": "#/$defs/ServerSource/HiveServer"
+            }
+          },
+
+          {
+            "if": {
+              "properties": {
+                "type": {
                   "const": "informix"
                 }
               },
@@ -343,7 +357,7 @@
               "$ref": "#/$defs/ServerSource/InformixServer"
             }
           },
-  
+
           {
             "if": {
               "properties": {
@@ -890,6 +904,28 @@
           "required": [
             "host",
             "port",
+            "database"
+          ]
+        },
+        "HiveServer": {
+          "type": "object",
+          "title": "HiveServer",
+          "properties": {
+            "host": {
+              "type": "string",
+              "description": "The host to the Hive server. "
+            },
+            "port": {
+              "type": "integer",
+              "description": "The port to the Hive server. Defaults to 10000."
+            },
+            "database": {
+              "type": "string",
+              "description": "The name of the Hive database."
+            }
+          },
+          "required": [
+            "host",
             "database"
           ]
         },
@@ -2446,4 +2482,3 @@
       }
     }
   }
-  
