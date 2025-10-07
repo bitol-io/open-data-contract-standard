@@ -19,6 +19,7 @@ each field/key.
 
 1. [Fundamentals (fka demographics)](#fundamentals)
 1. [Schema](#schema)
+1. [References](#references)
 1. [Data quality](#data-quality)
 1. [Support & communication channels](#support-and-communication-channels)
 1. [Pricing](#pricing)
@@ -242,7 +243,7 @@ Some keys are more applicable when the described property is a column.
 | primaryKey               | Primary Key                  | No       | Boolean value specifying whether the field is primary or not. Default is false.                                                                                                                                                       |
 | primaryKeyPosition       | Primary Key Position         | No       | If field is a primary key, the position of the primary key element. Starts from 1. Example of `account_id, name` being primary key columns, `account_id` has primaryKeyPosition 1 and `name` primaryKeyPosition 2. Default to -1.     |
 | logicalType              | Logical Type                 | No       | The logical field datatype. One of `string`, `date`, `timestamp`, `time`, `number`, `integer`, `object`, `array` or `boolean`.                                                                                                                             |
-| logicalTypeOptions       | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [logical type options](#logical-type-options) for more details about supported options for each `logicalType`.                                                                         |
+| logicalTypeOptions       | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [here](#logical-type-options) for more details about supported options for each `logicalType`.                                                                         |
 | physicalType             | Physical Type                | No       | The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT.                                                                                                                                              |
 | description              | Description                  | No       | Description of the element.                                                                                                                                                                                                           |
 | required                 | Required                     | No       | Indicates if the element may contain Null values; possible values are true and false. Default is false.                                                                                                                               |
@@ -356,20 +357,287 @@ Reference to an external definition on element logic or values.
 | authoritativeDefinitions.type | Definition type   | Yes      | Type of definition for authority.  Valid values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. |
 | authoritativeDefinitions.url  | URL to definition | Yes      | URL to the authority.                                                                                                                                         |
 
+## References
+This section describes how to reference elements within a data contract schema. References enable you to create relationships between different parts of your data contract. 
+
+
+> [!IMPORTANT]
+> References are currently only supported within schema properties for foreign key relationships.
+
+
+### Reference Structure
+
+A fully formatted reference follows this structure:
+```yaml
+<file><anchor><item-path-within-contract>
+```
+
+Where:
+- **`<file>`**: Path to the contract file (optional for same-contract references)
+- **`<anchor>`**: '#' symbol to mark entry into a contract (optional for same-contract)
+- **`<item-path-within-contract>`**: The defined path within the contract
+
+### External Contract References
+
+To identify a contract, use one of these formats:
+
+```yaml
+# Same folder as current contract
+data-contract-v1.yaml
+
+# Full path
+file:///path/to/data-contract-v1.yaml
+
+# URL
+https://example.com/data-contract-v1.yaml
+
+# Relative path
+../../path/to/data-contract-v1.yaml
+```
+### Reference Examples
+
+#### External Contract References
+```yaml
+# Reference to an element in an external contract
+'external-contract.yaml#schema.my-table'
+
+# Reference to a specific column in an external contract
+'external-contract.yaml#schema.my-table.my-column'
+```
+
+#### Same Contract References
+When referencing elements within the same contract, the file component can be omitted. 
+
+```yaml
+# Full reference within same contract
+'#schema.my-table.my-column'
+
+# File and anchor can be omitted for same contract
+'schema.my-table.my-column'
+```
+
+### Shorthand Notation
+
+For improved readability, ODCS supports the following shorthand notation when referencing properties within the same schema. The shorthand notation allows for a more concise way to define relationships. It can be used in the `to` and `from` fields of a relationship.
+The shorthand notation is `<schema_name>.<property_name>`.
+
+These shorthand options are only available for properties within the same data contract.
+
+### Relationships between properties (Foreign Keys)
+
+Properties can define relationships to other properties, enabling you to specify foreign key constraints and other data relationships. Relationships use the reference mechanism from RFC 9.
+
+#### Quick Overview
+
+Relationships can be defined in two ways:
+1. **At the property level** - Define relationships directly on a property (the `from` field is implicit and must NOT be specified)
+2. **At the schema level** - Define relationships between any properties (both `from` and `to` are required)
+
+#### Important Rules
+
+- **Property-level relationships**: The `from` field is implicit (derived from the property context) and must NOT be specified
+- **Schema-level relationships**: Both `from` and `to` fields are required
+- **Type consistency**: Both `from` and `to` must be the same type - either both strings (single column) or both arrays (composite keys). Mixing types is not allowed
+- **Array length validation**: When using arrays for composite keys, both arrays must have the same number of elements. This is validated at runtime by implementations
+
+#### Field Definitions
+
+| Key | UX Label | Required | Description |
+|-----|----------|----------|-------------|
+| relationships | Relationships | No | Array of relationship definitions |
+| relationships.type | Type | No | Type of relationship (defaults to `foreignKey`) |
+| relationships.to | To | Yes | Target property reference using `schema.property` notation |
+| relationships.from | From | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
+| relationships.customProperties | Custom Properties | No | Additional metadata about the relationship |
+
+#### Reference Notation
+
+- **Simple reference**: `users.id` - References the `id` property in the `users` schema
+- **Nested reference**: `accounts.address.street` - References nested properties
+- **Composite keys**: Use arrays to define composite keys (arrays must have matching lengths)
+
+### Examples
+
+#### Example 1: Simple Foreign Key (Property Level)
+
+When defining a relationship at the property level, the `from` field is implicit and must NOT be specified:
+
+```yaml
+schema:
+  - name: users
+    properties:
+      - name: user_id
+        relationships:
+          - to: accounts.owner_id  # 'from' is implicit (users.user_id)
+            # Note: DO NOT include 'from' field at property level
+```
+
+#### Example 2: Multiple Relationships
+
+A property can have multiple relationships:
+
+```yaml
+schema:
+  - name: orders
+    properties:
+      - name: customer_id
+        relationships:
+          - to: customers.id
+          - to: loyalty_members.customer_id
+```
+
+#### Example 3: Schema-Level Relationships
+
+Define relationships at the schema level when you need explicit `from` and `to`. Both fields are REQUIRED at this level:
+
+```yaml
+schema:
+  - name: users
+    relationships:
+      - from: users.account_id  # Required at schema level
+        to: accounts.id         # Required at schema level
+        type: foreignKey
+```
+
+#### Example 4: Nested Properties
+
+Reference nested properties using dot notation:
+
+```yaml
+schema:
+  - name: users
+    properties:
+      - name: id
+        relationships:
+          - to: accounts.address.postal_code
+```
+
+#### Example 5: Composite Keys
+
+For composite foreign keys, use arrays. **Important**: Both `from` and `to` must be arrays with the same number of elements:
+
+```yaml
+schema:
+  - name: order_items
+    relationships:
+      - type: foreignKey
+        from:                           # Array (must match 'to' length)
+          - order_items.order_id
+          - order_items.product_id
+        to:                             # Array (must match 'from' length)
+          - product_inventory.order_id
+          - product_inventory.product_id
+          
+```
+
+#### Example 6: Invalid Configurations
+
+Here are examples of invalid configurations that will be rejected:
+
+```yaml
+# INVALID: 'from' specified at property level
+schema:
+  - name: users
+    properties:
+      - name: user_id
+        relationships:
+          - from: users.user_id  # ERROR: 'from' not allowed at property level
+            to: accounts.id
+
+# INVALID: Mismatched array types
+schema:
+  - name: orders
+    relationships:
+      - from: orders.id          # ERROR: 'from' is string but 'to' is array
+        to: 
+          - items.order_id
+          - items.line_num
+
+# INVALID: Different array lengths (caught at runtime)
+schema:
+  - name: orders
+    relationships:
+      - from:                    # 'from' has 2 elements
+          - orders.id
+          - orders.customer_id
+        to:                      # 'to' has 3 elements (runtime validation will fail)
+          - items.order_id
+          - items.customer_id
+          - items.line_num
+
+# INVALID: Missing 'from' at schema level
+schema:
+  - name: orders
+    relationships:
+      - to: customers.id         # ERROR: 'from' is required at schema level
+```
+
+#### Complete Example
+
+Here's a comprehensive example showing various relationship patterns:
+
+```yaml
+schema:
+  - name: users
+    properties:
+      - name: id
+        relationships:
+          # Simple foreign key (from is implicit)
+          - to: accounts.user_id
+          
+          # With explicit from field
+          - from: users.id
+            to: profiles.user_id
+            
+          # With custom properties
+          - to: departments.manager_id
+            customProperties:
+              - property: cardinality
+                value: "one-to-many"
+              - property: label
+                value: "manages"
+
+          # To external contract (from is implicit)
+          - to: https://example.com/data-contract-v1.yaml#profiles.user_id
+            customProperties:
+              - property: description
+                value: "Externally referenced contract"
+      
+      - name: account_number
+    
+    # Schema-level composite key relationship
+    relationships:
+      - type: foreignKey
+        from: 
+          - users.id
+          - users.account_number
+        to:
+          - accounts.user_id
+          - accounts.account_number
+  
+  - name: accounts
+    properties:
+      - name: user_id
+      - name: account_number
+      - name: address
+        properties:
+          - name: street
+          - name: postal_code
+```
+
 ## Data quality
 
 This section describes data quality rules & parameters. They are tightly linked to the schema described in the previous section.
 
 Data quality rules support different levels/stages of data quality attributes:
 
-* **Text**: A human-readable text that describes the quality of the data.
-* **Library** rules: A maintained library of commonly-used predefined quality attributes such as `rowCount`, `unique`, `freshness`, and more.
-* **SQL**: An individual SQL query that returns a value that can be compared. Can be extended to `Python` or other.
-* **Custom**: Quality attributes that are vendor-specific, such as Soda, Great Expectations, dbt tests, or Montecarlo monitors.
+  - __Text__: A human-readable text that describes the quality of the data.
+  - __Library__ : A maintained library of commonly used quality metrics such as `rowCount`, `nullValues`, `invalidValues`, and more.
+  - __SQL__: An individual SQL query that returns a value that can be compared.
+  - __Custom__: Quality attributes that are vendor-specific, such as Soda, Great Expectations, dbt tests, dbx, or Montecarlo monitors.
 
 ### Text
-
-A human-readable text that describes the quality of the data. Later in the development process, these might be translated into an executable check (such as `sql`), a library rule, or checked through an AI engine.
+A human-readable text that describes the quality of the data. Later in the development process, these might be translated into an executable check (such as `sql`), a library metric, or checked through an AI engine.
 
 ```yaml
 quality:
@@ -378,60 +646,175 @@ quality:
 ```
 
 ### Library
+ODCS provides a set of predefined metrics commonly used in data quality checks, designed to be compatible with all major data quality engines. This simplifies the work for data engineers by eliminating the need to manually write SQL queries.
 
-ODCS will provide a set of predefined rules commonly used in data quality checks, designed to be compatible with all major data quality engines. This simplifies the work for data engineers by eliminating the need to manually write SQL queries.
+The type for library metrics is `library`, which can be omitted, if a `metric` property is defined.
 
-#### Property-level
+These metrics return a numeric value come with an operator to compare if the metric is valid and in the expected range.
 
-Those examples apply at the property level, such as column, field, etc.
+Some metrics require additional parameters, which can be defined in the `arguments` property.
 
-##### Duplicate count on rows
+Example:
+
+```yaml
+properties:
+  - name: order_id
+    quality:
+      - type: library
+        metric: nullValues 
+        mustBe: 0
+        unit: rows
+        description: "There must be no null values in the column."
+```
+
+is equalized to:
+
+```yaml
+properties:
+  - name: order_id
+    quality:
+      - metric: nullValues 
+        mustBe: 0
+        description: "There must be no null values in the column."
+```
+
+
+#### Metrics
+
+| Metric | Level | Description                                                    | Arguments                                                        | Arguments Example                                                    |
+|--------|--------|----------------------------------------------------------------|------------------------------------------------------------------|----------------------------------------------------------------------|
+| `nullValues` | Property | Counts null values in a column/field                           | None                                                             |                                                                      |
+| `missingValues` | Property | Counts values considered as missing (empty strings, N/A, etc.) | `missingValues`: Array of values considered missing              | `missingValues: [null, '', 'N/A']`                                   |
+| `invalidValues` | Property | Counts values that don't match valid criteria                  | `validValues`: Array of valid values<br>`pattern`: Regex pattern | `validValues: ['pounds', 'kg']`<br>`pattern: '^[A-Z]{2}[0-9]{2}...'` |
+| `duplicateValues` | Property | Counts duplicate values in a column                            | None                                                             |                                                                      |
+| `duplicateValues` | Schema | Counts duplicate values across multiple columns                | `properties`: Array of property names                            | `properties: ['tenant_id', 'order_id']`                              |
+| `rowCount` | Schema | Counts total number of rows in a table/object store            | None                                                             |                                                                      |
+
+##### Null Values
+
+Check that the count of null values is within range.
+
+```yaml
+properties:
+  - name: customer_id
+    quality:
+    - metric: nullValues
+      mustBe: 0
+      description: "There must be no null values in the column."
+```
+
+Example with percent:
+
+```yaml
+properties:
+  - name: order_status
+    quality:
+    - metric: nullValues
+      mustBeLessThan: 1
+      unit: percent
+      description: "There must be less than 1% null values in the column."
+```
+
+
+##### Missing Values
+
+Check that the missing values are within range.
+
+In the argument `missingValues`, a list of values that are considered to be missing.
+
+```yaml
+properties:
+  - name: email_address
+    quality:
+    - metric: missingValues
+      arguments:
+        missingValues: [null, '', 'N/A', 'n/a']
+      mustBeLessThan: 100
+      unit: rows # rows (default) or percent
+```
+
+
+##### Invalid Values
+
+Check that the value is within a defined set or matching a pattern.
+
+```yaml
+properties:
+  - name: line_item_unit
+    quality:
+      - metric: invalidValues
+        arguments:
+          validValues: ['pounds', 'kg']
+        mustBeLessThan: 5
+        unit: rows
+```
+
+Using a pattern:
+
+```yaml
+properties:
+  - name: iban
+    quality:
+    - metric: invalidValues
+      mustBe: 0
+      description: "The value must be an IBAN."
+      arguments:
+      pattern: '^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$'
+```
+
+
+##### Duplicate Values
 
 No more than 10 duplicate names.
 
 ```yaml
-quality:
-- type: library # optional and default value for data quality rules
-  rule: duplicateCount
-  mustBeLessThan: 10
-  name: Fewer than 10 duplicate names
-  unit: rows
+properties:
+  - name: email_address
+    quality:
+    - metric: duplicateValues
+      mustBeLessThan: 10
+      unit: rows
+      description: "There must be less than 10 duplicate values in the column."
 ```
-
-##### Duplicate count on %
 
 Duplicates should be less than 1%.
 
 ```yaml
-quality:
-- rule: duplicateCount
-  mustBeLessThan: 1
-  unit: percent
+properties:
+  - name: phone_number
+    quality:
+    - metric: duplicateValues
+      mustBeLessThan: 1
+      unit: percent
 ```
 
-##### Valid values
-
-Valid values from a static list.
+##### Row count (Schema-Level)
+Calculates the number of rows (usually in a table) and compares it to an absolute operator.
 
 ```yaml
-quality:
-- rule: validValues
-  validValues: ['pounds']
+schema:
+  - name: orders
+    quality:
+      - metric: rowCount
+        mustBeBetween: [100, 120]
 ```
 
-#### Object-level
+##### Duplicates (Schema-Level)
 
-This example applies at the object level (like a table or a view).
-
-##### Row count
-
-The number of rows must be between 100 and 120.
+Checks for duplicate rows based on a combination of properties.
+This is useful for validating compound keys where uniqueness is defined not by a single column but by multiple columns together.
 
 ```yaml
-quality:
-  - rule: rowCount
-    mustBeBetween: [100, 120]
-    name: Verify row count range
+schema:
+  - name: orders
+    quality:
+      - description: The combination of tenant_id and order_id must be unique
+        metric: duplicateValues
+        mustBe: 0
+        arguments:
+          properties: # Properties refer to the property in the schema.
+            - tenant_id
+            - order_id
 ```
 
 ### SQL
@@ -503,10 +886,11 @@ Acronyms:
 | quality.name                     | Name                       | No       | A short name for the rule.                                                                                                                                                   |
 | quality.description              | Description                | No       | Describe the quality check to be completed.                                                                                                                                  |
 | quality.type                     | Type                       | No       | Type of DQ rule. Valid values are `library` (default), `text`, `sql`, and `custom`.                                                                                          |
-| quality.rule                     | Rule name                  | No       | Required for `library` DQ rules: the name of the rule to be executed.                                                                                                        |
+| quality.metric                   | Metric name                | No       | Required for `library`: the name of the metric to be calculated and compared.                                                                                                |
+| quality.rule                     | Rule name                  | No       | Deprecated, use `metric` instead.                                                                                                                                            |
+| quality.arguments                | Arguments                  | No       | Additional arguments for the metric, if needed.                                                                                                                              |
 | quality.\<operator>              | See below                  | No       | Multiple values are allowed for the **property**, the value is the one to compare to.                                                                                        |
-| quality.unit                     | Unit                       | No       | Unit the rule is using, popular values are `rows` or `percent`, but any value is allowed.                                                                                    |
-| quality.validValues              | Valid values               | No       | Static list of valid values.                                                                                                                                                 |
+| quality.unit                     | Unit                       | No       | Unit the rule is using, popular values are `rows` or `percent`.                                                                                                              |
 | quality.query                    | SQL Query                  | No       | Required for `sql` DQ rules: the SQL query to be executed. Note that it should match the target SQL engine/database, no transalation service are provided here.              |
 | quality.engine                   | Third-party DQ Engine      | No       | Required for `custom` DQ rule: name of the third-party engine being used. Any value is authorized here but common values are `soda`, `greatExpectations`, `montecarlo`, etc. |
 | quality.implementation           | Third-party Implementation | No       | A text (non-parsed) block of code required for the third-party DQ engine to run.                                                                                             |
@@ -533,8 +917,7 @@ Those data quality dimensions are used for classification and reporting in data 
 * `uniqueness` (synonym `uq`).
 
 #### Valid Properties for Operator
-
-The operator specifies the condition to validate the rule.
+The operator specifies the condition to validate a metric or result of a SQL query.
 
 | Operator                 | Expected Value      | Math Symbol | Example                      |
 |--------------------------|---------------------|-------------|------------------------------|
@@ -544,8 +927,8 @@ The operator specifies the condition to validate the rule.
 | `mustBeGreaterOrEqualTo` | number              | `>=`, `≥`   | `mustBeGreaterOrEqualTo: 60` |
 | `mustBeLessThan`         | number              | `<`         | `mustBeLessThan: 1000`       |
 | `mustBeLessOrEqualTo`    | number              | `<=`, `≤`   | `mustBeLessOrEqualTo: 999`   |
-| `mustBeBetween`          | list of two numbers | `⊂`         | `mustBeBetween: [0, 100]`    |
-| `mustNotBeBetween`       | list of two numbers | `⊄`         | `mustNotBeBetween: [0, 100]` |
+| `mustBeBetween`          | list of two numbers | `∈`         | `mustBeBetween: [0, 100]`    |
+| `mustNotBeBetween`       | list of two numbers | `∉`         | `mustNotBeBetween: [0, 100]` |
 
 `mustBeBetween` is the equivalent to `mustBeGreaterThan` and `mustBeLessThan`.
 
@@ -568,9 +951,6 @@ quality:
     mustBeLessThan: 100
 ```
 
-#### Library Rules
-
-Bitol has the ambition of creating a library of common data quality rules. Join the working group around [RFC #0012](https://github.com/bitol-io/tsc/blob/main/rfcs/0012-implicit-dq-rules.md).
 
 ## Support and Communication Channels
 
@@ -736,14 +1116,14 @@ This section describes the service-level agreements (SLA).
 ### Example
 
 ```YAML
-slaDefaultElement: tab1.txn_ref_dt # Optional, default value is partitionColumn.
 slaProperties:
   - property: latency # Property, see list of values in DP QoS
     value: 4
     unit: d # d, day, days for days; y, yr, years for years
-    element: tab1.txn_ref_dt # This would not be needed as it is the same table.column as the default one
+    element: tab1.txn_ref_dt
   - property: generalAvailability
     value: 2022-05-12T09:30:10-08:00
+    description: GA at 12.5.22
   - property: endOfSupport
     value: 2032-05-12T09:30:10-08:00
   - property: endOfLife
@@ -769,16 +1149,17 @@ slaProperties:
 
 ### Definitions
 
-| Key                    | UX label               | Required                       | Description                                                                                         |
-|------------------------|------------------------|--------------------------------|-----------------------------------------------------------------------------------------------------|
-| slaDefaultElement      | Default SLA element(s) | No                             | Element (using the element path notation) to do the checks on.                                      |
-| slaProperties          | SLA                    | No                             | A list of key/value pairs for SLA specific properties. There is no limit on the type of properties. |
-| slaProperties.property | Property               | Yes                            | Specific property in SLA, check the Data QoS periodic table. May requires units.                    |
-| slaProperties.value    | Value                  | Yes                            | Agreement value. The label will change based on the property itself.                                |
-| slaProperties.valueExt | Extended value         | No - unless needed by property | Extended agreement value. The label will change based on the property itself.                       |
-| slaProperties.unit     | Unit                   | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.             |
-| slaProperties.element  | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas. |
-| slaProperties.driver   | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.  |
+| Key                                | UX label               | Required                       | Description                                                                                                       |
+|------------------------------------|------------------------|--------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| ~~slaDefaultElement~~ (Deprecated) | Default SLA element(s) | No                             | DEPRECATED SINCE 3.1. WILL BE REMOVED IN ODCS 4.0. Element (using the element path notation) to do the checks on. |
+| slaProperties                      | SLA                    | No                             | A list of key/value pairs for SLA specific properties. There is no limit on the type of properties.               |
+| slaProperties.property             | Property               | Yes                            | Specific property in SLA, check the Data QoS periodic table. May requires units.                                  |
+| slaProperties.value                | Value                  | Yes                            | Agreement value. The label will change based on the property itself.                                              |
+| slaProperties.valueExt             | Extended value         | No - unless needed by property | Extended agreement value. The label will change based on the property itself.                                     |
+| slaProperties.unit                 | Unit                   | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.                           |
+| slaProperties.element              | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas.               |
+| slaProperties.driver               | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.                |
+| slaProperties.description          | Description            | No                             | Description of the SLA for humans.                                                                            |
 
 ## Infrastructure and Servers
 
@@ -812,14 +1193,14 @@ servers:
 
 #### Common Server Properties
 
-| Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                            |
-|------------------|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                              |
-| type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, databricks, denodo, dremio, duckdb, glue, cloudsql, db2, informix, kafka, kinesis, local, mysql, oracle, postgresql, postgres, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, custom. |
-| description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                             |
-| environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                 |
-| roles            | Roles             | No       | List of roles that have access to the server. Check [roles](#roles) section for more details.                                                                                                                                                                                                          |
-| customProperties | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                   |
+| Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                                              |
+|------------------|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                                |
+| type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica. |
+| description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                               |
+| environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                                   |
+| roles            | Roles             | No       | List of roles that have access to the server. Check [roles](#roles) section for more details.                                                                                                                                                                                                                            |
+| customProperties | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                                     |
 
 ### Specific Server Properties
 
@@ -829,35 +1210,36 @@ Each server type can be customized with different properties such as `host`, `po
 
 If your server is not in the list, please use [custom](#custom-server) and suggest it as an improvement. Possible values for `type` are:
 
-* [api](#api-server)
-* [athena](#amazon-athena-server)
-* [azure](#azure-server)
-* [bigquery](#google-bigquery)
-* [clickhouse](#clickhouse-server)
-* [databricks](#databricks-server)
-* [db2](#ibm-db2-server)
-* [denodo](#denodo-server)
-* [dremio](#dremio-server)
-* [duckdb](#duckdb-server)
-* [glue](#amazon-glue)
-* [cloudsql](#google-cloud-sql)
-* [informix](#ibm-informix-and-hcl-informix)
-* [kafka](#kafka-server)
-* [kinesis](#amazon-kinesis)
-* [local](#local-files)
-* [mysql](#mysql-server)
-* [oracle](#oracle)
-* [postgresql](#postgresql)
-* [presto](#presto-server)
-* [pubsub](#google-pubsub)
-* [redshift](#amazon-redshift-server)
-* [s3](#amazon-s3-server-and-compatible-servers)
-* [sftp](#sftp-server)
-* [snowflake](#snowflake)
-* [sqlserver](#microsoft-sql-server)
-* [synapse](#synapse-server)
-* [trino](#trino-server)
-* [vertica](#vertica-server)
+- [api](#api-server)
+- [athena](#amazon-athena-server)
+- [azure](#azure-server)
+- [bigquery](#google-bigquery)
+- [clickhouse](#clickhouse-server)
+- [cloudsql](#google-cloud-sql)
+- [databricks](#databricks-server)
+- [db2](#ibm-db2-server)
+- [denodo](#denodo-server)
+- [dremio](#dremio-server)
+- [duckdb](#duckdb-server)
+- [glue](#amazon-glue)
+- [hive](#hive)
+- [informix](#ibm-informix-and-hcl-informix)
+- [kafka](#kafka-server)
+- [kinesis](#amazon-kinesis)
+- [local](#local-files)
+- [mysql](#mysql-server)
+- [oracle](#oracle)
+- [postgresql](#postgresql)
+- [presto](#presto-server)
+- [pubsub](#google-pubsub)
+- [redshift](#amazon-redshift-server)
+- [s3](#amazon-s3-server-and-compatible-servers)
+- [sftp](#sftp-server)
+- [snowflake](#snowflake)
+- [sqlserver](#microsoft-sql-server)
+- [synapse](#synapse-server)
+- [trino](#trino-server)
+- [vertica](#vertica-server)
 
 #### API Server
 
@@ -964,6 +1346,16 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | database | Database | Yes      | The AWS Glue database name                     |
 | location | Location | No       | The AWS S3 path. Must be in the form of a URL. |
 | format   | Format   | No       | The format of the files                        |
+
+#### Hive
+[Apache Hive](https://hive.apache.org/) is a distributed, fault-tolerant data warehouse system that enables analytics at massive scale. Built on top of Apache Hadoop, Hive allows users to read, write, and manage petabytes of data using SQL-like queries through HiveQL, with native support for cloud storage systems and enterprise-grade security features.
+
+| Key          | UX Label        | Required   | Description                                     |
+|--------------|-----------------|------------|-------------------------------------------------|
+| host         | Host            | Yes        | The host to the Hive server.                    |
+| port         | Port            | No         | The port to the Hive server. Defaults to 10000. |
+| database     | Database        | Yes        | The name of the Hive database.                  |
+
 
 #### IBM Informix and HCL Informix
 

@@ -16,7 +16,7 @@ description:
 tenant: ClimateQuantumInc
 
 kind: DataContract
-apiVersion: v3.0.2 # Standard version (follows semantic versioning)
+apiVersion: v3.1.0 # Standard version (follows semantic versioning)
 
 # Infrastructure & servers
 servers:
@@ -41,6 +41,20 @@ schema:
         type: videoTutorial
     tags: [ 'finance', 'payments']
     dataGranularityDescription: Aggregation on columns txn_ref_dt, pmt_txn_id
+    # Schema-level relationships (for composite keys)
+    relationships:
+      - type: foreignKey
+        from:
+          - tbl.rcvr_id
+          - tbl.rcvr_cntry_code
+        to:
+          - receivers.id
+          - receivers.country_code
+        customProperties:
+          - property: description
+            value: "Composite key linking to receivers table"
+          - property: cardinality
+            value: "many-to-one"
     properties:
       - name: transaction_reference_date
         physicalName: txn_ref_dt
@@ -81,6 +95,13 @@ schema:
         criticalDataElement: false
         tags: [ 'uid' ]
         classification: restricted
+        # Property-level relationship (from is implicit)
+        relationships:
+          - to: receivers.id
+            type: foreignKey
+            customProperties:
+              - property: description
+                value: "Links to receiver master data"
       - name: rcvr_cntry_code
         primaryKey: false
         primaryKeyPosition: -1
@@ -103,9 +124,10 @@ schema:
             type: implementation
         encryptedName: rcvr_cntry_code_encrypted
         quality:
-          - rule: nullCheck
+          - metric: nullValues
+            mustBe: 0
             description: column should not contain null values
-            dimension: completeness # dropdown 7 values
+            dimension: completeness
             type: library
             severity: error
             businessImpact: operational
@@ -119,7 +141,8 @@ schema:
               - property: COMPARISON_TYPE
                 value: Greater than
     quality:
-      - rule: countCheck
+      - metric: rowCount
+        mustBeGreaterThan: 1000000
         type: library
         description: Ensure row count is within expected volume range
         dimension: completeness
@@ -133,6 +156,54 @@ schema:
         value:
           - txn_ref_dt
           - rcvr_id
+
+  # Receivers master table
+  - name: receivers
+    physicalName: receivers_master
+    physicalType: table
+    businessName: Receivers Master Data
+    description: Master data for all receivers
+    tags: [ 'master-data', 'receivers' ]
+    properties:
+      - name: id
+        primaryKey: true
+        primaryKeyPosition: 1
+        businessName: receiver identifier
+        logicalType: string
+        physicalType: varchar(18)
+        required: true
+        description: Unique identifier for receiver
+        unique: true
+        classification: restricted
+      - name: country_code
+        primaryKey: true
+        primaryKeyPosition: 2
+        businessName: receiver country
+        logicalType: string
+        physicalType: varchar(2)
+        required: true
+        description: Country code of the receiver
+        classification: public
+      - name: receiver_name
+        businessName: receiver name
+        logicalType: string
+        physicalType: varchar(255)
+        required: true
+        description: Name of the receiver
+        classification: restricted
+      - name: receiver_type
+        businessName: receiver type
+        logicalType: string
+        physicalType: varchar(20)
+        required: false
+        description: Type of receiver (individual, business, etc.)
+        classification: public
+        # Example of nested reference
+        relationships:
+          - to: receiver_types.type_code
+            customProperties:
+              - property: description
+                value: "Links to receiver type definitions"
 
 
 # Pricing
@@ -178,7 +249,6 @@ roles:
     secondLevelApprovers: 'mickey'
 
 # SLA
-slaDefaultElement: tab1.txn_ref_dt
 slaProperties:
   - property: latency # Property, see list of values in DP QoS
     value: 4

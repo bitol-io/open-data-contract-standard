@@ -16,9 +16,9 @@
       },
       "apiVersion": {
         "type": "string",
-        "default": "v3.0.2",
-        "description": "Version of the standard used to build data contract. Default value is v3.0.2.",
-        "enum": ["v3.0.2","v3.0.1", "v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
+        "default": "v3.1.0",
+        "description": "Version of the standard used to build data contract. Default value is v3.1.0.",
+        "enum": ["v3.1.0","v3.0.2","v3.0.1", "v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
       },
       "id": {
         "type": "string",
@@ -110,7 +110,8 @@
       },
       "slaDefaultElement": {
         "type": "string",
-        "description": "Element (using the element path notation) to do the checks on."
+        "description": "DEPRECATED SINCE 3.1. WILL BE REMOVED IN ODCS 4.0. Element (using the element path notation) to do the checks on.",
+        "deprecated": true
       },
       "slaProperties": {
         "type": "array",
@@ -148,7 +149,7 @@
             "description": "Type of the server.",
             "enum": [
               "api", "athena", "azure", "bigquery", "clickhouse", "databricks", "denodo", "dremio",
-              "duckdb", "glue", "cloudsql", "db2", "informix", "kafka", "kinesis", "local",
+              "duckdb", "glue", "cloudsql", "db2", "hive", "informix", "kafka", "kinesis", "local",
               "mysql", "oracle", "postgresql", "postgres", "presto", "pubsub",
               "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "trino", "vertica", "custom"
             ]
@@ -334,6 +335,20 @@
             "if": {
               "properties": {
                 "type": {
+                  "const": "hive"
+                }
+              },
+              "required": ["type"]
+            },
+            "then": {
+              "$ref": "#/$defs/ServerSource/HiveServer"
+            }
+          },
+
+          {
+            "if": {
+              "properties": {
+                "type": {
                   "const": "informix"
                 }
               },
@@ -343,7 +358,6 @@
               "$ref": "#/$defs/ServerSource/InformixServer"
             }
           },
-  
           {
             "if": {
               "properties": {
@@ -890,6 +904,28 @@
           "required": [
             "host",
             "port",
+            "database"
+          ]
+        },
+        "HiveServer": {
+          "type": "object",
+          "title": "HiveServer",
+          "properties": {
+            "host": {
+              "type": "string",
+              "description": "The host to the Hive server. "
+            },
+            "port": {
+              "type": "integer",
+              "description": "The port to the Hive server. Defaults to 10000."
+            },
+            "database": {
+              "type": "string",
+              "description": "The name of the Hive database."
+            }
+          },
+          "required": [
+            "host",
             "database"
           ]
         },
@@ -1520,6 +1556,13 @@
               "$ref": "#/$defs/SchemaProperty"
             }
           },
+          "relationships": {
+            "type": "array",
+            "description": "A list of relationships to other properties. Each relationship must have 'from', 'to' and optionally 'type' field.",
+            "items": {
+              "$ref": "#/$defs/RelationshipSchemaLevel"
+            }
+          },
           "quality": {
             "$ref": "#/$defs/DataQualityChecks"
           }
@@ -1617,6 +1660,13 @@
             "type": "boolean",
             "default": false,
             "description": "True or false indicator; If element is considered a critical data element (CDE) then true else false."
+          },
+          "relationships": {
+            "type": "array",
+            "description": "A list of relationships to other properties. When defined at property level, the 'from' field is implicit and should not be specified.",
+            "items": {
+              "$ref": "#/$defs/RelationshipPropertyLevel"
+            }
           },
           "quality": {
             "$ref": "#/$defs/DataQualityChecks"
@@ -2048,11 +2098,24 @@
         "allOf": [
           {
             "if": {
-              "properties": {
-                "type": {
-                  "const": "library"
+              "anyOf": [
+                {
+                  "properties": {
+                    "type": {
+                      "const": "library"
+                    }
+                  },
+                  "required": ["type"]
+                },
+                {
+                  "properties": {
+                    "metric": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["metric"]
                 }
-              }
+              ]
             },
             "then": {
               "$ref": "#/$defs/DataQualityLibrary"
@@ -2094,61 +2157,126 @@
           "$ref": "#/$defs/DataQuality"
         }
       },
+      "DataQualityOperators": {
+        "type": "object",
+        "description": "Common comparison operators for data quality checks.",
+        "oneOf": [
+          {
+            "properties": {
+              "mustBe": {
+                "description": "Must be equal to the value to be valid. When using numbers, it is equivalent to '='."
+              }
+            },
+            "required": ["mustBe"]
+          },
+          {
+            "properties": {
+              "mustNotBe": {
+                "description": "Must not be equal to the value to be valid. When using numbers, it is equivalent to '!='."
+              }
+            },
+            "required": ["mustNotBe"]
+          },
+          {
+            "properties": {
+              "mustBeGreaterThan": {
+                "type": "number",
+                "description": "Must be greater than the value to be valid. It is equivalent to '>'."
+              }
+            },
+            "required": ["mustBeGreaterThan"]
+          },
+          {
+            "properties": {
+              "mustBeGreaterOrEqualTo": {
+                "type": "number",
+                "description": "Must be greater than or equal to the value to be valid. It is equivalent to '>='."
+              }
+            },
+            "required": ["mustBeGreaterOrEqualTo"]
+          },
+          {
+            "properties": {
+              "mustBeLessThan": {
+                "type": "number",
+                "description": "Must be less than the value to be valid. It is equivalent to '<'."
+              }
+            },
+            "required": ["mustBeLessThan"]
+          },
+          {
+            "properties": {
+              "mustBeLessOrEqualTo": {
+                "type": "number",
+                "description": "Must be less than or equal to the value to be valid. It is equivalent to '<='."
+              }
+            },
+            "required": ["mustBeLessOrEqualTo"]
+          },
+          {
+            "properties": {
+              "mustBeBetween": {
+                "type": "array",
+                "description": "Must be between the two numbers to be valid. Smallest number first in the array.",
+                "minItems": 2,
+                "maxItems": 2,
+                "uniqueItems": true,
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": ["mustBeBetween"]
+          },
+          {
+            "properties": {
+              "mustNotBeBetween": {
+                "type": "array",
+                "description": "Must not be between the two numbers to be valid. Smallest number first in the array.",
+                "minItems": 2,
+                "maxItems": 2,
+                "uniqueItems": true,
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": ["mustNotBeBetween"]
+          }
+        ]
+      },
       "DataQualityLibrary": {
         "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/$defs/DataQualityOperators"
+          }
+        ],
         "properties": {
+          "metric": {
+            "type": "string",
+            "description": "Define a data quality check based on the predefined metrics as per ODCS.",
+            "enum": ["nullValues", "missingValues", "invalidValues", "duplicateValues", "rowCount"]
+          },
           "rule": {
             "type": "string",
-            "description": "Define a data quality check based on the predefined rules as per ODCS.",
-            "examples": ["duplicateCount", "validValues", "rowCount"]
+            "deprecated": true,
+            "description": "Use metric instead"
           },
-          "mustBe": {
-            "description": "Must be equal to the value to be valid. When using numbers, it is equivalent to '='."
-          },
-          "mustNotBe": {
-            "description": "Must not be equal to the value to be valid. When using numbers, it is equivalent to '!='."
-          },
-          "mustBeGreaterThan": {
-            "type": "number",
-            "description": "Must be greater than the value to be valid. It is equivalent to '>'."
-          },
-          "mustBeGreaterOrEqualTo": {
-            "type": "number",
-            "description": "Must be greater than or equal to the value to be valid. It is equivalent to '>='."
-          },
-          "mustBeLessThan": {
-            "type": "number",
-            "description": "Must be less than the value to be valid. It is equivalent to '<'."
-          },
-          "mustBeLessOrEqualTo": {
-            "type": "number",
-            "description": "Must be less than or equal to the value to be valid. It is equivalent to '<='."
-          },
-          "mustBeBetween": {
-            "type": "array",
-            "description": "Must be between the two numbers to be valid. Smallest number first in the array.",
-            "minItems": 2,
-            "maxItems": 2,
-            "uniqueItems": true,
-            "items": {
-              "type": "number"
-            }
-          },
-          "mustNotBeBetween": {
-            "type": "array",
-            "description": "Must not be between the two numbers to be valid. Smallest number first in the array.",
-            "minItems": 2,
-            "maxItems": 2,
-            "uniqueItems": true,
-            "items": {
-              "type": "number"
-            }
+          "arguments": {
+            "type": "object",
+            "description": "Additional arguments for the metric, if needed."
           }
         },
-        "required": ["rule"]
+        "required": ["metric"]
       },
       "DataQualitySql": {
         "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/$defs/DataQualityOperators"
+          }
+        ],
         "properties": {
           "query": {
             "type": "string",
@@ -2373,6 +2501,11 @@
             "type": "string",
             "description": "Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.",
             "examples": ["regulatory", "analytics", "operational"]
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the SLA for humans.",
+            "examples": ["99.9% of the time, data is available by 6 AM UTC"]
           }
         },
         "required": ["property", "value"],
@@ -2443,7 +2576,112 @@
             "type": "null"
           }
         ]
+      },
+      "RelationshipBase": {
+        "type": "object",
+        "description": "Base definition for relationships between properties, typically for foreign key constraints.",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of relationship. Defaults to 'foreignKey'.",
+            "default": "foreignKey",
+            "enum": ["foreignKey"]
+          },
+          "from": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "Source property reference using schema.property notation."
+              },
+              {
+                "type": "array",
+                "description": "Array of source properties for composite keys.",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1
+              }
+            ],
+            "description": "Source property or properties."
+          },
+          "to": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "Target property reference using schema.property notation."
+              },
+              {
+                "type": "array",
+                "description": "Array of target properties for composite keys.",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1
+              }
+            ],
+            "description": "Target property or properties to reference."
+          },
+          "customProperties": {
+            "$ref": "#/$defs/CustomProperties"
+          }
+        }
+      },
+      "RelationshipSchemaLevel": {
+        "type": "object",
+        "description": "Relationship definition at schema level, requiring both 'from' and 'to' fields with matching types.",
+        "allOf": [
+          { "$ref": "#/$defs/RelationshipBase" },
+          { "required": ["from", "to"] },
+          {
+            "oneOf": [
+              {
+                "description": "Single-column relationship - both fields must be strings",
+                "properties": {
+                  "from": { "type": "string" },
+                  "to": { "type": "string" }
+                }
+              },
+              {
+                "description": "Composite key relationship - both fields must be arrays with matching lengths",
+                "properties": {
+                  "from": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "minItems": 1
+                  },
+                  "to": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "minItems": 1
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "unevaluatedProperties": false
+      },
+      "RelationshipPropertyLevel": {
+        "type": "object",
+        "description": "Relationship definition at property level, where 'from' is implicitly the current property.",
+        "allOf": [
+          { "$ref": "#/$defs/RelationshipBase" },
+          { "type": "object", "required": ["to"] },
+          {
+            "not": {
+              "required": ["from"]
+            },
+            "description": "The 'from' field must not be specified at property level as it is implicitly derived from the property context"
+          }
+        ],
+        "unevaluatedProperties": false
+      },
+      "Relationship": {
+        "description": "Compatibility wrapper for relationship definitions.",
+        "oneOf": [
+          { "$ref": "#/$defs/RelationshipSchemaLevel" },
+          { "$ref": "#/$defs/RelationshipPropertyLevel" }
+        ]
       }
     }
   }
-  
