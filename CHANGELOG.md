@@ -20,7 +20,6 @@ This document tracks the history and evolution of the **Open Data Contract Stand
     * `from`: Source property reference (optional at property level)
     * `to`: Target property reference (required)
     * `customProperties`: Additional metadata
-  * Add `hive` as a server type
 * **Breaking change** to schema:
   * Alter `exclusiveMaximum` and `exclusiveMinimum` for `integer/number` logical data type to be `number` instead of `boolean`. [Conforms with JSON Schema specification](https://json-schema.org/understanding-json-schema/reference/numeric#range).
   * Alter `exclusiveMaximum` and `exclusiveMinimum` for `date` logical data type to be `string` instead of `boolean`.
@@ -41,13 +40,16 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * Add `timezone` and `defaultTimezone` to `logicalTypeOptions` options for `timestamp` and `time`.
 * **Changes** to Quality
   * Add a maintained library of commonly used quality metrics `rowCount`, `nullValues`, `invalidValues`, `duplicateValues`, and  `missingValues`.
-* **Changes** to ServerSource:
+* **Changes** to Servers:
   * AzureServer `format` not longer an enum of `parquet`, `delta`, `json`, `csv`, but rather a string with the same examples.
   * AzureServer `delimiter` not longer an enum of `new_line`, `array`, but rather a string with the same examples.
   * S3Server `format` not longer an enum of `parquet`, `delta`, `json`, `csv`, but rather a string with the same examples.
   * S3Server `delimiter` not longer an enum of `new_line`, `array`, but rather a string with the same examples.
   * SftpServer `format` not longer an enum of `parquet`, `delta`, `json`, `csv`, but rather a string with the same examples.
   * SftpServer `delimiter` not longer an enum of `new_line`, `array`, but rather a string with the same examples.
+  * Added HiveServer with type `hive`
+* **Deprecations**:
+  * `slaDefaultElement` is deprecated, and will be removed in ODCS 4.0 (see RFC 21)   
 
 
 # v3.0.2 - 2024-03-31 - APPROVED

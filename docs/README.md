@@ -1108,7 +1108,6 @@ This section describes the service-level agreements (SLA).
 ### Example
 
 ```YAML
-slaDefaultElement: tab1.txn_ref_dt # Optional, default value is partitionColumn.
 slaProperties:
   - property: latency # Property, see list of values in DP QoS
     value: 4
@@ -1141,16 +1140,16 @@ slaProperties:
 
 ### Definitions
 
-| Key                    | UX label               | Required                       | Description                                                                                         |
-|------------------------|------------------------|--------------------------------|-----------------------------------------------------------------------------------------------------|
-| slaDefaultElement      | Default SLA element(s) | No                             | Element (using the element path notation) to do the checks on.                                      |
-| slaProperties          | SLA                    | No                             | A list of key/value pairs for SLA specific properties. There is no limit on the type of properties. |
-| slaProperties.property | Property               | Yes                            | Specific property in SLA, check the Data QoS periodic table. May requires units.                    |
-| slaProperties.value    | Value                  | Yes                            | Agreement value. The label will change based on the property itself.                                |
-| slaProperties.valueExt | Extended value         | No - unless needed by property | Extended agreement value. The label will change based on the property itself.                       |
-| slaProperties.unit     | Unit                   | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.             |
-| slaProperties.element  | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas. |
-| slaProperties.driver   | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.  |
+| Key                                | UX label               | Required                       | Description                                                                                         |
+|------------------------------------|------------------------|--------------------------------|-----------------------------------------------------------------------------------------------------|
+| ~~slaDefaultElement~~ (Deprecated) | Default SLA element(s) | No                             | DEPRECATED SINCE 3.1. WILL BE REMOVED IN ODCS 4.0. Element (using the element path notation) to do the checks on.                                      |
+| slaProperties                      | SLA                    | No                             | A list of key/value pairs for SLA specific properties. There is no limit on the type of properties. |
+| slaProperties.property             | Property               | Yes                            | Specific property in SLA, check the Data QoS periodic table. May requires units.                    |
+| slaProperties.value                | Value                  | Yes                            | Agreement value. The label will change based on the property itself.                                |
+| slaProperties.valueExt             | Extended value         | No - unless needed by property | Extended agreement value. The label will change based on the property itself.                       |
+| slaProperties.unit                 | Unit                   | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.             |
+| slaProperties.element              | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas. |
+| slaProperties.driver               | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.  |
 
 ## Infrastructure and Servers
 

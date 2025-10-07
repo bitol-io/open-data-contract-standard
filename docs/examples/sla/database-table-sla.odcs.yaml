@@ -7,7 +7,6 @@ name: my_table
 dataProduct: my_quantum
 schema: []
 # SLA
-slaDefaultElement: tab1.txn_ref_dt # Optional, default value is partitionColumn.
 slaProperties:
   - property: latency # Property, see list of values in DP QoS
     value: 4

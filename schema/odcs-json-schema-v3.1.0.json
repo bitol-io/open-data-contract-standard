@@ -110,7 +110,8 @@
       },
       "slaDefaultElement": {
         "type": "string",
-        "description": "Element (using the element path notation) to do the checks on."
+        "description": "DEPRECATED SINCE 3.1. WILL BE REMOVED IN ODCS 4.0. Element (using the element path notation) to do the checks on.",
+        "deprecated": true
       },
       "slaProperties": {
         "type": "array",
@@ -2662,7 +2663,7 @@
         "allOf": [
           { "$ref": "#/$defs/RelationshipBase" },
           { "type": "object", "required": ["to"] },
-          { 
+          {
             "not": {
               "required": ["from"]
             },

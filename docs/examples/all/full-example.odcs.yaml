@@ -44,7 +44,7 @@ schema:
     # Schema-level relationships (for composite keys)
     relationships:
       - type: foreignKey
-        from: 
+        from:
           - tbl.rcvr_id
           - tbl.rcvr_cntry_code
         to:
@@ -156,7 +156,7 @@ schema:
         value:
           - txn_ref_dt
           - rcvr_id
-  
+
   # Receivers master table
   - name: receivers
     physicalName: receivers_master
@@ -249,7 +249,6 @@ roles:
     secondLevelApprovers: 'mickey'
 
 # SLA
-slaDefaultElement: tab1.txn_ref_dt
 slaProperties:
   - property: latency # Property, see list of values in DP QoS
     value: 4
