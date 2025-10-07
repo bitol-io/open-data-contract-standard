@@ -42,6 +42,11 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * Add a maintained library of commonly used quality metrics `rowCount`, `nullValues`, `invalidValues`, `duplicateValues`, and  `missingValues`.
 * **Changes** to SLA:
   * Add optional `description` field to SLA entries for human-readable context.
+* **Changes** to Support Channels:
+  * Change `url` field to be optional.
+  * Add `customProperties` field for additional metadata.
+  * Add `notifications` as an example for `scope`
+  * Add `googlechat` as an example for `tool`
 * **Changes** to Servers:
   * AzureServer `format` not longer an enum of `parquet`, `delta`, `json`, `csv`, but rather a string with the same examples.
   * AzureServer `delimiter` not longer an enum of `new_line`, `array`, but rather a string with the same examples.

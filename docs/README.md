@@ -957,8 +957,7 @@ Support and communication channels help consumers find help regarding their use 
 
 ```yaml
 support:
-  - channel: channel-name-or-identifier # Simple Slack communication channel
-    url: https://aidaug.slack.com/archives/C05UZRSBKLY
+  - channel: "#my-channel" # Simple Slack communication channel
   - channel: channel-name-or-identifier # Simple distribution list
     url: mailto:datacontract-ann@bitol.io
 ```
@@ -992,15 +991,16 @@ support:
 
 ### Definitions
 
-| Key                   | UX label       | Required | Description                                                                                                                         |
-|-----------------------|----------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| support               | Support        | No       | Top level for support channels.                                                                                                     |
-| support.channel       | Channel        | Yes      | Channel name or identifier.                                                                                                         |
-| support.url           | Channel URL    | Yes      | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                               |
-| support.description   | Description    | No       | Description of the channel, free text.                                                                                              |
-| support.tool          | Tool           | No       | Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, or `other`.                                          |
-| support.scope         | Scope          | No       | Scope can be: `interactive`, `announcements`, `issues`.                                                                             |
-| support.invitationUrl | Invitation URL | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax).   |
+| Key                   | UX label       | Required | Description                                                                                                                       |
+|-----------------------|----------------|----------|-----------------------------------------------------------------------------------------------------------------------------------|
+| support               | Support        | No       | Top level for support channels.                                                                                                   |
+| support.channel       | Channel        | Yes      | Channel name or identifier.                                                                                                       |
+| support.url           | Channel URL    | No       | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                             |
+| support.description   | Description    | No       | Description of the channel, free text.                                                                                            |
+| support.tool          | Tool           | No       | Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, `googlechat`, or `other`.                          |
+| support.scope         | Scope          | No       | Scope can be: `interactive`, `announcements`, `issues`, `notifications`.                                                           |
+| support.invitationUrl | Invitation URL | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax). |
+| support.customProperties | Custom Properties | No       | Any custom properties.                                                                                                            |
 
 
 ## Pricing
