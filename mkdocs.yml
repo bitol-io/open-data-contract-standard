@@ -1,11 +1,13 @@
 site_name: Open Data Contract Standard
-site_url: https://pflooky.github.io/open-data-contract-standard/
+site_url: https://bitol-io.github.io/open-data-contract-standard/
 repo_url: https://github.com/bitol-io/open-data-contract-standard
 repo_name: open-data-contract-standard
 
 plugins:
   - open-in-new-tab
   - search
+  - social
+  - awesome-pages
 
 theme:
   name: material
@@ -31,10 +33,14 @@ theme:
     repo: fontawesome/brands/git-alt
 
 nav:
-  - Home: 'index.md'
-  - Standard: 'standard.md'
-  - Examples: 'examples/index.md'
+  - Home: 'home.md'
+  - Standard: 'README.md'
+  - Examples:
+    - 'examples/README.md'
+    - '...'
+  - Changelog: 'changelog.md'
   - Contributing: 'contributing.md'
+  - Vendors: 'vendors.md'
 
 extra:
   social:
