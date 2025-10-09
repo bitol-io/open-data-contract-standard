@@ -5,6 +5,11 @@ version: 1.1.0 # Version (follows semantic versioning)
 status: active
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 
+authoritativeDefinitions:
+- type: canonical
+  url: https://github.com/bitol-io/open-data-contract-standard/blob/main/docs/examples/all/full-example.odcs.yaml
+  description: Canonical URL to the latest version of the contract.
+  
 # Lots of information
 description:
   purpose: Views built on top of the seller tables.
@@ -27,7 +32,7 @@ servers:
     database: pypl-edw
     schema: pp_access_views
 
-# Dataset, schema and quality
+# Dataset, schema, and quality
 schema:
   - name: tbl
     physicalName: tbl_1
@@ -215,18 +220,21 @@ price:
 
 # Team
 team:
-  - username: ceastwood
-    role: Data Scientist
-    dateIn: "2022-08-02"
-    dateOut: "2022-10-01"
-    replacedByUsername: mhopper
-  - username: mhopper
-    role: Data Scientist
-    dateIn: "2022-10-01"
-  - username: daustin
-    role: Owner
-    description: Keeper of the grail
-    dateIn: "2022-10-01"
+  name: my-team
+  description: The team owning the data contract
+  members:
+    - username: ceastwood
+      role: Data Scientist
+      dateIn: "2022-08-02"
+      dateOut: "2022-10-01"
+      replacedByUsername: mhopper
+    - username: mhopper
+      role: Data Scientist
+      dateIn: "2022-10-01"
+    - username: daustin
+      role: Owner
+      description: Keeper of the grail
+      dateIn: "2022-10-01"
 
 
 # Roles
