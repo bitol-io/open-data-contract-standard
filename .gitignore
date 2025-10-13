@@ -10,3 +10,9 @@ docs/contributing.md
 docs/home.md
 docs/vendors.md
 docs/examples/**/*.md
+
+# dev setup exclusion to keep the repository as simple as possible
+# these would normally be not included as part of `.gitignore`
+.venv/
+.pre-commit-config.yaml
+.markdownlint.json
