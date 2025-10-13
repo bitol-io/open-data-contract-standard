@@ -42,6 +42,7 @@ schema:
     authoritativeDefinitions:
       - url: https://catalog.data.gov/dataset/air-quality
         type: businessDefinition
+        description: Business definition for this field.
       - url: https://youtu.be/jbY1BKFj9ec
         type: videoTutorial
     tags: [ 'finance', 'payments']
@@ -60,6 +61,7 @@ schema:
             value: "Composite key linking to receivers table"
           - property: cardinality
             value: "many-to-one"
+            description: Full cardinality
     properties:
       - name: transaction_reference_date
         physicalName: txn_ref_dt
@@ -149,7 +151,7 @@ schema:
       - metric: rowCount
         mustBeGreaterThan: 1000000
         type: library
-        description: Ensure row count is within expected volume range
+        description: Ensure row count is within the expected volume range
         dimension: completeness
         method: reconciliation
         severity: error
