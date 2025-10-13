@@ -35,6 +35,9 @@ This document tracks the history and evolution of the **Open Data Contract Stand
     * `slaProperties`
     * `support`
     * `team`
+  * Alter `team` to be an object instead of an array.
+    * Adds `name`, `description`, `members`, `tags`, `customProperties`, `authoritativeDefinitions` fields to `team`.
+    * Adds `tags`, `customProperties`, `authoritativeDefinitions` fields to `team.members`.
 * **Changes** to logicalType and logicalTypeOptions:
   * Add `timestamp` and `time` to `logicalType` options.
   * Add `timezone` and `defaultTimezone` to `logicalTypeOptions` options for `timestamp` and `time`.
