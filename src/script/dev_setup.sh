@@ -35,19 +35,19 @@ print_error() {
 # 🐍 Virtual Environment Check
 # -----------------------------
 virtual_environment_check() {
-  print_info "Checking virtual environment..."
+  print_info "Checking virtual environment ..."
 
   if [[ -d "$VENV_DIR" && -f "$VENV_DIR/bin/activate" ]]; then
     if [[ -n "${VIRTUAL_ENV:-}" ]]; then
       print_pass "Virtual environment found and active."
     else
       print_info "Virtual environment found but not active."
-      print_task "Activating..."
+      print_task "activating ..."
       source "$VENV_DIR/bin/activate"
     fi
   else
     print_warning "No virtual environment found."
-    print_task "Creating and activating..."
+    print_task "creating and activating ..."
     python3 -m venv "$VENV_DIR"
     source "$VENV_DIR/bin/activate"
   fi
@@ -69,14 +69,14 @@ pip_latest_version_check() {
 }
 
 pip_status_check() {
-  print_info "Checking pip version..."
+  print_info "Checking pip version ..."
   print_info "Current: ${CURRENT_VERSION} | Latest: ${LATEST_VERSION}"
 
   if [[ "$CURRENT_VERSION" == "$LATEST_VERSION" ]]; then
     print_pass "pip is up to date."
   else
     print_warning "pip is outdated."
-    print_task "Updating pip..."
+    print_task "updating ..."
     python3 -m pip install --upgrade pip
   fi
 }
@@ -85,12 +85,12 @@ pip_status_check() {
 # 🔄 Pre-commit Check
 # -----------------------------
 pre_commit_status_check() {
-  print_info "Checking pre-commit installation..."
+  print_info "Checking pre-commit installation ..."
   if command -v pre-commit >/dev/null 2>&1; then
     print_pass "pre-commit is installed."
   else
     print_warning "pre-commit is missing."
-    print_task "Installing pre-commit..."
+    print_task "Installing pre-commit ..."
     pip install pre-commit
   fi
 }
@@ -107,14 +107,14 @@ pre_commit_latest_version_check() {
 }
 
 pre_commit_version_check() {
-  print_info "Checking pre-commit version..."
+  print_info "Checking pre-commit version ..."
   print_info "Current: ${CURRENT_VERSION} | Latest: ${LATEST_VERSION}"
 
   if [[ "$CURRENT_VERSION" == "$LATEST_VERSION" ]]; then
     print_pass "pre-commit is up to date."
   else
     print_warning "pre-commit is outdated."
-    print_task "Updating..."
+    print_task "updating ..."
     pip install --upgrade pre-commit
   fi
 }
@@ -195,38 +195,50 @@ EOF
 # 🔧 Config Files Checks
 # -----------------------------
 commitlintrc_file_check() {
-  print_info "Checking .commitlintrc.json..."
-  [[ -f ".commitlintrc.json" ]] && print_pass "Already exists." || { print_task "Creating..."; commitlintrc_create; }
+  print_info "Checking .commitlintrc.json ..."
+  if [[ -f ".commitlintrc.json" ]]; then
+    print_pass "Already exists, please ensure it has the correct format."
+  else
+    print_warning ".pre-commit-config.yaml file is missing."
+    print_task "creating ..."
+    commitlintrc_create
+  fi
 }
 
 markdownlint_file_check() {
-  print_info "Checking .markdownlint.json..."
-  [[ -f ".markdownlint.json" ]] && print_pass "Already exists." || { print_task "Creating..."; markdownlint_create; }
+  print_info "Checking .markdownlint.json ..."
+  if [[ -f ".markdownlint.json" ]]; then
+    print_pass "Already exists, please ensure it has the correct format."
+  else
+    print_warning ".markdownlint.json file is missing."
+    print_task "creating ..."
+    markdownlint_create
+  fi
 }
 
 # -----------------------------
 # 🔧 Pre Commit Hooks Overall Check
 # -----------------------------
 pre_commit_hooks_check() {
-  print_info "Checking pre-commit hooks..."
+  print_info "Checking pre-commit hooks ..."
   if [[ -f ".pre-commit-config.yaml" ]]; then
-    print_pass "pre-commit config exists."
-    print_task "Updating and installing hooks..."
+    print_pass ".pre-commit-config.yaml already exists, please ensure it has the correct format."
+    print_task "Updating and installing hooks ..."
     pre-commit autoupdate
     pre-commit install
     [[ $(grep -v '^\s*#' .pre-commit-config.yaml | grep -cE "commit-msg|commitlint") -gt 0 ]] && {
-      print_task "Installing commit-msg hook..."
+      print_task "Installing commit-msg hook ..."
       pre-commit install --hook-type commit-msg
       commitlintrc_file_check
     }
   else
-    print_warning "Missing .pre-commit-config.yaml."
-    print_task "Creating..."
+    print_warning ".pre-commit-config.yaml is missing."
+    print_task "creating ..."
     pre_commit_config_create
     pre-commit autoupdate
     pre-commit install
     [[ $(grep -v '^\s*#' .pre-commit-config.yaml | grep -cE "commit-msg|commitlint") -gt 0 ]] && {
-      print_task "Installing commit-msg hook..."
+      print_task "Installing commit-msg hook ..."
       pre-commit install --hook-type commit-msg
       commitlintrc_file_check
     }
