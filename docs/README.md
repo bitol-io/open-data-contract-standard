@@ -243,7 +243,7 @@ Some keys are more applicable when the described property is a column.
 | primaryKey               | Primary Key                  | No       | Boolean value specifying whether the field is primary or not. Default is false.                                                                                                                                                       |
 | primaryKeyPosition       | Primary Key Position         | No       | If field is a primary key, the position of the primary key element. Starts from 1. Example of `account_id, name` being primary key columns, `account_id` has primaryKeyPosition 1 and `name` primaryKeyPosition 2. Default to -1.     |
 | logicalType              | Logical Type                 | No       | The logical field datatype. One of `string`, `date`, `timestamp`, `time`, `number`, `integer`, `object`, `array` or `boolean`.                                                                                                                             |
-| logicalTypeOptions       | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [here](#logical-type-options) for more details about supported options for each `logicalType`.                                                                         |
+| logicalTypeOptions       | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [Logical Type Options](#logical-type-options) for more details about supported options for each `logicalType`.                                                                         |
 | physicalType             | Physical Type                | No       | The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT.                                                                                                                                              |
 | description              | Description                  | No       | Description of the element.                                                                                                                                                                                                           |
 | required                 | Required                     | No       | Indicates if the element may contain Null values; possible values are true and false. Default is false.                                                                                                                               |
@@ -374,6 +374,7 @@ A fully formatted reference follows this structure:
 ```
 
 Where:
+
 * **`<file>`**: Path to the contract file (optional for same-contract references)
 * **`<anchor>`**: '#' symbol to mark entry into a contract (optional for same-contract)
 * **`<item-path-within-contract>`**: The defined path within the contract
@@ -823,13 +824,13 @@ schema:
 
 ### SQL
 
-A single SQL query that returns either a numeric or boolean value for comparison. The query must be written in the SQL dialect specific to the provided server. `${object}` and `${property}` are automatically replaced by the current object (in the case of SQL on a relational database, the table or view name) and the current property name (in the case of SQL on a relational database, the column).
+A single SQL query that returns either a numeric or boolean value for comparison. The query must be written in the SQL dialect specific to the provided server. `{object}` and `{property}` are automatically replaced by the current object (in the case of SQL on a relational database, the table or view name) and the current property name (in the case of SQL on a relational database, the column).
 
 ```yaml
 quality:
   - type: sql
     query: |
-      SELECT COUNT(*) FROM ${object} WHERE ${property} IS NOT NULL
+      SELECT COUNT(*) FROM {object} WHERE {property} IS NOT NULL
     mustBeLessThan: 3600
 ```
 
@@ -872,7 +873,7 @@ The data contract can contain scheduling information for executing the rules. Yo
 quality:
   - type: sql
     query: |
-      SELECT COUNT(*) FROM ${object} WHERE ${property} IS NOT NULL
+      SELECT COUNT(*) FROM {object} WHERE {property} IS NOT NULL
     mustBeLessThan: 3600
     scheduler: cron
     schedule: 0 20 * * *
@@ -941,7 +942,7 @@ The operator specifies the condition to validate a metric or result of a SQL que
 quality:
   - type: sql
     query: |
-      SELECT COUNT(*) FROM ${table} WHERE ${column} IS NOT NULL
+      SELECT COUNT(*) FROM {table} WHERE {column} IS NOT NULL
     mustBeBetween: [0, 100]
 ```
 
@@ -951,7 +952,7 @@ is equivalent to:
 quality:
   - type: sql
     query: |
-      SELECT COUNT(*) FROM ${table} WHERE ${column} IS NOT NULL
+      SELECT COUNT(*) FROM {table} WHERE {column} IS NOT NULL
     mustBeGreaterThan: 0
     mustBeLessThan: 100
 ```
@@ -1172,6 +1173,7 @@ The `servers` element describes where the data protected by this data contract i
 An entry in `servers` describes a single dataset on a specific environment and a specific technology. The `servers` element can contain multiple servers, each with its own configuration.
 
 The typical ways of using the top level `servers` element are as follows:
+
 * **Single Server:** The data contract protects a specific dataset at a specific location. *Example:* a CSV file on an SFTP server.
 * **Multiple Environments:** The data contract makes sure that the data is protected in all environments. *Example:* a data product with data in a dev(elopment), UAT, and prod(uction) environment on Databricks.
 * **Different Technologies:** The data contract makes sure that regardless of the offered technology, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content.
