@@ -4,6 +4,7 @@
 site
 *.iml
 .cache
+*.venv
 
 docs/changelog.md
 docs/contributing.md

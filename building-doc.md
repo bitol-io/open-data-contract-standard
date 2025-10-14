@@ -1,7 +1,9 @@
 # Automatic documentation builder
+
 Starting with ODCS v2.2.2, the documentation is available through [GitHub.io](https://bitol-io.github.io/open-data-contract-standard). This page explains the process of building the doc.
 
 ## Mkdocs mike versioning
+
 To start with using [mike](https://github.com/jimporter/mike) as a tool for versioning the documentation, the following was run:
 
 ```bash
@@ -12,13 +14,16 @@ mike set-default --push latest                    #by default, users will go to 
 ```
 
 ## Deploying a new version
-Given that the Github action [here](https://github.com/bitol-io/open-data-contract-standard/blob/main/.github/workflows/docs-site-deploy.yaml) it set to trigger when a new tag version is
+
+Given that the [Github action](https://github.com/bitol-io/open-data-contract-standard/blob/main/.github/workflows/docs-site-deploy.yaml) it set to trigger when a new tag version is
 created, all that is required is to:
+
 1. [Create a new release](https://github.com/bitol-io/open-data-contract-standard/releases)
 2. Put in new tag version for release (follows pattern v*)
 3. Once release is created with new tag version, the Github action gets kicked off and mike will deploy the latest documentation linked to latest version tag
 
 ## Delete version
+
 If a version tag was pushed that was incorrect, it can be deleted via:
 
 ```bash
