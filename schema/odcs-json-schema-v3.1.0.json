@@ -96,10 +96,7 @@
         "$ref": "#/$defs/Pricing"
       },
       "team": {
-        "type": "array",
-        "items": {
-          "$ref": "#/$defs/Team"
-        }
+        "$ref": "#/$defs/Team"
       },
       "roles": {
         "type": "array",
@@ -2392,23 +2389,18 @@
         },
         "additionalProperties": false
       },
-      "Team": {
+      "TeamMember": {
         "type": "object",
+        "description": "Team member information.",
+        "additionalProperties": false,
         "properties": {
           "username": {
             "type": "string",
-            "description": "The user's username or email.",
-            "examples": [
-              "mail@example.com",
-              "uid12345678"
-            ]
+            "description": "The user's username or email."
           },
           "name": {
             "type": "string",
-            "description": "The user's name.",
-            "examples": [
-              "Jane Doe"
-            ]
+            "description": "The user's name."
           },
           "description": {
             "type": "string",
@@ -2431,9 +2423,57 @@
           "replacedByUsername": {
             "type": "string",
             "description": "The username of the user who replaced the previous user."
+          },
+          "tags": {
+            "$ref": "#/$defs/Tags"
+          },
+          "customProperties": {
+            "type": "array",
+            "description": "Custom properties block.",
+            "items": {
+              "$ref": "#/$defs/CustomProperty"
+            }
+          },
+          "authoritativeDefinitions": {
+            "$ref": "#/$defs/AuthoritativeDefinitions"
           }
         },
-        "additionalProperties": false
+        "required": ["username"]
+      },
+      "Team": {
+        "type": "object",
+        "description": "Team information.",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Team name."
+          },
+          "description": {
+            "type": "string",
+            "description": "Team description."
+          },
+          "members": {
+            "type": "array",
+            "description": "List of members.",
+            "items": {
+              "$ref": "#/$defs/TeamMember"
+            }
+          },
+          "tags": {
+            "$ref": "#/$defs/Tags"
+          },
+          "customProperties": {
+            "type": "array",
+            "description": "Custom properties block.",
+            "items": {
+              "$ref": "#/$defs/CustomProperty"
+            }
+          },
+          "authoritativeDefinitions": {
+            "$ref": "#/$defs/AuthoritativeDefinitions"
+          }
+        }
       },
       "Role": {
         "type": "object",
