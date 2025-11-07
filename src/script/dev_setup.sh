@@ -2,7 +2,7 @@
 set -o pipefail
 
 # 🎨 Colors
-NC='\033[0m'        # No Color
+NC='\033[0m' # No Color
 CYAN='\033[0;36m'
 YELLOW='\033[0;33m'
 GREEN='\033[0;32m'
@@ -16,20 +16,20 @@ VENV_DIR=".venv"
 # 🎯 Logging Functions
 # -----------------------------
 print_info() {
-  echo -e "💡 [${CYAN}INFO${NC}]   ${CYAN}$1${NC}";
-  }
+  echo -e "💡 [${CYAN}INFO${NC}]   ${CYAN}$1${NC}"
+}
 print_task() {
-  echo -e "⚡ [${YELLOW}TASK${NC}]   ${YELLOW}$1${NC}";
-  }
+  echo -e "⚡ [${YELLOW}TASK${NC}]   ${YELLOW}$1${NC}"
+}
 print_pass() {
-  echo -e "✅ [${GREEN}PASS${NC}]   ${GREEN}$1${NC}";
-  }
+  echo -e "✅ [${GREEN}PASS${NC}]   ${GREEN}$1${NC}"
+}
 print_warning() {
-  echo -e "⚠️ [${MAGENTA}WARN${NC}]   ${MAGENTA}$1${NC}";
-  }
+  echo -e "⚠️ [${MAGENTA}WARN${NC}]   ${MAGENTA}$1${NC}"
+}
 print_error() {
-  echo -e "❌ [${RED}FAIL${NC}]   ${RED}$1${NC}";
-  }
+  echo -e "❌ [${RED}FAIL${NC}]   ${RED}$1${NC}"
+}
 
 # -----------------------------
 # 🐍 Virtual Environment Check
@@ -62,7 +62,7 @@ pip_current_version_check() {
 }
 
 pip_latest_version_check() {
-  DRY_RUN_OUTPUT=$(python3 -m pip install --upgrade pip --dry-run 2>/dev/null)
+  DRY_RUN_OUTPUT=$(python3 -m pip install --upgrade pip --dry-run 2> /dev/null)
   LATEST_VERSION=$(echo "$DRY_RUN_OUTPUT" | grep -oP 'pip-[0-9]+\.[0-9]+(\.[0-9]+)?' | head -n1 | tr -d 'pip-')
   [[ -z "$LATEST_VERSION" ]] && LATEST_VERSION=$(echo "$DRY_RUN_OUTPUT" | grep -oP '\([0-9]+\.[0-9]+(\.[0-9]+)?\)' | head -n1 | tr -d '()')
   [[ -z "$LATEST_VERSION" ]] && print_error "Could not determine the latest pip version."
@@ -86,7 +86,7 @@ pip_status_check() {
 # -----------------------------
 pre_commit_status_check() {
   print_info "Checking pre-commit installation ..."
-  if command -v pre-commit >/dev/null 2>&1; then
+  if command -v pre-commit > /dev/null 2>&1; then
     print_pass "pre-commit is installed."
   else
     print_warning "pre-commit is missing."
@@ -100,7 +100,7 @@ pre_commit_current_version_check() {
 }
 
 pre_commit_latest_version_check() {
-  DRY_RUN_OUTPUT=$(pip install pre-commit --upgrade --dry-run 2>/dev/null)
+  DRY_RUN_OUTPUT=$(pip install pre-commit --upgrade --dry-run 2> /dev/null)
   LATEST_VERSION=$(echo "$DRY_RUN_OUTPUT" | grep -oP 'commit-[0-9]+\.[0-9]+(\.[0-9]+)?' | head -n1 | tr -d 'commit-')
   [[ -z "$LATEST_VERSION" ]] && LATEST_VERSION=$(echo "$DRY_RUN_OUTPUT" | grep -oP '\([0-9]+\.[0-9]+(\.[0-9]+)?\)' | head -n1 | tr -d '()')
   [[ -z "$LATEST_VERSION" ]] && print_error "Could not determine the latest pre-commit version."
@@ -123,7 +123,7 @@ pre_commit_version_check() {
 # 📄 Pre Commit Config File Creation
 # -----------------------------
 pre_commit_config_create() {
-  cat <<EOF > .pre-commit-config.yaml
+  cat << EOF > .pre-commit-config.yaml
 default_stages: [pre-commit, manual]
 
 repos:
@@ -154,7 +154,7 @@ EOF
 # 📄 Markdown Lint Config File Creation
 # -----------------------------
 markdownlint_create() {
-  cat <<EOF > .markdownlint.json
+  cat << EOF > .markdownlint.json
 {
   "comment": "Markdown Lint Rules",
   "default": true,
@@ -172,7 +172,7 @@ EOF
 # 📄 Commit Lint Config File Creation
 # -----------------------------
 commitlintrc_create() {
-  cat <<EOF > .commitlintrc.json
+  cat << EOF > .commitlintrc.json
 {
   "rules": {
     "body-leading-blank": [1, "always"],
