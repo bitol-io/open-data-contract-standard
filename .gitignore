@@ -11,3 +11,10 @@ docs/contributing.md
 docs/home.md
 docs/vendors.md
 docs/examples/**/*.md
+
+# Development setup exclusions — keeping the repository clean and minimal.
+# Except for `.venv/`, these files are typically not included in
+# `.gitignore`, but are listed here to maintain simplicity and clarity.
+.venv/
+.pre-commit-config.yaml
+.markdownlint.json
