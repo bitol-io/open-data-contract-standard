@@ -2185,12 +2185,12 @@
           },
           {
             "properties": {
-              "mustBeGreaterOrEqualTo": {
+              "mustBeGreaterThanOrEqualTo": {
                 "type": "number",
                 "description": "Must be greater than or equal to the value to be valid. It is equivalent to '>='."
               }
             },
-            "required": ["mustBeGreaterOrEqualTo"]
+            "required": ["mustBeGreaterThanOrEqualTo"]
           },
           {
             "properties": {
