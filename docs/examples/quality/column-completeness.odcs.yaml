@@ -27,3 +27,5 @@ schema:
         dimension: completeness
         severity: error
         businessImpact: operational
+        scheduler: cron
+        schedule: 0 20 * * *
