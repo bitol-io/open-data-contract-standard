@@ -448,13 +448,13 @@ Relationships can be defined in two ways:
 
 #### Field Definitions
 
-| Key | UX Label | Required | Description |
-|-----|----------|----------|-------------|
-| relationships | Relationships | No | Array of relationship definitions |
-| relationships.type | Type | No | Type of relationship (defaults to `foreignKey`) |
-| relationships.to | To | Yes | Target property reference using `schema.property` notation |
-| relationships.from | From | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
-| relationships.customProperties | Custom Properties | No | Additional metadata about the relationship |
+| Key                            | UX Label          | Required          | Description                                                                       |
+|--------------------------------|-------------------|-------------------|-----------------------------------------------------------------------------------|
+| relationships                  | Relationships     | No                | Array of relationship definitions                                                 |
+| relationships.type             | Type              | No                | Type of relationship (defaults to `foreignKey`)                                   |
+| relationships.to               | To                | Yes               | Target property reference using `schema.property` notation                        |
+| relationships.from             | From              | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
+| relationships.customProperties | Custom Properties | No                | Additional metadata about the relationship                                        |
 
 #### Reference Notation
 
@@ -688,14 +688,14 @@ properties:
 
 #### Metrics
 
-| Metric | Level | Description                                                    | Arguments                                                        | Arguments Example                                                    |
-|--------|--------|----------------------------------------------------------------|------------------------------------------------------------------|----------------------------------------------------------------------|
-| `nullValues` | Property | Counts null values in a column/field                           | None                                                             |                                                                      |
-| `missingValues` | Property | Counts values considered as missing (empty strings, N/A, etc.) | `missingValues`: Array of values considered missing              | `missingValues: [null, '', 'N/A']`                                   |
-| `invalidValues` | Property | Counts values that don't match valid criteria                  | `validValues`: Array of valid values<br>`pattern`: Regex pattern | `validValues: ['pounds', 'kg']`<br>`pattern: '^[A-Z]{2}[0-9]{2}...'` |
+| Metric            | Level    | Description                                                    | Arguments                                                        | Arguments Example                                                    |
+|-------------------|----------|----------------------------------------------------------------|------------------------------------------------------------------|----------------------------------------------------------------------|
+| `nullValues`      | Property | Counts null values in a column/field                           | None                                                             |                                                                      |
+| `missingValues`   | Property | Counts values considered as missing (empty strings, N/A, etc.) | `missingValues`: Array of values considered missing              | `missingValues: [null, '', 'N/A']`                                   |
+| `invalidValues`   | Property | Counts values that don't match valid criteria                  | `validValues`: Array of valid values<br>`pattern`: Regex pattern | `validValues: ['pounds', 'kg']`<br>`pattern: '^[A-Z]{2}[0-9]{2}...'` |
 | `duplicateValues` | Property | Counts duplicate values in a column                            | None                                                             |                                                                      |
-| `duplicateValues` | Schema | Counts duplicate values across multiple columns                | `properties`: Array of property names                            | `properties: ['tenant_id', 'order_id']`                              |
-| `rowCount` | Schema | Counts total number of rows in a table/object store            | None                                                             |                                                                      |
+| `duplicateValues` | Schema   | Counts duplicate values across multiple columns                | `properties`: Array of property names                            | `properties: ['tenant_id', 'order_id']`                              |
+| `rowCount`        | Schema   | Counts total number of rows in a table/object store            | None                                                             |                                                                      |
 
 ##### Null Values
 
