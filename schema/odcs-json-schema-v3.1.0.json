@@ -2553,6 +2553,16 @@
             "type": "string",
             "description": "Description of the SLA for humans.",
             "examples": ["99.9% of the time, data is available by 6 AM UTC"]
+          },
+          "scheduler": {
+            "type": "string",
+            "description": "Name of the scheduler, can be cron or any tool your organization support.",
+            "examples": ["cron"]
+          },
+          "schedule": {
+            "type": "string",
+            "description": "Configuration information for the scheduling tool, for cron a possible value is 0 20 * * *.",
+            "examples": ["0 20 * * *"]
           }
         },
         "required": ["property", "value"],

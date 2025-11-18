@@ -43,6 +43,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * Add `timezone` and `defaultTimezone` to `logicalTypeOptions` options for `timestamp` and `time`.
 * **Changes** to Quality
   * Add a maintained library of commonly used quality metrics `rowCount`, `nullValues`, `invalidValues`, `duplicateValues`, and  `missingValues`.
+  * Add `schedule` and `scheduler` to data quality properties.
 * **Changes** to SLA:
   * Add optional `description` field to SLA entries for human-readable context.
 * **Changes** to Support Channels:
