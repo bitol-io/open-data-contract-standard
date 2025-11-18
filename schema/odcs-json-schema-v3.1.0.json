@@ -137,6 +137,11 @@
         "type": "object",
         "description": "Data source details of where data is physically stored.",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
+            "pattern": "^[^.#/\\\\@!%&^]+$"
+          },
           "server": {
             "type": "string",
             "description": "Identifier of the server."
@@ -1500,6 +1505,11 @@
       "SchemaElement": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
+            "pattern": "^[^.#/\\\\@!%&^]+$"
+          },
           "name": {
             "type": "string",
             "description": "Name of the element."
@@ -2030,6 +2040,11 @@
       "DataQuality": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
+            "pattern": "^[^.#/\\\\@!%&^]+$"
+          },
           "authoritativeDefinitions": {
             "$ref": "#/$defs/AuthoritativeDefinitions"
           },
@@ -2338,6 +2353,11 @@
       "SupportItem": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
+            "pattern": "^[^.#/\\\\@!%&^]+$"
+          },
           "channel": {
             "type": "string",
             "description": "Channel name or identifier."
@@ -2478,6 +2498,11 @@
       "Role": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
+            "pattern": "^[^.#/\\\\@!%&^]+$"
+          },
           "role": {
             "type": "string",
             "description": "Name of the IAM role that provides access to the dataset."
@@ -2508,6 +2533,11 @@
       "ServiceLevelAgreementProperty": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
+            "pattern": "^[^.#/\\\\@!%&^]+$"
+          },
           "property": {
             "type": "string",
             "description": "Specific property in SLA, check the periodic table. May requires units (more details to come)."
@@ -2578,6 +2608,11 @@
       "CustomProperty": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
+            "pattern": "^[^.#/\\\\@!%&^]+$"
+          },
           "property": {
             "type": "string",
             "description": "The name of the key. Names should be in camel case–the same as if they were permanent properties in the contract."
