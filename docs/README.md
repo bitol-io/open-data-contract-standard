@@ -66,7 +66,7 @@ tags: ['finance']
 
 | Key                                  | UX label                  | Required | Description                                                                                                                                                                                |
 |--------------------------------------|---------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| apiVersion                           | Standard version          | Yes      | Version of the standard used to build data contract. Default value is `v3.0.2`.                                                                                                            |
+| apiVersion                           | Standard version          | Yes      | Version of the standard used to build data contract. Default value is `v3.1.0`.                                                                                                            |
 | kind                                 | Kind                      | Yes      | The kind of file this is. Valid value is `DataContract`.                                                                                                                                   |
 | id                                   | ID                        | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.                                                                                                    |
 | name                                 | Name                      | No       | Name of the data contract.                                                                                                                                                                 |
@@ -363,7 +363,26 @@ Reference to an external definition on element logic or values.
 This section describes how to reference elements within a data contract schema. References enable you to create relationships between different parts of your data contract.
 
 > [!IMPORTANT]
-> References are currently only supported within schema properties for foreign key relationships.
+> References are currently only supported for foreign key relationships.
+
+### Fully Qualified Reference Notation
+
+ODCS uses a fully qualified notation with the `id` field and slash-separated paths for stable, refactor-safe references.
+
+**Format:** `<section>/<id>[/properties/<property_id>]`
+
+**Characteristics:**
+- Uses the `id` field (optional, recommended for references)
+- Slash-separated path
+- Stable across renames and refactoring
+- Resilient to array reordering
+- Explicit and unambiguous
+
+**When to use:**
+- Long-lived production contracts
+- Complex contracts with many references
+- When refactoring is expected
+- Cross-contract references
 
 ### Reference Structure
 
@@ -377,7 +396,7 @@ Where:
 
 * **`<file>`**: Path to the contract file (optional for same-contract references)
 * **`<anchor>`**: '#' symbol to mark entry into a contract (optional for same-contract)
-* **`<item-path-within-contract>`**: The defined path within the contract
+* **`<item-path-within-contract>`**: The fully qualified path within the contract
 
 ### External Contract References
 
@@ -399,38 +418,34 @@ https://example.com/data-contract-v1.yaml
 
 ### Reference Examples
 
+#### Same Contract References
+
+```yaml
+# Reference to a schema object
+'schema/customers_tbl'
+
+# Reference to a property
+'schema/customers_tbl/properties/cust_id_pk'
+
+# Reference to a nested property
+'schema/accounts_tbl/properties/address_field/properties/street_field'
+```
+
+When referencing elements within the same contract, the file component can be omitted.
+
 #### External Contract References
 
 ```yaml
 # Reference to an element in an external contract
-'external-contract.yaml#schema.my-table'
+'customer-contract.yaml#/schema/customers_tbl/properties/cust_id_pk'
 
-# Reference to a specific column in an external contract
-'external-contract.yaml#schema.my-table.my-column'
+# Reference to a nested property in an external contract
+'external-contract.yaml#/schema/accounts_tbl/properties/address_field/properties/street_field'
 ```
-
-#### Same Contract References
-
-When referencing elements within the same contract, the file component can be omitted.
-
-```yaml
-# Full reference within same contract
-'#schema.my-table.my-column'
-
-# File and anchor can be omitted for same contract
-'schema.my-table.my-column'
-```
-
-### Shorthand Notation
-
-For improved readability, ODCS supports the following shorthand notation when referencing properties within the same schema. The shorthand notation allows for a more concise way to define relationships. It can be used in the `to` and `from` fields of a relationship.
-The shorthand notation is `<schema_name>.<property_name>`.
-
-These shorthand options are only available for properties within the same data contract.
 
 ### Relationships between properties (Foreign Keys)
 
-Properties can define relationships to other properties, enabling you to specify foreign key constraints and other data relationships. Relationships use the reference mechanism from RFC 9.
+Properties can define relationships to other properties, enabling you to specify foreign key constraints and other data relationships.
 
 #### Quick Overview
 
@@ -452,15 +467,36 @@ Relationships can be defined in two ways:
 |-----|----------|----------|-------------|
 | relationships | Relationships | No | Array of relationship definitions |
 | relationships.type | Type | No | Type of relationship (defaults to `foreignKey`) |
-| relationships.to | To | Yes | Target property reference using `schema.property` notation |
+| relationships.to | To | Yes | Target property reference (fully qualified or shorthand notation) |
 | relationships.from | From | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
 | relationships.customProperties | Custom Properties | No | Additional metadata about the relationship |
 
-#### Reference Notation
+#### Reference Notation for Foreign Keys
 
-* **Simple reference**: `users.id` - References the `id` property in the `users` schema
-* **Nested reference**: `accounts.address.street` - References nested properties
-* **Composite keys**: Use arrays to define composite keys (arrays must have matching lengths)
+Foreign key relationships support two reference notations:
+
+**Fully Qualified Notation**
+
+Uses the `id` field with slash-separated paths for stable references:
+
+* `schema/users_tbl/properties/user_id_pk` - References the property with id `user_id_pk` in schema with id `users_tbl`
+* `schema/accounts_tbl/properties/address_field/properties/street_field` - References nested properties
+
+**Shorthand Notation**
+
+For improved readability in foreign key relationships, ODCS also supports shorthand notation using the `name` field with dot-separated paths:
+
+* `users.id` - References the `id` property in the `users` schema
+* `accounts.address.street` - References nested properties
+
+> [!NOTE]
+> Shorthand notation is only supported for foreign key relationships. For all other references, use fully qualified notation.
+
+**When to use each:**
+- **Fully qualified**: Production contracts, cross-contract references, when refactoring is expected
+- **Shorthand**: Simple contracts, development, when names are stable
+
+**Composite keys**: Use arrays to define composite keys (arrays must have matching lengths)
 
 ### Examples
 
@@ -470,11 +506,17 @@ When defining a relationship at the property level, the `from` field is implicit
 
 ```yaml
 schema:
-  - name: users
+  - id: users_tbl
+    name: users
     properties:
-      - name: user_id
+      - id: user_id_field
+        name: user_id
         relationships:
-          - to: accounts.owner_id  # 'from' is implicit (users.user_id)
+          # Fully qualified notation (uses id, stable)
+          - to: schema/accounts_tbl/properties/owner_id_field
+
+          # OR shorthand notation (uses name, concise)
+          - to: accounts.owner_id
             # Note: DO NOT include 'from' field at property level
 ```
 
@@ -484,10 +526,17 @@ A property can have multiple relationships:
 
 ```yaml
 schema:
-  - name: orders
+  - id: orders_tbl
+    name: orders
     properties:
-      - name: customer_id
+      - id: order_customer_id
+        name: customer_id
         relationships:
+          # Fully qualified notation
+          - to: schema/customers_tbl/properties/cust_id_pk
+          - to: schema/loyalty_tbl/properties/member_customer_id
+
+          # OR shorthand notation
           - to: customers.id
           - to: loyalty_members.customer_id
 ```
@@ -498,23 +547,36 @@ Define relationships at the schema level when you need explicit `from` and `to`.
 
 ```yaml
 schema:
-  - name: users
+  - id: users_tbl
+    name: users
     relationships:
-      - from: users.account_id  # Required at schema level
-        to: accounts.id         # Required at schema level
+      # Fully qualified notation (stable)
+      - from: schema/users_tbl/properties/user_account_id
+        to: schema/accounts_tbl/properties/acct_id_pk
+        type: foreignKey
+
+      # OR shorthand notation (concise)
+      - from: users.account_id
+        to: accounts.id
         type: foreignKey
 ```
 
 #### Example 4: Nested Properties
 
-Reference nested properties using dot notation:
+Reference nested properties:
 
 ```yaml
 schema:
-  - name: users
+  - id: users_tbl
+    name: users
     properties:
-      - name: id
+      - id: user_id_pk
+        name: id
         relationships:
+          # Fully qualified notation
+          - to: schema/accounts_tbl/properties/address_field/properties/postal_code_field
+
+          # OR shorthand notation
           - to: accounts.address.postal_code
 ```
 
@@ -524,16 +586,26 @@ For composite foreign keys, use arrays. **Important**: Both `from` and `to` must
 
 ```yaml
 schema:
-  - name: order_items
+  - id: order_items_tbl
+    name: order_items
     relationships:
+      # Fully qualified notation (stable)
       - type: foreignKey
-        from:                           # Array (must match 'to' length)
+        from:
+          - schema/order_items_tbl/properties/item_order_id
+          - schema/order_items_tbl/properties/item_product_id
+        to:
+          - schema/product_inventory_tbl/properties/inv_order_id
+          - schema/product_inventory_tbl/properties/inv_product_id
+
+      # OR shorthand notation (concise)
+      - type: foreignKey
+        from:
           - order_items.order_id
           - order_items.product_id
-        to:                             # Array (must match 'from' length)
+        to:
           - product_inventory.order_id
           - product_inventory.product_id
-
 ```
 
 #### Example 6: Invalid Configurations
@@ -580,39 +652,61 @@ schema:
 
 #### Complete Example
 
-Here's a comprehensive example showing various relationship patterns:
+Here's a comprehensive example showing various relationship patterns with both notations:
 
 ```yaml
 schema:
-  - name: users
+  - id: users_tbl
+    name: users
     properties:
-      - name: id
+      - id: user_id_pk
+        name: id
+        logicalType: integer
         relationships:
-          # Simple foreign key (from is implicit)
-          - to: accounts.user_id
+          # Fully qualified notation
+          - to: schema/accounts_tbl/properties/acct_user_id
+            description: "Fully qualified reference using id fields"
 
-          # With explicit from field
-          - from: users.id
-            to: profiles.user_id
+          # Shorthand notation
+          - to: accounts.user_id
+            description: "Shorthand reference using name fields"
 
           # With custom properties
-          - to: departments.manager_id
+          - to: schema/departments_tbl/properties/dept_manager_id
             customProperties:
               - property: cardinality
                 value: "one-to-many"
               - property: label
                 value: "manages"
 
-          # To external contract (from is implicit)
+          # To external contract (fully qualified)
+          - to: https://example.com/data-contract-v1.yaml#/schema/profiles_tbl/properties/profile_user_id
+            customProperties:
+              - property: description
+                value: "Externally referenced contract (fully qualified)"
+
+          # To external contract (shorthand)
           - to: https://example.com/data-contract-v1.yaml#profiles.user_id
             customProperties:
               - property: description
-                value: "Externally referenced contract"
+                value: "Externally referenced contract (shorthand)"
 
-      - name: account_number
+      - id: user_account_number
+        name: account_number
+        logicalType: string
 
     # Schema-level composite key relationship
     relationships:
+      # Fully qualified notation
+      - type: foreignKey
+        from:
+          - schema/users_tbl/properties/user_id_pk
+          - schema/users_tbl/properties/user_account_number
+        to:
+          - schema/accounts_tbl/properties/acct_user_id
+          - schema/accounts_tbl/properties/acct_number
+
+      # OR shorthand notation
       - type: foreignKey
         from:
           - users.id
@@ -621,14 +715,25 @@ schema:
           - accounts.user_id
           - accounts.account_number
 
-  - name: accounts
+  - id: accounts_tbl
+    name: accounts
     properties:
-      - name: user_id
-      - name: account_number
-      - name: address
+      - id: acct_user_id
+        name: user_id
+        logicalType: integer
+      - id: acct_number
+        name: account_number
+        logicalType: string
+      - id: acct_address
+        name: address
+        logicalType: object
         properties:
-          - name: street
-          - name: postal_code
+          - id: addr_street
+            name: street
+            logicalType: string
+          - id: addr_postal_code
+            name: postal_code
+            logicalType: string
 ```
 
 ## Data quality

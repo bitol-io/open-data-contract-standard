@@ -2652,7 +2652,7 @@
             "oneOf": [
               {
                 "type": "string",
-                "description": "Source property reference using schema.property notation."
+                "description": "Source property reference using fully qualified notation (schema/<id>/properties/<id>) or shorthand notation (table_name.column_name)."
               },
               {
                 "type": "array",
@@ -2669,7 +2669,7 @@
             "oneOf": [
               {
                 "type": "string",
-                "description": "Target property reference using schema.property notation."
+                "description": "Target property reference using fully qualified notation (schema/<id>/properties/<id>) or shorthand notation (table_name.column_name)."
               },
               {
                 "type": "array",
