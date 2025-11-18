@@ -1001,16 +1001,16 @@ support:
 
 ### Definitions
 
-| Key                   | UX label       | Required | Description                                                                                                                       |
-|-----------------------|----------------|----------|-----------------------------------------------------------------------------------------------------------------------------------|
-| support               | Support        | No       | Top level for support channels.                                                                                                   |
-| support.channel       | Channel        | Yes      | Channel name or identifier.                                                                                                       |
-| support.url           | Channel URL    | No       | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                             |
-| support.description   | Description    | No       | Description of the channel, free text.                                                                                            |
-| support.tool          | Tool           | No       | Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, `googlechat`, or `other`.                          |
-| support.scope         | Scope          | No       | Scope can be: `interactive`, `announcements`, `issues`, `notifications`.                                                           |
-| support.invitationUrl | Invitation URL | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax). |
-| support.customProperties | Custom Properties | No       | Any custom properties.                                                                                                            |
+| Key                      | UX label          | Required | Description                                                                                                                         |
+|--------------------------|-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
+| support                  | Support           | No       | Top level for support channels.                                                                                                     |
+| support.channel          | Channel           | Yes      | Channel name or identifier.                                                                                                         |
+| support.url              | Channel URL       | No       | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                               |
+| support.description      | Description       | No       | Description of the channel, free text.                                                                                              |
+| support.tool             | Tool              | No       | Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, `googlechat`, or `other`.                            |
+| support.scope            | Scope             | No       | Scope can be: `interactive`, `announcements`, `issues`, `notifications`.                                                            |
+| support.invitationUrl    | Invitation URL    | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax).   |
+| support.customProperties | Custom Properties | No       | Any custom properties.                                                                                                              |
 
 ## Pricing
 
@@ -1164,7 +1164,7 @@ slaProperties:
 | slaProperties.unit                 | Unit                   | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.                           |
 | slaProperties.element              | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas.               |
 | slaProperties.driver               | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.                |
-| slaProperties.description          | Description            | No                             | Description of the SLA for humans.                                                                            |
+| slaProperties.description          | Description            | No                             | Description of the SLA for humans.                                                                                |
 
 ## Infrastructure and Servers
 
@@ -1198,14 +1198,14 @@ servers:
 
 #### Common Server Properties
 
-| Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                                              |
-|------------------|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                                |
-| type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica. |
-| description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                               |
-| environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                                   |
-| roles            | Roles             | No       | List of roles that have access to the server. Check [roles](#roles) section for more details.                                                                                                                                                                                                                            |
-| customProperties | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                                     |
+| Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                                    |
+|------------------|-------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                      |
+| type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica.   |
+| description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                     |
+| environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                         |
+| roles            | Roles             | No       | List of roles that have access to the server. Check [roles](#roles) section for more details.                                                                                                                                                                                                                  |
+| customProperties | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                           |
 
 ### Specific Server Properties
 
