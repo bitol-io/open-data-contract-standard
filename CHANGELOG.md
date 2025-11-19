@@ -6,7 +6,7 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 This document tracks the history and evolution of the **Open Data Contract Standard**.
 
-# v3.1.0 - 2025-07-27 - PROPOSED
+# v3.1.0 - 2025-11-20 - PROPOSED
 
 * **Adds** Relationships (Foreign Keys):
   * Add `relationships` array field to both `SchemaObject` and `SchemaProperty` to define foreign key relationships.
@@ -20,7 +20,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
     * `from`: Source property reference (optional at property level)
     * `to`: Target property reference (required)
     * `customProperties`: Additional metadata
-* **Breaking change** to schema:
+* **Breaking change** to JSON Schema (as a reminder the standard is not the JSON Schema but the textual document):
   * Alter `exclusiveMaximum` and `exclusiveMinimum` for `integer/number` logical data type to be `number` instead of `boolean`. [Conforms with JSON Schema specification](https://json-schema.org/understanding-json-schema/reference/numeric#range).
   * Alter `exclusiveMaximum` and `exclusiveMinimum` for `date` logical data type to be `string` instead of `boolean`.
   * No additional or unevaluated properties are allowed for the following sections of the schema:
@@ -61,11 +61,11 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * Added HiveServer with type `hive`
   * Duckdb schema was expecting an integer, but should expect a string.
 * **Deprecations**:
-  * `slaDefaultElement` is deprecated, and will be removed in ODCS 4.0 (see RFC 21)   
+  * `slaDefaultElement` is deprecated, and will be removed in ODCS v4.0.0 (see RFC 21)   
 * **Changes** to custom properties and authoritative definitions:
   * Add `description` field to both `customProperties` and `authoritativeDefinitions`.
 
-# v3.0.2 - 2024-03-31 - APPROVED
+# v3.0.2 - 2025-03-31 - REPLACED BT v3.1.0
 
 * Added field `physicalName` for the properties in JSON schema.
 * Explicitly specifies `YYYY-MM-DDTHH:mm:ss.SSSZ` for default date format.
@@ -73,7 +73,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
 * Added field `description` team members in JSON schema and docs.
 * Fixed Athena Server required property name from `staging_dir` to `stagingDir`
 
-# v3.0.1 - 2024-12-22 - APPROVED
+# v3.0.1 - 2024-12-22 - REPLACED BY v3.0.2
 
 * Added field `authoritativeDefinitions` into JSON schema
 * Added field `description.customProperties`  into JSON schema
@@ -83,7 +83,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
 * Updated `authoritativeDefinitions` description to be vendor agnostic
 * Updated `tags` description and included examples
 
-# v3.0.0 - 2024-10-21 - APPROVED
+# v3.0.0 - 2024-10-21 - REPLACED BY v3.0.1
 
 * **New section**: Support & communication channels.
 * **New section**: Servers.
@@ -153,7 +153,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * `systemInstance` is not supported anymore, if needed, consider a custom property.
 
 
-# v2.2.2 - 2024-05-23 - APPROVED
+# v2.2.2 - 2024-05-23 - APPROVED, LAST VERSION OF THE v2 BRANCH
 
 * In JSON schema validation:
   * Change `dataset.description` data type from `array` to `string`.
@@ -167,7 +167,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
 * Add vendors page [vendors.md](vendors.md). Feel free to add anyone there.
 
 
-# v2.2.1 - 2023-12-18 - REPLACED BY V2.2.2
+# v2.2.1 - 2023-12-18 - REPLACED BY v2.2.2
 
 * Reformat quality examples to be valid YAML.
 * Type of definition for authority have standard values: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`.
@@ -177,7 +177,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
 * Reformat Markdown tables.
 
 
-# v2.2.0 - 2023-07-27 - REPLACED BY V2.2.1
+# v2.2.0 - 2023-07-27 - REPLACED BY v2.2.1
 
 * New name to Open Data Contract Standard.
 * `templateName` is now called `standardVersion`, v2.2.0 parsers should account for this change and support both to avoid a breaking change.
@@ -187,13 +187,13 @@ This document tracks the history and evolution of the **Open Data Contract Stand
 * Finalization of fork under AIDA User Group.
 
 
-# v2.1.1 - 2023-04-26 - REPLACED BY V2.2.0
+# v2.1.1 - 2023-04-26 - REPLACED BY v2.2.0
 
 * Open source version.
 * Additional value field `valueExt` in SLA.
 
 
-# v2.1.0 - 2023-03-23 - REPLACED BY V2.1.1
+# v2.1.0 - 2023-03-23 - REPLACED BY v2.1.1
 
 ## Data Quality
 The data contract adds elements specifically for interfacing with the Data Quality tooling. 

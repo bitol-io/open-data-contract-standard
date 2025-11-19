@@ -16,7 +16,7 @@ Welcome!
 Thanks for your interest and for taking the time to come here! ❤️
 
 ## Executive summary
-This standard describes a structure for a **data contract**. Its current version is v3.0.2. It is available for you as an Apache 2.0 license. Contributions are welcome!
+This standard describes a structure for a **data contract**. Its current version is v3.1.0. It is available for you as an Apache 2.0 license. Contributions are welcome!
 
 ## Discover the open standard
 A reader-friendly version of the standard can be found on its [dedicated site](https://bitol-io.github.io/open-data-contract-standard/).
@@ -78,7 +78,7 @@ If you need to cite this standard, you can use the following BibTeX entry:
 The official media (fka mime) type is:
 
 ```
-application/odcs+yaml;version=3.0.2
+application/odcs+yaml;version=3.1.0
 ```
 
 
