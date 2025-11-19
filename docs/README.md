@@ -237,7 +237,7 @@ The `id` field provides stable technical identifiers that enable references resi
 - Optional everywhere it is allowed
 - Must be unique within its containing array/object collection
 - Should remain stable across versions and refactors to preserve referential integrity
-- Cannot contain any special characters ('-', '_' allowed): e.g `.`, `#`, `/`, `\`, `@`, `!`, `%`, `&`, `^`
+- Cannot contain any special characters ('-', '_' allowed).
 
 **Where `id` is Allowed:**
 - Contract-level repeated blocks: `schema` objects, `servers` items, `roles` items, `support` items, `slaProperties` items, `quality` items, `customProperties` items

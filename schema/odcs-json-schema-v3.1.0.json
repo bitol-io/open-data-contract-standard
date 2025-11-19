@@ -133,11 +133,6 @@
     "additionalProperties": false,
     "unevaluatedProperties": false,
     "$defs": {
-      "StableId": {
-        "type": "string",
-        "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
-        "pattern": "^[^.#/\\\\@!%&^]+$"
-      },
       "ShorthandReference": {
         "type": "string",
         "description": "Shorthand notation using name fields (table_name.column_name)",
@@ -147,6 +142,11 @@
         "type": "string",
         "description": "Fully qualified notation using id fields (section/id/properties/id), optionally prefixed with external file reference",
         "pattern": "^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.yaml#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+)*$"
+      },
+      "StableId": {
+        "type": "string",
+        "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed).",
+        "pattern": "^[A-Za-z0-9_-]+$"
       },
       "Server": {
         "type": "object",
