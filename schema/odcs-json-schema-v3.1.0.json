@@ -133,14 +133,17 @@
     "additionalProperties": false,
     "unevaluatedProperties": false,
     "$defs": {
+      "StableId": {
+        "type": "string",
+        "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
+        "pattern": "^[^.#/\\\\@!%&^]+$"
+      },
       "Server": {
         "type": "object",
         "description": "Data source details of where data is physically stored.",
         "properties": {
           "id": {
-            "type": "string",
-            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
-            "pattern": "^[^.#/\\\\@!%&^]+$"
+            "$ref": "#/$defs/StableId"
           },
           "server": {
             "type": "string",
@@ -1506,9 +1509,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
-            "pattern": "^[^.#/\\\\@!%&^]+$"
+            "$ref": "#/$defs/StableId"
           },
           "name": {
             "type": "string",
@@ -2041,9 +2042,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
-            "pattern": "^[^.#/\\\\@!%&^]+$"
+            "$ref": "#/$defs/StableId"
           },
           "authoritativeDefinitions": {
             "$ref": "#/$defs/AuthoritativeDefinitions"
@@ -2354,9 +2353,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
-            "pattern": "^[^.#/\\\\@!%&^]+$"
+            "$ref": "#/$defs/StableId"
           },
           "channel": {
             "type": "string",
@@ -2499,9 +2496,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
-            "pattern": "^[^.#/\\\\@!%&^]+$"
+            "$ref": "#/$defs/StableId"
           },
           "role": {
             "type": "string",
@@ -2534,9 +2529,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
-            "pattern": "^[^.#/\\\\@!%&^]+$"
+            "$ref": "#/$defs/StableId"
           },
           "property": {
             "type": "string",
@@ -2609,9 +2602,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed): . # / \\ @ ! % & ^",
-            "pattern": "^[^.#/\\\\@!%&^]+$"
+            "$ref": "#/$defs/StableId"
           },
           "property": {
             "type": "string",
