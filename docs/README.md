@@ -220,6 +220,7 @@ schema:
 
 | Key                      | UX label                     | Required | Description                                                                                                                                                                                                                   |
 |--------------------------|------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| id                       | ID                           | No       | Stable technical identifier for references. See [ID Field for Stable References](#id-field-for-stable-references) for details.                                                                                                |
 | name                     | Name                         | Yes      | Name of the element.                                                                                                                                                                                                          |
 | physicalName             | Physical Name                | No       | Physical name.                                                                                                                                                                                                                |
 | physicalType             | Physical Type                | No       | The physical element data type in the data source. For objects: `table`, `view`, `topic`, `file`. For properties: `VARCHAR(2)`, `DOUBLE`, `INT`, etc.                                                                                                                                              |
@@ -229,6 +230,54 @@ schema:
 | quality                  | Quality                      | No       | List of data quality attributes.                                                                                                                                                                                              |
 | tags                     | Tags                         | No       | A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`. |
 | customProperties         | Custom Properties            | No       | Custom properties that are not part of the standard.                                                                                                                                                                          |
+
+#### ID Field for Stable References
+
+The `id` field provides stable technical identifiers that enable references resilient to array reordering and consistency across the standard.
+
+**Rules:**
+- Optional everywhere it is allowed
+- Must be unique within its containing array/object collection
+- Should remain stable across versions and refactors to preserve referential integrity
+- Cannot contain any special characters ('-', '_' allowed).
+
+**Where `id` is Allowed:**
+- Contract-level repeated blocks: `schema` objects, `servers` items, `roles` items, `support` items, `slaProperties` items, `quality` items, `customProperties` items
+- Schema structures: Objects (tables) and Properties (columns)
+
+**Semantic Guidance:**
+
+| Field | Purpose | Example |
+|-------|---------|---------|
+| `id` | Stable technical identifier for references | `customers_tbl` |
+| `name` | Logical name (required primary key) | `customers` |
+| `businessName` | Business-facing display name | `Customer Data` |
+| `physicalName` | Physical implementation name | `dim_customers` |
+
+**Example with all naming fields:**
+
+```yaml
+schema:
+  - id: customers_tbl           # Stable identifier for references
+    name: customers              # Logical name (required)
+    businessName: Customer Data  # Business-facing display name
+    physicalName: dim_customers  # Physical implementation name
+    physicalType: table
+    properties:
+      - id: cust_id_pk           # Stable identifier for property
+        name: customer_id
+        primaryKey: true
+        logicalType: integer
+      - id: cust_email
+        name: email
+        logicalType: string
+        quality:
+          - id: dq_email_format  # Stable identifier for quality rule
+            metric: pattern
+            arguments:
+              regex: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+            mustBe: 0
+```
 
 #### Applicable to Objects
 
