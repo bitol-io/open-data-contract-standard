@@ -43,7 +43,7 @@ This section contains general information about the contract.
 ### Example
 
 ```YAML
-apiVersion: v3.0.2 # Standard version
+apiVersion: v3.1.0 # Standard version
 kind: DataContract
 
 id: 53581432-6c55-4ba2-a65f-72344a91553a
