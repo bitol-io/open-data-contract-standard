@@ -133,6 +133,16 @@
     "additionalProperties": false,
     "unevaluatedProperties": false,
     "$defs": {
+      "ShorthandReference": {
+        "type": "string",
+        "description": "Shorthand notation using name fields (table_name.column_name)",
+        "pattern": "^[A-Za-z_][A-Za-z0-9_]*\\.[A-Za-z_][A-Za-z0-9_]*$"
+      },
+      "FullyQualifiedReference": {
+        "type": "string",
+        "description": "Fully qualified notation using id fields (section/id/properties/id), optionally prefixed with external file reference",
+        "pattern": "^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.yaml#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+)*$"
+      },
       "Server": {
         "type": "object",
         "description": "Data source details of where data is physically stored.",
@@ -2651,14 +2661,20 @@
           "from": {
             "oneOf": [
               {
-                "type": "string",
-                "description": "Source property reference using fully qualified notation (schema/<id>/properties/<id>) or shorthand notation (table_name.column_name)."
+                "anyOf": [
+                  { "$ref": "#/$defs/ShorthandReference" },
+                  { "$ref": "#/$defs/FullyQualifiedReference" }
+                ],
+                "description": "Source property reference using fully qualified or shorthand notation."
               },
               {
                 "type": "array",
                 "description": "Array of source properties for composite keys.",
                 "items": {
-                  "type": "string"
+                  "anyOf": [
+                    { "$ref": "#/$defs/ShorthandReference" },
+                    { "$ref": "#/$defs/FullyQualifiedReference" }
+                  ]
                 },
                 "minItems": 1
               }
@@ -2668,14 +2684,20 @@
           "to": {
             "oneOf": [
               {
-                "type": "string",
-                "description": "Target property reference using fully qualified notation (schema/<id>/properties/<id>) or shorthand notation (table_name.column_name)."
+                "anyOf": [
+                  { "$ref": "#/$defs/ShorthandReference" },
+                  { "$ref": "#/$defs/FullyQualifiedReference" }
+                ],
+                "description": "Target property reference using fully qualified or shorthand notation."
               },
               {
                 "type": "array",
                 "description": "Array of target properties for composite keys.",
                 "items": {
-                  "type": "string"
+                  "anyOf": [
+                    { "$ref": "#/$defs/ShorthandReference" },
+                    { "$ref": "#/$defs/FullyQualifiedReference" }
+                  ]
                 },
                 "minItems": 1
               }
