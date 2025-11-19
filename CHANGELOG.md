@@ -13,13 +13,15 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * Support for property-level relationships where `from` field is implicit.
   * Support for schema-level relationships with explicit `from` and `to` fields.
   * Support for composite foreign keys using arrays in `from` and `to` fields.
-  * Support for nested property references using dot notation (e.g., `accounts.address.street`).
+  * Support for nested property references using dot shorthand notation (e.g., `accounts.address_street`).
+  * Support for  nested property references using fully qualified references (e.g `/schema/schema_id/properties/my_property`)
   * Add `customProperties` to relationships for metadata like cardinality, labels, and descriptions.
   * New `Relationship` definition in JSON schema with fields:
     * `type`: Type of relationship (defaults to `foreignKey`)
     * `from`: Source property reference (optional at property level)
     * `to`: Target property reference (required)
     * `customProperties`: Additional metadata
+* **Adds** `id` field across the schema for direct object and property identification
 * **Breaking change** to schema:
   * Alter `exclusiveMaximum` and `exclusiveMinimum` for `integer/number` logical data type to be `number` instead of `boolean`. [Conforms with JSON Schema specification](https://json-schema.org/understanding-json-schema/reference/numeric#range).
   * Alter `exclusiveMaximum` and `exclusiveMinimum` for `date` logical data type to be `string` instead of `boolean`.
