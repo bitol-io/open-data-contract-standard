@@ -66,7 +66,7 @@ tags: ['finance']
 
 | Key                                  | UX label                  | Required | Description                                                                                                                                                                                |
 |--------------------------------------|---------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| apiVersion                           | Standard version          | Yes      | Version of the standard used to build data contract. Default value is `v3.0.2`.                                                                                                            |
+| apiVersion                           | Standard version          | Yes      | Version of the standard used to build data contract. Default value is `v3.1.0`.                                                                                                            |
 | kind                                 | Kind                      | Yes      | The kind of file this is. Valid value is `DataContract`.                                                                                                                                   |
 | id                                   | ID                        | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.                                                                                                    |
 | name                                 | Name                      | No       | Name of the data contract.                                                                                                                                                                 |
@@ -264,31 +264,31 @@ Some keys are more applicable when the described property is a column.
 
 Additional metadata options to more accurately define the data type.
 
-| Data Type      | Key              | UX Label           | Required | Description                                                                                                                                                                                                                                                          |
-|----------------|------------------|--------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| array          | maxItems         | Maximum Items      | No       | Maximum number of items.                                                                                                                                                                                                                                             |
-| array          | minItems         | Minimum Items      | No       | Minimum number of items.                                                                                                                                                                                                                                             |
-| array          | uniqueItems      | Unique Items       | No       | If set to true, all items in the array are unique.                                                                                                                                                                                                                   |
-| date/timestamp/time           | format           | Format             | No       | Format of the date. Follows the format as prescribed by [JDK DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). Default value is using ISO 8601: 'YYYY-MM-DDTHH:mm:ss.SSSZ'. For example, format 'yyyy-MM-dd'.   |
-| date/timestamp/time          | exclusiveMaximum | Exclusive Maximum  | No       | All values must be strictly less than this value (values < exclusiveMaximum).                                                                                                      |
-| date/timestamp/time           | exclusiveMinimum | Exclusive Minimum  | No       | All values must be strictly greater than this value (values > exclusiveMinimum).                                                                                                |
-| date/timestamp/time           | maximum          | Maximum            | No       | All date values are less than or equal to this value (values <= maximum).                                                                                                                                                                                            |
-| date/timestamp/time           | minimum          | Minimum            | No       | All date values are greater than or equal to this value (values >= minimum).                                                                                                                                                                                         |
-| timestamp/time           | timezone         | Timezone           | No       | Whether the timestamp defines the timezone or not. If true, timezone information is included in the timestamp.                                                                                                                                                     |
-| timestamp/time           | defaultTimezone  | Default Timezone   | No       | The default timezone of the timestamp. If timezone is not defined, the default timezone UTC is used.                                                                                                                                                              |
-| integer/number | exclusiveMaximum | Exclusive Maximum  | No       | All values must be strictly less than this value (values < exclusiveMaximum).                                                                                                      |
-| integer/number | exclusiveMinimum | Exclusive Minimum  | No       | All values must be strictly greater than this value (values > exclusiveMinimum).                                                                                                |
-| integer/number | format           | Format             | No       | Format of the value in terms of how many bits of space it can use and whether it is signed or unsigned (follows the Rust integer types).                                                                                                                             |
-| integer/number | maximum          | Maximum            | No       | All values are less than or equal to this value (values <= maximum).                                                                                                                                                                                                 |
-| integer/number | minimum          | Minimum            | No       | All values are greater than or equal to this value (values >= minimum).                                                                                                                                                                                              |
-| integer/number | multipleOf       | Multiple Of        | No       | Values must be multiples of this number. For example, multiple of 5 has valid values 0, 5, 10, -5.                                                                                                                                                                   |
-| object         | maxProperties    | Maximum Properties | No       | Maximum number of properties.                                                                                                                                                                                                                                        |
-| object         | minProperties    | Minimum Properties | No       | Minimum number of properties.                                                                                                                                                                                                                                        |
-| object         | required         | Required           | No       | Property names that are required to exist in the object.                                                                                                                                                                                                             |
-| string         | format           | Format             | No       | Provides extra context about what format the string follows. For example, password, byte, binary, email, uuid, uri, hostname, ipv4, ipv6.                                                                                                                            |
-| string         | maxLength        | Maximum Length     | No       | Maximum length of the string.                                                                                                                                                                                                                                        |
-| string         | minLength        | Minimum Length     | No       | Minimum length of the string.                                                                                                                                                                                                                                        |
-| string         | pattern          | Pattern            | No       | Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (<https://262.ecma-international.org/5.1/#sec-15.10.1>).                                                                                                             |
+| Data Type           | Key              | UX Label           | Required | Description                                                                                                                                                                                                                                                          |
+|---------------------|------------------|--------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| array               | maxItems         | Maximum Items      | No       | Maximum number of items.                                                                                                                                                                                                                                             |
+| array               | minItems         | Minimum Items      | No       | Minimum number of items.                                                                                                                                                                                                                                             |
+| array               | uniqueItems      | Unique Items       | No       | If set to true, all items in the array are unique.                                                                                                                                                                                                                   |
+| date/timestamp/time | format           | Format             | No       | Format of the date. Follows the format as prescribed by [JDK DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). Default value is using ISO 8601: 'YYYY-MM-DDTHH:mm:ss.SSSZ'. For example, format 'yyyy-MM-dd'.   |
+| date/timestamp/time | exclusiveMaximum | Exclusive Maximum  | No       | All values must be strictly less than this value (values < exclusiveMaximum).                                                                                                      |
+| date/timestamp/time | exclusiveMinimum | Exclusive Minimum  | No       | All values must be strictly greater than this value (values > exclusiveMinimum).                                                                                                |
+| date/timestamp/time | maximum          | Maximum            | No       | All date values are less than or equal to this value (values <= maximum).                                                                                                                                                                                            |
+| date/timestamp/time | minimum          | Minimum            | No       | All date values are greater than or equal to this value (values >= minimum).                                                                                                                                                                                         |
+| timestamp/time      | timezone         | Timezone           | No       | Whether the timestamp defines the timezone or not. If true, timezone information is included in the timestamp.                                                                                                                                                     |
+| timestamp/time      | defaultTimezone  | Default Timezone   | No       | The default timezone of the timestamp. If timezone is not defined, the default timezone UTC is used.                                                                                                                                                              |
+| integer/number      | exclusiveMaximum | Exclusive Maximum  | No       | All values must be strictly less than this value (values < exclusiveMaximum).                                                                                                      |
+| integer/number      | exclusiveMinimum | Exclusive Minimum  | No       | All values must be strictly greater than this value (values > exclusiveMinimum).                                                                                                |
+| integer/number      | format           | Format             | No       | Format of the value in terms of how many bits of space it can use and whether it is signed or unsigned (follows the Rust integer types).                                                                                                                             |
+| integer/number      | maximum          | Maximum            | No       | All values are less than or equal to this value (values <= maximum).                                                                                                                                                                                                 |
+| integer/number      | minimum          | Minimum            | No       | All values are greater than or equal to this value (values >= minimum).                                                                                                                                                                                              |
+| integer/number      | multipleOf       | Multiple Of        | No       | Values must be multiples of this number. For example, multiple of 5 has valid values 0, 5, 10, -5.                                                                                                                                                                   |
+| object              | maxProperties    | Maximum Properties | No       | Maximum number of properties.                                                                                                                                                                                                                                        |
+| object              | minProperties    | Minimum Properties | No       | Minimum number of properties.                                                                                                                                                                                                                                        |
+| object              | required         | Required           | No       | Property names that are required to exist in the object.                                                                                                                                                                                                             |
+| string              | format           | Format             | No       | Provides extra context about what format the string follows. For example, password, byte, binary, email, uuid, uri, hostname, ipv4, ipv6.                                                                                                                            |
+| string              | maxLength        | Maximum Length     | No       | Maximum length of the string.                                                                                                                                                                                                                                        |
+| string              | minLength        | Minimum Length     | No       | Minimum length of the string.                                                                                                                                                                                                                                        |
+| string              | pattern          | Pattern            | No       | Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (<https://262.ecma-international.org/5.1/#sec-15.10.1>).                                                                                                             |
 
 #### Expressing Date / Datetime / Timezone information
 
@@ -300,7 +300,7 @@ kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 status: active
 name: date_example
-apiVersion: v3.0.2
+apiVersion: v3.1.0
 schema:
   # Date Only
   - name: event_date
@@ -448,13 +448,13 @@ Relationships can be defined in two ways:
 
 #### Field Definitions
 
-| Key | UX Label | Required | Description |
-|-----|----------|----------|-------------|
-| relationships | Relationships | No | Array of relationship definitions |
-| relationships.type | Type | No | Type of relationship (defaults to `foreignKey`) |
-| relationships.to | To | Yes | Target property reference using `schema.property` notation |
-| relationships.from | From | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
-| relationships.customProperties | Custom Properties | No | Additional metadata about the relationship |
+| Key                            | UX Label          | Required          | Description                                                                       |
+|--------------------------------|-------------------|-------------------|-----------------------------------------------------------------------------------|
+| relationships                  | Relationships     | No                | Array of relationship definitions                                                 |
+| relationships.type             | Type              | No                | Type of relationship (defaults to `foreignKey`)                                   |
+| relationships.to               | To                | Yes               | Target property reference using `schema.property` notation                        |
+| relationships.from             | From              | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
+| relationships.customProperties | Custom Properties | No                | Additional metadata about the relationship                                        |
 
 #### Reference Notation
 
@@ -688,14 +688,14 @@ properties:
 
 #### Metrics
 
-| Metric | Level | Description                                                    | Arguments                                                        | Arguments Example                                                    |
-|--------|--------|----------------------------------------------------------------|------------------------------------------------------------------|----------------------------------------------------------------------|
-| `nullValues` | Property | Counts null values in a column/field                           | None                                                             |                                                                      |
-| `missingValues` | Property | Counts values considered as missing (empty strings, N/A, etc.) | `missingValues`: Array of values considered missing              | `missingValues: [null, '', 'N/A']`                                   |
-| `invalidValues` | Property | Counts values that don't match valid criteria                  | `validValues`: Array of valid values<br>`pattern`: Regex pattern | `validValues: ['pounds', 'kg']`<br>`pattern: '^[A-Z]{2}[0-9]{2}...'` |
+| Metric            | Level    | Description                                                    | Arguments                                                        | Arguments Example                                                    |
+|-------------------|----------|----------------------------------------------------------------|------------------------------------------------------------------|----------------------------------------------------------------------|
+| `nullValues`      | Property | Counts null values in a column/field                           | None                                                             |                                                                      |
+| `missingValues`   | Property | Counts values considered as missing (empty strings, N/A, etc.) | `missingValues`: Array of values considered missing              | `missingValues: [null, '', 'N/A']`                                   |
+| `invalidValues`   | Property | Counts values that don't match valid criteria                  | `validValues`: Array of valid values<br>`pattern`: Regex pattern | `validValues: ['pounds', 'kg']`<br>`pattern: '^[A-Z]{2}[0-9]{2}...'` |
 | `duplicateValues` | Property | Counts duplicate values in a column                            | None                                                             |                                                                      |
-| `duplicateValues` | Schema | Counts duplicate values across multiple columns                | `properties`: Array of property names                            | `properties: ['tenant_id', 'order_id']`                              |
-| `rowCount` | Schema | Counts total number of rows in a table/object store            | None                                                             |                                                                      |
+| `duplicateValues` | Schema   | Counts duplicate values across multiple columns                | `properties`: Array of property names                            | `properties: ['tenant_id', 'order_id']`                              |
+| `rowCount`        | Schema   | Counts total number of rows in a table/object store            | None                                                             |                                                                      |
 
 ##### Null Values
 
@@ -1001,16 +1001,16 @@ support:
 
 ### Definitions
 
-| Key                   | UX label       | Required | Description                                                                                                                       |
-|-----------------------|----------------|----------|-----------------------------------------------------------------------------------------------------------------------------------|
-| support               | Support        | No       | Top level for support channels.                                                                                                   |
-| support.channel       | Channel        | Yes      | Channel name or identifier.                                                                                                       |
-| support.url           | Channel URL    | No       | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                             |
-| support.description   | Description    | No       | Description of the channel, free text.                                                                                            |
-| support.tool          | Tool           | No       | Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, `googlechat`, or `other`.                          |
-| support.scope         | Scope          | No       | Scope can be: `interactive`, `announcements`, `issues`, `notifications`.                                                           |
-| support.invitationUrl | Invitation URL | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax). |
-| support.customProperties | Custom Properties | No       | Any custom properties.                                                                                                            |
+| Key                      | UX label          | Required | Description                                                                                                                         |
+|--------------------------|-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
+| support                  | Support           | No       | Top level for support channels.                                                                                                     |
+| support.channel          | Channel           | Yes      | Channel name or identifier.                                                                                                         |
+| support.url              | Channel URL       | No       | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                               |
+| support.description      | Description       | No       | Description of the channel, free text.                                                                                              |
+| support.tool             | Tool              | No       | Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, `googlechat`, or `other`.                            |
+| support.scope            | Scope             | No       | Scope can be: `interactive`, `announcements`, `issues`, `notifications`.                                                            |
+| support.invitationUrl    | Invitation URL    | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax).   |
+| support.customProperties | Custom Properties | No       | Any custom properties.                                                                                                              |
 
 ## Pricing
 
@@ -1164,7 +1164,7 @@ slaProperties:
 | slaProperties.unit                 | Unit                   | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.                           |
 | slaProperties.element              | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas.               |
 | slaProperties.driver               | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.                |
-| slaProperties.description          | Description            | No                             | Description of the SLA for humans.                                                                            |
+| slaProperties.description          | Description            | No                             | Description of the SLA for humans.                                                                                |
 
 ## Infrastructure and Servers
 
@@ -1198,14 +1198,14 @@ servers:
 
 #### Common Server Properties
 
-| Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                                              |
-|------------------|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                                |
-| type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica. |
-| description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                               |
-| environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                                   |
-| roles            | Roles             | No       | List of roles that have access to the server. Check [roles](#roles) section for more details.                                                                                                                                                                                                                            |
-| customProperties | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                                     |
+| Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                                    |
+|------------------|-------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                      |
+| type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica.   |
+| description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                     |
+| environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                         |
+| roles            | Roles             | No       | List of roles that have access to the server. Check [roles](#roles) section for more details.                                                                                                                                                                                                                  |
+| customProperties | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                           |
 
 ### Specific Server Properties
 
