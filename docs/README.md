@@ -8,12 +8,7 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 ## Executive Summary
 
-This document describes the keys and values expected in a YAML data contract, per the **Open Data Contract Standard**.
-It is divided in multiple sections: [fundamentals (fka demographics)](#fundamentals), [schema](#schema),
-[data quality](#data-quality), [Support & communication channels](#support-and-communication-channels), [pricing](#pricing), [team](#team),
-[roles](#roles), [service-level agreement](#service-level-agreement-sla), [Infrastructures & servers](#infrastructure-and-servers) and
-[other/custom properties](#custom-properties). Each section starts with at least an example followed by definition of
-each field/key.
+This document describes the keys and values expected in a YAML data contract, per the **Open Data Contract Standard**. It is divided in multiple sections: [fundamentals (fka demographics)](#fundamentals), [schema](#schema), [data quality](#data-quality), [Support & communication channels](#support-and-communication-channels), [pricing](#pricing), [team](#team), [roles](#roles), [service-level agreement](#service-level-agreement-sla), [Infrastructures & servers](#infrastructure-and-servers) and [other/custom properties](#custom-properties). Each section starts with at least an example followed by definition of each field/key.
 
 ## Table of content
 
@@ -96,7 +91,7 @@ In ODCS v3, the schema has evolved from the table and column representation, the
 
 Figure 1 illustrates those terms with a basic relational database.
 
-<img src=img/elements-of-schema-odcs-v3.svg width=800/>
+<img src=img/elements-of-schema-odcs-v3.svg width=600/>
 
 *Figure 1: elements of the schema in ODCS v3.*
 
@@ -1054,7 +1049,7 @@ quality:
     mustBeLessThan: 100
 ```
 
-## Support and Communication Channels
+## Support & Communication Channels
 
 Support and communication channels help consumers find help regarding their use of the data contract.
 
@@ -1251,19 +1246,35 @@ slaProperties:
 
 ### Definitions
 
-| Key                                | UX label               | Required                       | Description                                                                                                       |
-|------------------------------------|------------------------|--------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| ~~slaDefaultElement~~ (Deprecated) | Default SLA element(s) | No                             | DEPRECATED SINCE 3.1. WILL BE REMOVED IN ODCS 4.0. Element (using the element path notation) to do the checks on. |
-| slaProperties                      | SLA                    | No                             | A list of key/value pairs for SLA specific properties. There is no limit on the type of properties.               |
-| slaProperties.property             | Property               | Yes                            | Specific property in SLA, check the Data QoS periodic table. May requires units.                                  |
-| slaProperties.value                | Value                  | Yes                            | Agreement value. The label will change based on the property itself.                                              |
-| slaProperties.valueExt             | Extended value         | No - unless needed by property | Extended agreement value. The label will change based on the property itself.                                     |
-| slaProperties.unit                 | Unit                   | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.                           |
-| slaProperties.element              | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas.               |
-| slaProperties.driver               | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.                |
-| slaProperties.description          | Description            | No                             | Description of the SLA for humans.                                                                                |
+| Key                                | UX label               | Required                       | Description                                                                                                                                                                     |
+|------------------------------------|------------------------|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ~~slaDefaultElement~~ (Deprecated) | Default SLA element(s) | No                             | Element (using the element path notation) to do the checks on. DEPRECATED SINCE v3.1.0. WILL BE REMOVED IN ODCS v4.0.0.                                                         |
+| slaProperties                      | SLA                    | No                             | A list of key/value pairs for SLA specific properties. There is no limit on the type of properties.                                                                             |
+| slaProperties.property             | Property               | Yes                            | Specific property in SLA, check the [Data QoS periodic table](https://medium.com/data-mesh-learning/what-is-data-qos-and-why-is-it-critical-c524b81e3cc1).  May requires units. |
+| slaProperties.value                | Value                  | Yes                            | Agreement value. The label will change based on the property itself.                                                                                                            |
+| slaProperties.valueExt             | Extended value         | No - unless needed by property | Extended agreement value. The label will change based on the property itself.                                                                                                   |
+| slaProperties.unit                 | Unit                   | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.                                                                                         |
+| slaProperties.element              | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas.                                                                             |
+| slaProperties.driver               | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.                                                                              |
+| slaProperties.description          | Description            | No                             | Description of the SLA for humans.                                                                                                                                              |
 
-## Infrastructure and Servers
+### Valid Values for SLA Properties
+
+Recommend SLA properties follow the [Data QoS periodic table](https://medium.com/data-mesh-learning/what-is-data-qos-and-why-is-it-critical-c524b81e3cc1). Those values are case-insensitive and are:
+* `availability` (synonym `av`).
+* `throughput` (synonym `th`).
+* `errorRate` (synonym `er`).
+* `generalAvailability` (synonym `ga`).
+* `endOfSupport` (synonym `es`).
+* `endOfLife` (synonym `el`).
+* `retention` (synonym `re`).
+* `frequency` (synonym `fy`) - frequency of update.
+* `latency` (synonym `ly`) - preferred to freshness.
+* `timeToDetect` (synonym `td`) - time to detect an issue.
+* `timeToNotify` (synonym `tn`).
+* `timeToRepair` (synonym `tr`).
+
+## Infrastructure & Servers
 
 The `servers` element describes where the data protected by this data contract is *physically* located. That metadata helps to know where the data is so that a data consumer can discover the data and a platform engineer can automate access.
 
