@@ -8,6 +8,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
 
 # v3.1.0 - 2025-11-20 - PROPOSED
 
+* Most sections have gained an optional `id` to enable easier linking as per RFC 26.
 * The **`team`** block is accepting both ODCS v3.0.x structure (now obsolete) or the updated RFC16 structure. The obsolete structure will be removed in ODCS v4.
 * **Splits** Main specification document into several smaller documents. 
 * **Adds** Relationships (Foreign Keys):
@@ -65,7 +66,8 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * Duckdb schema was expecting an integer, but should expect a string.
   * Added support for Actian Zen Server.
 * **Deprecations**:
-  * `slaDefaultElement` is deprecated, and will be removed in ODCS v4.0.0 (see RFC 21)   
+  * `slaDefaultElement` is deprecated, and will be removed in ODCS v4.0.0 (see RFC 21).   
+  * The `team` structure has evolved. Both are valid, however the ODCS v3.0.x structure is deprecated (see RFC 16).
 * **Changes** to custom properties and authoritative definitions:
   * Add `description` field to both `customProperties` and `authoritativeDefinitions`.
 

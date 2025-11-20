@@ -5,7 +5,7 @@ description: "This section covers custom properties you may find in a data contr
 
 # Custom & Other Properties
 
-This section covers custom properties you may find in a data contract.
+This section covers other properties you may find in a data contract.
 
 ## Table of Contents <!-- omit in toc -->
 - [Custom Properties](#custom-properties)
@@ -18,6 +18,9 @@ This section covers custom properties you may find in a data contract.
 
 
 ## Custom Properties
+
+This section covers custom properties you can use to add non-standard properties. This block is available in many sections.
+
 ### Example
 
 ```YAML
@@ -42,7 +45,8 @@ customProperties:
 
 
 ## Authoritative Definitions
-Authoritative Definitions are an essential part of the contract. They allow to delegate the definition to a third party system like an enterprise catalog, repository, etc. The structure describing "Authoritative Definitions" is shared between all Bitol standards.
+
+Authoritative Definitions are an essential part of the contract. They allow to delegate the definition to a third party system like an enterprise catalog, repository, etc. The structure describing "Authoritative Definitions" is shared between all Bitol standards. This block is available in many sections.
 
 | Key                                  | UX label            | Required | Description                                                                                                                                                                                                                                                                    |
 |--------------------------------------|---------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
