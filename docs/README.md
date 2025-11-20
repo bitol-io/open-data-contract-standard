@@ -8,12 +8,7 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 ## Executive Summary
 
-This document describes the keys and values expected in a YAML data contract, per the **Open Data Contract Standard**.
-It is divided in multiple sections: [fundamentals (fka demographics)](#fundamentals), [schema](#schema),
-[data quality](#data-quality), [Support & communication channels](#support-and-communication-channels), [pricing](#pricing), [team](#team),
-[roles](#roles), [service-level agreement](#service-level-agreement-sla), [Infrastructures & servers](#infrastructure-and-servers) and
-[other/custom properties](#custom-properties). Each section starts with at least an example followed by definition of
-each field/key.
+This document describes the keys and values expected in a YAML data contract, per the **Open Data Contract Standard**. It is divided in multiple sections: [fundamentals (fka demographics)](#fundamentals), [schema](#schema), [data quality](#data-quality), [Support & communication channels](#support-and-communication-channels), [pricing](#pricing), [team](#team), [roles](#roles), [service-level agreement](#service-level-agreement-sla), [Infrastructures & servers](#infrastructure-and-servers) and [other/custom properties](#custom-properties). Each section starts with at least an example followed by definition of each field/key.
 
 ## Table of content
 
@@ -96,7 +91,7 @@ In ODCS v3, the schema has evolved from the table and column representation, the
 
 Figure 1 illustrates those terms with a basic relational database.
 
-<img src=img/elements-of-schema-odcs-v3.svg width=800/>
+<img src=img/elements-of-schema-odcs-v3.svg width=600/>
 
 *Figure 1: elements of the schema in ODCS v3.*
 
@@ -114,6 +109,7 @@ schema:
     authoritativeDefinitions:
       - url: https://catalog.data.gov/dataset/air-quality
         type: businessDefinition
+        description: Business definition for the dataset.
       - url: https://youtu.be/jbY1BKFj9ec
         type: videoTutorial
     tags: ['finance']
@@ -166,7 +162,7 @@ schema:
         tags: []
         classification: public
         authoritativeDefinitions:
-          - url: https://collibra.com/asset/742b358f-71a5-4ab1-bda4-dcdba9418c25
+          - url: https://zeenea.app/asset/742b358f-71a5-4ab1-bda4-dcdba9418c25
             type: businessDefinition
           - url: https://github.com/myorg/myrepo
             type: transformationImplementation
@@ -223,7 +219,7 @@ schema:
 | id                       | ID                           | No       | Stable technical identifier for references. See [ID Field for Stable References](#id-field-for-stable-references) for details.                                                                                                |
 | name                     | Name                         | Yes      | Name of the element.                                                                                                                                                                                                          |
 | physicalName             | Physical Name                | No       | Physical name.                                                                                                                                                                                                                |
-| physicalType             | Physical Type                | No       | The physical element data type in the data source. For objects: `table`, `view`, `topic`, `file`. For properties: `VARCHAR(2)`, `DOUBLE`, `INT`, etc.                                                                                                                                              |
+| physicalType             | Physical Type                | No       | The physical element data type in the data source. For objects: `table`, `view`, `topic`, `file`. For properties: `VARCHAR(2)`, `DOUBLE`, `INT`, etc.                                                                         |
 | description              | Description                  | No       | Description of the element.                                                                                                                                                                                                   |
 | businessName             | Business Name                | No       | The business name of the element.                                                                                                                                                                                             |
 | authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more details on the element; examples would be a link to privacy statement, terms and conditions, license agreements, data catalog, or another tool.                                    |
@@ -289,57 +285,57 @@ schema:
 
 Some keys are more applicable when the described property is a column.
 
-| Key                      | UX label                     | Required | Description                                                                                                                                                                                                                           |
-|--------------------------|------------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| primaryKey               | Primary Key                  | No       | Boolean value specifying whether the field is primary or not. Default is false.                                                                                                                                                       |
-| primaryKeyPosition       | Primary Key Position         | No       | If field is a primary key, the position of the primary key element. Starts from 1. Example of `account_id, name` being primary key columns, `account_id` has primaryKeyPosition 1 and `name` primaryKeyPosition 2. Default to -1.     |
-| logicalType              | Logical Type                 | No       | The logical field datatype. One of `string`, `date`, `timestamp`, `time`, `number`, `integer`, `object`, `array` or `boolean`.                                                                                                                             |
-| logicalTypeOptions       | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [Logical Type Options](#logical-type-options) for more details about supported options for each `logicalType`.                                                                         |
-| physicalType             | Physical Type                | No       | The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT.                                                                                                                                              |
-| description              | Description                  | No       | Description of the element.                                                                                                                                                                                                           |
-| required                 | Required                     | No       | Indicates if the element may contain Null values; possible values are true and false. Default is false.                                                                                                                               |
-| unique                   | Unique                       | No       | Indicates if the element contains unique values; possible values are true and false. Default is false.                                                                                                                                |
-| partitioned              | Partitioned                  | No       | Indicates if the element is partitioned; possible values are true and false.                                                                                                                                                          |
-| partitionKeyPosition     | Partition Key Position       | No       | If element is used for partitioning, the position of the partition element. Starts from 1. Example of `country, year` being partition columns, `country` has partitionKeyPosition 1 and `year` partitionKeyPosition 2. Default to -1. |
-| classification           | Classification               | No       | Can be anything, like confidential, restricted, and public to more advanced categorization.                                                                                                                                           |
-| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more detail on element logic or values; examples would be URL to a git repo, documentation, a data catalog or another tool.                                                                     |
-| encryptedName            | Encrypted Name               | No       | The element name within the dataset that contains the encrypted element value. For example, unencrypted element `email_address` might have an encryptedName of `email_address_encrypt`.                                               |
-| transformSourceObjects   | Transform Sources            | No       | List of objects in the data source used in the transformation.                                                                                                                                                                        |
-| transformLogic           | Transform Logic              | No       | Logic used in the column transformation.                                                                                                                                                                                              |
-| transformDescription     | Transform Description        | No       | Describes the transform logic in very simple terms.                                                                                                                                                                                   |
-| examples                 | Example Values               | No       | List of sample element values.                                                                                                                                                                                                        |
-| criticalDataElement      | Critical Data Element Status | No       | True or false indicator; If element is considered a critical data element (CDE) then true else false.                                                                                                                                 |
-| items                    | Items                        | No       | List of items in an array (only applicable when `logicalType: array`)                                                                                                                                                                 |
+| Key                      | UX label                     | Required | Description                                                                                                                                                                                                                             |
+|--------------------------|------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| primaryKey               | Primary Key                  | No       | Boolean value specifying whether the field is primary or not. Default is false.                                                                                                                                                         |
+| primaryKeyPosition       | Primary Key Position         | No       | If field is a primary key, the position of the primary key element. Starts from 1. Example of `account_id, name` being primary key columns, `account_id` has primaryKeyPosition 1 and `name` primaryKeyPosition 2. Default to -1.       |
+| logicalType              | Logical Type                 | No       | The logical field datatype. One of `string`, `date`, `timestamp`, `time`, `number`, `integer`, `object`, `array` or `boolean`.                                                                                                          |
+| logicalTypeOptions       | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [Logical Type Options](#logical-type-options) for more details about supported options for each `logicalType`.                                                           |
+| physicalType             | Physical Type                | No       | The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT.                                                                                                                                                |
+| description              | Description                  | No       | Description of the element.                                                                                                                                                                                                             |
+| required                 | Required                     | No       | Indicates if the element may contain Null values; possible values are true and false. Default is false.                                                                                                                                 |
+| unique                   | Unique                       | No       | Indicates if the element contains unique values; possible values are true and false. Default is false.                                                                                                                                  |
+| partitioned              | Partitioned                  | No       | Indicates if the element is partitioned; possible values are true and false.                                                                                                                                                            |
+| partitionKeyPosition     | Partition Key Position       | No       | If element is used for partitioning, the position of the partition element. Starts from 1. Example of `country, year` being partition columns, `country` has partitionKeyPosition 1 and `year` partitionKeyPosition 2. Default to -1.   |
+| classification           | Classification               | No       | Can be anything, like confidential, restricted, and public to more advanced categorization.                                                                                                                                             |
+| authoritativeDefinitions | Authoritative Definitions    | No       | List of links to sources that provide more detail on element logic or values; examples would be URL to a git repo, documentation, a data catalog or another tool.                                                                       |
+| encryptedName            | Encrypted Name               | No       | The element name within the dataset that contains the encrypted element value. For example, unencrypted element `email_address` might have an encryptedName of `email_address_encrypt`.                                                 |
+| transformSourceObjects   | Transform Sources            | No       | List of objects in the data source used in the transformation.                                                                                                                                                                          |
+| transformLogic           | Transform Logic              | No       | Logic used in the column transformation.                                                                                                                                                                                                |
+| transformDescription     | Transform Description        | No       | Describes the transform logic in very simple terms.                                                                                                                                                                                     |
+| examples                 | Example Values               | No       | List of sample element values.                                                                                                                                                                                                          |
+| criticalDataElement      | Critical Data Element Status | No       | True or false indicator; If element is considered a critical data element (CDE) then true else false.                                                                                                                                   |
+| items                    | Items                        | No       | List of items in an array (only applicable when `logicalType: array`)                                                                                                                                                                   |
 
 ### Logical Type Options
 
 Additional metadata options to more accurately define the data type.
 
-| Data Type           | Key              | UX Label           | Required | Description                                                                                                                                                                                                                                                          |
-|---------------------|------------------|--------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| array               | maxItems         | Maximum Items      | No       | Maximum number of items.                                                                                                                                                                                                                                             |
-| array               | minItems         | Minimum Items      | No       | Minimum number of items.                                                                                                                                                                                                                                             |
-| array               | uniqueItems      | Unique Items       | No       | If set to true, all items in the array are unique.                                                                                                                                                                                                                   |
-| date/timestamp/time | format           | Format             | No       | Format of the date. Follows the format as prescribed by [JDK DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). Default value is using ISO 8601: 'YYYY-MM-DDTHH:mm:ss.SSSZ'. For example, format 'yyyy-MM-dd'.   |
-| date/timestamp/time | exclusiveMaximum | Exclusive Maximum  | No       | All values must be strictly less than this value (values < exclusiveMaximum).                                                                                                      |
-| date/timestamp/time | exclusiveMinimum | Exclusive Minimum  | No       | All values must be strictly greater than this value (values > exclusiveMinimum).                                                                                                |
-| date/timestamp/time | maximum          | Maximum            | No       | All date values are less than or equal to this value (values <= maximum).                                                                                                                                                                                            |
-| date/timestamp/time | minimum          | Minimum            | No       | All date values are greater than or equal to this value (values >= minimum).                                                                                                                                                                                         |
+| Data Type           | Key              | UX Label           | Required | Description                                                                                                                                                                                                                                                        |
+|---------------------|------------------|--------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| array               | maxItems         | Maximum Items      | No       | Maximum number of items.                                                                                                                                                                                                                                           |
+| array               | minItems         | Minimum Items      | No       | Minimum number of items.                                                                                                                                                                                                                                           |
+| array               | uniqueItems      | Unique Items       | No       | If set to true, all items in the array are unique.                                                                                                                                                                                                                 |
+| date/timestamp/time | format           | Format             | No       | Format of the date. Follows the format as prescribed by [JDK DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). Default value is using ISO 8601: 'YYYY-MM-DDTHH:mm:ss.SSSZ'. For example, format 'yyyy-MM-dd'. |
+| date/timestamp/time | exclusiveMaximum | Exclusive Maximum  | No       | All values must be strictly less than this value (values < exclusiveMaximum).                                                                                                                                                                                      |
+| date/timestamp/time | exclusiveMinimum | Exclusive Minimum  | No       | All values must be strictly greater than this value (values > exclusiveMinimum).                                                                                                                                                                                   |
+| date/timestamp/time | maximum          | Maximum            | No       | All date values are less than or equal to this value (values <= maximum).                                                                                                                                                                                          |
+| date/timestamp/time | minimum          | Minimum            | No       | All date values are greater than or equal to this value (values >= minimum).                                                                                                                                                                                       |
 | timestamp/time      | timezone         | Timezone           | No       | Whether the timestamp defines the timezone or not. If true, timezone information is included in the timestamp.                                                                                                                                                     |
-| timestamp/time      | defaultTimezone  | Default Timezone   | No       | The default timezone of the timestamp. If timezone is not defined, the default timezone UTC is used.                                                                                                                                                              |
-| integer/number      | exclusiveMaximum | Exclusive Maximum  | No       | All values must be strictly less than this value (values < exclusiveMaximum).                                                                                                      |
-| integer/number      | exclusiveMinimum | Exclusive Minimum  | No       | All values must be strictly greater than this value (values > exclusiveMinimum).                                                                                                |
-| integer/number      | format           | Format             | No       | Format of the value in terms of how many bits of space it can use and whether it is signed or unsigned (follows the Rust integer types).                                                                                                                             |
-| integer/number      | maximum          | Maximum            | No       | All values are less than or equal to this value (values <= maximum).                                                                                                                                                                                                 |
-| integer/number      | minimum          | Minimum            | No       | All values are greater than or equal to this value (values >= minimum).                                                                                                                                                                                              |
-| integer/number      | multipleOf       | Multiple Of        | No       | Values must be multiples of this number. For example, multiple of 5 has valid values 0, 5, 10, -5.                                                                                                                                                                   |
-| object              | maxProperties    | Maximum Properties | No       | Maximum number of properties.                                                                                                                                                                                                                                        |
-| object              | minProperties    | Minimum Properties | No       | Minimum number of properties.                                                                                                                                                                                                                                        |
-| object              | required         | Required           | No       | Property names that are required to exist in the object.                                                                                                                                                                                                             |
-| string              | format           | Format             | No       | Provides extra context about what format the string follows. For example, password, byte, binary, email, uuid, uri, hostname, ipv4, ipv6.                                                                                                                            |
-| string              | maxLength        | Maximum Length     | No       | Maximum length of the string.                                                                                                                                                                                                                                        |
-| string              | minLength        | Minimum Length     | No       | Minimum length of the string.                                                                                                                                                                                                                                        |
-| string              | pattern          | Pattern            | No       | Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (<https://262.ecma-international.org/5.1/#sec-15.10.1>).                                                                                                             |
+| timestamp/time      | defaultTimezone  | Default Timezone   | No       | The default timezone of the timestamp. If timezone is not defined, the default timezone UTC is used.                                                                                                                                                               |
+| integer/number      | exclusiveMaximum | Exclusive Maximum  | No       | All values must be strictly less than this value (values < exclusiveMaximum).                                                                                                                                                                                      |
+| integer/number      | exclusiveMinimum | Exclusive Minimum  | No       | All values must be strictly greater than this value (values > exclusiveMinimum).                                                                                                                                                                                   |
+| integer/number      | format           | Format             | No       | Format of the value in terms of how many bits of space it can use and whether it is signed or unsigned (follows the Rust integer types).                                                                                                                           |
+| integer/number      | maximum          | Maximum            | No       | All values are less than or equal to this value (values <= maximum).                                                                                                                                                                                               |
+| integer/number      | minimum          | Minimum            | No       | All values are greater than or equal to this value (values >= minimum).                                                                                                                                                                                            |
+| integer/number      | multipleOf       | Multiple Of        | No       | Values must be multiples of this number. For example, multiple of 5 has valid values 0, 5, 10, -5.                                                                                                                                                                 |
+| object              | maxProperties    | Maximum Properties | No       | Maximum number of properties.                                                                                                                                                                                                                                      |
+| object              | minProperties    | Minimum Properties | No       | Minimum number of properties.                                                                                                                                                                                                                                      |
+| object              | required         | Required           | No       | Property names that are required to exist in the object.                                                                                                                                                                                                           |
+| string              | format           | Format             | No       | Provides extra context about what format the string follows. For example, password, byte, binary, email, uuid, uri, hostname, ipv4, ipv6.                                                                                                                          |
+| string              | maxLength        | Maximum Length     | No       | Maximum length of the string.                                                                                                                                                                                                                                      |
+| string              | minLength        | Minimum Length     | No       | Minimum length of the string.                                                                                                                                                                                                                                      |
+| string              | pattern          | Pattern            | No       | Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (<https://262.ecma-international.org/5.1/#sec-15.10.1>).                                                                                                         |
 
 #### Expressing Date / Datetime / Timezone information
 
@@ -397,17 +393,6 @@ schema:
       - "2024-03-10T14:22:35Z"
 
 ```
-
-### Authoritative definitions
-
-Reference to an external definition on element logic or values.
-
-| Key                                  | UX label          | Required | Description                                                                                                                                                   |
-|--------------------------------------|-------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| authoritativeDefinitions             | Link              | No       | A list of type/link pairs for authoritative definitions.                                                                                                      |
-| authoritativeDefinitions.type        | Definition type   | Yes      | Type of definition for authority.  Valid values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. |
-| authoritativeDefinitions.url         | URL to definition | Yes      | URL to the authority.                                                                                                                                         |
-| authoritativeDefinitions.description | Description       | No       | Description for humans                                                                                                                                        |
 
 ## References
 
@@ -1113,7 +1098,7 @@ quality:
     mustBeLessThan: 100
 ```
 
-## Support and Communication Channels
+## Support & Communication Channels
 
 Support and communication channels help consumers find help regarding their use of the data contract.
 
@@ -1310,19 +1295,35 @@ slaProperties:
 
 ### Definitions
 
-| Key                                | UX label               | Required                       | Description                                                                                                       |
-|------------------------------------|------------------------|--------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| ~~slaDefaultElement~~ (Deprecated) | Default SLA element(s) | No                             | DEPRECATED SINCE 3.1. WILL BE REMOVED IN ODCS 4.0. Element (using the element path notation) to do the checks on. |
-| slaProperties                      | SLA                    | No                             | A list of key/value pairs for SLA specific properties. There is no limit on the type of properties.               |
-| slaProperties.property             | Property               | Yes                            | Specific property in SLA, check the Data QoS periodic table. May requires units.                                  |
-| slaProperties.value                | Value                  | Yes                            | Agreement value. The label will change based on the property itself.                                              |
-| slaProperties.valueExt             | Extended value         | No - unless needed by property | Extended agreement value. The label will change based on the property itself.                                     |
-| slaProperties.unit                 | Unit                   | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.                           |
-| slaProperties.element              | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas.               |
-| slaProperties.driver               | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.                |
-| slaProperties.description          | Description            | No                             | Description of the SLA for humans.                                                                                |
+| Key                                | UX label               | Required                       | Description                                                                                                                                                                     |
+|------------------------------------|------------------------|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ~~slaDefaultElement~~ (Deprecated) | Default SLA element(s) | No                             | Element (using the element path notation) to do the checks on. DEPRECATED SINCE v3.1.0. WILL BE REMOVED IN ODCS v4.0.0.                                                         |
+| slaProperties                      | SLA                    | No                             | A list of key/value pairs for SLA specific properties. There is no limit on the type of properties.                                                                             |
+| slaProperties.property             | Property               | Yes                            | Specific property in SLA, check the [Data QoS periodic table](https://medium.com/data-mesh-learning/what-is-data-qos-and-why-is-it-critical-c524b81e3cc1).  May requires units. |
+| slaProperties.value                | Value                  | Yes                            | Agreement value. The label will change based on the property itself.                                                                                                            |
+| slaProperties.valueExt             | Extended value         | No - unless needed by property | Extended agreement value. The label will change based on the property itself.                                                                                                   |
+| slaProperties.unit                 | Unit                   | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.                                                                                         |
+| slaProperties.element              | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas.                                                                             |
+| slaProperties.driver               | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.                                                                              |
+| slaProperties.description          | Description            | No                             | Description of the SLA for humans.                                                                                                                                              |
 
-## Infrastructure and Servers
+### Valid Values for SLA Properties
+
+Recommend SLA properties follow the [Data QoS periodic table](https://medium.com/data-mesh-learning/what-is-data-qos-and-why-is-it-critical-c524b81e3cc1). Those values are case-insensitive and are:
+* `availability` (synonym `av`).
+* `throughput` (synonym `th`).
+* `errorRate` (synonym `er`).
+* `generalAvailability` (synonym `ga`).
+* `endOfSupport` (synonym `es`).
+* `endOfLife` (synonym `el`).
+* `retention` (synonym `re`).
+* `frequency` (synonym `fy`) - frequency of update.
+* `latency` (synonym `ly`) - preferred to freshness.
+* `timeToDetect` (synonym `td`) - time to detect an issue.
+* `timeToNotify` (synonym `tn`).
+* `timeToRepair` (synonym `tr`).
+
+## Infrastructure & Servers
 
 The `servers` element describes where the data protected by this data contract is *physically* located. That metadata helps to know where the data is so that a data consumer can discover the data and a platform engineer can automate access.
 
@@ -1723,8 +1724,18 @@ customProperties:
 |------------------------------|-------------------|----------|-------------------------------------------------------------------------------------------------------------------|
 | customProperties             | Custom Properties | No       | A list of key/value pairs for custom properties. Initially created to support the REF ruleset property.           |
 | customProperties.property    | Property          | No       | The name of the key. Names should be in camel case–the same as if they were permanent properties in the contract. |
-| customProperties.value       | Value             | No       | The value of the key.                                                                                             |
+| customProperties.value       | Value             | No       | The value of the key. It can be an array.                                                                         |
 | customProperties.description | Description       | No       | Description for humans.                                                                                           |
+
+## Authoritative Definitions
+Authoritative Definitions are an essential part of the contract. They allow to delegate the definition to a third party system like an enterprise catalog, repository, etc. The structure describing "Authoritative Definitions" is shared between all Bitol standards.
+
+| Key                                  | UX label            | Required | Description                                                                                                                                                                                                                                                                    |
+|--------------------------------------|---------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| authoritativeDefinitions             | Link                | No       | A list of type/link pairs for authoritative definitions.                                                                                                                                                                                                                       |
+| authoritativeDefinitions.type        | Definition type     | Yes      | Type of definition for authority. Recommended values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. At the root level, a type can also be `canonicalUrl` to indicate a reference to the product's last version. |
+| authoritativeDefinitions.url         | URL to definition   | Yes      | URL to the authority.                                                                                                                                                                                                                                                          |
+| authoritativeDefinitions.description | Description         | No       | Optional description.                                                                                                                                                                                                                                                          |
 
 ## Other Properties
 
