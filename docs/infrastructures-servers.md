@@ -21,7 +21,7 @@ The typical ways of using the top level `servers` element are as follows:
 - [General Server Structure](#general-server-structure)
   - [Common Server Properties](#common-server-properties)
 - [Specific Server Properties](#specific-server-properties)
-- [Specific Server Properties \& Types](#specific-server-properties--types)
+- [Specific Server Properties \& Types](#specific-server-properties--types) - You should use those as the value for the `type` property.
   - [API Server](#api-server)
   - [Amazon Athena Server](#amazon-athena-server)
   - [Azure Server](#azure-server)
@@ -35,7 +35,7 @@ The typical ways of using the top level `servers` element are as follows:
   - [DuckDB Server](#duckdb-server)
   - [Amazon Glue](#amazon-glue)
   - [Hive](#hive)
-  - [IBM Informix and HCL Informix](#ibm-informix-and-hcl-informix)
+  - [informix](#ibm-informix-and-hcl-informix)
   - [Kafka Server](#kafka-server)
   - [Amazon Kinesis](#amazon-kinesis)
   - [Local Files](#local-files)
@@ -52,9 +52,8 @@ The typical ways of using the top level `servers` element are as follows:
   - [Synapse Server](#synapse-server)
   - [Trino Server](#trino-server)
   - [Vertica Server](#vertica-server)
-  - [Custom Server](#custom-server)
-
-
+  - [zen](#Actian-Zen-Server)
+  - [custom](#custom-server)
 
 ## General Server Structure
 
@@ -363,6 +362,16 @@ Secure File Transfer Protocol (SFTP) is a network protocol that enables secure a
 | port     | Port     | Yes      | The port of the Vertica server. |
 | database | Database | Yes      | The name of the database.       |
 | schema   | Schema   | Yes      | The name of the schema.         |
+
+### Actian Zen Server
+
+Actian Zen (formerly Btrieve, later named Pervasive PSQL until version 13) is an ACID-compliant, zero-DBA, embedded, nano-footprint, multi-model, Multi-Platform database management system (DBMS).
+
+| Key      | UX Label | Required | Description                                            |
+|----------|----------|----------|--------------------------------------------------------|
+| host     | Host     | Yes      | Hostname or IP address of the Zen server.              |
+| port     | Port     | No       | Zen server SQL connections port. Defaults to 1583.     |
+| database | Database | Yes      | Database name to connect to on the Zen server.         |
 
 ### Custom Server
 

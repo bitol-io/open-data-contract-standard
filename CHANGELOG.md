@@ -61,8 +61,9 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * S3Server `delimiter` not longer an enum of `new_line`, `array`, but rather a string with the same examples.
   * SftpServer `format` not longer an enum of `parquet`, `delta`, `json`, `csv`, but rather a string with the same examples.
   * SftpServer `delimiter` not longer an enum of `new_line`, `array`, but rather a string with the same examples.
-  * Added HiveServer with type `hive`
+  * Added HiveServer with type `hive`.
   * Duckdb schema was expecting an integer, but should expect a string.
+  * Added support for Actian Zen Server.
 * **Deprecations**:
   * `slaDefaultElement` is deprecated, and will be removed in ODCS v4.0.0 (see RFC 21)   
 * **Changes** to custom properties and authoritative definitions:
