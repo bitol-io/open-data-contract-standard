@@ -12,10 +12,34 @@ This section lists team members and the history of their relation with this data
 ## Table of Contents <!-- omit in toc -->
 - [Example](#example)
 - [Definitions](#definitions)
+- [Deprecated Example](#Deprecated-example)
+- [Deprecated Definitions](#Deprecated-definitions)
 
 The structure describing "team" is shared between all Bitol standards, matching RFC 0016.
 
-### Field Descriptions
+##  Example
+
+```YAML
+team:
+  name: TSC
+  description: The greatest team ever.
+  members:
+    - username: ceastwood
+      role: Data Scientist
+      dateIn: 2022-08-02
+      dateOut: 2022-10-01
+      replacedByUsername: mhopper
+    - username: mhopper
+      role: Data Scientist
+      dateIn: 2022-10-01
+    - username: daustin
+      role: Owner
+      description: Keeper of the grail
+      name: David Austin
+      dateIn: 2022-10-01
+```
+
+## Definitions
 
 | Key                                   | Key | UX label                  | Required | Description                                                                                |
 |---------------------------------------|-----|---------------------------|----------|--------------------------------------------------------------------------------------------|
@@ -40,7 +64,7 @@ The structure describing "team" is shared between all Bitol standards, matching 
 
 ## Deprecated Structure
 
-### Example
+### Deprecated Example
 
 ```YAML
 team:
@@ -59,7 +83,7 @@ team:
     dateIn: 2022-10-01
 ```
 
-### Definitions
+### Deprecated Definitions
 
 The UX label is the label used in the UI and other user experiences.
 
