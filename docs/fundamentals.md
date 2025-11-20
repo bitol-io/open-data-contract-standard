@@ -28,8 +28,8 @@ tenant: ClimateQuantumInc
 
 description:
   purpose: Views built on top of the seller tables.
-  limitations: null
-  usage: null
+  limitations: Cannot be used in conjunction with days with full moons.
+  usage: Twice a day, preferable before meals.
 
 tags: ['finance']
 ```

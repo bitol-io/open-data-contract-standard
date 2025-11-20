@@ -2,13 +2,12 @@
 title: "Team"
 description: "This section lists team members and the history of their relation with this data contract."
 ---
-
 # Team
 
 This section lists team members and the history of their relation with this data contract. 
 
-> Note
-> In v2.x, this section was called stakeholders. Starting with v3.1.0, both the following structure are valid. However, the original v2.x / v3.x structure is deprecated and will be removed in ODCS v4. 
+> [!NOTE]
+> In v2.x, this section was called `stakeholders`. Starting with v3.1.0, both the following structure are valid. However, the original v2.x / v3.x structure is deprecated and will be removed in ODCS v4. 
 
 ## Table of Contents <!-- omit in toc -->
 - [Example](#example)
