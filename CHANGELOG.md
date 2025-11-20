@@ -13,7 +13,8 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * Support for property-level relationships where `from` field is implicit.
   * Support for schema-level relationships with explicit `from` and `to` fields.
   * Support for composite foreign keys using arrays in `from` and `to` fields.
-  * Support for nested property references using dot notation (e.g., `accounts.address.street`).
+  * Support for nested property references using dot shorthand notation (e.g., `accounts.address_street`).
+  * Support for  nested property references using fully qualified references (e.g `/schema/schema_id/properties/my_property`)
   * Add `customProperties` to relationships for metadata like cardinality, labels, and descriptions.
   * New `Relationship` definition in JSON schema with fields:
     * `type`: Type of relationship (defaults to `foreignKey`)
