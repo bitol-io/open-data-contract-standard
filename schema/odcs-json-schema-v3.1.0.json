@@ -96,7 +96,20 @@
         "$ref": "#/$defs/Pricing"
       },
       "team": {
-        "$ref": "#/$defs/Team"
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Team",
+            "description": "Team information object with members array (v3.1.0+)."
+          },
+          {
+            "type": "array",
+            "description": "DEPRECATED: Array of team members. Use the Team object structure instead. This array format is maintained for backward compatibility with v3.0.2 and earlier versions and will be removed in ODCS 4.0.",
+            "deprecated": true,
+            "items": {
+              "$ref": "#/$defs/TeamMember"
+            }
+          }
+        ]
       },
       "roles": {
         "type": "array",
