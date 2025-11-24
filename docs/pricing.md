@@ -7,11 +7,6 @@ description: "This section covers pricing when you bill your customer for using 
 
 This section covers pricing when you bill your customer for using this data product.
 
-## Table of Contents <!-- omit in toc -->
-- [Example](#example)
-- [Definitions](#definitions)
-
-
 ## Example
 
 ```YAML

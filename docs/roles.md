@@ -7,11 +7,6 @@ description: "This section lists the roles that a consumer may need to access th
 
 This section lists the roles that a consumer may need to access the dataset depending on the type of access they require.
 
-## Table of Contents <!-- omit in toc -->
-- [Example](#example)
-- [Definitions](#definitions)
-
-
 ## Example
 
 ```YAML

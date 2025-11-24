@@ -7,11 +7,6 @@ description: "This section contains general information about the contract."
 
 This section contains general information about the contract.
 
-## Table of Contents <!-- omit in toc -->
-- [Example](#example)
-- [Definitions](#definitions)
-
-
 ## Example
 
 ```YAML

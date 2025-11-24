@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 echo "Moving top level markdown files into 'docs' folder"
-cat README.md | sed 's/(docs\//(/g' | sed 's/CONTRIBUTING.md/contributing.md/g' | sed 's/resources.md/\.\.\/resources.md/g' > docs/home.md
+cat README.md | sed 's/(docs\//(/g' | sed 's/CONTRIBUTING.md/contributing.md/g' > docs/home.md
 cat CHANGELOG.md | sed 's/(docs\//(/g' > docs/changelog.md
 cp CONTRIBUTING.md docs/contributing.md
+cp resources.md docs/resources.md
 cp vendors.md docs/vendors.md
 
 echo "Creating markdown file for each example"
@@ -11,7 +12,7 @@ for f in docs/examples/**/*.yaml; do
   yaml_content=$(cat "$f")
   markdown_file_path="${f//odcs.yaml/md}"
   file_name=$(basename "$f" .odcs.yaml)
-  header=$(echo "${file_name//\-/ }" | sed -e "s/\b\(.\)/\u\1/g")
+  header=$(echo "${file_name//\-/ }")
   echo "Creating file: $markdown_file_path"
   content=$(cat <<-END
 # ${header}

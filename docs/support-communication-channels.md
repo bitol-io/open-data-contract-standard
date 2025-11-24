@@ -7,13 +7,6 @@ description: "Support and communication channels help consumers find help regard
 
 Support and communication channels help consumers find help regarding their use of the data contract.
 
-## Table of Contents <!-- omit in toc -->
-- [Examples](#examples)
-  - [Minimal example](#minimal-example)
-  - [Full example](#full-example)
-- [Definitions](#definitions)
-
-
 ## Examples
 
 ### Minimal example

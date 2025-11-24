@@ -15,23 +15,9 @@ In ODCS v3, the schema has evolved from the table and column representation, the
 
 Figure 1 illustrates those terms with a basic relational database.
 
-<img src=img/elements-of-schema-odcs-v3.svg width=600/>
+<img src=../img/elements-of-schema-odcs-v3.svg width=600/>
 
 *Figure 1: elements of the schema in ODCS v3.*
-
-## Table of Contents <!-- omit in toc -->
-- [Examples](#examples)
-  - [Complete schema](#complete-schema)
-  - [Simple Array](#simple-array)
-  - [Array of Objects](#array-of-objects)
-- [Definitions](#definitions)
-  - [Schema (top level)](#schema-top-level)
-  - [Applicable to Elements (either Objects or Properties)](#applicable-to-elements-either-objects-or-properties)
-  - [Applicable to Objects](#applicable-to-objects)
-  - [Applicable to Properties](#applicable-to-properties)
-- [Logical Type Options](#logical-type-options)
-  - [Expressing Date / Datetime / Timezone information](#expressing-date--datetime--timezone-information)
-
 
 ## Examples
 
