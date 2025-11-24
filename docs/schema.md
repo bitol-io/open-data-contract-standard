@@ -25,7 +25,8 @@ Figure 1 illustrates those terms with a basic relational database.
 
 ```YAML
 schema:
-  - name: tbl
+  - id: tbl_obj
+    name: tbl
     logicalType: object
     physicalType: table
     physicalName: tbl_1
@@ -39,7 +40,8 @@ schema:
     tags: ['finance']
     dataGranularityDescription: Aggregation on columns txn_ref_dt, pmt_txn_id
     properties:
-      - name: txn_ref_dt
+      - id: txn_ref_dt_prop
+        name: txn_ref_dt
         businessName: transaction reference date
         logicalType: date
         physicalType: date
@@ -58,7 +60,8 @@ schema:
         examples:
           - 2022-10-03
           - 2020-01-28
-      - name: rcvr_id
+      - id: rcvr_id_prop
+        name: rcvr_id
         primaryKey: true
         primaryKeyPosition: 1
         businessName: receiver id
@@ -72,7 +75,8 @@ schema:
         tags: []
         classification: restricted
         encryptedName: enc_rcvr_id
-      - name: rcvr_cntry_code
+      - id: rcvr_cntry_code_prop
+        name: rcvr_cntry_code
         primaryKey: false
         primaryKeyPosition: -1
         businessName: receiver country code
@@ -112,18 +116,22 @@ schema:
 
 ```yaml
 schema:
-  - name: AnotherObject
+  - id: another_obj
+    name: AnotherObject
     logicalType: object
     properties:
-      - name: x
+      - id: x_prop
+        name: x
         logicalType: array
         items:
           logicalType: object
           properties:
-            - name: id
+            - id: id_field
+              name: id
               logicalType: string
               physicalType: VARCHAR(40)
-            - name: zip
+            - id: zip_field
+              name: zip
               logicalType: string
               physicalType: VARCHAR(15)
 ```
@@ -140,6 +148,7 @@ schema:
 
 | Key                      | UX label                     | Required | Description                                                                                                                                                                                                                   |
 |--------------------------|------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| id                       | ID                           | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                    |
 | name                     | Name                         | Yes      | Name of the element.                                                                                                                                                                                                          |
 | physicalName             | Physical Name                | No       | Physical name.                                                                                                                                                                                                                |
 | physicalType             | Physical Type                | No       | The physical element data type in the data source. For objects: `table`, `view`, `topic`, `file`. For properties: `VARCHAR(2)`, `DOUBLE`, `INT`, etc.                                                                         |
