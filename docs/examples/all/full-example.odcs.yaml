@@ -34,7 +34,8 @@ servers:
 
 # Dataset, schema, and quality
 schema:
-  - name: tbl
+  - id: tbl_obj
+    name: tbl
     physicalName: tbl_1
     physicalType: table
     businessName: Core Payment Metrics
@@ -61,7 +62,8 @@ schema:
           - property: cardinality
             value: "many-to-one"
     properties:
-      - name: transaction_reference_date
+      - id: txn_ref_dt_prop
+        name: transaction_reference_date
         physicalName: txn_ref_dt
         primaryKey: false
         primaryKeyPosition: -1
@@ -87,7 +89,8 @@ schema:
         customProperties:
           - property: anonymizationStrategy
             value: none
-      - name: rcvr_id
+      - id: rcvr_id_prop
+        name: rcvr_id
         primaryKey: true
         primaryKeyPosition: 1
         businessName: receiver id
@@ -107,7 +110,8 @@ schema:
             customProperties:
               - property: description
                 value: "Links to receiver master data"
-      - name: rcvr_cntry_code
+      - id: rcvr_cntry_code_prop
+        name: rcvr_cntry_code
         primaryKey: false
         primaryKeyPosition: -1
         businessName: receiver country code
@@ -163,14 +167,16 @@ schema:
           - rcvr_id
 
   # Receivers master table
-  - name: receivers
+  - id: receivers_obj
+    name: receivers
     physicalName: receivers_master
     physicalType: table
     businessName: Receivers Master Data
     description: Master data for all receivers
     tags: [ 'master-data', 'receivers' ]
     properties:
-      - name: id
+      - id: receiver_id_prop
+        name: id
         primaryKey: true
         primaryKeyPosition: 1
         businessName: receiver identifier
@@ -180,7 +186,8 @@ schema:
         description: Unique identifier for receiver
         unique: true
         classification: restricted
-      - name: country_code
+      - id: country_code_prop
+        name: country_code
         primaryKey: true
         primaryKeyPosition: 2
         businessName: receiver country
@@ -189,14 +196,16 @@ schema:
         required: true
         description: Country code of the receiver
         classification: public
-      - name: receiver_name
+      - id: receiver_name_prop
+        name: receiver_name
         businessName: receiver name
         logicalType: string
         physicalType: varchar(255)
         required: true
         description: Name of the receiver
         classification: restricted
-      - name: receiver_type
+      - id: receiver_type_prop
+        name: receiver_type
         businessName: receiver type
         logicalType: string
         physicalType: varchar(20)
