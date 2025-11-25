@@ -52,12 +52,25 @@ theme:
 
 nav:
   - Home: 'home.md'
-  - Standard: 'README.md'
+  - Standard:
+      - 'README.md'
+      - Fundamentals: 'fundamentals.md'
+      - Schema: 'schema.md'
+      - References: 'references.md'
+      - Data Quality: 'data-quality.md'
+      - Support: 'support-communication-channels.md'
+      - Pricing: 'pricing.md'
+      - Team: 'team.md'
+      - Roles: 'roles.md'
+      - SLA: 'service-level-agreement.md'
+      - Infrastructure: 'infrastructure-servers.md'
+      - Custom: 'custom-other-properties.md'
   - Examples:
       - 'examples/README.md'
       - '...'
   - Changelog: 'changelog.md'
   - Contributing: 'contributing.md'
+  - Resources: 'resources.md'
   - Vendors: 'vendors.md'
 
 extra:

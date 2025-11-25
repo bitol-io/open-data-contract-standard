@@ -10,28 +10,6 @@ This section describes how to reference elements within a data contract schema. 
 > [!IMPORTANT]
 > References are currently only supported for foreign key relationships.
 
-## Table of Contents <!-- omit in toc -->
-- [Fully Qualified Reference Notation](#fully-qualified-reference-notation)
-- [Reference Structure](#reference-structure)
-- [External Contract References](#external-contract-references)
-- [Reference Examples](#reference-examples)
-  - [Same Contract References](#same-contract-references)
-  - [External Contract References](#external-contract-references-1)
-- [Relationships between properties (Foreign Keys)](#relationships-between-properties-foreign-keys)
-  - [Quick Overview](#quick-overview)
-  - [Important Rules](#important-rules)
-  - [Field Definitions](#field-definitions)
-  - [Reference Notation for Foreign Keys](#reference-notation-for-foreign-keys)
-- [Examples](#examples)
-  - [Example 1: Simple Foreign Key (Property Level)](#example-1-simple-foreign-key-property-level)
-  - [Example 2: Multiple Relationships](#example-2-multiple-relationships)
-  - [Example 3: Schema-Level Relationships](#example-3-schema-level-relationships)
-  - [Example 4: Nested Properties](#example-4-nested-properties)
-  - [Example 5: Composite Keys](#example-5-composite-keys)
-  - [Example 6: Invalid Configurations](#example-6-invalid-configurations)
-  - [Complete Example](#complete-example)
-
-
 ## Fully Qualified Reference Notation
 
 ODCS uses a fully qualified notation with the `id` field and slash-separated paths for stable, refactor-safe references.

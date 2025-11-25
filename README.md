@@ -28,16 +28,16 @@ Discover the [Open Data Contract Standard](docs/README.md). This file contains s
 ### The basics of a data contract
 A data contract defines the agreement between a data producer and consumers. A data contract contains several sections:
 
-* [Fundamentals](docs/README.md#fundamentals).
-* [Schema](docs/README.md#schema).
-* [Data quality](docs/README.md#data-quality).
-* [Support & communication channels](docs/README.md#support-and-communication-channels)
-* [Pricing](docs/README.md#pricing).
-* [Team](docs/README.md#team).
-* [Roles](docs/README.md#roles).
-* [Service-level agreement (SLA)](docs/README.md#service-level-agreement-sla).
-* [Infrastructures & servers](docs/README.md#infrastructure-and-servers).
-* [Custom & other properties](docs/README.md#custom-properties).
+* [Fundamentals](docs/fundamentals.md).
+* [Schema](docs/schema.md).
+* [Data quality](docs/data-quality.md).
+* [Support & communication channels](docs/support-communication-channels.md)
+* [Pricing](docs/pricing.md).
+* [Team](docs/team.md).
+* [Roles](docs/roles.md).
+* [Service-level agreement (SLA)](docs/service-level-agreement.md).
+* [Infrastructures & servers](docs/infrastructure-servers.md).
+* [Custom & other properties](docs/custom-other-properties.md).
 
 ![Data contract schema](docs/img/data-contract-diagram-latest.png "Data contract schema")
 
@@ -51,7 +51,7 @@ JSON Schema for ODCS can be found [here](https://github.com/bitol-io/open-data-c
 - [VS Code](https://code.visualstudio.com/docs/languages/json#_json-schemas-and-settings)
 
 ## Articles and Other Resources
-Check out the [resources](resources.md) page.
+Check out the [resources](./resources.md) page.
 
 ## Contributing to the project
 Check out the [CONTRIBUTING](./CONTRIBUTING.md) page.

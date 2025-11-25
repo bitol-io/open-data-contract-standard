@@ -16,45 +16,6 @@ The typical ways of using the top level `servers` element are as follows:
 * **Different Technologies:** The data contract makes sure that regardless of the offered technology, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content.
 * **Different Technologies and Multiple Environments:** The data contract makes sure that regardless of the offered technology and environment, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content in dev(elopment), UAT, and prod(uction).
 
-
-## Table of Contents <!-- omit in toc -->
-- [General Server Structure](#general-server-structure)
-  - [Common Server Properties](#common-server-properties)
-- [Specific Server Properties](#specific-server-properties)
-- [Specific Server Properties \& Types](#specific-server-properties--types) - You should use those as the value for the `type` property.
-  - [API Server](#api-server)
-  - [Amazon Athena Server](#amazon-athena-server)
-  - [Azure Server](#azure-server)
-  - [Google BigQuery](#google-bigquery)
-  - [ClickHouse Server](#clickhouse-server)
-  - [Google Cloud SQL](#google-cloud-sql)
-  - [Databricks Server](#databricks-server)
-  - [IBM Db2 Server](#ibm-db2-server)
-  - [Denodo Server](#denodo-server)
-  - [Dremio Server](#dremio-server)
-  - [DuckDB Server](#duckdb-server)
-  - [Amazon Glue](#amazon-glue)
-  - [Hive](#hive)
-  - [informix](#ibm-informix-and-hcl-informix)
-  - [Kafka Server](#kafka-server)
-  - [Amazon Kinesis](#amazon-kinesis)
-  - [Local Files](#local-files)
-  - [MySQL Server](#mysql-server)
-  - [Oracle](#oracle)
-  - [PostgreSQL](#postgresql)
-  - [Presto Server](#presto-server)
-  - [Google Pub/Sub](#google-pubsub)
-  - [Amazon Redshift Server](#amazon-redshift-server)
-  - [Amazon S3 Server and Compatible Servers](#amazon-s3-server-and-compatible-servers)
-  - [SFTP Server](#sftp-server)
-  - [Snowflake](#snowflake)
-  - [Microsoft SQL Server](#microsoft-sql-server)
-  - [Synapse Server](#synapse-server)
-  - [Trino Server](#trino-server)
-  - [Vertica Server](#vertica-server)
-  - [zen](#Actian-Zen-Server)
-  - [custom](#custom-server)
-
 ## General Server Structure
 
 Each server in the schema has the following structure:
@@ -87,7 +48,7 @@ servers:
 
 Each server type can be customized with different properties such as `host`, `port`, `database`, and `schema`, depending on the server technology in use. Refer to the specific documentation for each server type for additional configurations.
 
-## Specific Server Properties & Types
+## Specific Server Properties
 
 If your server is not in the list, please use [custom](#custom-server) and suggest it as an improvement. Possible values for `type` are:
 

@@ -11,12 +11,6 @@ This section describes the service-level agreements (SLA).
 * Separate multiple object.element by a comma, as in `table1.col1`, `table2.col1`, `table1.col2`.
 * If there is only one object in the contract, the object name is not required.
 
-## Table of Contents <!-- omit in toc -->
-- [Example](#example)
-- [Definitions](#definitions)
-- [Valid Values for SLA Properties](#valid-values-for-sla-properties)
-
-
 ## Example
 
 ```YAML

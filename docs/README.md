@@ -21,7 +21,7 @@ For more details, see the sections below:
 7. [Team](./team.md)
 8. [Roles](./roles.md)
 9. [Service-Level Agreement](./service-level-agreement.md)
-10. [Infrastructures & Servers](./infrastructures-servers.md)
+10. [Infrastructures & Servers](./infrastructure-servers.md)
 11. [Custom & Other Properties](./custom-other-properties.md)
 
 ## Notes
