@@ -16,6 +16,8 @@ The typical ways of using the top level `servers` element are as follows:
 * **Different Technologies:** The data contract makes sure that regardless of the offered technology, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content.
 * **Different Technologies and Multiple Environments:** The data contract makes sure that regardless of the offered technology and environment, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content in dev(elopment), UAT, and prod(uction).
 
+[Back to TOC](README.md)
+
 ## General Server Structure
 
 Each server in the schema has the following structure:
@@ -359,3 +361,5 @@ Actian Zen (formerly Btrieve, later named Pervasive PSQL until version 13) is an
 | warehouse   | Warehouse         | No       | Name of the cluster or warehouse.                                   |
 
 If you need another property, use [custom properties](./custom-other-properties.md).
+
+[Back to TOC](README.md)
