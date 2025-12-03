@@ -11,6 +11,8 @@ This section describes the service-level agreements (SLA).
 * Separate multiple object.element by a comma, as in `table1.col1`, `table2.col1`, `table1.col2`.
 * If there is only one object in the contract, the object name is not required.
 
+[Back to TOC](README.md)
+
 ## Example
 
 ```YAML
@@ -74,3 +76,5 @@ Recommend SLA properties follow the [Data QoS periodic table](https://medium.com
 * `timeToDetect` (synonym `td`) - time to detect an issue.
 * `timeToNotify` (synonym `tn`).
 * `timeToRepair` (synonym `tr`).
+
+[Back to TOC](README.md)
