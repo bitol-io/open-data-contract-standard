@@ -66,6 +66,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * Added ImpalaServer with type `impala`
   * Duckdb schema was expecting an integer, but should expect a string.
   * Added support for Actian Zen Server.
+  * Added missing `stream` property to CustomServer.
 * **Deprecations**:
   * `slaDefaultElement` is deprecated, and will be removed in ODCS v4.0.0 (see RFC 21).   
   * The `team` structure has evolved. Both are valid, however the ODCS v3.0.x structure is deprecated (see RFC 16).

@@ -1122,6 +1122,10 @@
             "warehouse": {
               "type": "string",
               "description": "Name of the cluster or warehouse."
+            },
+            "stream": {
+              "type": "string",
+              "description": "Name of the data stream."
             }
           }
         },
