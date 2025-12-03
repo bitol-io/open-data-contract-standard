@@ -14,6 +14,8 @@ Data quality rules support different levels/stages of data quality attributes:
 * **SQL**: An individual SQL query that returns a value that can be compared.
 * **Custom**: Quality attributes that are vendor-specific, such as Soda, Great Expectations, dbt tests, dbx, or Montecarlo monitors.
 
+[Back to TOC](README.md)
+
 ## Text
 
 A human-readable text that describes the quality of the data. Later in the development process, these might be translated into an executable check (such as `sql`), a library metric, or checked through an AI engine.
@@ -328,4 +330,6 @@ quality:
     mustBeGreaterThan: 0
     mustBeLessThan: 100
 ```
+
+[Back to TOC](README.md)
 
