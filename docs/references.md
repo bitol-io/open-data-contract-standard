@@ -10,6 +10,8 @@ This section describes how to reference elements within a data contract schema. 
 > [!IMPORTANT]
 > References are currently only supported for foreign key relationships.
 
+[Back to TOC](README.md)
+
 ## Fully Qualified Reference Notation
 
 ODCS uses a fully qualified notation with the `id` field and slash-separated paths for stable, refactor-safe references.
@@ -380,3 +382,5 @@ schema:
             name: postal_code
             logicalType: string
 ```
+
+[Back to TOC](README.md)
