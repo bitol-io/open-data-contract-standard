@@ -40,7 +40,7 @@ servers:
 | Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                                    |
 |------------------|-------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                      |
-| type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica.   |
+| type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, zen. |
 | description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                     |
 | environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                         |
 | roles            | Roles             | No       | List of roles that have access to the server. Check [roles](./roles.md) section for more details.                                                                                                                                                                                                                  |
@@ -169,6 +169,16 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | host         | Host            | Yes        | The host to the Hive server.                    |
 | port         | Port            | No         | The port to the Hive server. Defaults to 10000. |
 | database     | Database        | Yes        | The name of the Hive database.                  |
+
+### Apache Impala
+
+[Apache Impala](https://impala.apache.org/) is a massively parallel processing (MPP) SQL query engine for data stored in Apache Hadoop clusters. Impala provides high-performance, low-latency SQL queries on data stored in HDFS and Apache HBase, enabling interactive exploration and analytics without data movement or transformation.
+
+| Key          | UX Label        | Required   | Description                                       |
+|--------------|-----------------|------------|---------------------------------------------------|
+| host         | Host            | Yes        | The host to the Impala server.                    |
+| port         | Port            | No         | The port to the Impala server. Defaults to 21050. |
+| database     | Database        | Yes        | The name of the Impala database.                  |
 
 ### IBM Informix and HCL Informix
 
