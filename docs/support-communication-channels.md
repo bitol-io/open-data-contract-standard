@@ -7,6 +7,8 @@ description: "Support and communication channels help consumers find help regard
 
 Support and communication channels help consumers find help regarding their use of the data contract.
 
+[Back to TOC](README.md)
+
 ## Examples
 
 ### Minimal example
@@ -57,3 +59,6 @@ support:
 | support.scope            | Scope             | No       | Scope can be: `interactive`, `announcements`, `issues`, `notifications`.                                                            |
 | support.invitationUrl    | Invitation URL    | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax).   |
 | support.customProperties | Custom Properties | No       | Any custom properties.                                                                                                              |
+
+[Back to TOC](README.md)
+
