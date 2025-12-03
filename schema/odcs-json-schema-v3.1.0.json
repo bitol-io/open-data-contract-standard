@@ -179,7 +179,7 @@
               "api", "athena", "azure", "bigquery", "clickhouse", "databricks", "denodo", "dremio",
               "duckdb", "glue", "cloudsql", "db2", "hive", "informix", "kafka", "kinesis", "local",
               "mysql", "oracle", "postgresql", "postgres", "presto", "pubsub",
-              "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "trino", "vertica", "custom"
+              "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "trino", "vertica", "zen", "custom"
             ]
           },
           "description": {
@@ -372,7 +372,6 @@
               "$ref": "#/$defs/ServerSource/HiveServer"
             }
           },
-
           {
             "if": {
               "properties": {
@@ -384,6 +383,19 @@
             },
             "then": {
               "$ref": "#/$defs/ServerSource/InformixServer"
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "zen"
+                }
+              },
+              "required": ["type"]
+            },
+            "then": {
+              "$ref": "#/$defs/ServerSource/ZenServer"
             }
           },
           {
@@ -978,6 +990,25 @@
             "host",
             "database"
           ]
+        },
+        "ZenServer": {
+          "type": "object",
+          "title": "ZenServer",
+          "properties": {
+            "host": {
+              "type": "string",
+              "description": "Hostname or IP address of the Zen server."
+            },
+            "port": {
+              "type": "integer",
+              "description": "Zen server SQL connections port. Defaults to 1583."
+            },
+            "database": {
+              "type": "string",
+              "description": "Database name to connect to on the Zen server."
+            }
+          },
+          "required": ["host", "database"]
         },
         "CustomServer": {
           "type": "object",
