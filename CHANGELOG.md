@@ -8,9 +8,9 @@ This document tracks the history and evolution of the **Open Data Contract Stand
 
 # v3.1.0 - 2025-11-20 - PROPOSED
 
+* **Splits** Main specification document into several smaller documents. 
 * Most sections have gained an optional `id` to enable easier linking as per RFC 26.
 * The **`team`** block is accepting both ODCS v3.0.x structure (now obsolete) or the updated RFC16 structure. The obsolete structure will be removed in ODCS v4.
-* **Splits** Main specification document into several smaller documents. 
 * **Adds** Relationships (Foreign Keys):
   * Add `relationships` array field to both `SchemaObject` and `SchemaProperty` to define foreign key relationships.
   * Support for property-level relationships where `from` field is implicit.
