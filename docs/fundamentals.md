@@ -7,6 +7,8 @@ description: "This section contains general information about the contract."
 
 This section contains general information about the contract.
 
+[Back to TOC](README.md)
+
 ## Example
 
 ```YAML
@@ -50,3 +52,5 @@ tags: ['finance']
 | description.usage                    | Usage                     | No       | Recommended usage of the data.                                                                                                                                                                                                |
 | description.authoritativeDefinitions | Authoritative Definitions | No       | List of links to sources that provide more details on the dataset; examples would be a link to privacy statement, terms and conditions, license agreements, data catalog, or another tool.                                    |
 | description.customProperties         | Custom Properties         | No       | Custom properties that are not part of the standard.                                                                                                                                                                          |
+
+[Back to TOC](README.md)
