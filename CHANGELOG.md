@@ -63,6 +63,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
   * SftpServer `format` not longer an enum of `parquet`, `delta`, `json`, `csv`, but rather a string with the same examples.
   * SftpServer `delimiter` not longer an enum of `new_line`, `array`, but rather a string with the same examples.
   * Added HiveServer with type `hive`.
+  * Added ImpalaServer with type `impala`
   * Duckdb schema was expecting an integer, but should expect a string.
   * Added support for Actian Zen Server.
 * **Deprecations**:

@@ -177,7 +177,7 @@
             "description": "Type of the server.",
             "enum": [
               "api", "athena", "azure", "bigquery", "clickhouse", "databricks", "denodo", "dremio",
-              "duckdb", "glue", "cloudsql", "db2", "hive", "informix", "kafka", "kinesis", "local",
+              "duckdb", "glue", "cloudsql", "db2", "hive", "impala", "informix", "kafka", "kinesis", "local",
               "mysql", "oracle", "postgresql", "postgres", "presto", "pubsub",
               "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "trino", "vertica", "zen", "custom"
             ]
@@ -370,6 +370,19 @@
             },
             "then": {
               "$ref": "#/$defs/ServerSource/HiveServer"
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "impala"
+                }
+              },
+              "required": ["type"]
+            },
+            "then": {
+              "$ref": "#/$defs/ServerSource/ImpalaServer"
             }
           },
           {
@@ -962,6 +975,28 @@
             "database": {
               "type": "string",
               "description": "The name of the Hive database."
+            }
+          },
+          "required": [
+            "host",
+            "database"
+          ]
+        },
+        "ImpalaServer": {
+          "type": "object",
+          "title": "ImpalaServer",
+          "properties": {
+            "host": {
+              "type": "string",
+              "description": "The host to the Impala server."
+            },
+            "port": {
+              "type": "integer",
+              "description": "The port to the Impala server. Defaults to 21050."
+            },
+            "database": {
+              "type": "string",
+              "description": "The name of the Impala database."
             }
           },
           "required": [
