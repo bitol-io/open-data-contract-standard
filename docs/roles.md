@@ -1,11 +1,13 @@
 ---
 title: "Roles"
-description: "This section lists the roles that a consumer may need to access the dataset depending on the type of access they require."
+description: "This section lists the roles that a consumer may need to access the dataset, depending on the type of access they require."
 ---
 
 # Roles
 
-This section lists the roles that a consumer may need to access the dataset depending on the type of access they require.
+This section lists the roles that a consumer may need to access the dataset, depending on the type of access they require.
+
+[Back to TOC](README.md)
 
 ## Example
 
@@ -40,3 +42,5 @@ roles:
 | roles.firstLevelApprovers  | 1st Level Approvers | No       | The name(s) of the first-level approver(s) of the role.              |
 | roles.secondLevelApprovers | 2nd Level Approvers | No       | The name(s) of the second-level approver(s) of the role.             |
 | roles.customProperties     | Custom Properties   | No       | Any custom properties.                                               |
+
+[Back to TOC](README.md)

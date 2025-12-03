@@ -9,7 +9,9 @@ This section lists team members and the history of their relation with this data
 > [!NOTE]
 > In v2.x, this section was called `stakeholders`. Starting with v3.1.0, both the following structure are valid. However, the original v2.x / v3.x structure is deprecated and will be removed in ODCS v4. 
 
-The structure describing "team" is shared between all Bitol standards, matching RFC 0016.
+The structure describing `team` is shared between all Bitol standards, matching RFC 0016.
+
+[Back to TOC](README.md)
 
 ##  Example
 
@@ -92,3 +94,4 @@ The UX label is the label used in the UI and other user experiences.
 | team.dateOut            | Date Out             | No       | The date when the user ceased to be part of the team.                                      |
 | team.replacedByUsername | Replaced By Username | No       | The username of the user who replaced the previous user.                                   |
 
+[Back to TOC](README.md)

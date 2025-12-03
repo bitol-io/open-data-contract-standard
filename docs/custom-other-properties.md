@@ -7,6 +7,8 @@ description: "This section covers custom properties you may find in a data contr
 
 This section covers other properties you may find in a data contract.
 
+[Back to TOC](README.md)
+
 ## Custom Properties
 
 This section covers custom properties you can use to add non-standard properties. This block is available in many
@@ -63,3 +65,4 @@ contractCreatedTs: 2024-09-17T11:58:08Z
 |-------------------|----------------------|----------|-------------------------------------------------------------------------|
 | contractCreatedTs | Contract Created UTC | No       | Timestamp in UTC of when the data contract was created, using ISO 8601. |
 
+[Back to TOC](README.md)

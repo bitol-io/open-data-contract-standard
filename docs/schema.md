@@ -15,9 +15,11 @@ In ODCS v3, the schema has evolved from the table and column representation, the
 
 Figure 1 illustrates those terms with a basic relational database.
 
-<img src=../img/elements-of-schema-odcs-v3.svg width=600/>
+<img src=../img/elements-of-schema-odcs-v3.png width=600/>
 
 *Figure 1: elements of the schema in ODCS v3.*
+
+[Back to TOC](README.md)
 
 ## Examples
 
@@ -277,3 +279,5 @@ schema:
       - "2024-03-10T14:22:35Z"
 
 ```
+
+[Back to TOC](README.md)
