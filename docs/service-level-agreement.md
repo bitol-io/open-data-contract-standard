@@ -18,7 +18,7 @@ This section describes the service-level agreements (SLA).
 ```YAML
 slaProperties:
   - id: latency_4_days
-    property: latency # Property, see list of values in DP QoS
+    property: latency # Property, see list of values in Data QoS (see below)
     value: 4
     unit: d # d, day, days for days; y, yr, years for years
     element: tab1.txn_ref_dt
