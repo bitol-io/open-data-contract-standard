@@ -29,7 +29,7 @@ quality:
 
 ## Library
 
-ODCS provides a set of predefined metrics commonly used in data quality checks, designed to be compatible with all major data quality engines. This simplifies the work for data engineers by eliminating the need to manually write SQL queries.
+ODCS provides a set of predefined metrics commonly used in data quality checks, designed to be compatible with all major data quality engines. This simplifies the work for data engineers by eliminating the need to manually write SQL queries. This section has been improved in ODCS v3.1.0.
 
 The type for library metrics is `library`, which can be omitted, if a `metric` property is defined.
 
@@ -51,7 +51,7 @@ properties:
         description: "There must be no null values in the column."
 ```
 
-is equalized to:
+is equal to:
 
 ```yaml
 properties:

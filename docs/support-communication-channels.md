@@ -5,7 +5,7 @@ description: "Support and communication channels help consumers find help regard
 
 # Support & Communication Channels
 
-Support and communication channels help consumers find help regarding their use of the data contract.
+Support and communication channels help consumers find help regarding their use of the data contract. They support multiple channels.
 
 [Back to TOC](README.md)
 
@@ -15,10 +15,8 @@ Support and communication channels help consumers find help regarding their use 
 
 ```yaml
 support:
-  - id: my_channel
-    channel: "#my-channel" # Simple Slack communication channel
-  - id: dist_list
-    channel: channel-name-or-identifier # Simple distribution list
+  - channel: "#my-channel" # Simple Slack communication channel
+  - channel: channel-name-or-identifier # Simple distribution list
     url: mailto:datacontract-ann@bitol.io
 ```
 
