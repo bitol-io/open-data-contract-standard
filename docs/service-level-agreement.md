@@ -22,6 +22,8 @@ slaProperties:
     value: 4
     unit: d # d, day, days for days; y, yr, years for years
     element: tab1.txn_ref_dt
+    scheduler: cron
+    schedule: 0 30 * * *
   - id: main_ga
     property: generalAvailability
     value: 2022-05-12T09:30:10-08:00
@@ -69,6 +71,8 @@ slaProperties:
 | slaProperties.element              | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas.                                                                             |
 | slaProperties.driver               | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.                                                                              |
 | slaProperties.description          | Description            | No                             | Description of the SLA for humans.                                                                                                                                              |
+| slaProperties.scheduler            | Scheduler                  | No       | Name of the scheduler, can be `cron` or any tool your organization support.                                                                                                  |
+| slaProperties.schedule             | Scheduler Configuration    | No       | Configuration information for the scheduling tool, for `cron` a possible value is `0 20 * * *`.                                                                              |
 
 ## Valid Values for SLA Properties
 
