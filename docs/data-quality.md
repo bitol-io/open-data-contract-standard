@@ -230,7 +230,8 @@ quality:
 
 ```yaml
 quality:
-- type: custom
+- id: row_count_btwn_10_50
+  type: custom
   engine: greatExpectations
   implementation: |
     type: expect_table_row_count_to_be_between # Block
@@ -245,7 +246,8 @@ The data contract can contain scheduling information for executing the rules. Yo
 
 ```yaml
 quality:
-  - type: sql
+  - id: count_less_than_3600
+    type: sql
     query: |
       SELECT COUNT(*) FROM {object} WHERE {property} IS NOT NULL
     mustBeLessThan: 3600
@@ -262,6 +264,7 @@ Acronyms:
 | Key                              | UX label                   | Required | Description                                                                                                                                                                  |
 |----------------------------------|----------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | quality                          | Quality                    | No       | Quality tag with all the relevant information for rule setup and execution.                                                                                                  |
+| quality.id                       | ID                         | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                                                                      |
 | quality.name                     | Name                       | No       | A short name for the rule.                                                                                                                                                   |
 | quality.description              | Description                | No       | Describe the quality check to be completed.                                                                                                                                  |
 | quality.type                     | Type                       | No       | Type of DQ rule. Valid values are `library` (default), `text`, `sql`, and `custom`.                                                                                          |

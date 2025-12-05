@@ -2417,6 +2417,9 @@
         "items": {
           "type": "object",
           "properties": {
+            "id": {
+              "$ref": "#/$defs/StableId"
+            },
             "url": {
               "type": "string",
               "description": "URL to the authority."
@@ -2484,6 +2487,9 @@
       "Pricing": {
         "type": "object",
         "properties": {
+          "id": {
+            "$ref": "#/$defs/StableId"
+          },
           "priceAmount": {
             "type": "number",
             "description": "Subscription price per unit of measure in `priceUnit`."
@@ -2504,6 +2510,9 @@
         "description": "Team member information.",
         "additionalProperties": false,
         "properties": {
+          "id": {
+            "$ref": "#/$defs/StableId"
+          },
           "username": {
             "type": "string",
             "description": "The user's username or email."
@@ -2555,6 +2564,9 @@
         "description": "Team information.",
         "additionalProperties": false,
         "properties": {
+          "id": {
+            "$ref": "#/$defs/StableId"
+          },
           "name": {
             "type": "string",
             "description": "Team name."

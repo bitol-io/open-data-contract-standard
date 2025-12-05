@@ -24,7 +24,8 @@ Each server in the schema has the following structure:
 
 ```yaml
 servers:
-  - server: my-server-name
+  - id: my_awesome_server
+    server: my-server-name
     type: <server-type>
     description: <server-description>
     environment: <server-environment>
@@ -40,6 +41,7 @@ servers:
 | Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                                    |
 |------------------|-------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                      |
+| id               | ID                | No       | A unique identifier used to reduce the risk of collisions, such as a UUID.                                                                                                                                                                                                                                     |
 | type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, zen. |
 | description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                     |
 | environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                         |

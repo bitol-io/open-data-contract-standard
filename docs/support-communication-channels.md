@@ -52,6 +52,7 @@ support:
 | Key                      | UX label          | Required | Description                                                                                                                         |
 |--------------------------|-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
 | support                  | Support           | No       | Top level for support channels.                                                                                                     |
+| support.id               | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                            |
 | support.channel          | Channel           | Yes      | Channel name or identifier.                                                                                                         |
 | support.url              | Channel URL       | No       | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                               |
 | support.description      | Description       | No       | Description of the channel, free text.                                                                                              |
