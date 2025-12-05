@@ -15,8 +15,10 @@ Support and communication channels help consumers find help regarding their use 
 
 ```yaml
 support:
-  - channel: "#my-channel" # Simple Slack communication channel
-  - channel: channel-name-or-identifier # Simple distribution list
+  - id: my_channel
+    channel: "#my-channel" # Simple Slack communication channel
+  - id: dist_list
+    channel: channel-name-or-identifier # Simple distribution list
     url: mailto:datacontract-ann@bitol.io
 ```
 
@@ -24,25 +26,30 @@ support:
 
 ```yaml
 support:
-  - channel: channel-name-or-identifier
+  - id: interactive_teams
+    channel: channel-name-or-identifier
     tool: teams
     scope: interactive
     url: https://bitol.io/teams/channel/my-data-contract-interactive
-  - channel: channel-name-or-identifier
+  - id: announcements_teams
+    channel: channel-name-or-identifier
     tool: teams
     scope: announcements
     url: https://bitol.io/teams/channel/my-data-contract-announcements
     invitationUrl: https://bitol.io/teams/channel/my-data-contract-announcements-invit
-  - channel: channel-name-or-identifier-for-all-announcement
+  - id: all_announcements
+    channel: channel-name-or-identifier-for-all-announcement
     description: All announcement for all data contracts
     tool: teams
     scope: announcements
     url: https://bitol.io/teams/channel/all-announcements
-  - channel: channel-name-or-identifier
+  - id: email_announcements
+    channel: channel-name-or-identifier
     tool: email
     scope: announcements
     url: mailto:datacontract-ann@bitol.io
-  - channel: channel-name-or-identifier
+  - id: ticket_support
+    channel: channel-name-or-identifier
     tool: ticket
     url: https://bitol.io/ticket/my-product
 ```
