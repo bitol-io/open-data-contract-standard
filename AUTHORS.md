@@ -22,7 +22,7 @@
 | Christian Foyer                                                                                        || Contributor          |
 | Dieter Wachters                                                                                        || Contributor          |
 | Martin Meermeyer                                                                                       || Contributor          |
-| [Diego Carvallo](https://www.linkedin.com/in/diego-carvallo/)                                          || TSC Member           |
+| [Diego Carvallo](https://carvallo.io/)                                          |[Pickle](https://www.withpickle.com)| TSC Member           |
 | Manuel DESTOUESSE                                                                                      || Contributor          |
 | Dirk Van de Poel                                                                                       || Contributor          |
 | Enrique Catalá                                                                                         || Contributor          |
