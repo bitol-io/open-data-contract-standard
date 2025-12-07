@@ -5,7 +5,7 @@ description: "Support and communication channels help consumers find help regard
 
 # Support & Communication Channels
 
-Support and communication channels help consumers find help regarding their use of the data contract.
+Support and communication channels help consumers find help regarding their use of the data contract. They support multiple channels.
 
 [Back to TOC](README.md)
 
@@ -24,25 +24,30 @@ support:
 
 ```yaml
 support:
-  - channel: channel-name-or-identifier
+  - id: interactive_teams
+    channel: channel-name-or-identifier
     tool: teams
     scope: interactive
     url: https://bitol.io/teams/channel/my-data-contract-interactive
-  - channel: channel-name-or-identifier
+  - id: announcements_teams
+    channel: channel-name-or-identifier
     tool: teams
     scope: announcements
     url: https://bitol.io/teams/channel/my-data-contract-announcements
     invitationUrl: https://bitol.io/teams/channel/my-data-contract-announcements-invit
-  - channel: channel-name-or-identifier-for-all-announcement
+  - id: all_announcements
+    channel: channel-name-or-identifier-for-all-announcement
     description: All announcement for all data contracts
     tool: teams
     scope: announcements
     url: https://bitol.io/teams/channel/all-announcements
-  - channel: channel-name-or-identifier
+  - id: email_announcements
+    channel: channel-name-or-identifier
     tool: email
     scope: announcements
     url: mailto:datacontract-ann@bitol.io
-  - channel: channel-name-or-identifier
+  - id: ticket_support
+    channel: channel-name-or-identifier
     tool: ticket
     url: https://bitol.io/ticket/my-product
 ```
@@ -52,6 +57,7 @@ support:
 | Key                      | UX label          | Required | Description                                                                                                                         |
 |--------------------------|-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
 | support                  | Support           | No       | Top level for support channels.                                                                                                     |
+| support.id               | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                            |
 | support.channel          | Channel           | Yes      | Channel name or identifier.                                                                                                         |
 | support.url              | Channel URL       | No       | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                               |
 | support.description      | Description       | No       | Description of the channel, free text.                                                                                              |

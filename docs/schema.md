@@ -15,7 +15,7 @@ In ODCS v3, the schema has evolved from the table and column representation, the
 
 Figure 1 illustrates those terms with a basic relational database.
 
-<img src=../img/elements-of-schema-odcs-v3.png width=600/>
+<img src=./img/elements-of-schema-odcs-v3.png width=600/>
 
 *Figure 1: elements of the schema in ODCS v3.*
 
@@ -227,7 +227,7 @@ Additional metadata options to more accurately define the data type.
 
 Given the complexity of handling various date and time formats (e.g., date, datetime, time, timestamp, timestamp with and without timezone), the existing `logicalType` options currently support  `date`, `timestamp`, and `time`. To specify additional temporal details, `logicalType` should be used in conjunction with `logicalTypeOptions.format`  or `physicalType` to define the desired format. Using `physicalType` allows for definition of your data-source specific data type.
 
-``` yaml
+```yaml
 version: 1.0.0
 kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
@@ -277,7 +277,6 @@ schema:
       format: "yyyy-MM-ddTHH:mm:ssZ"
     examples:
       - "2024-03-10T14:22:35Z"
-
 ```
 
 [Back to TOC](README.md)

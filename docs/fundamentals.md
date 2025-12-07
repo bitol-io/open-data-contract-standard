@@ -5,7 +5,7 @@ description: "This section contains general information about the contract."
 
 # Fundamentals
 
-This section contains general information about the contract.
+This section contains general information about the contract. Fundamentals were also called demographics in early versions of ODCS.
 
 [Back to TOC](README.md)
 

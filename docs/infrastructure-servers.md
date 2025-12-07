@@ -12,9 +12,9 @@ An entry in `servers` describes a single dataset on a specific environment and a
 The typical ways of using the top level `servers` element are as follows:
 
 * **Single Server:** The data contract protects a specific dataset at a specific location. *Example:* a CSV file on an SFTP server.
-* **Multiple Environments:** The data contract makes sure that the data is protected in all environments. *Example:* a data product with data in a dev(elopment), UAT, and prod(uction) environment on Databricks.
+* **Multiple Environments:** The data contract makes sure that the data is protected in all environments. *Example:* a data product with data in a **dev**(elopment), UAT, and **prod**(uction) environment on Databricks.
 * **Different Technologies:** The data contract makes sure that regardless of the offered technology, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content.
-* **Different Technologies and Multiple Environments:** The data contract makes sure that regardless of the offered technology and environment, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content in dev(elopment), UAT, and prod(uction).
+* **Different Technologies and Multiple Environments:** The data contract makes sure that regardless of the offered technology and environment, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content in **dev**(elopment), UAT, and **prod**(uction).
 
 [Back to TOC](README.md)
 
@@ -24,7 +24,8 @@ Each server in the schema has the following structure:
 
 ```yaml
 servers:
-  - server: my-server-name
+  - id: my_awesome_server
+    server: my-server-name
     type: <server-type>
     description: <server-description>
     environment: <server-environment>
@@ -37,14 +38,15 @@ servers:
 
 ### Common Server Properties
 
-| Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                                    |
-|------------------|-------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                      |
+| Key              | UX label          | Required | Description                                                                                                                                                                                                                                                                                                               |
+|------------------|-------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| server           | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                                 |
+| id               | ID                | No       | A unique identifier used to reduce the risk of collisions, such as a UUID.                                                                                                                                                                                                                                                |
 | type             | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, zen. |
-| description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                     |
-| environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                         |
-| roles            | Roles             | No       | List of roles that have access to the server. Check [roles](./roles.md) section for more details.                                                                                                                                                                                                                  |
-| customProperties | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                           |
+| description      | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                                |
+| environment      | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                                    |
+| roles            | Roles             | No       | List of roles that have access to the server. Check [roles](./roles.md) section for more details.                                                                                                                                                                                                                         |
+| customProperties | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                                      |
 
 ## Specific Server Properties
 

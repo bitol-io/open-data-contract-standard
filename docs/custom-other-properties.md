@@ -18,23 +18,27 @@ sections.
 
 ```YAML
 customProperties:
-  - property: refRulesetName
+  - id: rfc_ruleset_name
+    property: refRulesetName
     value: gcsc.ruleset.name
-  - property: somePropertyName
+  - id: some_property_name
+    property: somePropertyName
     value: property.value
-  - property: dataprocClusterName # Used for specific applications
+  - id: data_proc_cluster_name
+    property: dataprocClusterName # Used for specific applications
     value: [ cluster name ]
     description: Cluster name for specific applications
 ```
 
 ### Definitions
 
-| Key                          | UX label          | Required | Description                                                                                                       |
-|------------------------------|-------------------|----------|-------------------------------------------------------------------------------------------------------------------|
-| customProperties             | Custom Properties | No       | A list of key/value pairs for custom properties. Initially created to support the REF ruleset property.           |
-| customProperties.property    | Property          | No       | The name of the key. Names should be in camel case–the same as if they were permanent properties in the contract. |
-| customProperties.value       | Value             | No       | The value of the key. It can be an array.                                                                         |
-| customProperties.description | Description       | No       | Description for humans.                                                                                           |
+| Key                          | UX label          | Required | Description                                                                                                                                                                                |
+|------------------------------|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| customProperties             | Custom Properties | No       | A list of key/value pairs for custom properties. Initially created to support the REF ruleset property.                                                                                    |
+| customProperties.id          | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details. |
+| customProperties.property    | Property          | No       | The name of the key. Names should be in camel case–the same as if they were permanent properties in the contract.                                                                          |
+| customProperties.value       | Value             | No       | The value of the key. It can be an array.                                                                                                                                                  |
+| customProperties.description | Description       | No       | Description for humans.                                                                                                                                                                    |
 
 ## Authoritative Definitions
 
@@ -42,12 +46,30 @@ Authoritative Definitions are an essential part of the contract. They allow to d
 system like an enterprise catalog, repository, etc. The structure describing "Authoritative Definitions" is shared
 between all Bitol standards. This block is available in many sections.
 
-| Key                                  | UX label          | Required | Description                                                                                                                                                                                                                                                                    |
-|--------------------------------------|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| authoritativeDefinitions             | Link              | No       | A list of type/link pairs for authoritative definitions.                                                                                                                                                                                                                       |
-| authoritativeDefinitions.type        | Definition type   | Yes      | Type of definition for authority. Recommended values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. At the root level, a type can also be `canonicalUrl` to indicate a reference to the product's last version. |
-| authoritativeDefinitions.url         | URL to definition | Yes      | URL to the authority.                                                                                                                                                                                                                                                          |
-| authoritativeDefinitions.description | Description       | No       | Optional description.                                                                                                                                                                                                                                                          |
+### Example
+
+```yaml
+    authoritativeDefinitions:
+      - url: https://catalog.data.gov/dataset/air-quality
+        type: businessDefinition
+        description: Business definition for the dataset.
+      - url: https://www.youtube.com/watch?v=Iq6SxdsIHHE
+        type: videoTutorial
+        description: Discover what a data contract is.
+      - url: https://github.com/bitol-io/open-data-contract-standard/blob/main/docs/examples/all/full-example.odcs.yaml
+        type: canonicalUrl
+        description: Data contract's latest version.
+```
+
+### Definitions
+
+| Key                                  | UX label          | Required | Description                                                                                                                                                                                                                                                                            |
+|--------------------------------------|-------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| authoritativeDefinitions             | Link              | No       | A list of type/link pairs for authoritative definitions.                                                                                                                                                                                                                               |
+| authoritativeDefinitions.id          | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                                                             |
+| authoritativeDefinitions.type        | Definition type   | Yes      | Type of definition for authority. Recommended values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. At the root level, a type can also be `canonicalUrl` to indicate a reference to the data contract's latest version. |
+| authoritativeDefinitions.url         | URL to definition | Yes      | URL to the authority.                                                                                                                                                                                                                                                                  |
+| authoritativeDefinitions.description | Description       | No       | Optional description.                                                                                                                                                                                                                                                                  |
 
 ## Other Properties
 

@@ -22,13 +22,14 @@ A human-readable text that describes the quality of the data. Later in the devel
 
 ```yaml
 quality:
-  - type: text
+  - id: email_verified_text
+    type: text
     description: The email address was verified by the system.
 ```
 
 ## Library
 
-ODCS provides a set of predefined metrics commonly used in data quality checks, designed to be compatible with all major data quality engines. This simplifies the work for data engineers by eliminating the need to manually write SQL queries.
+ODCS provides a set of predefined metrics commonly used in data quality checks, designed to be compatible with all major data quality engines. This simplifies the work for data engineers by eliminating the need to manually write SQL queries. This section has been improved in ODCS v3.1.0.
 
 The type for library metrics is `library`, which can be omitted, if a `metric` property is defined.
 
@@ -42,20 +43,22 @@ Example:
 properties:
   - name: order_id
     quality:
-      - type: library
+      - id: order_id_no_nulls
+        type: library
         metric: nullValues
         mustBe: 0
         unit: rows
         description: "There must be no null values in the column."
 ```
 
-is equalized to:
+is equal to:
 
 ```yaml
 properties:
   - name: order_id
     quality:
-      - metric: nullValues
+      - id: order_id_no_nulls_simplified
+        metric: nullValues
         mustBe: 0
         description: "There must be no null values in the column."
 ```
@@ -79,7 +82,8 @@ Check that the count of null values is within range.
 properties:
   - name: customer_id
     quality:
-    - metric: nullValues
+    - id: customer_id_no_nulls
+      metric: nullValues
       mustBe: 0
       description: "There must be no null values in the column."
 ```
@@ -90,7 +94,8 @@ Example with percent:
 properties:
   - name: order_status
     quality:
-    - metric: nullValues
+    - id: order_status_null_percent
+      metric: nullValues
       mustBeLessThan: 1
       unit: percent
       description: "There must be less than 1% null values in the column."
@@ -106,7 +111,8 @@ In the argument `missingValues`, a list of values that are considered to be miss
 properties:
   - name: email_address
     quality:
-    - metric: missingValues
+    - id: email_missing_values
+      metric: missingValues
       arguments:
         missingValues: [null, '', 'N/A', 'n/a']
       mustBeLessThan: 100
@@ -121,7 +127,8 @@ Check that the value is within a defined set or matching a pattern.
 properties:
   - name: line_item_unit
     quality:
-      - metric: invalidValues
+      - id: line_item_unit_valid_values
+        metric: invalidValues
         arguments:
           validValues: ['pounds', 'kg']
         mustBeLessThan: 5
@@ -134,7 +141,8 @@ Using a pattern:
 properties:
   - name: iban
     quality:
-    - metric: invalidValues
+    - id: iban_pattern_check
+      metric: invalidValues
       mustBe: 0
       description: "The value must be an IBAN."
       arguments:
@@ -149,7 +157,8 @@ No more than 10 duplicate names.
 properties:
   - name: email_address
     quality:
-    - metric: duplicateValues
+    - id: email_duplicate_values
+      metric: duplicateValues
       mustBeLessThan: 10
       unit: rows
       description: "There must be less than 10 duplicate values in the column."
@@ -161,7 +170,8 @@ Duplicates should be less than 1%.
 properties:
   - name: phone_number
     quality:
-    - metric: duplicateValues
+    - id: phone_duplicate_percent
+      metric: duplicateValues
       mustBeLessThan: 1
       unit: percent
 ```
@@ -174,7 +184,8 @@ Calculates the number of rows (usually in a table) and compares it to an absolut
 schema:
   - name: orders
     quality:
-      - metric: rowCount
+      - id: orders_row_count
+        metric: rowCount
         mustBeBetween: [100, 120]
 ```
 
@@ -187,7 +198,8 @@ This is useful for validating compound keys where uniqueness is defined not by a
 schema:
   - name: orders
     quality:
-      - description: The combination of tenant_id and order_id must be unique
+      - id: orders_unique_tenant_order
+        description: The combination of tenant_id and order_id must be unique
         metric: duplicateValues
         mustBe: 0
         arguments:
@@ -202,7 +214,8 @@ A single SQL query that returns either a numeric or boolean value for comparison
 
 ```yaml
 quality:
-  - type: sql
+  - id: sql_count_not_null
+    type: sql
     query: |
       SELECT COUNT(*) FROM {object} WHERE {property} IS NOT NULL
     mustBeLessThan: 3600
@@ -216,7 +229,8 @@ Custom rules allow for vendor-specific checks, including tools like Soda, Great 
 
 ```yaml
 quality:
-- type: custom
+- id: soda_duplicate_percent
+  type: custom
   engine: soda
   implementation: |
         type: duplicate_percent  # Block
@@ -230,7 +244,8 @@ quality:
 
 ```yaml
 quality:
-- type: custom
+- id: row_count_btwn_10_50
+  type: custom
   engine: greatExpectations
   implementation: |
     type: expect_table_row_count_to_be_between # Block
@@ -245,7 +260,8 @@ The data contract can contain scheduling information for executing the rules. Yo
 
 ```yaml
 quality:
-  - type: sql
+  - id: count_less_than_3600
+    type: sql
     query: |
       SELECT COUNT(*) FROM {object} WHERE {property} IS NOT NULL
     mustBeLessThan: 3600
@@ -262,6 +278,7 @@ Acronyms:
 | Key                              | UX label                   | Required | Description                                                                                                                                                                  |
 |----------------------------------|----------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | quality                          | Quality                    | No       | Quality tag with all the relevant information for rule setup and execution.                                                                                                  |
+| quality.id                       | ID                         | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                                                                      |
 | quality.name                     | Name                       | No       | A short name for the rule.                                                                                                                                                   |
 | quality.description              | Description                | No       | Describe the quality check to be completed.                                                                                                                                  |
 | quality.type                     | Type                       | No       | Type of DQ rule. Valid values are `library` (default), `text`, `sql`, and `custom`.                                                                                          |

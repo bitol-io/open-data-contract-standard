@@ -6,7 +6,7 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 This document tracks the history and evolution of the **Open Data Contract Standard**.
 
-# v3.1.0 - 2025-11-20 - PROPOSED
+# v3.1.0 - 2025-12-08 - APPROVED
 
 * **Splits** Main specification document into several smaller documents. 
 * Most sections have gained an optional `id` to enable easier linking as per RFC 26.
@@ -24,7 +24,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
     * `from`: Source property reference (optional at property level)
     * `to`: Target property reference (required)
     * `customProperties`: Additional metadata
-* **Breaking change** to JSON Schema (as a reminder the standard is not the JSON Schema but the textual document):
+* **Breaking change** to the JSON Schema (as a reminder the standard is not the JSON Schema but the textual document):
   * Alter `exclusiveMaximum` and `exclusiveMinimum` for `integer/number` logical data type to be `number` instead of `boolean`. [Conforms with JSON Schema specification](https://json-schema.org/understanding-json-schema/reference/numeric#range).
   * Alter `exclusiveMaximum` and `exclusiveMinimum` for `date` logical data type to be `string` instead of `boolean`.
   * No additional or unevaluated properties are allowed for the following sections of the schema:

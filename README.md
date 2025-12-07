@@ -30,6 +30,7 @@ A data contract defines the agreement between a data producer and consumers. A d
 
 * [Fundamentals](docs/fundamentals.md).
 * [Schema](docs/schema.md).
+* [References](docs/references.md).
 * [Data quality](docs/data-quality.md).
 * [Support & communication channels](docs/support-communication-channels.md)
 * [Pricing](docs/pricing.md).

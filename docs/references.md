@@ -5,7 +5,7 @@ description: "This section describes how to reference elements within a data con
 
 # References
 
-This section describes how to reference elements within a data contract schema. References enable you to create relationships between different parts of your data contract.
+This section describes how to reference elements within a data contract schema. References enable you to create relationships between different parts of your data contract. This section is new in ODCS v3.1.0.
 
 > [!IMPORTANT]
 > References are currently only supported for foreign key relationships.
@@ -268,7 +268,8 @@ schema:
         relationships:
           - from: users.user_id  # ERROR: 'from' not allowed at property level
             to: accounts.id
-
+```
+```yaml
 # INVALID: Mismatched array types
 schema:
   - name: orders
@@ -277,7 +278,8 @@ schema:
         to:
           - items.order_id
           - items.line_num
-
+```
+```yaml
 # INVALID: Different array lengths (caught at runtime)
 schema:
   - name: orders
@@ -289,7 +291,8 @@ schema:
           - items.order_id
           - items.customer_id
           - items.line_num
-
+```
+```yaml
 # INVALID: Missing 'from' at schema level
 schema:
   - name: orders

@@ -17,31 +17,41 @@ This section describes the service-level agreements (SLA).
 
 ```YAML
 slaProperties:
-  - property: latency # Property, see list of values in DP QoS
+  - id: latency_4_days
+    property: latency # Property, see list of values in Data QoS (see below)
     value: 4
     unit: d # d, day, days for days; y, yr, years for years
     element: tab1.txn_ref_dt
-  - property: generalAvailability
+    scheduler: cron
+    schedule: 0 30 * * *
+  - id: main_ga
+    property: generalAvailability
     value: 2022-05-12T09:30:10-08:00
     description: GA at 12.5.22
-  - property: endOfSupport
+  - id: eos
+    property: endOfSupport
     value: 2032-05-12T09:30:10-08:00
-  - property: endOfLife
+  - id: eol
+    property: endOfLife
     value: 2042-05-12T09:30:10-08:00
-  - property: retention
+  - id: retention
+    property: retention
     value: 3
     unit: y
     element: tab1.txn_ref_dt
-  - property: frequency
+  - id: frequency
+    property: frequency
     value: 1
     valueExt: 1
     unit: d
     element: tab1.txn_ref_dt
-  - property: timeOfAvailability
+  - id: reg_toa
+    property: timeOfAvailability
     value: 09:00-08:00
     element: tab1.txn_ref_dt
     driver: regulatory # Describes the importance of the SLA: [regulatory|analytics|operational|...]
-  - property: timeOfAvailability
+  - id: analytics_toa
+    property: timeOfAvailability
     value: 08:00-08:00
     element: tab1.txn_ref_dt
     driver: analytics
@@ -53,6 +63,7 @@ slaProperties:
 |------------------------------------|------------------------|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ~~slaDefaultElement~~ (Deprecated) | Default SLA element(s) | No                             | Element (using the element path notation) to do the checks on. DEPRECATED SINCE v3.1.0. WILL BE REMOVED IN ODCS v4.0.0.                                                         |
 | slaProperties                      | SLA                    | No                             | A list of key/value pairs for SLA specific properties. There is no limit on the type of properties.                                                                             |
+| slaProperties.id                   | ID                     | No                             |  A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                                                                    |
 | slaProperties.property             | Property               | Yes                            | Specific property in SLA, check the [Data QoS periodic table](https://medium.com/data-mesh-learning/what-is-data-qos-and-why-is-it-critical-c524b81e3cc1).  May requires units. |
 | slaProperties.value                | Value                  | Yes                            | Agreement value. The label will change based on the property itself.                                                                                                            |
 | slaProperties.valueExt             | Extended value         | No - unless needed by property | Extended agreement value. The label will change based on the property itself.                                                                                                   |
@@ -60,6 +71,8 @@ slaProperties:
 | slaProperties.element              | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas.                                                                             |
 | slaProperties.driver               | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.                                                                              |
 | slaProperties.description          | Description            | No                             | Description of the SLA for humans.                                                                                                                                              |
+| slaProperties.scheduler            | Scheduler                  | No       | Name of the scheduler, can be `cron` or any tool your organization support.                                                                                                  |
+| slaProperties.schedule             | Scheduler Configuration    | No       | Configuration information for the scheduling tool, for `cron` a possible value is `0 20 * * *`.                                                                              |
 
 ## Valid Values for SLA Properties
 
