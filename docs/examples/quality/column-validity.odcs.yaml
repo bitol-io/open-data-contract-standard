@@ -1,10 +1,9 @@
 version: 1.0.0
-apiVersion: v3.0.2
+apiVersion: v3.1.0
 kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 status: active
 name: my_table
-dataProduct: my_quantum
 schema:
   - name: Air_Quality
     description: Air quality of the city of New York
@@ -14,17 +13,17 @@ schema:
     dataGranularityDescription: Raw records
     physicalType: table
     properties:
-    - name: UniqueID
+    - name: air_quality_status
       primaryKey: true
-      businessName: Unique identifier
-      logicalType: number
-      physicalType: int
+      logicalType: string
+      physicalType: varchar
       quality:
-      - rule: minCheck
-        description: This column should not contain values under 100000
+      - metric: invalidValues
+        mustBeLessOrEqualTo: 5
+        unit: percent
+        arguments:
+          validValues: ["", null, "n/a"]
+        description: This column should be filled in 95% of the time
         dimension: conformity
         severity: error
         businessImpact: operational
-        customProperties:
-          - property: min
-            value: 100000

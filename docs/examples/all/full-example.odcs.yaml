@@ -5,6 +5,11 @@ version: 1.1.0 # Version (follows semantic versioning)
 status: active
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 
+authoritativeDefinitions:
+- type: canonical
+  url: https://github.com/bitol-io/open-data-contract-standard/blob/main/docs/examples/all/full-example.odcs.yaml
+  description: Canonical URL to the latest version of the contract.
+  
 # Lots of information
 description:
   purpose: Views built on top of the seller tables.
@@ -16,7 +21,7 @@ description:
 tenant: ClimateQuantumInc
 
 kind: DataContract
-apiVersion: v3.0.2 # Standard version (follows semantic versioning)
+apiVersion: v3.1.0 # Standard version (follows semantic versioning)
 
 # Infrastructure & servers
 servers:
@@ -27,9 +32,10 @@ servers:
     database: pypl-edw
     schema: pp_access_views
 
-# Dataset, schema and quality
+# Dataset, schema, and quality
 schema:
-  - name: tbl
+  - id: tbl_obj
+    name: tbl
     physicalName: tbl_1
     physicalType: table
     businessName: Core Payment Metrics
@@ -41,8 +47,23 @@ schema:
         type: videoTutorial
     tags: [ 'finance', 'payments']
     dataGranularityDescription: Aggregation on columns txn_ref_dt, pmt_txn_id
+    # Schema-level relationships (for composite keys)
+    relationships:
+      - type: foreignKey
+        from:
+          - tbl.rcvr_id
+          - tbl.rcvr_cntry_code
+        to:
+          - receivers.id
+          - receivers.country_code
+        customProperties:
+          - property: description
+            value: "Composite key linking to receivers table"
+          - property: cardinality
+            value: "many-to-one"
     properties:
-      - name: transaction_reference_date
+      - id: txn_ref_dt_prop
+        name: transaction_reference_date
         physicalName: txn_ref_dt
         primaryKey: false
         primaryKeyPosition: -1
@@ -68,7 +89,8 @@ schema:
         customProperties:
           - property: anonymizationStrategy
             value: none
-      - name: rcvr_id
+      - id: rcvr_id_prop
+        name: rcvr_id
         primaryKey: true
         primaryKeyPosition: 1
         businessName: receiver id
@@ -81,7 +103,15 @@ schema:
         criticalDataElement: false
         tags: [ 'uid' ]
         classification: restricted
-      - name: rcvr_cntry_code
+        # Property-level relationship (from is implicit)
+        relationships:
+          - to: receivers.id
+            type: foreignKey
+            customProperties:
+              - property: description
+                value: "Links to receiver master data"
+      - id: rcvr_cntry_code_prop
+        name: rcvr_cntry_code
         primaryKey: false
         primaryKeyPosition: -1
         businessName: receiver country code
@@ -103,9 +133,10 @@ schema:
             type: implementation
         encryptedName: rcvr_cntry_code_encrypted
         quality:
-          - rule: nullCheck
+          - metric: nullValues
+            mustBe: 0
             description: column should not contain null values
-            dimension: completeness # dropdown 7 values
+            dimension: completeness
             type: library
             severity: error
             businessImpact: operational
@@ -119,7 +150,8 @@ schema:
               - property: COMPARISON_TYPE
                 value: Greater than
     quality:
-      - rule: countCheck
+      - metric: rowCount
+        mustBeGreaterThan: 1000000
         type: library
         description: Ensure row count is within expected volume range
         dimension: completeness
@@ -134,6 +166,59 @@ schema:
           - txn_ref_dt
           - rcvr_id
 
+  # Receivers master table
+  - id: receivers_obj
+    name: receivers
+    physicalName: receivers_master
+    physicalType: table
+    businessName: Receivers Master Data
+    description: Master data for all receivers
+    tags: [ 'master-data', 'receivers' ]
+    properties:
+      - id: receiver_id_prop
+        name: id
+        primaryKey: true
+        primaryKeyPosition: 1
+        businessName: receiver identifier
+        logicalType: string
+        physicalType: varchar(18)
+        required: true
+        description: Unique identifier for receiver
+        unique: true
+        classification: restricted
+      - id: country_code_prop
+        name: country_code
+        primaryKey: true
+        primaryKeyPosition: 2
+        businessName: receiver country
+        logicalType: string
+        physicalType: varchar(2)
+        required: true
+        description: Country code of the receiver
+        classification: public
+      - id: receiver_name_prop
+        name: receiver_name
+        businessName: receiver name
+        logicalType: string
+        physicalType: varchar(255)
+        required: true
+        description: Name of the receiver
+        classification: restricted
+      - id: receiver_type_prop
+        name: receiver_type
+        businessName: receiver type
+        logicalType: string
+        physicalType: varchar(20)
+        required: false
+        description: Type of receiver (individual, business, etc.)
+        classification: public
+        # Example of nested reference
+        relationships:
+          - to: receiver_types.type_code
+            customProperties:
+              - property: description
+                value: "Links to receiver type definitions"
+
 
 # Pricing
 price:
@@ -144,18 +229,21 @@ price:
 
 # Team
 team:
-  - username: ceastwood
-    role: Data Scientist
-    dateIn: "2022-08-02"
-    dateOut: "2022-10-01"
-    replacedByUsername: mhopper
-  - username: mhopper
-    role: Data Scientist
-    dateIn: "2022-10-01"
-  - username: daustin
-    role: Owner
-    description: Keeper of the grail
-    dateIn: "2022-10-01"
+  name: my-team
+  description: The team owning the data contract
+  members:
+    - username: ceastwood
+      role: Data Scientist
+      dateIn: "2022-08-02"
+      dateOut: "2022-10-01"
+      replacedByUsername: mhopper
+    - username: mhopper
+      role: Data Scientist
+      dateIn: "2022-10-01"
+    - username: daustin
+      role: Owner
+      description: Keeper of the grail
+      dateIn: "2022-10-01"
 
 
 # Roles
@@ -178,7 +266,6 @@ roles:
     secondLevelApprovers: 'mickey'
 
 # SLA
-slaDefaultElement: tab1.txn_ref_dt
 slaProperties:
   - property: latency # Property, see list of values in DP QoS
     value: 4
@@ -213,13 +300,19 @@ slaProperties:
 support:
   - channel: '#product-help' # Simple Slack communication channel
     tool: slack
-    url: https://aidaug.slack.com/archives/C05UZRSBKLY
   - channel: datacontract-ann # Simple distribution list
     tool: email
     url: mailto:datacontract-ann@bitol.io
   - channel: Feedback  # Product Feedback
     description: General Product Feedback (Public)
     url: https://product-feedback.com
+  - channel: 'product-issues'
+    tool: teams
+    scope: issues
+    customProperties:
+    - property: servicehours
+      value: 9-5 CET
+
 
 # Tags
 tags:
