@@ -4,7 +4,6 @@ kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 status: active
 name: my_table
-dataProduct: my_quantum
 schema:
   - name: Air_Quality
     description: Air quality of the city of New York
@@ -22,7 +21,11 @@ schema:
       physicalType: int
       quality:
       - description: This column should not contain null values
+        type: library
+        metric: nullValues
+        mustBe: 0
         dimension: completeness
         severity: error
-        rule: nullCheck
         businessImpact: operational
+        scheduler: cron
+        schedule: 0 20 * * *

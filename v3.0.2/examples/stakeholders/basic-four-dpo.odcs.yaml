@@ -7,22 +7,35 @@ name: my_table
 dataProduct: my_quantum
 schema: [ ]
 team:
-  - username: ceastwood
-    role: dpo
-    dateIn: "2014-08-02"
-    dateOut: "2014-10-01"
-    replacedByUsername: jwayne
-  - username: jwayne
-    role: dpo
-    dateIn: "2014-10-01"
-    dateOut: "2019-03-14"
-    replacedByUsername: cjane
-  - username: cjane
-    role: dpo
-    dateIn: "2019-03-14"
-    description: Minor interruption due to sabbatical, will be back by end of April 2021
-    dateOut: "2021-04-01"
-    replacedByUsername: bkid
-  - username: bkid
-    role: dpo
-    dateIn: "2021-04-01"
+  name: Data Protection Office
+  description: The Data Protection Office is responsible for the protection of data.
+  tags:
+    - data-protection
+    - dpo
+  customProperties:
+    - property: dpo-policy
+      value: "DPO policy"
+  authoritativeDefinitions:
+    - url: https://my-company-data-policy.com
+      type: businessDefinition
+      description: "Full definition of the data protection policy."
+  members:
+    - username: ceastwood
+      role: dpo
+      dateIn: "2014-08-02"
+      dateOut: "2014-10-01"
+      replacedByUsername: jwayne
+    - username: jwayne
+      role: dpo
+      dateIn: "2014-10-01"
+      dateOut: "2019-03-14"
+      replacedByUsername: cjane
+    - username: cjane
+      role: dpo
+      dateIn: "2019-03-14"
+      description: Minor interruption due to sabbatical, will be back by end of April 2021
+      dateOut: "2021-04-01"
+      replacedByUsername: bkid
+    - username: bkid
+      role: dpo
+      dateIn: "2021-04-01"
