@@ -1,0 +1,4050 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This section describes server structures, properties and types.">
+      
+      
+      
+        <link rel="canonical" href="https://bitol-io.github.io/open-data-contract-standard/v3.1.0/infrastructure-servers/">
+      
+      
+        <link rel="prev" href="../service-level-agreement/">
+      
+      
+        <link rel="next" href="../custom-other-properties/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../img/Bitol_Logo_icon_color.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Infrastructures & Servers - Open Data Contract Standard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Infrastructures & Servers - Open Data Contract Standard" />
+<meta property="og:description" content="This section describes server structures, properties and types." />
+<meta property="og:image" content="https://bitol-io.github.io/open-data-contract-standard/v3.1.0/assets/images/social/infrastructure-servers.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://bitol-io.github.io/open-data-contract-standard/v3.1.0/infrastructure-servers/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Infrastructures & Servers - Open Data Contract Standard" />
+<meta property="twitter:description" content="This section describes server structures, properties and types." />
+<meta property="twitter:image" content="https://bitol-io.github.io/open-data-contract-standard/v3.1.0/assets/images/social/infrastructure-servers.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#infrastructure-servers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Open Data Contract Standard" class="md-header__button md-logo" aria-label="Open Data Contract Standard" data-md-component="logo">
+      
+  <img src="../img/Bitol_Logo_icon_color.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Data Contract Standard
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Infrastructures & Servers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bitol-io/open-data-contract-standard" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    open-data-contract-standard
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../home/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href=".." class="md-tabs__link">
+          
+  
+  
+  Standard
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../examples/" class="md-tabs__link">
+          
+  
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../contributing/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contributing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../vendors/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Vendors
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Open Data Contract Standard" class="md-nav__button md-logo" aria-label="Open Data Contract Standard" data-md-component="logo">
+      
+  <img src="../img/Bitol_Logo_icon_color.svg" alt="logo">
+
+    </a>
+    Open Data Contract Standard
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bitol-io/open-data-contract-standard" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    open-data-contract-standard
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standard
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Standard
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Definition: Open Data Contract Standard (ODCS)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Quality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../support-communication-channels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pricing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pricing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Team
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service-level-agreement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SLA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-server-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Server Structure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General Server Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-server-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Server Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specific-server-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specific Server Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specific-server-properties_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specific Server Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specific Server Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-athena-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon Athena Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Azure Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-bigquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google BigQuery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clickhouse-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClickHouse Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-cloud-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Cloud SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#databricks-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Databricks Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ibm-db2-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IBM Db2 Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#denodo-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Denodo Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dremio-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dremio Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duckdb-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DuckDB Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-glue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon Glue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apache-impala" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apache Impala
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ibm-informix-and-hcl-informix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IBM Informix and HCL Informix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kafka-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kafka Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-kinesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon Kinesis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MySQL Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oracle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Oracle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PostgreSQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#presto-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Presto Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-pubsub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Pub/Sub
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-redshift-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon Redshift Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-s3-server-and-compatible-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon S3 Server and Compatible Servers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sftp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SFTP Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snowflake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Snowflake
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsoft-sql-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Microsoft SQL Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synapse-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Synapse Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trino-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trino Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertica-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vertica Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actian-zen-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actian Zen Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-other-properties/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples of Data Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    All
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/all/full-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    full example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/all/postgresql-adventureworks-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    postgresql adventureworks contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data types
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data types
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/data-types/all-data-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    all data types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fundamentals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/fundamentals/table-column-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    table column description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/quality/column-accuracy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    column accuracy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/quality/column-completeness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    column completeness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/quality/column-custom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    column custom
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/quality/column-validity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    column validity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_5" id="__nav_3_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Roles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/roles/service-and-operational-roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    service and operational roles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_6" id="__nav_3_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Schema
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/schema/all-schema-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    all schema types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/schema/kafka-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    kafka schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/schema/kafka-schemaregistry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    kafka schemaregistry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/schema/table-column/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    table column
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/schema/table-columns-with-partition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    table columns with partition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_7" id="__nav_3_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Server
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Server
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/server/azure-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    azure server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/server/kafka-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    kafka server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_8" id="__nav_3_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sla
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sla
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/sla/database-table-sla/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    database table sla
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_9" id="__nav_3_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stakeholders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Stakeholders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/stakeholders/basic-four-dpo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    basic four dpo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vendors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vendors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="infrastructure-servers">Infrastructure &amp; Servers</h1>
+<p>The <code>servers</code> element describes where the data protected by this data contract is <em>physically</em> located. That metadata helps to know where the data is so that a data consumer can discover the data and a platform engineer can automate access.</p>
+<p>An entry in <code>servers</code> describes a single dataset on a specific environment and a specific technology. The <code>servers</code> element can contain multiple servers, each with its own configuration.</p>
+<p>The typical ways of using the top level <code>servers</code> element are as follows:</p>
+<ul>
+<li><strong>Single Server:</strong> The data contract protects a specific dataset at a specific location. <em>Example:</em> a CSV file on an SFTP server.</li>
+<li><strong>Multiple Environments:</strong> The data contract makes sure that the data is protected in all environments. <em>Example:</em> a data product with data in a <strong>dev</strong>(elopment), UAT, and <strong>prod</strong>(uction) environment on Databricks.</li>
+<li><strong>Different Technologies:</strong> The data contract makes sure that regardless of the offered technology, it still holds. <em>Example:</em> a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content.</li>
+<li><strong>Different Technologies and Multiple Environments:</strong> The data contract makes sure that regardless of the offered technology and environment, it still holds. <em>Example:</em> a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content in <strong>dev</strong>(elopment), UAT, and <strong>prod</strong>(uction).</li>
+</ul>
+<p><a href="../">Back to TOC</a></p>
+<h2 id="general-server-structure">General Server Structure</h2>
+<p>Each server in the schema has the following structure:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">servers</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_awesome_server</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-server-name</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;server-type&gt;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;server-description&gt;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;server-environment&gt;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">&lt;server-type-specific-fields&gt;</span><span class="w"> </span><span class="c1"># according to the server type, see below</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;role-details&gt;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nt">customProperties</span><span class="p">:</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;custom-properties&gt;</span>
+</span></code></pre></div>
+<h3 id="common-server-properties">Common Server Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>server</td>
+<td>Server</td>
+<td>Yes</td>
+<td>Identifier of the server.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>ID</td>
+<td>No</td>
+<td>A unique identifier used to reduce the risk of collisions, such as a UUID.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Type</td>
+<td>Yes</td>
+<td>Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, zen.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Description</td>
+<td>No</td>
+<td>Description of the server.</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>Environment</td>
+<td>No</td>
+<td>Environment of the server. Examples includes: prod, preprod, dev, uat.</td>
+</tr>
+<tr>
+<td>roles</td>
+<td>Roles</td>
+<td>No</td>
+<td>List of roles that have access to the server. Check <a href="../roles/">roles</a> section for more details.</td>
+</tr>
+<tr>
+<td>customProperties</td>
+<td>Custom Properties</td>
+<td>No</td>
+<td>Custom properties that are not part of the standard.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="specific-server-properties">Specific Server Properties</h2>
+<p>Each server type can be customized with different properties such as <code>host</code>, <code>port</code>, <code>database</code>, and <code>schema</code>, depending on the server technology in use. Refer to the specific documentation for each server type for additional configurations.</p>
+<h2 id="specific-server-properties_1">Specific Server Properties</h2>
+<p>If your server is not in the list, please use <a href="#custom-server">custom</a> and suggest it as an improvement. Possible values for <code>type</code> are:</p>
+<h3 id="api-server">API Server</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>location</strong></td>
+<td>Location</td>
+<td>Yes</td>
+<td>URL to the API</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-athena-server">Amazon Athena Server</h3>
+<p><a href="https://docs.aws.amazon.com/athena/latest/ug/what-is.html">Amazon Athena</a> is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL. With a few actions in the AWS Management Console, you can point Athena at your data stored in Amazon S3 and begin using standard SQL to run ad-hoc queries and get results in seconds.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>Yes</td>
+<td>Identify the schema in the data source in which your tables exist.</td>
+</tr>
+<tr>
+<td>stagingDir</td>
+<td>Staging Directory</td>
+<td>No</td>
+<td>Amazon Athena automatically stores query results and metadata information for each query that runs in a query result location that you can specify in Amazon S3.</td>
+</tr>
+<tr>
+<td>catalog</td>
+<td>Catalog</td>
+<td>No</td>
+<td>Identify the name of the Data Source, also referred to as a Catalog.</td>
+</tr>
+<tr>
+<td>regionName</td>
+<td>Region Name</td>
+<td>No</td>
+<td>The region your AWS account uses.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="azure-server">Azure Server</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>location</td>
+<td>Location</td>
+<td>Yes</td>
+<td>Fully qualified path to Azure Blob Storage or Azure Data Lake Storage (ADLS), supports globs.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>Format</td>
+<td>Yes</td>
+<td>File format.</td>
+</tr>
+<tr>
+<td>delimiter</td>
+<td>Delimiter</td>
+<td>No</td>
+<td>Only for format = json. How multiple json documents are delimited within one file</td>
+</tr>
+</tbody>
+</table>
+<h3 id="google-bigquery">Google BigQuery</h3>
+<p><a href="https://cloud.google.com/bigquery">BigQuery</a> is a fully managed, AI-ready data analytics platform that helps you maximize value from your data and is designed to be multi-engine, multi-format, and multi-cloud.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>project</td>
+<td>Project</td>
+<td>Yes</td>
+<td>The Google Cloud Platform (GCP) project name.</td>
+</tr>
+<tr>
+<td>dataset</td>
+<td>Dataset</td>
+<td>Yes</td>
+<td>The GCP dataset name.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="clickhouse-server">ClickHouse Server</h3>
+<p><a href="https://clickhouse.com/">ClickHouse</a> is an open-source column-oriented database management system that allows generating analytical data reports in real-time.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host of the ClickHouse server.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>Yes</td>
+<td>The port to the ClickHouse server.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The name of the database.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="google-cloud-sql">Google Cloud SQL</h3>
+<p><a href="https://cloud.google.com/sql">Google Cloud SQL</a> is a fully managed, cost-effective relational database service for PostgreSQL, MySQL, and SQL Server.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host of the Google Cloud SQL server.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>Yes</td>
+<td>The port of the Google Cloud SQL server.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The name of the database.</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>Yes</td>
+<td>The name of the schema.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="databricks-server">Databricks Server</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>catalog</td>
+<td>Catalog</td>
+<td>Yes</td>
+<td>The name of the Hive or Unity catalog</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>Yes</td>
+<td>The schema name in the catalog</td>
+</tr>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>No</td>
+<td>The Databricks host</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ibm-db2-server">IBM Db2 Server</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host of the IBM DB2 server.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>Yes</td>
+<td>The port of the IBM DB2 server.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The name of the database.</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>No</td>
+<td>The name of the schema.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="denodo-server">Denodo Server</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host of the Denodo server.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>Yes</td>
+<td>The port of the Denodo server.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>No</td>
+<td>The name of the database.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dremio-server">Dremio Server</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host of the Dremio server.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>Yes</td>
+<td>The port of the Dremio server.</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>No</td>
+<td>The name of the schema.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="duckdb-server">DuckDB Server</h3>
+<p><a href="https://duckdb.org/">DuckDB</a> supports a feature-rich SQL dialect complemented with deep integrations into client APIs.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>Path to duckdb database file.</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>No</td>
+<td>The name of the schema.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-glue">Amazon Glue</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account</td>
+<td>Account</td>
+<td>Yes</td>
+<td>The AWS Glue account</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The AWS Glue database name</td>
+</tr>
+<tr>
+<td>location</td>
+<td>Location</td>
+<td>No</td>
+<td>The AWS S3 path. Must be in the form of a URL.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>Format</td>
+<td>No</td>
+<td>The format of the files</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hive">Hive</h3>
+<p><a href="https://hive.apache.org/">Apache Hive</a> is a distributed, fault-tolerant data warehouse system that enables analytics at massive scale. Built on top of Apache Hadoop, Hive allows users to read, write, and manage petabytes of data using SQL-like queries through HiveQL, with native support for cloud storage systems and enterprise-grade security features.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host to the Hive server.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>No</td>
+<td>The port to the Hive server. Defaults to 10000.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The name of the Hive database.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="apache-impala">Apache Impala</h3>
+<p><a href="https://impala.apache.org/">Apache Impala</a> is a massively parallel processing (MPP) SQL query engine for data stored in Apache Hadoop clusters. Impala provides high-performance, low-latency SQL queries on data stored in HDFS and Apache HBase, enabling interactive exploration and analytics without data movement or transformation.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host to the Impala server.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>No</td>
+<td>The port to the Impala server. Defaults to 21050.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The name of the Impala database.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ibm-informix-and-hcl-informix">IBM Informix and HCL Informix</h3>
+<p><a href="https://www.ibm.com/products/informix">IBM Informix</a> is a high performance, always-on, highly scalable and easily embeddable enterprise-class database optimized for the most demanding transactional and analytics workloads. As an object-relational engine, IBM Informix seamlessly integrates the best of relational and object-oriented capabilities enabling the flexible modeling of complex data structures and relationships.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host to the Informix server.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>No</td>
+<td>The port to the Informix server. Defaults to 9088.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The name of the database.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="kafka-server">Kafka Server</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The bootstrap server of the kafka cluster.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>Format</td>
+<td>No</td>
+<td>The format of the messages.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-kinesis">Amazon Kinesis</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stream</td>
+<td>Stream</td>
+<td>Yes</td>
+<td>The name of the Kinesis data stream.</td>
+</tr>
+<tr>
+<td>region</td>
+<td>Region</td>
+<td>No</td>
+<td>AWS region.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>Format</td>
+<td>No</td>
+<td>The format of the record</td>
+</tr>
+</tbody>
+</table>
+<h3 id="local-files">Local Files</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>Path</td>
+<td>Yes</td>
+<td>The relative or absolute path to the data file(s).</td>
+</tr>
+<tr>
+<td>format</td>
+<td>Format</td>
+<td>Yes</td>
+<td>The format of the file(s)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mysql-server">MySQL Server</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host of the MySql server.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>No</td>
+<td>The port of the MySql server. Defaults to 3306.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The name of the database.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="oracle">Oracle</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host to the Oracle server</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>Yes</td>
+<td>The port to the Oracle server.</td>
+</tr>
+<tr>
+<td>serviceName</td>
+<td>Service Name</td>
+<td>Yes</td>
+<td>The name of the service.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="postgresql">PostgreSQL</h3>
+<p><a href="https://www.postgresql.org/">PostgreSQL</a> is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host to the PostgreSQL server</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>No</td>
+<td>The port to the PostgreSQL server. Defaults to 5432.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The name of the database.</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>No</td>
+<td>The name of the schema in the database.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="presto-server">Presto Server</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host to the Presto server</td>
+</tr>
+<tr>
+<td>catalog</td>
+<td>Catalog</td>
+<td>No</td>
+<td>The name of the catalog.</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>No</td>
+<td>The name of the schema.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="google-pubsub">Google Pub/Sub</h3>
+<p><a href="https://cloud.google.com/pubsub">Google Cloud</a> service to Ingest events for streaming into BigQuery, data lakes or operational databases.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>project</td>
+<td>Project</td>
+<td>Yes</td>
+<td>The GCP project name.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-redshift-server">Amazon Redshift Server</h3>
+<p><a href="https://aws.amazon.com/redshift/">Amazon Redshift</a> is a power data driven decisions with the best price-performance cloud data warehouse.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The name of the database.</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>Yes</td>
+<td>The name of the schema.</td>
+</tr>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>No</td>
+<td>An optional string describing the server.</td>
+</tr>
+<tr>
+<td>region</td>
+<td>Region</td>
+<td>No</td>
+<td>AWS region of Redshift server.</td>
+</tr>
+<tr>
+<td>account</td>
+<td>Account</td>
+<td>No</td>
+<td>The account used by the server.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amazon-s3-server-and-compatible-servers">Amazon S3 Server and Compatible Servers</h3>
+<p><a href="https://aws.amazon.com/s3/">Amazon Simple Storage Service (Amazon S3)</a> is an object storage service offering industry-leading scalability, data availability, security, and performance. Millions of customers of all sizes and industries store, manage, analyze, and protect any amount of data for virtually any use case, such as data lakes, cloud-native applications, and mobile apps. Other vendors have implemented a compatible implementation of S3.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>location</td>
+<td>Location</td>
+<td>Yes</td>
+<td>S3 URL, starting with <code>s3://</code></td>
+</tr>
+<tr>
+<td>endpointUrl</td>
+<td>Endpoint URL</td>
+<td>No</td>
+<td>The server endpoint for S3-compatible servers.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>Format</td>
+<td>No</td>
+<td>File format.</td>
+</tr>
+<tr>
+<td>delimiter</td>
+<td>Delimiter</td>
+<td>No</td>
+<td>Only for format = json. How multiple json documents are delimited within one file</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sftp-server">SFTP Server</h3>
+<p>Secure File Transfer Protocol (SFTP) is a network protocol that enables secure and encrypted file transfers between a client and a server.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>location</td>
+<td>Location</td>
+<td>Yes</td>
+<td>SFTP URL, starting with <code>sftp://</code>. The URL should include the port number.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>Format</td>
+<td>No</td>
+<td>File format.</td>
+</tr>
+<tr>
+<td>delimiter</td>
+<td>Delimiter</td>
+<td>No</td>
+<td>Only for format = json. How multiple json documents are delimited within one file</td>
+</tr>
+</tbody>
+</table>
+<h3 id="snowflake">Snowflake</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host to the Snowflake server</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>Yes</td>
+<td>The port to the Snowflake server.</td>
+</tr>
+<tr>
+<td>account</td>
+<td>Account</td>
+<td>Yes</td>
+<td>The Snowflake account used by the server.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The name of the database.</td>
+</tr>
+<tr>
+<td>warehouse</td>
+<td>Warehouse</td>
+<td>Yes</td>
+<td>The name of the cluster of resources that is a Snowflake virtual warehouse.</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>Yes</td>
+<td>The name of the schema.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="microsoft-sql-server">Microsoft SQL Server</h3>
+<p><a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">Microsoft SQL Server</a> is a proprietary relational database management system developed by Microsoft.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host to the database server</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>No</td>
+<td>The port to the database server. Defaults to 1433.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The name of the database.</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>Yes</td>
+<td>The name of the schema in the database.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="synapse-server">Synapse Server</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host of the Synapse server.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>Yes</td>
+<td>The port of the Synapse server.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The name of the database.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="trino-server">Trino Server</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The Trino host URL.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>Yes</td>
+<td>The Trino port.</td>
+</tr>
+<tr>
+<td>catalog</td>
+<td>Catalog</td>
+<td>Yes</td>
+<td>The name of the catalog.</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>Yes</td>
+<td>The name of the schema in the database.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vertica-server">Vertica Server</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>The host of the Vertica server.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>Yes</td>
+<td>The port of the Vertica server.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>The name of the database.</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>Yes</td>
+<td>The name of the schema.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="actian-zen-server">Actian Zen Server</h3>
+<p>Actian Zen (formerly Btrieve, later named Pervasive PSQL until version 13) is an ACID-compliant, zero-DBA, embedded, nano-footprint, multi-model, Multi-Platform database management system (DBMS).</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>Yes</td>
+<td>Hostname or IP address of the Zen server.</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>No</td>
+<td>Zen server SQL connections port. Defaults to 1583.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>Yes</td>
+<td>Database name to connect to on the Zen server.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="custom-server">Custom Server</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UX Label</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account</td>
+<td>Account</td>
+<td>No</td>
+<td>Account used by the server.</td>
+</tr>
+<tr>
+<td>catalog</td>
+<td>Catalog</td>
+<td>No</td>
+<td>Name of the catalog.</td>
+</tr>
+<tr>
+<td>database</td>
+<td>Database</td>
+<td>No</td>
+<td>Name of the database.</td>
+</tr>
+<tr>
+<td>dataset</td>
+<td>Dataset</td>
+<td>No</td>
+<td>Name of the dataset.</td>
+</tr>
+<tr>
+<td>delimiter</td>
+<td>Delimiter</td>
+<td>No</td>
+<td>Delimiter.</td>
+</tr>
+<tr>
+<td>endpointUrl</td>
+<td>Endpoint URL</td>
+<td>No</td>
+<td>Server endpoint.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>Format</td>
+<td>No</td>
+<td>File format.</td>
+</tr>
+<tr>
+<td>host</td>
+<td>Host</td>
+<td>No</td>
+<td>Host name or IP address.</td>
+</tr>
+<tr>
+<td>location</td>
+<td>Location</td>
+<td>No</td>
+<td>A URL to a location.</td>
+</tr>
+<tr>
+<td>path</td>
+<td>Path</td>
+<td>No</td>
+<td>Relative or absolute path to the data file(s).</td>
+</tr>
+<tr>
+<td>port</td>
+<td>Port</td>
+<td>No</td>
+<td>Port to the server. No default value is assumed for custom servers.</td>
+</tr>
+<tr>
+<td>project</td>
+<td>Project</td>
+<td>No</td>
+<td>Project name.</td>
+</tr>
+<tr>
+<td>region</td>
+<td>Region</td>
+<td>No</td>
+<td>Cloud region.</td>
+</tr>
+<tr>
+<td>regionName</td>
+<td>Region Name</td>
+<td>No</td>
+<td>Region name.</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>Schema</td>
+<td>No</td>
+<td>Name of the schema.</td>
+</tr>
+<tr>
+<td>serviceName</td>
+<td>Service Name</td>
+<td>No</td>
+<td>Name of the service.</td>
+</tr>
+<tr>
+<td>stagingDir</td>
+<td>Staging Directory</td>
+<td>No</td>
+<td>Staging directory.</td>
+</tr>
+<tr>
+<td>stream</td>
+<td>Stream</td>
+<td>No</td>
+<td>Name of the data stream.</td>
+</tr>
+<tr>
+<td>warehouse</td>
+<td>Warehouse</td>
+<td>No</td>
+<td>Name of the cluster or warehouse.</td>
+</tr>
+</tbody>
+</table>
+<p>If you need another property, use <a href="../custom-other-properties/">custom properties</a>.</p>
+<p><a href="../">Back to TOC</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../service-level-agreement/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SLA">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                SLA
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../custom-other-properties/" class="md-footer__link md-footer__link--next" aria-label="Next: Custom">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Custom
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://join.slack.com/t/aidaug/shared_invite/zt-2d6ypx776-YGqtXwlSlCANhn2EWDmNGQ" target="_blank" rel="noopener" title="join.slack.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M94.1 315.1c0 25.9-21.2 47.1-47.1 47.1S0 341 0 315.1 21.2 268 47.1 268h47.1v47.1zm23.7 0c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1v117.8c0 25.9-21.2 47.1-47.1 47.1s-47.1-21.2-47.1-47.1zm47.1-189c-25.9 0-47.1-21.2-47.1-47.1s21.2-47 47.1-47S212 53.2 212 79.1v47.1h-47.1zm0 23.7c25.9 0 47.1 21.2 47.1 47.1S190.8 244 164.9 244H47.1C21.2 244 0 222.8 0 196.9s21.2-47.1 47.1-47.1zm189 47.1c0-25.9 21.2-47.1 47.1-47.1s47 21.2 47 47.1-21.2 47.1-47.1 47.1h-47.1v-47.1zm-23.7 0c0 25.9-21.2 47.1-47.1 47.1S236 222.8 236 196.9V79.1c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1zm-47.1 189c25.9 0 47.1 21.2 47.1 47.1s-21.2 47-47.1 47-47.1-21.2-47.1-47.1v-47.1h47.1zm0-23.7c-25.9 0-47.1-21.2-47.1-47.1s21.2-47.1 47.1-47.1h117.8c25.9 0 47.1 21.2 47.1 47.1s-21.2 47.1-47.1 47.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/bitol-io" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/bitol-io/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "navigation.top", "navigation.footer", "navigation.path", "content.code.copy", "content.code.select", "content.tabs.link", "toc.integrate", "toc.follow"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../js/open_in_new_tab.js"></script>
+      
+    
+  </body>
+</html>
