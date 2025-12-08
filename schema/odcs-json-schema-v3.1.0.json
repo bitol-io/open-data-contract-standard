@@ -652,7 +652,7 @@
     "ServerSource": {
       "ApiServer": {
         "type": "object",
-        "title": "AthenaServer",
+        "title": "ApiServer",
         "properties": {
           "location": {
             "type": "string",
