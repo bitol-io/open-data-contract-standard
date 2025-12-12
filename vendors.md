@@ -15,6 +15,7 @@ catalogs, data quality platforms, security tools, and more.
 * [Meta Analysis](https://www.meta-analysis.fr/en/home/) - Governance repository & Data Catalog, supports ODCS via a [flexible metamodel and open API](https://www.meta-analysis.fr/en/article-en/open-data-contract-standard-adoption/)
 * [Open Data Contract Standard (Python)](https://pypi.org/project/open-data-contract-standard/) - Python package to read and write YAML files using the Open Data Contract Standard
 * [Open Data Contract Standard (Excel Template)](https://github.com/datacontract/open-data-contract-standard-excel-template) - Excel Template for the Open Data Contract Standard
+* [Witboost](https://witboost.com) - Support ODCS as data contract definition through [open source template](https://github.com/agile-lab-dev/witboost-bitol-data-contract-template)
 
 ## Service providers
 
