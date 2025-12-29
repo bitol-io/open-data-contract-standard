@@ -662,10 +662,7 @@
               "https://api.example.com/v1"
             ]
           }
-        },
-        "required": [
-          "location"
-        ]
+        }
       },
       "AthenaServer": {
         "type": "object",
@@ -693,11 +690,7 @@
             "description": "The region your AWS account uses.",
             "examples": ["eu-west-1"]
           }
-        },
-        "required": [
-          "stagingDir",
-          "schema"
-        ]
+        }
       },
       "AzureServer": {
         "type": "object",
@@ -730,11 +723,7 @@
             ],
             "description": "Only for format = json. How multiple json documents are delimited within one file"
           }
-        },
-        "required": [
-          "location",
-          "format"
-        ]
+        }
       },
       "BigQueryServer": {
         "type": "object",
@@ -748,11 +737,7 @@
             "type": "string",
             "description": "The GCP dataset name."
           }
-        },
-        "required": [
-          "project",
-          "dataset"
-        ]
+        }
       },
       "ClickHouseServer": {
         "type": "object",
@@ -770,12 +755,7 @@
             "type": "string",
             "description": "The name of the database."
           }
-        },
-        "required": [
-          "host",
-          "port",
-          "database"
-        ]
+        }
       },
       "DatabricksServer": {
         "type": "object",
@@ -796,11 +776,7 @@
             "type": "string",
             "description": "The schema name in the catalog"
           }
-        },
-        "required": [
-          "catalog",
-          "schema"
-        ]
+        }
       },
       "DenodoServer": {
         "type": "object",
@@ -818,11 +794,7 @@
             "type": "string",
             "description": "The name of the database."
           }
-        },
-        "required": [
-          "host",
-          "port"
-        ]
+        }
       },
       "DremioServer": {
         "type": "object",
@@ -840,11 +812,7 @@
             "type": "string",
             "description": "The name of the schema."
           }
-        },
-        "required": [
-          "host",
-          "port"
-        ]
+        }
       },
       "DuckdbServer": {
         "type": "object",
@@ -858,10 +826,7 @@
             "type": "string",
             "description": "The name of the schema."
           }
-        },
-        "required": [
-          "database"
-        ]
+        }
       },
       "GlueServer": {
         "type": "object",
@@ -899,11 +864,7 @@
               "delta"
             ]
           }
-        },
-        "required": [
-          "account",
-          "database"
-        ]
+        }
       },
       "GoogleCloudSqlServer": {
         "type": "object",
@@ -925,13 +886,7 @@
             "type": "string",
             "description": "The name of the schema."
           }
-        },
-        "required": [
-          "host",
-          "port",
-          "database",
-          "schema"
-        ]
+        }
       },
       "IBMDB2Server": {
         "type": "object",
@@ -953,12 +908,7 @@
             "type": "string",
             "description": "The name of the schema."
           }
-        },
-        "required": [
-          "host",
-          "port",
-          "database"
-        ]
+        }
       },
       "HiveServer": {
         "type": "object",
@@ -976,11 +926,7 @@
             "type": "string",
             "description": "The name of the Hive database."
           }
-        },
-        "required": [
-          "host",
-          "database"
-        ]
+        }
       },
       "ImpalaServer": {
         "type": "object",
@@ -998,11 +944,7 @@
             "type": "string",
             "description": "The name of the Impala database."
           }
-        },
-        "required": [
-          "host",
-          "database"
-        ]
+        }
       },
       "InformixServer": {
         "type": "object",
@@ -1020,11 +962,7 @@
             "type": "string",
             "description": "The name of the database."
           }
-        },
-        "required": [
-          "host",
-          "database"
-        ]
+        }
       },
       "ZenServer": {
         "type": "object",
@@ -1042,8 +980,7 @@
             "type": "string",
             "description": "Database name to connect to on the Zen server."
           }
-        },
-        "required": ["host", "database"]
+        }
       },
       "CustomServer": {
         "type": "object",
@@ -1144,10 +1081,7 @@
             "examples": ["json", "avro", "protobuf", "xml"],
             "default": "json"
           }
-        },
-        "required": [
-          "host"
-        ]
+        }
       },
       "KinesisServer": {
         "type": "object",
@@ -1194,11 +1128,7 @@
               "csv"
             ]
           }
-        },
-        "required": [
-          "path",
-          "format"
-        ]
+        }
       },
       "MySqlServer": {
         "type": "object",
@@ -1216,12 +1146,7 @@
             "type": "string",
             "description": "The name of the database."
           }
-        },
-        "required": [
-          "host",
-          "port",
-          "database"
-        ]
+        }
       },
       "OracleServer": {
         "type": "object",
@@ -1248,12 +1173,7 @@
               "service"
             ]
           }
-        },
-        "required": [
-          "host",
-          "port",
-          "serviceName"
-        ]
+        }
       },
       "PostgresServer": {
         "type": "object",
@@ -1275,13 +1195,7 @@
             "type": "string",
             "description": "The name of the schema in the database."
           }
-        },
-        "required": [
-          "host",
-          "port",
-          "database",
-          "schema"
-        ]
+        }
       },
       "PrestoServer": {
         "type": "object",
@@ -1308,10 +1222,7 @@
               "public"
             ]
           }
-        },
-        "required": [
-          "host"
-        ]
+        }
       },
       "PubSubServer": {
         "type": "object",
@@ -1321,10 +1232,7 @@
             "type": "string",
             "description": "The GCP project name."
           }
-        },
-        "required": [
-          "project"
-        ]
+        }
       },
       "RedshiftServer": {
         "type": "object",
@@ -1351,11 +1259,7 @@
             "type": "string",
             "description": "The account used by the server."
           }
-        },
-        "required": [
-          "database",
-          "schema"
-        ]
+        }
       },
       "S3Server": {
         "type": "object",
@@ -1393,10 +1297,7 @@
             ],
             "description": "Only for format = json. How multiple json documents are delimited within one file"
           }
-        },
-        "required": [
-          "location"
-        ]
+        }
       },
       "SftpServer": {
         "type": "object",
@@ -1429,10 +1330,7 @@
             ],
             "description": "Only for format = json. How multiple json documents are delimited within one file"
           }
-        },
-        "required": [
-          "location"
-        ]
+        }
       },
       "SnowflakeServer": {
         "type": "object",
@@ -1462,12 +1360,7 @@
             "type": "string",
             "description": "The name of the cluster of resources that is a Snowflake virtual warehouse."
           }
-        },
-        "required": [
-          "account",
-          "database",
-          "schema"
-        ]
+        }
       },
       "SqlserverServer": {
         "type": "object",
@@ -1502,12 +1395,7 @@
               "dbo"
             ]
           }
-        },
-        "required": [
-          "host",
-          "database",
-          "schema"
-        ]
+        }
       },
       "SynapseServer": {
         "type": "object",
@@ -1525,12 +1413,7 @@
             "type": "string",
             "description": "The name of the database."
           }
-        },
-        "required": [
-          "host",
-          "port",
-          "database"
-        ]
+        }
       },
       "TrinoServer": {
         "type": "object",
@@ -1561,13 +1444,7 @@
               "my_schema"
             ]
           }
-        },
-        "required": [
-          "host",
-          "port",
-          "catalog",
-          "schema"
-        ]
+        }
       },
       "VerticaServer": {
         "type": "object",
@@ -1589,13 +1466,7 @@
             "type": "string",
             "description": "The name of the schema."
           }
-        },
-        "required": [
-          "host",
-          "port",
-          "database",
-          "schema"
-        ]
+        }
       }
     },
     "SchemaElement": {
