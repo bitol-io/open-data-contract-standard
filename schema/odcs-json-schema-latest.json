@@ -154,7 +154,7 @@
     "FullyQualifiedReference": {
       "type": "string",
       "description": "Fully qualified notation using id fields (section/id/properties/id), optionally prefixed with external file reference",
-      "pattern": "^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.(?:yaml|yml)#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+)*$"
+      "pattern": "r^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.ya?ml#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+)*$"
     },
     "StableId": {
       "type": "string",
