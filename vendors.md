@@ -7,6 +7,7 @@ Vendors who natively support ODCS (Open Data Contract Standard).
 A non-exhaustive, alphabetical list of organizations offering solutions natively compatible with ODCS, such as data catalogs, data quality platforms, security tools, and more.
 
 * [Actian Data Intelligence Platform](https://www.actian.com/data-intelligence/platform/) - A cloud-native, AI-ready solution that helps organizations discover, understand, trust, and activate their enterprise data assets at scale through intelligent metadata, governance, cataloging, and data marketplace capabilities.
+* [Collate](https://getcollate.io) - Managed OpenMetadata cloud service for unified metadata management and semantic intelligence, with enterprise support.
 * [Data Caterer](https://data.catering/latest/docs/guide/data-source/metadata/open-data-contract-standard/) - Test data management tool using data contracts as a metadata source
 * [Data Contract CLI](https://cli.datacontract.com) - Open Source tooling around data contracts.
 * [Data Contract Manager](https://datacontract-manager.com) - Professional data contract management tool with Data Marketplace, Access Management, and Data Governance AI.
@@ -17,7 +18,8 @@ A non-exhaustive, alphabetical list of organizations offering solutions natively
 * [Meta Analysis](https://www.meta-analysis.fr/en/home/) - Governance repository & Data Catalog, supports ODCS via a [flexible metamodel and open API](https://www.meta-analysis.fr/en/article-en/open-data-contract-standard-adoption/).
 * [Open Data Contract Standard (Python)](https://pypi.org/project/open-data-contract-standard/) - Python package to read and write YAML files using the Open Data Contract Standard.
 * [Open Data Contract Standard (Excel Template)](https://github.com/datacontract/open-data-contract-standard-excel-template) - Excel Template for the Open Data Contract Standard.
-* [OpenMetadata](open-metadata.org) - Openmetadata is an open and unified metadata platform for data discovery, observability, and governance
+* [OpenMetadata](https://open-metadata.org) - Open and unified metadata platform for data discovery, observability, and governance
+* [OpenMetadataStandards](https://openmetadatastandards.org/) - Open-source metadata standards with 700+ JSON schemas, RDF ontologies, and validation constraints, including OpenDataContractStandard.
 * [Witboost](https://witboost.com) - Support ODCS as a data contract definition through [open source template](https://github.com/agile-lab-dev/witboost-bitol-data-contract-template).
 
 ## Service providers
