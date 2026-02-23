@@ -6,6 +6,13 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 This document tracks the history and evolution of the **Open Data Contract Standard**.
 
+# v3.1.0 - 2026-02-23 - SCHEDULED
+
+* **Adds**:
+  * Introduce new JSON schemas with patch fixes.
+* **Deprecations**:
+  * `dataProduct` is deprecated.
+
 # v3.1.0 - 2025-12-08 - APPROVED
 
 * **Splits** Main specification document into several smaller documents. 
