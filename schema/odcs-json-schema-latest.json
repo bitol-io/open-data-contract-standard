@@ -51,7 +51,8 @@
     },
     "dataProduct": {
       "type": "string",
-      "description": "The name of the data product."
+      "description": "The name of the data product.",
+      "deprecated": true
     },
     "description": {
       "type": "object",
