@@ -11,7 +11,7 @@ A non-exhaustive, alphabetical list of organizations offering solutions natively
 * [Data Contract CLI](https://cli.datacontract.com) - Open Source tooling around data contracts.
 * [Data Contract Manager](https://datacontract-manager.com) - Professional data contract management tool with Data Marketplace, Access Management, and Data Governance AI.
 * [Data Contract Playground](https://data-catering.github.io/data-contract-playground/) - Playground site for creating, exporting, and validating data contracts.
-[DataVow](https://github.com/ludovicschmetz-stack/datavow) - Open-source CLI for ODCS v3.1 data contract enforcement with DuckDB validation, dbt test sync, GitHub Action, and Vow Score reporting
+* [DataVow](https://github.com/ludovicschmetz-stack/datavow) - Open-source CLI for ODCS v3.1 data contract enforcement with DuckDB validation, dbt test sync, GitHub Action, and Vow Score reporting
 * [DQC.ai | DQ PLATFORM](https://www.dqc.ai/dqc-platform) - [Enhancing Data Quality with ODCS: A Standard Ensured by the DQ Platform](https://www.dqc.ai/post/enhancing-data-quality-with-odcs-a-standard-ensured-by-the-dq-platform).
 * [IBM](https://www.ibm.com/) - Supports [data contracts](https://www.ibm.com/docs/en/announcements/watsonxdata-intelligence-v23-introduces-support-openlineage-natural-language-sql-functionality-open-data-contracts), aligned with the Open Data Contract Standard, via its data & AI platform, watsonx 
 * [jgp.ai Cloud Services](https://medium.com/data-mesh-learning/so-you-want-to-work-with-data-contracts-and-data-products-03e86f099710) - A set of services to create, archive, validate, and operationalize data contracts.
