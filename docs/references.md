@@ -336,7 +336,7 @@ schema:
                 value: "Externally referenced contract (fully qualified)"
 
           # To external contract (shorthand)
-          - to: https://example.com/data-contract-v1.yaml#profiles.user_id
+          - to: https://example.com/data-contract-v1.yaml#/profiles.user_id
             customProperties:
               - property: description
                 value: "Externally referenced contract (shorthand)"
