@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../img/Bitol_Logo_icon_color.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -2277,6 +2277,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2285,48 +2286,56 @@
 <tbody>
 <tr>
 <td>roles</td>
+<td>array</td>
 <td>Roles</td>
 <td>No</td>
 <td>Array. A list of roles that will provide user access to the dataset.</td>
 </tr>
 <tr>
 <td>roles.id</td>
+<td>string</td>
 <td>ID</td>
 <td>No</td>
 <td>A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See <a href="../references/">References</a> for more details.</td>
 </tr>
 <tr>
 <td>roles.role</td>
+<td>string</td>
 <td>Role</td>
 <td>Yes</td>
 <td>Name of the IAM role that provides access to the dataset.</td>
 </tr>
 <tr>
 <td>roles.description</td>
+<td>string</td>
 <td>Description</td>
 <td>No</td>
 <td>Description of the IAM role and its permissions.</td>
 </tr>
 <tr>
 <td>roles.access</td>
+<td>string</td>
 <td>Access</td>
 <td>No</td>
 <td>The type of access provided by the IAM role.</td>
 </tr>
 <tr>
 <td>roles.firstLevelApprovers</td>
+<td>string</td>
 <td>1st Level Approvers</td>
 <td>No</td>
 <td>The name(s) of the first-level approver(s) of the role.</td>
 </tr>
 <tr>
 <td>roles.secondLevelApprovers</td>
+<td>string</td>
 <td>2nd Level Approvers</td>
 <td>No</td>
 <td>The name(s) of the second-level approver(s) of the role.</td>
 </tr>
 <tr>
 <td>roles.customProperties</td>
+<td>array</td>
 <td>Custom Properties</td>
 <td>No</td>
 <td>Any custom properties.</td>

@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../img/Bitol_Logo_icon_color.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -2321,6 +2321,7 @@ In v2.x, this section was called <code>stakeholders</code>. Starting with v3.1.0
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2329,114 +2330,133 @@ In v2.x, this section was called <code>stakeholders</code>. Starting with v3.1.0
 <tbody>
 <tr>
 <td>team</td>
+<td>object</td>
 <td>Team</td>
 <td>No</td>
 <td>Object representing a team.</td>
 </tr>
 <tr>
 <td>team.id</td>
+<td>string</td>
 <td>ID</td>
 <td>No</td>
 <td>A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See <a href="../references/">References</a> for more details.</td>
 </tr>
 <tr>
 <td>team.name</td>
+<td>string</td>
 <td>Name</td>
 <td>No</td>
 <td>Team name.</td>
 </tr>
 <tr>
 <td>team.description</td>
+<td>string</td>
 <td>Description</td>
 <td>No</td>
 <td>Team description.</td>
 </tr>
 <tr>
 <td>team.customProperties</td>
+<td>array</td>
 <td>Custom Properties</td>
 <td>No</td>
 <td>Custom properties block.</td>
 </tr>
 <tr>
 <td>team.authoritativeDefinitions</td>
+<td>array</td>
 <td>Authoritative Definitions</td>
 <td>No</td>
 <td>Authoritative definitions block.</td>
 </tr>
 <tr>
 <td>team.tags</td>
+<td>array</td>
 <td>Tags</td>
 <td>No</td>
 <td>Tags as a list.</td>
 </tr>
 <tr>
 <td>team.members</td>
+<td>array</td>
 <td>Team Members</td>
 <td>No</td>
 <td>List of members</td>
 </tr>
 <tr>
 <td>team.members.<strong>username</strong></td>
+<td>string</td>
 <td>Username</td>
 <td>Yes</td>
 <td>The user's username or email.</td>
 </tr>
 <tr>
 <td>team.members.name</td>
+<td>string</td>
 <td>Name</td>
 <td>No</td>
 <td>The user's name.</td>
 </tr>
 <tr>
 <td>team.members.description</td>
+<td>string</td>
 <td>Description</td>
 <td>No</td>
 <td>The user's name.</td>
 </tr>
 <tr>
 <td>team.members.role</td>
+<td>string</td>
 <td>Role</td>
 <td>No</td>
 <td>The user's job role; Examples might be owner, data steward. There is no limit on the role.</td>
 </tr>
 <tr>
 <td>team.members.dateIn</td>
+<td>string</td>
 <td>Date In</td>
 <td>No</td>
 <td>The date when the user joined the team.</td>
 </tr>
 <tr>
 <td>team.members.dateOut</td>
+<td>string</td>
 <td>Date Out</td>
 <td>No</td>
 <td>The date when the user ceased to be part of the team.</td>
 </tr>
 <tr>
 <td>team.members.replacedByUsername</td>
+<td>string</td>
 <td>Replaced By Username</td>
 <td>No</td>
 <td>The username of the user who replaced the previous user.</td>
 </tr>
 <tr>
 <td>team.members.customProperties</td>
+<td>array</td>
 <td>Custom Properties</td>
 <td>No</td>
 <td>Custom properties block.</td>
 </tr>
 <tr>
 <td>team.members.authoritativeDefinitions</td>
+<td>array</td>
 <td>Authoritative Definitions</td>
 <td>No</td>
 <td>Authoritative definitions block.</td>
 </tr>
 <tr>
 <td>team.members.tags</td>
+<td>array</td>
 <td>Tags</td>
 <td>No</td>
 <td>Tags as a list.</td>
 </tr>
 <tr>
 <td>team.members.id</td>
+<td>string</td>
 <td>Id</td>
 <td>No</td>
 <td>Identifier.</td>
@@ -2467,6 +2487,7 @@ In v2.x, this section was called <code>stakeholders</code>. Starting with v3.1.0
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2475,48 +2496,56 @@ In v2.x, this section was called <code>stakeholders</code>. Starting with v3.1.0
 <tbody>
 <tr>
 <td>team</td>
+<td>array</td>
 <td>Team</td>
 <td>No</td>
 <td>Object</td>
 </tr>
 <tr>
 <td>team.username</td>
+<td>string</td>
 <td>Username</td>
 <td>No</td>
 <td>The user's username or email.</td>
 </tr>
 <tr>
 <td>team.name</td>
+<td>string</td>
 <td>Name</td>
 <td>No</td>
 <td>The user's name.</td>
 </tr>
 <tr>
 <td>team.description</td>
+<td>string</td>
 <td>Description</td>
 <td>No</td>
 <td>The user's name.</td>
 </tr>
 <tr>
 <td>team.role</td>
+<td>string</td>
 <td>Role</td>
 <td>No</td>
 <td>The user's job role; Examples might be owner, data steward. There is no limit on the role.</td>
 </tr>
 <tr>
 <td>team.dateIn</td>
+<td>string</td>
 <td>Date In</td>
 <td>No</td>
 <td>The date when the user joined the team.</td>
 </tr>
 <tr>
 <td>team.dateOut</td>
+<td>string</td>
 <td>Date Out</td>
 <td>No</td>
 <td>The date when the user ceased to be part of the team.</td>
 </tr>
 <tr>
 <td>team.replacedByUsername</td>
+<td>string</td>
 <td>Replaced By Username</td>
 <td>No</td>
 <td>The username of the user who replaced the previous user.</td>

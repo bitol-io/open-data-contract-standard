@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../img/Bitol_Logo_icon_color.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -2312,6 +2312,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2320,72 +2321,84 @@
 <tbody>
 <tr>
 <td>~~slaDefaultElement~~ (Deprecated)</td>
+<td>string</td>
 <td>Default SLA element(s)</td>
 <td>No</td>
 <td>Element (using the element path notation) to do the checks on. DEPRECATED SINCE v3.1.0. WILL BE REMOVED IN ODCS v4.0.0.</td>
 </tr>
 <tr>
 <td>slaProperties</td>
+<td>array</td>
 <td>SLA</td>
 <td>No</td>
 <td>A list of key/value pairs for SLA specific properties. There is no limit on the type of properties.</td>
 </tr>
 <tr>
 <td>slaProperties.id</td>
+<td>string</td>
 <td>ID</td>
 <td>No</td>
 <td>A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See <a href="../references/">References</a> for more details.</td>
 </tr>
 <tr>
 <td>slaProperties.property</td>
+<td>string</td>
 <td>Property</td>
 <td>Yes</td>
 <td>Specific property in SLA, check the <a href="https://medium.com/data-mesh-learning/what-is-data-qos-and-why-is-it-critical-c524b81e3cc1">Data QoS periodic table</a>.  May requires units.</td>
 </tr>
 <tr>
 <td>slaProperties.value</td>
+<td>string</td>
 <td>Value</td>
 <td>Yes</td>
 <td>Agreement value. The label will change based on the property itself.</td>
 </tr>
 <tr>
 <td>slaProperties.valueExt</td>
+<td>string</td>
 <td>Extended value</td>
 <td>No - unless needed by property</td>
 <td>Extended agreement value. The label will change based on the property itself.</td>
 </tr>
 <tr>
 <td>slaProperties.unit</td>
+<td>string</td>
 <td>Unit</td>
 <td>No - unless needed by property</td>
 <td><strong>d</strong>, day, days for days; <strong>y</strong>, yr, years for years, etc. Units use the ISO standard.</td>
 </tr>
 <tr>
 <td>slaProperties.element</td>
+<td>string</td>
 <td>Element(s)</td>
 <td>No</td>
 <td>Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas.</td>
 </tr>
 <tr>
 <td>slaProperties.driver</td>
+<td>string</td>
 <td>Driver</td>
 <td>No</td>
 <td>Describes the importance of the SLA from the list of: <code>regulatory</code>, <code>analytics</code>, or <code>operational</code>.</td>
 </tr>
 <tr>
 <td>slaProperties.description</td>
+<td>string</td>
 <td>Description</td>
 <td>No</td>
 <td>Description of the SLA for humans.</td>
 </tr>
 <tr>
 <td>slaProperties.scheduler</td>
+<td>string</td>
 <td>Scheduler</td>
 <td>No</td>
 <td>Name of the scheduler, can be <code>cron</code> or any tool your organization support.</td>
 </tr>
 <tr>
 <td>slaProperties.schedule</td>
+<td>string</td>
 <td>Scheduler Configuration</td>
 <td>No</td>
 <td>Configuration information for the scheduling tool, for <code>cron</code> a possible value is <code>0 20 * * *</code>.</td>

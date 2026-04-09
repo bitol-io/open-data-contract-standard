@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../img/Bitol_Logo_icon_color.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -2688,6 +2688,7 @@ This is useful for validating compound keys where uniqueness is defined not by a
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2696,132 +2697,154 @@ This is useful for validating compound keys where uniqueness is defined not by a
 <tbody>
 <tr>
 <td>quality</td>
+<td>array</td>
 <td>Quality</td>
 <td>No</td>
 <td>Quality tag with all the relevant information for rule setup and execution.</td>
 </tr>
 <tr>
 <td>quality.id</td>
+<td>string</td>
 <td>ID</td>
 <td>No</td>
 <td>A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See <a href="../references/">References</a> for more details.</td>
 </tr>
 <tr>
 <td>quality.name</td>
+<td>string</td>
 <td>Name</td>
 <td>No</td>
 <td>A short name for the rule.</td>
 </tr>
 <tr>
 <td>quality.description</td>
+<td>string</td>
 <td>Description</td>
 <td>No</td>
 <td>Describe the quality check to be completed.</td>
 </tr>
 <tr>
 <td>quality.type</td>
+<td>string</td>
 <td>Type</td>
 <td>No</td>
 <td>Type of DQ rule. Valid values are <code>library</code> (default), <code>text</code>, <code>sql</code>, and <code>custom</code>.</td>
 </tr>
 <tr>
 <td>quality.metric</td>
+<td>string</td>
 <td>Metric name</td>
 <td>No</td>
 <td>Required for <code>library</code>: the name of the metric to be calculated and compared.</td>
 </tr>
 <tr>
 <td>quality.rule</td>
+<td>string</td>
 <td>Rule name</td>
 <td>No</td>
 <td>Deprecated, use <code>metric</code> instead.</td>
 </tr>
 <tr>
 <td>quality.arguments</td>
+<td>object</td>
 <td>Arguments</td>
 <td>No</td>
 <td>Additional arguments for the metric, if needed.</td>
 </tr>
 <tr>
 <td>quality.\<operator></td>
+<td>number</td>
 <td>See below</td>
 <td>No</td>
 <td>Multiple values are allowed for the <strong>property</strong>, the value is the one to compare to.</td>
 </tr>
 <tr>
 <td>quality.unit</td>
+<td>string</td>
 <td>Unit</td>
 <td>No</td>
 <td>Unit the rule is using, popular values are <code>rows</code> or <code>percent</code>.</td>
 </tr>
 <tr>
 <td>quality.query</td>
+<td>string</td>
 <td>SQL Query</td>
 <td>No</td>
 <td>Required for <code>sql</code> DQ rules: the SQL query to be executed. Note that it should match the target SQL engine/database, no transalation service are provided here.</td>
 </tr>
 <tr>
 <td>quality.engine</td>
+<td>string</td>
 <td>Third-party DQ Engine</td>
 <td>No</td>
 <td>Required for <code>custom</code> DQ rule: name of the third-party engine being used. Any value is authorized here but common values are <code>soda</code>, <code>greatExpectations</code>, <code>montecarlo</code>, etc.</td>
 </tr>
 <tr>
 <td>quality.implementation</td>
+<td>string</td>
 <td>Third-party Implementation</td>
 <td>No</td>
 <td>A text (non-parsed) block of code required for the third-party DQ engine to run.</td>
 </tr>
 <tr>
 <td>quality.dimension</td>
+<td>string</td>
 <td>Dimension</td>
 <td>No</td>
 <td>The key performance indicator (KPI) or dimension for data quality. Valid values are listed after the table.</td>
 </tr>
 <tr>
 <td>quality.method</td>
+<td>string</td>
 <td>Method</td>
 <td>No</td>
 <td>Values are open and include <code>reconciliation</code>.</td>
 </tr>
 <tr>
 <td>quality.severity</td>
+<td>string</td>
 <td>Severity</td>
 <td>No</td>
 <td>The severity of the DQ rule.</td>
 </tr>
 <tr>
 <td>quality.businessImpact</td>
+<td>string</td>
 <td>Business Impact</td>
 <td>No</td>
 <td>Consequences of the rule failure.</td>
 </tr>
 <tr>
 <td>quality.customProperties</td>
+<td>array</td>
 <td>Custom Properties</td>
 <td>No</td>
 <td>Additional properties required for rule execution. Follows the same structure as any custom properties block.</td>
 </tr>
 <tr>
 <td>quality.tags</td>
+<td>array</td>
 <td>Tags</td>
 <td>No</td>
 <td>Tags. Follows the same structure as any tags property.</td>
 </tr>
 <tr>
 <td>quality.authoritativeDefinitions</td>
+<td>array</td>
 <td>Authoritative Definitions</td>
 <td>No</td>
 <td>Authoritative definitions indicate the link to external definition. Follows the same structure as any authoritative definitions block.</td>
 </tr>
 <tr>
 <td>quality.scheduler</td>
+<td>string</td>
 <td>Scheduler</td>
 <td>No</td>
 <td>Name of the scheduler, can be <code>cron</code> or any tool your organization support.</td>
 </tr>
 <tr>
 <td>quality.schedule</td>
+<td>string</td>
 <td>Scheduler Configuration</td>
 <td>No</td>
 <td>Configuration information for the scheduling tool, for <code>cron</code> a possible value is <code>0 20 * * *</code>.</td>
@@ -2845,7 +2868,7 @@ This is useful for validating compound keys where uniqueness is defined not by a
 <thead>
 <tr>
 <th>Operator</th>
-<th>Expected Value</th>
+<th>Type</th>
 <th>Math Symbol</th>
 <th>Example</th>
 </tr>
@@ -2860,7 +2883,7 @@ This is useful for validating compound keys where uniqueness is defined not by a
 <tr>
 <td><code>mustNotBe</code></td>
 <td>number</td>
-<td><code>&lt;&gt;</code>, <code>≠</code></td>
+<td><code>≠</code></td>
 <td><code>mustNotBe: 3.14</code></td>
 </tr>
 <tr>
@@ -2872,7 +2895,7 @@ This is useful for validating compound keys where uniqueness is defined not by a
 <tr>
 <td><code>mustBeGreaterOrEqualTo</code></td>
 <td>number</td>
-<td><code>&gt;=</code>, <code>≥</code></td>
+<td><code>≥</code></td>
 <td><code>mustBeGreaterOrEqualTo: 60</code></td>
 </tr>
 <tr>
@@ -2884,18 +2907,18 @@ This is useful for validating compound keys where uniqueness is defined not by a
 <tr>
 <td><code>mustBeLessOrEqualTo</code></td>
 <td>number</td>
-<td><code>&lt;=</code>, <code>≤</code></td>
+<td><code>≤</code></td>
 <td><code>mustBeLessOrEqualTo: 999</code></td>
 </tr>
 <tr>
 <td><code>mustBeBetween</code></td>
-<td>list of two numbers</td>
+<td>array</td>
 <td><code>∈</code></td>
 <td><code>mustBeBetween: [0, 100]</code></td>
 </tr>
 <tr>
 <td><code>mustNotBeBetween</code></td>
-<td>list of two numbers</td>
+<td>array</td>
 <td><code>∉</code></td>
 <td><code>mustNotBeBetween: [0, 100]</code></td>
 </tr>

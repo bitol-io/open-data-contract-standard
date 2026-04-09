@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../img/Bitol_Logo_icon_color.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -2274,6 +2274,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2282,102 +2283,119 @@
 <tbody>
 <tr>
 <td>apiVersion</td>
+<td>string</td>
 <td>Standard version</td>
 <td>Yes</td>
 <td>Version of the standard used to build data contract. Default value is <code>v3.1.0</code>.</td>
 </tr>
 <tr>
 <td>kind</td>
+<td>string</td>
 <td>Kind</td>
 <td>Yes</td>
 <td>The kind of file this is. Valid value is <code>DataContract</code>.</td>
 </tr>
 <tr>
 <td>id</td>
+<td>string</td>
 <td>ID</td>
 <td>Yes</td>
 <td>A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.</td>
 </tr>
 <tr>
 <td>name</td>
+<td>string</td>
 <td>Name</td>
 <td>No</td>
 <td>Name of the data contract.</td>
 </tr>
 <tr>
 <td>version</td>
+<td>string</td>
 <td>Version</td>
 <td>Yes</td>
 <td>Current version of the data contract.</td>
 </tr>
 <tr>
 <td>status</td>
+<td>string</td>
 <td>Status</td>
 <td>Yes</td>
 <td>Current status of the data contract. Examples are "proposed", "draft", "active", "deprecated", "retired".</td>
 </tr>
 <tr>
 <td>tenant</td>
+<td>string</td>
 <td>Tenant</td>
 <td>No</td>
 <td>Indicates the property the data is primarily associated with. Value is case insensitive.</td>
 </tr>
 <tr>
 <td>tags</td>
+<td>array</td>
 <td>Tags</td>
 <td>No</td>
 <td>A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, <code>finance</code>, <code>sensitive</code>, <code>employee_record</code>.</td>
 </tr>
 <tr>
 <td>domain</td>
+<td>string</td>
 <td>Domain</td>
 <td>No</td>
 <td>Name of the logical data domain.</td>
 </tr>
 <tr>
 <td>dataProduct</td>
+<td>string</td>
 <td>Data Product</td>
 <td>No</td>
 <td>Name of the data product.</td>
 </tr>
 <tr>
 <td>authoritativeDefinitions</td>
+<td>array</td>
 <td>Authoritative Definitions</td>
 <td>No</td>
 <td>List of links to sources that provide more details on the data contract.</td>
 </tr>
 <tr>
 <td>description</td>
+<td>object</td>
 <td>Description</td>
 <td>No</td>
 <td>Object containing the descriptions.</td>
 </tr>
 <tr>
 <td>description.purpose</td>
+<td>string</td>
 <td>Purpose</td>
 <td>No</td>
 <td>Intended purpose for the provided data.</td>
 </tr>
 <tr>
 <td>description.limitations</td>
+<td>string</td>
 <td>Limitations</td>
 <td>No</td>
 <td>Technical, compliance, and legal limitations for data use.</td>
 </tr>
 <tr>
 <td>description.usage</td>
+<td>string</td>
 <td>Usage</td>
 <td>No</td>
 <td>Recommended usage of the data.</td>
 </tr>
 <tr>
 <td>description.authoritativeDefinitions</td>
+<td>array</td>
 <td>Authoritative Definitions</td>
 <td>No</td>
 <td>List of links to sources that provide more details on the dataset; examples would be a link to privacy statement, terms and conditions, license agreements, data catalog, or another tool.</td>
 </tr>
 <tr>
 <td>description.customProperties</td>
+<td>array</td>
 <td>Custom Properties</td>
 <td>No</td>
 <td>Custom properties that are not part of the standard.</td>

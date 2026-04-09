@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../img/Bitol_Logo_icon_color.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -2489,6 +2489,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2497,6 +2498,7 @@
 <tbody>
 <tr>
 <td>schema</td>
+<td>array</td>
 <td>schema</td>
 <td>Yes</td>
 <td>Array. A list of elements within the schema to be cataloged.</td>
@@ -2508,6 +2510,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2516,60 +2519,70 @@
 <tbody>
 <tr>
 <td>id</td>
+<td>string</td>
 <td>ID</td>
 <td>No</td>
 <td>A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See <a href="../references/">References</a> for more details.</td>
 </tr>
 <tr>
 <td>name</td>
+<td>string</td>
 <td>Name</td>
 <td>Yes</td>
 <td>Name of the element.</td>
 </tr>
 <tr>
 <td>physicalName</td>
+<td>string</td>
 <td>Physical Name</td>
 <td>No</td>
 <td>Physical name.</td>
 </tr>
 <tr>
 <td>physicalType</td>
+<td>string</td>
 <td>Physical Type</td>
 <td>No</td>
 <td>The physical element data type in the data source. For objects: <code>table</code>, <code>view</code>, <code>topic</code>, <code>file</code>. For properties: <code>VARCHAR(2)</code>, <code>DOUBLE</code>, <code>INT</code>, etc.</td>
 </tr>
 <tr>
 <td>description</td>
+<td>string</td>
 <td>Description</td>
 <td>No</td>
 <td>Description of the element.</td>
 </tr>
 <tr>
 <td>businessName</td>
+<td>string</td>
 <td>Business Name</td>
 <td>No</td>
 <td>The business name of the element.</td>
 </tr>
 <tr>
 <td>authoritativeDefinitions</td>
+<td>array</td>
 <td>Authoritative Definitions</td>
 <td>No</td>
 <td>List of links to sources that provide more details on the element; examples would be a link to privacy statement, terms and conditions, license agreements, data catalog, or another tool.</td>
 </tr>
 <tr>
 <td>quality</td>
+<td>array</td>
 <td>Quality</td>
 <td>No</td>
 <td>List of data quality attributes.</td>
 </tr>
 <tr>
 <td>tags</td>
+<td>array</td>
 <td>Tags</td>
 <td>No</td>
 <td>A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, <code>finance</code>, <code>sensitive</code>, <code>employee_record</code>.</td>
 </tr>
 <tr>
 <td>customProperties</td>
+<td>array</td>
 <td>Custom Properties</td>
 <td>No</td>
 <td>Custom properties that are not part of the standard.</td>
@@ -2581,6 +2594,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2589,6 +2603,7 @@
 <tbody>
 <tr>
 <td>dataGranularityDescription</td>
+<td>string</td>
 <td>Data Granularity</td>
 <td>No</td>
 <td>Granular level of the data in the object. Example would be "Aggregation by country."</td>
@@ -2601,6 +2616,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2609,114 +2625,133 @@
 <tbody>
 <tr>
 <td>primaryKey</td>
+<td>boolean</td>
 <td>Primary Key</td>
 <td>No</td>
 <td>Boolean value specifying whether the field is primary or not. Default is false.</td>
 </tr>
 <tr>
 <td>primaryKeyPosition</td>
+<td>integer</td>
 <td>Primary Key Position</td>
 <td>No</td>
 <td>If field is a primary key, the position of the primary key element. Starts from 1. Example of <code>account_id, name</code> being primary key columns, <code>account_id</code> has primaryKeyPosition 1 and <code>name</code> primaryKeyPosition 2. Default to -1.</td>
 </tr>
 <tr>
 <td>logicalType</td>
+<td>string</td>
 <td>Logical Type</td>
 <td>No</td>
 <td>The logical field datatype. One of <code>string</code>, <code>date</code>, <code>timestamp</code>, <code>time</code>, <code>number</code>, <code>integer</code>, <code>object</code>, <code>array</code> or <code>boolean</code>.</td>
 </tr>
 <tr>
 <td>logicalTypeOptions</td>
+<td>object</td>
 <td>Logical Type Options</td>
 <td>No</td>
 <td>Additional optional metadata to describe the logical type. See <a href="#logical-type-options">Logical Type Options</a> for more details about supported options for each <code>logicalType</code>.</td>
 </tr>
 <tr>
 <td>physicalType</td>
+<td>string</td>
 <td>Physical Type</td>
 <td>No</td>
 <td>The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT.</td>
 </tr>
 <tr>
 <td>description</td>
+<td>string</td>
 <td>Description</td>
 <td>No</td>
 <td>Description of the element.</td>
 </tr>
 <tr>
 <td>required</td>
+<td>boolean</td>
 <td>Required</td>
 <td>No</td>
 <td>Indicates if the element may contain Null values; possible values are true and false. Default is false.</td>
 </tr>
 <tr>
 <td>unique</td>
+<td>boolean</td>
 <td>Unique</td>
 <td>No</td>
 <td>Indicates if the element contains unique values; possible values are true and false. Default is false.</td>
 </tr>
 <tr>
 <td>partitioned</td>
+<td>boolean</td>
 <td>Partitioned</td>
 <td>No</td>
 <td>Indicates if the element is partitioned; possible values are true and false.</td>
 </tr>
 <tr>
 <td>partitionKeyPosition</td>
+<td>integer</td>
 <td>Partition Key Position</td>
 <td>No</td>
 <td>If element is used for partitioning, the position of the partition element. Starts from 1. Example of <code>country, year</code> being partition columns, <code>country</code> has partitionKeyPosition 1 and <code>year</code> partitionKeyPosition 2. Default to -1.</td>
 </tr>
 <tr>
 <td>classification</td>
+<td>string</td>
 <td>Classification</td>
 <td>No</td>
 <td>Can be anything, like confidential, restricted, and public to more advanced categorization.</td>
 </tr>
 <tr>
 <td>authoritativeDefinitions</td>
+<td>array</td>
 <td>Authoritative Definitions</td>
 <td>No</td>
 <td>List of links to sources that provide more detail on element logic or values; examples would be URL to a git repo, documentation, a data catalog or another tool.</td>
 </tr>
 <tr>
 <td>encryptedName</td>
+<td>string</td>
 <td>Encrypted Name</td>
 <td>No</td>
 <td>The element name within the dataset that contains the encrypted element value. For example, unencrypted element <code>email_address</code> might have an encryptedName of <code>email_address_encrypt</code>.</td>
 </tr>
 <tr>
 <td>transformSourceObjects</td>
+<td>array</td>
 <td>Transform Sources</td>
 <td>No</td>
 <td>List of objects in the data source used in the transformation.</td>
 </tr>
 <tr>
 <td>transformLogic</td>
+<td>string</td>
 <td>Transform Logic</td>
 <td>No</td>
 <td>Logic used in the column transformation.</td>
 </tr>
 <tr>
 <td>transformDescription</td>
+<td>string</td>
 <td>Transform Description</td>
 <td>No</td>
 <td>Describes the transform logic in very simple terms.</td>
 </tr>
 <tr>
 <td>examples</td>
+<td>array</td>
 <td>Example Values</td>
 <td>No</td>
 <td>List of sample element values.</td>
 </tr>
 <tr>
 <td>criticalDataElement</td>
+<td>boolean</td>
 <td>Critical Data Element Status</td>
 <td>No</td>
 <td>True or false indicator; If element is considered a critical data element (CDE) then true else false.</td>
 </tr>
 <tr>
 <td>items</td>
+<td>object</td>
 <td>Items</td>
 <td>No</td>
 <td>List of items in an array (onlyapplicable when <code>logicalType: array</code>)</td>
@@ -2728,8 +2763,9 @@
 <table>
 <thead>
 <tr>
-<th>Data Type</th>
+<th>Logical Data Type</th>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2739,6 +2775,7 @@
 <tr>
 <td>array</td>
 <td>maxItems</td>
+<td>integer</td>
 <td>Maximum Items</td>
 <td>No</td>
 <td>Maximum number of items.</td>
@@ -2746,6 +2783,7 @@
 <tr>
 <td>array</td>
 <td>minItems</td>
+<td>integer</td>
 <td>Minimum Items</td>
 <td>No</td>
 <td>Minimum number of items.</td>
@@ -2753,6 +2791,7 @@
 <tr>
 <td>array</td>
 <td>uniqueItems</td>
+<td>boolean</td>
 <td>Unique Items</td>
 <td>No</td>
 <td>If set to true, all items in the array are unique.</td>
@@ -2760,6 +2799,7 @@
 <tr>
 <td>date/timestamp/time</td>
 <td>format</td>
+<td>string</td>
 <td>Format</td>
 <td>No</td>
 <td>Format of the date. Follows the format as prescribed by <a href="https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html">JDK DateTimeFormatter</a>. Default value is using ISO 8601: 'YYYY-MM-DDTHH:mm:ss.SSSZ'. For example, format 'yyyy-MM-dd'.</td>
@@ -2767,6 +2807,7 @@
 <tr>
 <td>date/timestamp/time</td>
 <td>exclusiveMaximum</td>
+<td>string</td>
 <td>Exclusive Maximum</td>
 <td>No</td>
 <td>All values must be strictly less than this value (values &lt; exclusiveMaximum).</td>
@@ -2774,6 +2815,7 @@
 <tr>
 <td>date/timestamp/time</td>
 <td>exclusiveMinimum</td>
+<td>string</td>
 <td>Exclusive Minimum</td>
 <td>No</td>
 <td>All values must be strictly greater than this value (values &gt; exclusiveMinimum).</td>
@@ -2781,6 +2823,7 @@
 <tr>
 <td>date/timestamp/time</td>
 <td>maximum</td>
+<td>string</td>
 <td>Maximum</td>
 <td>No</td>
 <td>All date values are less than or equal to this value (values &lt;= maximum).</td>
@@ -2788,6 +2831,7 @@
 <tr>
 <td>date/timestamp/time</td>
 <td>minimum</td>
+<td>string</td>
 <td>Minimum</td>
 <td>No</td>
 <td>All date values are greater than or equal to this value (values &gt;= minimum).</td>
@@ -2795,6 +2839,7 @@
 <tr>
 <td>timestamp/time</td>
 <td>timezone</td>
+<td>boolean</td>
 <td>Timezone</td>
 <td>No</td>
 <td>Whether the timestamp defines the timezone or not. If true, timezone information is included in the timestamp.</td>
@@ -2802,6 +2847,7 @@
 <tr>
 <td>timestamp/time</td>
 <td>defaultTimezone</td>
+<td>string</td>
 <td>Default Timezone</td>
 <td>No</td>
 <td>The default timezone of the timestamp. If timezone is not defined, the default timezone UTC is used.</td>
@@ -2809,6 +2855,7 @@
 <tr>
 <td>integer/number</td>
 <td>exclusiveMaximum</td>
+<td>number</td>
 <td>Exclusive Maximum</td>
 <td>No</td>
 <td>All values must be strictly less than this value (values &lt; exclusiveMaximum).</td>
@@ -2816,6 +2863,7 @@
 <tr>
 <td>integer/number</td>
 <td>exclusiveMinimum</td>
+<td>number</td>
 <td>Exclusive Minimum</td>
 <td>No</td>
 <td>All values must be strictly greater than this value (values &gt; exclusiveMinimum).</td>
@@ -2823,6 +2871,7 @@
 <tr>
 <td>integer/number</td>
 <td>format</td>
+<td>string</td>
 <td>Format</td>
 <td>No</td>
 <td>Format of the value in terms of how many bits of space it can use and whether it is signed or unsigned (follows the Rust integer types).</td>
@@ -2830,6 +2879,7 @@
 <tr>
 <td>integer/number</td>
 <td>maximum</td>
+<td>number</td>
 <td>Maximum</td>
 <td>No</td>
 <td>All values are less than or equal to this value (values &lt;= maximum).</td>
@@ -2837,6 +2887,7 @@
 <tr>
 <td>integer/number</td>
 <td>minimum</td>
+<td>number</td>
 <td>Minimum</td>
 <td>No</td>
 <td>All values are greater than or equal to this value (values &gt;= minimum).</td>
@@ -2844,6 +2895,7 @@
 <tr>
 <td>integer/number</td>
 <td>multipleOf</td>
+<td>number</td>
 <td>Multiple Of</td>
 <td>No</td>
 <td>Values must be multiples of this number. For example, multiple of 5 has valid values 0, 5, 10, -5.</td>
@@ -2851,6 +2903,7 @@
 <tr>
 <td>object</td>
 <td>maxProperties</td>
+<td>integer</td>
 <td>Maximum Properties</td>
 <td>No</td>
 <td>Maximum number of properties.</td>
@@ -2858,6 +2911,7 @@
 <tr>
 <td>object</td>
 <td>minProperties</td>
+<td>integer</td>
 <td>Minimum Properties</td>
 <td>No</td>
 <td>Minimum number of properties.</td>
@@ -2865,6 +2919,7 @@
 <tr>
 <td>object</td>
 <td>required</td>
+<td>array</td>
 <td>Required</td>
 <td>No</td>
 <td>Property names that are required to exist in the object.</td>
@@ -2872,6 +2927,7 @@
 <tr>
 <td>string</td>
 <td>format</td>
+<td>string</td>
 <td>Format</td>
 <td>No</td>
 <td>Provides extra context about what format the string follows. For example, password, byte, binary, email, uuid, uri, hostname, ipv4, ipv6.</td>
@@ -2879,6 +2935,7 @@
 <tr>
 <td>string</td>
 <td>maxLength</td>
+<td>integer</td>
 <td>Maximum Length</td>
 <td>No</td>
 <td>Maximum length of the string.</td>
@@ -2886,6 +2943,7 @@
 <tr>
 <td>string</td>
 <td>minLength</td>
+<td>integer</td>
 <td>Minimum Length</td>
 <td>No</td>
 <td>Minimum length of the string.</td>
@@ -2893,6 +2951,7 @@
 <tr>
 <td>string</td>
 <td>pattern</td>
+<td>string</td>
 <td>Pattern</td>
 <td>No</td>
 <td>Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (<a href="https://262.ecma-international.org/5.1/#sec-15.10.1">https://262.ecma-international.org/5.1/#sec-15.10.1</a>).</td>

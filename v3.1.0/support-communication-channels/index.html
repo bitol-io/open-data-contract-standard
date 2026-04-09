@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../img/Bitol_Logo_icon_color.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -2319,6 +2319,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2327,54 +2328,63 @@
 <tbody>
 <tr>
 <td>support</td>
+<td>array</td>
 <td>Support</td>
 <td>No</td>
 <td>Top level for support channels.</td>
 </tr>
 <tr>
 <td>support.id</td>
+<td>string</td>
 <td>ID</td>
 <td>No</td>
 <td>A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See <a href="../references/">References</a> for more details.</td>
 </tr>
 <tr>
 <td>support.channel</td>
+<td>string</td>
 <td>Channel</td>
 <td>Yes</td>
 <td>Channel name or identifier.</td>
 </tr>
 <tr>
 <td>support.url</td>
+<td>string</td>
 <td>Channel URL</td>
 <td>No</td>
 <td>Access URL using normal <a href="https://en.wikipedia.org/wiki/URL#Syntax">URL scheme</a> (https, mailto, etc.).</td>
 </tr>
 <tr>
 <td>support.description</td>
+<td>string</td>
 <td>Description</td>
 <td>No</td>
 <td>Description of the channel, free text.</td>
 </tr>
 <tr>
 <td>support.tool</td>
+<td>string</td>
 <td>Tool</td>
 <td>No</td>
 <td>Name of the tool, value can be <code>email</code>, <code>slack</code>, <code>teams</code>, <code>discord</code>, <code>ticket</code>, <code>googlechat</code>, or <code>other</code>.</td>
 </tr>
 <tr>
 <td>support.scope</td>
+<td>string</td>
 <td>Scope</td>
 <td>No</td>
 <td>Scope can be: <code>interactive</code>, <code>announcements</code>, <code>issues</code>, <code>notifications</code>.</td>
 </tr>
 <tr>
 <td>support.invitationUrl</td>
+<td>string</td>
 <td>Invitation URL</td>
 <td>No</td>
 <td>Some tools uses invitation URL for requesting or subscribing. Follows the <a href="https://en.wikipedia.org/wiki/URL#Syntax">URL scheme</a>.</td>
 </tr>
 <tr>
 <td>support.customProperties</td>
+<td>array</td>
 <td>Custom Properties</td>
 <td>No</td>
 <td>Any custom properties.</td>

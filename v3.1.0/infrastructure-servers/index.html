@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../img/Bitol_Logo_icon_color.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -2674,6 +2674,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2682,42 +2683,49 @@
 <tbody>
 <tr>
 <td>server</td>
+<td>string</td>
 <td>Server</td>
 <td>Yes</td>
 <td>Identifier of the server.</td>
 </tr>
 <tr>
 <td>id</td>
+<td>string</td>
 <td>ID</td>
 <td>No</td>
 <td>A unique identifier used to reduce the risk of collisions, such as a UUID.</td>
 </tr>
 <tr>
 <td>type</td>
+<td>string</td>
 <td>Type</td>
 <td>Yes</td>
 <td>Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, zen.</td>
 </tr>
 <tr>
 <td>description</td>
+<td>string</td>
 <td>Description</td>
 <td>No</td>
 <td>Description of the server.</td>
 </tr>
 <tr>
 <td>environment</td>
+<td>string</td>
 <td>Environment</td>
 <td>No</td>
 <td>Environment of the server. Examples includes: prod, preprod, dev, uat.</td>
 </tr>
 <tr>
 <td>roles</td>
+<td>array</td>
 <td>Roles</td>
 <td>No</td>
 <td>List of roles that have access to the server. Check <a href="../roles/">roles</a> section for more details.</td>
 </tr>
 <tr>
 <td>customProperties</td>
+<td>array</td>
 <td>Custom Properties</td>
 <td>No</td>
 <td>Custom properties that are not part of the standard.</td>
@@ -2733,6 +2741,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2741,6 +2750,7 @@
 <tbody>
 <tr>
 <td><strong>location</strong></td>
+<td>string</td>
 <td>Location</td>
 <td>Yes</td>
 <td>URL to the API</td>
@@ -2753,6 +2763,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2761,24 +2772,28 @@
 <tbody>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>Yes</td>
 <td>Identify the schema in the data source in which your tables exist.</td>
 </tr>
 <tr>
 <td>stagingDir</td>
+<td>string</td>
 <td>Staging Directory</td>
 <td>No</td>
 <td>Amazon Athena automatically stores query results and metadata information for each query that runs in a query result location that you can specify in Amazon S3.</td>
 </tr>
 <tr>
 <td>catalog</td>
+<td>string</td>
 <td>Catalog</td>
 <td>No</td>
 <td>Identify the name of the Data Source, also referred to as a Catalog.</td>
 </tr>
 <tr>
 <td>regionName</td>
+<td>string</td>
 <td>Region Name</td>
 <td>No</td>
 <td>The region your AWS account uses.</td>
@@ -2790,6 +2805,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2798,18 +2814,21 @@
 <tbody>
 <tr>
 <td>location</td>
+<td>string</td>
 <td>Location</td>
 <td>Yes</td>
 <td>Fully qualified path to Azure Blob Storage or Azure Data Lake Storage (ADLS), supports globs.</td>
 </tr>
 <tr>
 <td>format</td>
+<td>string</td>
 <td>Format</td>
 <td>Yes</td>
 <td>File format.</td>
 </tr>
 <tr>
 <td>delimiter</td>
+<td>string</td>
 <td>Delimiter</td>
 <td>No</td>
 <td>Only for format = json. How multiple json documents are delimited within one file</td>
@@ -2822,6 +2841,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2830,12 +2850,14 @@
 <tbody>
 <tr>
 <td>project</td>
+<td>string</td>
 <td>Project</td>
 <td>Yes</td>
 <td>The Google Cloud Platform (GCP) project name.</td>
 </tr>
 <tr>
 <td>dataset</td>
+<td>string</td>
 <td>Dataset</td>
 <td>Yes</td>
 <td>The GCP dataset name.</td>
@@ -2848,6 +2870,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2856,18 +2879,21 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host of the ClickHouse server.</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>Yes</td>
 <td>The port to the ClickHouse server.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The name of the database.</td>
@@ -2880,6 +2906,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2888,24 +2915,28 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host of the Google Cloud SQL server.</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>Yes</td>
 <td>The port of the Google Cloud SQL server.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The name of the database.</td>
 </tr>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>Yes</td>
 <td>The name of the schema.</td>
@@ -2917,6 +2948,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2925,18 +2957,21 @@
 <tbody>
 <tr>
 <td>catalog</td>
+<td>string</td>
 <td>Catalog</td>
 <td>Yes</td>
 <td>The name of the Hive or Unity catalog</td>
 </tr>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>Yes</td>
 <td>The schema name in the catalog</td>
 </tr>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>No</td>
 <td>The Databricks host</td>
@@ -2948,6 +2983,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2956,24 +2992,28 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host of the IBM DB2 server.</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>Yes</td>
 <td>The port of the IBM DB2 server.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The name of the database.</td>
 </tr>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>No</td>
 <td>The name of the schema.</td>
@@ -2985,6 +3025,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -2993,18 +3034,21 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host of the Denodo server.</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>Yes</td>
 <td>The port of the Denodo server.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>No</td>
 <td>The name of the database.</td>
@@ -3016,6 +3060,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3024,18 +3069,21 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host of the Dremio server.</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>Yes</td>
 <td>The port of the Dremio server.</td>
 </tr>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>No</td>
 <td>The name of the schema.</td>
@@ -3048,6 +3096,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3056,12 +3105,14 @@
 <tbody>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>Path to duckdb database file.</td>
 </tr>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>No</td>
 <td>The name of the schema.</td>
@@ -3073,6 +3124,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3081,24 +3133,28 @@
 <tbody>
 <tr>
 <td>account</td>
+<td>string</td>
 <td>Account</td>
 <td>Yes</td>
 <td>The AWS Glue account</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The AWS Glue database name</td>
 </tr>
 <tr>
 <td>location</td>
+<td>string</td>
 <td>Location</td>
 <td>No</td>
 <td>The AWS S3 path. Must be in the form of a URL.</td>
 </tr>
 <tr>
 <td>format</td>
+<td>string</td>
 <td>Format</td>
 <td>No</td>
 <td>The format of the files</td>
@@ -3111,6 +3167,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3119,18 +3176,21 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host to the Hive server.</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>No</td>
 <td>The port to the Hive server. Defaults to 10000.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The name of the Hive database.</td>
@@ -3143,6 +3203,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3151,18 +3212,21 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host to the Impala server.</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>No</td>
 <td>The port to the Impala server. Defaults to 21050.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The name of the Impala database.</td>
@@ -3175,6 +3239,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3183,18 +3248,21 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host to the Informix server.</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>No</td>
 <td>The port to the Informix server. Defaults to 9088.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The name of the database.</td>
@@ -3206,6 +3274,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3214,12 +3283,14 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The bootstrap server of the kafka cluster.</td>
 </tr>
 <tr>
 <td>format</td>
+<td>string</td>
 <td>Format</td>
 <td>No</td>
 <td>The format of the messages.</td>
@@ -3231,6 +3302,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3239,18 +3311,21 @@
 <tbody>
 <tr>
 <td>stream</td>
+<td>string</td>
 <td>Stream</td>
 <td>Yes</td>
 <td>The name of the Kinesis data stream.</td>
 </tr>
 <tr>
 <td>region</td>
+<td>string</td>
 <td>Region</td>
 <td>No</td>
 <td>AWS region.</td>
 </tr>
 <tr>
 <td>format</td>
+<td>string</td>
 <td>Format</td>
 <td>No</td>
 <td>The format of the record</td>
@@ -3262,6 +3337,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3270,12 +3346,14 @@
 <tbody>
 <tr>
 <td>path</td>
+<td>string</td>
 <td>Path</td>
 <td>Yes</td>
 <td>The relative or absolute path to the data file(s).</td>
 </tr>
 <tr>
 <td>format</td>
+<td>string</td>
 <td>Format</td>
 <td>Yes</td>
 <td>The format of the file(s)</td>
@@ -3287,6 +3365,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3295,18 +3374,21 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host of the MySql server.</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>No</td>
 <td>The port of the MySql server. Defaults to 3306.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The name of the database.</td>
@@ -3318,6 +3400,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3326,18 +3409,21 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host to the Oracle server</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>Yes</td>
 <td>The port to the Oracle server.</td>
 </tr>
 <tr>
 <td>serviceName</td>
+<td>string</td>
 <td>Service Name</td>
 <td>Yes</td>
 <td>The name of the service.</td>
@@ -3350,6 +3436,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3358,24 +3445,28 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host to the PostgreSQL server</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>No</td>
 <td>The port to the PostgreSQL server. Defaults to 5432.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The name of the database.</td>
 </tr>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>No</td>
 <td>The name of the schema in the database.</td>
@@ -3387,6 +3478,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3395,18 +3487,21 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host to the Presto server</td>
 </tr>
 <tr>
 <td>catalog</td>
+<td>string</td>
 <td>Catalog</td>
 <td>No</td>
 <td>The name of the catalog.</td>
 </tr>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>No</td>
 <td>The name of the schema.</td>
@@ -3419,6 +3514,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3427,6 +3523,7 @@
 <tbody>
 <tr>
 <td>project</td>
+<td>string</td>
 <td>Project</td>
 <td>Yes</td>
 <td>The GCP project name.</td>
@@ -3439,6 +3536,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3447,30 +3545,35 @@
 <tbody>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The name of the database.</td>
 </tr>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>Yes</td>
 <td>The name of the schema.</td>
 </tr>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>No</td>
 <td>An optional string describing the server.</td>
 </tr>
 <tr>
 <td>region</td>
+<td>string</td>
 <td>Region</td>
 <td>No</td>
 <td>AWS region of Redshift server.</td>
 </tr>
 <tr>
 <td>account</td>
+<td>string</td>
 <td>Account</td>
 <td>No</td>
 <td>The account used by the server.</td>
@@ -3483,6 +3586,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3491,24 +3595,28 @@
 <tbody>
 <tr>
 <td>location</td>
+<td>string</td>
 <td>Location</td>
 <td>Yes</td>
 <td>S3 URL, starting with <code>s3://</code></td>
 </tr>
 <tr>
 <td>endpointUrl</td>
+<td>string</td>
 <td>Endpoint URL</td>
 <td>No</td>
 <td>The server endpoint for S3-compatible servers.</td>
 </tr>
 <tr>
 <td>format</td>
+<td>string</td>
 <td>Format</td>
 <td>No</td>
 <td>File format.</td>
 </tr>
 <tr>
 <td>delimiter</td>
+<td>string</td>
 <td>Delimiter</td>
 <td>No</td>
 <td>Only for format = json. How multiple json documents are delimited within one file</td>
@@ -3521,6 +3629,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3529,18 +3638,21 @@
 <tbody>
 <tr>
 <td>location</td>
+<td>string</td>
 <td>Location</td>
 <td>Yes</td>
 <td>SFTP URL, starting with <code>sftp://</code>. The URL should include the port number.</td>
 </tr>
 <tr>
 <td>format</td>
+<td>string</td>
 <td>Format</td>
 <td>No</td>
 <td>File format.</td>
 </tr>
 <tr>
 <td>delimiter</td>
+<td>string</td>
 <td>Delimiter</td>
 <td>No</td>
 <td>Only for format = json. How multiple json documents are delimited within one file</td>
@@ -3552,6 +3664,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3560,36 +3673,42 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host to the Snowflake server</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>Yes</td>
 <td>The port to the Snowflake server.</td>
 </tr>
 <tr>
 <td>account</td>
+<td>string</td>
 <td>Account</td>
 <td>Yes</td>
 <td>The Snowflake account used by the server.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The name of the database.</td>
 </tr>
 <tr>
 <td>warehouse</td>
+<td>string</td>
 <td>Warehouse</td>
 <td>Yes</td>
 <td>The name of the cluster of resources that is a Snowflake virtual warehouse.</td>
 </tr>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>Yes</td>
 <td>The name of the schema.</td>
@@ -3602,6 +3721,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3610,24 +3730,28 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host to the database server</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>No</td>
 <td>The port to the database server. Defaults to 1433.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The name of the database.</td>
 </tr>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>Yes</td>
 <td>The name of the schema in the database.</td>
@@ -3639,6 +3763,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3647,18 +3772,21 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host of the Synapse server.</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>Yes</td>
 <td>The port of the Synapse server.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The name of the database.</td>
@@ -3670,6 +3798,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3678,24 +3807,28 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The Trino host URL.</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>Yes</td>
 <td>The Trino port.</td>
 </tr>
 <tr>
 <td>catalog</td>
+<td>string</td>
 <td>Catalog</td>
 <td>Yes</td>
 <td>The name of the catalog.</td>
 </tr>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>Yes</td>
 <td>The name of the schema in the database.</td>
@@ -3707,6 +3840,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3715,24 +3849,28 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>The host of the Vertica server.</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>Yes</td>
 <td>The port of the Vertica server.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>The name of the database.</td>
 </tr>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>Yes</td>
 <td>The name of the schema.</td>
@@ -3745,6 +3883,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3753,18 +3892,21 @@
 <tbody>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>Yes</td>
 <td>Hostname or IP address of the Zen server.</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>No</td>
 <td>Zen server SQL connections port. Defaults to 1583.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>Yes</td>
 <td>Database name to connect to on the Zen server.</td>
@@ -3776,6 +3918,7 @@
 <thead>
 <tr>
 <th>Key</th>
+<th>Type</th>
 <th>UX Label</th>
 <th>Required</th>
 <th>Description</th>
@@ -3784,114 +3927,133 @@
 <tbody>
 <tr>
 <td>account</td>
+<td>string</td>
 <td>Account</td>
 <td>No</td>
 <td>Account used by the server.</td>
 </tr>
 <tr>
 <td>catalog</td>
+<td>string</td>
 <td>Catalog</td>
 <td>No</td>
 <td>Name of the catalog.</td>
 </tr>
 <tr>
 <td>database</td>
+<td>string</td>
 <td>Database</td>
 <td>No</td>
 <td>Name of the database.</td>
 </tr>
 <tr>
 <td>dataset</td>
+<td>string</td>
 <td>Dataset</td>
 <td>No</td>
 <td>Name of the dataset.</td>
 </tr>
 <tr>
 <td>delimiter</td>
+<td>string</td>
 <td>Delimiter</td>
 <td>No</td>
 <td>Delimiter.</td>
 </tr>
 <tr>
 <td>endpointUrl</td>
+<td>string</td>
 <td>Endpoint URL</td>
 <td>No</td>
 <td>Server endpoint.</td>
 </tr>
 <tr>
 <td>format</td>
+<td>string</td>
 <td>Format</td>
 <td>No</td>
 <td>File format.</td>
 </tr>
 <tr>
 <td>host</td>
+<td>string</td>
 <td>Host</td>
 <td>No</td>
 <td>Host name or IP address.</td>
 </tr>
 <tr>
 <td>location</td>
+<td>string</td>
 <td>Location</td>
 <td>No</td>
 <td>A URL to a location.</td>
 </tr>
 <tr>
 <td>path</td>
+<td>string</td>
 <td>Path</td>
 <td>No</td>
 <td>Relative or absolute path to the data file(s).</td>
 </tr>
 <tr>
 <td>port</td>
+<td>integer</td>
 <td>Port</td>
 <td>No</td>
 <td>Port to the server. No default value is assumed for custom servers.</td>
 </tr>
 <tr>
 <td>project</td>
+<td>string</td>
 <td>Project</td>
 <td>No</td>
 <td>Project name.</td>
 </tr>
 <tr>
 <td>region</td>
+<td>string</td>
 <td>Region</td>
 <td>No</td>
 <td>Cloud region.</td>
 </tr>
 <tr>
 <td>regionName</td>
+<td>string</td>
 <td>Region Name</td>
 <td>No</td>
 <td>Region name.</td>
 </tr>
 <tr>
 <td>schema</td>
+<td>string</td>
 <td>Schema</td>
 <td>No</td>
 <td>Name of the schema.</td>
 </tr>
 <tr>
 <td>serviceName</td>
+<td>string</td>
 <td>Service Name</td>
 <td>No</td>
 <td>Name of the service.</td>
 </tr>
 <tr>
 <td>stagingDir</td>
+<td>string</td>
 <td>Staging Directory</td>
 <td>No</td>
 <td>Staging directory.</td>
 </tr>
 <tr>
 <td>stream</td>
+<td>string</td>
 <td>Stream</td>
 <td>No</td>
 <td>Name of the data stream.</td>
 </tr>
 <tr>
 <td>warehouse</td>
+<td>string</td>
 <td>Warehouse</td>
 <td>No</td>
 <td>Name of the cluster or warehouse.</td>
