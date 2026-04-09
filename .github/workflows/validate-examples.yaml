@@ -18,3 +18,5 @@ jobs:
           npm i -g ajv-cli ajv-formats
       - name: Validate examples
         run: bash src/script/validate-examples.sh
+      - name: Validate negative tests
+        run: bash src/script/validate-negative.sh
