@@ -15,7 +15,7 @@ In ODCS v3, the schema has evolved from the table and column representation, the
 
 Figure 1 illustrates those terms with a basic relational database.
 
-<img src=./img/elements-of-schema-odcs-v3.png width=600/>
+![Schema elements](img/elements-of-schema-odcs-v3.png)
 
 *Figure 1: elements of the schema in ODCS v3.*
 
