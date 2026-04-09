@@ -30,6 +30,7 @@ For more details, see the sections below:
 * Some fields have a `null` value: even if it is equivalent to not having the field in the contract, we wanted to have the field for illustration purposes.
 * The contract should be **platform agnostic**. If you think this is not the case, please raise an [issue](https://github.com/AIDAUserGroup/open-data-contract-standard/issues).
 * The provided JSON schemas are companions to the standards (ODCS or ODPS), it means that they do not define the standards and may include bugs. In case of conflict between the standard and the JSON Schema, the standard takes precedence.
+* We provide bug fixes for the JSON schema as date stamped commits for the same version (i.e. v3.1.0-2026-04-09) where there are discrepancies between the standard and the JSON Schema.
 
 ## Full example
 
