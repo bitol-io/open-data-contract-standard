@@ -77,6 +77,7 @@ slaProperties:
 ## Valid Values for SLA Properties
 
 Recommend SLA properties follow the [Data QoS periodic table](https://medium.com/data-mesh-learning/what-is-data-qos-and-why-is-it-critical-c524b81e3cc1). Those values are case-insensitive and are:
+
 * `availability` (synonym `av`).
 * `throughput` (synonym `th`).
 * `errorRate` (synonym `er`).

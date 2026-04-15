@@ -7,8 +7,10 @@ description: "This section describes how to reference elements within a data con
 
 This section describes how to reference elements within a data contract schema. References enable you to create relationships between different parts of your data contract. This section is new in ODCS v3.1.0.
 
-> [!IMPORTANT]
-> References are currently only supported for foreign key relationships.
+!!! info
+
+    References are currently only supported for foreign key relationships.
+
 
 [Back to TOC](README.md)
 
@@ -136,8 +138,9 @@ For improved readability in foreign key relationships, ODCS also supports shorth
 * `users.id` - References the `id` property in the `users` schema
 * `accounts.address.street` - References nested properties
 
-> [!NOTE]
-> Shorthand notation is only supported for foreign key relationships. For all other references, use fully qualified notation.
+!!! note
+
+    Shorthand notation is only supported for foreign key relationships. For all other references, use fully qualified notation.
 
 **When to use each:**
 - **Fully qualified**: Production contracts, cross-contract references, when refactoring is expected
