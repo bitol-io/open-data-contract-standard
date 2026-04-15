@@ -27,3 +27,23 @@ bash src/script/schema-diff.sh schema/odcs-json-schema-v3.1.0.json schema/odcs-j
 
 This script is automatically triggered by the [Schema Diff Analysis workflow](../../.github/workflows/schema-diff.yaml) 
 when pull requests modify JSON schema files. The diff output is added as a comment to the PR for easy review.
+
+## Validate Examples
+
+The script [`validate-examples.sh`](validate-examples.sh) validates the examples in the [examples](../../docs/examples) directory against the JSON schema.
+
+### Usage
+
+```bash
+bash src/script/validate-examples.sh
+```
+
+## Validate Negative Tests
+
+The script [`validate-negative.sh`](validate-negative.sh) validates the negative tests in the [negative-tests](../../src/script/negative-tests) directory against the JSON schema.
+
+### Usage
+
+```bash
+bash src/script/validate-negative.sh
+```

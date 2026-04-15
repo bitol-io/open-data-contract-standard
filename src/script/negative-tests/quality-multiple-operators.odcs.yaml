@@ -1,0 +1,17 @@
+version: 1.0.0
+apiVersion: v3.1.0
+kind: DataContract
+id: 53581432-6c55-4ba2-a65f-72344a91553a
+status: active
+schema:
+  - name: orders
+    physicalType: table
+    properties:
+      - name: customer_id
+        logicalType: string
+        physicalType: varchar
+        quality:
+          - type: library
+            metric: nullValues
+            mustBe: 0
+            mustNotBe: 5
