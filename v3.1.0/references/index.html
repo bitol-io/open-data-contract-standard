@@ -2454,10 +2454,10 @@
 
 <h1 id="references">References</h1>
 <p>This section describes how to reference elements within a data contract schema. References enable you to create relationships between different parts of your data contract. This section is new in ODCS v3.1.0.</p>
-<blockquote>
-<p>[!IMPORTANT]
-References are currently only supported for foreign key relationships.</p>
-</blockquote>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>References are currently only supported for foreign key relationships.</p>
+</div>
 <p><a href="../">Back to TOC</a></p>
 <h2 id="fully-qualified-reference-notation">Fully Qualified Reference Notation</h2>
 <p>ODCS uses a fully qualified notation with the <code>id</code> field and slash-separated paths for stable, refactor-safe references.</p>
@@ -2594,10 +2594,10 @@ References are currently only supported for foreign key relationships.</p>
 <li><code>users.id</code> - References the <code>id</code> property in the <code>users</code> schema</li>
 <li><code>accounts.address.street</code> - References nested properties</li>
 </ul>
-<blockquote>
-<p>[!NOTE]
-Shorthand notation is only supported for foreign key relationships. For all other references, use fully qualified notation.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Shorthand notation is only supported for foreign key relationships. For all other references, use fully qualified notation.</p>
+</div>
 <p><strong>When to use each:</strong>
 - <strong>Fully qualified</strong>: Production contracts, cross-contract references, when refactoring is expected
 - <strong>Shorthand</strong>: Simple contracts, development, when names are stable</p>
