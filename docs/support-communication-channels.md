@@ -54,17 +54,17 @@ support:
 
 ## Definitions
 
-| Key                      | UX label          | Required | Description                                                                                                                         |
-|--------------------------|-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| support                  | Support           | No       | Top level for support channels.                                                                                                     |
-| support.id               | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                            |
-| support.channel          | Channel           | Yes      | Channel name or identifier.                                                                                                         |
-| support.url              | Channel URL       | No       | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                               |
-| support.description      | Description       | No       | Description of the channel, free text.                                                                                              |
-| support.tool             | Tool              | No       | Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, `googlechat`, or `other`.                            |
-| support.scope            | Scope             | No       | Scope can be: `interactive`, `announcements`, `issues`, `notifications`.                                                            |
-| support.invitationUrl    | Invitation URL    | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax).   |
-| support.customProperties | Custom Properties | No       | Any custom properties.                                                                                                              |
+| Key                      | Type   | UX label          | Required | Description                                                                                                                         |
+|--------------------------|--------|-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
+| support                  | array  | Support           | No       | Top level for support channels.                                                                                                     |
+| support.id               | string | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                            |
+| support.channel          | string | Channel           | Yes      | Channel name or identifier.                                                                                                         |
+| support.url              | string | Channel URL       | No       | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                               |
+| support.description      | string | Description       | No       | Description of the channel, free text.                                                                                              |
+| support.tool             | string | Tool              | No       | Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, `googlechat`, or `other`.                            |
+| support.scope            | string | Scope             | No       | Scope can be: `interactive`, `announcements`, `issues`, `notifications`.                                                            |
+| support.invitationUrl    | string | Invitation URL    | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax).   |
+| support.customProperties | array  | Custom Properties | No       | Any custom properties.                                                                                                              |
 
 [Back to TOC](README.md)
 
