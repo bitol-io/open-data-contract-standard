@@ -275,30 +275,30 @@ Acronyms:
 
 * DQ: data quality.
 
-| Key                              | UX label                   | Required | Description                                                                                                                                                                  |
-|----------------------------------|----------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| quality                          | Quality                    | No       | Quality tag with all the relevant information for rule setup and execution.                                                                                                  |
-| quality.id                       | ID                         | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                                                                      |
-| quality.name                     | Name                       | No       | A short name for the rule.                                                                                                                                                   |
-| quality.description              | Description                | No       | Describe the quality check to be completed.                                                                                                                                  |
-| quality.type                     | Type                       | No       | Type of DQ rule. Valid values are `library` (default), `text`, `sql`, and `custom`.                                                                                          |
-| quality.metric                   | Metric name                | No       | Required for `library`: the name of the metric to be calculated and compared.                                                                                                |
-| quality.rule                     | Rule name                  | No       | Deprecated, use `metric` instead.                                                                                                                                            |
-| quality.arguments                | Arguments                  | No       | Additional arguments for the metric, if needed.                                                                                                                              |
-| quality.\<operator>              | See below                  | No       | Multiple values are allowed for the **property**, the value is the one to compare to.                                                                                        |
-| quality.unit                     | Unit                       | No       | Unit the rule is using, popular values are `rows` or `percent`.                                                                                                              |
-| quality.query                    | SQL Query                  | No       | Required for `sql` DQ rules: the SQL query to be executed. Note that it should match the target SQL engine/database, no transalation service are provided here.              |
-| quality.engine                   | Third-party DQ Engine      | No       | Required for `custom` DQ rule: name of the third-party engine being used. Any value is authorized here but common values are `soda`, `greatExpectations`, `montecarlo`, etc. |
-| quality.implementation           | Third-party Implementation | No       | A text (non-parsed) block of code required for the third-party DQ engine to run.                                                                                             |
-| quality.dimension                | Dimension                  | No       | The key performance indicator (KPI) or dimension for data quality. Valid values are listed after the table.                                                                  |
-| quality.method                   | Method                     | No       | Values are open and include `reconciliation`.                                                                                                                                |
-| quality.severity                 | Severity                   | No       | The severity of the DQ rule.                                                                                                                                                 |
-| quality.businessImpact           | Business Impact            | No       | Consequences of the rule failure.                                                                                                                                            |
-| quality.customProperties         | Custom Properties          | No       | Additional properties required for rule execution. Follows the same structure as any custom properties block.                                                               |
-| quality.tags                     | Tags                       | No       | Tags. Follows the same structure as any tags property.                                                                                                                       |
-| quality.authoritativeDefinitions | Authoritative Definitions  | No       | Authoritative definitions indicate the link to external definition. Follows the same structure as any authoritative definitions block.                                       |
-| quality.scheduler                | Scheduler                  | No       | Name of the scheduler, can be `cron` or any tool your organization support.                                                                                                  |
-| quality.schedule                 | Scheduler Configuration    | No       | Configuration information for the scheduling tool, for `cron` a possible value is `0 20 * * *`.                                                                              |
+| Key                              | Type   | UX label                   | Required | Description                                                                                                                                                                  |
+|----------------------------------|--------|----------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| quality                          | array  | Quality                    | No       | Quality tag with all the relevant information for rule setup and execution.                                                                                                  |
+| quality.id                       | string | ID                         | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                                                                      |
+| quality.name                     | string | Name                       | No       | A short name for the rule.                                                                                                                                                   |
+| quality.description              | string | Description                | No       | Describe the quality check to be completed.                                                                                                                                  |
+| quality.type                     | string | Type                       | No       | Type of DQ rule. Valid values are `library` (default), `text`, `sql`, and `custom`.                                                                                          |
+| quality.metric                   | string | Metric name                | No       | Required for `library`: the name of the metric to be calculated and compared.                                                                                                |
+| quality.rule                     | string | Rule name                  | No       | Deprecated, use `metric` instead.                                                                                                                                            |
+| quality.arguments                | object | Arguments                  | No       | Additional arguments for the metric, if needed.                                                                                                                              |
+| quality.\<operator>              | number | See below                  | No       | Multiple values are allowed for the **property**, the value is the one to compare to.                                                                                        |
+| quality.unit                     | string | Unit                       | No       | Unit the rule is using, popular values are `rows` or `percent`.                                                                                                              |
+| quality.query                    | string | SQL Query                  | No       | Required for `sql` DQ rules: the SQL query to be executed. Note that it should match the target SQL engine/database, no transalation service are provided here.              |
+| quality.engine                   | string | Third-party DQ Engine      | No       | Required for `custom` DQ rule: name of the third-party engine being used. Any value is authorized here but common values are `soda`, `greatExpectations`, `montecarlo`, etc. |
+| quality.implementation           | string | Third-party Implementation | No       | A text (non-parsed) block of code required for the third-party DQ engine to run.                                                                                             |
+| quality.dimension                | string | Dimension                  | No       | The key performance indicator (KPI) or dimension for data quality. Valid values are listed after the table.                                                                  |
+| quality.method                   | string | Method                     | No       | Values are open and include `reconciliation`.                                                                                                                                |
+| quality.severity                 | string | Severity                   | No       | The severity of the DQ rule.                                                                                                                                                 |
+| quality.businessImpact           | string | Business Impact            | No       | Consequences of the rule failure.                                                                                                                                            |
+| quality.customProperties         | array  | Custom Properties          | No       | Additional properties required for rule execution. Follows the same structure as any custom properties block.                                                               |
+| quality.tags                     | array  | Tags                       | No       | Tags. Follows the same structure as any tags property.                                                                                                                       |
+| quality.authoritativeDefinitions | array  | Authoritative Definitions  | No       | Authoritative definitions indicate the link to external definition. Follows the same structure as any authoritative definitions block.                                       |
+| quality.scheduler                | string | Scheduler                  | No       | Name of the scheduler, can be `cron` or any tool your organization support.                                                                                                  |
+| quality.schedule                 | string | Scheduler Configuration    | No       | Configuration information for the scheduling tool, for `cron` a possible value is `0 20 * * *`.                                                                              |
 
 ### Valid Values for Dimension
 
@@ -316,16 +316,16 @@ Those data quality dimensions are used for classification and reporting in data 
 
 The operator specifies the condition to validate a metric or result of a SQL query.
 
-| Operator                 | Expected Value      | Math Symbol | Example                      |
+| Operator                 | Type                | Math Symbol | Example                      |
 |--------------------------|---------------------|-------------|------------------------------|
 | `mustBe`                 | number              | `=`         | `mustBe: 5`                  |
-| `mustNotBe`              | number              | `<>`, `≠`   | `mustNotBe: 3.14`            |
+| `mustNotBe`              | number              | `≠`         | `mustNotBe: 3.14`            |
 | `mustBeGreaterThan`      | number              | `>`         | `mustBeGreaterThan: 59`      |
-| `mustBeGreaterOrEqualTo` | number              | `>=`, `≥`   | `mustBeGreaterOrEqualTo: 60` |
+| `mustBeGreaterOrEqualTo` | number              | `≥`         | `mustBeGreaterOrEqualTo: 60` |
 | `mustBeLessThan`         | number              | `<`         | `mustBeLessThan: 1000`       |
-| `mustBeLessOrEqualTo`    | number              | `<=`, `≤`   | `mustBeLessOrEqualTo: 999`   |
-| `mustBeBetween`          | list of two numbers | `∈`         | `mustBeBetween: [0, 100]`    |
-| `mustNotBeBetween`       | list of two numbers | `∉`         | `mustNotBeBetween: [0, 100]` |
+| `mustBeLessOrEqualTo`    | number              | `≤`         | `mustBeLessOrEqualTo: 999`   |
+| `mustBeBetween`          | array               | `∈`         | `mustBeBetween: [0, 100]`    |
+| `mustNotBeBetween`       | array               | `∉`         | `mustNotBeBetween: [0, 100]` |
 
 `mustBeBetween` is the equivalent to `mustBeGreaterThan` and `mustBeLessThan`.
 

@@ -20,11 +20,11 @@ price:
 
 ## Definitions
 
-| Key                 | UX label           | Required | Description                                                                                                                                                                                |
-|---------------------|--------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| price               | Price              | No       | Object                                                                                                                                                                                     |
-| price.priceAmount   | Price Amount       | No       | Subscription price per unit of measure in `priceUnit`.                                                                                                                                     |
-| price.priceCurrency | Price Currency     | No       | Currency of the subscription price in `price.priceAmount`.                                                                                                                                 |
-| price.priceUnit     | Price Unit         | No       | The unit of measure for calculating cost. Examples megabyte, gigabyte.                                                                                                                     |
+| Key                 | Type   | UX label           | Required | Description                                                                                                                                                                                |
+|---------------------|--------|--------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| price               | object | Price              | No       | Object                                                                                                                                                                                     |
+| price.priceAmount   | number | Price Amount       | No       | Subscription price per unit of measure in `priceUnit`.                                                                                                                                     |
+| price.priceCurrency | string | Price Currency     | No       | Currency of the subscription price in `price.priceAmount`.                                                                                                                                 |
+| price.priceUnit     | string | Price Unit         | No       | The unit of measure for calculating cost. Examples megabyte, gigabyte.                                                                                                                     |
 
 [Back to TOC](README.md)
