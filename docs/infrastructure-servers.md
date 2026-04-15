@@ -72,6 +72,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | stagingDir | Staging Directory | No       | Amazon Athena automatically stores query results and metadata information for each query that runs in a query result location that you can specify in Amazon S3. |
 | catalog    | Catalog           | No       | Identify the name of the Data Source, also referred to as a Catalog.                                                                                             |
 | regionName | Region Name       | No       | The region your AWS account uses.                                                                                                                                |
+| workgroup  | Workgroup         | No       | The Athena workgroup to use. Workgroups can enforce query result location and other client-side settings via the 'Override client-side settings' option.         |
 
 ### Azure Server
 
