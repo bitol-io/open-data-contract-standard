@@ -43,11 +43,25 @@ This convention was introduced with **ODCS v3.2.0** and applied **retroactively 
 
 ### Retention
 
-Dated snapshots accumulate while a minor version is the most recent line. **When a new minor version is released, we keep only the snapshot immediately preceding the release** for the line that just closed; all earlier dated snapshots of that line are deleted from the repository.
+Dated snapshots split into two phases for a given minor line:
 
-For example, when `v3.3.0` is released, the `v3.2.0-YYYYMMDD.json` files are pruned down to a single snapshot — the one taken right before `v3.3.0` shipped — so anyone needing the "final v3.2.0" can still pin to it. The rolling `odcs-json-schema-v3.2.0.json` file itself stays available indefinitely.
+- **Pre-release** — snapshots dated *before* the release date of `vX.Y.Z`. These capture working drafts during development.
+- **Post-release** — the snapshot dated on the release date of `vX.Y.Z` and every snapshot dated after it. These capture silent fixes that landed in the rolling `odcs-json-schema-vX.Y.Z.json` after the version shipped.
 
-Rationale: dated snapshots are most valuable while a line is actively being patched. Once the line is superseded, the rolling minor file plus the pre-release snapshot give consumers everything they need (the final state and a stable archive point) without bloating the repository with iteration history.
+The retention rule:
+
+1. **At the release of `vX.Y.Z`**, all pre-release snapshots for that line are pruned down to a **single snapshot — the one immediately preceding the release date**. Earlier pre-release iteration snapshots are deleted.
+2. **Post-release snapshots are kept indefinitely.** They document the silent-fix history of the rolling minor file and are the right pin for downstream consumers who need byte-stable validation across silent updates.
+3. The rolling `odcs-json-schema-vX.Y.Z.json` file itself is never deleted.
+
+Worked example — `v3.1.0` was released on **2025-12-08**:
+
+- Pre-release dates: `20250724`, `20250813`, `20250819`, `20250916`, `20250922`, `20250923`, `20251007`, `20251014`, `20251117`, `20251118`, `20251119`, `20251120`, `20251123`, `20251203`, `20251205`. Of these, only `v3.1.0-20251205.json` is kept (the snapshot immediately preceding the release date); the other 14 are deleted.
+- Post-release dates: `20251208`, `20251229`, `20260225`, `20260415`, `20260429`. All kept.
+
+The same rule applies to `v3.2.0`. Until `v3.2.0` ships, all `v3.2.0-YYYYMMDD.json` files are pre-release; at release time they will be pruned to the single snapshot immediately preceding the release date, and post-release patch snapshots will accumulate from there.
+
+Rationale: pre-release iteration snapshots are mostly noise to downstream consumers — they can already see the same content in git history. Post-release snapshots, by contrast, are the only way to recover the exact state of a "silent fix" iteration after the rolling file moves on.
 
 ## Recommended consumption
 
