@@ -41,6 +41,14 @@ Each modification of `odcs-json-schema-vX.Y.Z.json` produces a new dated snapsho
 
 This convention was introduced with **ODCS v3.2.0** and applied **retroactively to v3.1.0**. Earlier ODCS lines (`v3.0.x`, `v2.2.x`) are not back-filled.
 
+### Retention
+
+Dated snapshots accumulate while a minor version is the most recent line. **When a new minor version is released, we keep only the snapshot immediately preceding the release** for the line that just closed; all earlier dated snapshots of that line are deleted from the repository.
+
+For example, when `v3.3.0` is released, the `v3.2.0-YYYYMMDD.json` files are pruned down to a single snapshot — the one taken right before `v3.3.0` shipped — so anyone needing the "final v3.2.0" can still pin to it. The rolling `odcs-json-schema-v3.2.0.json` file itself stays available indefinitely.
+
+Rationale: dated snapshots are most valuable while a line is actively being patched. Once the line is superseded, the rolling minor file plus the pre-release snapshot give consumers everything they need (the final state and a stable archive point) without bloating the repository with iteration history.
+
 ## Recommended consumption
 
 | Use case                                              | Recommended file                                   |
