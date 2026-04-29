@@ -8,7 +8,7 @@ This document tracks the history and evolution of the **Open Data Contract Stand
 
 # v3.2.0 "Peter Flook" - IN PROGRESS
 
-This release is dedicated to the memory of our friend and longtime contributor **Peter Flook**, whose work shaped many parts of ODCS — from data quality testing to the negative-test suite, schema validation, documentation, and vendor onboarding. We carry his contributions forward in this version and beyond.
+This release is dedicated to the memory of our friend and longtime contributor **Peter Flook**, whose work shaped many parts of ODCS, from data quality testing to the negative-test suite, schema validation, documentation, and vendor onboarding. We carry his contributions forward in this version and beyond.
 
 RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-io/tsc/tree/main/rfcs).
 
