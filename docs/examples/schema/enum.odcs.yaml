@@ -1,0 +1,81 @@
+version: 1.0.0
+kind: DataContract
+id: a3e8e1f9-1c8b-4f2e-9a7d-3c5e7b6a9f12
+apiVersion: v3.2.0
+status: active
+name: orders_with_enums
+description:
+  purpose: Demonstrate the v3.2.0 `enum` constraint on schema properties (RFC 0033).
+
+schema:
+  - name: orders
+    physicalType: table
+    description: Order records, with status and priority constrained by enum.
+    properties:
+      - name: order_id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: VARCHAR(36)
+        required: true
+        description: Unique identifier for the order.
+
+      - name: status
+        logicalType: string
+        physicalType: VARCHAR(32)
+        required: true
+        description: Order lifecycle status.
+        enum:
+          - value: pending
+            label: Pending
+            description: Order received, awaiting processing.
+            tags: ['initial']
+          - value: processing
+            label: Processing
+            tags: ['active']
+          - value: shipped
+            label: Shipped
+            tags: ['terminal', 'success']
+          - value: cancelled
+            label: Cancelled
+            tags: ['terminal']
+            authoritativeDefinitions:
+              - url: https://catalog.example.com/orders/cancelled
+                type: businessDefinition
+                description: Internal definition of a cancelled order.
+
+      - name: priority
+        logicalType: integer
+        physicalType: INT
+        required: false
+        description: Numeric priority bucket (1 highest, 3 lowest).
+        enum:
+          - value: 1
+            label: One
+            description: Highest priority.
+          - value: 2
+            label: Two
+          - value: 3
+            label: Three
+            description: Lowest priority.
+            customProperties:
+              - property: slaHoursOverride
+                value: 72
+
+      - name: country_code
+        logicalType: string
+        physicalType: VARCHAR(2)
+        required: true
+        description: ISO 3166-1 alpha-2 country code; restricted to served regions.
+        enum:
+          - value: US
+            label: United States
+          - value: FR
+            label: France
+          - value: CA
+            label: Canada
+          - value: MX
+            label: Mexico
+            customProperties:
+              - property: languageEs
+                value: México

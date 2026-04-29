@@ -230,6 +230,22 @@ schema:
             customProperties:
               - property: description
                 value: "Links to receiver type definitions"
+      # Map-typed property (RFC 0030, ODCS v3.2.0+)
+      - id: receiver_attributes_prop
+        name: receiver_attributes
+        businessName: receiver attributes
+        logicalType: map
+        physicalType: "MAP<STRING, STRING>"
+        required: false
+        description: Free-form attributes attached to a receiver, keyed by attribute name.
+        classification: restricted
+        map:
+          key:
+            logicalType: string
+            description: Attribute name.
+          value:
+            logicalType: string
+            description: Attribute value.
 
 
 # Pricing

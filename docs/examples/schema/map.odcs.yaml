@@ -1,0 +1,81 @@
+version: 1.0.0
+kind: DataContract
+id: 7d2c4f6a-9b1e-4d3a-8c5f-1a2b3c4d5e6f
+apiVersion: v3.2.0
+status: active
+name: catalog_with_maps
+description:
+  purpose: Demonstrate the v3.2.0 `map` logical type (RFC 0030) across simple, numeric, struct, and array values.
+
+schema:
+  - name: products
+    physicalType: table
+    description: Product records with several map-typed columns.
+    properties:
+      - name: product_id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: VARCHAR(36)
+        required: true
+
+      - name: user_preferences
+        logicalType: map
+        physicalType: "MAP<STRING, STRING>"
+        description: User preference key/value pairs (locale, theme, ...).
+        map:
+          key:
+            logicalType: string
+            description: Preference name.
+          value:
+            logicalType: string
+            description: Preference value.
+
+      - name: daily_counts
+        logicalType: map
+        physicalType: "MAP<STRING, INT>"
+        description: Daily counts keyed by metric name.
+        map:
+          key:
+            logicalType: string
+            description: Metric name.
+          value:
+            logicalType: integer
+            description: Non-negative count.
+            logicalTypeOptions:
+              minimum: 0
+
+      - name: product_details
+        logicalType: map
+        physicalType: "MAP<STRING, STRUCT>"
+        description: Per-locale product details, keyed by locale code.
+        map:
+          key:
+            logicalType: string
+            description: Locale code (e.g., en-US, es-MX).
+          value:
+            logicalType: object
+            description: Localised product detail.
+            properties:
+              - name: name
+                logicalType: string
+                required: true
+              - name: price
+                logicalType: number
+              - name: currency
+                logicalType: string
+                physicalType: CHAR(3)
+
+      - name: tag_scores
+        logicalType: map
+        physicalType: "MAP<STRING, ARRAY<DOUBLE>>"
+        description: Score arrays keyed by tag name.
+        map:
+          key:
+            logicalType: string
+            description: Tag name.
+          value:
+            logicalType: array
+            description: Scores associated with the tag.
+            items:
+              logicalType: number
