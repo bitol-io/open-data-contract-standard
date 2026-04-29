@@ -233,7 +233,7 @@ kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 status: active
 name: date_example
-apiVersion: v3.1.0
+apiVersion: v3.2.0
 schema:
   # Date Only
   - name: event_date

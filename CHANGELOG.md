@@ -6,6 +6,12 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 This document tracks the history and evolution of the **Open Data Contract Standard**.
 
+# v3.2.0 - IN PROGRESS
+
+This version is currently in development. RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-io/tsc/tree/main/rfcs).
+
+* _(entries to be added as RFCs are approved by the TSC)_
+
 # v3.1.0 - 2025-12-08 - APPROVED
 
 * **Splits** Main specification document into several smaller documents. 

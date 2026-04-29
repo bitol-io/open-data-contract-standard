@@ -1,5 +1,8 @@
 # History
 
+## Version 3.2.x
+ODCS v3.2.0 is currently in development. Tracked RFCs are listed in the [`tsc/rfcs/`](https://github.com/bitol-io/tsc/tree/main/rfcs) directory.
+
 ## Version 3.1.x
 As data contracts are becoming more popular, more needs for data quality, internal/external referencing, more infrastructure elements, better support & team management appeared. This is the core of v3.1.x a minor (in semantic versioning) major (in features) non-breaking evolution over the previous versions.
 

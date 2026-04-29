@@ -12,7 +12,7 @@ This section contains general information about the contract. Fundamentals were 
 ## Example
 
 ```YAML
-apiVersion: v3.1.0 # Standard version
+apiVersion: v3.2.0 # Standard version
 kind: DataContract
 
 id: 53581432-6c55-4ba2-a65f-72344a91553a
@@ -35,7 +35,7 @@ tags: ['finance']
 
 | Key                                  | Type   | UX label                  | Required | Description                                                                                                                                                                                                                   |
 |--------------------------------------|--------|---------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| apiVersion                           | string | Standard version          | Yes      | Version of the standard used to build data contract. Default value is `v3.1.0`.                                                                                                                                               |
+| apiVersion                           | string | Standard version          | Yes      | Version of the standard used to build data contract. Default value is `v3.2.0`.                                                                                                                                               |
 | kind                                 | string | Kind                      | Yes      | The kind of file this is. Valid value is `DataContract`.                                                                                                                                                                      |
 | id                                   | string | ID                        | Yes      | A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.                                                                                                                                       |
 | name                                 | string | Name                      | No       | Name of the data contract.                                                                                                                                                                                                    |
