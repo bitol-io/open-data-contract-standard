@@ -1757,6 +1757,15 @@
             "$ref": "#/$defs/AnyType"
           }
         },
+        "enum": {
+          "type": "array",
+          "description": "Enumeration of allowed values for this property. Each entry is an object with at least a `value`. See RFC 0033.",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/EnumValue"
+          }
+        },
         "criticalDataElement": {
           "type": "boolean",
           "default": false,
@@ -2702,6 +2711,39 @@
       "items": {
         "$ref": "#/$defs/CustomProperty"
       }
+    },
+    "EnumValue": {
+      "type": "object",
+      "description": "An allowed value within a property's enumeration. See RFC 0033.",
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/AnyNonCollectionType",
+          "description": "The allowed value. Required."
+        },
+        "label": {
+          "type": "string",
+          "description": "Human-readable label for the value, suitable for UI display."
+        },
+        "id": {
+          "$ref": "#/$defs/StableId"
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional description of what this enum value represents."
+        },
+        "customProperties": {
+          "type": "array",
+          "description": "Custom properties attached to this enum value (e.g., translations).",
+          "items": {
+            "$ref": "#/$defs/CustomProperty"
+          }
+        },
+        "authoritativeDefinitions": {
+          "$ref": "#/$defs/AuthoritativeDefinitions"
+        }
+      },
+      "required": ["value"],
+      "additionalProperties": false
     },
     "CustomProperty": {
       "type": "object",

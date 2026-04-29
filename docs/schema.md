@@ -190,6 +190,7 @@ Some keys are more applicable when the described property is a column.
 | transformLogic           | string  | Transform Logic              | No       | Logic used in the column transformation.                                                                                                                                                                                                |
 | transformDescription     | string  | Transform Description        | No       | Describes the transform logic in very simple terms.                                                                                                                                                                                     |
 | examples                 | array   | Example Values               | No       | List of sample element values.                                                                                                                                                                                                          |
+| enum                     | array   | Enum                         | No       | Enumeration of allowed values for this property. See [Enumerations](#enumerations).                                                                                                                                                     |
 | criticalDataElement      | boolean | Critical Data Element Status | No       | True or false indicator; If element is considered a critical data element (CDE) then true else false.                                                                                                                                   |
 | items                    | object  | Items                        | No       | List of items in an array (onlyapplicable when `logicalType: array`)                                                                                                                                                                   |
 
@@ -278,5 +279,56 @@ schema:
     examples:
       - "2024-03-10T14:22:35Z"
 ```
+
+## Enumerations
+
+A property can declare an `enum` to constrain its value to a fixed set of allowed entries. Each entry is an object with at least a `value` and may carry a label, identifier, description, custom properties, and authoritative definitions.
+
+### Example
+
+```yaml
+schema:
+  - name: orders
+    properties:
+      - name: status
+        logicalType: string
+        enum:
+          - value: pending
+            label: Pending
+            description: The order has been received but not yet processed.
+          - value: processing
+            label: Processing
+          - value: shipped
+            label: Shipped
+          - value: cancelled
+            label: Cancelled
+
+      - name: priority
+        logicalType: integer
+        required: false
+        enum:
+          - value: 1
+            label: One
+            description: Highest ranked
+          - value: 2
+            label: Two
+          - value: 3
+            label: Three
+            description: Lowest ranked
+```
+
+### Definition
+
+| Key                              | Type   | UX label                  | Required | Description                                                                                                                                                                |
+|----------------------------------|--------|---------------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| enum                             | array  | Enum                      | No       | Array of allowed values for the property. Must contain at least one entry; entries must be unique.                                                                         |
+| enum.value                       | any    | Value                     | Yes      | The allowed value. Must be a non-collection scalar (string, number, integer, boolean) compatible with the property's `logicalType`.                                        |
+| enum.label                       | string | Label                     | No       | Human-readable label for the value, suitable for UI display (e.g., dropdowns).                                                                                             |
+| enum.id                          | string | ID                        | No       | A unique identifier for stable, refactor-safe references. See [References](./references.md) for more details.                                                              |
+| enum.description                 | string | Description               | No       | Optional description of what this enum value represents.                                                                                                                   |
+| enum.customProperties            | array  | Custom Properties         | No       | Custom properties attached to this enum value (e.g., translations, locale-specific labels). Same structure as the standard `customProperties` block.                       |
+| enum.authoritativeDefinitions    | array  | Authoritative Definitions | No       | Authoritative definitions for this enum value. Same structure as elsewhere in the standard.                                                                                |
+
+`enum` was introduced in ODCS v3.2.0 ([RFC 0033](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0033-enum.md)).
 
 [Back to TOC](README.md)

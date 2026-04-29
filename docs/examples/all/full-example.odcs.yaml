@@ -124,6 +124,18 @@ schema:
         criticalDataElement: false
         tags: [ ]
         classification: public
+        # Enumeration of allowed values (RFC 0033, ODCS v3.2.0+)
+        enum:
+          - value: US
+            label: United States
+            description: ISO 3166-1 alpha-2 code for the United States.
+          - value: CA
+            label: Canada
+          - value: MX
+            label: Mexico
+            customProperties:
+              - property: languageEs
+                value: México
         authoritativeDefinitions:
           - url: https://collibra.com/asset/742b358f-71a5-4ab1-bda4-dcdba9418c25
             type: businessDefinition
