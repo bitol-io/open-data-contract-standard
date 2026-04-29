@@ -1,6 +1,8 @@
 # History
 
-## Version 3.2.x
+## Version 3.2.x — "Peter Flook"
+ODCS v3.2.0 is dedicated to the memory of our friend and longtime contributor **Peter Flook**. Peter's work touched many parts of ODCS — data quality, the negative-test suite, schema validation, documentation, and vendor onboarding. This release carries his name in gratitude.
+
 ODCS v3.2.0 is currently in development. Tracked RFCs are listed in the [`tsc/rfcs/`](https://github.com/bitol-io/tsc/tree/main/rfcs) directory.
 
 ## Version 3.1.x
