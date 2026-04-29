@@ -39,6 +39,7 @@ A data contract defines the agreement between a data producer and consumers. A d
 * [Service-level agreement (SLA)](docs/service-level-agreement.md).
 * [Infrastructures & servers](docs/infrastructure-servers.md).
 * [Custom & other properties](docs/custom-other-properties.md).
+* [Authoritative definitions](docs/authoritative-definitions.md).
 
 ![Data contract schema](docs/img/data-contract-diagram-latest.png "Data contract schema")
 

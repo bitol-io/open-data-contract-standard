@@ -42,34 +42,9 @@ customProperties:
 
 ## Authoritative Definitions
 
-Authoritative Definitions are an essential part of the contract. They allow to delegate the definition to a third party
-system like an enterprise catalog, repository, etc. The structure describing "Authoritative Definitions" is shared
-between all Bitol standards. This block is available in many sections.
+Authoritative Definitions allow you to delegate definitions to a third-party system such as an enterprise catalog, repository, or knowledge base. The block is shared across all Bitol standards and is available in many sections of a data contract.
 
-### Example
-
-```yaml
-    authoritativeDefinitions:
-      - url: https://catalog.data.gov/dataset/air-quality
-        type: businessDefinition
-        description: Business definition for the dataset.
-      - url: https://www.youtube.com/watch?v=Iq6SxdsIHHE
-        type: videoTutorial
-        description: Discover what a data contract is.
-      - url: https://github.com/bitol-io/open-data-contract-standard/blob/main/docs/examples/all/full-example.odcs.yaml
-        type: canonicalUrl
-        description: Data contract's latest version.
-```
-
-### Definitions
-
-| Key                                  | Type   | UX label          | Required | Description                                                                                                                                                                                                                                                                            |
-|--------------------------------------|--------|-------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| authoritativeDefinitions             | array  | Link              | No       | A list of type/link pairs for authoritative definitions.                                                                                                                                                                                                                               |
-| authoritativeDefinitions.id          | string | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                                                             |
-| authoritativeDefinitions.type        | string | Definition type   | Yes      | Type of definition for authority. Recommended values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. At the root level, a type can also be `canonicalUrl` to indicate a reference to the data contract's latest version. |
-| authoritativeDefinitions.url         | string | URL to definition | Yes      | URL to the authority.                                                                                                                                                                                                                                                                  |
-| authoritativeDefinitions.description | string | Description       | No       | Optional description.                                                                                                                                                                                                                                                                  |
+See the dedicated [Authoritative Definitions](./authoritative-definitions.md) page for the full specification, examples, and the recommended values for the `type` field.
 
 ## Other Properties
 

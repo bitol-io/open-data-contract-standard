@@ -23,6 +23,7 @@ For more details, see the sections below:
 9. [Service-Level Agreement](./service-level-agreement.md)
 10. [Infrastructures & Servers](./infrastructure-servers.md)
 11. [Custom & Other Properties](./custom-other-properties.md)
+12. [Authoritative Definitions](./authoritative-definitions.md)
 
 ## Notes
 
