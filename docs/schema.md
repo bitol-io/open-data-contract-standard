@@ -158,7 +158,7 @@ schema:
 | businessName             | string | Business Name             | No       | The business name of the element.                                                                                                                                                                                             |
 | authoritativeDefinitions | array  | Authoritative Definitions | No       | List of links to sources that provide more details on the element; examples would be a link to privacy statement, terms and conditions, license agreements, data catalog, or another tool.                                    |
 | quality                  | array  | Quality                   | No       | List of data quality attributes.                                                                                                                                                                                              |
-| tags                     | array  | Tags                      | No       | A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`. |
+| tags                     | array  | Tags                      | No       | A list of tags applied to the element (object or property). See [Tags](./tags.md) for the full specification.                                                                                                                 |
 | customProperties         | array  | Custom Properties         | No       | Custom properties that are not part of the standard.                                                                                                                                                                          |
 
 ### Applicable to Objects
@@ -330,7 +330,7 @@ schema:
 | enum.label                    | string | Label                     | No       | Human-readable label for the value, suitable for UI display (e.g., dropdowns).                                                                       |
 | enum.id                       | string | ID                        | No       | A unique identifier for stable, refactor-safe references. See [References](./references.md) for more details.                                        |
 | enum.description              | string | Description               | No       | Optional description of what this enum value represents.                                                                                             |
-| enum.tags                     | array  | Tags                      | No       | List of tags assigned to this enum value (e.g., `terminal`, `active`, `deprecated`). Same structure as `tags` elsewhere in the standard.             |
+| enum.tags                     | array  | Tags                      | No       | List of tags assigned to this enum value (e.g., `terminal`, `active`, `deprecated`). See [Tags](./tags.md).                                          |
 | enum.customProperties         | array  | Custom Properties         | No       | Custom properties attached to this enum value (e.g., translations, locale-specific labels). Same structure as the standard `customProperties` block. |
 | enum.authoritativeDefinitions | array  | Authoritative Definitions | No       | Authoritative definitions for this enum value. Same structure as elsewhere in the standard.                                                          |
 

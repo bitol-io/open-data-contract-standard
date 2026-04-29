@@ -66,6 +66,7 @@ nav:
       - Infrastructure: 'infrastructure-servers.md'
       - Custom: 'custom-other-properties.md'
       - Authoritative Definitions: 'authoritative-definitions.md'
+      - Tags: 'tags.md'
   - Examples:
       - 'examples/README.md'
       - '...'
