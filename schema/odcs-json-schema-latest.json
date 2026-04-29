@@ -692,10 +692,14 @@
             "type": "string",
             "description": "The region your AWS account uses.",
             "examples": ["eu-west-1"]
+          },
+          "workgroup": {
+            "type": "string",
+            "description": "The Athena workgroup to use. Workgroups can enforce query result location and other client-side settings via the 'Override client-side settings' option.",
+            "examples": ["primary"]
           }
         },
         "required": [
-          "stagingDir",
           "schema"
         ]
       },
