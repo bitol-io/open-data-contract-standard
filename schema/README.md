@@ -97,7 +97,7 @@ Concise summary of what changed between each retained dated snapshot.
 
 | Date       | Notes                                                                                                                                                  |
 |------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 2026-04-29 | First v3.2.0 snapshot. `apiVersion` default raised to `v3.2.0`. Adds RFC 0033 (Enum): new `enum` array on schema properties, new `EnumValue` `$def`.   |
+| 2026-04-29 | First v3.2.0 snapshot. `apiVersion` default raised to `v3.2.0`. Adds RFC 0033 (Enum): new `enum` array on schema properties and new `EnumValue` `$def` (with `value`, `label`, `id`, `description`, `tags`, `customProperties`, `authoritativeDefinitions`). |
 
 ## SchemaStore registration
 

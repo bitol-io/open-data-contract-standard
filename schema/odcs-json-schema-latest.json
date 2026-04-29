@@ -2740,6 +2740,9 @@
         },
         "authoritativeDefinitions": {
           "$ref": "#/$defs/AuthoritativeDefinitions"
+        },
+        "tags": {
+          "$ref": "#/$defs/Tags"
         }
       },
       "required": ["value"],
