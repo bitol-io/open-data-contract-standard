@@ -1691,7 +1691,7 @@
         "logicalType": {
           "type": "string",
           "description": "The logical element data type.",
-          "enum": ["string", "date", "timestamp", "time", "number", "integer", "object", "array", "boolean"]
+          "enum": ["string", "date", "timestamp", "time", "number", "integer", "object", "array", "boolean", "map"]
         },
         "logicalTypeOptions": {
           "type": "object",
@@ -2107,6 +2107,36 @@
                 "description": "List of items in an array (only applicable when `logicalType: array`)."
               }
             }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "logicalType": {
+                "const": "map"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "map": {
+                "type": "object",
+                "description": "Key/value definition for a map (only applicable when `logicalType: map`). See RFC 0030.",
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "$ref": "#/$defs/SchemaItemProperty",
+                    "description": "Definition of the map's key."
+                  },
+                  "value": {
+                    "$ref": "#/$defs/SchemaItemProperty",
+                    "description": "Definition of the map's value."
+                  }
+                },
+                "required": ["key", "value"]
+              }
+            },
+            "required": ["map"]
           }
         }
       ],

@@ -115,9 +115,9 @@ Relationships can be defined in two ways:
 | Key                            | Type   | UX Label          | Required          | Description                                                                       |
 |--------------------------------|--------|-------------------|-------------------|-----------------------------------------------------------------------------------|
 | relationships                  | array  | Relationships     | No                | Array of relationship definitions                                                 |
-| relationships.type             | string | Type              | No                | Type of relationship (defaults to `foreignKey`)                                   |
-| relationships.to               | string | To                | Yes               | Target property reference using `schema.property` notation                        |
 | relationships.from             | string | From              | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
+| relationships.to               | string | To                | Yes               | Target property reference using `schema.property` notation                        |
+| relationships.type             | string | Type              | No                | Type of relationship (defaults to `foreignKey`)                                   |
 | relationships.customProperties | array  | Custom Properties | No                | Additional metadata about the relationship                                        |
 
 ### Reference Notation for Foreign Keys

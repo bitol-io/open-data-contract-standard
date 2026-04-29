@@ -19,7 +19,7 @@ Tags are intended for **categorization** — making elements easier to find, fil
 - **Audience**: `internal`, `external`, `partner`
 - **Operational hint**: `hot`, `cold`, `archive`
 
-Tags are deliberately not a controlled vocabulary in ODCS — your organisation defines what each tag means. For richer, governed metadata, prefer [authoritative definitions](./authoritative-definitions.md) or [custom properties](./custom-other-properties.md).
+Tags are deliberately not a controlled vocabulary in ODCS: your organisation defines what each tag means. For richer, governed metadata, prefer [authoritative definitions](./authoritative-definitions.md) or [custom properties](./custom-other-properties.md).
 
 ## Structure
 
@@ -35,15 +35,15 @@ The same structure applies wherever `tags` is permitted.
 
 `tags` is available in the following places:
 
-| Location                      | Notes                                                                                       |
-|-------------------------------|---------------------------------------------------------------------------------------------|
-| Top-level (data contract)     | Tags applied to the contract as a whole. See [Fundamentals](./fundamentals.md).             |
-| Schema element (object)       | Tags applied to a table/topic/file. See [Schema](./schema.md).                              |
-| Schema element (property)     | Tags applied to an individual column/field. See [Schema](./schema.md).                      |
-| Enum value                    | Tags applied to a specific enumeration entry (e.g., `terminal`, `active`). See [Enumerations](./schema.md#enumerations). |
-| Data quality check            | Tags applied to a quality rule. See [Data Quality](./data-quality.md).                      |
-| Team                          | Tags applied to the team block. See [Team](./team.md).                                      |
-| Team member                   | Tags applied to an individual team member. See [Team](./team.md).                           |
+| Location                  | Notes                                                                                                                    |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Top-level (data contract) | Tags applied to the contract as a whole. See [Fundamentals](./fundamentals.md).                                          |
+| Schema element (object)   | Tags applied to a table/topic/file. See [Schema](./schema.md).                                                           |
+| Schema element (property) | Tags applied to an individual column/field. See [Schema](./schema.md).                                                   |
+| Enum value                | Tags applied to a specific enumeration entry (e.g., `terminal`, `active`). See [Enumerations](./schema.md#enumerations). |
+| Data quality check        | Tags applied to a quality rule. See [Data Quality](./data-quality.md).                                                   |
+| Team                      | Tags applied to the team block. See [Team](./team.md).                                                                   |
+| Team member               | Tags applied to an individual team member. See [Team](./team.md).                                                        |
 
 ## Recommendations
 

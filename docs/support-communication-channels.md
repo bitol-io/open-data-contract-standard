@@ -57,13 +57,13 @@ support:
 | Key                      | Type   | UX label          | Required | Description                                                                                                                         |
 |--------------------------|--------|-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
 | support                  | array  | Support           | No       | Top level for support channels.                                                                                                     |
-| support.id               | string | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                            |
 | support.channel          | string | Channel           | Yes      | Channel name or identifier.                                                                                                         |
-| support.url              | string | Channel URL       | No       | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                               |
 | support.description      | string | Description       | No       | Description of the channel, free text.                                                                                              |
-| support.tool             | string | Tool              | No       | Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, `googlechat`, or `other`.                            |
-| support.scope            | string | Scope             | No       | Scope can be: `interactive`, `announcements`, `issues`, `notifications`.                                                            |
+| support.id               | string | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details. |
 | support.invitationUrl    | string | Invitation URL    | No       | Some tools uses invitation URL for requesting or subscribing. Follows the [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax).   |
+| support.scope            | string | Scope             | No       | Scope can be: `interactive`, `announcements`, `issues`, `notifications`.                                                            |
+| support.tool             | string | Tool              | No       | Name of the tool, value can be `email`, `slack`, `teams`, `discord`, `ticket`, `googlechat`, or `other`.                            |
+| support.url              | string | Channel URL       | No       | Access URL using normal [URL scheme](https://en.wikipedia.org/wiki/URL#Syntax) (https, mailto, etc.).                               |
 | support.customProperties | array  | Custom Properties | No       | Any custom properties.                                                                                                              |
 
 [Back to TOC](README.md)

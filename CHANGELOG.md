@@ -16,6 +16,10 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
   * New `enum` array on schema properties to constrain a property to a fixed set of allowed values.
   * Each `enum` entry is an object with `value` (required) plus optional `label`, `id`, `description`, `tags`, `customProperties`, and `authoritativeDefinitions`.
   * `enum` entries must be unique and the array must contain at least one value.
+* **Adds** Maps ([RFC 0030](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0030-maps.md)):
+  * New `map` value for `logicalType` to represent key/value (dictionary) structures common in Databricks, Snowflake, BigQuery, Spark, and Avro.
+  * Companion `map` object on schema properties with required `key` and `value` sub-definitions; both follow the standard property shape (logicalType, description, nested properties/items, etc.).
+  * `map` is required whenever `logicalType: map` is set.
 
 # v3.1.0 - 2025-12-08 - APPROVED
 

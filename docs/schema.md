@@ -150,14 +150,14 @@ schema:
 
 | Key                      | Type   | UX label                  | Required | Description                                                                                                                                                                                                                   |
 | ------------------------ | ------ | ------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| businessName             | string | Business Name             | No       | The business name of the element.                                                                                                                                                                                             |
+| description              | string | Description               | No       | Description of the element.                                                                                                                                                                                                   |
 | id                       | string | ID                        | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                    |
 | name                     | string | Name                      | Yes      | Name of the element.                                                                                                                                                                                                          |
 | physicalName             | string | Physical Name             | No       | Physical name.                                                                                                                                                                                                                |
 | physicalType             | string | Physical Type             | No       | The physical element data type in the data source. For objects: `table`, `view`, `topic`, `file`. For properties: `VARCHAR(2)`, `DOUBLE`, `INT`, etc.                                                                         |
-| description              | string | Description               | No       | Description of the element.                                                                                                                                                                                                   |
-| businessName             | string | Business Name             | No       | The business name of the element.                                                                                                                                                                                             |
-| authoritativeDefinitions | array  | Authoritative Definitions | No       | List of links to sources that provide more details on the element; examples would be a link to privacy statement, terms and conditions, license agreements, data catalog, or another tool.                                    |
 | quality                  | array  | Quality                   | No       | List of data quality attributes.                                                                                                                                                                                              |
+| authoritativeDefinitions | array  | Authoritative Definitions | No       | List of links to sources that provide more details on the element; examples would be a link to privacy statement, terms and conditions, license agreements, data catalog, or another tool.                                    |
 | tags                     | array  | Tags                      | No       | A list of tags applied to the element (object or property). See [Tags](./tags.md) for the full specification.                                                                                                                 |
 | customProperties         | array  | Custom Properties         | No       | Custom properties that are not part of the standard.                                                                                                                                                                          |
 
@@ -173,26 +173,27 @@ Some keys are more applicable when the described property is a column.
 
 | Key                      | Type    | UX label                     | Required | Description                                                                                                                                                                                                                           |
 | ------------------------ | ------- | ---------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| primaryKey               | boolean | Primary Key                  | No       | Boolean value specifying whether the field is primary or not. Default is false.                                                                                                                                                       |
-| primaryKeyPosition       | integer | Primary Key Position         | No       | If field is a primary key, the position of the primary key element. Starts from 1. Example of `account_id, name` being primary key columns, `account_id` has primaryKeyPosition 1 and `name` primaryKeyPosition 2. Default to -1.     |
-| logicalType              | string  | Logical Type                 | No       | The logical field datatype. One of `string`, `date`, `timestamp`, `time`, `number`, `integer`, `object`, `array` or `boolean`.                                                                                                        |
-| logicalTypeOptions       | object  | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [Logical Type Options](#logical-type-options) for more details about supported options for each `logicalType`.                                                         |
-| physicalType             | string  | Physical Type                | No       | The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT.                                                                                                                                              |
+| classification           | string  | Classification               | No       | Can be anything, like confidential, restricted, and public to more advanced categorization.                                                                                                                                           |
+| criticalDataElement      | boolean | Critical Data Element Status | No       | True or false indicator; If element is considered a critical data element (CDE) then true else false.                                                                                                                                 |
 | description              | string  | Description                  | No       | Description of the element.                                                                                                                                                                                                           |
-| required                 | boolean | Required                     | No       | Indicates if the element may contain Null values; possible values are true and false. Default is false.                                                                                                                               |
-| unique                   | boolean | Unique                       | No       | Indicates if the element contains unique values; possible values are true and false. Default is false.                                                                                                                                |
+| encryptedName            | string  | Encrypted Name               | No       | The element name within the dataset that contains the encrypted element value. For example, unencrypted element `email_address` might have an encryptedName of `email_address_encrypt`.                                               |
+| enum                     | array   | Enum                         | No       | Enumeration of allowed values for this property. See [Enumerations](#enumerations).                                                                                                                                                   |
+| examples                 | array   | Example Values               | No       | List of sample element values.                                                                                                                                                                                                        |
+| logicalType              | string  | Logical Type                 | No       | The logical field datatype. One of `string`, `date`, `timestamp`, `time`, `number`, `integer`, `object`, `array`, `boolean`, or `map`.                                                                                                |
 | partitioned              | boolean | Partitioned                  | No       | Indicates if the element is partitioned; possible values are true and false.                                                                                                                                                          |
 | partitionKeyPosition     | integer | Partition Key Position       | No       | If element is used for partitioning, the position of the partition element. Starts from 1. Example of `country, year` being partition columns, `country` has partitionKeyPosition 1 and `year` partitionKeyPosition 2. Default to -1. |
-| classification           | string  | Classification               | No       | Can be anything, like confidential, restricted, and public to more advanced categorization.                                                                                                                                           |
-| authoritativeDefinitions | array   | Authoritative Definitions    | No       | List of links to sources that provide more detail on element logic or values; examples would be URL to a git repo, documentation, a data catalog or another tool.                                                                     |
-| encryptedName            | string  | Encrypted Name               | No       | The element name within the dataset that contains the encrypted element value. For example, unencrypted element `email_address` might have an encryptedName of `email_address_encrypt`.                                               |
-| transformSourceObjects   | array   | Transform Sources            | No       | List of objects in the data source used in the transformation.                                                                                                                                                                        |
-| transformLogic           | string  | Transform Logic              | No       | Logic used in the column transformation.                                                                                                                                                                                              |
+| physicalType             | string  | Physical Type                | No       | The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT.                                                                                                                                              |
+| primaryKey               | boolean | Primary Key                  | No       | Boolean value specifying whether the field is primary or not. Default is false.                                                                                                                                                       |
+| primaryKeyPosition       | integer | Primary Key Position         | No       | If field is a primary key, the position of the primary key element. Starts from 1. Example of `account_id, name` being primary key columns, `account_id` has primaryKeyPosition 1 and `name` primaryKeyPosition 2. Default to -1.     |
+| required                 | boolean | Required                     | No       | Indicates if the element may contain Null values; possible values are true and false. Default is false.                                                                                                                               |
 | transformDescription     | string  | Transform Description        | No       | Describes the transform logic in very simple terms.                                                                                                                                                                                   |
-| examples                 | array   | Example Values               | No       | List of sample element values.                                                                                                                                                                                                        |
-| enum                     | array   | Enum                         | No       | Enumeration of allowed values for this property. See [Enumerations](#enumerations).                                                                                                                                                   |
-| criticalDataElement      | boolean | Critical Data Element Status | No       | True or false indicator; If element is considered a critical data element (CDE) then true else false.                                                                                                                                 |
-| items                    | object  | Items                        | No       | List of items in an array (onlyapplicable when `logicalType: array`)                                                                                                                                                                  |
+| transformLogic           | string  | Transform Logic              | No       | Logic used in the column transformation.                                                                                                                                                                                              |
+| transformSourceObjects   | array   | Transform Sources            | No       | List of objects in the data source used in the transformation.                                                                                                                                                                        |
+| unique                   | boolean | Unique                       | No       | Indicates if the element contains unique values; possible values are true and false. Default is false.                                                                                                                                |
+| authoritativeDefinitions | array   | Authoritative Definitions    | No       | List of links to sources that provide more detail on element logic or values; examples would be URL to a git repo, documentation, a data catalog or another tool.                                                                     |
+| items                    | object  | Items                        | No       | List of items in an array (only applicable when `logicalType: array`).                                                                                                                                                                |
+| logicalTypeOptions       | object  | Logical Type Options         | No       | Additional optional metadata to describe the logical type. See [Logical Type Options](#logical-type-options) for more details about supported options for each `logicalType`.                                                         |
+| map                      | object  | Map                          | No       | Key/value definition (required when `logicalType: map`). See [Maps](#maps).                                                                                                                                                           |
 
 ## Logical Type Options
 
@@ -280,6 +281,94 @@ schema:
       - "2024-03-10T14:22:35Z"
 ```
 
+## Maps
+
+A property can declare `logicalType: map` to represent a key/value collection (also called a dictionary). The accompanying `map` block declares the type of the key and the type of the value. Both `key` and `value` are themselves property definitions and can carry the same metadata as any other property — `logicalType`, `description`, `logicalTypeOptions`, nested `properties` (for object values), `items` (for array values), and so on.
+
+### Examples
+
+**Simple map (string → string):**
+
+```yaml
+schema:
+  - name: users
+    properties:
+      - name: user_preferences
+        logicalType: map
+        physicalType: "MAP<STRING, STRING>"
+        description: User preference key-value pairs.
+        map:
+          key:
+            logicalType: string
+            description: Preference name.
+          value:
+            logicalType: string
+            description: Preference value.
+```
+
+**Map with numeric values:**
+
+```yaml
+- name: daily_counts
+  logicalType: map
+  physicalType: "MAP<STRING, INT>"
+  description: Daily metric counts keyed by metric name.
+  map:
+    key:
+      logicalType: string
+    value:
+      logicalType: integer
+      logicalTypeOptions:
+        minimum: 0
+```
+
+**Map with object values:**
+
+```yaml
+- name: product_details
+  logicalType: map
+  physicalType: "MAP<STRING, STRUCT>"
+  description: Product details keyed by product ID.
+  map:
+    key:
+      logicalType: string
+    value:
+      logicalType: object
+      properties:
+        - name: name
+          logicalType: string
+        - name: price
+          logicalType: number
+        - name: quantity
+          logicalType: integer
+```
+
+**Map with array values:**
+
+```yaml
+- name: tag_scores
+  logicalType: map
+  physicalType: "MAP<STRING, ARRAY<DOUBLE>>"
+  description: Score arrays keyed by tag name.
+  map:
+    key:
+      logicalType: string
+    value:
+      logicalType: array
+      items:
+        logicalType: number
+```
+
+### Definition
+
+| Key       | Type   | UX label | Required | Description                                                                                                                                          |
+|-----------|--------|----------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| map       | object | Map      | Yes when `logicalType: map` | Key/value structure for a map property.                                                                                                              |
+| map.key   | object | Key      | Yes      | Definition of the map's key. Same shape as any property definition (typically `logicalType: string`).                                                |
+| map.value | object | Value    | Yes      | Definition of the map's value. Same shape as any property definition; supports nested `properties` (for objects), `items` (for arrays), `enum`, etc. |
+
+`logicalType: map` was introduced in ODCS v3.2.0 ([RFC 0030](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0030-maps.md)).
+
 ## Enumerations
 
 A property can declare an `enum` to constrain its value to a fixed set of allowed entries. Each entry is an object with at least a `value` and may carry a label, identifier, description, tags, custom properties, and authoritative definitions.
@@ -326,13 +415,13 @@ schema:
 | Key                           | Type   | UX label                  | Required | Description                                                                                                                                          |
 | ----------------------------- | ------ | ------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | enum                          | array  | Enum                      | No       | Array of allowed values for the property. Must contain at least one entry; entries must be unique.                                                   |
-| enum.value                    | any    | Value                     | Yes      | The allowed value. Must be a non-collection scalar (string, number, integer, boolean) compatible with the property's `logicalType`.                  |
-| enum.label                    | string | Label                     | No       | Human-readable label for the value, suitable for UI display (e.g., dropdowns).                                                                       |
-| enum.id                       | string | ID                        | No       | A unique identifier for stable, refactor-safe references. See [References](./references.md) for more details.                                        |
 | enum.description              | string | Description               | No       | Optional description of what this enum value represents.                                                                                             |
+| enum.id                       | string | ID                        | No       | A unique identifier for stable, refactor-safe references. See [References](./references.md) for more details.                                        |
+| enum.label                    | string | Label                     | No       | Human-readable label for the value, suitable for UI display (e.g., dropdowns).                                                                       |
+| enum.value                    | any    | Value                     | Yes      | The allowed value. Must be a non-collection scalar (string, number, integer, boolean) compatible with the property's `logicalType`.                  |
+| enum.authoritativeDefinitions | array  | Authoritative Definitions | No       | Authoritative definitions for this enum value. Same structure as elsewhere in the standard.                                                          |
 | enum.tags                     | array  | Tags                      | No       | List of tags assigned to this enum value (e.g., `terminal`, `active`, `deprecated`). See [Tags](./tags.md).                                          |
 | enum.customProperties         | array  | Custom Properties         | No       | Custom properties attached to this enum value (e.g., translations, locale-specific labels). Same structure as the standard `customProperties` block. |
-| enum.authoritativeDefinitions | array  | Authoritative Definitions | No       | Authoritative definitions for this enum value. Same structure as elsewhere in the standard.                                                          |
 
 `enum` was introduced in ODCS v3.2.0 ([RFC 0033](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0033-enum.md)).
 

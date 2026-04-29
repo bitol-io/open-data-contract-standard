@@ -30,10 +30,10 @@ Authoritative Definitions are an essential part of the contract. They allow to d
 | Key                                  | Type   | UX label          | Required | Description                                                                                                                                                                                |
 | ------------------------------------ | ------ | ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | authoritativeDefinitions             | array  | Link              | No       | A list of type/link pairs for authoritative definitions.                                                                                                                                   |
+| authoritativeDefinitions.description | string | Description       | No       | Optional description.                                                                                                                                                                      |
 | authoritativeDefinitions.id          | string | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details. |
 | authoritativeDefinitions.type        | string | Definition type   | Yes      | Type of definition for authority. See the recommended values below.                                                                                                                        |
 | authoritativeDefinitions.url         | string | URL to definition | Yes      | URL to the authority.                                                                                                                                                                      |
-| authoritativeDefinitions.description | string | Description       | No       | Optional description.                                                                                                                                                                      |
 
 ## Recommended values for `type`
 

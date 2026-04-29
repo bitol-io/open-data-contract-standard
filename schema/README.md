@@ -54,23 +54,16 @@ The retention rule:
 2. **Post-release snapshots are kept indefinitely.** They document the silent-fix history of the rolling minor file and are the right pin for downstream consumers who need byte-stable validation across silent updates.
 3. The rolling `odcs-json-schema-vX.Y.Z.json` file itself is never deleted.
 
-Worked example — `v3.1.0` was released on **2025-12-08**:
-
-- Pre-release dates: `20250724`, `20250813`, `20250819`, `20250916`, `20250922`, `20250923`, `20251007`, `20251014`, `20251117`, `20251118`, `20251119`, `20251120`, `20251123`, `20251203`, `20251205`. Of these, only `v3.1.0-20251205.json` is kept (the snapshot immediately preceding the release date); the other 14 are deleted.
-- Post-release dates: `20251208`, `20251229`, `20260225`, `20260415`, `20260429`. All kept.
-
-The same rule applies to `v3.2.0`. Until `v3.2.0` ships, all `v3.2.0-YYYYMMDD.json` files are pre-release; at release time they will be pruned to the single snapshot immediately preceding the release date, and post-release patch snapshots will accumulate from there.
-
-Rationale: pre-release iteration snapshots are mostly noise to downstream consumers — they can already see the same content in git history. Post-release snapshots, by contrast, are the only way to recover the exact state of a "silent fix" iteration after the rolling file moves on.
+Rationale: post-release snapshots are the only way to recover the exact state of a "silent fix" iteration after the rolling file moves on.
 
 ## Recommended consumption
 
-| Use case                                              | Recommended file                                   |
-|-------------------------------------------------------|----------------------------------------------------|
-| IDE schema hint while authoring contracts             | `odcs-json-schema-latest.json`                     |
-| CI validation against the standard you target         | `odcs-json-schema-v<X.Y.Z>.json`                   |
-| Reproducible audit / regulated environment            | `odcs-json-schema-v<X.Y.Z>-YYYYMMDD.json`          |
-| Migrating from one minor version to the next          | Diff two `vX.Y.Z` files, or use `src/script/schema-diff.sh` |
+| Use case                                      | Recommended file                                            |
+| --------------------------------------------- | ----------------------------------------------------------- |
+| IDE schema hint while authoring contracts     | `odcs-json-schema-latest.json`                              |
+| CI validation against the standard you target | `odcs-json-schema-v<X.Y.Z>.json`                            |
+| Reproducible audit / regulated environment    | `odcs-json-schema-v<X.Y.Z>-YYYYMMDD.json`                   |
+| Migrating from one minor version to the next  | Diff two `vX.Y.Z` files, or use `src/script/schema-diff.sh` |
 
 ## How dated snapshots are produced
 
@@ -84,20 +77,20 @@ Concise summary of what changed between each retained dated snapshot.
 
 ### v3.1.0 line
 
-| Date       | Notes                                                                                                                                       |
-|------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| 2025-12-05 | Pre-release pin — final development state immediately before the 2025-12-08 v3.1.0 release.                                                 |
-| 2025-12-08 | **Initial v3.1.0 release** (also incorporates the `AthenaServer` → `ApiServer` title rename that landed on `dev`).                          |
+| Date       | Notes                                                                                                                                                                        |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2025-12-05 | Pre-release pin — final development state immediately before the 2025-12-08 v3.1.0 release.                                                                                  |
+| 2025-12-08 | **Initial v3.1.0 release** (also incorporates the `AthenaServer` → `ApiServer` title rename that landed on `dev`).                                                           |
 | 2025-12-29 | Server-specific `required` lists dropped (API `location`, Athena `stagingDir`/`schema`) so individual server fields can be optional. Server title reverts to `AthenaServer`. |
-| 2026-02-25 | Shorthand reference regex relaxed to allow more than two segments (e.g., `a.b.c.d` is now valid).                                           |
-| 2026-04-15 | Athena server: `stagingDir` made optional; new optional `workgroup` field added.                                                            |
-| 2026-04-29 | Athena changes from 2026-04-15 reverted out of the v3.1.0 line to keep it stable; same changes are carried forward in `latest` and `v3.2.0` instead. |
+| 2026-02-25 | Shorthand reference regex relaxed to allow more than two segments (e.g., `a.b.c.d` is now valid).                                                                            |
+| 2026-04-15 | Athena server: `stagingDir` made optional; new optional `workgroup` field added.                                                                                             |
+| 2026-04-29 | Athena changes from 2026-04-15 reverted out of the v3.1.0 line to keep it stable; same changes are carried forward in `latest` and `v3.2.0` instead.                         |
 
 ### v3.2.0 line
 
-| Date       | Notes                                                                                                                                                  |
-|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 2026-04-29 | First v3.2.0 snapshot. `apiVersion` default raised to `v3.2.0`. Adds RFC 0033 (Enum): new `enum` array on schema properties and new `EnumValue` `$def` (with `value`, `label`, `id`, `description`, `tags`, `customProperties`, `authoritativeDefinitions`). |
+| Date       | Notes                                                                                                                                                                                                                                       |
+|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 2026-04-29 | First v3.2.0 snapshot. `apiVersion` default raised to `v3.2.0`. Adds RFC 0033 (Enum) — new `enum` array on schema properties and new `EnumValue` `$def`. Adds RFC 0030 (Maps) — new `map` value for `logicalType` and companion `map` block. |
 
 ## SchemaStore registration
 
