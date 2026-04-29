@@ -1,0 +1,53 @@
+version: 1.0.0
+kind: DataContract
+id: b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e
+apiVersion: v3.2.0
+status: active
+name: catalog_with_support_channels
+description:
+  purpose: Cover all six recommended `tool` values (email, slack, teams, discord, ticket, googlechat) and the four `scope` values (interactive, announcements, issues, notifications).
+
+support:
+  - id: support_email
+    channel: support@example.com
+    tool: email
+    scope: issues
+    url: mailto:support@example.com
+    description: Issue intake mailbox monitored 9-5 PT.
+
+  - id: support_slack_help
+    channel: '#data-platform-help'
+    tool: slack
+    scope: interactive
+    invitationUrl: https://example.slack.com/invite/data-platform-help
+    description: Real-time Q&A with the platform team.
+
+  - id: support_slack_announcements
+    channel: '#data-platform-announcements'
+    tool: slack
+    scope: announcements
+    description: Read-only channel for breaking changes and incidents.
+
+  - id: support_teams
+    channel: 'Data Platform / General'
+    tool: teams
+    scope: interactive
+
+  - id: support_discord
+    channel: 'data-platform'
+    tool: discord
+    scope: interactive
+    invitationUrl: https://discord.gg/example
+
+  - id: support_googlechat
+    channel: 'data-platform-room'
+    tool: googlechat
+    scope: notifications
+    description: Operational notifications (deploys, refresh windows).
+
+  - id: support_ticket
+    channel: 'DATA-PLATFORM'
+    tool: ticket
+    scope: issues
+    url: https://example.atlassian.net/jira/software/projects/DATA-PLATFORM/issues
+    description: Long-lived issues, change requests, and feature asks.

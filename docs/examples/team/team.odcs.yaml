@@ -1,0 +1,65 @@
+version: 1.0.0
+kind: DataContract
+id: c5d6e7f8-9a0b-4c1d-2e3f-4a5b6c7d8e9f
+apiVersion: v3.2.0
+status: active
+name: catalog_with_team
+description:
+  purpose: Show the modern `team` object (RFC 16) with multiple members covering common roles, dateIn/dateOut transitions, and member-level metadata. Replaces the older `stakeholders`-style example.
+
+team:
+  id: data-platform-team
+  name: data-platform
+  description: Owners and contributors of the data-platform contracts.
+  tags: ['core', 'engineering']
+  customProperties:
+    - property: oncallRotation
+      value: data-platform-primary
+  authoritativeDefinitions:
+    - url: https://wiki.example.com/teams/data-platform
+      type: businessDefinition
+  members:
+    - id: ada
+      username: ada
+      name: Ada Lovelace
+      role: Data Product Owner
+      description: Owns the contract roadmap.
+      dateIn: "2024-01-15"
+      tags: ['owner']
+
+    - id: grace
+      username: grace
+      name: Grace Hopper
+      role: Data Steward
+      dateIn: "2024-01-15"
+      tags: ['steward']
+      authoritativeDefinitions:
+        - url: https://wiki.example.com/people/grace
+          type: businessDefinition
+
+    - id: alan
+      username: alan
+      name: Alan Turing
+      role: Data Engineer
+      dateIn: "2024-01-15"
+      dateOut: "2025-09-30"
+      replacedByUsername: ceastwood
+      description: Original platform engineer; rotated off the team in Sep 2025.
+
+    - id: ceastwood
+      username: ceastwood
+      role: Data Engineer
+      dateIn: "2025-10-01"
+      tags: ['oncall']
+      customProperties:
+        - property: timezone
+          value: Europe/Paris
+
+schema:
+  - name: events
+    physicalType: table
+    properties:
+      - name: id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string

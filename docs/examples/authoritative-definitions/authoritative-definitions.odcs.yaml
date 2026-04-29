@@ -1,0 +1,46 @@
+version: 1.0.0
+kind: DataContract
+id: 9a4b1c2d-3e5f-4a7b-8c9d-1e2f3a4b5c6d
+apiVersion: v3.2.0
+status: active
+name: catalog_with_authoritative_definitions
+description:
+  purpose: Show authoritativeDefinitions blocks at multiple scopes (root, schema element, schema property), exercising every recommended `type`.
+
+# Root-level: canonicalUrl must point at the contract itself.
+authoritativeDefinitions:
+  - url: https://github.com/bitol-io/open-data-contract-standard/blob/main/docs/examples/authoritative-definitions/authoritative-definitions.odcs.yaml
+    type: canonicalUrl
+    description: Canonical URL of this data contract.
+  - url: https://catalog.example.com/contracts/catalog
+    type: businessDefinition
+
+schema:
+  - name: products
+    physicalType: table
+    description: Product master.
+    # Element-level: link to glossary, video, tutorial.
+    authoritativeDefinitions:
+      - url: https://glossary.example.com/products
+        type: businessDefinition
+        description: Business glossary entry for the product master table.
+      - url: https://www.youtube.com/watch?v=Iq6SxdsIHHE
+        type: videoTutorial
+        description: Walk-through of the product schema.
+      - url: https://docs.example.com/onboarding/products
+        type: tutorial
+    properties:
+      - name: id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: VARCHAR(36)
+      - name: price
+        logicalType: number
+        # Property-level: link to the implementation that derives this value.
+        authoritativeDefinitions:
+          - url: https://github.com/example/pipelines/blob/main/dbt/models/products.sql
+            type: transformationImplementation
+            description: dbt model that computes `price`.
+          - url: https://github.com/example/pricing-lib
+            type: implementation
