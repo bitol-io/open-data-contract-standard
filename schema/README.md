@@ -78,6 +78,27 @@ After every change merged into `dev` that touches `odcs-json-schema-vX.Y.Z.json`
 
 Past snapshots (before this policy was introduced) were back-filled from git history — for each day the v3.1.0 schema changed, the file content of the last commit of that day was extracted and committed as a dated snapshot.
 
+## Snapshot changelog
+
+Concise summary of what changed between each retained dated snapshot.
+
+### v3.1.0 line
+
+| Date       | Notes                                                                                                                                       |
+|------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| 2025-12-05 | Pre-release pin — final development state immediately before the 2025-12-08 v3.1.0 release.                                                 |
+| 2025-12-08 | **Initial v3.1.0 release** (also incorporates the `AthenaServer` → `ApiServer` title rename that landed on `dev`).                          |
+| 2025-12-29 | Server-specific `required` lists dropped (API `location`, Athena `stagingDir`/`schema`) so individual server fields can be optional. Server title reverts to `AthenaServer`. |
+| 2026-02-25 | Shorthand reference regex relaxed to allow more than two segments (e.g., `a.b.c.d` is now valid).                                           |
+| 2026-04-15 | Athena server: `stagingDir` made optional; new optional `workgroup` field added.                                                            |
+| 2026-04-29 | Athena changes from 2026-04-15 reverted out of the v3.1.0 line to keep it stable; same changes are carried forward in `latest` and `v3.2.0` instead. |
+
+### v3.2.0 line
+
+| Date       | Notes                                                                                                                                                  |
+|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 2026-04-29 | First v3.2.0 snapshot. `apiVersion` default raised to `v3.2.0`. Adds RFC 0033 (Enum): new `enum` array on schema properties, new `EnumValue` `$def`.   |
+
 ## SchemaStore registration
 
 ODCS is registered with [SchemaStore](https://github.com/SchemaStore/schemastore) so that editors like IntelliJ and VS Code recognise `.odcs.yaml` files automatically (see [PR 3868](https://github.com/SchemaStore/schemastore/pull/3868)).
