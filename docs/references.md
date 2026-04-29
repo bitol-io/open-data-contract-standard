@@ -7,8 +7,10 @@ description: "This section describes how to reference elements within a data con
 
 This section describes how to reference elements within a data contract schema. References enable you to create relationships between different parts of your data contract. This section is new in ODCS v3.1.0.
 
-> [!IMPORTANT]
-> References are currently only supported for foreign key relationships.
+!!! info
+
+    References are currently only supported for foreign key relationships.
+
 
 [Back to TOC](README.md)
 
@@ -110,13 +112,13 @@ Relationships can be defined in two ways:
 
 ### Field Definitions
 
-| Key                            | UX Label          | Required          | Description                                                                       |
-|--------------------------------|-------------------|-------------------|-----------------------------------------------------------------------------------|
-| relationships                  | Relationships     | No                | Array of relationship definitions                                                 |
-| relationships.type             | Type              | No                | Type of relationship (defaults to `foreignKey`)                                   |
-| relationships.to               | To                | Yes               | Target property reference using `schema.property` notation                        |
-| relationships.from             | From              | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
-| relationships.customProperties | Custom Properties | No                | Additional metadata about the relationship                                        |
+| Key                            | Type   | UX Label          | Required          | Description                                                                       |
+|--------------------------------|--------|-------------------|-------------------|-----------------------------------------------------------------------------------|
+| relationships                  | array  | Relationships     | No                | Array of relationship definitions                                                 |
+| relationships.type             | string | Type              | No                | Type of relationship (defaults to `foreignKey`)                                   |
+| relationships.to               | string | To                | Yes               | Target property reference using `schema.property` notation                        |
+| relationships.from             | string | From              | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
+| relationships.customProperties | array  | Custom Properties | No                | Additional metadata about the relationship                                        |
 
 ### Reference Notation for Foreign Keys
 
@@ -136,8 +138,9 @@ For improved readability in foreign key relationships, ODCS also supports shorth
 * `users.id` - References the `id` property in the `users` schema
 * `accounts.address.street` - References nested properties
 
-> [!NOTE]
-> Shorthand notation is only supported for foreign key relationships. For all other references, use fully qualified notation.
+!!! note
+
+    Shorthand notation is only supported for foreign key relationships. For all other references, use fully qualified notation.
 
 **When to use each:**
 - **Fully qualified**: Production contracts, cross-contract references, when refactoring is expected
