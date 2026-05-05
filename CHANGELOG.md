@@ -6,6 +6,21 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 This document tracks the history and evolution of the **Open Data Contract Standard**.
 
+# v3.2.0 "Peter Flook" - IN PROGRESS
+
+This release is dedicated to the memory of our friend and longtime contributor **Peter Flook**, whose work shaped many parts of ODCS, from data quality testing to the negative-test suite, schema validation, documentation, and vendor onboarding. We carry his contributions forward in this version and beyond.
+
+RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-io/tsc/tree/main/rfcs).
+
+* **Adds** Enumerations ([RFC 0033](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0033-enum.md)):
+  * New `enum` array on schema properties to constrain a property to a fixed set of allowed values.
+  * Each `enum` entry is an object with `value` (required) plus optional `label`, `id`, `description`, `tags`, `customProperties`, and `authoritativeDefinitions`.
+  * `enum` entries must be unique and the array must contain at least one value.
+* **Adds** Maps ([RFC 0030](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0030-maps.md)):
+  * New `map` value for `logicalType` to represent key/value (dictionary) structures common in Databricks, Snowflake, BigQuery, Spark, and Avro.
+  * Companion `map` object on schema properties with required `key` and `value` sub-definitions; both follow the standard property shape (logicalType, description, nested properties/items, etc.).
+  * `map` is required whenever `logicalType: map` is set.
+
 # v3.1.0 - 2025-12-08 - APPROVED
 
 * **Splits** Main specification document into several smaller documents. 

@@ -40,12 +40,12 @@ servers:
 
 | Key              | Type   | UX label          | Required | Description                                                                                                                                                                                                                                                                                                               |
 |------------------|--------|-------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| server           | string | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                                 |
-| id               | string | ID                | No       | A unique identifier used to reduce the risk of collisions, such as a UUID.                                                                                                                                                                                                                                                |
-| type             | string | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, zen. |
 | description      | string | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                                |
 | environment      | string | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                                    |
+| id               | string | ID                | No       | A unique identifier used to reduce the risk of collisions, such as a UUID.                                                                                                                                                                                                                                                |
 | roles            | array  | Roles             | No       | List of roles that have access to the server. Check [roles](./roles.md) section for more details.                                                                                                                                                                                                                         |
+| server           | string | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                                 |
+| type             | string | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, zen. |
 | customProperties | array  | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                                      |
 
 ## Specific Server Properties
@@ -68,19 +68,19 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 | Key        | Type   | UX Label          | Required | Description                                                                                                                                                      |
 |------------|--------|-------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| schema     | string | Schema            | Yes      | Identify the schema in the data source in which your tables exist.                                                                                               |
-| stagingDir | string | Staging Directory | No       | Amazon Athena automatically stores query results and metadata information for each query that runs in a query result location that you can specify in Amazon S3. |
 | catalog    | string | Catalog           | No       | Identify the name of the Data Source, also referred to as a Catalog.                                                                                             |
 | regionName | string | Region Name       | No       | The region your AWS account uses.                                                                                                                                |
+| schema     | string | Schema            | Yes      | Identify the schema in the data source in which your tables exist.                                                                                               |
+| stagingDir | string | Staging Directory | No       | Amazon Athena automatically stores query results and metadata information for each query that runs in a query result location that you can specify in Amazon S3. |
 | workgroup  | string | Workgroup         | No       | The Athena workgroup to use. Workgroups can enforce query result location and other client-side settings via the 'Override client-side settings' option.         |
 
 ### Azure Server
 
 | Key       | Type   | UX Label  | Required | Description                                                                                   |
 |-----------|--------|-----------|----------|-----------------------------------------------------------------------------------------------|
-| location  | string | Location  | Yes      | Fully qualified path to Azure Blob Storage or Azure Data Lake Storage (ADLS), supports globs. |
-| format    | string | Format    | Yes      | File format.                                                                                  |
 | delimiter | string | Delimiter | No       | Only for format = json. How multiple json documents are delimited within one file             |
+| format    | string | Format    | Yes      | File format.                                                                                  |
+| location  | string | Location  | Yes      | Fully qualified path to Azure Blob Storage or Azure Data Lake Storage (ADLS), supports globs. |
 
 ### Google BigQuery
 
@@ -88,8 +88,8 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 | Key     | Type   | UX Label | Required | Description                                   |
 |---------|--------|----------|----------|-----------------------------------------------|
-| project | string | Project  | Yes      | The Google Cloud Platform (GCP) project name. |
 | dataset | string | Dataset  | Yes      | The GCP dataset name.                         |
+| project | string | Project  | Yes      | The Google Cloud Platform (GCP) project name. |
 
 ### ClickHouse Server
 
@@ -97,9 +97,9 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 | Key      | Type    | UX Label | Required | Description                        |
 |----------|---------|----------|----------|------------------------------------|
+| database | string  | Database | Yes      | The name of the database.          |
 | host     | string  | Host     | Yes      | The host of the ClickHouse server. |
 | port     | integer | Port     | Yes      | The port to the ClickHouse server. |
-| database | string  | Database | Yes      | The name of the database.          |
 
 ### Google Cloud SQL
 
@@ -107,9 +107,9 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 | Key      | Type    | UX Label | Required | Description                              |
 |----------|---------|----------|----------|------------------------------------------|
+| database | string  | Database | Yes      | The name of the database.                |
 | host     | string  | Host     | Yes      | The host of the Google Cloud SQL server. |
 | port     | integer | Port     | Yes      | The port of the Google Cloud SQL server. |
-| database | string  | Database | Yes      | The name of the database.                |
 | schema   | string  | Schema   | Yes      | The name of the schema.                  |
 
 ### Databricks Server
@@ -117,25 +117,25 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | Key     | Type   | UX Label | Required | Description                           |
 |---------|--------|----------|----------|---------------------------------------|
 | catalog | string | Catalog  | Yes      | The name of the Hive or Unity catalog |
-| schema  | string | Schema   | Yes      | The schema name in the catalog        |
 | host    | string | Host     | No       | The Databricks host                   |
+| schema  | string | Schema   | Yes      | The schema name in the catalog        |
 
 ### IBM Db2 Server
 
 | Key      | Type    | UX Label | Required | Description                     |
 |----------|---------|----------|----------|---------------------------------|
+| database | string  | Database | Yes      | The name of the database.       |
 | host     | string  | Host     | Yes      | The host of the IBM DB2 server. |
 | port     | integer | Port     | Yes      | The port of the IBM DB2 server. |
-| database | string  | Database | Yes      | The name of the database.       |
 | schema   | string  | Schema   | No       | The name of the schema.         |
 
 ### Denodo Server
 
 | Key      | Type    | UX Label | Required | Description                    |
 |----------|---------|----------|----------|--------------------------------|
+| database | string  | Database | No       | The name of the database.      |
 | host     | string  | Host     | Yes      | The host of the Denodo server. |
 | port     | integer | Port     | Yes      | The port of the Denodo server. |
-| database | string  | Database | No       | The name of the database.      |
 
 ### Dremio Server
 
@@ -160,8 +160,8 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 |----------|--------|----------|----------|------------------------------------------------|
 | account  | string | Account  | Yes      | The AWS Glue account                           |
 | database | string | Database | Yes      | The AWS Glue database name                     |
-| location | string | Location | No       | The AWS S3 path. Must be in the form of a URL. |
 | format   | string | Format   | No       | The format of the files                        |
+| location | string | Location | No       | The AWS S3 path. Must be in the form of a URL. |
 
 ### Hive
 
@@ -169,9 +169,9 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 | Key          | Type    | UX Label        | Required   | Description                                     |
 |--------------|---------|-----------------|------------|-------------------------------------------------|
+| database     | string  | Database        | Yes        | The name of the Hive database.                  |
 | host         | string  | Host            | Yes        | The host to the Hive server.                    |
 | port         | integer | Port            | No         | The port to the Hive server. Defaults to 10000. |
-| database     | string  | Database        | Yes        | The name of the Hive database.                  |
 
 ### Apache Impala
 
@@ -179,9 +179,9 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 | Key          | Type    | UX Label        | Required   | Description                                       |
 |--------------|---------|-----------------|------------|---------------------------------------------------|
+| database     | string  | Database        | Yes        | The name of the Impala database.                  |
 | host         | string  | Host            | Yes        | The host to the Impala server.                    |
 | port         | integer | Port            | No         | The port to the Impala server. Defaults to 21050. |
-| database     | string  | Database        | Yes        | The name of the Impala database.                  |
 
 ### IBM Informix and HCL Informix
 

@@ -1,0 +1,54 @@
+version: 1.0.0
+kind: DataContract
+id: 6c1a2b3d-4e5f-4789-9abc-def012345678
+apiVersion: v3.2.0
+status: active
+name: catalog_with_tags
+description:
+  purpose: Demonstrate `tags` at every level — root contract, schema element, schema property, enum value, quality rule, team, and team member.
+
+# Top-level (data contract) tags.
+tags: ['finance', 'gdpr', 'tier-1']
+
+schema:
+  - name: payments
+    physicalType: table
+    # Element-level tags on the table.
+    tags: ['transactional', 'pii']
+    properties:
+      - name: payment_id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        # Property-level tags.
+        tags: ['identifier']
+      - name: status
+        logicalType: string
+        # Enum-value tags (RFC 0033 + tags).
+        enum:
+          - value: pending
+            tags: ['initial']
+          - value: completed
+            tags: ['terminal', 'success']
+          - value: refunded
+            tags: ['terminal', 'reversal']
+        quality:
+          - type: library
+            metric: invalidValues
+            mustBeLessThan: 1
+            unit: percent
+            # Quality-rule tags.
+            tags: ['compliance', 'pci']
+
+team:
+  name: payments-platform
+  # Team-level tags.
+  tags: ['engineering', 'core']
+  members:
+    - username: ada
+      role: Data Steward
+      # Team-member tags.
+      tags: ['oncall', 'primary']
+    - username: grace
+      role: Data Engineer
+      tags: ['oncall']

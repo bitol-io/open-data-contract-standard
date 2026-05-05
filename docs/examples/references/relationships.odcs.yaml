@@ -1,0 +1,85 @@
+version: 1.0.0
+kind: DataContract
+id: 5e9f1c2a-7b6d-4e3f-8a1b-2c3d4e5f6a7b
+apiVersion: v3.2.0
+status: active
+name: orders_with_relationships
+description:
+  purpose: Demonstrate property-level, schema-level, composite, and shorthand foreign-key relationships (RFC 0026).
+
+schema:
+  - id: customers_obj
+    name: customers
+    physicalType: table
+    properties:
+      - id: customer_id_prop
+        name: id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: VARCHAR(36)
+        required: true
+
+  - id: addresses_obj
+    name: addresses
+    physicalType: table
+    properties:
+      - id: address_customer_id_prop
+        name: customer_id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: VARCHAR(36)
+        required: true
+      - id: address_seq_prop
+        name: address_seq
+        primaryKey: true
+        primaryKeyPosition: 2
+        logicalType: integer
+        required: true
+      - id: address_street_prop
+        name: street
+        logicalType: string
+
+  - id: orders_obj
+    name: orders
+    physicalType: table
+    properties:
+      - id: order_id_prop
+        name: id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: VARCHAR(36)
+        required: true
+
+      # Property-level relationship: `from` is implicit (this property)
+      - id: order_customer_prop
+        name: customer_id
+        logicalType: string
+        physicalType: VARCHAR(36)
+        relationships:
+          - to: customers.id
+            type: foreignKey
+            customProperties:
+              - property: cardinality
+                value: many-to-one
+
+      # Property pointing to a nested address via dot-shorthand
+      - id: order_address_prop
+        name: shipping_address_street
+        logicalType: string
+        relationships:
+          - to: addresses.address_street
+            type: foreignKey
+
+    # Schema-level relationships: explicit `from` and `to`,
+    # including a composite (multi-column) foreign key.
+    # Both sides use the shorthand `schema.property` notation.
+    relationships:
+      - type: foreignKey
+        from: ['orders.customer_id', 'orders.shipping_address_street']
+        to:   ['addresses.customer_id', 'addresses.address_street']
+        customProperties:
+          - property: description
+            value: Composite FK linking an order to a specific address row.

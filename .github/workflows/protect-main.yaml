@@ -1,0 +1,32 @@
+name: Protect main branch
+
+# Only PRs from `dev` may target `main`. This guards against bypass commits
+# that previously caused main and dev to drift apart (see the v3.1.x sync).
+# Combine this check with a branch protection rule that requires it before
+# merge.
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  source-branch-check:
+    name: PRs to main must come from dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify source branch
+        env:
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          BASE_REPO: ${{ github.event.pull_request.base.repo.full_name }}
+        run: |
+          echo "PR head: $HEAD_REPO:$HEAD_REF"
+          echo "PR base: $BASE_REPO:main"
+          if [ "$HEAD_REF" != "dev" ] || [ "$HEAD_REPO" != "$BASE_REPO" ]; then
+            echo ""
+            echo "::error::PRs to 'main' must come from the 'dev' branch in this same repository."
+            echo "::error::Open your PR against 'dev' instead. A maintainer will promote 'dev' to 'main' on the regular release cadence."
+            exit 1
+          fi
+          echo "OK — PR source is dev."

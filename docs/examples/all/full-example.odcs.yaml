@@ -21,7 +21,7 @@ description:
 tenant: ClimateQuantumInc
 
 kind: DataContract
-apiVersion: v3.1.0 # Standard version (follows semantic versioning)
+apiVersion: v3.2.0 # Standard version (follows semantic versioning)
 
 # Infrastructure & servers
 servers:
@@ -124,6 +124,18 @@ schema:
         criticalDataElement: false
         tags: [ ]
         classification: public
+        # Enumeration of allowed values (RFC 0033, ODCS v3.2.0+)
+        enum:
+          - value: US
+            label: United States
+            description: ISO 3166-1 alpha-2 code for the United States.
+          - value: CA
+            label: Canada
+          - value: MX
+            label: Mexico
+            customProperties:
+              - property: languageEs
+                value: México
         authoritativeDefinitions:
           - url: https://collibra.com/asset/742b358f-71a5-4ab1-bda4-dcdba9418c25
             type: businessDefinition
@@ -218,6 +230,22 @@ schema:
             customProperties:
               - property: description
                 value: "Links to receiver type definitions"
+      # Map-typed property (RFC 0030, ODCS v3.2.0+)
+      - id: receiver_attributes_prop
+        name: receiver_attributes
+        businessName: receiver attributes
+        logicalType: map
+        physicalType: "MAP<STRING, STRING>"
+        required: false
+        description: Free-form attributes attached to a receiver, keyed by attribute name.
+        classification: restricted
+        map:
+          key:
+            logicalType: string
+            description: Attribute name.
+          value:
+            logicalType: string
+            description: Attribute value.
 
 
 # Pricing

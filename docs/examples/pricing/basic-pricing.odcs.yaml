@@ -1,0 +1,22 @@
+version: 1.0.0
+kind: DataContract
+id: 8d9e0f1a-2b3c-4d5e-6f70-8a9b0c1d2e3f
+apiVersion: v3.2.0
+status: active
+name: catalog_with_pricing
+description:
+  purpose: Minimal example showing the `price` block — amount, currency, and unit-of-measure.
+
+price:
+  priceAmount: 9.95
+  priceCurrency: USD
+  priceUnit: gigabyte
+
+schema:
+  - name: events
+    physicalType: table
+    properties:
+      - name: id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string

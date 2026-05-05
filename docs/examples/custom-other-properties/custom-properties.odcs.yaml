@@ -1,0 +1,46 @@
+version: 1.0.0
+kind: DataContract
+id: 4f7a8b9c-1d2e-4f3a-8b5c-6d7e8f9a0b1c
+apiVersion: v3.2.0
+status: active
+name: catalog_with_custom_properties
+description:
+  purpose: Show `customProperties` at every relevant scope — root, schema element, schema property — and demonstrate the optional root-level `contractCreatedTs`.
+
+# Other top-level property defined by the standard.
+contractCreatedTs: "2026-04-29T10:00:00Z"
+
+# Root-level custom properties: REF ruleset, vendor-specific hints, etc.
+customProperties:
+  - id: ref_ruleset
+    property: refRulesetName
+    value: gcsc.ruleset.name
+    description: Pointer to the GCSC ruleset that governs this contract.
+  - property: dataprocClusterName
+    value: ['analytics-prod', 'analytics-uat']
+    description: Cluster names this contract is published from.
+  - property: ownerEmail
+    value: data-platform@example.com
+
+schema:
+  - name: events
+    physicalType: table
+    # Element-level customProperties.
+    customProperties:
+      - property: retentionDays
+        value: 365
+      - property: storageTier
+        value: hot
+    properties:
+      - name: event_id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+      - name: payload
+        logicalType: string
+        # Property-level customProperties.
+        customProperties:
+          - property: maxBytes
+            value: 1048576
+          - property: encoding
+            value: utf-8
