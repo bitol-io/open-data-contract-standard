@@ -1650,6 +1650,11 @@
           "description": "Granular level of the data in the object.",
           "examples": ["Aggregation by country"]
         },
+        "encoding": {
+          "type": "string",
+          "description": "The expected character encoding for this schema object, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+          "examples": ["UTF-8", "ISO-8859-1", "ASCII", "UTF-16"]
+        },
         "properties": {
           "type": "array",
           "description": "A list of properties for the object.",

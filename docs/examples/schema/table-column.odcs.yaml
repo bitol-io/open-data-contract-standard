@@ -4,10 +4,11 @@ id: 53581432-6c55-4ba2-a65f-72344a91553b
 status: active
 name: my_table
 dataProduct: my_quantum
-apiVersion: v3.0.2
+apiVersion: v3.1.0
 schema:
   - name: tbl
     physicalType: table
+    encoding: UTF-8
     properties:
     - name: rcvr_cntry_code
       businessName: Receiver country code

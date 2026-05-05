@@ -32,6 +32,7 @@ schema:
     logicalType: object
     physicalType: table
     physicalName: tbl_1
+    encoding: UTF-8
     description: Provides core payment metrics
     authoritativeDefinitions:
       - url: https://catalog.data.gov/dataset/air-quality
@@ -166,6 +167,7 @@ schema:
 | Key                                                    | Type   | UX label                     | Required | Description                                                                          |
 |--------------------------------------------------------|--------|------------------------------|----------|--------------------------------------------------------------------------------------|
 | dataGranularityDescription                             | string | Data Granularity             | No       | Granular level of the data in the object. Example would be "Aggregation by country." |
+| encoding                                               | string | Encoding                     | No       | Expected character encoding for the object, especially for file, topic or dataset-like objects. For example, `UTF-8`, `ISO-8859-1`, `ASCII`, or `UTF-16`. |
 
 ### Applicable to Properties
 
