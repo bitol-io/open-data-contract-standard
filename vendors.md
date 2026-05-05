@@ -7,6 +7,7 @@ Vendors who natively support ODCS (Open Data Contract Standard).
 A non-exhaustive, alphabetical list of organizations offering solutions natively compatible with ODCS, such as data catalogs, data quality platforms, security tools, and more.
 
 * [Actian Data Intelligence Platform](https://www.actian.com/data-intelligence/platform/) - A cloud-native, AI-ready solution that helps organizations discover, understand, trust, and activate their enterprise data assets at scale through intelligent metadata, governance, cataloging, and data marketplace capabilities.
+* [ContractGate](https://github.com/nightmoose/contractgate) - Real-time semantic contract enforcement gateway. Enforces rich ODCS-aligned contracts (ontology, glossary, patterns, enums, computed metrics) at ingestion (<50µs p99). Rust engine + hosted SaaS platform. Patent pending. [Platform](https://app.datacontractgate.com/)
 * [Databricks Ontos](https://marketplace.databricks.com/details/8c582cfa-4c6b-4fdc-93a2-f63b35d93906/Databricks_Ontos) - Governance and metadata management application using ODCS and ODPS as the core standards for data contracts and data products
 * [Data Caterer](https://data.catering/latest/docs/guide/data-source/metadata/open-data-contract-standard/) - Test data management tool using data contracts as a metadata source
 * [Data Contract CLI](https://cli.datacontract.com) - Open Source tooling around data contracts.
