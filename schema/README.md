@@ -85,6 +85,7 @@ Concise summary of what changed between each retained dated snapshot.
 | 2026-02-25 | Shorthand reference regex relaxed to allow more than two segments (e.g., `a.b.c.d` is now valid).                                                                            |
 | 2026-04-15 | Athena server: `stagingDir` made optional; new optional `workgroup` field added.                                                                                             |
 | 2026-04-29 | Athena changes from 2026-04-15 reverted out of the v3.1.0 line to keep it stable; same changes are carried forward in `latest` and `v3.2.0` instead.                         |
+| 2026-05-05 | Marked `dataProduct` as deprecated (`"deprecated": true`) to align the JSON schema with the v3.1.0 standard, which had already deprecated the property (fixes #226).         |
 
 ### v3.2.0 line
 
