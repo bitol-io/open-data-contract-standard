@@ -187,41 +187,41 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 [IBM Informix](https://www.ibm.com/products/informix) is a high performance, always-on, highly scalable and easily embeddable enterprise-class database optimized for the most demanding transactional and analytics workloads. As an object-relational engine, IBM Informix seamlessly integrates the best of relational and object-oriented capabilities enabling the flexible modeling of complex data structures and relationships.
 
-| Key          | Type    | UX Label        | Required   | Description                                                |
-|--------------|---------|-----------------|------------|------------------------------------------------------------|
-| host         | string  | Host            | Yes        | The host to the Informix server.                           |
-| port         | integer | Port            | No         | The port to the Informix server. Defaults to 9088.         |
-| database     | string  | Database        | Yes        | The name of the database.                                  |
+| Key      | Type    | UX Label | Required | Description                                        |
+| -------- | ------- | -------- | -------- | -------------------------------------------------- |
+| database | string  | Database | Yes      | The name of the database.                          |
+| host     | string  | Host     | Yes      | The host to the Informix server.                   |
+| port     | integer | Port     | No       | The port to the Informix server. Defaults to 9088. |
 
 ### Kafka Server
 
 | Key    | Type   | UX Label | Required | Description                                |
-|--------|--------|----------|----------|--------------------------------------------|
-| host   | string | Host     | Yes      | The bootstrap server of the kafka cluster. |
+| ------ | ------ | -------- | -------- | ------------------------------------------ |
 | format | string | Format   | No       | The format of the messages.                |
+| host   | string | Host     | Yes      | The bootstrap server of the kafka cluster. |
 
 ### Amazon Kinesis
 
 | Key    | Type   | UX Label | Required | Description                          |
-|--------|--------|----------|----------|--------------------------------------|
-| stream | string | Stream   | Yes      | The name of the Kinesis data stream. |
-| region | string | Region   | No       | AWS region.                          |
+| ------ | ------ | -------- | -------- | ------------------------------------ |
 | format | string | Format   | No       | The format of the record             |
+| region | string | Region   | No       | AWS region.                          |
+| stream | string | Stream   | Yes      | The name of the Kinesis data stream. |
 
 ### Local Files
 
 | Key    | Type   | UX Label | Required | Description                                        |
-|--------|--------|----------|----------|----------------------------------------------------|
-| path   | string | Path     | Yes      | The relative or absolute path to the data file(s). |
+| ------ | ------ | -------- | -------- | -------------------------------------------------- |
 | format | string | Format   | Yes      | The format of the file(s)                          |
+| path   | string | Path     | Yes      | The relative or absolute path to the data file(s). |
 
 ### MySQL Server
 
 | Key      | Type    | UX Label | Required | Description                                     |
-|----------|---------|----------|----------|-------------------------------------------------|
+| -------- | ------- | -------- | -------- | ----------------------------------------------- |
+| database | string  | Database | Yes      | The name of the database.                       |
 | host     | string  | Host     | Yes      | The host of the MySql server.                   |
 | port     | integer | Port     | No       | The port of the MySql server. Defaults to 3306. |
-| database | string  | Database | Yes      | The name of the database.                       |
 
 ### Oracle
 
@@ -236,18 +236,18 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 [PostgreSQL](https://www.postgresql.org/) is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
 
 | Key      | Type    | UX Label | Required | Description                                          |
-|----------|---------|----------|----------|------------------------------------------------------|
+| -------- | ------- | -------- | -------- | ---------------------------------------------------- |
+| database | string  | Database | Yes      | The name of the database.                            |
 | host     | string  | Host     | Yes      | The host to the PostgreSQL server                    |
 | port     | integer | Port     | No       | The port to the PostgreSQL server. Defaults to 5432. |
-| database | string  | Database | Yes      | The name of the database.                            |
 | schema   | string  | Schema   | No       | The name of the schema in the database.              |
 
 ### Presto Server
 
 | Key     | Type   | UX Label | Required | Description                   |
-|---------|--------|----------|----------|-------------------------------|
-| host    | string | Host     | Yes      | The host to the Presto server |
+| ------- | ------ | -------- | -------- | ----------------------------- |
 | catalog | string | Catalog  | No       | The name of the catalog.      |
+| host    | string | Host     | Yes      | The host to the Presto server |
 | schema  | string | Schema   | No       | The name of the schema.       |
 
 ### Google Pub/Sub
@@ -263,91 +263,91 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 [Amazon Redshift](https://aws.amazon.com/redshift/) is a power data driven decisions with the best price-performance cloud data warehouse.
 
 | Key      | Type   | UX Label | Required | Description                               |
-|----------|--------|----------|----------|-------------------------------------------|
+| -------- | ------ | -------- | -------- | ----------------------------------------- |
+| account  | string | Account  | No       | The account used by the server.           |
 | database | string | Database | Yes      | The name of the database.                 |
-| schema   | string | Schema   | Yes      | The name of the schema.                   |
 | host     | string | Host     | No       | An optional string describing the server. |
 | region   | string | Region   | No       | AWS region of Redshift server.            |
-| account  | string | Account  | No       | The account used by the server.           |
+| schema   | string | Schema   | Yes      | The name of the schema.                   |
 
 ### Amazon S3 Server and Compatible Servers
 
 [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) is an object storage service offering industry-leading scalability, data availability, security, and performance. Millions of customers of all sizes and industries store, manage, analyze, and protect any amount of data for virtually any use case, such as data lakes, cloud-native applications, and mobile apps. Other vendors have implemented a compatible implementation of S3.
 
 | Key         | Type   | UX Label     | Required | Description                                                                       |
-|-------------|--------|--------------|----------|-----------------------------------------------------------------------------------|
-| location    | string | Location     | Yes      | S3 URL, starting with `s3://`                                                     |
+| ----------- | ------ | ------------ | -------- | --------------------------------------------------------------------------------- |
+| delimiter   | string | Delimiter    | No       | Only for format = json. How multiple json documents are delimited within one file |
 | endpointUrl | string | Endpoint URL | No       | The server endpoint for S3-compatible servers.                                    |
 | format      | string | Format       | No       | File format.                                                                      |
-| delimiter   | string | Delimiter    | No       | Only for format = json. How multiple json documents are delimited within one file |
+| location    | string | Location     | Yes      | S3 URL, starting with `s3://`                                                     |
 
 ### SFTP Server
 
 Secure File Transfer Protocol (SFTP) is a network protocol that enables secure and encrypted file transfers between a client and a server.
 
 | Key       | Type   | UX Label  | Required | Description                                                                       |
-|-----------|--------|-----------|----------|-----------------------------------------------------------------------------------|
-| location  | string | Location  | Yes      | SFTP URL, starting with `sftp://`. The URL should include the port number.        |
-| format    | string | Format    | No       | File format.                                                                      |
+| --------- | ------ | --------- | -------- | --------------------------------------------------------------------------------- |
 | delimiter | string | Delimiter | No       | Only for format = json. How multiple json documents are delimited within one file |
+| format    | string | Format    | No       | File format.                                                                      |
+| location  | string | Location  | Yes      | SFTP URL, starting with `sftp://`. The URL should include the port number.        |
 
 ### Snowflake
 
 | Key       | Type    | UX Label  | Required | Description                                                                 |
-|-----------|---------|-----------|----------|-----------------------------------------------------------------------------|
-| host      | string  | Host      | Yes      | The host to the Snowflake server                                            |
-| port      | integer | Port      | Yes      | The port to the Snowflake server.                                           |
+| --------- | ------- | --------- | -------- | --------------------------------------------------------------------------- |
 | account   | string  | Account   | Yes      | The Snowflake account used by the server.                                   |
 | database  | string  | Database  | Yes      | The name of the database.                                                   |
-| warehouse | string  | Warehouse | Yes      | The name of the cluster of resources that is a Snowflake virtual warehouse. |
+| host      | string  | Host      | Yes      | The host to the Snowflake server                                            |
+| port      | integer | Port      | Yes      | The port to the Snowflake server.                                           |
 | schema    | string  | Schema    | Yes      | The name of the schema.                                                     |
+| warehouse | string  | Warehouse | Yes      | The name of the cluster of resources that is a Snowflake virtual warehouse. |
 
 ### Microsoft SQL Server
 
 [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) is a proprietary relational database management system developed by Microsoft.
 
 | Key      | Type    | UX Label | Required | Description                                        |
-|----------|---------|----------|----------|----------------------------------------------------|
+| -------- | ------- | -------- | -------- | -------------------------------------------------- |
+| database | string  | Database | Yes      | The name of the database.                          |
 | host     | string  | Host     | Yes      | The host to the database server                    |
 | port     | integer | Port     | No       | The port to the database server. Defaults to 1433. |
-| database | string  | Database | Yes      | The name of the database.                          |
 | schema   | string  | Schema   | Yes      | The name of the schema in the database.            |
 
 ### Synapse Server
 
 | Key      | Type    | UX Label | Required | Description                     |
-|----------|---------|----------|----------|---------------------------------|
+| -------- | ------- | -------- | -------- | ------------------------------- |
+| database | string  | Database | Yes      | The name of the database.       |
 | host     | string  | Host     | Yes      | The host of the Synapse server. |
 | port     | integer | Port     | Yes      | The port of the Synapse server. |
-| database | string  | Database | Yes      | The name of the database.       |
 
 ### Trino Server
 
 | Key     | Type    | UX Label | Required | Description                             |
-|---------|---------|----------|----------|-----------------------------------------|
+| ------- | ------- | -------- | -------- | --------------------------------------- |
+| catalog | string  | Catalog  | Yes      | The name of the catalog.                |
 | host    | string  | Host     | Yes      | The Trino host URL.                     |
 | port    | integer | Port     | Yes      | The Trino port.                         |
-| catalog | string  | Catalog  | Yes      | The name of the catalog.                |
 | schema  | string  | Schema   | Yes      | The name of the schema in the database. |
 
 ### Vertica Server
 
 | Key      | Type    | UX Label | Required | Description                     |
-|----------|---------|----------|----------|---------------------------------|
+| -------- | ------- | -------- | -------- | ------------------------------- |
+| database | string  | Database | Yes      | The name of the database.       |
 | host     | string  | Host     | Yes      | The host of the Vertica server. |
 | port     | integer | Port     | Yes      | The port of the Vertica server. |
-| database | string  | Database | Yes      | The name of the database.       |
 | schema   | string  | Schema   | Yes      | The name of the schema.         |
 
 ### Actian Zen Server
 
 Actian Zen (formerly Btrieve, later named Pervasive PSQL until version 13) is an ACID-compliant, zero-DBA, embedded, nano-footprint, multi-model, Multi-Platform database management system (DBMS).
 
-| Key      | Type    | UX Label | Required | Description                                            |
-|----------|---------|----------|----------|--------------------------------------------------------|
-| host     | string  | Host     | Yes      | Hostname or IP address of the Zen server.              |
-| port     | integer | Port     | No       | Zen server SQL connections port. Defaults to 1583.     |
-| database | string  | Database | Yes      | Database name to connect to on the Zen server.         |
+| Key      | Type    | UX Label | Required | Description                                        |
+| -------- | ------- | -------- | -------- | -------------------------------------------------- |
+| database | string  | Database | Yes      | Database name to connect to on the Zen server.     |
+| host     | string  | Host     | Yes      | Hostname or IP address of the Zen server.          |
+| port     | integer | Port     | No       | Zen server SQL connections port. Defaults to 1583. |
 
 ### Custom Server
 

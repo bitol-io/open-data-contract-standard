@@ -20,6 +20,9 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
   * New `map` value for `logicalType` to represent key/value (dictionary) structures common in Databricks, Snowflake, BigQuery, Spark, and Avro.
   * Companion `map` object on schema properties with required `key` and `value` sub-definitions; both follow the standard property shape (logicalType, description, nested properties/items, etc.).
   * `map` is required whenever `logicalType: map` is set.
+* **Adds** Context block for AI and semantic interoperability ([RFC 0038](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0038-context.md)):
+  * New optional `context` block at the data contract and schema object levels, with `instructions`, `verifiedStatements`, and `constraints`.
+  * Adds `glossary`, `ontology`, and `taxonomy` to the recommended `authoritativeDefinitions.type` values.
 
 # v3.1.0 - 2025-12-08 - APPROVED
 

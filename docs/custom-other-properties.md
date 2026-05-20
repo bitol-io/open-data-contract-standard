@@ -32,13 +32,13 @@ customProperties:
 
 ### Definitions
 
-| Key                          | Type   | UX label          | Required | Description                                                                                                                                                                                |
-|------------------------------|--------|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| customProperties             | array  | Custom Properties | No       | A list of key/value pairs for custom properties. Initially created to support the REF ruleset property.                                                                                    |
-| customProperties.description | string | Description       | No       | Description for humans.                                                                                                                                                                    |
-| customProperties.id          | string | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details. |
-| customProperties.property    | string | Property          | No       | The name of the key. Names should be in camel case–the same as if they were permanent properties in the contract.                                                                          |
-| customProperties.value       | any    | Value             | No       | The value of the key. It can be an array.                                                                                                                                                  |
+| Key                            | Type   | UX label          | Required | Description                                                                                                                                                                                |
+| ------------------------------ | ------ | ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| customProperties               | array  | Custom Properties | No       | A list of key/value pairs for custom properties. Initially created to support the REF ruleset property.                                                                                    |
+| customProperties[].description | string | Description       | No       | Description for humans.                                                                                                                                                                    |
+| customProperties[].id          | string | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details. |
+| customProperties[].property    | string | Property          | No       | The name of the key. Names should be in camel case–the same as if they were permanent properties in the contract.                                                                          |
+| customProperties[].value       | any    | Value             | No       | The value of the key. It can be an array.                                                                                                                                                  |
 
 ## Authoritative Definitions
 
