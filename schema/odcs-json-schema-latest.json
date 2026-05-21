@@ -145,7 +145,7 @@
       "description": "Timestamp in UTC of when the data contract was created."
     }
   },
-  "required": ["version", "apiVersion", "kind", "id", "status"],
+  "required": ["version", "apiVersion", "kind", "id"],
   "additionalProperties": false,
   "unevaluatedProperties": false,
   "$defs": {
