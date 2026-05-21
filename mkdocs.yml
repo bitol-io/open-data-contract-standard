@@ -56,6 +56,7 @@ nav:
       - 'README.md'
       - Fundamentals: 'fundamentals.md'
       - Schema: 'schema.md'
+      - Context: 'context.md'
       - References: 'references.md'
       - Data Quality: 'data-quality.md'
       - Support: 'support-communication-channels.md'

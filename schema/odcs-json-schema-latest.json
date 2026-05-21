@@ -82,6 +82,9 @@
       "description": "Name of the logical data domain.",
       "examples": ["imdb_ds_aggregate", "receiver_profile_out", "transaction_profile_out"]
     },
+    "context": {
+      "$ref": "#/$defs/Context"
+    },
     "schema": {
       "type": "array",
       "description": "A list of elements within the schema to be cataloged.",
@@ -142,10 +145,62 @@
       "description": "Timestamp in UTC of when the data contract was created."
     }
   },
-  "required": ["version", "apiVersion", "kind", "id", "status"],
+  "required": ["version", "apiVersion", "kind", "id"],
   "additionalProperties": false,
   "unevaluatedProperties": false,
   "$defs": {
+    "Context": {
+      "description": "AI and semantic context block (RFC-0038). Structured guidance for AI agents, LLMs, BI tools, and semantic layer platforms. Optional and additive.",
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Shorthand: equivalent to providing instructions only."
+        },
+        {
+          "type": "object",
+          "properties": {
+            "instructions": {
+              "type": "string",
+              "description": "Natural language guidance for AI agents and tools on how to use this entity. Equivalent to a system prompt scoped to this level."
+            },
+            "verifiedStatements": {
+              "type": "array",
+              "description": "Canonical questions (entries without `answer`) and verified Q&A pairs (entries with `answer`).",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "string", "description": "Stable identifier for the entry." },
+                  "question": { "type": "string", "description": "The canonical question." },
+                  "answer": { "type": "string", "description": "The expected response or result description." },
+                  "authoritativeDefinitions": { "$ref": "#/$defs/AuthoritativeDefinitions" },
+                  "tags": { "type": "array", "items": { "type": "string" } },
+                  "customProperties": { "$ref": "#/$defs/CustomProperties" }
+                },
+                "required": ["question"],
+                "additionalProperties": false
+              }
+            },
+            "constraints": {
+              "type": "array",
+              "description": "Negative guidance: what AI agents must NOT do with this entity.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "string", "description": "Stable identifier for the constraint." },
+                  "constraint": { "type": "string", "description": "The constraint text (negative guidance for AI agents)." },
+                  "authoritativeDefinitions": { "$ref": "#/$defs/AuthoritativeDefinitions" },
+                  "tags": { "type": "array", "items": { "type": "string" } },
+                  "customProperties": { "$ref": "#/$defs/CustomProperties" }
+                },
+                "required": ["constraint"],
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
     "ShorthandReference": {
       "type": "string",
       "description": "Shorthand notation using name fields (table_name.column_name)",
@@ -1670,6 +1725,9 @@
         },
         "quality": {
           "$ref": "#/$defs/DataQualityChecks"
+        },
+        "context": {
+          "$ref": "#/$defs/Context"
         }
       },
       "allOf": [
@@ -2469,8 +2527,8 @@
           },
           "type": {
             "type": "string",
-            "description": "Type of definition for authority: v2.3 adds standard values: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`.",
-            "examples": ["businessDefinition", "transformationImplementation", "videoTutorial", "tutorial", "implementation"]
+            "description": "Type of definition for authority. See the recommended values in the documentation.",
+            "examples": ["businessDefinition", "canonicalUrl", "glossary", "implementation", "ontology", "taxonomy", "transformationImplementation", "tutorial", "videoTutorial"]
           },
           "description": {
             "type": "string",
