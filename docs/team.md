@@ -2,6 +2,11 @@
 title: "Team"
 description: "This section lists team members and the history of their relation with this data contract."
 ---
+
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
 # Team
 
 This section lists team members and the history of their relation with this data contract. 

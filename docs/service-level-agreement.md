@@ -3,6 +3,11 @@ title: "Service-Level Agreement"
 description: "This section describes the service-level agreements (SLA)."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Service-Level Agreement (SLA)
 
 This section describes the service-level agreements (SLA).

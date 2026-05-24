@@ -4,6 +4,11 @@ description: "Details of the Open Data Contract Standard (ODCS). Includes fundam
 image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color/Bitol_Logo_color.svg"
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Open Data Contract Standard
 
 ## Executive Summary

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
 echo "Moving top level markdown files into 'docs' folder"
 cat README.md | sed 's/(docs\//(/g' | sed 's/CONTRIBUTING.md/contributing.md/g' > docs/home.md
 cat CHANGELOG.md | sed 's/(docs\//(/g' > docs/changelog.md

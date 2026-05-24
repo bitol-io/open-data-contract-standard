@@ -3,6 +3,11 @@ title: "Fundamentals"
 description: "This section contains general information about the contract."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Fundamentals
 
 This section contains general information about the contract. Fundamentals were also called demographics in early versions of ODCS.
