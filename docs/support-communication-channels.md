@@ -3,6 +3,11 @@ title: "Support & Communication Channels"
 description: "Support and communication channels help consumers find help regarding their use of the data contract."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Support & Communication Channels
 
 Support and communication channels help consumers find help regarding their use of the data contract. They support multiple channels.

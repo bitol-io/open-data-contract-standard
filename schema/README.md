@@ -1,3 +1,8 @@
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # ODCS JSON Schema — Versioning
 
 This directory holds every published version of the Open Data Contract Standard (ODCS) JSON Schema.

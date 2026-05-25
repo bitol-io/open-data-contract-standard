@@ -1,3 +1,6 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
 version: 1.0.0
 kind: DataContract
 id: 6c1a2b3d-4e5f-4789-9abc-def012345678

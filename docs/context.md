@@ -3,6 +3,11 @@ title: "Context"
 description: "AI and semantic context guidance for the data contract."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Context
 
 Added in **ODCS v3.2.0** (RFC-0038). The `context` block provides structured, human- and machine-readable guidance for AI agents, LLMs, BI tools, and semantic layer platforms. It is optional and additive.
