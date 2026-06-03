@@ -15,6 +15,10 @@ schema:
     physicalType: table
     physicalName: metrics_turnover
     description: Turnover (TO) metrics for sales and financial analysis.
+    synonyms:
+      - synonym: Sales metrics
+      - synonym: Chiffre d'affaires
+        locale: fr-FR
     properties:
       # Columns (semanticType omitted: implicitly `column`)
       - name: turnover_ts
@@ -58,6 +62,16 @@ schema:
         transformLogic: SUM(turnover_euros)
         description: Total turnover in Euros.
         businessName: TurnOver (Euros)
+        synonyms:
+          - synonym: TO
+            description: Common abbreviation used by the finance team.
+            source: finance-team
+          - synonym: Sales
+            locale: en-US
+          - id: sales-fr
+            synonym: Chiffre d'affaires
+            locale: fr-FR
+            description: French equivalent used in European subsidiaries.
       - name: nb_receipts
         semanticType: measure
         logicalType: integer

@@ -162,6 +162,7 @@ schema:
 | physicalName             | string | Physical Name             | No       | Physical name.                                                                                                                                                                             |
 | physicalType             | string | Physical Type             | No       | The physical element data type in the data source. For objects: `table`, `view`, `topic`, `file`. For properties: `VARCHAR(2)`, `DOUBLE`, `INT`, etc.                                      |
 | quality                  | array  | Quality                   | No       | List of data quality attributes.                                                                                                                                                           |
+| synonyms                 | array  | Synonyms                  | No       | A list of alternative names for the element (object or property), helping catalogs, AI/LLM tools, and natural language interfaces resolve business vocabulary to the underlying object. See [Synonyms](#synonyms).                       |
 | authoritativeDefinitions | array  | Authoritative Definitions | No       | List of links to sources that provide more details on the element; examples would be a link to privacy statement, terms and conditions, license agreements, data catalog, or another tool. |
 | tags                     | array  | Tags                      | No       | A list of tags applied to the element (object or property). See [Tags](./tags.md) for the full specification.                                                                              |
 | customProperties         | array  | Custom Properties         | No       | Custom properties that are not part of the standard.                                                                                                                                       |
@@ -430,5 +431,52 @@ schema:
 | enum[].customProperties         | array  | Custom Properties         | No       | Custom properties attached to this enum value (e.g., translations, locale-specific labels). Same structure as the standard `customProperties` block. |
 
 `enum` was introduced in ODCS v3.2.0 ([RFC 0033](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0033-enum.md)).
+
+## Synonyms
+
+Any element (a schema object or a property) may declare `synonyms`: alternative names that help catalogs, AI/LLM tools, and natural language interfaces resolve business vocabulary to the underlying object. Each entry is an object carrying the synonymous term and optional metadata (locale, source, lifecycle status). `synonyms` is allowed only on schema objects and properties; tools MUST NOT accept it at other locations.
+
+### Example
+
+```yaml
+schema:
+  - name: turnover
+    physicalName: metrics_turnover
+    synonyms:
+      - synonym: Sales metrics
+      - synonym: Chiffre d'affaires
+        locale: fr-FR
+    properties:
+      - name: total_turnover_euros
+        semanticType: measure
+        logicalType: number
+        transformLogic: SUM(turnover_euros)
+        businessName: TurnOver (Euros)
+        synonyms:
+          - synonym: TO
+            description: Common abbreviation used by the finance team.
+            source: finance-team
+          - synonym: Sales
+            locale: en-US
+          - id: sales-fr
+            synonym: Chiffre d'affaires
+            locale: fr-FR
+            description: French equivalent used in European subsidiaries.
+```
+
+### Definition
+
+| Key                         | Type   | UX label          | Required | Description                                                                                                                            |
+| --------------------------- | ------ | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| synonyms                    | array  | Synonyms          | No       | A list of alternative names for the element.                                                                                           |
+| synonyms[].description      | string | Description       | No       | Short human-readable note about when or why this synonym is used.                                                                      |
+| synonyms[].id               | string | ID                | No       | Stable identifier for the synonym, useful when referencing or deduplicating synonyms across tools. See [References](./references.md).  |
+| synonyms[].locale           | string | Locale            | No       | [BCP 47](https://datatracker.ietf.org/doc/html/rfc5646) language tag (e.g., `en-US`, `fr-FR`) when the synonym is language-specific.    |
+| synonyms[].source           | string | Source            | No       | Origin of the synonym (e.g., `glossary`, `finance-team`, `legacy-system`).                                                             |
+| synonyms[].status           | string | Status            | No       | Lifecycle status of the synonym (e.g., `active`, `deprecated`).                                                                        |
+| synonyms[].synonym          | string | Synonym           | Yes      | The synonymous term.                                                                                                                   |
+| synonyms[].customProperties | array  | Custom Properties | No       | Custom properties attached to this synonym. Same structure as the standard `customProperties` block.                                   |
+
+`synonyms` was introduced in ODCS v3.2.0 ([RFC 0041](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0041-synonyms.md)).
 
 [Back to TOC](README.md)
