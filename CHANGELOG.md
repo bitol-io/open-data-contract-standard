@@ -23,6 +23,10 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
 * **Adds** Context block for AI and semantic interoperability ([RFC 0038](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0038-context.md)):
   * New optional `context` block at the data contract and schema object levels, with `instructions`, `verifiedStatements`, and `constraints`.
   * Adds `glossary`, `ontology`, and `taxonomy` to the recommended `authoritativeDefinitions.type` values.
+* **Adds** Measures and Dimensions ([RFC 0034](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0034-measures-and-dimensions.md)):
+  * New optional `semanticType` field on schema properties, declaring the semantic role a property plays: `column` (the default), `measure`, or `dimension`.
+  * A `measure` is an aggregated value (e.g., `SUM(revenue)`) whose aggregation expression lives in `transformLogic`; a `dimension` is a categorical attribute for grouping and filtering.
+  * Non-breaking: properties without `semanticType` remain implicit columns. Measures and dimensions reuse the full property shape (name, logicalType, logicalTypeOptions, businessName, transformLogic, etc.) with no new top-level structures.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 

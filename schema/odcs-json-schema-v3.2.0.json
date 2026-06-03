@@ -1778,6 +1778,12 @@
           "default": false,
           "description": "Indicates if the element contains unique values; possible values are true and false. Default is false."
         },
+        "semanticType": {
+          "type": "string",
+          "enum": ["column", "measure", "dimension"],
+          "default": "column",
+          "description": "The semantic role the property plays in the data model. `column` (the default) is a physical column in the underlying data store; `measure` is an aggregated value (e.g., `SUM(revenue)`) whose aggregation expression is held in `transformLogic`; `dimension` is a categorical attribute used for grouping and filtering. See RFC 0034."
+        },
         "partitioned": {
           "type": "boolean",
           "default": false,
