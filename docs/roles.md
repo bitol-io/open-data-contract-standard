@@ -3,6 +3,11 @@ title: "Roles"
 description: "This section lists the roles that a consumer may need to access the dataset, depending on the type of access they require."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Roles
 
 This section lists the roles that a consumer may need to access the dataset, depending on the type of access they require.

@@ -3,6 +3,11 @@ title: "Custom & Other Properties"
 description: "This section covers custom properties you may find in a data contract."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Custom & Other Properties
 
 This section covers other properties you may find in a data contract.

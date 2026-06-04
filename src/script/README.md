@@ -1,3 +1,8 @@
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Script
 
 ## Building docs

@@ -3,6 +3,11 @@ title: "Data Quality"
 description: "his section describes data quality rules & parameters."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Data Quality
 
 This section describes data quality rules & parameters. They are tightly linked to the schema described in the previous section.

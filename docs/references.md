@@ -3,6 +3,11 @@ title: "References"
 description: "This section describes how to reference elements within a data contract schema."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # References
 
 This section describes how to reference elements within a data contract schema. References enable you to create relationships between different parts of your data contract. This section is new in ODCS v3.1.0.

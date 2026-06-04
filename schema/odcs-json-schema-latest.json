@@ -1680,6 +1680,9 @@
           "type": "string",
           "description": "The business name of the element."
         },
+        "synonyms": {
+          "$ref": "#/$defs/Synonyms"
+        },
         "authoritativeDefinitions": {
           "$ref": "#/$defs/AuthoritativeDefinitions"
         },
@@ -1777,6 +1780,12 @@
           "type": "boolean",
           "default": false,
           "description": "Indicates if the element contains unique values; possible values are true and false. Default is false."
+        },
+        "semanticType": {
+          "type": "string",
+          "enum": ["column", "measure", "dimension"],
+          "default": "column",
+          "description": "The semantic role the property plays in the data model. `column` (the default) is a physical column in the underlying data store; `measure` is an aggregated value (e.g., `SUM(revenue)`) whose aggregation expression is held in `transformLogic`; `dimension` is a categorical attribute used for grouping and filtering. See RFC 0034."
         },
         "partitioned": {
           "type": "boolean",
@@ -2838,6 +2847,47 @@
         }
       },
       "required": ["value"],
+      "additionalProperties": false
+    },
+    "Synonyms": {
+      "type": "array",
+      "description": "A list of alternative names for the object. See RFC 0041.",
+      "items": {
+        "$ref": "#/$defs/Synonym"
+      }
+    },
+    "Synonym": {
+      "type": "object",
+      "description": "An alternative name for a named object, helping catalogs, AI/LLM tools, and natural language interfaces resolve business vocabulary to the underlying object. See RFC 0041.",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/StableId"
+        },
+        "synonym": {
+          "type": "string",
+          "description": "The synonymous term."
+        },
+        "description": {
+          "type": "string",
+          "description": "Short human-readable note about when or why this synonym is used."
+        },
+        "locale": {
+          "type": "string",
+          "description": "BCP 47 language tag (e.g., `en-US`, `fr-FR`) when the synonym is language-specific."
+        },
+        "source": {
+          "type": "string",
+          "description": "Origin of the synonym (e.g., `glossary`, `finance-team`, `legacy-system`)."
+        },
+        "status": {
+          "type": "string",
+          "description": "Lifecycle status of the synonym (e.g., `active`, `deprecated`)."
+        },
+        "customProperties": {
+          "$ref": "#/$defs/CustomProperties"
+        }
+      },
+      "required": ["synonym"],
       "additionalProperties": false
     },
     "CustomProperty": {

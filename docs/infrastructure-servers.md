@@ -3,6 +3,11 @@ title: "Infrastructures & Servers"
 description: "This section describes server structures, properties and types."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Infrastructure & Servers
 
 The `servers` element describes where the data protected by this data contract is *physically* located. That metadata helps to know where the data is so that a data consumer can discover the data and a platform engineer can automate access.

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
 # Script to generate diff between JSON schema files
 # Usage: ./schema-diff.sh [new_schema_file] [old_schema_file]
 # If no arguments provided, it will try to detect the latest and previous schema files

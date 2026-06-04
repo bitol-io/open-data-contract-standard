@@ -3,6 +3,11 @@ title: "Tags"
 description: "Lightweight, free-form classification labels attached to elements of a data contract."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Tags
 
 Tags are lightweight, free-form classification labels that can be attached to many elements of a data contract. The structure is shared across the Bitol standards and follows the same shape everywhere it appears.

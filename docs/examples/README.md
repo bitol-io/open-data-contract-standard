@@ -1,3 +1,8 @@
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Examples of Data Contracts
 
 This folder contains example data contracts illustrating each section of the **Open Data Contract Standard**. Most files are excerpts that exercise a single feature; the [full examples](#full-examples) put many features together in a single contract.
