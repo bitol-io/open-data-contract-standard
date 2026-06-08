@@ -1,0 +1,143 @@
+apiVersion: v3.1.0
+kind: DataContract
+id: orders_domain
+status: active
+name: Orders Domain
+version: 1.0.0
+description:
+  purpose: Demonstrates different valid relationship definitions between schema objects.
+
+schema:
+  - id: categories_obj
+    name: categories
+    physicalName: categories
+    logicalType: object
+    physicalType: table
+    description: Product categories.
+    properties:
+      - name: id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: varchar(36)
+        required: true
+
+  - id: products_obj
+    name: products
+    physicalName: products
+    logicalType: object
+    physicalType: table
+    description: Products catalog.
+    properties:
+      - name: id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: varchar(36)
+        required: true
+      - name: category_id
+        logicalType: string
+        physicalType: varchar(36)
+        required: true
+        description: Property-level relationship using shorthand reference.
+        relationships:
+          - to: categories.id
+            type: foreignKey
+
+  - id: customers_obj
+    name: customers
+    physicalName: customers
+    logicalType: object
+    physicalType: table
+    description: Customers keyed by id and country_code (composite primary key).
+    properties:
+      - name: id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: varchar(36)
+        required: true
+      - name: country_code
+        primaryKey: true
+        primaryKeyPosition: 2
+        logicalType: string
+        physicalType: varchar(2)
+        required: true
+
+  - id: orders_obj
+    name: orders
+    physicalName: orders
+    logicalType: object
+    physicalType: table
+    description: Orders referencing customers via a composite foreign key.
+    relationships:
+      # Schema-level composite foreign key using shorthand references.
+      - type: foreignKey
+        from:
+          - orders.customer_id
+          - orders.customer_country
+        to:
+          - customers.id
+          - customers.country_code
+        customProperties:
+          - property: cardinality
+            value: many-to-one
+    properties:
+      - name: id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: varchar(36)
+        required: true
+      - name: customer_id
+        logicalType: string
+        physicalType: varchar(36)
+        required: true
+      - name: customer_country
+        logicalType: string
+        physicalType: varchar(2)
+        required: true
+      - name: product_id
+        logicalType: string
+        physicalType: varchar(36)
+        required: true
+        description: Property-level relationship using fully qualified reference.
+        relationships:
+          - to: schema/products_obj/properties/id
+            type: foreignKey
+            customProperties:
+              - property: cardinality
+                value: many-to-one
+
+  - id: order_items_obj
+    name: order-items
+    physicalName: order_items
+    logicalType: object
+    physicalType: table
+    description: Order line items with a composite primary key where both columns are also foreign keys. Uses a dashed schema name to demonstrate dashes in shorthand references.
+    relationships:
+      # Schema-level single-column foreign key using a shorthand reference with a dashed schema name.
+      - type: foreignKey
+        from: order-items.order_id
+        to: orders.id
+      # Schema-level single-column foreign key using fully qualified references.
+      - type: foreignKey
+        from: /schema/order_items_obj/properties/product_id
+        to: /schema/products_obj/properties/id
+    properties:
+      - name: order_id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: varchar(36)
+        required: true
+      - name: product_id
+        primaryKey: true
+        primaryKeyPosition: 2
+        logicalType: string
+        physicalType: varchar(36)
+        required: true
+      - name: quantity
+        logicalType: integer
+        physicalType: int
+        required: true
