@@ -45,6 +45,8 @@ customProperties:
 | customProperties[].property    | string | Property          | No       | The name of the key. Names should be in camel case–the same as if they were permanent properties in the contract.                                                                          |
 | customProperties[].value       | any    | Value             | No       | The value of the key. It can be an array.                                                                                                                                                  |
 
+Avis: With version 3.2.0 the Description of 'customProperties.property' will be updated to "The name of the key. Could be in any notation. If this field is used for referencing it should be in camel case–the same as if they were permanent properties in the contract. Note that since ODCS version 3.1 the field 'customProperties.id' should be used for referencing purposes. In this case the name of the key could be human-readable and self-explanatory to the greatest extent."
+
 ## Authoritative Definitions
 
 Authoritative Definitions allow you to delegate definitions to a third-party system such as an enterprise catalog, repository, or knowledge base. The block is shared across all Bitol standards and is available in many sections of a data contract.
