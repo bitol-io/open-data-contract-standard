@@ -16,9 +16,9 @@
     },
     "apiVersion": {
       "type": "string",
-      "default": "v3.2.0",
-      "description": "Version of the standard used to build data contract. Default value is v3.2.0.",
-      "enum": ["v3.2.0", "v3.1.0", "v3.0.2", "v3.0.1", "v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
+      "default": "v3.1.0",
+      "description": "Version of the standard used to build data contract. Default value is v3.1.0.",
+      "enum": ["v3.1.0", "v3.0.2", "v3.0.1", "v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
     },
     "id": {
       "type": "string",
@@ -51,7 +51,8 @@
     },
     "dataProduct": {
       "type": "string",
-      "description": "The name of the data product. DEPRECATED since v3.1.0."
+      "description": "The name of the data product. DEPRECATED since v3.1.0.",
+      "deprecated": true
     },
     "description": {
       "type": "object",
@@ -81,9 +82,6 @@
       "type": "string",
       "description": "Name of the logical data domain.",
       "examples": ["imdb_ds_aggregate", "receiver_profile_out", "transaction_profile_out"]
-    },
-    "context": {
-      "$ref": "#/$defs/Context"
     },
     "schema": {
       "type": "array",
@@ -145,71 +143,19 @@
       "description": "Timestamp in UTC of when the data contract was created."
     }
   },
-  "required": ["version", "apiVersion", "kind", "id"],
+  "required": ["version", "apiVersion", "kind", "id", "status"],
   "additionalProperties": false,
   "unevaluatedProperties": false,
   "$defs": {
-    "Context": {
-      "description": "AI and semantic context block (RFC-0038). Structured guidance for AI agents, LLMs, BI tools, and semantic layer platforms. Optional and additive.",
-      "oneOf": [
-        {
-          "type": "string",
-          "description": "Shorthand: equivalent to providing instructions only."
-        },
-        {
-          "type": "object",
-          "properties": {
-            "instructions": {
-              "type": "string",
-              "description": "Natural language guidance for AI agents and tools on how to use this entity. Equivalent to a system prompt scoped to this level."
-            },
-            "verifiedStatements": {
-              "type": "array",
-              "description": "Canonical questions (entries without `answer`) and verified Q&A pairs (entries with `answer`).",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "id": { "type": "string", "description": "Stable identifier for the entry." },
-                  "question": { "type": "string", "description": "The canonical question." },
-                  "answer": { "type": "string", "description": "The expected response or result description." },
-                  "authoritativeDefinitions": { "$ref": "#/$defs/AuthoritativeDefinitions" },
-                  "tags": { "type": "array", "items": { "type": "string" } },
-                  "customProperties": { "$ref": "#/$defs/CustomProperties" }
-                },
-                "required": ["question"],
-                "additionalProperties": false
-              }
-            },
-            "constraints": {
-              "type": "array",
-              "description": "Negative guidance: what AI agents must NOT do with this entity.",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "id": { "type": "string", "description": "Stable identifier for the constraint." },
-                  "constraint": { "type": "string", "description": "The constraint text (negative guidance for AI agents)." },
-                  "authoritativeDefinitions": { "$ref": "#/$defs/AuthoritativeDefinitions" },
-                  "tags": { "type": "array", "items": { "type": "string" } },
-                  "customProperties": { "$ref": "#/$defs/CustomProperties" }
-                },
-                "required": ["constraint"],
-                "additionalProperties": false
-              }
-            }
-          },
-          "additionalProperties": false
-        }
-      ]
-    },
     "ShorthandReference": {
       "type": "string",
       "description": "Shorthand notation using name fields (table_name.column_name)",
-      "pattern": "^[A-Za-z_][A-Za-z0-9_]*(\\.[A-Za-z_][A-Za-z0-9_]*)+$"
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*\\.[A-Za-z_][A-Za-z0-9_]*$"
     },
     "FullyQualifiedReference": {
       "type": "string",
       "description": "Fully qualified notation using id fields (section/id/properties/id), optionally prefixed with external file reference",
-      "pattern": "^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.ya?ml#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+)*$"
+      "pattern": "^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.yaml#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+)*$"
     },
     "StableId": {
       "type": "string",
@@ -747,14 +693,10 @@
             "type": "string",
             "description": "The region your AWS account uses.",
             "examples": ["eu-west-1"]
-          },
-          "workgroup": {
-            "type": "string",
-            "description": "The Athena workgroup to use. Workgroups can enforce query result location and other client-side settings via the 'Override client-side settings' option.",
-            "examples": ["primary"]
           }
         },
         "required": [
+          "stagingDir",
           "schema"
         ]
       },
@@ -1680,9 +1622,6 @@
           "type": "string",
           "description": "The business name of the element."
         },
-        "synonyms": {
-          "$ref": "#/$defs/Synonyms"
-        },
         "authoritativeDefinitions": {
           "$ref": "#/$defs/AuthoritativeDefinitions"
         },
@@ -1728,9 +1667,6 @@
         },
         "quality": {
           "$ref": "#/$defs/DataQualityChecks"
-        },
-        "context": {
-          "$ref": "#/$defs/Context"
         }
       },
       "allOf": [
@@ -1756,7 +1692,7 @@
         "logicalType": {
           "type": "string",
           "description": "The logical element data type.",
-          "enum": ["string", "date", "timestamp", "time", "number", "integer", "object", "array", "boolean", "map"]
+          "enum": ["string", "date", "timestamp", "time", "number", "integer", "object", "array", "boolean"]
         },
         "logicalTypeOptions": {
           "type": "object",
@@ -1780,12 +1716,6 @@
           "type": "boolean",
           "default": false,
           "description": "Indicates if the element contains unique values; possible values are true and false. Default is false."
-        },
-        "semanticType": {
-          "type": "string",
-          "enum": ["column", "measure", "dimension"],
-          "default": "column",
-          "description": "The semantic role the property plays in the data model. `column` (the default) is a physical column in the underlying data store; `measure` is an aggregated value (e.g., `SUM(revenue)`) whose aggregation expression is held in `transformLogic`; `dimension` is a categorical attribute used for grouping and filtering. See RFC 0034."
         },
         "partitioned": {
           "type": "boolean",
@@ -1826,15 +1756,6 @@
           "description": "List of sample element values.",
           "items": {
             "$ref": "#/$defs/AnyType"
-          }
-        },
-        "enum": {
-          "type": "array",
-          "description": "Enumeration of allowed values for this property. Each entry is an object with at least a `value`. See RFC 0033.",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {
-            "$ref": "#/$defs/EnumValue"
           }
         },
         "criticalDataElement": {
@@ -2179,36 +2100,6 @@
               }
             }
           }
-        },
-        {
-          "if": {
-            "properties": {
-              "logicalType": {
-                "const": "map"
-              }
-            }
-          },
-          "then": {
-            "properties": {
-              "map": {
-                "type": "object",
-                "description": "Key/value definition for a map (only applicable when `logicalType: map`). See RFC 0030.",
-                "additionalProperties": false,
-                "properties": {
-                  "key": {
-                    "$ref": "#/$defs/SchemaItemProperty",
-                    "description": "Definition of the map's key."
-                  },
-                  "value": {
-                    "$ref": "#/$defs/SchemaItemProperty",
-                    "description": "Definition of the map's value."
-                  }
-                },
-                "required": ["key", "value"]
-              }
-            },
-            "required": ["map"]
-          }
         }
       ],
       "unevaluatedProperties": false
@@ -2536,8 +2427,8 @@
           },
           "type": {
             "type": "string",
-            "description": "Type of definition for authority. See the recommended values in the documentation.",
-            "examples": ["businessDefinition", "canonicalUrl", "glossary", "implementation", "ontology", "taxonomy", "transformationImplementation", "tutorial", "videoTutorial"]
+            "description": "Type of definition for authority: v2.3 adds standard values: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`.",
+            "examples": ["businessDefinition", "transformationImplementation", "videoTutorial", "tutorial", "implementation"]
           },
           "description": {
             "type": "string",
@@ -2812,83 +2703,6 @@
       "items": {
         "$ref": "#/$defs/CustomProperty"
       }
-    },
-    "EnumValue": {
-      "type": "object",
-      "description": "An allowed value within a property's enumeration. See RFC 0033.",
-      "properties": {
-        "value": {
-          "$ref": "#/$defs/AnyNonCollectionType",
-          "description": "The allowed value. Required."
-        },
-        "label": {
-          "type": "string",
-          "description": "Human-readable label for the value, suitable for UI display."
-        },
-        "id": {
-          "$ref": "#/$defs/StableId"
-        },
-        "description": {
-          "type": "string",
-          "description": "Optional description of what this enum value represents."
-        },
-        "customProperties": {
-          "type": "array",
-          "description": "Custom properties attached to this enum value (e.g., translations).",
-          "items": {
-            "$ref": "#/$defs/CustomProperty"
-          }
-        },
-        "authoritativeDefinitions": {
-          "$ref": "#/$defs/AuthoritativeDefinitions"
-        },
-        "tags": {
-          "$ref": "#/$defs/Tags"
-        }
-      },
-      "required": ["value"],
-      "additionalProperties": false
-    },
-    "Synonyms": {
-      "type": "array",
-      "description": "A list of alternative names for the object. See RFC 0041.",
-      "items": {
-        "$ref": "#/$defs/Synonym"
-      }
-    },
-    "Synonym": {
-      "type": "object",
-      "description": "An alternative name for a named object, helping catalogs, AI/LLM tools, and natural language interfaces resolve business vocabulary to the underlying object. See RFC 0041.",
-      "properties": {
-        "id": {
-          "$ref": "#/$defs/StableId"
-        },
-        "synonym": {
-          "type": "string",
-          "description": "The synonymous term."
-        },
-        "description": {
-          "type": "string",
-          "description": "Short human-readable note about when or why this synonym is used."
-        },
-        "locale": {
-          "type": "string",
-          "description": "BCP 47 language tag (e.g., `en-US`, `fr-FR`) when the synonym is language-specific."
-        },
-        "source": {
-          "type": "string",
-          "description": "Origin of the synonym (e.g., `glossary`, `finance-team`, `legacy-system`)."
-        },
-        "status": {
-          "type": "string",
-          "description": "Lifecycle status of the synonym (e.g., `active`, `deprecated`)."
-        },
-        "customProperties": {
-          "$ref": "#/$defs/CustomProperties"
-        }
-      },
-      "required": ["synonym"],
-      "additionalProperties": false
     },
     "CustomProperty": {
       "type": "object",
