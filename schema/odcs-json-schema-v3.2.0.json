@@ -232,7 +232,7 @@
           "description": "Type of the server.",
           "enum": [
             "api", "athena", "azure", "bigquery", "clickhouse", "databricks", "denodo", "dremio",
-            "duckdb", "glue", "cloudsql", "db2", "hive", "impala", "informix", "kafka", "kinesis", "local",
+            "duckdb", "glue", "hana", "cloudsql", "db2", "hive", "impala", "informix", "kafka", "kinesis", "local",
             "mysql", "oracle", "postgresql", "postgres", "presto", "pubsub",
             "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "trino", "vertica", "zen", "custom"
           ]
@@ -542,6 +542,19 @@
           },
           "then": {
             "$ref": "#/$defs/ServerSource/OracleServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "hana"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/HanaServer"
           }
         },
         {
@@ -1400,6 +1413,31 @@
           "port",
           "database",
           "schema"
+        ]
+      },
+      "HanaServer": {
+        "type": "object",
+        "title": "HanaServer",
+        "properties": {
+          "host": {
+            "type": "string",
+            "description": "Host of the HANA server."
+          },
+          "port": {
+            "type": "integer",
+            "description": "Port of the HANA server."
+          },
+          "database": {
+            "type": "string",
+            "description": "Name of the database (tenant)."
+          },
+          "schema": {
+            "type": "string",
+            "description": "Name of the schema."
+          }
+        },
+        "required": [
+          "host"
         ]
       },
       "PrestoServer": {

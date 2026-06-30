@@ -44,6 +44,9 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
   * New `vector` value for `logicalType`, describing a fixed-dimension dense numeric array for embeddings and similarity search.
   * Dedicated `logicalTypeOptions` for `vector`: required `dimensions` (positive integer) plus optional `elementType`, `distanceMetric`, `normalized`, `embeddingModel`, and `embeddingModelVersion`.
   * Non-breaking: `vector` is a new optional `logicalType` value.
+* **Adds** SAP HANA server type ([RFC 0045](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0045-hana-server-type.md)):
+  * New `hana` server `type` for SAP HANA, with required `host` plus optional `port`, `database` (tenant), and `schema`.
+  * Non-breaking: adds a new optional server type.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 
