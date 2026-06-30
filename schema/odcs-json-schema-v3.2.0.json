@@ -1760,6 +1760,11 @@
           "type": "string",
           "description": "The business name of the element."
         },
+        "deprecated": {
+          "type": "boolean",
+          "description": "Indicates this element is deprecated and should not be used in new implementations. Defaults to false.",
+          "default": false
+        },
         "synonyms": {
           "$ref": "#/$defs/Synonyms"
         },

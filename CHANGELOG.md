@@ -34,6 +34,9 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
 * **Adds** Physical data encoding ([RFC 0043](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0043-physical-data-encoding.md)):
   * New optional `encoding` string field on server definitions that expose serialized payloads (Azure, Glue, Custom, Kafka, Kinesis, Local, S3, SFTP), declaring the expected character encoding of the data, e.g. `UTF-8`, `ISO-8859-1`, `ASCII`, `UTF-16`.
   * Free-form string (no enum), default `UTF-8`; documents physical-payload encoding separately from the ODCS document encoding. Non-breaking, as `encoding` is optional.
+* **Adds** Deprecated flag ([RFC 0028](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0028-deprecated-flag.md), shared with ODPS v1.1.0):
+  * New optional `deprecated` boolean on schema objects and properties (including nested properties), indicating an element is no longer recommended for use.
+  * Defaults to `false`; deprecated elements remain documented and validated for backward compatibility. Non-breaking, as `deprecated` is optional.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 
