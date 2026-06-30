@@ -2992,6 +2992,11 @@
         "description": {
           "type": "string",
           "description": "Description of the custom property."
+        },
+        "vendor": {
+          "type": "string",
+          "description": "Identifies the vendor, provider, or external system associated with this custom property. SHOULD be a stable, lowercase identifier matching ^[a-z0-9][a-z0-9-]*$ (e.g. confluent, zeenea, atlan, soda). Tools MUST preserve unknown vendor values.",
+          "examples": ["confluent", "zeenea", "atlan", "soda"]
         }
       },
       "required": ["property", "value"],
