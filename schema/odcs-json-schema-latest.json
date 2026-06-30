@@ -1842,7 +1842,7 @@
         "logicalType": {
           "type": "string",
           "description": "The logical element data type.",
-          "enum": ["string", "date", "timestamp", "time", "number", "integer", "object", "array", "boolean", "map"]
+          "enum": ["string", "date", "timestamp", "time", "number", "integer", "object", "array", "boolean", "map", "vector"]
         },
         "logicalTypeOptions": {
           "type": "object",
@@ -2294,6 +2294,57 @@
               }
             },
             "required": ["map"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "logicalType": {
+                "const": "vector"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "logicalTypeOptions": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "dimensions": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "The fixed length of the vector. Positive integer (only applicable when `logicalType: vector`). See RFC 0042.",
+                    "examples": [384, 768, 1024, 1536, 3072]
+                  },
+                  "elementType": {
+                    "type": "string",
+                    "enum": ["bfloat16", "binary", "float16", "float32", "float64", "int8", "uint8"],
+                    "default": "float32",
+                    "description": "Numeric type of each vector element. `binary` means each element is one bit (binary-quantized vectors)."
+                  },
+                  "distanceMetric": {
+                    "type": "string",
+                    "enum": ["cosine", "dotProduct", "euclidean", "hamming", "manhattan"],
+                    "description": "Intended similarity metric. Advisory \u2014 the physical index may differ."
+                  },
+                  "embeddingModel": {
+                    "type": "string",
+                    "description": "Identifier of the model used to produce the vectors.",
+                    "examples": ["openai/text-embedding-3-small", "cohere/embed-english-v3.0"]
+                  },
+                  "embeddingModelVersion": {
+                    "type": "string",
+                    "description": "Version or revision of the embedding model, when the model identifier does not already carry one."
+                  },
+                  "normalized": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "True if vectors are L2-normalized before storage, which makes cosine and dotProduct equivalent."
+                  }
+                },
+                "required": ["dimensions"]
+              }
+            }
           }
         }
       ],
