@@ -40,6 +40,10 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
 * **Adds** Vendor attribution for custom properties ([RFC 0035](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0035-extensions.md), shared with ODPS v1.1.0 and OORS v1.0.0):
   * New optional `vendor` string on `customProperties` items, associating a custom property with a specific vendor, provider, or external system.
   * SHOULD be a stable, lowercase identifier (`^[a-z0-9][a-z0-9-]*$`); not enforced, and tools MUST preserve unknown vendor values. Non-breaking, as `vendor` is optional.
+* **Adds** Vector type ([RFC 0042](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0042-vector-type.md)):
+  * New `vector` value for `logicalType`, describing a fixed-dimension dense numeric array for embeddings and similarity search.
+  * Dedicated `logicalTypeOptions` for `vector`: required `dimensions` (positive integer) plus optional `elementType`, `distanceMetric`, `normalized`, `embeddingModel`, and `embeddingModelVersion`.
+  * Non-breaking: `vector` is a new optional `logicalType` value.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 

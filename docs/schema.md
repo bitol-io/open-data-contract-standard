@@ -162,7 +162,7 @@ schema:
 | name                     | string | Name                      | Yes      | Name of the element.                                                                                                                                                                       |
 | physicalName             | string | Physical Name             | No       | Physical name.                                                                                                                                                                             |
 | physicalType             | string | Physical Type             | No       | The physical element data type in the data source. For objects: `table`, `view`, `topic`, `file`. For properties: `VARCHAR(2)`, `DOUBLE`, `INT`, etc.                                      |
-| logicalType              | string | Logical Type              | No       | The logical data type of the element. One of `string`, `date`, `timestamp`, `time`, `number`, `integer`, `object`, `array`, `boolean`, or `map`. At the object level this is typically `object` (or `array` for an array of objects); the data-type keywords above apply to properties. |
+| logicalType              | string | Logical Type              | No       | The logical data type of the element. One of `string`, `date`, `timestamp`, `time`, `number`, `integer`, `object`, `array`, `boolean`, `map`, or `vector`. At the object level this is typically `object` (or `array` for an array of objects); the data-type keywords above apply to properties. |
 | quality                  | array  | Quality                   | No       | List of data quality attributes.                                                                                                                                                           |
 | synonyms                 | array  | Synonyms                  | No       | A list of alternative names for the element (object or property), helping catalogs, AI/LLM tools, and natural language interfaces resolve business vocabulary to the underlying object. See [Synonyms](#synonyms).                       |
 | authoritativeDefinitions | array  | Authoritative Definitions | No       | List of links to sources that provide more details on the element; examples would be a link to privacy statement, terms and conditions, license agreements, data catalog, or another tool. |
@@ -232,6 +232,12 @@ Additional metadata options to more accurately define the data type.
 | string              | maxLength        | integer | Maximum Length     | No       | Maximum length of the string.                                                                                                                                                                                                                                      |
 | string              | minLength        | integer | Minimum Length     | No       | Minimum length of the string.                                                                                                                                                                                                                                      |
 | string              | pattern          | string  | Pattern            | No       | Regular expression pattern to define valid value. Follows regular expression syntax from ECMA-262 (<https://262.ecma-international.org/5.1/#sec-15.10.1>).                                                                                                         |
+| vector              | dimensions       | integer | Dimensions         | Yes      | The fixed length of the vector. Positive integer. Examples: `384`, `768`, `1024`, `1536`, `3072`. See [Vectors](#vectors).                                                                                                                                        |
+| vector              | elementType      | string  | Element Type       | No       | Numeric type of each element. One of `bfloat16`, `binary`, `float16`, `float32` (default), `float64`, `int8`, `uint8`. `binary` means each element is one bit (binary-quantized vectors).                                                                          |
+| vector              | distanceMetric   | string  | Distance Metric    | No       | Intended similarity metric. One of `cosine`, `dotProduct`, `euclidean`, `hamming`, `manhattan`. Advisory — the physical index may differ.                                                                                                                          |
+| vector              | embeddingModel   | string  | Embedding Model    | No       | Identifier of the model used to produce the vectors (e.g., `openai/text-embedding-3-small`, `cohere/embed-english-v3.0`).                                                                                                                                          |
+| vector              | embeddingModelVersion | string | Embedding Model Version | No   | Version or revision of the embedding model, when the model identifier does not already carry one.                                                                                                                                                                 |
+| vector              | normalized       | boolean | Normalized         | No       | `true` if vectors are L2-normalized before storage, which makes `cosine` and `dotProduct` equivalent. Default `false`.                                                                                                                                            |
 
 ### Expressing Date / Datetime / Timezone information
 
@@ -376,6 +382,45 @@ schema:
 | map.value | object | Value    | Yes                         | Definition of the map's value. Same shape as any property definition; supports nested `properties` (for objects), `items` (for arrays), `enum`, etc. |
 
 `logicalType: map` was introduced in ODCS v3.2.0 ([RFC 0030](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0030-maps.md)).
+
+## Vectors
+
+A property can declare `logicalType: vector` to describe a fixed-dimension dense numeric array used for embeddings and similarity search (RAG, semantic matching). The shape is captured with `logicalTypeOptions`: `dimensions` (required), and the optional `elementType`, `distanceMetric`, `normalized`, `embeddingModel`, and `embeddingModelVersion`. The outer `physicalType` still carries the target system's native column syntax (e.g. `vector(1536)`, `VECTOR(FLOAT, 1536)`).
+
+### Examples
+
+**Minimal — a single embedding column:**
+
+```yaml
+schema:
+  - name: products
+    properties:
+      - name: description_embedding
+        logicalType: vector
+        required: true
+        logicalTypeOptions:
+          dimensions: 1536
+```
+
+**Detailed — a normalized OpenAI embedding with cosine similarity:**
+
+```yaml
+- name: body_embedding
+  logicalType: vector
+  physicalType: vector(1536)
+  required: true
+  logicalTypeOptions:
+    dimensions: 1536
+    elementType: float32
+    distanceMetric: cosine
+    normalized: true
+    embeddingModel: openai/text-embedding-3-small
+    embeddingModelVersion: "2024-01-25"
+```
+
+`dimensions` is required whenever `logicalType: vector`. See [Logical Type Options](#logical-type-options) for the full list of options.
+
+`logicalType: vector` was introduced in ODCS v3.2.0 ([RFC 0042](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0042-vector-type.md)).
 
 ## Enumerations
 
