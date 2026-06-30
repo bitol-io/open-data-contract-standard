@@ -47,6 +47,9 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
 * **Adds** SAP HANA server type ([RFC 0045](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0045-hana-server-type.md)):
   * New `hana` server `type` for SAP HANA, with required `host` plus optional `port`, `database` (tenant), and `schema`.
   * Non-breaking: adds a new optional server type.
+* **Adds** SLA custom properties and authoritative definitions ([RFC 0046](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0046-sla-custom-properties-and-authoritative-definitions.md)):
+  * Each `slaProperties[]` entry may now carry optional `customProperties` and `authoritativeDefinitions`, consistent with other ODCS objects.
+  * Non-breaking: both fields are optional.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 

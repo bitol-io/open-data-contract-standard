@@ -2975,6 +2975,12 @@
           "type": "string",
           "description": "Configuration information for the scheduling tool, for cron a possible value is 0 20 * * *.",
           "examples": ["0 20 * * *"]
+        },
+        "customProperties": {
+          "$ref": "#/$defs/CustomProperties"
+        },
+        "authoritativeDefinitions": {
+          "$ref": "#/$defs/AuthoritativeDefinitions"
         }
       },
       "required": ["property", "value"],
