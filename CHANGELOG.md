@@ -31,6 +31,9 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
   * New optional `synonyms` array on schema objects and properties, recording alternative names for catalogs, AI/LLM tools, and natural language interfaces.
   * Each `synonyms` entry is an object with a required `synonym` plus optional `id`, `description`, `locale` (BCP 47), `source`, `status`, and `customProperties`.
   * Allowed only on schema objects and properties; non-breaking, as `synonyms` is optional.
+* **Adds** Physical data encoding ([RFC 0043](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0043-physical-data-encoding.md)):
+  * New optional `encoding` string field on server definitions that expose serialized payloads (Azure, Glue, Custom, Kafka, Kinesis, Local, S3, SFTP), declaring the expected character encoding of the data, e.g. `UTF-8`, `ISO-8859-1`, `ASCII`, `UTF-16`.
+  * Free-form string (no enum), default `UTF-8`; documents physical-payload encoding separately from the ODCS document encoding. Non-breaking, as `encoding` is optional.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 
