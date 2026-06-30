@@ -1,0 +1,23 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0043 negative test: `encoding` must be a string. Here it is an integer,
+# so the schema MUST reject this contract.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 9c2d4e6f-2a1b-4c3d-8e5f-1a2b3c4d5e6f
+status: active
+servers:
+  - server: production
+    type: s3
+    location: s3://my-bucket/customer_export/*.csv
+    format: csv
+    encoding: 65001
+schema:
+  - name: customers
+    physicalType: table
+    properties:
+      - name: customer_id
+        logicalType: string

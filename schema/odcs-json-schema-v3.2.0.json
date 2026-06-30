@@ -781,6 +781,16 @@
             ],
             "description": "File format."
           },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
+          },
           "delimiter": {
             "type": "string",
             "examples": [
@@ -956,6 +966,16 @@
               "csv",
               "json",
               "delta"
+            ]
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
             ]
           }
         },
@@ -1137,6 +1157,16 @@
             "type": "string",
             "description": "File format."
           },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
+          },
           "host": {
             "type": "string",
             "description": "Host name or IP address."
@@ -1202,6 +1232,16 @@
             "description": "The format of the messages.",
             "examples": ["json", "avro", "protobuf", "xml"],
             "default": "json"
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
           }
         },
         "required": [
@@ -1228,6 +1268,16 @@
               "avro",
               "protobuf"
             ]
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
           }
         }
       },
@@ -1251,6 +1301,16 @@
               "parquet",
               "delta",
               "csv"
+            ]
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
             ]
           }
         },
@@ -1444,6 +1504,16 @@
             ],
             "description": "File format."
           },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
+          },
           "delimiter": {
             "type": "string",
             "examples": [
@@ -1479,6 +1549,16 @@
               "csv"
             ],
             "description": "File format."
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
           },
           "delimiter": {
             "type": "string",

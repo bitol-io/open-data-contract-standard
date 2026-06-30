@@ -84,6 +84,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | Key       | Type   | UX Label  | Required | Description                                                                                   |
 |-----------|--------|-----------|----------|-----------------------------------------------------------------------------------------------|
 | delimiter | string | Delimiter | No       | Only for format = json. How multiple json documents are delimited within one file             |
+| encoding  | string | Encoding  | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
 | format    | string | Format    | Yes      | File format.                                                                                  |
 | location  | string | Location  | Yes      | Fully qualified path to Azure Blob Storage or Azure Data Lake Storage (ADLS), supports globs. |
 
@@ -165,6 +166,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 |----------|--------|----------|----------|------------------------------------------------|
 | account  | string | Account  | Yes      | The AWS Glue account                           |
 | database | string | Database | Yes      | The AWS Glue database name                     |
+| encoding | string | Encoding | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
 | format   | string | Format   | No       | The format of the files                        |
 | location | string | Location | No       | The AWS S3 path. Must be in the form of a URL. |
 
@@ -202,6 +204,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 | Key    | Type   | UX Label | Required | Description                                |
 | ------ | ------ | -------- | -------- | ------------------------------------------ |
+| encoding | string | Encoding | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
 | format | string | Format   | No       | The format of the messages.                |
 | host   | string | Host     | Yes      | The bootstrap server of the kafka cluster. |
 
@@ -209,6 +212,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 | Key    | Type   | UX Label | Required | Description                          |
 | ------ | ------ | -------- | -------- | ------------------------------------ |
+| encoding | string | Encoding | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
 | format | string | Format   | No       | The format of the record             |
 | region | string | Region   | No       | AWS region.                          |
 | stream | string | Stream   | Yes      | The name of the Kinesis data stream. |
@@ -217,6 +221,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 | Key    | Type   | UX Label | Required | Description                                        |
 | ------ | ------ | -------- | -------- | -------------------------------------------------- |
+| encoding | string | Encoding | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
 | format | string | Format   | Yes      | The format of the file(s)                          |
 | path   | string | Path     | Yes      | The relative or absolute path to the data file(s). |
 
@@ -282,6 +287,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | Key         | Type   | UX Label     | Required | Description                                                                       |
 | ----------- | ------ | ------------ | -------- | --------------------------------------------------------------------------------- |
 | delimiter   | string | Delimiter    | No       | Only for format = json. How multiple json documents are delimited within one file |
+| encoding    | string | Encoding     | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
 | endpointUrl | string | Endpoint URL | No       | The server endpoint for S3-compatible servers.                                    |
 | format      | string | Format       | No       | File format.                                                                      |
 | location    | string | Location     | Yes      | S3 URL, starting with `s3://`                                                     |
@@ -293,6 +299,7 @@ Secure File Transfer Protocol (SFTP) is a network protocol that enables secure a
 | Key       | Type   | UX Label  | Required | Description                                                                       |
 | --------- | ------ | --------- | -------- | --------------------------------------------------------------------------------- |
 | delimiter | string | Delimiter | No       | Only for format = json. How multiple json documents are delimited within one file |
+| encoding  | string | Encoding  | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
 | format    | string | Format    | No       | File format.                                                                      |
 | location  | string | Location  | Yes      | SFTP URL, starting with `sftp://`. The URL should include the port number.        |
 
@@ -363,6 +370,7 @@ Actian Zen (formerly Btrieve, later named Pervasive PSQL until version 13) is an
 | database    | string  | Database          | No       | Name of the database.                                               |
 | dataset     | string  | Dataset           | No       | Name of the dataset.                                                |
 | delimiter   | string  | Delimiter         | No       | Delimiter.                                                          |
+| encoding    | string  | Encoding          | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
 | endpointUrl | string  | Endpoint URL      | No       | Server endpoint.                                                    |
 | format      | string  | Format            | No       | File format.                                                        |
 | host        | string  | Host              | No       | Host name or IP address.                                            |
