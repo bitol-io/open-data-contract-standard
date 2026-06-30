@@ -504,6 +504,6 @@ schema:
 | ------------ | ------- | ---------- | -------- | ---------------------------------------------------------------------------------------------------- |
 | deprecated   | boolean | Deprecated | No       | Indicates this element is deprecated and should not be used in new implementations. Defaults to `false`. |
 
-`deprecated` was introduced in ODCS v3.2.0 ([RFC 0028](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0028-deprecated-flag.md)).
+`deprecated` was introduced in ODCS v3.2.0 ([RFC 0051](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0051-deprecated-flag.md)).
 
 [Back to TOC](README.md)

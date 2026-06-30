@@ -1,7 +1,7 @@
 # Copyright 2026 The Bitol Contributors
 # SPDX-License-Identifier: Apache-2.0
 
-# RFC-0028 negative test: `deprecated` must be a boolean. Here it is a string,
+# RFC-0051 negative test: `deprecated` must be a boolean. Here it is a string,
 # so the schema MUST reject this contract.
 
 version: 1.0.0
