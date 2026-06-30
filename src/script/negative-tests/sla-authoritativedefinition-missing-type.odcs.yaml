@@ -1,0 +1,19 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0046 negative test: an slaProperties[].authoritativeDefinitions entry
+# requires both `url` and `type`. Here `type` is omitted, so the schema MUST
+# reject this contract.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 8a3b0c5e-2c7f-4b9e-8d1a-4f5b6c7d8e9f
+status: active
+schema: []
+slaProperties:
+  - property: latency
+    value: 100
+    unit: ms
+    authoritativeDefinitions:
+      - url: https://wiki.acme.com/sla/latency
