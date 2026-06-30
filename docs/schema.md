@@ -157,6 +157,7 @@ schema:
 | ------------------------ | ------ | ------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | businessName             | string | Business Name             | No       | The business name of the element.                                                                                                                                                          |
 | description              | string | Description               | No       | Description of the element.                                                                                                                                                                |
+| deprecated               | boolean | Deprecated               | No       | Indicates this element is deprecated and should not be used in new implementations. Defaults to `false`. See [Deprecated](#deprecated).                                                    |
 | id                       | string | ID                        | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details. |
 | name                     | string | Name                      | Yes      | Name of the element.                                                                                                                                                                       |
 | physicalName             | string | Physical Name             | No       | Physical name.                                                                                                                                                                             |
@@ -478,5 +479,31 @@ schema:
 | synonyms[].customProperties | array  | Custom Properties | No       | Custom properties attached to this synonym. Same structure as the standard `customProperties` block.                                   |
 
 `synonyms` was introduced in ODCS v3.2.0 ([RFC 0041](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0041-synonyms.md)).
+
+[Back to TOC](README.md)
+
+## Deprecated
+
+Any element (a schema object or a property, including nested properties) may set the optional `deprecated` boolean to signal that it is no longer recommended for use. It defaults to `false` when not specified. Deprecated elements remain documented and validated for backward compatibility; implementations MAY warn when they are used. Use the `description` field to point to a replacement and provide migration guidance.
+
+```yaml
+schema:
+  - name: customers
+    logicalType: object
+    properties:
+      - name: email_address
+        logicalType: string
+        deprecated: true
+        description: "DEPRECATED: use 'primary_email' instead. Will be removed in the next major version."
+      - name: primary_email
+        logicalType: string
+        description: "Primary email address for the customer."
+```
+
+| Key          | Type    | UX label   | Required | Description                                                                                          |
+| ------------ | ------- | ---------- | -------- | ---------------------------------------------------------------------------------------------------- |
+| deprecated   | boolean | Deprecated | No       | Indicates this element is deprecated and should not be used in new implementations. Defaults to `false`. |
+
+`deprecated` was introduced in ODCS v3.2.0 ([RFC 0028](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0028-deprecated-flag.md)).
 
 [Back to TOC](README.md)
