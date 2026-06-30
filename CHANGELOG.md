@@ -37,6 +37,9 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
 * **Adds** Deprecated flag ([RFC 0028](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0028-deprecated-flag.md), shared with ODPS v1.1.0):
   * New optional `deprecated` boolean on schema objects and properties (including nested properties), indicating an element is no longer recommended for use.
   * Defaults to `false`; deprecated elements remain documented and validated for backward compatibility. Non-breaking, as `deprecated` is optional.
+* **Adds** Vendor attribution for custom properties ([RFC 0035](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0035-extensions.md), shared with ODPS v1.1.0 and OORS v1.0.0):
+  * New optional `vendor` string on `customProperties` items, associating a custom property with a specific vendor, provider, or external system.
+  * SHOULD be a stable, lowercase identifier (`^[a-z0-9][a-z0-9-]*$`); not enforced, and tools MUST preserve unknown vendor values. Non-breaking, as `vendor` is optional.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 
