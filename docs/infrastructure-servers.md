@@ -292,6 +292,17 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | format      | string | Format       | No       | File format.                                                                                          |
 | location    | string | Location     | Yes      | S3 URL, starting with `s3://`                                                                         |
 
+### SAP HANA
+
+[SAP HANA](https://www.sap.com/products/technology-platform/hana.html) is an in-memory, column-oriented relational database used as an enterprise data platform.
+
+| Key      | Type    | UX Label | Required | Description                    |
+| -------- | ------- | -------- | -------- | ------------------------------ |
+| host     | string  | Host     | Yes      | Host of the HANA server.       |
+| port     | integer | Port     | No       | Port of the HANA server.       |
+| database | string  | Database | No       | Name of the database (tenant). |
+| schema   | string  | Schema   | No       | Name of the schema.            |
+
 ### SFTP Server
 
 Secure File Transfer Protocol (SFTP) is a network protocol that enables secure and encrypted file transfers between a client and a server.
