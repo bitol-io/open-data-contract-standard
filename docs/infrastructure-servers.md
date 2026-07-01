@@ -44,7 +44,7 @@ servers:
 ### Common Server Properties
 
 | Key              | Type   | UX label          | Required | Description                                                                                                                                                                                                                                                                                                               |
-|------------------|--------|-------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------------- | ------ | ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | description      | string | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                                |
 | environment      | string | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                                    |
 | id               | string | ID                | No       | A unique identifier used to reduce the risk of collisions, such as a UUID.                                                                                                                                                                                                                                                |
@@ -63,16 +63,16 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 ### API Server
 
-| Key            | Type   | UX Label   | Required   | Description                                                                                                                                                      |
-|----------------|--------|------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **location**   | string | Location   | Yes        | URL to the API                                                                                                                                                   |
+| Key          | Type   | UX Label | Required | Description    |
+| ------------ | ------ | -------- | -------- | -------------- |
+| **location** | string | Location | Yes      | URL to the API |
 
 ### Amazon Athena Server
 
 [Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) is an interactive query service that makes it easy to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL. With a few actions in the AWS Management Console, you can point Athena at your data stored in Amazon S3 and begin using standard SQL to run ad-hoc queries and get results in seconds.
 
 | Key        | Type   | UX Label          | Required | Description                                                                                                                                                      |
-|------------|--------|-------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------- | ------ | ----------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | catalog    | string | Catalog           | No       | Identify the name of the Data Source, also referred to as a Catalog.                                                                                             |
 | regionName | string | Region Name       | No       | The region your AWS account uses.                                                                                                                                |
 | schema     | string | Schema            | Yes      | Identify the schema in the data source in which your tables exist.                                                                                               |
@@ -81,18 +81,19 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 ### Azure Server
 
-| Key       | Type   | UX Label  | Required | Description                                                                                   |
-|-----------|--------|-----------|----------|-----------------------------------------------------------------------------------------------|
-| delimiter | string | Delimiter | No       | Only for format = json. How multiple json documents are delimited within one file             |
-| format    | string | Format    | Yes      | File format.                                                                                  |
-| location  | string | Location  | Yes      | Fully qualified path to Azure Blob Storage or Azure Data Lake Storage (ADLS), supports globs. |
+| Key       | Type   | UX Label  | Required | Description                                                                                           |
+| --------- | ------ | --------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| delimiter | string | Delimiter | No       | Only for format = json. How multiple json documents are delimited within one file                     |
+| encoding  | string | Encoding  | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
+| format    | string | Format    | Yes      | File format.                                                                                          |
+| location  | string | Location  | Yes      | Fully qualified path to Azure Blob Storage or Azure Data Lake Storage (ADLS), supports globs.         |
 
 ### Google BigQuery
 
 [BigQuery](https://cloud.google.com/bigquery) is a fully managed, AI-ready data analytics platform that helps you maximize value from your data and is designed to be multi-engine, multi-format, and multi-cloud.
 
 | Key     | Type   | UX Label | Required | Description                                   |
-|---------|--------|----------|----------|-----------------------------------------------|
+| ------- | ------ | -------- | -------- | --------------------------------------------- |
 | dataset | string | Dataset  | Yes      | The GCP dataset name.                         |
 | project | string | Project  | Yes      | The Google Cloud Platform (GCP) project name. |
 
@@ -101,7 +102,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 [ClickHouse](https://clickhouse.com/) is an open-source column-oriented database management system that allows generating analytical data reports in real-time.
 
 | Key      | Type    | UX Label | Required | Description                        |
-|----------|---------|----------|----------|------------------------------------|
+| -------- | ------- | -------- | -------- | ---------------------------------- |
 | database | string  | Database | Yes      | The name of the database.          |
 | host     | string  | Host     | Yes      | The host of the ClickHouse server. |
 | port     | integer | Port     | Yes      | The port to the ClickHouse server. |
@@ -111,7 +112,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 [Google Cloud SQL](https://cloud.google.com/sql) is a fully managed, cost-effective relational database service for PostgreSQL, MySQL, and SQL Server.
 
 | Key      | Type    | UX Label | Required | Description                              |
-|----------|---------|----------|----------|------------------------------------------|
+| -------- | ------- | -------- | -------- | ---------------------------------------- |
 | database | string  | Database | Yes      | The name of the database.                |
 | host     | string  | Host     | Yes      | The host of the Google Cloud SQL server. |
 | port     | integer | Port     | Yes      | The port of the Google Cloud SQL server. |
@@ -120,7 +121,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 ### Databricks Server
 
 | Key     | Type   | UX Label | Required | Description                           |
-|---------|--------|----------|----------|---------------------------------------|
+| ------- | ------ | -------- | -------- | ------------------------------------- |
 | catalog | string | Catalog  | Yes      | The name of the Hive or Unity catalog |
 | host    | string | Host     | No       | The Databricks host                   |
 | schema  | string | Schema   | Yes      | The schema name in the catalog        |
@@ -128,7 +129,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 ### IBM Db2 Server
 
 | Key      | Type    | UX Label | Required | Description                     |
-|----------|---------|----------|----------|---------------------------------|
+| -------- | ------- | -------- | -------- | ------------------------------- |
 | database | string  | Database | Yes      | The name of the database.       |
 | host     | string  | Host     | Yes      | The host of the IBM DB2 server. |
 | port     | integer | Port     | Yes      | The port of the IBM DB2 server. |
@@ -137,7 +138,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 ### Denodo Server
 
 | Key      | Type    | UX Label | Required | Description                    |
-|----------|---------|----------|----------|--------------------------------|
+| -------- | ------- | -------- | -------- | ------------------------------ |
 | database | string  | Database | No       | The name of the database.      |
 | host     | string  | Host     | Yes      | The host of the Denodo server. |
 | port     | integer | Port     | Yes      | The port of the Denodo server. |
@@ -145,7 +146,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 ### Dremio Server
 
 | Key    | Type    | UX Label | Required | Description                    |
-|--------|---------|----------|----------|--------------------------------|
+| ------ | ------- | -------- | -------- | ------------------------------ |
 | host   | string  | Host     | Yes      | The host of the Dremio server. |
 | port   | integer | Port     | Yes      | The port of the Dremio server. |
 | schema | string  | Schema   | No       | The name of the schema.        |
@@ -155,38 +156,39 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 [DuckDB](https://duckdb.org/) supports a feature-rich SQL dialect complemented with deep integrations into client APIs.
 
 | Key      | Type   | UX Label | Required | Description                   |
-|----------|--------|----------|----------|-------------------------------|
+| -------- | ------ | -------- | -------- | ----------------------------- |
 | database | string | Database | Yes      | Path to duckdb database file. |
 | schema   | string | Schema   | No       | The name of the schema.       |
 
 ### Amazon Glue
 
-| Key      | Type   | UX Label | Required | Description                                    |
-|----------|--------|----------|----------|------------------------------------------------|
-| account  | string | Account  | Yes      | The AWS Glue account                           |
-| database | string | Database | Yes      | The AWS Glue database name                     |
-| format   | string | Format   | No       | The format of the files                        |
-| location | string | Location | No       | The AWS S3 path. Must be in the form of a URL. |
+| Key      | Type   | UX Label | Required | Description                                                                                           |
+| -------- | ------ | -------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| account  | string | Account  | Yes      | The AWS Glue account                                                                                  |
+| database | string | Database | Yes      | The AWS Glue database name                                                                            |
+| encoding | string | Encoding | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
+| format   | string | Format   | No       | The format of the files                                                                               |
+| location | string | Location | No       | The AWS S3 path. Must be in the form of a URL.                                                        |
 
 ### Hive
 
 [Apache Hive](https://hive.apache.org/) is a distributed, fault-tolerant data warehouse system that enables analytics at massive scale. Built on top of Apache Hadoop, Hive allows users to read, write, and manage petabytes of data using SQL-like queries through HiveQL, with native support for cloud storage systems and enterprise-grade security features.
 
-| Key          | Type    | UX Label        | Required   | Description                                     |
-|--------------|---------|-----------------|------------|-------------------------------------------------|
-| database     | string  | Database        | Yes        | The name of the Hive database.                  |
-| host         | string  | Host            | Yes        | The host to the Hive server.                    |
-| port         | integer | Port            | No         | The port to the Hive server. Defaults to 10000. |
+| Key      | Type    | UX Label | Required | Description                                     |
+| -------- | ------- | -------- | -------- | ----------------------------------------------- |
+| database | string  | Database | Yes      | The name of the Hive database.                  |
+| host     | string  | Host     | Yes      | The host to the Hive server.                    |
+| port     | integer | Port     | No       | The port to the Hive server. Defaults to 10000. |
 
 ### Apache Impala
 
 [Apache Impala](https://impala.apache.org/) is a massively parallel processing (MPP) SQL query engine for data stored in Apache Hadoop clusters. Impala provides high-performance, low-latency SQL queries on data stored in HDFS and Apache HBase, enabling interactive exploration and analytics without data movement or transformation.
 
-| Key          | Type    | UX Label        | Required   | Description                                       |
-|--------------|---------|-----------------|------------|---------------------------------------------------|
-| database     | string  | Database        | Yes        | The name of the Impala database.                  |
-| host         | string  | Host            | Yes        | The host to the Impala server.                    |
-| port         | integer | Port            | No         | The port to the Impala server. Defaults to 21050. |
+| Key      | Type    | UX Label | Required | Description                                       |
+| -------- | ------- | -------- | -------- | ------------------------------------------------- |
+| database | string  | Database | Yes      | The name of the Impala database.                  |
+| host     | string  | Host     | Yes      | The host to the Impala server.                    |
+| port     | integer | Port     | No       | The port to the Impala server. Defaults to 21050. |
 
 ### IBM Informix and HCL Informix
 
@@ -200,25 +202,28 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 ### Kafka Server
 
-| Key    | Type   | UX Label | Required | Description                                |
-| ------ | ------ | -------- | -------- | ------------------------------------------ |
-| format | string | Format   | No       | The format of the messages.                |
-| host   | string | Host     | Yes      | The bootstrap server of the kafka cluster. |
+| Key      | Type   | UX Label | Required | Description                                                                                           |
+| -------- | ------ | -------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| encoding | string | Encoding | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
+| format   | string | Format   | No       | The format of the messages.                                                                           |
+| host     | string | Host     | Yes      | The bootstrap server of the kafka cluster.                                                            |
 
 ### Amazon Kinesis
 
-| Key    | Type   | UX Label | Required | Description                          |
-| ------ | ------ | -------- | -------- | ------------------------------------ |
-| format | string | Format   | No       | The format of the record             |
-| region | string | Region   | No       | AWS region.                          |
-| stream | string | Stream   | Yes      | The name of the Kinesis data stream. |
+| Key      | Type   | UX Label | Required | Description                                                                                           |
+| -------- | ------ | -------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| encoding | string | Encoding | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
+| format   | string | Format   | No       | The format of the record                                                                              |
+| region   | string | Region   | No       | AWS region.                                                                                           |
+| stream   | string | Stream   | Yes      | The name of the Kinesis data stream.                                                                  |
 
 ### Local Files
 
-| Key    | Type   | UX Label | Required | Description                                        |
-| ------ | ------ | -------- | -------- | -------------------------------------------------- |
-| format | string | Format   | Yes      | The format of the file(s)                          |
-| path   | string | Path     | Yes      | The relative or absolute path to the data file(s). |
+| Key      | Type   | UX Label | Required | Description                                                                                           |
+| -------- | ------ | -------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| encoding | string | Encoding | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
+| format   | string | Format   | Yes      | The format of the file(s)                                                                             |
+| path     | string | Path     | Yes      | The relative or absolute path to the data file(s).                                                    |
 
 ### MySQL Server
 
@@ -231,7 +236,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 ### Oracle
 
 | Key         | Type    | UX Label     | Required | Description                    |
-|-------------|---------|--------------|----------|--------------------------------|
+| ----------- | ------- | ------------ | -------- | ------------------------------ |
 | host        | string  | Host         | Yes      | The host to the Oracle server  |
 | port        | integer | Port         | Yes      | The port to the Oracle server. |
 | serviceName | string  | Service Name | Yes      | The name of the service.       |
@@ -260,7 +265,7 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 [Google Cloud](https://cloud.google.com/pubsub) service to Ingest events for streaming into BigQuery, data lakes or operational databases.
 
 | Key     | Type   | UX Label | Required | Description           |
-|---------|--------|----------|----------|-----------------------|
+| ------- | ------ | -------- | -------- | --------------------- |
 | project | string | Project  | Yes      | The GCP project name. |
 
 ### Amazon Redshift Server
@@ -279,22 +284,35 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) is an object storage service offering industry-leading scalability, data availability, security, and performance. Millions of customers of all sizes and industries store, manage, analyze, and protect any amount of data for virtually any use case, such as data lakes, cloud-native applications, and mobile apps. Other vendors have implemented a compatible implementation of S3.
 
-| Key         | Type   | UX Label     | Required | Description                                                                       |
-| ----------- | ------ | ------------ | -------- | --------------------------------------------------------------------------------- |
-| delimiter   | string | Delimiter    | No       | Only for format = json. How multiple json documents are delimited within one file |
-| endpointUrl | string | Endpoint URL | No       | The server endpoint for S3-compatible servers.                                    |
-| format      | string | Format       | No       | File format.                                                                      |
-| location    | string | Location     | Yes      | S3 URL, starting with `s3://`                                                     |
+| Key         | Type   | UX Label     | Required | Description                                                                                           |
+| ----------- | ------ | ------------ | -------- | ----------------------------------------------------------------------------------------------------- |
+| delimiter   | string | Delimiter    | No       | Only for format = json. How multiple json documents are delimited within one file                     |
+| encoding    | string | Encoding     | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
+| endpointUrl | string | Endpoint URL | No       | The server endpoint for S3-compatible servers.                                                        |
+| format      | string | Format       | No       | File format.                                                                                          |
+| location    | string | Location     | Yes      | S3 URL, starting with `s3://`                                                                         |
+
+### SAP HANA
+
+[SAP HANA](https://www.sap.com/products/technology-platform/hana.html) is an in-memory, column-oriented relational database used as an enterprise data platform.
+
+| Key      | Type    | UX Label | Required | Description                    |
+| -------- | ------- | -------- | -------- | ------------------------------ |
+| host     | string  | Host     | Yes      | Host of the HANA server.       |
+| port     | integer | Port     | No       | Port of the HANA server.       |
+| database | string  | Database | No       | Name of the database (tenant). |
+| schema   | string  | Schema   | No       | Name of the schema.            |
 
 ### SFTP Server
 
 Secure File Transfer Protocol (SFTP) is a network protocol that enables secure and encrypted file transfers between a client and a server.
 
-| Key       | Type   | UX Label  | Required | Description                                                                       |
-| --------- | ------ | --------- | -------- | --------------------------------------------------------------------------------- |
-| delimiter | string | Delimiter | No       | Only for format = json. How multiple json documents are delimited within one file |
-| format    | string | Format    | No       | File format.                                                                      |
-| location  | string | Location  | Yes      | SFTP URL, starting with `sftp://`. The URL should include the port number.        |
+| Key       | Type   | UX Label  | Required | Description                                                                                           |
+| --------- | ------ | --------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| delimiter | string | Delimiter | No       | Only for format = json. How multiple json documents are delimited within one file                     |
+| encoding  | string | Encoding  | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
+| format    | string | Format    | No       | File format.                                                                                          |
+| location  | string | Location  | Yes      | SFTP URL, starting with `sftp://`. The URL should include the port number.                            |
 
 ### Snowflake
 
@@ -356,27 +374,28 @@ Actian Zen (formerly Btrieve, later named Pervasive PSQL until version 13) is an
 
 ### Custom Server
 
-| Key         | Type    | UX Label          | Required | Description                                                         |
-|-------------|---------|-------------------|----------|---------------------------------------------------------------------|
-| account     | string  | Account           | No       | Account used by the server.                                         |
-| catalog     | string  | Catalog           | No       | Name of the catalog.                                                |
-| database    | string  | Database          | No       | Name of the database.                                               |
-| dataset     | string  | Dataset           | No       | Name of the dataset.                                                |
-| delimiter   | string  | Delimiter         | No       | Delimiter.                                                          |
-| endpointUrl | string  | Endpoint URL      | No       | Server endpoint.                                                    |
-| format      | string  | Format            | No       | File format.                                                        |
-| host        | string  | Host              | No       | Host name or IP address.                                            |
-| location    | string  | Location          | No       | A URL to a location.                                                |
-| path        | string  | Path              | No       | Relative or absolute path to the data file(s).                      |
-| port        | integer | Port              | No       | Port to the server. No default value is assumed for custom servers. |
-| project     | string  | Project           | No       | Project name.                                                       |
-| region      | string  | Region            | No       | Cloud region.                                                       |
-| regionName  | string  | Region Name       | No       | Region name.                                                        |
-| schema      | string  | Schema            | No       | Name of the schema.                                                 |
-| serviceName | string  | Service Name      | No       | Name of the service.                                                |
-| stagingDir  | string  | Staging Directory | No       | Staging directory.                                                  |
-| stream      | string  | Stream            | No       | Name of the data stream.                                            |
-| warehouse   | string  | Warehouse         | No       | Name of the cluster or warehouse.                                   |
+| Key         | Type    | UX Label          | Required | Description                                                                                           |
+| ----------- | ------- | ----------------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| account     | string  | Account           | No       | Account used by the server.                                                                           |
+| catalog     | string  | Catalog           | No       | Name of the catalog.                                                                                  |
+| database    | string  | Database          | No       | Name of the database.                                                                                 |
+| dataset     | string  | Dataset           | No       | Name of the dataset.                                                                                  |
+| delimiter   | string  | Delimiter         | No       | Delimiter.                                                                                            |
+| encoding    | string  | Encoding          | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
+| endpointUrl | string  | Endpoint URL      | No       | Server endpoint.                                                                                      |
+| format      | string  | Format            | No       | File format.                                                                                          |
+| host        | string  | Host              | No       | Host name or IP address.                                                                              |
+| location    | string  | Location          | No       | A URL to a location.                                                                                  |
+| path        | string  | Path              | No       | Relative or absolute path to the data file(s).                                                        |
+| port        | integer | Port              | No       | Port to the server. No default value is assumed for custom servers.                                   |
+| project     | string  | Project           | No       | Project name.                                                                                         |
+| region      | string  | Region            | No       | Cloud region.                                                                                         |
+| regionName  | string  | Region Name       | No       | Region name.                                                                                          |
+| schema      | string  | Schema            | No       | Name of the schema.                                                                                   |
+| serviceName | string  | Service Name      | No       | Name of the service.                                                                                  |
+| stagingDir  | string  | Staging Directory | No       | Staging directory.                                                                                    |
+| stream      | string  | Stream            | No       | Name of the data stream.                                                                              |
+| warehouse   | string  | Warehouse         | No       | Name of the cluster or warehouse.                                                                     |
 
 If you need another property, use [custom properties](./custom-other-properties.md).
 

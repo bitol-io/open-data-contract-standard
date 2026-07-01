@@ -1,0 +1,20 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0042 negative test: `dimensions` is required whenever logicalType is
+# vector. Here it is omitted, so the schema MUST reject this contract.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 9d2e5f8a-3b4c-4d6e-8f1a-2b3c4d5e6f7a
+status: active
+schema:
+  - name: products
+    physicalType: table
+    properties:
+      - name: description_embedding
+        logicalType: vector
+        logicalTypeOptions:
+          elementType: float32
+          distanceMetric: cosine

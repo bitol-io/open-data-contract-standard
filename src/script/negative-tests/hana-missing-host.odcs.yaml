@@ -1,0 +1,19 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0045 negative test: a `hana` server requires `host`. Here it is omitted,
+# so the schema MUST reject this contract.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 6e9c3b2d-8f4a-4b7e-9c1d-2f3a4b5c6d7e
+status: active
+servers:
+  - server: prod
+    type: hana
+    port: 30015
+    database: HXE
+schema:
+  - name: sales
+    physicalType: table

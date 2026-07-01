@@ -31,6 +31,25 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
   * New optional `synonyms` array on schema objects and properties, recording alternative names for catalogs, AI/LLM tools, and natural language interfaces.
   * Each `synonyms` entry is an object with a required `synonym` plus optional `id`, `description`, `locale` (BCP 47), `source`, `status`, and `customProperties`.
   * Allowed only on schema objects and properties; non-breaking, as `synonyms` is optional.
+* **Adds** Physical data encoding ([RFC 0043](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0043-physical-data-encoding.md)):
+  * New optional `encoding` string field on server definitions that expose serialized payloads (Azure, Glue, Custom, Kafka, Kinesis, Local, S3, SFTP), declaring the expected character encoding of the data, e.g. `UTF-8`, `ISO-8859-1`, `ASCII`, `UTF-16`.
+  * Free-form string (no enum), default `UTF-8`; documents physical-payload encoding separately from the ODCS document encoding. Non-breaking, as `encoding` is optional.
+* **Adds** Deprecated flag ([RFC 0051](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0051-deprecated-flag.md), shared with ODPS v1.1.0):
+  * New optional `deprecated` boolean on schema objects and properties (including nested properties), indicating an element is no longer recommended for use.
+  * Defaults to `false`; deprecated elements remain documented and validated for backward compatibility. Non-breaking, as `deprecated` is optional.
+* **Adds** Vendor attribution for custom properties ([RFC 0035](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0035-extensions.md), shared with ODPS v1.1.0 and OORS v1.0.0):
+  * New optional `vendor` string on `customProperties` items, associating a custom property with a specific vendor, provider, or external system.
+  * SHOULD be a stable, lowercase identifier (`^[a-z0-9][a-z0-9-]*$`); not enforced, and tools MUST preserve unknown vendor values. Non-breaking, as `vendor` is optional.
+* **Adds** Vector type ([RFC 0042](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0042-vector-type.md)):
+  * New `vector` value for `logicalType`, describing a fixed-dimension dense numeric array for embeddings and similarity search.
+  * Dedicated `logicalTypeOptions` for `vector`: required `dimensions` (positive integer) plus optional `elementType`, `distanceMetric`, `normalized`, `embeddingModel`, and `embeddingModelVersion`.
+  * Non-breaking: `vector` is a new optional `logicalType` value.
+* **Adds** SAP HANA server type ([RFC 0045](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0045-hana-server-type.md)):
+  * New `hana` server `type` for SAP HANA, with required `host` plus optional `port`, `database` (tenant), and `schema`.
+  * Non-breaking: adds a new optional server type.
+* **Adds** SLA custom properties and authoritative definitions ([RFC 0046](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0046-sla-custom-properties-and-authoritative-definitions.md)):
+  * Each `slaProperties[]` entry may now carry optional `customProperties` and `authoritativeDefinitions`, consistent with other ODCS objects.
+  * Non-breaking: both fields are optional.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 

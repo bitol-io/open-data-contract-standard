@@ -51,7 +51,7 @@
     },
     "dataProduct": {
       "type": "string",
-      "description": "The name of the data product."
+      "description": "The name of the data product. DEPRECATED since v3.1.0."
     },
     "description": {
       "type": "object",
@@ -209,7 +209,7 @@
     "FullyQualifiedReference": {
       "type": "string",
       "description": "Fully qualified notation using id fields (section/id/properties/id), optionally prefixed with external file reference",
-      "pattern": "^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.yaml#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+)*$"
+      "pattern": "^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.ya?ml#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+)*$"
     },
     "StableId": {
       "type": "string",
@@ -232,7 +232,7 @@
           "description": "Type of the server.",
           "enum": [
             "api", "athena", "azure", "bigquery", "clickhouse", "databricks", "denodo", "dremio",
-            "duckdb", "glue", "cloudsql", "db2", "hive", "impala", "informix", "kafka", "kinesis", "local",
+            "duckdb", "glue", "hana", "cloudsql", "db2", "hive", "impala", "informix", "kafka", "kinesis", "local",
             "mysql", "oracle", "postgresql", "postgres", "presto", "pubsub",
             "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "trino", "vertica", "zen", "custom"
           ]
@@ -548,6 +548,19 @@
           "if": {
             "properties": {
               "type": {
+                "const": "hana"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/HanaServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
                 "const": "postgresql"
               }
             },
@@ -781,6 +794,16 @@
             ],
             "description": "File format."
           },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
+          },
           "delimiter": {
             "type": "string",
             "examples": [
@@ -956,6 +979,16 @@
               "csv",
               "json",
               "delta"
+            ]
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
             ]
           }
         },
@@ -1137,6 +1170,16 @@
             "type": "string",
             "description": "File format."
           },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
+          },
           "host": {
             "type": "string",
             "description": "Host name or IP address."
@@ -1202,6 +1245,16 @@
             "description": "The format of the messages.",
             "examples": ["json", "avro", "protobuf", "xml"],
             "default": "json"
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
           }
         },
         "required": [
@@ -1228,6 +1281,16 @@
               "avro",
               "protobuf"
             ]
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
           }
         }
       },
@@ -1251,6 +1314,16 @@
               "parquet",
               "delta",
               "csv"
+            ]
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
             ]
           }
         },
@@ -1340,6 +1413,31 @@
           "port",
           "database",
           "schema"
+        ]
+      },
+      "HanaServer": {
+        "type": "object",
+        "title": "HanaServer",
+        "properties": {
+          "host": {
+            "type": "string",
+            "description": "Host of the HANA server."
+          },
+          "port": {
+            "type": "integer",
+            "description": "Port of the HANA server."
+          },
+          "database": {
+            "type": "string",
+            "description": "Name of the database (tenant)."
+          },
+          "schema": {
+            "type": "string",
+            "description": "Name of the schema."
+          }
+        },
+        "required": [
+          "host"
         ]
       },
       "PrestoServer": {
@@ -1444,6 +1542,16 @@
             ],
             "description": "File format."
           },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
+          },
           "delimiter": {
             "type": "string",
             "examples": [
@@ -1479,6 +1587,16 @@
               "csv"
             ],
             "description": "File format."
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
           },
           "delimiter": {
             "type": "string",
@@ -1680,6 +1798,11 @@
           "type": "string",
           "description": "The business name of the element."
         },
+        "deprecated": {
+          "type": "boolean",
+          "description": "Indicates this element is deprecated and should not be used in new implementations. Defaults to false.",
+          "default": false
+        },
         "synonyms": {
           "$ref": "#/$defs/Synonyms"
         },
@@ -1756,7 +1879,7 @@
         "logicalType": {
           "type": "string",
           "description": "The logical element data type.",
-          "enum": ["string", "date", "timestamp", "time", "number", "integer", "object", "array", "boolean", "map"]
+          "enum": ["string", "date", "timestamp", "time", "number", "integer", "object", "array", "boolean", "map", "vector"]
         },
         "logicalTypeOptions": {
           "type": "object",
@@ -2208,6 +2331,57 @@
               }
             },
             "required": ["map"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "logicalType": {
+                "const": "vector"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "logicalTypeOptions": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "dimensions": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "The fixed length of the vector. Positive integer (only applicable when `logicalType: vector`). See RFC 0042.",
+                    "examples": [384, 768, 1024, 1536, 3072]
+                  },
+                  "elementType": {
+                    "type": "string",
+                    "enum": ["bfloat16", "binary", "float16", "float32", "float64", "int8", "uint8"],
+                    "default": "float32",
+                    "description": "Numeric type of each vector element. `binary` means each element is one bit (binary-quantized vectors)."
+                  },
+                  "distanceMetric": {
+                    "type": "string",
+                    "enum": ["cosine", "dotProduct", "euclidean", "hamming", "manhattan"],
+                    "description": "Intended similarity metric. Advisory \u2014 the physical index may differ."
+                  },
+                  "embeddingModel": {
+                    "type": "string",
+                    "description": "Identifier of the model used to produce the vectors.",
+                    "examples": ["openai/text-embedding-3-small", "cohere/embed-english-v3.0"]
+                  },
+                  "embeddingModelVersion": {
+                    "type": "string",
+                    "description": "Version or revision of the embedding model, when the model identifier does not already carry one."
+                  },
+                  "normalized": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "True if vectors are L2-normalized before storage, which makes cosine and dotProduct equivalent."
+                  }
+                },
+                "required": ["dimensions"]
+              }
+            }
           }
         }
       ],
@@ -2801,6 +2975,12 @@
           "type": "string",
           "description": "Configuration information for the scheduling tool, for cron a possible value is 0 20 * * *.",
           "examples": ["0 20 * * *"]
+        },
+        "customProperties": {
+          "$ref": "#/$defs/CustomProperties"
+        },
+        "authoritativeDefinitions": {
+          "$ref": "#/$defs/AuthoritativeDefinitions"
         }
       },
       "required": ["property", "value"],
@@ -2907,6 +3087,11 @@
         "description": {
           "type": "string",
           "description": "Description of the custom property."
+        },
+        "vendor": {
+          "type": "string",
+          "description": "Identifies the vendor, provider, or external system associated with this custom property. SHOULD be a stable, lowercase identifier matching ^[a-z0-9][a-z0-9-]*$ (e.g. confluent, zeenea, atlan, soda). Tools MUST preserve unknown vendor values.",
+          "examples": ["confluent", "zeenea", "atlan", "soda"]
         }
       },
       "required": ["property", "value"],
