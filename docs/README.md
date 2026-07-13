@@ -31,6 +31,7 @@ For more details, see the sections below:
 12. [Custom & Other Properties](./custom-other-properties.md)
 13. [Authoritative Definitions](./authoritative-definitions.md)
 14. [Tags](./tags.md)
+15. [Variables](./variables.md)
 
 ## Notes
 

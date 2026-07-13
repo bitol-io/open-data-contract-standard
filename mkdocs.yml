@@ -71,6 +71,7 @@ nav:
       - Custom: 'custom-other-properties.md'
       - Authoritative Definitions: 'authoritative-definitions.md'
       - Tags: 'tags.md'
+      - Variables: 'variables.md'
   - Examples:
       - 'examples/README.md'
       - '...'

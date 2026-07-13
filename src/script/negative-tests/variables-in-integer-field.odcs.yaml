@@ -1,0 +1,23 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0050 negative test: variable interpolation applies to STRING values only.
+# A `postgresql` server `port` is typed as an integer, so the unresolved
+# ${DB_PORT} token (a string) MUST be rejected by the schema.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 9d8f1c3a-5b2e-4f7d-a6c4-0e1b2d3c4f5a
+status: active
+servers:
+  - server: prod_db
+    environment: prod
+    type: postgresql
+    host: ${DB_HOST}
+    port: ${DB_PORT}
+    database: orders
+    schema: public
+schema:
+  - name: orders
+    physicalType: table
