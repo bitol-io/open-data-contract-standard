@@ -50,6 +50,11 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
 * **Adds** SLA custom properties and authoritative definitions ([RFC 0046](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0046-sla-custom-properties-and-authoritative-definitions.md)):
   * Each `slaProperties[]` entry may now carry optional `customProperties` and `authoritativeDefinitions`, consistent with other ODCS objects.
   * Non-breaking: both fields are optional.
+* **Adds** Variables ([RFC 0050](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0050-variables.md), shared with ODPS v1.1.0 and OORS v1.0.0):
+  * Any string value in a contract MAY contain `${VAR_NAME}` references, resolved at runtime by tooling, keeping secrets and environment-specific values (hostnames, bucket paths, credentials) out of the document itself.
+  * The POSIX `${VAR_NAME:-default}` form supplies an inline default, used when the variable is unset or empty.
+  * Tools MUST resolve references before using a value, SHOULD error on unresolvable references (never silently substitute an empty string), and MUST preserve unresolved tokens verbatim when serializing back to YAML.
+  * Non-breaking: no new section or field is added to the standard; interpolation applies to string values only.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 
