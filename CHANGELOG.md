@@ -55,6 +55,10 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
   * The POSIX `${VAR_NAME:-default}` form supplies an inline default, used when the variable is unset or empty.
   * Tools MUST resolve references before using a value, SHOULD error on unresolvable references (never silently substitute an empty string), and MUST preserve unresolved tokens verbatim when serializing back to YAML.
   * Non-breaking: no new section or field is added to the standard; interpolation applies to string values only.
+* **Adds** `id` to relationship objects ([RFC 0047](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0047-relationship-id.md)):
+  * New optional `id` string on `RelationshipBase` (surfaced on both schema-level and property-level relationships), completing the stable-identifier work of RFC-0026a for the last referenceable array-item object that lacked one.
+  * MUST be unique within its containing `relationships` array; SHOULD be stable across contract versions; cannot contain `.` `#` `/` `\` `@` `!` `%` `&` `^`.
+  * Non-breaking, as `id` is optional.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 

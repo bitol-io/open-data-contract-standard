@@ -121,6 +121,7 @@ Relationships can be defined in two ways:
 | -------------------------------- | ------ | ----------------- | ----------------- | --------------------------------------------------------------------------------- |
 | relationships                    | array  | Relationships     | No                | Array of relationship definitions                                                 |
 | relationships[].from             | string | From              | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
+| relationships[].id               | string | ID                | No                | Optional stable identifier for the relationship, unique within its containing `relationships` array. Recommended for elements that will be referenced. Cannot contain: `.` `#` `/` `\` `@` `!` `%` `&` `^` (RFC 0047) |
 | relationships[].to               | string | To                | Yes               | Target property reference using `schema.property` notation                        |
 | relationships[].type             | string | Type              | No                | Type of relationship (defaults to `foreignKey`)                                   |
 | relationships[].customProperties | array  | Custom Properties | No                | Additional metadata about the relationship                                        |

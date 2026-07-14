@@ -8,7 +8,7 @@ apiVersion: v3.2.0
 status: active
 name: orders_with_relationships
 description:
-  purpose: Demonstrate property-level, schema-level, composite, and shorthand foreign-key relationships (RFC 0026).
+  purpose: Demonstrate property-level, schema-level, composite, and shorthand foreign-key relationships (RFC 0026), each carrying a stable relationship id (RFC 0047).
 
 schema:
   - id: customers_obj
@@ -62,7 +62,8 @@ schema:
         logicalType: string
         physicalType: VARCHAR(36)
         relationships:
-          - to: customers.id
+          - id: fk_order_customer
+            to: customers.id
             type: foreignKey
             customProperties:
               - property: cardinality
@@ -73,14 +74,16 @@ schema:
         name: shipping_address_street
         logicalType: string
         relationships:
-          - to: addresses.address_street
+          - id: fk_order_shipping_address
+            to: addresses.address_street
             type: foreignKey
 
     # Schema-level relationships: explicit `from` and `to`,
     # including a composite (multi-column) foreign key.
     # Both sides use the shorthand `schema.property` notation.
     relationships:
-      - type: foreignKey
+      - id: fk_orders_address_composite
+        type: foreignKey
         from: ['orders.customer_id', 'orders.shipping_address_street']
         to:   ['addresses.customer_id', 'addresses.address_street']
         customProperties:

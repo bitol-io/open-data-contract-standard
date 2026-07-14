@@ -3145,6 +3145,10 @@
       "type": "object",
       "description": "Base definition for relationships between properties, typically for foreign key constraints.",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": "Optional stable identifier for this relationship, unique within its containing relationships array. SHOULD remain stable across contract versions. Cannot contain: . # / \\ @ ! % & ^"
+        },
         "type": {
           "type": "string",
           "description": "The type of relationship. Defaults to 'foreignKey'.",
