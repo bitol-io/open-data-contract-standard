@@ -233,7 +233,7 @@
           "description": "Type of the server.",
           "enum": [
             "api", "athena", "azure", "bigquery", "clickhouse", "databricks", "denodo", "dremio",
-            "duckdb", "glue", "hana", "cloudsql", "db2", "hive", "impala", "informix", "kafka", "kinesis", "local",
+            "duckdb", "glue", "hana", "cloudsql", "db2", "hive", "iceberg", "impala", "informix", "kafka", "kinesis", "local",
             "mysql", "oracle", "postgresql", "postgres", "presto", "pubsub",
             "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "trino", "vertica", "zen", "custom"
           ]
@@ -556,6 +556,19 @@
           },
           "then": {
             "$ref": "#/$defs/ServerSource/HanaServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "iceberg"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/IcebergServer"
           }
         },
         {
@@ -1439,6 +1452,36 @@
         },
         "required": [
           "host"
+        ]
+      },
+      "IcebergServer": {
+        "type": "object",
+        "title": "IcebergServer",
+        "properties": {
+          "catalog": {
+            "type": "string",
+            "description": "Catalog name as registered in the query engine or catalog service.",
+            "examples": ["my_catalog"]
+          },
+          "catalogUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of the Iceberg compatible REST catalog service (Polaris, S3 Tables, Nessie, Unity Catalog, Glue, etc.)",
+            "examples": ["https://my-catalog-service.com"]
+          },
+          "namespace": {
+            "type": "string",
+            "description": "Dot-separated namespace/schema path within the catalog (e.g. db.schema or just db)."
+          },
+          "warehouse": {
+            "type": "string",
+            "description": "Logical catalog or base location for the catalog to use.",
+            "examples": ["s3://my-bucket/warehouse/sales/", "production", "development"]
+          }
+        },
+        "required": [
+          "catalog",
+          "catalogUrl"
         ]
       },
       "PrestoServer": {
@@ -3146,6 +3189,10 @@
       "type": "object",
       "description": "Base definition for relationships between properties, typically for foreign key constraints.",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": "Optional stable identifier for this relationship, unique within its containing relationships array. SHOULD remain stable across contract versions. Cannot contain: . # / \\ @ ! % & ^"
+        },
         "type": {
           "type": "string",
           "description": "The type of relationship. Defaults to 'foreignKey'.",

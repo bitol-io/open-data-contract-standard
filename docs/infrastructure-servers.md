@@ -180,6 +180,17 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | host     | string  | Host     | Yes      | The host to the Hive server.                    |
 | port     | integer | Port     | No       | The port to the Hive server. Defaults to 10000. |
 
+### Apache Iceberg
+
+[Apache Iceberg](https://iceberg.apache.org/) is an open table format for large analytic datasets, accessed through the standardized Iceberg REST catalog API (Polaris, S3 Tables, Nessie, Unity Catalog, Glue, etc.). Added in ODCS v3.2.0 ([RFC 0049](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0049-iceberg-server-type.md)).
+
+| Key        | Type   | UX Label    | Required | Description                                                                                                 |
+| ---------- | ------ | ----------- | -------- | ----------------------------------------------------------------------------------------------------------- |
+| catalog    | string | Catalog     | Yes      | Catalog name as registered in the query engine or catalog service (e.g. `my_catalog`).                      |
+| catalogUrl | string | Catalog URL | Yes      | URL of the Iceberg compatible REST catalog service (Polaris, S3 Tables, Nessie, Unity Catalog, Glue, etc.). |
+| namespace  | string | Namespace   | No       | Dot-separated namespace path within the catalog (e.g. `db.schema` or just `db`).                            |
+| warehouse  | string | Warehouse   | No       | Base storage location of the warehouse (e.g. `s3://my-bucket/warehouse/`).                                  |
+
 ### Apache Impala
 
 [Apache Impala](https://impala.apache.org/) is a massively parallel processing (MPP) SQL query engine for data stored in Apache Hadoop clusters. Impala provides high-performance, low-latency SQL queries on data stored in HDFS and Apache HBase, enabling interactive exploration and analytics without data movement or transformation.

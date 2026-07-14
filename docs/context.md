@@ -40,6 +40,16 @@ context:
     - id: no-individual-order-exposure
       constraint: "Do not expose individual order details; aggregate to at least country level."
       tags: ['gdpr', 'pii']
+      authoritativeDefinitions:
+        - url: https://example.com/MyGlobalAndMarvelousOntology
+          type: Ontology
+          description: Link to the ontology
+        - url: https://example.com/MySpecificAndWonderfulGlossary
+          type: Glossary
+          description: Link to the glossary
+        - url: https://example.com/OneOfManyTaxonomy
+          type: Taxonomy
+          description: Link to the taxonomy
     - constraint: "Do not join with customer PII tables without explicit data access approval."
 ```
 
