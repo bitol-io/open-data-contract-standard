@@ -59,6 +59,9 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
   * New optional `id` string on `RelationshipBase` (surfaced on both schema-level and property-level relationships), completing the stable-identifier work of RFC-0026a for the last referenceable array-item object that lacked one.
   * MUST be unique within its containing `relationships` array; SHOULD be stable across contract versions; cannot contain `.` `#` `/` `\` `@` `!` `%` `&` `^`.
   * Non-breaking, as `id` is optional.
+* **Adds** Apache Iceberg server type ([RFC 0049](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0049-iceberg-server-type.md)):
+  * New `iceberg` server `type` describing access to Apache Iceberg catalogs through the standardized Iceberg REST API, with required `catalog` and `catalogUrl` plus optional `namespace` and `warehouse`.
+  * Non-breaking: adds a new optional server type.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 

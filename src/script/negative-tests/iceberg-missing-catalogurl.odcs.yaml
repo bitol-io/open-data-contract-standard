@@ -1,0 +1,20 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0049 negative test: an `iceberg` server requires both `catalog` and
+# `catalogUrl`. Here `catalogUrl` is omitted, so the schema MUST reject this
+# contract.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 8a3f5d02-4b7e-4c9f-a0d1-2e3f4a5b6c7d
+status: active
+servers:
+  - server: prod
+    type: iceberg
+    catalog: prod_catalog
+    namespace: acme_db.sales
+schema:
+  - name: sales
+    physicalType: table
