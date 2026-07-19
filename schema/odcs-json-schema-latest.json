@@ -217,6 +217,10 @@
       "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed).",
       "pattern": "^[A-Za-z0-9_-]+$"
     },
+    "Port": {
+      "type": ["integer", "string"],
+      "description": "A network port: an integer, or a string, e.g. to hold a variable reference such as ${DB_PORT} resolved at runtime (RFC 0050)."
+    },
     "Server": {
       "type": "object",
       "description": "Data source details of where data is physically stored.",
@@ -859,7 +863,7 @@
             "description": "The host of the ClickHouse server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the ClickHouse server."
           },
           "database": {
@@ -907,7 +911,7 @@
             "description": "The host of the Denodo server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the Denodo server."
           },
           "database": {
@@ -929,7 +933,7 @@
             "description": "The host of the Dremio server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the Dremio server."
           },
           "schema": {
@@ -1020,7 +1024,7 @@
             "description": "The host of the Google Cloud Sql server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the Google Cloud Sql server."
           },
           "database": {
@@ -1048,7 +1052,7 @@
             "description": "The host of the IBM DB2 server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the IBM DB2 server."
           },
           "database": {
@@ -1075,7 +1079,7 @@
             "description": "The host to the Hive server. "
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the Hive server. Defaults to 10000."
           },
           "database": {
@@ -1097,7 +1101,7 @@
             "description": "The host to the Impala server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the Impala server. Defaults to 21050."
           },
           "database": {
@@ -1119,7 +1123,7 @@
             "description": "The host to the Informix server. "
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the Informix server. Defaults to 9088."
           },
           "database": {
@@ -1141,7 +1145,7 @@
             "description": "Hostname or IP address of the Zen server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "Zen server SQL connections port. Defaults to 1583."
           },
           "database": {
@@ -1208,7 +1212,7 @@
             "description": "Relative or absolute path to the data file(s)."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "Port to the server. No default value is assumed for custom servers."
           },
           "project": {
@@ -1355,7 +1359,7 @@
             "description": "The host of the MySql server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the MySql server."
           },
           "database": {
@@ -1381,7 +1385,7 @@
             ]
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the oracle server.",
             "examples": [
               1523
@@ -1410,7 +1414,7 @@
             "description": "The host to the Postgres server"
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the Postgres server."
           },
           "database": {
@@ -1438,7 +1442,7 @@
             "description": "Host of the HANA server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "Port of the HANA server."
           },
           "database": {
@@ -1664,7 +1668,7 @@
             "description": "The host to the Snowflake server"
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the Snowflake server."
           },
           "account": {
@@ -1702,7 +1706,7 @@
             ]
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the database server.",
             "default": 1433,
             "examples": [
@@ -1739,7 +1743,7 @@
             "description": "The host of the Synapse server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the Synapse server."
           },
           "database": {
@@ -1765,7 +1769,7 @@
             ]
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The Trino port."
           },
           "catalog": {
@@ -1799,7 +1803,7 @@
             "description": "The host of the Vertica server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the Vertica server."
           },
           "database": {

@@ -17,7 +17,7 @@ servers:
     environment: prod
     type: postgresql
     host: ${DB_HOST}
-    port: 5432
+    port: ${DB_PORT:-5432}
     database: ${DB_NAME:-orders}
     schema: ${DB_SCHEMA:-public}
 
