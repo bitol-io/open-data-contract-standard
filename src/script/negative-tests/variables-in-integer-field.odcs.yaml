@@ -2,8 +2,10 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # RFC-0050 negative test: variable interpolation applies to STRING values only.
-# A `postgresql` server `port` is typed as an integer, so the unresolved
-# ${DB_PORT} token (a string) MUST be rejected by the schema.
+# `primaryKeyPosition` is typed as an integer, so the unresolved ${KEY_POS}
+# token (a string) MUST be rejected by the schema. (The server `port` is an
+# explicit exception: it accepts integer or string, so it can hold a
+# variable reference.)
 
 version: 1.0.0
 apiVersion: v3.2.0
@@ -21,3 +23,9 @@ servers:
 schema:
   - name: orders
     physicalType: table
+    properties:
+      - name: order_id
+        logicalType: string
+        physicalType: varchar(36)
+        primaryKey: true
+        primaryKeyPosition: ${KEY_POS}
