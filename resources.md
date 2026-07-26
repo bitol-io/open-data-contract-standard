@@ -6,7 +6,7 @@ SPDX-License-Identifier: Apache-2.0
 # Articles & Other Resources
 
 ## Articles
-
+* 2026-08-07 - [Enkinex ODCS Tutorial: Data Contract as Code](https://enkinex.org/docs/governance/odcs/tutorial/)
 * 2025-12-07 - [Bitol Announces ODCS v3.1.0: Stronger, Smarter, and Stricter](https://bitol.io/bitol-announces-odcs-v3-1-0-stronger-smarter-and-stricter/)
 * 2025-12-07 - [ODCS v3.1.0 is Here: Relationships, Richer Metadata, and Stricter Validation](https://dataintelligenceplatform.substack.com/p/odcs-v310-is-here-relationships-richer)
 * 2026-02-24 - [Five Levels Between Chaos and (Almost) AI-Ready Data](https://dataintelligenceplatform.substack.com/p/five-levels-between-chaos-and-almost)
