@@ -63,6 +63,10 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
 * **Adds** Apache Iceberg server type ([RFC 0049](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0049-iceberg-server-type.md)):
   * New `iceberg` server `type` describing access to Apache Iceberg catalogs through the standardized Iceberg REST API, with required `catalog` and `catalogUrl` plus optional `namespace` and `warehouse`.
   * Non-breaking: adds a new optional server type.
+* **Adds** Exasol server type ([RFC 0058](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0058-exasol-server-type.md)):
+  * New `exasol` server `type` describing data served from Exasol, an in-memory MPP analytics database, with required `host` plus optional `port` (defaults to `8563`) and `schema`.
+  * No `database` field: an Exasol cluster runs a single database and the schema is the namespace. `host` may be a cluster connection range, e.g. `n11..14.acme.com`.
+  * Non-breaking: adds a new optional server type.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 

@@ -50,7 +50,7 @@ servers:
 | id               | string | ID                | No       | A unique identifier used to reduce the risk of collisions, such as a UUID.                                                                                                                                                                                                                                                |
 | roles            | array  | Roles             | No       | List of roles that have access to the server. Check [roles](./roles.md) section for more details.                                                                                                                                                                                                                         |
 | server           | string | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                                 |
-| type             | string | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, zen. |
+| type             | string | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, exasol, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, zen. |
 | customProperties | array  | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                                      |
 
 ## Specific Server Properties
@@ -159,6 +159,18 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | -------- | ------ | -------- | -------- | ----------------------------- |
 | database | string | Database | Yes      | Path to duckdb database file. |
 | schema   | string | Schema   | No       | The name of the schema.       |
+
+### Exasol
+
+[Exasol](https://www.exasol.com/) is an in-memory, massively parallel processing (MPP) analytics database used as an enterprise data warehouse. Added in ODCS v3.2.0 ([RFC 0058](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0058-exasol-server-type.md)).
+
+An Exasol cluster runs a single database and the schema is the namespace, so there is no `database` field.
+
+| Key    | Type    | UX Label | Required | Description                                                                          |
+| ------ | ------- | -------- | -------- | -------------------------------------------------------------------------------------- |
+| host   | string  | Host     | Yes      | Host of the Exasol server. May be a cluster connection range, e.g. `n11..14.acme.com`. |
+| port   | integer | Port     | No       | Port of the Exasol server. Defaults to 8563.                                         |
+| schema | string  | Schema   | No       | Name of the schema.                                                                  |
 
 ### Amazon Glue
 

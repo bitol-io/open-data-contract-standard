@@ -236,7 +236,7 @@
           "description": "Type of the server.",
           "enum": [
             "api", "athena", "azure", "bigquery", "clickhouse", "databricks", "denodo", "dremio",
-            "duckdb", "glue", "hana", "cloudsql", "db2", "hive", "iceberg", "impala", "informix", "kafka", "kinesis", "local",
+            "duckdb", "exasol", "glue", "hana", "cloudsql", "db2", "hive", "iceberg", "impala", "informix", "kafka", "kinesis", "local",
             "mysql", "oracle", "postgresql", "postgres", "presto", "pubsub",
             "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "trino", "vertica", "zen", "custom"
           ]
@@ -377,6 +377,19 @@
           },
           "then": {
             "$ref": "#/$defs/ServerSource/DuckdbServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "exasol"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/ExasolServer"
           }
         },
         {
@@ -960,6 +973,35 @@
         },
         "required": [
           "database"
+        ]
+      },
+      "ExasolServer": {
+        "type": "object",
+        "title": "ExasolServer",
+        "properties": {
+          "host": {
+            "type": "string",
+            "description": "Host of the Exasol server. May be a cluster connection range.",
+            "examples": [
+              "exasol.acme.com",
+              "n11..14.acme.com"
+            ]
+          },
+          "port": {
+            "$ref": "#/$defs/Port",
+            "description": "Port of the Exasol server.",
+            "default": 8563,
+            "examples": [
+              8563
+            ]
+          },
+          "schema": {
+            "type": "string",
+            "description": "Name of the schema."
+          }
+        },
+        "required": [
+          "host"
         ]
       },
       "GlueServer": {
