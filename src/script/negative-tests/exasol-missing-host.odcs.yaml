@@ -1,0 +1,19 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0058 negative test: an `exasol` server requires `host`. Here `host` is
+# omitted, so the schema MUST reject this contract.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 6d0b2f84-9e35-4a71-c2b8-7f1d4c6e0a53
+status: active
+servers:
+  - server: prod
+    type: exasol
+    port: 8563
+    schema: SALES
+schema:
+  - name: sales
+    physicalType: table
