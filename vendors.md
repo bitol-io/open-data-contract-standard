@@ -17,6 +17,8 @@ A non-exhaustive, alphabetical list of organizations offering solutions natively
 * [Data Contract Playground](https://data-catering.github.io/data-contract-playground/) - Playground site for creating, exporting, and validating data contracts.
 * [DataVow](https://github.com/ludovicschmetz-stack/datavow) - Open-source CLI for ODCS v3.1 data contract enforcement with DuckDB validation, dbt test sync, GitHub Action, and Vow Score reporting
 * [DQC.ai | DQ PLATFORM](https://www.dqc.ai/dqc-platform) - [Enhancing Data Quality with ODCS: A Standard Ensured by the DQ Platform](https://www.dqc.ai/post/enhancing-data-quality-with-odcs-a-standard-ensured-by-the-dq-platform).
+* [Enkinex ODCS](https://odcs.enkinex.org) - Open-source KCL library for writing data governance as code. Provides modular, typed ODCS schemas (common, catalog, contract, iam, quality, server) with constraints, two-way
+  validation, and YAML export.
 * [Entropy Data](https://www.entropy-data.com) - Data Product Marketplace built on Data Contracts. Allows contract-first development of data products.
 * [FLUID Forge](https://github.com/Agenticstiger/forge-cli) - Open-source Python CLI for authoring, planning, and applying data contracts. Bidirectional ODCS v3.1.0 import/export with lossless round-trip, Bitol ODPS v1.0.0 product wrapper with per-port contractId linking, native cloud apply (AWS Glue, BigQuery, Snowflake), and Data Mesh Manager publish.
 * [IBM](https://www.ibm.com/) - Supports [data contracts](https://www.ibm.com/docs/en/announcements/watsonxdata-intelligence-v23-introduces-support-openlineage-natural-language-sql-functionality-open-data-contracts), aligned with the Open Data Contract Standard, via its data & AI platform, watsonx 
