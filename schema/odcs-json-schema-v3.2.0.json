@@ -238,7 +238,7 @@
             "api", "athena", "azure", "bigquery", "clickhouse", "databricks", "denodo", "dremio",
             "duckdb", "exasol", "glue", "hana", "cloudsql", "db2", "hive", "iceberg", "impala", "informix", "kafka", "kinesis", "local",
             "mysql", "oracle", "postgresql", "postgres", "presto", "pubsub",
-            "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "trino", "vertica", "zen", "custom"
+            "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "teradata", "trino", "vertica", "zen", "custom"
           ]
         },
         "description": {
@@ -715,6 +715,19 @@
           },
           "then": {
             "$ref": "#/$defs/ServerSource/SynapseServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "teradata"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/TeradataServer"
           }
         },
         {
@@ -1796,6 +1809,34 @@
           "host",
           "port",
           "database"
+        ]
+      },
+      "TeradataServer": {
+        "type": "object",
+        "title": "TeradataServer",
+        "properties": {
+          "host": {
+            "type": "string",
+            "description": "Host of the Teradata server.",
+            "examples": [
+              "teradata.acme.com"
+            ]
+          },
+          "port": {
+            "$ref": "#/$defs/Port",
+            "description": "Port of the Teradata server.",
+            "default": 1025,
+            "examples": [
+              1025
+            ]
+          },
+          "database": {
+            "type": "string",
+            "description": "Name of the database."
+          }
+        },
+        "required": [
+          "host"
         ]
       },
       "TrinoServer": {
