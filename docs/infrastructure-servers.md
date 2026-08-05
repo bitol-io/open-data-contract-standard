@@ -18,8 +18,6 @@ The typical ways of using the top level `servers` element are as follows:
 
 * **Single Server:** The data contract protects a specific dataset at a specific location. *Example:* a CSV file on an SFTP server.
 * **Multiple Environments:** The data contract makes sure that the data is protected in all environments. *Example:* a data product with data in a **dev**(elopment), UAT, and **prod**(uction) environment on Databricks.
-* **Different Technologies:** The data contract makes sure that regardless of the offered technology, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content.
-* **Different Technologies and Multiple Environments:** The data contract makes sure that regardless of the offered technology and environment, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content in **dev**(elopment), UAT, and **prod**(uction).
 
 [Back to TOC](README.md)
 
