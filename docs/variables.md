@@ -24,7 +24,7 @@ servers:
     environment: prod
     type: postgresql
     host: ${DB_HOST}
-    port: 5432
+    port: ${DB_PORT:-5432}
     database: ${DB_NAME:-orders}
     schema: ${DB_SCHEMA:-public}
 ```
@@ -53,7 +53,8 @@ quality:
 
 ## Notes
 
-* Interpolation applies to **string** values only. A field typed as an integer or boolean in the JSON schema (such as a server `port`) cannot hold a variable reference: the unresolved token is a string and the schema rejects it.
+* Interpolation applies to **string** values only. A field typed as an integer or boolean in the JSON schema cannot hold a variable reference: the unresolved token is a string and the schema rejects it.
+* The server `port` is an exception: the schema accepts an integer or a string, so it can hold a variable reference such as `${DB_PORT}` or `${DB_PORT:-5432}`.
 * No new section or field is added to the standard: a contract using variables validates against the standard JSON schema as-is.
 
 [Back to TOC](README.md)

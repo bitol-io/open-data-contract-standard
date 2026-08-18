@@ -18,8 +18,6 @@ The typical ways of using the top level `servers` element are as follows:
 
 * **Single Server:** The data contract protects a specific dataset at a specific location. *Example:* a CSV file on an SFTP server.
 * **Multiple Environments:** The data contract makes sure that the data is protected in all environments. *Example:* a data product with data in a **dev**(elopment), UAT, and **prod**(uction) environment on Databricks.
-* **Different Technologies:** The data contract makes sure that regardless of the offered technology, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content.
-* **Different Technologies and Multiple Environments:** The data contract makes sure that regardless of the offered technology and environment, it still holds. *Example:* a data product offers its data in a Kafka topic and in a BigQuery table that should have the same structure and content in **dev**(elopment), UAT, and **prod**(uction).
 
 [Back to TOC](README.md)
 
@@ -43,15 +41,15 @@ servers:
 
 ### Common Server Properties
 
-| Key              | Type   | UX label          | Required | Description                                                                                                                                                                                                                                                                                                               |
-| ---------------- | ------ | ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| description      | string | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                                |
-| environment      | string | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                                    |
-| id               | string | ID                | No       | A unique identifier used to reduce the risk of collisions, such as a UUID.                                                                                                                                                                                                                                                |
-| roles            | array  | Roles             | No       | List of roles that have access to the server. Check [roles](./roles.md) section for more details.                                                                                                                                                                                                                         |
-| server           | string | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                                 |
-| type             | string | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, zen. |
-| customProperties | array  | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                                      |
+| Key              | Type   | UX label          | Required | Description                                                                                                                                                                                                                                                                                                                       |
+| ---------------- | ------ | ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| description      | string | Description       | No       | Description of the server.                                                                                                                                                                                                                                                                                                        |
+| environment      | string | Environment       | No       | Environment of the server. Examples includes: prod, preprod, dev, uat.                                                                                                                                                                                                                                                            |
+| id               | string | ID                | No       | A unique identifier used to reduce the risk of collisions, such as a UUID.                                                                                                                                                                                                                                                        |
+| roles            | array  | Roles             | No       | List of roles that have access to the server. Check [roles](./roles.md) section for more details.                                                                                                                                                                                                                                 |
+| server           | string | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                                         |
+| type             | string | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, exasol, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, zen. |
+| customProperties | array  | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                                              |
 
 ## Specific Server Properties
 
@@ -62,6 +60,8 @@ Each server type can be customized with different properties such as `host`, `po
 If your server is not in the list, please use [custom](#custom-server) and suggest it as an improvement. Possible values for `type` are:
 
 ### API Server
+
+An API server describes data that is exposed through a network API rather than served from a database or file storage. The endpoint a consumer calls is identified by its URL.
 
 | Key          | Type   | UX Label | Required | Description    |
 | ------------ | ------ | -------- | -------- | -------------- |
@@ -80,6 +80,8 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | workgroup  | string | Workgroup         | No       | The Athena workgroup to use. Workgroups can enforce query result location and other client-side settings via the 'Override client-side settings' option.         |
 
 ### Azure Server
+
+[Azure Blob Storage](https://azure.microsoft.com/en-us/products/storage/blobs) and [Azure Data Lake Storage (ADLS)](https://azure.microsoft.com/en-us/products/storage/data-lake-storage) are the Microsoft Azure object storage services for unstructured data and large-scale analytics workloads.
 
 | Key       | Type   | UX Label  | Required | Description                                                                                           |
 | --------- | ------ | --------- | -------- | ----------------------------------------------------------------------------------------------------- |
@@ -120,6 +122,8 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 ### Databricks Server
 
+[Databricks](https://www.databricks.com/) is a cloud-based data platform, built on Apache Spark, that unifies data warehousing and data lakes under the lakehouse architecture.
+
 | Key     | Type   | UX Label | Required | Description                           |
 | ------- | ------ | -------- | -------- | ------------------------------------- |
 | catalog | string | Catalog  | Yes      | The name of the Hive or Unity catalog |
@@ -127,6 +131,8 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | schema  | string | Schema   | Yes      | The schema name in the catalog        |
 
 ### IBM Db2 Server
+
+[IBM Db2](https://www.ibm.com/products/db2) is a family of relational database management systems for transactional and analytical workloads, available both on cloud and on-premises.
 
 | Key      | Type    | UX Label | Required | Description                     |
 | -------- | ------- | -------- | -------- | ------------------------------- |
@@ -137,6 +143,8 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 ### Denodo Server
 
+[Denodo](https://www.denodo.com/) is a data virtualization platform that provides unified, real-time access to data spread across disparate sources, without replicating it.
+
 | Key      | Type    | UX Label | Required | Description                    |
 | -------- | ------- | -------- | -------- | ------------------------------ |
 | database | string  | Database | No       | The name of the database.      |
@@ -144,6 +152,8 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | port     | integer | Port     | Yes      | The port of the Denodo server. |
 
 ### Dremio Server
+
+[Dremio](https://www.dremio.com/) is a lakehouse platform that runs SQL queries directly against data lake storage, built on Apache Arrow and Apache Iceberg.
 
 | Key    | Type    | UX Label | Required | Description                    |
 | ------ | ------- | -------- | -------- | ------------------------------ |
@@ -160,7 +170,21 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | database | string | Database | Yes      | Path to duckdb database file. |
 | schema   | string | Schema   | No       | The name of the schema.       |
 
+### Exasol
+
+[Exasol](https://www.exasol.com/) is an in-memory, massively parallel processing (MPP) analytics database used as an enterprise data warehouse. Added in ODCS v3.2.0 ([RFC 0058](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0058-exasol-server-type.md)).
+
+An Exasol cluster runs a single database and the schema is the namespace, so there is no `database` field.
+
+| Key    | Type    | UX Label | Required | Description                                                                            |
+| ------ | ------- | -------- | -------- | -------------------------------------------------------------------------------------- |
+| host   | string  | Host     | Yes      | Host of the Exasol server. May be a cluster connection range, e.g. `n11..14.acme.com`. |
+| port   | integer | Port     | No       | Port of the Exasol server. Defaults to 8563.                                           |
+| schema | string  | Schema   | No       | Name of the schema.                                                                    |
+
 ### Amazon Glue
+
+[AWS Glue](https://aws.amazon.com/glue/) is a serverless data integration service. Its Data Catalog holds the table definitions and schema metadata describing data stored in Amazon S3 and other sources.
 
 | Key      | Type   | UX Label | Required | Description                                                                                           |
 | -------- | ------ | -------- | -------- | ----------------------------------------------------------------------------------------------------- |
@@ -201,17 +225,19 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | host     | string  | Host     | Yes      | The host to the Impala server.                    |
 | port     | integer | Port     | No       | The port to the Impala server. Defaults to 21050. |
 
-### IBM Informix and HCL Informix
+### HCL Informix and IBM Informix
 
-[IBM Informix](https://www.ibm.com/products/informix) is a high performance, always-on, highly scalable and easily embeddable enterprise-class database optimized for the most demanding transactional and analytics workloads. As an object-relational engine, IBM Informix seamlessly integrates the best of relational and object-oriented capabilities enabling the flexible modeling of complex data structures and relationships.
+[HCL Informix](https://www.hcl-software.com/informix) and [IBM Informix](https://www.ibm.com/products/informix) are high performance, always-on, highly scalable and easily embeddable enterprise-class databases optimized for the most demanding transactional and analytics workloads. As object-relational engines, HCL Informix and IBM Informix seamlessly integrate the best of relational and object-oriented capabilities, enabling the flexible modeling of complex data structures and relationships.
 
-| Key      | Type    | UX Label | Required | Description                                        |
-| -------- | ------- | -------- | -------- | -------------------------------------------------- |
-| database | string  | Database | Yes      | The name of the database.                          |
-| host     | string  | Host     | Yes      | The host to the Informix server.                   |
-| port     | integer | Port     | No       | The port to the Informix server. Defaults to 9088. |
+| Key      | Type    | UX Label | Required | Description                                                             |
+| -------- | ------- | -------- | -------- | ----------------------------------------------------------------------- |
+| database | string  | Database | Yes      | The name of the database.                                               |
+| host     | string  | Host     | Yes      | The host to the HCL Informix and IBM Informix server.                   |
+| port     | integer | Port     | No       | The port to the HCL Informix and IBM Informix server. Defaults to 9088. |
 
 ### Kafka Server
+
+[Apache Kafka](https://kafka.apache.org/) is an open-source distributed event streaming platform used for high-performance data pipelines, streaming analytics, and event-driven applications.
 
 | Key      | Type   | UX Label | Required | Description                                                                                           |
 | -------- | ------ | -------- | -------- | ----------------------------------------------------------------------------------------------------- |
@@ -220,6 +246,8 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | host     | string | Host     | Yes      | The bootstrap server of the kafka cluster.                                                            |
 
 ### Amazon Kinesis
+
+[Amazon Kinesis Data Streams](https://aws.amazon.com/kinesis/) is a serverless streaming data service for collecting, processing, and analyzing large streams of records in real time.
 
 | Key      | Type   | UX Label | Required | Description                                                                                           |
 | -------- | ------ | -------- | -------- | ----------------------------------------------------------------------------------------------------- |
@@ -230,6 +258,8 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 ### Local Files
 
+A local server describes data stored as one or more files on the local file system, addressed by a relative or absolute path. It is typically used for development, testing, and small datasets.
+
 | Key      | Type   | UX Label | Required | Description                                                                                           |
 | -------- | ------ | -------- | -------- | ----------------------------------------------------------------------------------------------------- |
 | encoding | string | Encoding | No       | Expected character encoding of the payload, e.g. UTF-8, ISO-8859-1, ASCII, UTF-16. Defaults to UTF-8. |
@@ -238,6 +268,8 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 
 ### MySQL Server
 
+[MySQL](https://www.mysql.com/) is an open-source relational database management system, widely used for transactional and web applications.
+
 | Key      | Type    | UX Label | Required | Description                                     |
 | -------- | ------- | -------- | -------- | ----------------------------------------------- |
 | database | string  | Database | Yes      | The name of the database.                       |
@@ -245,6 +277,8 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | port     | integer | Port     | No       | The port of the MySql server. Defaults to 3306. |
 
 ### Oracle
+
+[Oracle Database](https://www.oracle.com/database/) is a multi-model relational database management system used for transactional and analytical enterprise workloads. Clients connect to a named service rather than directly to a database.
 
 | Key         | Type    | UX Label     | Required | Description                    |
 | ----------- | ------- | ------------ | -------- | ------------------------------ |
@@ -264,6 +298,8 @@ If your server is not in the list, please use [custom](#custom-server) and sugge
 | schema   | string  | Schema   | No       | The name of the schema in the database.              |
 
 ### Presto Server
+
+[Presto](https://prestodb.io/) is an open-source distributed SQL query engine for running interactive analytic queries against data sources of any size, from gigabytes to petabytes.
 
 | Key     | Type   | UX Label | Required | Description                   |
 | ------- | ------ | -------- | -------- | ----------------------------- |
@@ -327,6 +363,8 @@ Secure File Transfer Protocol (SFTP) is a network protocol that enables secure a
 
 ### Snowflake
 
+[Snowflake](https://www.snowflake.com/) is a fully managed cloud data platform that separates storage from compute, where compute is provided by virtual warehouses that can be sized and scaled independently.
+
 | Key       | Type    | UX Label  | Required | Description                                                                 |
 | --------- | ------- | --------- | -------- | --------------------------------------------------------------------------- |
 | account   | string  | Account   | Yes      | The Snowflake account used by the server.                                   |
@@ -349,6 +387,8 @@ Secure File Transfer Protocol (SFTP) is a network protocol that enables secure a
 
 ### Synapse Server
 
+[Azure Synapse Analytics](https://azure.microsoft.com/en-us/products/synapse-analytics) is the Microsoft Azure analytics service that brings together enterprise data warehousing and big data analytics.
+
 | Key      | Type    | UX Label | Required | Description                     |
 | -------- | ------- | -------- | -------- | ------------------------------- |
 | database | string  | Database | Yes      | The name of the database.       |
@@ -356,6 +396,8 @@ Secure File Transfer Protocol (SFTP) is a network protocol that enables secure a
 | port     | integer | Port     | Yes      | The port of the Synapse server. |
 
 ### Trino Server
+
+[Trino](https://trino.io/) is an open-source distributed SQL query engine designed to query large datasets across one or more heterogeneous data sources.
 
 | Key     | Type    | UX Label | Required | Description                             |
 | ------- | ------- | -------- | -------- | --------------------------------------- |
@@ -365,6 +407,8 @@ Secure File Transfer Protocol (SFTP) is a network protocol that enables secure a
 | schema  | string  | Schema   | Yes      | The name of the schema in the database. |
 
 ### Vertica Server
+
+[Vertica](https://docs.vertica.com/) is a column-oriented, massively parallel processing (MPP) analytical database for large-scale data warehousing.
 
 | Key      | Type    | UX Label | Required | Description                     |
 | -------- | ------- | -------- | -------- | ------------------------------- |
@@ -384,6 +428,8 @@ Actian Zen (formerly Btrieve, later named Pervasive PSQL until version 13) is an
 | port     | integer | Port     | No       | Zen server SQL connections port. Defaults to 1583. |
 
 ### Custom Server
+
+A custom server describes any technology that does not have a dedicated type in ODCS yet. It accepts the union of the properties defined by the other server types, so connection details can still be expressed in a structured way.
 
 | Key         | Type    | UX Label          | Required | Description                                                                                           |
 | ----------- | ------- | ----------------- | -------- | ----------------------------------------------------------------------------------------------------- |

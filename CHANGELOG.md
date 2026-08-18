@@ -55,12 +55,17 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
   * The POSIX `${VAR_NAME:-default}` form supplies an inline default, used when the variable is unset or empty.
   * Tools MUST resolve references before using a value, SHOULD error on unresolvable references (never silently substitute an empty string), and MUST preserve unresolved tokens verbatim when serializing back to YAML.
   * Non-breaking: no new section or field is added to the standard; interpolation applies to string values only.
+  * Server `port` fields now accept a string in addition to an integer, so they can hold a variable reference such as `${DB_PORT}` or `${DB_PORT:-5432}`, which the previous integer-only type rejected.
 * **Adds** `id` to relationship objects ([RFC 0047](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0047-relationship-id.md)):
   * New optional `id` string on `RelationshipBase` (surfaced on both schema-level and property-level relationships), completing the stable-identifier work of RFC-0026a for the last referenceable array-item object that lacked one.
   * MUST be unique within its containing `relationships` array; SHOULD be stable across contract versions; cannot contain `.` `#` `/` `\` `@` `!` `%` `&` `^`.
   * Non-breaking, as `id` is optional.
 * **Adds** Apache Iceberg server type ([RFC 0049](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0049-iceberg-server-type.md)):
   * New `iceberg` server `type` describing access to Apache Iceberg catalogs through the standardized Iceberg REST API, with required `catalog` and `catalogUrl` plus optional `namespace` and `warehouse`.
+  * Non-breaking: adds a new optional server type.
+* **Adds** Exasol server type ([RFC 0058](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0058-exasol-server-type.md)):
+  * New `exasol` server `type` describing data served from Exasol, an in-memory MPP analytics database, with required `host` plus optional `port` (defaults to `8563`) and `schema`.
+  * No `database` field: an Exasol cluster runs a single database and the schema is the namespace. `host` may be a cluster connection range, e.g. `n11..14.acme.com`.
   * Non-breaking: adds a new optional server type.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
