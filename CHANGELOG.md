@@ -67,6 +67,10 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
   * New `exasol` server `type` describing data served from Exasol, an in-memory MPP analytics database, with required `host` plus optional `port` (defaults to `8563`) and `schema`.
   * No `database` field: an Exasol cluster runs a single database and the schema is the namespace. `host` may be a cluster connection range, e.g. `n11..14.acme.com`.
   * Non-breaking: adds a new optional server type.
+* **Adds** Teradata server type ([RFC 0057](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0057-teradata-server-type.md)):
+  * New `teradata` server `type` describing data served from Teradata Vantage, with required `host` plus optional `port` (defaults to `1025`) and `database`.
+  * No `schema` field: in Teradata, the database is the namespace.
+  * Non-breaking: adds a new optional server type.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 

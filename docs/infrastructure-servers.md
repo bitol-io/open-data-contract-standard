@@ -48,7 +48,7 @@ servers:
 | id               | string | ID                | No       | A unique identifier used to reduce the risk of collisions, such as a UUID.                                                                                                                                                                                                                                                        |
 | roles            | array  | Roles             | No       | List of roles that have access to the server. Check [roles](./roles.md) section for more details.                                                                                                                                                                                                                                 |
 | server           | string | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                                         |
-| type             | string | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, exasol, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, zen. |
+| type             | string | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, exasol, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, teradata, trino, vertica, zen. |
 | customProperties | array  | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                                              |
 
 ## Specific Server Properties
@@ -394,6 +394,18 @@ Secure File Transfer Protocol (SFTP) is a network protocol that enables secure a
 | database | string  | Database | Yes      | The name of the database.       |
 | host     | string  | Host     | Yes      | The host of the Synapse server. |
 | port     | integer | Port     | Yes      | The port of the Synapse server. |
+
+### Teradata
+
+[Teradata Vantage](https://www.teradata.com/) is a widely used enterprise data warehouse for large-scale analytics. Added in ODCS v3.2.0 ([RFC 0057](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0057-teradata-server-type.md)).
+
+In Teradata, the database is the namespace, so there is no `schema` field.
+
+| Key      | Type    | UX Label | Required | Description                                     |
+| -------- | ------- | -------- | -------- | ----------------------------------------------- |
+| database | string  | Database | No       | Name of the database.                           |
+| host     | string  | Host     | Yes      | Host of the Teradata server.                    |
+| port     | integer | Port     | No       | Port of the Teradata server. Defaults to 1025.  |
 
 ### Trino Server
 
