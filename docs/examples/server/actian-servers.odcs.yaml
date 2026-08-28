@@ -1,0 +1,84 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# Demonstrates RFC-0059: the Actian server types. `ingres` (Actian Ingres) and
+# `vectorwise` (Actian Analytics Engine) are SQL engines whose namespace is the
+# table owner, so neither carries a `schema` field. `versant` (Actian NoSQL
+# Database) and `poet` (Actian NoSQL FastObjects) are object databases whose
+# classes are scoped by the database. `fastobjects` is a synonym of `poet` and
+# `btrieve` is a synonym of `zen`; both spellings are valid and neither original
+# value is deprecated.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 8f2c4b16-3e57-4d90-a1c8-5b7e0d2f9a64
+status: active
+servers:
+  # Actian Ingres — order-entry OLTP system of record.
+  - server: ingres-prod
+    type: ingres
+    description: Order-entry OLTP system of record
+    environment: prod
+    host: ingres01.acme.com
+    port: 21064
+    database: orders
+    roles:
+      - role: acme_orders_ro
+        access: read
+      - role: acme_orders_rw
+        access: write
+
+  # Actian Analytics Engine — columnar serving layer, non-default installation.
+  - server: vector-preprod
+    type: vectorwise
+    description: Columnar serving layer for the sales data product
+    environment: preprod
+    host: vector02.acme.com
+    port: 21164
+    database: sales_mart
+
+  # Actian NoSQL Database — policy administration object store.
+  - server: versant-prod
+    type: versant
+    description: Policy administration OLTP object store
+    environment: prod
+    host: nosql01.acme.com
+    port: 5019
+    database: policies
+    roles:
+      - role: acme_policies_ro
+        access: read
+
+  # Actian NoSQL FastObjects, embedded: no host, so the in-process engine.
+  - server: fastobjects-device
+    type: poet
+    description: On-device telemetry store
+    environment: dev
+    database: telemetry
+
+  # The same engine addressed by its `fastobjects` synonym, client/server.
+  - server: fastobjects-prod
+    type: fastobjects
+    description: Parts catalog for the CAD workstations
+    environment: prod
+    host: fastobjects.acme.com
+    port: 6001
+    database: parts_catalog
+
+  # Actian Zen addressed by its `btrieve` synonym.
+  - server: zen-prod
+    type: btrieve
+    description: Embedded inventory store
+    environment: prod
+    host: zen.acme.com
+    database: inventory
+schema:
+  - name: orders
+    physicalType: table
+    properties:
+      - name: order_id
+        logicalType: string
+        required: true
+      - name: order_total
+        logicalType: number

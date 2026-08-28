@@ -1,0 +1,20 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0059 negative test: a `versant` server requires `database` (`host` and
+# `port` are optional). Here `database` is omitted, so the schema MUST reject
+# this contract.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 3c5f7192-4d68-4ea3-b02c-9e4d8f6a0b37
+status: active
+servers:
+  - server: prod
+    type: versant
+    host: nosql01.acme.com
+    port: 5019
+schema:
+  - name: policies
+    physicalType: table
