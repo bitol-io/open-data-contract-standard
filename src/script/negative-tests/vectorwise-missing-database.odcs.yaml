@@ -1,0 +1,19 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0059 negative test: a `vectorwise` server requires both `database` and
+# `host`. Here `database` is omitted, so the schema MUST reject this contract.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 2b4e6081-3c57-4d92-af1b-8d3c7e5f9a26
+status: active
+servers:
+  - server: prod
+    type: vectorwise
+    host: analytics.acme.com
+    port: 21064
+schema:
+  - name: sales
+    physicalType: table

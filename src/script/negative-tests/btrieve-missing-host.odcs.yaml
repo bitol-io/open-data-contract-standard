@@ -1,0 +1,20 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0059 negative test: `btrieve` is a synonym of `zen` and dispatches to the
+# same ZenServer definition, which requires both `host` and `database`. Here
+# `host` is omitted, so the schema MUST reject this contract — the synonym is
+# validated as strictly as the primary value.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 5e719314-6f8a-40c5-d24e-b06fa18c2d59
+status: active
+servers:
+  - server: prod
+    type: btrieve
+    database: inventory
+schema:
+  - name: inventory
+    physicalType: table

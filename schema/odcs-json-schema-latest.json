@@ -236,10 +236,10 @@
           "type": "string",
           "description": "Type of the server.",
           "enum": [
-            "api", "athena", "azure", "bigquery", "clickhouse", "databricks", "denodo", "dremio",
-            "duckdb", "exasol", "glue", "hana", "cloudsql", "db2", "hive", "iceberg", "impala", "informix", "kafka", "kinesis", "local",
-            "mysql", "oracle", "postgresql", "postgres", "presto", "pubsub",
-            "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "teradata", "trino", "vertica", "zen", "custom"
+            "api", "athena", "azure", "bigquery", "btrieve", "clickhouse", "databricks", "denodo", "dremio",
+            "duckdb", "exasol", "fastobjects", "glue", "hana", "cloudsql", "db2", "hive", "iceberg", "impala", "informix", "ingres", "kafka", "kinesis", "local",
+            "mysql", "oracle", "poet", "postgresql", "postgres", "presto", "pubsub",
+            "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "teradata", "trino", "vectorwise", "versant", "vertica", "zen", "custom"
           ]
         },
         "description": {
@@ -313,6 +313,19 @@
           },
           "then": {
             "$ref": "#/$defs/ServerSource/BigQueryServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "btrieve"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/ZenServer"
           }
         },
         {
@@ -397,6 +410,19 @@
           "if": {
             "properties": {
               "type": {
+                "const": "fastobjects"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/PoetServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
                 "const": "glue"
               }
             },
@@ -469,6 +495,19 @@
           },
           "then": {
             "$ref": "#/$defs/ServerSource/InformixServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ingres"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/IngresServer"
           }
         },
         {
@@ -560,6 +599,19 @@
           },
           "then": {
             "$ref": "#/$defs/ServerSource/OracleServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "poet"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/PoetServer"
           }
         },
         {
@@ -742,6 +794,32 @@
           },
           "then": {
             "$ref": "#/$defs/ServerSource/TrinoServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "vectorwise"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/VectorwiseServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "versant"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/VersantServer"
           }
         },
         {
@@ -1191,6 +1269,38 @@
           "database"
         ]
       },
+      "IngresServer": {
+        "type": "object",
+        "title": "IngresServer",
+        "properties": {
+          "database": {
+            "type": "string",
+            "description": "Database name to connect to on the Ingres instance.",
+            "examples": [
+              "sales"
+            ]
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname or IP address of the Ingres server.",
+            "examples": [
+              "ingres.acme.com"
+            ]
+          },
+          "port": {
+            "$ref": "#/$defs/Port",
+            "description": "Connection port for the Ingres Data Access Server (DAS) / SQL connections.",
+            "default": 21064,
+            "examples": [
+              21064
+            ]
+          }
+        },
+        "required": [
+          "database",
+          "host"
+        ]
+      },
       "ZenServer": {
         "type": "object",
         "title": "ZenServer",
@@ -1458,6 +1568,39 @@
           "host",
           "port",
           "serviceName"
+        ]
+      },
+      "PoetServer": {
+        "type": "object",
+        "title": "PoetServer",
+        "properties": {
+          "database": {
+            "type": "string",
+            "description": "Database name to connect to on the FastObjects instance.",
+            "examples": [
+              "parts_catalog"
+            ]
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname or IP address of the FastObjects server. The literal LOCAL selects the in-process embedded engine.",
+            "default": "LOCAL",
+            "examples": [
+              "LOCAL",
+              "fastobjects02.acme.com"
+            ]
+          },
+          "port": {
+            "$ref": "#/$defs/Port",
+            "description": "Connection port for FastObjects connections.",
+            "default": 6001,
+            "examples": [
+              6001
+            ]
+          }
+        },
+        "required": [
+          "database"
         ]
       },
       "PostgresServer": {
@@ -1875,6 +2018,70 @@
           "port",
           "catalog",
           "schema"
+        ]
+      },
+      "VectorwiseServer": {
+        "type": "object",
+        "title": "VectorwiseServer",
+        "properties": {
+          "database": {
+            "type": "string",
+            "description": "Database name to connect to on the Analytics Engine server.",
+            "examples": [
+              "warehouse"
+            ]
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname or IP address of the Analytics Engine server.",
+            "examples": [
+              "analytics.acme.com"
+            ]
+          },
+          "port": {
+            "$ref": "#/$defs/Port",
+            "description": "Connection port for the Data Access Server (DAS) / SQL connections.",
+            "default": 21064,
+            "examples": [
+              21064
+            ]
+          }
+        },
+        "required": [
+          "database",
+          "host"
+        ]
+      },
+      "VersantServer": {
+        "type": "object",
+        "title": "VersantServer",
+        "properties": {
+          "database": {
+            "type": "string",
+            "description": "Database name to connect to on the NoSQL Database instance.",
+            "examples": [
+              "policies"
+            ]
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname or IP address of the NoSQL Database server.",
+            "default": "localhost",
+            "examples": [
+              "nosql.acme.com"
+            ]
+          },
+          "port": {
+            "$ref": "#/$defs/Port",
+            "description": "Connection port for Actian NoSQL Database connections.",
+            "default": 5019,
+            "examples": [
+              5019
+            ]
+          }
+        },
+        "required": [
+          "database"
         ]
       },
       "VerticaServer": {
