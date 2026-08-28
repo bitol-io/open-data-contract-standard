@@ -1,0 +1,21 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0059 negative test: `fastobjects` is a synonym of `poet` and dispatches to
+# the same PoetServer definition, which requires `database`. Here `database` is
+# omitted, so the schema MUST reject this contract — the synonym is validated as
+# strictly as the primary value.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 4d608203-5e79-4fb4-c13d-af5e907b1c48
+status: active
+servers:
+  - server: prod
+    type: fastobjects
+    host: fastobjects.acme.com
+    port: 6001
+schema:
+  - name: parts_catalog
+    physicalType: table

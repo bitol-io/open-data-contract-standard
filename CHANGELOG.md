@@ -67,6 +67,19 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
   * New `exasol` server `type` describing data served from Exasol, an in-memory MPP analytics database, with required `host` plus optional `port` (defaults to `8563`) and `schema`.
   * No `database` field: an Exasol cluster runs a single database and the schema is the namespace. `host` may be a cluster connection range, e.g. `n11..14.acme.com`.
   * Non-breaking: adds a new optional server type.
+* **Adds** Teradata server type ([RFC 0057](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0057-teradata-server-type.md)):
+  * New `teradata` server `type` describing data served from Teradata Vantage, with required `host` plus optional `port` (defaults to `1025`) and `database`.
+  * No `schema` field: in Teradata, the database is the namespace.
+  * Non-breaking: adds a new optional server type.
+* **Adds** Actian server types ([RFC 0059](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0059-actian-server-types.md)):
+  * New `ingres` server `type` (Actian Ingres, OLTP RDBMS) with required `database` and `host` plus optional `port` (defaults to `21064`).
+  * New `vectorwise` server `type` (Actian Analytics Engine, columnar analytical DBMS) with required `database` and `host` plus optional `port` (defaults to `21064`).
+  * New `versant` server `type` (Actian NoSQL Database, object DBMS) with required `database` plus optional `host` (defaults to `localhost`) and `port` (defaults to `5019`).
+  * New `poet` server `type` (Actian NoSQL FastObjects, object DBMS) with required `database` plus optional `host` (defaults to `LOCAL`, the in-process embedded engine) and `port` (defaults to `6001`).
+  * New synonyms: `fastobjects` for `poet` and `btrieve` for `zen` — same fields, same definitions, neither original value deprecated, as `postgresql` and `postgres` already share `PostgresServer`.
+  * Establishes the naming convention that a server `type` value uses the name the product carried when it was created, in lowercase, since enum values are permanent and marketing names are not.
+  * No `schema` field on any of the four: for `ingres` and `vectorwise` the namespace is the table owner resolved from the connecting user; the two object databases have no SQL schema namespace.
+  * Non-breaking: adds four optional server types and two synonyms. No existing value changes meaning.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
 
