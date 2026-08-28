@@ -48,7 +48,7 @@ servers:
 | id               | string | ID                | No       | A unique identifier used to reduce the risk of collisions, such as a UUID.                                                                                                                                                                                                                                                        |
 | roles            | array  | Roles             | No       | List of roles that have access to the server. Check [roles](./roles.md) section for more details.                                                                                                                                                                                                                                 |
 | server           | string | Server            | Yes      | Identifier of the server.                                                                                                                                                                                                                                                                                                         |
-| type             | string | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, exasol, glue, hive, impala, informix, kafka, kinesis, local, mysql, oracle, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, trino, vertica, zen. |
+| type             | string | Type              | Yes      | Type of the server. Can be one of: api, athena, azure, bigquery, btrieve, clickhouse, cloudsql, custom, databricks, db2, denodo, dremio, duckdb, exasol, fastobjects, glue, hive, impala, informix, ingres, kafka, kinesis, local, mysql, oracle, poet, postgres, postgresql, presto, pubsub, redshift, s3, sftp, snowflake, sqlserver, synapse, teradata, trino, vectorwise, versant, vertica, zen. |
 | customProperties | array  | Custom Properties | No       | Custom properties that are not part of the standard.                                                                                                                                                                                                                                                                              |
 
 ## Specific Server Properties
@@ -235,6 +235,18 @@ An Exasol cluster runs a single database and the schema is the namespace, so the
 | host     | string  | Host     | Yes      | The host to the HCL Informix and IBM Informix server.                   |
 | port     | integer | Port     | No       | The port to the HCL Informix and IBM Informix server. Defaults to 9088. |
 
+### Actian Ingres
+
+[Actian Ingres](https://www.actian.com/databases/ingres/) is an enterprise relational database for transactional (OLTP) and hybrid workloads. Added in ODCS v3.2.0 ([RFC 0059](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0059-actian-server-types.md)).
+
+The namespace inside an Ingres database is the table owner, resolved from the connecting user, so there is no `schema` field. `port` is derived from the Ingres installation identifier and defaults to the `II7` installation; set it explicitly when a host runs more than one installation.
+
+| Key      | Type    | UX Label | Required | Description                                                                                              |
+| -------- | ------- | -------- | -------- | -------------------------------------------------------------------------------------------------------- |
+| database | string  | Database | Yes      | Database name to connect to on the Ingres instance.                                                      |
+| host     | string  | Host     | Yes      | Hostname or IP address of the Ingres server.                                                             |
+| port     | integer | Port     | No       | Connection port for the Ingres Data Access Server (DAS) / SQL connections. Defaults to 21064.            |
+
 ### Kafka Server
 
 [Apache Kafka](https://kafka.apache.org/) is an open-source distributed event streaming platform used for high-performance data pipelines, streaming analytics, and event-driven applications.
@@ -285,6 +297,20 @@ A local server describes data stored as one or more files on the local file syst
 | host        | string  | Host         | Yes      | The host to the Oracle server  |
 | port        | integer | Port         | Yes      | The port to the Oracle server. |
 | serviceName | string  | Service Name | Yes      | The name of the service.       |
+
+### Actian NoSQL FastObjects
+
+[Actian NoSQL FastObjects](https://www.actian.com/databases/nosql/) is an object database management system (ODBMS) for embedded and client/server applications. Created as POET, renamed FastObjects in 2001. Added in ODCS v3.2.0 ([RFC 0059](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0059-actian-server-types.md)).
+
+The `type` value is the creation name, `poet`. `fastobjects` is an accepted synonym: same fields, same validation, neither value deprecated.
+
+An object database has no SQL schema namespace — classes are scoped by the database — so there is no `schema` field. `LOCAL` is a literal FastObjects sentinel rather than a hostname: it selects the in-process embedded engine, so one `host` field covers both the embedded and the client/server deployment.
+
+| Key      | Type    | UX Label | Required | Description                                                                                     |
+| -------- | ------- | -------- | -------- | ------------------------------------------------------------------------------------------------- |
+| database | string  | Database | Yes      | Database name to connect to on the FastObjects instance.                                        |
+| host     | string  | Host     | No       | Hostname or IP address of the FastObjects server. Defaults to `LOCAL`, the embedded engine.     |
+| port     | integer | Port     | No       | Connection port for FastObjects connections. Defaults to 6001.                                  |
 
 ### PostgreSQL
 
@@ -395,6 +421,18 @@ Secure File Transfer Protocol (SFTP) is a network protocol that enables secure a
 | host     | string  | Host     | Yes      | The host of the Synapse server. |
 | port     | integer | Port     | Yes      | The port of the Synapse server. |
 
+### Teradata
+
+[Teradata Vantage](https://www.teradata.com/) is a widely used enterprise data warehouse for large-scale analytics. Added in ODCS v3.2.0 ([RFC 0057](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0057-teradata-server-type.md)).
+
+In Teradata, the database is the namespace, so there is no `schema` field.
+
+| Key      | Type    | UX Label | Required | Description                                     |
+| -------- | ------- | -------- | -------- | ----------------------------------------------- |
+| database | string  | Database | No       | Name of the database.                           |
+| host     | string  | Host     | Yes      | Host of the Teradata server.                    |
+| port     | integer | Port     | No       | Port of the Teradata server. Defaults to 1025.  |
+
 ### Trino Server
 
 [Trino](https://trino.io/) is an open-source distributed SQL query engine designed to query large datasets across one or more heterogeneous data sources.
@@ -405,6 +443,34 @@ Secure File Transfer Protocol (SFTP) is a network protocol that enables secure a
 | host    | string  | Host     | Yes      | The Trino host URL.                     |
 | port    | integer | Port     | Yes      | The Trino port.                         |
 | schema  | string  | Schema   | Yes      | The name of the schema in the database. |
+
+### Actian Analytics Engine
+
+The [Actian Analytics Engine](https://www.actian.com/databases/analytics-engine/) is a columnar analytical DBMS for high-speed SQL and big data processing. Created as VectorWise, later named Actian Vector. Added in ODCS v3.2.0 ([RFC 0059](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0059-actian-server-types.md)).
+
+The `type` value is the creation name, `vectorwise`. Tooling should display the Actian Analytics Engine label and write the enum value.
+
+The namespace inside a database is the table owner, resolved from the connecting user, so there is no `schema` field. `port` is derived from the Ingres installation identifier; set it explicitly when a host runs more than one installation.
+
+| Key      | Type    | UX Label | Required | Description                                                                          |
+| -------- | ------- | -------- | -------- | -------------------------------------------------------------------------------------- |
+| database | string  | Database | Yes      | Database name to connect to on the Analytics Engine server.                          |
+| host     | string  | Host     | Yes      | Hostname or IP address of the Analytics Engine server.                               |
+| port     | integer | Port     | No       | Connection port for the Data Access Server (DAS) / SQL connections. Defaults to 21064. |
+
+### Actian NoSQL Database
+
+[Actian NoSQL Database](https://www.actian.com/databases/nosql/) is an object database management system (ODBMS) for mission-critical OLTP. Created as the Versant Object Database. Added in ODCS v3.2.0 ([RFC 0059](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0059-actian-server-types.md)).
+
+The `type` value is the creation name, `versant`. Tooling should display the Actian NoSQL Database label and write the enum value.
+
+An object database has no SQL schema namespace — classes are scoped by the database — so there is no `schema` field.
+
+| Key      | Type    | UX Label | Required | Description                                                                |
+| -------- | ------- | -------- | -------- | ---------------------------------------------------------------------------- |
+| database | string  | Database | Yes      | Database name to connect to on the NoSQL Database instance.                |
+| host     | string  | Host     | No       | Hostname or IP address of the NoSQL Database server. Defaults to `localhost`. |
+| port     | integer | Port     | No       | Connection port for Actian NoSQL Database connections. Defaults to 5019.   |
 
 ### Vertica Server
 
@@ -420,6 +486,8 @@ Secure File Transfer Protocol (SFTP) is a network protocol that enables secure a
 ### Actian Zen Server
 
 Actian Zen (formerly Btrieve, later named Pervasive PSQL until version 13) is an ACID-compliant, zero-DBA, embedded, nano-footprint, multi-model, Multi-Platform database management system (DBMS).
+
+Since ODCS v3.2.0 ([RFC 0059](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0059-actian-server-types.md)), `btrieve` is an accepted synonym of `zen`: same fields, same validation, neither value deprecated.
 
 | Key      | Type    | UX Label | Required | Description                                        |
 | -------- | ------- | -------- | -------- | -------------------------------------------------- |

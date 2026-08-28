@@ -1,0 +1,19 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0059 negative test: an `ingres` server requires both `database` and
+# `host`. Here `host` is omitted, so the schema MUST reject this contract.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 1a3d5f70-2b46-4c81-9e0a-7c2b6d4f8e15
+status: active
+servers:
+  - server: prod
+    type: ingres
+    port: 21064
+    database: orders
+schema:
+  - name: orders
+    physicalType: table
