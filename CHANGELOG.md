@@ -6,7 +6,7 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 This document tracks the history and evolution of the **Open Data Contract Standard**.
 
-# v3.2.0 "Peter Flook" - IN PROGRESS
+# v3.2.0 "Peter Flook" - APPROVED
 
 This release is dedicated to the memory of our friend and longtime contributor **Peter Flook**, whose work shaped many parts of ODCS, from data quality testing to the negative-test suite, schema validation, documentation, and vendor onboarding. We carry his contributions forward in this version and beyond.
 
