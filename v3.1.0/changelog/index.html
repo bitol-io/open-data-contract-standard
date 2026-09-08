@@ -2363,6 +2363,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../examples/schema/stable-id-special-characters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    stable id special characters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../examples/schema/table-column/" class="md-nav__link">
         
   
@@ -3434,6 +3462,11 @@
 <li>Non-breaking: adds four optional server types and two synonyms. No existing value changes meaning.</li>
 <li><strong>Changes</strong> to Servers:</li>
 <li>Add optional Athena Server <code>workgroup</code> field and fix <code>stagingDir</code> to be optional in schema.</li>
+<li><strong>Fixes</strong> the <code>id</code> character set to match <a href="https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.1.0/0026a-reference-id.md">RFC-0026a</a>:</li>
+<li>The JSON schema implemented an allowlist (<code>^[A-Za-z0-9_-]+$</code>) where the RFC defines a denylist — an id cannot contain <code>.</code>, <code>#</code>, <code>/</code>, <code>\</code>, <code>@</code>, <code>!</code>, <code>%</code>, <code>&amp;</code> or <code>^</code>. The allowlist additionally rejected 23 punctuation characters and every non-ASCII letter.</li>
+<li><code>StableId</code> and the id segments of <code>FullyQualifiedReference</code> now accept anything the RFC permits, so namespaced ids such as <code>fdir:ISU:TAD</code> and <code>urn:uuid:...</code> validate, along with references built from them.</li>
+<li>Whitespace is excluded as well, which the RFC leaves unstated.</li>
+<li>Non-breaking: the new pattern is strictly wider, so every previously valid id and reference stays valid. Also applied to the rolling v3.1.0 schema, where the mismatch originated.</li>
 </ul>
 <h1 id="v310-2025-12-08-approved">v3.1.0 - 2025-12-08 - APPROVED</h1>
 <ul>
