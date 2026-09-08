@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="-22 -99.5 180 184.5" width="180" height="184.5">
+  <defs/>
+  <g id="2___-" stroke="none" stroke-opacity="1" fill="none" fill-opacity="1" stroke-dasharray="none">
+    <title>2♠︎ - </title>
+    <rect fill="white" x="-22" y="-99.5" width="180" height="184.5"/>
+    <g id="2___-_Backgound">
+      <title>Backgound</title>
+      <g id="Graphic_1050">
+        <rect x="-22" y="-99.5" width="180" height="184.5" fill="white"/>
+      </g>
+    </g>
+    <g id="2___-_Layer_1">
+      <title>Layer 1</title>
+      <g id="Line_993">
+        <path d="M 86 -74.75 C 77 -74.75 86 -65.75 77 -65.75" stroke="#424242" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_997">
+        <path d="M 86 -41 C 77 -41 86 -54.5 77 -54.5" stroke="#424242" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_999">
+        <path d="M 95 -2.75 C 86 -2.75 95 6.25 86 6.25" stroke="#424242" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1017">
+        <path d="M 95 49 C 86 49 95 35.5 86 35.5" stroke="#424242" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1031">
+        <path d="M 20.75 67 C 18.502315 40.02778 16.25463 19.854045 16.250007 -.375" stroke="#ffeb1a" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1032">
+        <path d="M 16.250027 -.5 C 16.26561 -18.520833 23.010405 -54.5 32 -54.5" stroke="#ffeb1a" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1033">
+        <path d="M 16.250045 -.5 C 16.276018 -18.500072 27.505205 -45.5 32 -45.5" stroke="#ffeb1a" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1034">
+        <path d="M 16.250045 -.5 C 16.276033 -18.479287 27.505208 -36.5 32 -36.5" stroke="#ffeb1a" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1035">
+        <path d="M 16.250045 -.5 C 16.276048 -18.458478 27.50521 -27.5 32 -27.5" stroke="#ffeb1a" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1036">
+        <path d="M 16.250045 -.4999967 C 16.276061 -18.437645 27.505214 -18.5 32 -18.5" stroke="#ffeb1a" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1038">
+        <path d="M 20.75 67 C 20.75 49 36.5 17.5 41 17.5" stroke="#ffeb1a" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1039">
+        <path d="M 20.75 67 C 20.75 49 36.5 26.5 41 26.5" stroke="#ffeb1a" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1040">
+        <path d="M 20.75 67 C 20.75 49 36.5 35.5 41 35.5" stroke="#ffeb1a" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1041">
+        <path d="M 20.75 67 C 20.75 49 36.5 44.5 41 44.5" stroke="#ffeb1a" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1042">
+        <path d="M 20.75 67 C 20.75 49 36.5 53.5 41 53.5" stroke="#ffeb1a" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Graphic_1004">
+        <text transform="translate(87 -90.75)" fill="#010a25">
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="6" xml:space="preserve">logicalType: object</tspan>
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="14" xml:space="preserve">physicalType: table</tspan>
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="22" xml:space="preserve">name: Orders</tspan>
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="30" xml:space="preserve">physicalName: order</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1005">
+        <text transform="translate(96 -18.75)" fill="#010a25">
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="6" xml:space="preserve">logicalType: object</tspan>
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="14" xml:space="preserve">physicalType: table</tspan>
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="22" xml:space="preserve">name: OrdersLines</tspan>
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="30" xml:space="preserve">physicalName: or_line</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1015">
+        <text transform="translate(96 33)" fill="#010a25">
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="6" xml:space="preserve">logicalType: number</tspan>
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="14" xml:space="preserve">physicalType: float(10)</tspan>
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="22" xml:space="preserve">name: Quantity</tspan>
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="30" xml:space="preserve">physicalName:  qty</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1016">
+        <text transform="translate(87 -57)" fill="#010a25">
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="6" xml:space="preserve">logicalType: integer</tspan>
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="14" xml:space="preserve">physicalType: serial</tspan>
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="22" xml:space="preserve">name: Id</tspan>
+          <tspan font-family="Fira Sans Condensed" font-style="italic" font-size="6" fill="#010a25" x="0" y="30" xml:space="preserve">physicalName:  id</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1023">
+        <text transform="translate(5 67.5)" fill="#010a25">
+          <tspan font-family="Fira Sans" font-size="6" fill="#010a25" x="1.608" y="6" xml:space="preserve">properties</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1030"/>
+      <g id="Line_1043">
+        <path d="M 7.25 44.5 C 7.25 4 36.5 6.25 41 6.25" stroke="#ff8a1d" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1044">
+        <path d="M 7.25 44.5 C 7.25 -23 14 -65.75 32 -65.75" stroke="#ff8a1d" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Graphic_1045">
+        <text transform="translate(-8.5 -94.5)" fill="#010a25">
+          <tspan font-family="Fira Sans" font-size="6" fill="#010a25" x="3.168" y="6" xml:space="preserve">elements</tspan>
+        </text>
+      </g>
+      <g id="Line_1046">
+        <path d="M 7.25 -86 C 7.25 -14.125 -17.5 49 -4 49" stroke="#f33026" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Line_1047">
+        <path d="M 7.25 -86 C 7.25 -9.625 -35.5 71.5 5 71.5" stroke="#f33026" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g id="Graphic_1024">
+        <text transform="translate(-4 45)" fill="#010a25">
+          <tspan font-family="Fira Sans" font-size="6" fill="#010a25" x="1.323" y="6" xml:space="preserve">objects</tspan>
+        </text>
+      </g>
+      <g id="Graphic_988">
+        <rect x="32" y="-72.5" width="45" height="13.5" fill="#389a2a"/>
+        <text transform="translate(34 -71.25)" fill="white">
+          <tspan font-family="Fira Sans" font-weight="bold" font-size="8" fill="white" x="8.216" y="9" xml:space="preserve">Orders</tspan>
+        </text>
+      </g>
+      <g id="Graphic_989">
+        <rect x="41" y="-.5" width="45" height="13.5" fill="#011993"/>
+        <text transform="translate(43 .75)" fill="white">
+          <tspan font-family="Fira Sans" font-weight="bold" font-size="8" fill="white" x=".48" y="9" xml:space="preserve">OrderLines</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1011">
+        <rect x="32" y="-50" width="45" height="9" fill="#0196ff"/>
+        <text transform="translate(34 -49.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="6" fill="white" x="0" y="6" xml:space="preserve">date</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1012">
+        <rect x="32" y="-41" width="45" height="9" fill="#0196ff"/>
+        <text transform="translate(34 -40.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="6" fill="white" x="0" y="6" xml:space="preserve">customer_id</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1013">
+        <rect x="32" y="-32" width="45" height="9" fill="#0196ff"/>
+        <text transform="translate(34 -31.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="6" fill="white" x="0" y="6" xml:space="preserve">delivery_ctry</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1014">
+        <rect x="32" y="-23" width="45" height="9" fill="#0196ff"/>
+        <text transform="translate(34 -22.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="6" fill="white" x="0" y="6" xml:space="preserve">…</tspan>
+        </text>
+      </g>
+      <g id="Graphic_990">
+        <rect x="32" y="-59" width="45" height="9" fill="#0196ff"/>
+        <text transform="translate(34 -58.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="6" fill="white" x="0" y="6" xml:space="preserve">id</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1018">
+        <rect x="41" y="13" width="45" height="9" fill="#8134be"/>
+        <text transform="translate(43 13.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="6" fill="white" x="0" y="6" xml:space="preserve">id</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1019">
+        <rect x="41" y="22" width="45" height="9" fill="#8134be"/>
+        <text transform="translate(43 22.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="6" fill="white" x="0" y="6" xml:space="preserve">order_id</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1020">
+        <rect x="41" y="31" width="45" height="9" fill="#8134be"/>
+        <text transform="translate(43 31.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="6" fill="white" x="0" y="6" xml:space="preserve">qty</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1021">
+        <rect x="41" y="40" width="45" height="9" fill="#8134be"/>
+        <text transform="translate(43 40.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="6" fill="white" x="0" y="6" xml:space="preserve">product_id</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1022">
+        <rect x="41" y="49" width="45" height="9" fill="#8134be"/>
+        <text transform="translate(43 49.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="6" fill="white" x="0" y="6" xml:space="preserve">…</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

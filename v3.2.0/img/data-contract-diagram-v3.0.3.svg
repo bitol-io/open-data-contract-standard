@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-22 -122 576 671" width="576" height="671">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -3 5 6" markerWidth="5" markerHeight="6" color="#424242">
+      <g>
+        <path d="M 2.88 0 L 0 -1.08 L 0 1.08 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_2" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-4 -3 5 6" markerWidth="5" markerHeight="6" color="#424242">
+      <g>
+        <path d="M -2.88 0 L 0 1.08 L 0 -1.08 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.24.5\n2025-05-19 21:04:28 +0000</metadata>
+  <g id="Figure_2" fill-opacity="1" fill="none" stroke="none" stroke-opacity="1" stroke-dasharray="none">
+    <title>Figure 2</title>
+    <g id="Figure_2_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_240">
+        <path d="M 4.5999994 324.4 L 138.6 324.4 C 141.36142 324.4 143.6 326.63856 143.6 329.4 L 143.6 535.4 C 143.6 538.1614 141.36142 540.4 138.6 540.4 L 4.5999994 540.4 C 1.8385757 540.4 -.40000057 538.1614 -.40000057 535.4 L -.40000057 329.4 C -.40000057 326.63856 1.8385757 324.4 4.5999994 324.4 Z" stroke="#424242" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2.0,6.0" stroke-width="2"/>
+      </g>
+      <g id="Graphic_239">
+        <path d="M 263.8 324.4 L 527.4 324.4 C 530.1614 324.4 532.4 326.63856 532.4 329.4 L 532.4 485 C 532.4 487.7614 530.1614 490 527.4 490 L 263.8 490 C 261.03857 490 258.8 487.7614 258.8 485 L 258.8 329.4 C 258.8 326.63856 261.03857 324.4 263.8 324.4 Z" stroke="#424242" stroke-linecap="round" stroke-linejoin="miter" stroke-dasharray="2.0,6.0" stroke-width="2"/>
+      </g>
+      <g id="Graphic_197">
+        <path d="M 4.5999994 -64.4 L 527.4 -64.4 C 530.1614 -64.4 532.4 -62.161425 532.4 -59.4 L 532.4 -4.600003 C 532.4 -1.8385795 530.1614 .39999676 527.4 .39999676 L 4.5999994 .39999676 C 1.8385757 .39999676 -.40000057 -1.8385795 -.40000057 -4.600003 L -.40000057 -59.4 C -.40000057 -62.161425 1.8385757 -64.4 4.5999994 -64.4 Z" stroke="#424242" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2.0,6.0" stroke-width="2"/>
+      </g>
+      <g id="Line_235">
+        <path d="M 71.6 314.34 L 71.6 310.00006 C 71.6 309.99133 71.607075 309.98425 71.61581 309.98425 C 71.62451 309.98425 71.63158 309.9913 71.631614 310 L 71.631614 310 C 71.63165 310.00872 71.63876 310.01577 71.64749 310.01573 C 71.656195 310.0157 71.66323 310.00863 71.66323 309.99992 L 71.66323 304.66" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="#424242" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_234">
+        <path d="M 395.6 314.34 L 395.6 306.29404 C 395.6 306.2934 395.6005 306.2929 395.60113 306.2929 C 395.60175 306.2929 395.60226 306.2934 395.60226 306.29404 L 395.60403 309.17594 C 395.60403 309.1767 395.60465 309.17732 395.6054 309.17732 C 395.6062 309.17732 395.6068 309.1767 395.6068 309.17594 L 395.60906 308.3612 C 395.60907 308.355 395.6091 308.3488 395.6091 308.34257 L 395.6091 295.6" marker-start="url(#FilledArrow_Marker_2)" stroke="#424242" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_233">
+        <path d="M 266 20.139996 L 266 7.599997 L 266 1.3999968" marker-start="url(#FilledArrow_Marker_2)" stroke="#424242" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_230">
+        <rect x="273.2" y="338.8" width="115.2" height="36" fill="#4127a9"/>
+        <text transform="translate(274.2 350.3)" fill="#ebebeb">
+          <tspan font-family="Fira Sans" font-size="11" fill="#ebebeb" x="25.646002" y="10" xml:space="preserve">Applications</tspan>
+        </text>
+      </g>
+      <g id="Graphic_229">
+        <rect x="273.2" y="389.2" width="115.2" height="36" fill="#4127a9"/>
+        <text transform="translate(274.2 400.7)" fill="#ebebeb">
+          <tspan font-family="Fira Sans" font-size="11" fill="#ebebeb" x="29.463002" y="10" xml:space="preserve">Monitoring</tspan>
+        </text>
+      </g>
+      <g id="Graphic_228">
+        <rect x="402.8" y="338.8" width="115.2" height="36" fill="#4127a9"/>
+        <text transform="translate(403.8 350.3)" fill="#ebebeb">
+          <tspan font-family="Fira Sans" font-size="11" fill="#ebebeb" x="23.583502" y="10" xml:space="preserve">Observability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_227">
+        <rect x="273.2" y="439.6" width="115.2" height="36" fill="#4127a9"/>
+        <text transform="translate(274.2 451.1)" fill="#ebebeb">
+          <tspan font-family="Fira Sans" font-size="11" fill="#ebebeb" x="27.395002" y="10" xml:space="preserve">Notification</tspan>
+        </text>
+      </g>
+      <g id="Graphic_226">
+        <rect x="402.8" y="389.2" width="115.2" height="36" fill="#4127a9"/>
+        <text transform="translate(403.8 400.7)" fill="#ebebeb">
+          <tspan font-family="Fira Sans" font-size="11" fill="#ebebeb" x="27.862502" y="10" xml:space="preserve">Other Tools</tspan>
+        </text>
+      </g>
+      <g id="Graphic_225">
+        <rect x="13.999999" y="338.8" width="115.2" height="36" fill="#8134be"/>
+        <text transform="translate(14.999999 343.8)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="18.083502" y="10" xml:space="preserve">Enterprise Data </tspan>
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="27.180502" y="23" xml:space="preserve">Governance</tspan>
+        </text>
+      </g>
+      <g id="Graphic_224">
+        <rect x="13.999999" y="439.6" width="115.2" height="36" fill="#8134be"/>
+        <text transform="translate(14.999999 444.6)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="18.083502" y="10" xml:space="preserve">Enterprise Data </tspan>
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="38.043002" y="23" xml:space="preserve">Catalog</tspan>
+        </text>
+      </g>
+      <g id="Graphic_223">
+        <rect x="13.999999" y="389.2" width="115.2" height="36" fill="#8134be"/>
+        <text transform="translate(14.999999 394.2)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="3.9265023" y="10" xml:space="preserve">Enterprise Security &amp; </tspan>
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="43.422" y="23" xml:space="preserve">Audit</tspan>
+        </text>
+      </g>
+      <g id="Graphic_222">
+        <rect x="13.999999" y="490" width="115.2" height="36" fill="#8134be"/>
+        <text transform="translate(14.999999 501.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="19.860002" y="10" xml:space="preserve">Enterprise Ops</tspan>
+        </text>
+      </g>
+      <g id="Graphic_221">
+        <rect x="-14.8" y="29.199996" width="561.6" height="266.4" fill="#011993"/>
+        <text transform="translate(-6.8 33.199996)" fill="#ebebeb">
+          <tspan font-family="Fira Sans" font-weight="bold" font-size="11" fill="#ebebeb" x="0" y="13" xml:space="preserve">Open Data Contract Standard v3</tspan>
+        </text>
+      </g>
+      <g id="Graphic_220">
+        <rect x="13.999999" y="-50" width="115.2" height="36" fill="#38992a"/>
+        <text transform="translate(14.999999 -38.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="19.376002" y="10" xml:space="preserve">Data Engineers</tspan>
+        </text>
+      </g>
+      <g id="Graphic_219">
+        <rect x="143.6" y="-50" width="115.2" height="36" fill="#38992a"/>
+        <text transform="translate(144.6 -38.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="19.667502" y="10" xml:space="preserve">Data Scientists</tspan>
+        </text>
+      </g>
+      <g id="Graphic_218">
+        <rect x="273.2" y="-50" width="115.2" height="36" fill="#38992a"/>
+        <text transform="translate(274.2 -38.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="4.3280023" y="10" xml:space="preserve">Data Product Owners</tspan>
+        </text>
+      </g>
+      <g id="Graphic_217">
+        <rect x="402.8" y="-50" width="115.2" height="36" fill="#38992a"/>
+        <text transform="translate(403.8 -38.5)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="12.853002" y="10" xml:space="preserve">Automation Tools</tspan>
+        </text>
+      </g>
+      <g id="Graphic_216">
+        <clipPath id="clip_path">
+          <rect x="0" y="0" width="115.2" height="28.8"/>
+        </clipPath>
+        <text clip-path="url(#clip_path)" transform="translate(13.999999 93.99999)" fill="#ebebeb">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="11" xml:space="preserve">Name, Version,</tspan>
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="24" xml:space="preserve">Descriptions…</tspan>
+        </text>
+      </g>
+      <g id="Graphic_215">
+        <clipPath id="clip_path_2">
+          <rect x="0" y="0" width="115.2" height="28.8"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_2)" transform="translate(13.999999 173.2)" fill="#ebebeb">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="11" xml:space="preserve">History of team members</tspan>
+        </text>
+      </g>
+      <g id="Graphic_214">
+        <clipPath id="clip_path_3">
+          <rect x="0" y="0" width="115.2" height="28.8"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_3)" transform="translate(273.2 173.2)" fill="#ebebeb">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="11" xml:space="preserve">Latency, retention, </tspan>
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="24" xml:space="preserve">frequency…</tspan>
+        </text>
+      </g>
+      <g id="Graphic_213">
+        <clipPath id="clip_path_4">
+          <rect x="0" y="0" width="115.2" height="28.8"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_4)" transform="translate(273.2 93.99999)" fill="#ebebeb">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="11" xml:space="preserve">Data quality rules,</tspan>
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="24" xml:space="preserve">Data governance policies</tspan>
+        </text>
+      </g>
+      <g id="Graphic_212">
+        <clipPath id="clip_path_5">
+          <rect x="0" y="0" width="115.2" height="28.8"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_5)" transform="translate(143.6 93.99999)" fill="#ebebeb">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="11" xml:space="preserve">Logical representation &amp; </tspan>
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="24" xml:space="preserve">physical implementation</tspan>
+        </text>
+      </g>
+      <g id="Graphic_211">
+        <clipPath id="clip_path_6">
+          <rect x="0" y="0" width="115.2" height="28.8"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_6)" transform="translate(402.8 173.2)" fill="#ebebeb">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="11" xml:space="preserve">Servers, environment, and </tspan>
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="24" xml:space="preserve">storage</tspan>
+        </text>
+      </g>
+      <g id="Graphic_210">
+        <clipPath id="clip_path_7">
+          <rect x="0" y="0" width="115.2" height="28.8"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_7)" transform="translate(402.8 93.99999)" fill="#ebebeb">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="11" xml:space="preserve">Internal or external costs </tspan>
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="24" xml:space="preserve">associated to usage</tspan>
+        </text>
+      </g>
+      <g id="Graphic_209">
+        <clipPath id="clip_path_8">
+          <rect x="0" y="0" width="115.2" height="28.8"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_8)" transform="translate(143.6 173.2)" fill="#ebebeb">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="11" xml:space="preserve">Roles</tspan>
+        </text>
+      </g>
+      <g id="Graphic_208">
+        <rect x="13.999999" y="57.999995" width="115.2" height="36" fill="#0096ff"/>
+        <text transform="translate(14.999999 69.499995)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="21.400002" y="10" xml:space="preserve">Fundamentals</tspan>
+        </text>
+      </g>
+      <g id="Graphic_207">
+        <rect x="143.6" y="57.999995" width="115.2" height="36" fill="#0096ff"/>
+        <text transform="translate(144.6 69.499995)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="37.047502" y="10" xml:space="preserve">Schema</tspan>
+        </text>
+      </g>
+      <g id="Graphic_206">
+        <rect x="273.2" y="137.2" width="115.2" height="36" fill="#0096ff"/>
+        <text transform="translate(274.2 148.7)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="47.712" y="10" xml:space="preserve">SLA</tspan>
+        </text>
+      </g>
+      <g id="Graphic_205">
+        <rect x="273.2" y="57.999995" width="115.2" height="36" fill="#0096ff"/>
+        <text transform="translate(274.2 69.499995)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="25.959502" y="10" xml:space="preserve">Data Quality</tspan>
+        </text>
+      </g>
+      <g id="Graphic_204">
+        <rect x="13.999999" y="137.2" width="115.2" height="36" fill="#0096ff"/>
+        <text transform="translate(14.999999 148.7)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="43.411" y="10" xml:space="preserve">Team</tspan>
+        </text>
+      </g>
+      <g id="Graphic_203">
+        <rect x="402.8" y="137.2" width="115.2" height="36" fill="#0096ff"/>
+        <text transform="translate(403.8 148.7)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="22.395502" y="10" xml:space="preserve">Infrastructure</tspan>
+        </text>
+      </g>
+      <g id="Graphic_202">
+        <rect x="402.8" y="57.999995" width="115.2" height="36" fill="#0096ff"/>
+        <text transform="translate(403.8 69.499995)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="39.5775" y="10" xml:space="preserve">Pricing</tspan>
+        </text>
+      </g>
+      <g id="Graphic_201">
+        <rect x="143.6" y="137.2" width="115.2" height="36" fill="#0096ff"/>
+        <text transform="translate(144.6 148.7)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="36.492002" y="10" xml:space="preserve">Security</tspan>
+        </text>
+      </g>
+      <g id="Graphic_200">
+        <clipPath id="clip_path_9">
+          <rect x="0" y="0" width="129.6" height="36"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_9)" transform="translate(150.8 504.4)" fill="#424242">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#424242" x="10.096998" y="11" xml:space="preserve">Enterprise-level consumers</tspan>
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#424242" x="35.485" y="24" xml:space="preserve">&amp; contributors</tspan>
+        </text>
+      </g>
+      <g id="Graphic_199">
+        <clipPath id="clip_path_10">
+          <rect x="0" y="0" width="151.2" height="21.6"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_10)" transform="translate(381.2 -100.4)" fill="#424242">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#424242" x="1" y="14" xml:space="preserve">Contributors to the data contract</tspan>
+        </text>
+      </g>
+      <g id="Graphic_198">
+        <clipPath id="clip_path_11">
+          <rect x="0" y="0" width="93.6" height="36"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_11)" transform="translate(417.2 497.2)" fill="#424242">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#424242" x="1" y="11" xml:space="preserve">Consumers of the </tspan>
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#424242" x="1" y="24" xml:space="preserve">data contract</tspan>
+        </text>
+      </g>
+      <g id="Line_196">
+        <path d="M 212.399 504.4 C 208.1325 498.5331 200.3995 491.2997 186.8 482.8 C 174.74017 475.2626 159.74341 467.7772 144.6 460.9717" stroke="#212121" stroke-linecap="round" stroke-linejoin="round" stroke-width=".67518986"/>
+      </g>
+      <g id="Line_195">
+        <path d="M 381.2 -89.47631 C 356.38935 -88.09559 329.89926 -85.04884 309.2 -78.8 C 296.38436 -74.93113 287.2173 -70.26614 280.68908 -65.4" stroke="#212121" stroke-linecap="round" stroke-linejoin="round" stroke-width=".67518986"/>
+      </g>
+      <g id="Line_194">
+        <path d="M 417.2 513.99474 C 408.8235 510.9797 401.04254 505.7935 395.6 497.2 C 394.36083 495.2434 393.28016 493.16907 392.34276 491" stroke="#212121" stroke-linecap="round" stroke-linejoin="round" stroke-width=".67518986"/>
+      </g>
+      <g id="Graphic_193">
+        <path d="M 496.4 234.4 L 496.4 288.4 L 539.6 261.4 Z" fill="#ffeb1b"/>
+      </g>
+      <g id="Graphic_192">
+        <clipPath id="clip_path_12">
+          <rect x="0" y="0" width="115.2" height="28.8"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_12)" transform="translate(143.6 252.4)" fill="#ebebeb">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="11" xml:space="preserve">Data QoS applied to your </tspan>
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="24" xml:space="preserve">business needs</tspan>
+        </text>
+      </g>
+      <g id="Graphic_191">
+        <rect x="143.6" y="216.4" width="115.2" height="36" fill="#0096ff"/>
+        <text transform="translate(144.6 227.9)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="18.287002" y="10" xml:space="preserve">Business rules*</tspan>
+        </text>
+      </g>
+      <g id="Graphic_190">
+        <clipPath id="clip_path_13">
+          <rect x="0" y="0" width="115.2" height="28.8"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_13)" transform="translate(273.2 252.4)" fill="#ebebeb">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="11" xml:space="preserve">Custom extensions &amp; </tspan>
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="24" xml:space="preserve">processing</tspan>
+        </text>
+      </g>
+      <g id="Graphic_189">
+        <rect x="273.2" y="216.4" width="115.2" height="36" fill="#0096ff"/>
+        <text transform="translate(274.2 221.4)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="40.2375" y="10" xml:space="preserve">Tags &amp; </tspan>
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="10.812502" y="23" xml:space="preserve">Custom Properties</tspan>
+        </text>
+      </g>
+      <g id="Graphic_188">
+        <clipPath id="clip_path_14">
+          <rect x="0" y="0" width="108" height="21.41772"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_14)" transform="translate(432.6 519.0177)" fill="#424242">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#424242" x="74.166" y="10" xml:space="preserve">* Future</tspan>
+        </text>
+      </g>
+      <g id="Graphic_187">
+        <clipPath id="clip_path_15">
+          <rect x="0" y="0" width="115.2" height="28.8"/>
+        </clipPath>
+        <text clip-path="url(#clip_path_15)" transform="translate(13.999999 252.4)" fill="#ebebeb">
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="11" xml:space="preserve">Support mechanisms for </tspan>
+          <tspan font-family="Fira Sans Extra Condensed" font-style="italic" font-size="11" fill="#ebebeb" x="1" y="24" xml:space="preserve">consumers</tspan>
+        </text>
+      </g>
+      <g id="Graphic_186">
+        <rect x="13.999999" y="216.4" width="115.2" height="36" fill="#0096ff"/>
+        <text transform="translate(14.999999 227.9)" fill="white">
+          <tspan font-family="Fira Sans" font-size="11" fill="white" x="36.547002" y="10" xml:space="preserve">Support</tspan>
+        </text>
+      </g>
+      <g id="Group_241">
+        <g id="Group_255">
+          <g id="Group_270">
+            <g id="Graphic_275">
+              <path d="M 34.218375 -110.00419 L 46.982795 -110.00419 C 53.773814 -110.00419 57.24574 -106.83853 57.24574 -100.71139 C 57.24574 -96.78007 55.35649 -94.73769 52.80367 -93.41023 C 55.81589 -92.2356 58.113795 -89.83591 58.113795 -85.08758 C 58.113795 -78.04134 54.28426 -74.26315 46.77862 -74.26315 L 34.218375 -74.26315 L 34.218375 -110.00419 Z M 46.37026 -95.80992 C 49.07622 -95.80992 50.25054 -97.44364 50.25054 -100.09886 C 50.25054 -102.80481 49.025175 -104.18331 46.421307 -104.18331 L 41.264313 -104.18331 L 41.264313 -95.80992 Z M 46.625484 -80.08372 C 49.689054 -80.08372 51.067555 -81.71774 51.067555 -85.08758 C 51.067555 -88.50846 49.43383 -90.14248 46.523396 -90.14248 L 41.264313 -90.14248 L 41.264313 -80.08372 L 46.625484 -80.08372 Z" fill="#2e1354"/>
+            </g>
+            <g id="Graphic_274">
+              <path d="M 60.870494 -81.97296 L 60.870494 -101.069 L 68.17196 -101.069 L 68.17196 -83.24938 C 68.17196 -80.69655 69.49941 -79.93058 71.49075 -79.93058 C 73.48208 -79.93058 75.06476 -80.44133 76.34148 -80.95177 L 75.26924 -75.02911 C 73.68626 -74.31419 71.38866 -73.701356 68.937924 -73.701356 C 63.72989 -73.701356 60.870494 -76.45866 60.870494 -81.97296 Z" fill="#2e1354"/>
+            </g>
+            <g id="Graphic_273">
+              <path d="M 78.5401 -82.07505 L 78.5401 -95.04395 L 73.12789 -95.04395 L 73.12789 -101.069 L 78.5401 -101.069 L 78.5401 -108.37016 L 85.68813 -111.48478 L 85.68813 -101.069 L 93.65347 -101.069 L 93.65347 -95.04395 L 85.68813 -95.04395 L 85.68813 -83.30042 C 85.68813 -80.7476 86.76036 -79.93058 88.70065 -79.93058 C 90.79408 -79.93058 92.07049 -80.59446 93.55138 -81.411475 L 92.37706 -75.18225 C 90.64094 -74.31419 88.95588 -73.701356 85.9947 -73.701356 C 81.14397 -73.701356 78.5401 -76.5097 78.5401 -82.07505 Z" fill="#2e1354"/>
+            </g>
+            <g id="Graphic_272">
+              <path d="M 94.62331 -87.69145 C 94.62331 -96.98424 100.18866 -101.63049 107.18356 -101.63049 C 114.17845 -101.63049 119.7441 -96.98424 119.7441 -87.74249 C 119.7441 -78.55208 114.1274 -73.701356 107.13251 -73.701356 C 100.13762 -73.701356 94.62331 -78.50104 94.62331 -87.69145 Z M 112.3916 -87.69145 C 112.3916 -93.1547 110.40026 -95.60574 107.18356 -95.60574 C 103.96685 -95.60574 101.97552 -93.1547 101.97552 -87.69145 C 101.97552 -82.33027 103.96685 -79.72641 107.18356 -79.72641 C 110.40026 -79.72641 112.3916 -82.33027 112.3916 -87.69145 Z" fill="#2e1354"/>
+            </g>
+            <g id="Graphic_271">
+              <path d="M 122.60289 -81.97296 L 122.60289 -108.37016 L 129.90435 -111.48478 L 129.90435 -83.24938 C 129.90435 -80.69655 131.2318 -79.93058 133.1721 -79.93058 C 135.21448 -79.93058 136.74611 -80.44133 138.07387 -80.95177 L 137.00164 -75.02911 C 135.36761 -74.31419 133.07001 -73.701356 130.61927 -73.701356 C 125.41124 -73.701356 122.60289 -76.45866 122.60289 -81.97296 Z" fill="#2e1354"/>
+            </g>
+          </g>
+          <g id="Group_259">
+            <g id="Graphic_269">
+              <path d="M 3.163631 -111.77461 C 4.539011 -111.83183 6.029216 -111.94668 7.347448 -111.71738 C 8.207008 -111.60293 10.499625 -110.16992 10.900934 -110.11267 C 10.728854 -109.82615 10.614419 -109.53962 10.385114 -109.2531 C 9.697213 -108.22146 9.467921 -107.07541 9.353474 -105.8717 C 9.239026 -104.61072 9.81207 -101.34372 9.983742 -100.88557 C 10.270257 -100.19767 10.442338 -99.33811 10.843301 -98.70788 C 11.416345 -97.79069 12.104278 -96.81668 13.193066 -96.41526 C 14.396788 -95.89944 15.714912 -95.5557 16.975889 -95.21154 C 17.434485 -95.09709 17.893082 -94.92503 18.40894 -94.92503 C 19.44058 -94.98225 20.414965 -95.15433 21.389451 -95.3264 C 22.01972 -95.44085 23.223396 -97.04594 23.280658 -97.73342 C 23.395105 -97.56134 25.057455 -92.68963 24.885374 -91.83006 C 24.65607 -89.99612 22.592757 -87.47416 22.134192 -86.78627 C 21.561148 -87.87516 20.472321 -87.93232 19.383016 -87.93232 C 18.007636 -87.93232 16.57458 -88.1044 15.1992 -87.87509 C 13.422403 -87.64579 11.760538 -87.01553 10.843301 -85.23874 C 10.384705 -84.4364 9.811661 -83.69128 9.295841 -82.88897 C 9.181393 -82.71689 8.206945 -80.25262 8.321424 -79.96613 C 8.951692 -78.13219 9.811629 -76.41265 10.95778 -74.865185 C 11.30152 -74.46381 11.187085 -74.521445 11.359153 -74.12006 C 11.187072 -73.890756 8.493568 -71.82744 7.2898464 -71.71303 C 5.8567955 -71.54095 4.940081 -71.54095 3.507024 -71.88511 C 2.0739732 -72.22885 -1.8805143 -74.349805 -2.339073 -74.40696 C -1.708805 -75.78234 -1.1930226 -76.756725 -.6195378 -78.30419 C -.4474571 -78.82001 -.5050902 -79.50791 -.6767616 -80.02372 C -1.135358 -81.34185 -1.822812 -82.60282 -2.7400426 -83.57721 C -4.1730935 -85.06741 -5.892219 -86.15631 -8.0703225 -86.27072 C -8.2424 -86.27072 -8.872662 -86.32794 -9.044739 -86.38517 C -9.961929 -86.61447 -10.534945 -85.92657 -11.22243 -85.58283 C -11.795474 -85.29631 -12.311326 -84.89493 -12.941968 -84.49393 C -12.999192 -84.83767 -14.202942 -87.24512 -14.375019 -88.27676 C -14.432243 -88.73535 -14.547097 -89.13632 -14.60432 -89.59488 C -14.661544 -90.28278 -14.661544 -91.02793 -14.776398 -91.71542 C -14.948476 -93.37729 -14.146127 -94.75308 -13.45827 -96.18572 C -13.286193 -96.52946 -13.228969 -96.87362 -13.0569 -97.33177 C -12.8276 -97.15969 -12.655531 -96.87317 -12.369003 -96.75873 C -11.280107 -96.30013 -10.191312 -95.72708 -9.044749 -95.61267 C -7.783775 -95.49823 -6.408392 -95.55545 -5.1475196 -96.1285 C -5.090296 -96.1285 -5.033069 -96.24294 -4.975442 -96.24294 C -2.9694164 -96.07086 -2.2242602 -97.73315 -1.1353644 -98.8793 C -.50509654 -99.50957 .12561206 -100.25468 .584177 -101.05699 C 1.5013699 -102.71886 2.418122 -104.38124 1.5585937 -106.38727 C 1.2148541 -107.24683 .8706927 -108.04914 .3548725 -108.85196 C .011132953 -109.36778 -.44746346 -109.76915 -.906104 -110.22734 C -1.0777817 -110.39862 2.2464883 -111.71683 3.163612 -111.77439 L 3.163631 -111.77461 Z M -.8485213 -91.48533 C -1.2498939 -91.59978 -1.7657141 -91.71464 -2.3387267 -91.82907 C -2.854547 -91.94352 -3.370367 -91.94352 -3.8861874 -92.00115 C -4.4020076 -92.05838 -8.356492 -92.05838 -8.41416 -92.28767 C -8.586237 -91.94393 -8.700679 -91.6574 -8.872756 -91.31325 C -8.127635 -91.1988 -7.382551 -91.1988 -6.637398 -91.02674 C -5.491347 -90.85466 -4.402039 -90.51092 -3.2559888 -90.39647 C -1.3647823 -90.22439 .41200814 -89.59413 2.0166234 -88.56252 C 2.761748 -88.10393 3.3920034 -87.3588 3.79342 -86.61365 C 4.595756 -85.06619 4.65298 -83.23225 4.882316 -81.512705 C 4.9967635 -80.653145 4.882316 -79.79316 4.882316 -78.9336 C 5.45536 -78.81916 5.799509 -79.04805 5.799509 -79.56387 C 5.8567325 -80.82485 5.8567325 -82.14297 5.799509 -83.40395 C 5.799509 -83.97699 5.627428 -84.55 5.512993 -85.06582 C 5.9143656 -85.52442 6.258118 -85.98301 6.601889 -86.4412 C 7.519082 -87.75932 8.66517 -88.79096 10.155375 -89.42171 C 11.187016 -89.88031 12.275911 -90.22405 13.364706 -90.39613 C 14.453602 -90.56821 15.542397 -90.45335 16.631702 -90.56821 C 16.918218 -90.62543 17.319603 -90.85472 17.434038 -91.14125 C 17.663343 -91.59985 17.261957 -91.94359 16.80377 -92.00081 C 16.058646 -92.17289 15.313565 -92.17289 14.568409 -92.40219 C 13.422358 -92.74592 12.161382 -92.11567 11.129741 -92.97523 C 10.270182 -93.66313 9.295796 -94.23621 8.66505 -95.09577 C 6.659024 -97.61761 6.200359 -100.59771 6.200359 -103.69263 C 6.200359 -104.3229 6.085911 -104.9536 5.971054 -105.6415 C 5.2259295 -105.35498 5.1114944 -104.72431 5.0538613 -104.26612 C 4.824557 -102.77591 4.7673456 -101.22845 4.595265 -99.73815 C 4.4808173 -98.76373 4.2515254 -97.84695 4.2515254 -96.87256 C 4.2515254 -95.78367 3.4491894 -95.26785 2.9334007 -94.5228 C 2.417612 -93.77775 1.5580206 -93.20467 .8128644 -92.57393 C .41229776 -92.28781 -.16074628 -91.94405 -.8485906 -91.48544 L -.8485213 -91.48533 Z" fill="#2e1354"/>
+            </g>
+            <g id="Graphic_268">
+              <path d="M 26.43332 -105.24019 C 26.146804 -104.323 25.860275 -103.34899 25.516127 -102.43176 C 25.05753 -101.28571 24.656567 -100.13914 23.682182 -99.33684 C 22.822622 -98.70657 22.077466 -97.90379 21.21749 -97.38797 C 20.644446 -97.04423 19.84211 -97.04423 19.15421 -96.92937 C 17.721158 -96.70007 16.517853 -97.55964 15.199722 -97.90379 C 13.308515 -98.36238 12.334136 -99.90981 11.245234 -101.34245 C 10.557333 -102.25964 10.729414 -102.94717 10.958719 -103.80714 C 11.245234 -104.95319 11.531763 -106.15691 11.761054 -107.36063 C 11.990359 -108.44952 12.620614 -109.19458 13.36577 -109.93973 C 13.996038 -110.51277 14.626747 -111.08578 15.371796 -111.48719 C 15.830393 -111.77371 16.517846 -111.65927 17.091331 -111.83093 C 19.211868 -112.57606 20.816483 -111.25789 22.59328 -110.5128 C 23.395615 -110.16906 24.14074 -109.59562 24.885896 -109.13742 C 25.000344 -109.0802 25.172412 -109.02297 25.229636 -108.90812 C 25.45894 -107.70482 25.917537 -106.55835 26.433357 -105.24012 L 26.43332 -105.24019 Z M 18.180196 -101.45779 C 18.92532 -101.62986 19.89973 -101.62986 20.472813 -102.60384 C 20.644893 -102.89036 20.816552 -103.23411 20.874185 -103.57825 C 21.046266 -104.66715 21.332782 -105.81361 20.30114 -106.61592 C 19.78532 -107.01729 19.040165 -107.47548 18.581606 -107.36104 C 17.549966 -107.07452 16.632735 -106.38662 15.71602 -105.81358 C 15.486716 -105.69913 15.429505 -105.24054 15.372281 -104.95402 C 15.372281 -104.6675 15.544362 -104.38097 15.601586 -104.09445 C 15.773263 -102.31725 16.690072 -101.5722 18.180271 -101.45769 L 18.180196 -101.45779 Z" fill="#b6408d"/>
+            </g>
+            <g id="Graphic_267">
+              <path d="M -3.082948 -110.85748 C -2.2806087 -109.82584 -1.1917445 -109.02353 -.6759242 -107.76256 C -.2745516 -106.73092 .06920052 -105.69927 .29849243 -104.66763 C .5277969 -103.80807 -.16010402 -103.06292 -.4466323 -102.31787 C -.9624526 -101.05689 -1.9368377 -100.14018 -2.9113237 -99.22294 C -3.0257713 -99.1085 -5.891835 -97.5034 -6.178323 -97.389 C -7.725783 -96.81596 -9.273244 -96.9304 -10.648627 -97.79037 C -11.565817 -98.30619 -12.53983 -98.93642 -13.113319 -99.7964 C -13.801216 -100.77081 -14.54637 -101.80242 -14.603524 -103.12065 C -14.603524 -103.57925 -14.431446 -104.09507 -14.317005 -104.5537 C -14.144928 -105.41327 -14.087704 -106.27324 -13.915636 -107.07555 C -13.686334 -107.93511 -13.571893 -108.96675 -13.056073 -109.65465 C -12.253734 -110.85837 -11.565867 -112.291 -9.961151 -112.63516 C -8.986735 -112.86446 -7.955126 -112.92168 -6.923485 -112.86446 C -6.407665 -112.86446 -5.891845 -112.52072 -5.3760245 -112.34864 C -5.031879 -112.23299 -3.4271534 -111.31618 -3.0829982 -110.85761 L -3.082948 -110.85748 Z M -7.954663 -100.94249 C -6.57928 -100.88526 -5.662049 -101.51553 -5.146229 -102.77643 C -4.9169274 -103.29225 -4.6876323 -103.86533 -4.3438897 -104.38115 C -4.057371 -104.89697 -4.000147 -106.2151 -4.4011135 -106.61651 C -4.4583373 -106.73096 -4.630415 -106.78859 -4.744856 -106.84581 C -5.547195 -107.13233 -6.406727 -107.24718 -7.266702 -107.01789 C -8.699753 -106.61652 -9.731393 -105.81417 -10.189546 -104.38153 C -10.361623 -103.86571 -10.476065 -103.23548 -10.361623 -102.66199 C -10.075105 -101.7448 -8.814575 -100.94245 -7.9546 -100.94245 L -7.954663 -100.94249 Z" fill="#b6408d"/>
+            </g>
+            <g id="Graphic_266">
+              <path d="M 24.942598 -78.93336 C 24.885374 -78.24546 24.82815 -77.21382 24.598858 -76.23985 C 24.48441 -75.78126 24.083038 -75.38029 23.796522 -74.97888 C 23.567218 -74.63514 23.280702 -74.23375 22.994186 -73.94724 C 22.249061 -73.08768 19.497854 -72.05604 19.154109 -71.94121 C 18.695512 -71.82676 18.236916 -71.71191 17.778729 -71.71191 C 17.377356 -71.71191 15.142372 -72.45703 14.741062 -72.8008 C 13.938726 -73.54593 13.136346 -74.23385 12.448445 -75.03616 C 11.989849 -75.55198 11.588886 -76.23988 11.244724 -76.8701 C 10.843352 -77.61523 10.327531 -78.30315 10.098674 -79.10546 C 9.926593 -79.56405 10.155898 -80.19435 10.213122 -80.71017 C 10.270345 -81.05391 10.499637 -81.34044 10.556861 -81.68459 C 10.614085 -82.71623 11.072681 -83.40413 11.874986 -84.03436 C 12.333582 -84.43573 12.734546 -84.89392 13.308037 -85.12325 C 14.454087 -85.52462 15.600654 -86.09767 16.918778 -85.81115 C 17.549046 -85.6967 18.236903 -85.81115 18.86765 -85.75393 C 21.103005 -85.58185 22.764875 -84.37855 23.911442 -82.48693 C 24.771002 -81.05428 24.94268 -80.36639 24.94268 -78.93344 L 24.942598 -78.93336 Z M 19.09691 -79.965005 C 19.154134 -80.8822 18.294574 -81.85621 17.43504 -82.08554 C 16.632703 -82.31485 16.403399 -81.62694 15.887579 -81.34042 C 15.54384 -81.11111 15.085243 -80.8246 14.855938 -80.48086 C 14.110813 -79.33481 14.512199 -77.78735 15.715498 -77.09945 C 16.002014 -76.92737 17.492295 -76.75571 17.836034 -76.58363 C 17.950482 -76.52641 18.237407 -76.75571 18.29463 -76.92737 C 18.409078 -77.27111 19.612755 -78.36042 19.44068 -78.81857 C 19.326233 -79.21994 19.211376 -79.62131 19.096941 -79.96503 Z" fill="#b6408d"/>
+            </g>
+            <g id="Graphic_265">
+              <path d="M -2.8539235 -75.60942 C -3.255293 -74.11921 -4.573462 -73.83262 -5.6623576 -73.3168 C -7.381896 -72.51446 -9.158689 -72.8582 -10.93497 -73.14472 C -11.622868 -73.259165 -12.36802 -73.43123 -12.883841 -73.77499 C -13.28521 -74.0615 -13.514112 -74.7494 -13.68618 -75.26519 C -13.972699 -76.18238 -14.202 -77.09914 -14.431302 -78.01637 C -14.488525 -78.30288 -14.488525 -78.64663 -14.431302 -78.99078 C -13.972705 -81.22614 -12.826586 -82.94527 -10.82056 -84.03458 C -10.41919 -84.26388 -9.78892 -84.32109 -9.273099 -84.26388 C -8.241459 -84.0918 -7.2670735 -83.86251 -6.2925876 -83.46154 C -4.630717 -82.77364 -3.0832564 -81.79967 -1.9939482 -80.36662 C -1.7650466 -80.08011 -2.5101714 -76.64106 -2.853911 -75.60942 L -2.8539235 -75.60942 Z M -12.482843 -74.11963 C -12.425619 -74.11963 -12.425619 -74.0624 -12.368392 -74.0624 C -12.425616 -74.062 -12.482843 -74.11963 -12.482843 -74.11963 C -12.540067 -74.11963 -12.597294 -74.17685 -12.65492 -74.23407 C -12.712144 -74.23407 -12.712144 -74.2913 -12.769371 -74.2913 C -12.712147 -74.2913 -12.712147 -74.23407 -12.65492 -74.23407 C -12.540067 -74.23407 -12.540067 -74.17685 -12.482843 -74.11963 Z M -10.419562 -80.19465 C -11.049833 -79.39231 -10.992606 -77.6728 -10.305111 -76.87039 C -10.133034 -76.64109 -9.903742 -76.35457 -9.67484 -76.35457 C -8.986942 -76.24012 -8.299457 -76.18249 -7.611559 -76.12527 C -7.554335 -76.12527 -7.4971085 -76.18249 -7.439482 -76.18249 C -7.21018 -76.4118 -7.038112 -76.69831 -6.751584 -76.87039 C -5.834394 -77.55829 -5.6055336 -78.58993 -5.4906106 -79.62157 C -5.433387 -79.96531 -5.834353 -80.36669 -6.1208816 -80.71046 C -6.350183 -80.99698 -6.693926 -81.45559 -7.038071 -81.45559 C -7.84041 -81.45559 -8.699942 -81.68489 -9.38784 -80.99699 C -9.50229 -80.88254 -10.247403 -80.42395 -10.41948 -80.19466 L -10.419562 -80.19465 Z" fill="#b6408d"/>
+            </g>
+            <g id="Graphic_264">
+              <path d="M 10.099354 -92.28764 C 8.322557 -90.96951 6.660693 -89.82295 5.571382 -88.04667 C 4.9983377 -88.04667 4.769046 -88.44804 4.482486 -89.02108 C 3.794585 -90.56854 2.5336148 -91.42811 .9861541 -91.94393 C .9289303 -91.94393 .8717065 -92.00115 .7568496 -92.11601 C 3.0494666 -92.86113 4.3675913 -94.63786 5.857797 -96.47191 C 7.004256 -94.86678 8.265233 -93.31932 10.099178 -92.28767 L 10.099354 -92.28764 Z" fill="#b6408d"/>
+            </g>
+            <g id="Graphic_263">
+              <path d="M 18.5815 -106.10058 C 19.2694 -105.75684 19.899624 -104.66753 19.498692 -103.98005 C 19.212176 -103.46423 18.639132 -103.00563 18.06564 -102.77633 C 17.607044 -102.60425 17.091224 -103.06285 16.86192 -103.57867 C 16.747472 -103.80797 16.632615 -103.98004 16.575404 -104.15171 C 16.3461 -104.89683 16.51818 -105.92809 17.54982 -106.38666 C 17.89356 -106.55873 18.180089 -105.87121 18.581461 -106.10052 L 18.5815 -106.10058 Z" fill="#2e1354"/>
+            </g>
+            <g id="Graphic_262">
+              <path d="M -8.527946 -103.23437 C -8.642397 -103.80742 -9.10099 -104.38042 -9.043766 -104.89624 C -9.043766 -105.23999 -8.757248 -105.69858 -8.58517 -106.04229 C -8.413092 -106.50089 -7.267042 -106.95948 -7.152119 -106.95948 C -6.006069 -107.13156 -5.2609157 -106.55811 -5.3753255 -105.35477 C -5.432549 -104.55243 -5.432549 -103.6929 -6.1776646 -103.11941 C -6.407369 -102.94773 -8.298925 -102.20262 -8.527845 -103.23426 L -8.527946 -103.23437 Z" fill="#2e1354"/>
+            </g>
+            <g id="Graphic_261">
+              <path d="M 17.148555 -80.99665 C 17.664375 -80.36638 18.23745 -80.70974 18.23745 -79.79292 C 18.23745 -79.2771 17.950935 -77.95892 17.607183 -77.84447 C 17.20581 -77.787245 16.632766 -77.90169 16.289058 -78.18821 C 15.543934 -78.76125 15.830462 -79.73567 16.518363 -80.42357 C 16.69004 -80.65287 16.919332 -80.82494 17.14863 -80.99661 L 17.148555 -80.99665 Z" fill="#2e1354"/>
+            </g>
+            <g id="Graphic_260">
+              <path d="M -10.419978 -78.41754 C -10.2479 -78.81892 -10.190676 -80.25155 -9.961381 -80.59534 C -9.789304 -80.93908 -8.471176 -80.13712 -8.070178 -79.96504 C -7.726435 -79.79296 -7.38228 -79.73573 -7.038537 -79.50644 C -6.293416 -78.99062 -7.325056 -77.672495 -7.38228 -77.672495 C -7.668799 -77.55805 -8.012551 -77.32876 -8.241843 -77.44319 C -8.929741 -77.672495 -9.559971 -78.01664 -10.419946 -78.41761 L -10.419978 -78.41754 Z" fill="#2e1354"/>
+            </g>
+          </g>
+          <g id="Group_256">
+            <g id="Graphic_258">
+              <path d="M 69.62184 -109.0587 C 69.58207 -108.58057 69.54229 -107.86352 69.38292 -107.18655 C 69.30337 -106.8678 69.024394 -106.58911 68.82525 -106.3101 C 68.66587 -106.07118 68.46672 -105.79219 68.26758 -105.59305 C 67.74967 -104.9956 65.837416 -104.27855 65.59849 -104.19874 C 65.27974 -104.11919 64.96099 -104.03936 64.64252 -104.03936 C 64.36354 -104.03936 62.81009 -104.55726 62.53116 -104.7962 C 61.97349 -105.31411 61.415785 -105.79226 60.93765 -106.34991 C 60.6189 -106.70844 60.34021 -107.18657 60.100994 -107.62461 C 59.822016 -108.14252 59.46349 -108.62067 59.30442 -109.17832 C 59.18481 -109.49707 59.344194 -109.93517 59.38397 -110.2937 C 59.42374 -110.53261 59.58311 -110.73177 59.62289 -110.97097 C 59.66266 -111.68803 59.981414 -112.16616 60.53906 -112.6042 C 60.857816 -112.88318 61.13651 -113.20165 61.53512 -113.36105 C 62.331694 -113.64003 63.12863 -114.03833 64.0448 -113.83918 C 64.48288 -113.75963 64.96098 -113.83918 65.399385 -113.79941 C 66.95309 -113.6798 68.10819 -112.84344 68.905125 -111.52865 C 69.50257 -110.53287 69.6219 -110.05474 69.6219 -109.05876 L 69.62184 -109.0587 Z M 65.558735 -109.77576 C 65.59851 -110.41326 65.00106 -111.09026 64.403635 -111.24966 C 63.84596 -111.40904 63.68658 -110.9309 63.32806 -110.73175 C 63.08914 -110.57237 62.770385 -110.37323 62.611005 -110.1343 C 62.0931 -109.33773 62.372085 -108.26215 63.20845 -107.78403 C 63.407596 -107.66442 64.44343 -107.5451 64.68235 -107.4255 C 64.7619 -107.38573 64.96133 -107.5451 65.0011 -107.66442 C 65.08065 -107.90334 65.91728 -108.66048 65.79768 -108.97892 C 65.71813 -109.2579 65.6383 -109.53687 65.55876 -109.77578 L 65.558735 -109.77576 Z" fill="#b6408d"/>
+            </g>
+            <g id="Graphic_257">
+              <path d="M 64.20451 -110.49281 C 64.56304 -110.05474 64.96136 -110.29339 64.96136 -109.65615 C 64.96136 -109.29763 64.76221 -108.3814 64.523285 -108.30186 C 64.24431 -108.26208 63.84601 -108.34163 63.60711 -108.54078 C 63.0892 -108.93908 63.28836 -109.61636 63.76649 -110.09449 C 63.88582 -110.25387 64.04519 -110.37347 64.204564 -110.49279 L 64.20451 -110.49281 Z" fill="#2e1354"/>
+            </g>
+          </g>
+        </g>
+        <g id="Group_243">
+          <g id="Graphic_254">
+            <path d="M 158.19188 -98.67939 L 158.19188 -106.28605 L 154.37206 -106.28605 L 154.37206 -94.85936 L 165.79875 -94.85936 L 165.79875 -98.67939 Z" fill="#009ade"/>
+          </g>
+          <g id="Graphic_253">
+            <path d="M 173.37263 -113.89291 L 154.37206 -113.89291 L 154.37206 -108.19606 L 158.1591 -108.19606 L 158.1591 -110.0731 L 169.58558 -110.0731 L 169.58558 -98.67939 L 167.67578 -98.67939 L 167.67578 -94.85936 L 173.37263 -94.85936 Z" fill="#003764"/>
+          </g>
+          <g id="Graphic_252">
+            <path d="M 178.41084 -113.89287 L 184.27234 -113.89287 L 184.27234 -99.73307 L 192.70236 -99.73307 L 192.70236 -94.85946 L 178.41084 -94.85946 Z" fill="#003764"/>
+          </g>
+          <g id="Graphic_251">
+            <path d="M 195.20502 -113.89287 L 209.92462 -113.89287 L 209.92462 -109.01926 L 201.06652 -109.01926 L 201.06652 -106.64832 L 208.6733 -106.64832 L 208.6733 -102.10401 L 201.06652 -102.10401 L 201.06652 -94.85947 L 195.20502 -94.85947 Z" fill="#003764"/>
+          </g>
+          <g id="Graphic_250">
+            <path d="M 221.21953 -113.827 L 223.22825 -113.827 L 230.67038 -94.85946 L 228.72752 -94.85946 L 226.42244 -100.75389 L 217.79484 -100.75389 L 215.5227 -94.85946 L 213.57984 -94.85946 Z M 218.35464 -102.30159 L 225.79677 -102.30159 L 222.14156 -112.01587 Z" fill="#009ade"/>
+          </g>
+          <g id="Graphic_249">
+            <rect x="233.17303" y="-113.827" width="1.8111364" height="18.967541" fill="#009ade"/>
+          </g>
+          <g id="Graphic_248">
+            <path d="M 165.86251 -76.87137 C 166.18215 -77.40384 166.39595 -77.99304 166.49216 -78.606585 C 166.58704 -79.22324 166.63434 -79.84627 166.63367 -80.47018 L 168.17598 -80.47018 C 168.14093 -79.62701 168.03314 -78.78843 167.85382 -77.9638 C 167.67503 -77.13648 167.34788 -76.348375 166.8882 -75.63765 L 169.89808 -72.09023 L 167.8151 -72.09023 L 166.0127 -74.2751 C 165.3138 -73.40009 164.42387 -72.696695 163.4111 -72.21883 C 162.38484 -71.788 161.27946 -71.57779 160.1667 -71.60186 C 159.39326 -71.59585 158.6252 -71.730885 157.90018 -72.00034 C 157.22014 -72.25114 156.59487 -72.63075 156.0586 -73.11837 C 155.5304 -73.60449 155.10944 -74.19549 154.82266 -74.85358 C 154.51562 -75.56317 154.36208 -76.32966 154.37212 -77.10276 C 154.36558 -77.75437 154.48784 -78.40085 154.73189 -79.005065 C 154.969 -79.58291 155.2942 -80.12052 155.69595 -80.59878 C 156.10416 -81.08339 156.57526 -81.511315 157.09676 -81.87121 C 157.63264 -82.24216 158.20045 -82.56471 158.79348 -82.83505 C 158.2893 -83.42724 157.83365 -84.05909 157.43094 -84.72445 C 157.01957 -85.40197 156.80594 -86.18105 156.8142 -86.97363 C 156.80423 -87.51086 156.9186 -88.04313 157.14838 -88.52885 C 157.36153 -88.97097 157.6685 -89.36131 158.04791 -89.67268 C 158.43928 -89.98882 158.88913 -90.22471 159.37174 -90.36685 C 159.89282 -90.52328 160.4343 -90.6012 160.97836 -90.59802 C 161.51419 -90.60334 162.04621 -90.50747 162.54648 -90.31546 C 163.00378 -90.1406 163.42277 -89.87863 163.7802 -89.54407 C 164.47034 -88.88799 164.86072 -87.97724 164.85996 -87.02502 C 164.87254 -86.47487 164.7719 -85.92802 164.56427 -85.4184 C 164.37212 -84.97179 164.10237 -84.56276 163.76752 -84.21027 C 163.41627 -83.84479 163.02376 -83.52135 162.59788 -83.24643 C 162.152 -82.95474 161.6893 -82.66343 161.20975 -82.37248 Z M 159.71884 -81.72971 C 159.21357 -81.49511 158.73523 -81.20641 158.29222 -80.86866 C 157.86784 -80.54703 157.48754 -80.17107 157.16107 -79.75042 C 156.84808 -79.34648 156.59287 -78.90093 156.4028 -78.42659 C 156.21614 -77.9651 156.12013 -77.47197 156.12001 -76.97416 C 156.11045 -76.40514 156.21988 -75.8404 156.4413 -75.31615 C 156.64345 -74.84469 156.9411 -74.42022 157.31546 -74.06952 C 157.69517 -73.71949 158.14083 -73.44864 158.62639 -73.272774 C 159.15756 -73.07957 159.71922 -72.98378 160.2844 -72.98999 C 161.20842 -72.9717 162.11975 -73.20727 162.91916 -73.67104 C 163.70507 -74.14511 164.40475 -74.74924 164.98833 -75.45765 Z M 163.00905 -85.97107 C 163.31636 -86.66649 163.26358 -87.46832 162.86777 -88.11746 C 162.43107 -88.82101 161.65179 -89.23767 160.82418 -89.21012 C 160.50918 -89.21186 160.1962 -89.15963 159.89884 -89.05571 C 159.6141 -88.95666 159.34879 -88.8088 159.11477 -88.61874 C 158.88298 -88.42967 158.6945 -88.19301 158.5621 -87.92479 C 158.42185 -87.63677 158.35142 -87.31976 158.35652 -86.99945 C 158.3644 -86.68882 158.4343 -86.38291 158.5621 -86.09969 C 158.70167 -85.76888 158.86938 -85.45066 159.06338 -85.14853 C 159.26006 -84.84016 159.46995 -84.54454 159.69303 -84.26168 C 159.91552 -83.97889 160.11265 -83.73474 160.28442 -83.52923 C 160.79837 -83.83761 161.3167 -84.17602 161.83941 -84.54447 C 162.35374 -84.90266 162.75863 -85.39651 163.00905 -85.97108 Z" fill="#009ade"/>
+          </g>
+          <g id="Graphic_247">
+            <path d="M 178.4064 -72.09023 L 178.4064 -90.59803 L 184.73008 -90.59803 C 185.24404 -90.59803 185.74954 -90.5852 186.2466 -90.55954 C 186.73862 -90.5344 187.22822 -90.47424 187.7117 -90.37954 C 188.19166 -90.28516 188.661 -90.1431 189.11274 -89.95547 C 189.5812 -89.75873 190.0254 -89.50863 190.43657 -89.21012 C 191.04584 -88.77245 191.56151 -88.21744 191.9533 -87.5777 C 192.34497 -86.94014 192.6599 -86.25851 192.89155 -85.54701 C 193.1208 -84.84391 193.28428 -84.12104 193.37992 -83.38772 C 193.46988 -82.71882 193.51707 -82.04485 193.5212 -81.36994 C 193.52062 -80.74267 193.48199 -80.11602 193.4055 -79.49344 C 193.32924 -78.863605 193.20465 -78.24057 193.03283 -77.62984 C 192.86335 -77.0263 192.63517 -76.44079 192.35156 -75.88172 C 192.06875 -75.32487 191.70976 -74.81012 191.28494 -74.35231 C 190.88285 -73.89423 190.40981 -73.50368 189.8839 -73.19557 C 189.38183 -72.905535 188.84677 -72.67681 188.29019 -72.5143 C 187.72338 -72.3494 187.14248 -72.23753 186.55497 -72.180115 C 185.9549 -72.12004 185.34661 -72.09008 184.73009 -72.09023 Z M 180.15453 -73.58115 L 184.3445 -73.58115 C 185.08796 -73.5782 185.83077 -73.6254 186.56787 -73.72243 C 187.31065 -73.83253 188.02842 -74.07183 188.68866 -74.429506 C 189.28726 -74.72258 189.8072 -75.1544 190.20517 -75.68903 C 190.59907 -76.219655 190.91502 -76.80391 191.14342 -77.42403 C 191.37733 -78.05983 191.5411 -78.719275 191.6318 -79.39064 C 191.72394 -80.04641 191.77122 -80.70772 191.7733 -81.36993 C 191.77233 -82.05312 191.72938 -82.7356 191.6447 -83.41352 C 191.563 -84.09069 191.399 -84.75537 191.15632 -85.39281 C 190.91923 -86.01279 190.58994 -86.59343 190.17957 -87.11513 C 189.74605 -87.65559 189.20287 -88.09799 188.58586 -88.41315 C 187.9758 -88.72237 187.31306 -88.91422 186.63214 -88.97872 C 185.87261 -89.06454 185.10884 -89.1074 184.34448 -89.1071 L 180.15453 -89.1071 Z" fill="#009ade"/>
+          </g>
+          <g id="Graphic_246">
+            <path d="M 194.6261 -72.09023 L 201.9007 -90.59803 L 203.88 -90.59803 L 210.97483 -72.09023 L 209.17532 -72.09023 L 207.04184 -77.89973 L 198.6105 -77.89973 L 196.4254 -72.09023 Z M 199.20165 -79.39065 L 206.45068 -79.39065 L 202.82605 -89.10711 Z" fill="#009ade"/>
+          </g>
+          <g id="Graphic_245">
+            <path d="M 211.1546 -90.59803 L 224.62407 -90.59803 L 224.62407 -89.10711 L 218.7634 -89.10711 L 218.7634 -72.09023 L 217.01528 -72.09023 L 217.01528 -89.10711 L 211.1546 -89.10711 Z" fill="#009ade"/>
+          </g>
+          <g id="Graphic_244">
+            <path d="M 224.1357 -72.09023 L 231.4103 -90.59803 L 233.3896 -90.59803 L 240.48444 -72.09023 L 238.68492 -72.09023 L 236.55144 -77.89973 L 228.1201 -77.89973 L 225.935 -72.09023 Z M 228.71126 -79.39065 L 235.96028 -79.39065 L 232.33566 -89.10711 Z" fill="#009ade"/>
+          </g>
+        </g>
+        <g id="Line_242">
+          <line x1="143.79843" y1="-113.89291" x2="143.79843" y2="-71.6" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,24 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# Demonstrates RFC-0045: the `hana` server type for SAP HANA.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 5d8b2a1c-7e3f-4a6d-9b0c-1e2f3a4b5c6d
+status: active
+servers:
+  - server: prod
+    type: hana
+    host: hana.acme.com
+    port: 30015
+    database: HXE
+    schema: SALES
+schema:
+  - name: sales
+    physicalType: table
+    properties:
+      - name: sale_id
+        logicalType: string
+        required: true
