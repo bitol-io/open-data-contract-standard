@@ -3,6 +3,11 @@ title: "Custom & Other Properties"
 description: "This section covers custom properties you may find in a data contract."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Custom & Other Properties
 
 This section covers other properties you may find in a data contract.
@@ -32,46 +37,22 @@ customProperties:
 
 ### Definitions
 
-| Key                          | Type   | UX label          | Required | Description                                                                                                                                                                                |
-|------------------------------|--------|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| customProperties             | array  | Custom Properties | No       | A list of key/value pairs for custom properties. Initially created to support the REF ruleset property.                                                                                    |
-| customProperties.id          | string | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details. |
-| customProperties.property    | string | Property          | No       | The name of the key. Names should be in camel case–the same as if they were permanent properties in the contract.                                                                          |
-| customProperties.value       | any    | Value             | No       | The value of the key. It can be an array.                                                                                                                                                  |
-| customProperties.description | string | Description       | No       | Description for humans.                                                                                                                                                                    |
+| Key                            | Type   | UX label          | Required | Description                                                                                                                                                                                |
+| ------------------------------ | ------ | ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| customProperties               | array  | Custom Properties | No       | A list of key/value pairs for custom properties. Initially created to support the REF ruleset property.                                                                                    |
+| customProperties[].description | string | Description       | No       | Description for humans.                                                                                                                                                                    |
+| customProperties[].id          | string | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details. |
+| customProperties[].property    | string | Property          | No       | The name of the key. Names should be in camel case–the same as if they were permanent properties in the contract.                                                                          |
+| customProperties[].value       | any    | Value             | No       | The value of the key. It can be an array.                                                                                                                                                  |
+| customProperties[].vendor      | string | Vendor            | No       | Identifies the vendor, provider, or external system associated with this custom property. SHOULD be a stable, lowercase identifier matching `^[a-z0-9][a-z0-9-]*$` (e.g. `confluent`, `zeenea`). Tools MUST preserve unknown vendor values. (Added in v3.2.0, [RFC 0035](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0035-extensions.md).) |
 
 Avis: With version 3.2.0 the Description of 'customProperties.property' will be updated to "The name of the key. Could be in any notation. If this field is used for referencing it should be in camel case–the same as if they were permanent properties in the contract. Note that since ODCS version 3.1 the field 'customProperties.id' should be used for referencing purposes. In this case the name of the key could be human-readable and self-explanatory to the greatest extent."
 
 ## Authoritative Definitions
 
-Authoritative Definitions are an essential part of the contract. They allow to delegate the definition to a third party
-system like an enterprise catalog, repository, etc. The structure describing "Authoritative Definitions" is shared
-between all Bitol standards. This block is available in many sections.
+Authoritative Definitions allow you to delegate definitions to a third-party system such as an enterprise catalog, repository, or knowledge base. The block is shared across all Bitol standards and is available in many sections of a data contract.
 
-### Example
-
-```yaml
-    authoritativeDefinitions:
-      - url: https://catalog.data.gov/dataset/air-quality
-        type: businessDefinition
-        description: Business definition for the dataset.
-      - url: https://www.youtube.com/watch?v=Iq6SxdsIHHE
-        type: videoTutorial
-        description: Discover what a data contract is.
-      - url: https://github.com/bitol-io/open-data-contract-standard/blob/main/docs/examples/all/full-example.odcs.yaml
-        type: canonicalUrl
-        description: Data contract's latest version.
-```
-
-### Definitions
-
-| Key                                  | Type   | UX label          | Required | Description                                                                                                                                                                                                                                                                            |
-|--------------------------------------|--------|-------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| authoritativeDefinitions             | array  | Link              | No       | A list of type/link pairs for authoritative definitions.                                                                                                                                                                                                                               |
-| authoritativeDefinitions.id          | string | ID                | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                                                             |
-| authoritativeDefinitions.type        | string | Definition type   | Yes      | Type of definition for authority. Recommended values are: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`. At the root level, a type can also be `canonicalUrl` to indicate a reference to the data contract's latest version. |
-| authoritativeDefinitions.url         | string | URL to definition | Yes      | URL to the authority.                                                                                                                                                                                                                                                                  |
-| authoritativeDefinitions.description | string | Description       | No       | Optional description.                                                                                                                                                                                                                                                                  |
+See the dedicated [Authoritative Definitions](./authoritative-definitions.md) page for the full specification, examples, and the recommended values for the `type` field.
 
 ## Other Properties
 

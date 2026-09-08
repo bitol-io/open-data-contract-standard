@@ -3,6 +3,11 @@ title: "Service-Level Agreement"
 description: "This section describes the service-level agreements (SLA)."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Service-Level Agreement (SLA)
 
 This section describes the service-level agreements (SLA).
@@ -59,20 +64,22 @@ slaProperties:
 
 ## Definitions
 
-| Key                                | Type   | UX label               | Required                       | Description                                                                                                                                                                     |
-|------------------------------------|--------|------------------------|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ~~slaDefaultElement~~ (Deprecated) | string | Default SLA element(s) | No                             | Element (using the element path notation) to do the checks on. DEPRECATED SINCE v3.1.0. WILL BE REMOVED IN ODCS v4.0.0.                                                         |
-| slaProperties                      | array  | SLA                    | No                             | A list of key/value pairs for SLA specific properties. There is no limit on the type of properties.                                                                             |
-| slaProperties.id                   | string | ID                     | No                             |  A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details.                                                                                                    |
-| slaProperties.property             | string | Property               | Yes                            | Specific property in SLA, check the [Data QoS periodic table](https://medium.com/data-mesh-learning/what-is-data-qos-and-why-is-it-critical-c524b81e3cc1).  May requires units. |
-| slaProperties.value                | string | Value                  | Yes                            | Agreement value. The label will change based on the property itself.                                                                                                            |
-| slaProperties.valueExt             | string | Extended value         | No - unless needed by property | Extended agreement value. The label will change based on the property itself.                                                                                                   |
-| slaProperties.unit                 | string | Unit                   | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.                                                                                         |
-| slaProperties.element              | string | Element(s)             | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas.                                                                             |
-| slaProperties.driver               | string | Driver                 | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.                                                                              |
-| slaProperties.description          | string | Description            | No                             | Description of the SLA for humans.                                                                                                                                              |
-| slaProperties.scheduler            | string | Scheduler              | No                             | Name of the scheduler, can be `cron` or any tool your organization support.                                                                                                  |
-| slaProperties.schedule             | string | Scheduler Configuration| No                             | Configuration information for the scheduling tool, for `cron` a possible value is `0 20 * * *`.                                                                              |
+| Key                                | Type   | UX label                | Required                       | Description                                                                                                                                                                                |
+| ---------------------------------- | ------ | ----------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ~~slaDefaultElement~~ (Deprecated) | string | Default SLA element(s)  | No                             | Element (using the element path notation) to do the checks on. DEPRECATED SINCE v3.1.0. WILL BE REMOVED IN ODCS v4.0.0.                                                                    |
+| slaProperties                      | array  | SLA                     | No                             | A list of key/value pairs for SLA specific properties. There is no limit on the type of properties.                                                                                        |
+| slaProperties[].authoritativeDefinitions | array | Authoritative Definitions | No                       | Links to external definitions for this SLA property (e.g. the formal SLA document or measurement method). Same structure as elsewhere in ODCS. (Added in v3.2.0, [RFC 0046](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0046-sla-custom-properties-and-authoritative-definitions.md).) |
+| slaProperties[].customProperties   | array  | Custom Properties       | No                             | Vendor- or organization-specific key/value pairs for this SLA property. Same structure as elsewhere in ODCS. (Added in v3.2.0, [RFC 0046](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0046-sla-custom-properties-and-authoritative-definitions.md).) |
+| slaProperties[].description        | string | Description             | No                             | Description of the SLA for humans.                                                                                                                                                         |
+| slaProperties[].driver             | string | Driver                  | No                             | Describes the importance of the SLA from the list of: `regulatory`, `analytics`, or `operational`.                                                                                         |
+| slaProperties[].element            | string | Element(s)              | No                             | Element(s) to check on. Multiple elements should be extremely rare and, if so, separated by commas.                                                                                        |
+| slaProperties[].id                 | string | ID                      | No                             | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details. |
+| slaProperties[].property           | string | Property                | Yes                            | Specific property in SLA, check the [Data QoS periodic table](https://medium.com/data-mesh-learning/what-is-data-qos-and-why-is-it-critical-c524b81e3cc1). May require units.              |
+| slaProperties[].schedule           | string | Scheduler Configuration | No                             | Configuration information for the scheduling tool, for `cron` a possible value is `0 20 * * *`.                                                                                            |
+| slaProperties[].scheduler          | string | Scheduler               | No                             | Name of the scheduler, can be `cron` or any tool your organization support.                                                                                                                |
+| slaProperties[].unit               | string | Unit                    | No - unless needed by property | **d**, day, days for days; **y**, yr, years for years, etc. Units use the ISO standard.                                                                                                    |
+| slaProperties[].value              | string | Value                   | Yes                            | Agreement value. The label will change based on the property itself.                                                                                                                       |
+| slaProperties[].valueExt           | string | Extended value          | No - unless needed by property | Extended agreement value. The label will change based on the property itself.                                                                                                              |
 
 ## Valid Values for SLA Properties
 

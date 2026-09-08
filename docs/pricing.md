@@ -3,6 +3,11 @@ title: "Pricing"
 description: "This section covers pricing when you bill your customer for using this data product."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Pricing
 
 This section covers pricing when you bill your customer for using this data product.

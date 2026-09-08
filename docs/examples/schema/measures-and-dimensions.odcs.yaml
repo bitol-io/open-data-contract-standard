@@ -1,0 +1,88 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+kind: DataContract
+id: 2f1d9c6a-4b3e-4d8a-9f51-7a0c2e6b8d34
+apiVersion: v3.2.0
+status: active
+name: turnover_metrics
+description:
+  purpose: Demonstrate the v3.2.0 `semanticType` field for measures and dimensions on schema properties (RFC 0034).
+
+schema:
+  - name: turnover
+    physicalType: table
+    physicalName: metrics_turnover
+    description: Turnover (TO) metrics for sales and financial analysis.
+    synonyms:
+      - synonym: Sales metrics
+      - synonym: Chiffre d'affaires
+        locale: fr-FR
+    properties:
+      # Columns (semanticType omitted: implicitly `column`)
+      - name: turnover_ts
+        logicalType: date
+        physicalType: TIMESTAMP
+        description: Timestamp when the turnover is calculated.
+      - name: order_id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: VARCHAR(36)
+        description: Order ID.
+      - name: turnover_euros
+        logicalType: number
+        physicalType: DECIMAL(18,2)
+        description: Turnover converted to Euros.
+      - name: country_code
+        logicalType: string
+        physicalType: VARCHAR(2)
+        description: ISO-3166-2 country code.
+
+      # Dimensions
+      - name: country_code_dim
+        semanticType: dimension
+        logicalType: string
+        transformLogic: country_code
+        description: Country code where the order was made.
+        businessName: Country Code
+      - name: order_month
+        semanticType: dimension
+        logicalType: date
+        transformLogic: DATE_TRUNC('MONTH', turnover_ts)
+        description: Month of the order.
+        businessName: Order Month
+
+      # Measures
+      - name: total_turnover_euros
+        semanticType: measure
+        logicalType: number
+        physicalType: DECIMAL(18,2)
+        transformLogic: SUM(turnover_euros)
+        description: Total turnover in Euros.
+        businessName: TurnOver (Euros)
+        synonyms:
+          - synonym: TO
+            description: Common abbreviation used by the finance team.
+            source: finance-team
+          - synonym: Sales
+            locale: en-US
+          - id: sales-fr
+            synonym: Chiffre d'affaires
+            locale: fr-FR
+            description: French equivalent used in European subsidiaries.
+      - name: nb_receipts
+        semanticType: measure
+        logicalType: integer
+        physicalType: BIGINT
+        transformLogic: COUNT(DISTINCT order_id)
+        description: Number of receipts.
+        businessName: Number of Receipts
+      - name: average_basket_value
+        semanticType: measure
+        logicalType: number
+        physicalType: DECIMAL(18,2)
+        transformLogic: SUM(turnover_euros) / NULLIF(COUNT(DISTINCT order_id), 0)
+        description: Average basket value in Euros.
+        businessName: Average Basket Value

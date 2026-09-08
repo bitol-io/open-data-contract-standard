@@ -6,6 +6,83 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 This document tracks the history and evolution of the **Open Data Contract Standard**.
 
+# v3.2.0 "Peter Flook" - APPROVED
+
+This release is dedicated to the memory of our friend and longtime contributor **Peter Flook**, whose work shaped many parts of ODCS, from data quality testing to the negative-test suite, schema validation, documentation, and vendor onboarding. We carry his contributions forward in this version and beyond.
+
+RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-io/tsc/tree/main/rfcs).
+
+* **Adds** Enumerations ([RFC 0033](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0033-enum.md)):
+  * New `enum` array on schema properties to constrain a property to a fixed set of allowed values.
+  * Each `enum` entry is an object with `value` (required) plus optional `label`, `id`, `description`, `tags`, `customProperties`, and `authoritativeDefinitions`.
+  * `enum` entries must be unique and the array must contain at least one value.
+* **Adds** Maps ([RFC 0030](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0030-maps.md)):
+  * New `map` value for `logicalType` to represent key/value (dictionary) structures common in Databricks, Snowflake, BigQuery, Spark, and Avro.
+  * Companion `map` object on schema properties with required `key` and `value` sub-definitions; both follow the standard property shape (logicalType, description, nested properties/items, etc.).
+  * `map` is required whenever `logicalType: map` is set.
+* **Adds** Context block for AI and semantic interoperability ([RFC 0038](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0038-context.md)):
+  * New optional `context` block at the data contract and schema object levels, with `instructions`, `verifiedStatements`, and `constraints`.
+  * Adds `glossary`, `ontology`, and `taxonomy` to the recommended `authoritativeDefinitions.type` values.
+* **Adds** Measures and Dimensions ([RFC 0034](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0034-measures-and-dimensions.md)):
+  * New optional `semanticType` field on schema properties, declaring the semantic role a property plays: `column` (the default), `measure`, or `dimension`.
+  * A `measure` is an aggregated value (e.g., `SUM(revenue)`) whose aggregation expression lives in `transformLogic`; a `dimension` is a categorical attribute for grouping and filtering.
+  * Non-breaking: properties without `semanticType` remain implicit columns. Measures and dimensions reuse the full property shape (name, logicalType, logicalTypeOptions, businessName, transformLogic, etc.) with no new top-level structures.
+* **Adds** Synonyms ([RFC 0041](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0041-synonyms.md)):
+  * New optional `synonyms` array on schema objects and properties, recording alternative names for catalogs, AI/LLM tools, and natural language interfaces.
+  * Each `synonyms` entry is an object with a required `synonym` plus optional `id`, `description`, `locale` (BCP 47), `source`, `status`, and `customProperties`.
+  * Allowed only on schema objects and properties; non-breaking, as `synonyms` is optional.
+* **Adds** Physical data encoding ([RFC 0043](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0043-physical-data-encoding.md)):
+  * New optional `encoding` string field on server definitions that expose serialized payloads (Azure, Glue, Custom, Kafka, Kinesis, Local, S3, SFTP), declaring the expected character encoding of the data, e.g. `UTF-8`, `ISO-8859-1`, `ASCII`, `UTF-16`.
+  * Free-form string (no enum), default `UTF-8`; documents physical-payload encoding separately from the ODCS document encoding. Non-breaking, as `encoding` is optional.
+* **Adds** Deprecated flag ([RFC 0051](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0051-deprecated-flag.md), shared with ODPS v1.1.0):
+  * New optional `deprecated` boolean on schema objects and properties (including nested properties), indicating an element is no longer recommended for use.
+  * Defaults to `false`; deprecated elements remain documented and validated for backward compatibility. Non-breaking, as `deprecated` is optional.
+* **Adds** Vendor attribution for custom properties ([RFC 0035](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0035-extensions.md), shared with ODPS v1.1.0 and OORS v1.0.0):
+  * New optional `vendor` string on `customProperties` items, associating a custom property with a specific vendor, provider, or external system.
+  * SHOULD be a stable, lowercase identifier (`^[a-z0-9][a-z0-9-]*$`); not enforced, and tools MUST preserve unknown vendor values. Non-breaking, as `vendor` is optional.
+* **Adds** Vector type ([RFC 0042](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0042-vector-type.md)):
+  * New `vector` value for `logicalType`, describing a fixed-dimension dense numeric array for embeddings and similarity search.
+  * Dedicated `logicalTypeOptions` for `vector`: required `dimensions` (positive integer) plus optional `elementType`, `distanceMetric`, `normalized`, `embeddingModel`, and `embeddingModelVersion`.
+  * Non-breaking: `vector` is a new optional `logicalType` value.
+* **Adds** SAP HANA server type ([RFC 0045](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0045-hana-server-type.md)):
+  * New `hana` server `type` for SAP HANA, with required `host` plus optional `port`, `database` (tenant), and `schema`.
+  * Non-breaking: adds a new optional server type.
+* **Adds** SLA custom properties and authoritative definitions ([RFC 0046](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0046-sla-custom-properties-and-authoritative-definitions.md)):
+  * Each `slaProperties[]` entry may now carry optional `customProperties` and `authoritativeDefinitions`, consistent with other ODCS objects.
+  * Non-breaking: both fields are optional.
+* **Adds** Variables ([RFC 0050](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0050-variables.md), shared with ODPS v1.1.0 and OORS v1.0.0):
+  * Any string value in a contract MAY contain `${VAR_NAME}` references, resolved at runtime by tooling, keeping secrets and environment-specific values (hostnames, bucket paths, credentials) out of the document itself.
+  * The POSIX `${VAR_NAME:-default}` form supplies an inline default, used when the variable is unset or empty.
+  * Tools MUST resolve references before using a value, SHOULD error on unresolvable references (never silently substitute an empty string), and MUST preserve unresolved tokens verbatim when serializing back to YAML.
+  * Non-breaking: no new section or field is added to the standard; interpolation applies to string values only.
+  * Server `port` fields now accept a string in addition to an integer, so they can hold a variable reference such as `${DB_PORT}` or `${DB_PORT:-5432}`, which the previous integer-only type rejected.
+* **Adds** `id` to relationship objects ([RFC 0047](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0047-relationship-id.md)):
+  * New optional `id` string on `RelationshipBase` (surfaced on both schema-level and property-level relationships), completing the stable-identifier work of RFC-0026a for the last referenceable array-item object that lacked one.
+  * MUST be unique within its containing `relationships` array; SHOULD be stable across contract versions; cannot contain `.` `#` `/` `\` `@` `!` `%` `&` `^`.
+  * Non-breaking, as `id` is optional.
+* **Adds** Apache Iceberg server type ([RFC 0049](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0049-iceberg-server-type.md)):
+  * New `iceberg` server `type` describing access to Apache Iceberg catalogs through the standardized Iceberg REST API, with required `catalog` and `catalogUrl` plus optional `namespace` and `warehouse`.
+  * Non-breaking: adds a new optional server type.
+* **Adds** Exasol server type ([RFC 0058](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0058-exasol-server-type.md)):
+  * New `exasol` server `type` describing data served from Exasol, an in-memory MPP analytics database, with required `host` plus optional `port` (defaults to `8563`) and `schema`.
+  * No `database` field: an Exasol cluster runs a single database and the schema is the namespace. `host` may be a cluster connection range, e.g. `n11..14.acme.com`.
+  * Non-breaking: adds a new optional server type.
+* **Adds** Teradata server type ([RFC 0057](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0057-teradata-server-type.md)):
+  * New `teradata` server `type` describing data served from Teradata Vantage, with required `host` plus optional `port` (defaults to `1025`) and `database`.
+  * No `schema` field: in Teradata, the database is the namespace.
+  * Non-breaking: adds a new optional server type.
+* **Adds** Actian server types ([RFC 0059](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.2.0/0059-actian-server-types.md)):
+  * New `ingres` server `type` (Actian Ingres, OLTP RDBMS) with required `database` and `host` plus optional `port` (defaults to `21064`).
+  * New `vectorwise` server `type` (Actian Analytics Engine, columnar analytical DBMS) with required `database` and `host` plus optional `port` (defaults to `21064`).
+  * New `versant` server `type` (Actian NoSQL Database, object DBMS) with required `database` plus optional `host` (defaults to `localhost`) and `port` (defaults to `5019`).
+  * New `poet` server `type` (Actian NoSQL FastObjects, object DBMS) with required `database` plus optional `host` (defaults to `LOCAL`, the in-process embedded engine) and `port` (defaults to `6001`).
+  * New synonyms: `fastobjects` for `poet` and `btrieve` for `zen` — same fields, same definitions, neither original value deprecated, as `postgresql` and `postgres` already share `PostgresServer`.
+  * Establishes the naming convention that a server `type` value uses the name the product carried when it was created, in lowercase, since enum values are permanent and marketing names are not.
+  * No `schema` field on any of the four: for `ingres` and `vectorwise` the namespace is the table owner resolved from the connecting user; the two object databases have no SQL schema namespace.
+  * Non-breaking: adds four optional server types and two synonyms. No existing value changes meaning.
+* **Changes** to Servers:
+  * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
+
 # v3.1.0 - 2025-12-08 - APPROVED
 
 * **Splits** Main specification document into several smaller documents. 

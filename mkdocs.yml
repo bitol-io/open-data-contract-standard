@@ -1,3 +1,6 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
 site_name: Open Data Contract Standard
 site_url: https://bitol-io.github.io/open-data-contract-standard/
 repo_url: https://github.com/bitol-io/open-data-contract-standard
@@ -56,6 +59,7 @@ nav:
       - 'README.md'
       - Fundamentals: 'fundamentals.md'
       - Schema: 'schema.md'
+      - Context: 'context.md'
       - References: 'references.md'
       - Data Quality: 'data-quality.md'
       - Support: 'support-communication-channels.md'
@@ -65,6 +69,9 @@ nav:
       - SLA: 'service-level-agreement.md'
       - Infrastructure: 'infrastructure-servers.md'
       - Custom: 'custom-other-properties.md'
+      - Authoritative Definitions: 'authoritative-definitions.md'
+      - Tags: 'tags.md'
+      - Variables: 'variables.md'
   - Examples:
       - 'examples/README.md'
       - '...'

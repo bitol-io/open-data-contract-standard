@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -7,7 +10,7 @@ LIGHT_BLUE='\033[1;34m'
 NC='\033[0m'
 
 script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-json_schema_version=${JSON_SCHEMA_VERSION:-v3.1.0}
+json_schema_version=${JSON_SCHEMA_VERSION:-v3.2.0}
 num_failed_validation=0
 
 echo "Checking if $json_schema_version JSON schema is valid"

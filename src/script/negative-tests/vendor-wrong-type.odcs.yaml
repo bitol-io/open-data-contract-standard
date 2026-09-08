@@ -1,0 +1,18 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0035 negative test: customProperties[].vendor must be a string. Here it
+# is a number, so the schema MUST reject this contract.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 7b3e9d2f-4c5a-4e0b-9f1c-2d3e4f5a6b7c
+status: active
+customProperties:
+  - property: propGovObject
+    value: abc
+    vendor: 12345
+schema:
+  - name: orders
+    physicalType: table

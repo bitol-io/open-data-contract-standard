@@ -3,6 +3,11 @@ title: "References"
 description: "This section describes how to reference elements within a data contract schema."
 ---
 
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # References
 
 This section describes how to reference elements within a data contract schema. References enable you to create relationships between different parts of your data contract. This section is new in ODCS v3.1.0.
@@ -112,13 +117,14 @@ Relationships can be defined in two ways:
 
 ### Field Definitions
 
-| Key                            | Type   | UX Label          | Required          | Description                                                                       |
-|--------------------------------|--------|-------------------|-------------------|-----------------------------------------------------------------------------------|
-| relationships                  | array  | Relationships     | No                | Array of relationship definitions                                                 |
-| relationships.type             | string | Type              | No                | Type of relationship (defaults to `foreignKey`)                                   |
-| relationships.to               | string | To                | Yes               | Target property reference using `schema.property` notation                        |
-| relationships.from             | string | From              | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
-| relationships.customProperties | array  | Custom Properties | No                | Additional metadata about the relationship                                        |
+| Key                              | Type   | UX Label          | Required          | Description                                                                       |
+| -------------------------------- | ------ | ----------------- | ----------------- | --------------------------------------------------------------------------------- |
+| relationships                    | array  | Relationships     | No                | Array of relationship definitions                                                 |
+| relationships[].from             | string | From              | Context-dependent | Source property reference - Required at schema level, forbidden at property level |
+| relationships[].id               | string | ID                | No                | Optional stable identifier for the relationship, unique within its containing `relationships` array. Recommended for elements that will be referenced. Cannot contain: `.` `#` `/` `\` `@` `!` `%` `&` `^` (RFC 0047) |
+| relationships[].to               | string | To                | Yes               | Target property reference using `schema.property` notation                        |
+| relationships[].type             | string | Type              | No                | Type of relationship (defaults to `foreignKey`)                                   |
+| relationships[].customProperties | array  | Custom Properties | No                | Additional metadata about the relationship                                        |
 
 ### Reference Notation for Foreign Keys
 
@@ -339,7 +345,7 @@ schema:
                 value: "Externally referenced contract (fully qualified)"
 
           # To external contract (shorthand)
-          - to: https://example.com/data-contract-v1.yaml#profiles.user_id
+          - to: https://example.com/data-contract-v1.yaml#/profiles.user_id
             customProperties:
               - property: description
                 value: "Externally referenced contract (shorthand)"

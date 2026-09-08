@@ -1,3 +1,6 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
 name: validate-examples
 on:
   pull_request:
@@ -18,3 +21,5 @@ jobs:
           npm i -g ajv-cli ajv-formats
       - name: Validate examples
         run: bash src/script/validate-examples.sh
+      - name: Validate negative tests
+        run: bash src/script/validate-negative.sh

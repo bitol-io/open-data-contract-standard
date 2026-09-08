@@ -1,0 +1,18 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0051 negative test: `deprecated` must be a boolean. Here it is a string,
+# so the schema MUST reject this contract.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 5f1c7a2d-8b3e-4c6a-9d0f-2e4b6a8c0d1e
+status: active
+schema:
+  - name: customers
+    physicalType: table
+    properties:
+      - name: email_address
+        logicalType: string
+        deprecated: "maybe"

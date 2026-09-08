@@ -1,0 +1,19 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0057 negative test: a `teradata` server requires `host`. Here `host` is
+# omitted, so the schema MUST reject this contract.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 4e8c2a19-6b03-4d75-9f28-1a3b6c8d0e54
+status: active
+servers:
+  - server: prod
+    type: teradata
+    port: 1025
+    database: SALES
+schema:
+  - name: sales
+    physicalType: table

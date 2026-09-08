@@ -1,3 +1,8 @@
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Automatic documentation builder
 
 Starting with ODCS v2.2.2, the documentation is available through [GitHub.io](https://bitol-io.github.io/open-data-contract-standard). This page explains the process of building the doc.

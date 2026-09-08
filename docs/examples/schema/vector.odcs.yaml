@@ -1,0 +1,39 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# Demonstrates RFC-0042: the `vector` logicalType and its logicalTypeOptions
+# (dimensions required; elementType, distanceMetric, normalized, embeddingModel,
+# embeddingModelVersion optional).
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 8c1d4e7f-2a3b-4c5d-9e0f-1a2b3c4d5e6f
+status: active
+schema:
+  - name: tickets
+    physicalName: ticket_embeddings
+    properties:
+      - name: ticket_id
+        logicalType: string
+        primaryKey: true
+        required: true
+      - name: body
+        logicalType: string
+      - name: body_embedding
+        logicalType: vector
+        physicalType: vector(1536)
+        required: true
+        logicalTypeOptions:
+          dimensions: 1536
+          elementType: float32
+          distanceMetric: cosine
+          normalized: true
+          embeddingModel: openai/text-embedding-3-small
+          embeddingModelVersion: "2024-01-25"
+      - name: body_embedding_int8
+        logicalType: vector
+        logicalTypeOptions:
+          dimensions: 1536
+          elementType: int8
+          distanceMetric: cosine

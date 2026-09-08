@@ -16,9 +16,9 @@
     },
     "apiVersion": {
       "type": "string",
-      "default": "v3.1.0",
-      "description": "Version of the standard used to build data contract. Default value is v3.1.0.",
-      "enum": ["v3.1.0", "v3.0.2", "v3.0.1", "v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
+      "default": "v3.2.0",
+      "description": "Version of the standard used to build data contract. Default value is v3.2.0.",
+      "enum": ["v3.2.0", "v3.1.0", "v3.0.2", "v3.0.1", "v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
     },
     "id": {
       "type": "string",
@@ -83,6 +83,9 @@
       "description": "Name of the logical data domain.",
       "examples": ["imdb_ds_aggregate", "receiver_profile_out", "transaction_profile_out"]
     },
+    "context": {
+      "$ref": "#/$defs/Context"
+    },
     "schema": {
       "type": "array",
       "description": "A list of elements within the schema to be cataloged.",
@@ -143,24 +146,80 @@
       "description": "Timestamp in UTC of when the data contract was created."
     }
   },
-  "required": ["version", "apiVersion", "kind", "id", "status"],
+  "required": ["version", "apiVersion", "kind", "id"],
   "additionalProperties": false,
   "unevaluatedProperties": false,
   "$defs": {
+    "Context": {
+      "description": "AI and semantic context block (RFC-0038). Structured guidance for AI agents, LLMs, BI tools, and semantic layer platforms. Optional and additive.",
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Shorthand: equivalent to providing instructions only."
+        },
+        {
+          "type": "object",
+          "properties": {
+            "instructions": {
+              "type": "string",
+              "description": "Natural language guidance for AI agents and tools on how to use this entity. Equivalent to a system prompt scoped to this level."
+            },
+            "verifiedStatements": {
+              "type": "array",
+              "description": "Canonical questions (entries without `answer`) and verified Q&A pairs (entries with `answer`).",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "string", "description": "Stable identifier for the entry." },
+                  "question": { "type": "string", "description": "The canonical question." },
+                  "answer": { "type": "string", "description": "The expected response or result description." },
+                  "authoritativeDefinitions": { "$ref": "#/$defs/AuthoritativeDefinitions" },
+                  "tags": { "type": "array", "items": { "type": "string" } },
+                  "customProperties": { "$ref": "#/$defs/CustomProperties" }
+                },
+                "required": ["question"],
+                "additionalProperties": false
+              }
+            },
+            "constraints": {
+              "type": "array",
+              "description": "Negative guidance: what AI agents must NOT do with this entity.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "string", "description": "Stable identifier for the constraint." },
+                  "constraint": { "type": "string", "description": "The constraint text (negative guidance for AI agents)." },
+                  "authoritativeDefinitions": { "$ref": "#/$defs/AuthoritativeDefinitions" },
+                  "tags": { "type": "array", "items": { "type": "string" } },
+                  "customProperties": { "$ref": "#/$defs/CustomProperties" }
+                },
+                "required": ["constraint"],
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
     "ShorthandReference": {
       "type": "string",
       "description": "Shorthand notation using name fields (table_name.column_name)",
-      "pattern": "^[A-Za-z_][A-Za-z0-9_]*\\.[A-Za-z_][A-Za-z0-9_]*$"
+      "pattern": "^[A-Za-z_][A-Za-z0-9_\\-]*(\\.[A-Za-z_][A-Za-z0-9_\\-]*)+$"
     },
     "FullyQualifiedReference": {
       "type": "string",
       "description": "Fully qualified notation using id fields (section/id/properties/id), optionally prefixed with external file reference",
-      "pattern": "^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.yaml#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+)*$"
+      "pattern": "^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.ya?ml#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+)*$"
     },
     "StableId": {
       "type": "string",
       "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed).",
       "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "Port": {
+      "type": ["integer", "string"],
+      "description": "A network port: an integer, or a string, e.g. to hold a variable reference such as ${DB_PORT} resolved at runtime (RFC 0050)."
     },
     "Server": {
       "type": "object",
@@ -177,10 +236,10 @@
           "type": "string",
           "description": "Type of the server.",
           "enum": [
-            "api", "athena", "azure", "bigquery", "clickhouse", "databricks", "denodo", "dremio",
-            "duckdb", "glue", "cloudsql", "db2", "hive", "impala", "informix", "kafka", "kinesis", "local",
-            "mysql", "oracle", "postgresql", "postgres", "presto", "pubsub",
-            "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "trino", "vertica", "zen", "custom"
+            "api", "athena", "azure", "bigquery", "btrieve", "clickhouse", "databricks", "denodo", "dremio",
+            "duckdb", "exasol", "fastobjects", "glue", "hana", "cloudsql", "db2", "hive", "iceberg", "impala", "informix", "ingres", "kafka", "kinesis", "local",
+            "mysql", "oracle", "poet", "postgresql", "postgres", "presto", "pubsub",
+            "redshift", "s3", "sftp", "snowflake", "sqlserver", "synapse", "teradata", "trino", "vectorwise", "versant", "vertica", "zen", "custom"
           ]
         },
         "description": {
@@ -260,6 +319,19 @@
           "if": {
             "properties": {
               "type": {
+                "const": "btrieve"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/ZenServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
                 "const": "clickhouse"
               }
             },
@@ -319,6 +391,32 @@
           },
           "then": {
             "$ref": "#/$defs/ServerSource/DuckdbServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "exasol"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/ExasolServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "fastobjects"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/PoetServer"
           }
         },
         {
@@ -397,6 +495,19 @@
           },
           "then": {
             "$ref": "#/$defs/ServerSource/InformixServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ingres"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/IngresServer"
           }
         },
         {
@@ -488,6 +599,45 @@
           },
           "then": {
             "$ref": "#/$defs/ServerSource/OracleServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "poet"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/PoetServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "hana"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/HanaServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "iceberg"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/IcebergServer"
           }
         },
         {
@@ -624,6 +774,19 @@
           "if": {
             "properties": {
               "type": {
+                "const": "teradata"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/TeradataServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
                 "const": "trino"
               }
             },
@@ -631,6 +794,32 @@
           },
           "then": {
             "$ref": "#/$defs/ServerSource/TrinoServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "vectorwise"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/VectorwiseServer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "versant"
+              }
+            },
+            "required": ["type"]
+          },
+          "then": {
+            "$ref": "#/$defs/ServerSource/VersantServer"
           }
         },
         {
@@ -693,10 +882,14 @@
             "type": "string",
             "description": "The region your AWS account uses.",
             "examples": ["eu-west-1"]
+          },
+          "workgroup": {
+            "type": "string",
+            "description": "The Athena workgroup to use. Workgroups can enforce query result location and other client-side settings via the 'Override client-side settings' option.",
+            "examples": ["primary"]
           }
         },
         "required": [
-          "stagingDir",
           "schema"
         ]
       },
@@ -722,6 +915,16 @@
               "csv"
             ],
             "description": "File format."
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
           },
           "delimiter": {
             "type": "string",
@@ -764,7 +967,7 @@
             "description": "The host of the ClickHouse server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the ClickHouse server."
           },
           "database": {
@@ -812,7 +1015,7 @@
             "description": "The host of the Denodo server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the Denodo server."
           },
           "database": {
@@ -834,7 +1037,7 @@
             "description": "The host of the Dremio server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the Dremio server."
           },
           "schema": {
@@ -862,6 +1065,35 @@
         },
         "required": [
           "database"
+        ]
+      },
+      "ExasolServer": {
+        "type": "object",
+        "title": "ExasolServer",
+        "properties": {
+          "host": {
+            "type": "string",
+            "description": "Host of the Exasol server. May be a cluster connection range.",
+            "examples": [
+              "exasol.acme.com",
+              "n11..14.acme.com"
+            ]
+          },
+          "port": {
+            "$ref": "#/$defs/Port",
+            "description": "Port of the Exasol server.",
+            "default": 8563,
+            "examples": [
+              8563
+            ]
+          },
+          "schema": {
+            "type": "string",
+            "description": "Name of the schema."
+          }
+        },
+        "required": [
+          "host"
         ]
       },
       "GlueServer": {
@@ -899,6 +1131,16 @@
               "json",
               "delta"
             ]
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
           }
         },
         "required": [
@@ -915,7 +1157,7 @@
             "description": "The host of the Google Cloud Sql server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the Google Cloud Sql server."
           },
           "database": {
@@ -943,7 +1185,7 @@
             "description": "The host of the IBM DB2 server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the IBM DB2 server."
           },
           "database": {
@@ -970,7 +1212,7 @@
             "description": "The host to the Hive server. "
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the Hive server. Defaults to 10000."
           },
           "database": {
@@ -992,7 +1234,7 @@
             "description": "The host to the Impala server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the Impala server. Defaults to 21050."
           },
           "database": {
@@ -1014,7 +1256,7 @@
             "description": "The host to the Informix server. "
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the Informix server. Defaults to 9088."
           },
           "database": {
@@ -1027,6 +1269,38 @@
           "database"
         ]
       },
+      "IngresServer": {
+        "type": "object",
+        "title": "IngresServer",
+        "properties": {
+          "database": {
+            "type": "string",
+            "description": "Database name to connect to on the Ingres instance.",
+            "examples": [
+              "sales"
+            ]
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname or IP address of the Ingres server.",
+            "examples": [
+              "ingres.acme.com"
+            ]
+          },
+          "port": {
+            "$ref": "#/$defs/Port",
+            "description": "Connection port for the Ingres Data Access Server (DAS) / SQL connections.",
+            "default": 21064,
+            "examples": [
+              21064
+            ]
+          }
+        },
+        "required": [
+          "database",
+          "host"
+        ]
+      },
       "ZenServer": {
         "type": "object",
         "title": "ZenServer",
@@ -1036,7 +1310,7 @@
             "description": "Hostname or IP address of the Zen server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "Zen server SQL connections port. Defaults to 1583."
           },
           "database": {
@@ -1079,6 +1353,16 @@
             "type": "string",
             "description": "File format."
           },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
+          },
           "host": {
             "type": "string",
             "description": "Host name or IP address."
@@ -1093,7 +1377,7 @@
             "description": "Relative or absolute path to the data file(s)."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "Port to the server. No default value is assumed for custom servers."
           },
           "project": {
@@ -1144,6 +1428,16 @@
             "description": "The format of the messages.",
             "examples": ["json", "avro", "protobuf", "xml"],
             "default": "json"
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
           }
         },
         "required": [
@@ -1170,6 +1464,16 @@
               "avro",
               "protobuf"
             ]
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
           }
         }
       },
@@ -1194,6 +1498,16 @@
               "delta",
               "csv"
             ]
+          },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
           }
         },
         "required": [
@@ -1210,7 +1524,7 @@
             "description": "The host of the MySql server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the MySql server."
           },
           "database": {
@@ -1236,7 +1550,7 @@
             ]
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the oracle server.",
             "examples": [
               1523
@@ -1256,6 +1570,39 @@
           "serviceName"
         ]
       },
+      "PoetServer": {
+        "type": "object",
+        "title": "PoetServer",
+        "properties": {
+          "database": {
+            "type": "string",
+            "description": "Database name to connect to on the FastObjects instance.",
+            "examples": [
+              "parts_catalog"
+            ]
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname or IP address of the FastObjects server. The literal LOCAL selects the in-process embedded engine.",
+            "default": "LOCAL",
+            "examples": [
+              "LOCAL",
+              "fastobjects02.acme.com"
+            ]
+          },
+          "port": {
+            "$ref": "#/$defs/Port",
+            "description": "Connection port for FastObjects connections.",
+            "default": 6001,
+            "examples": [
+              6001
+            ]
+          }
+        },
+        "required": [
+          "database"
+        ]
+      },
       "PostgresServer": {
         "type": "object",
         "title": "PostgresServer",
@@ -1265,7 +1612,7 @@
             "description": "The host to the Postgres server"
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the Postgres server."
           },
           "database": {
@@ -1282,6 +1629,61 @@
           "port",
           "database",
           "schema"
+        ]
+      },
+      "HanaServer": {
+        "type": "object",
+        "title": "HanaServer",
+        "properties": {
+          "host": {
+            "type": "string",
+            "description": "Host of the HANA server."
+          },
+          "port": {
+            "$ref": "#/$defs/Port",
+            "description": "Port of the HANA server."
+          },
+          "database": {
+            "type": "string",
+            "description": "Name of the database (tenant)."
+          },
+          "schema": {
+            "type": "string",
+            "description": "Name of the schema."
+          }
+        },
+        "required": [
+          "host"
+        ]
+      },
+      "IcebergServer": {
+        "type": "object",
+        "title": "IcebergServer",
+        "properties": {
+          "catalog": {
+            "type": "string",
+            "description": "Catalog name as registered in the query engine or catalog service.",
+            "examples": ["my_catalog"]
+          },
+          "catalogUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of the Iceberg compatible REST catalog service (Polaris, S3 Tables, Nessie, Unity Catalog, Glue, etc.)",
+            "examples": ["https://my-catalog-service.com"]
+          },
+          "namespace": {
+            "type": "string",
+            "description": "Dot-separated namespace/schema path within the catalog (e.g. db.schema or just db)."
+          },
+          "warehouse": {
+            "type": "string",
+            "description": "Logical catalog or base location for the catalog to use.",
+            "examples": ["s3://my-bucket/warehouse/sales/", "production", "development"]
+          }
+        },
+        "required": [
+          "catalog",
+          "catalogUrl"
         ]
       },
       "PrestoServer": {
@@ -1386,6 +1788,16 @@
             ],
             "description": "File format."
           },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
+          },
           "delimiter": {
             "type": "string",
             "examples": [
@@ -1422,6 +1834,16 @@
             ],
             "description": "File format."
           },
+          "encoding": {
+            "type": "string",
+            "description": "The expected character encoding for data payloads exposed through this server, for example UTF-8, ISO-8859-1, ASCII or UTF-16.",
+            "examples": [
+              "UTF-8",
+              "ISO-8859-1",
+              "ASCII",
+              "UTF-16"
+            ]
+          },
           "delimiter": {
             "type": "string",
             "examples": [
@@ -1444,7 +1866,7 @@
             "description": "The host to the Snowflake server"
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the Snowflake server."
           },
           "account": {
@@ -1482,7 +1904,7 @@
             ]
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port to the database server.",
             "default": 1433,
             "examples": [
@@ -1519,7 +1941,7 @@
             "description": "The host of the Synapse server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the Synapse server."
           },
           "database": {
@@ -1531,6 +1953,34 @@
           "host",
           "port",
           "database"
+        ]
+      },
+      "TeradataServer": {
+        "type": "object",
+        "title": "TeradataServer",
+        "properties": {
+          "host": {
+            "type": "string",
+            "description": "Host of the Teradata server.",
+            "examples": [
+              "teradata.acme.com"
+            ]
+          },
+          "port": {
+            "$ref": "#/$defs/Port",
+            "description": "Port of the Teradata server.",
+            "default": 1025,
+            "examples": [
+              1025
+            ]
+          },
+          "database": {
+            "type": "string",
+            "description": "Name of the database."
+          }
+        },
+        "required": [
+          "host"
         ]
       },
       "TrinoServer": {
@@ -1545,7 +1995,7 @@
             ]
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The Trino port."
           },
           "catalog": {
@@ -1570,6 +2020,70 @@
           "schema"
         ]
       },
+      "VectorwiseServer": {
+        "type": "object",
+        "title": "VectorwiseServer",
+        "properties": {
+          "database": {
+            "type": "string",
+            "description": "Database name to connect to on the Analytics Engine server.",
+            "examples": [
+              "warehouse"
+            ]
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname or IP address of the Analytics Engine server.",
+            "examples": [
+              "analytics.acme.com"
+            ]
+          },
+          "port": {
+            "$ref": "#/$defs/Port",
+            "description": "Connection port for the Data Access Server (DAS) / SQL connections.",
+            "default": 21064,
+            "examples": [
+              21064
+            ]
+          }
+        },
+        "required": [
+          "database",
+          "host"
+        ]
+      },
+      "VersantServer": {
+        "type": "object",
+        "title": "VersantServer",
+        "properties": {
+          "database": {
+            "type": "string",
+            "description": "Database name to connect to on the NoSQL Database instance.",
+            "examples": [
+              "policies"
+            ]
+          },
+          "host": {
+            "type": "string",
+            "description": "Hostname or IP address of the NoSQL Database server.",
+            "default": "localhost",
+            "examples": [
+              "nosql.acme.com"
+            ]
+          },
+          "port": {
+            "$ref": "#/$defs/Port",
+            "description": "Connection port for Actian NoSQL Database connections.",
+            "default": 5019,
+            "examples": [
+              5019
+            ]
+          }
+        },
+        "required": [
+          "database"
+        ]
+      },
       "VerticaServer": {
         "type": "object",
         "title": "VerticaServer",
@@ -1579,7 +2093,7 @@
             "description": "The host of the Vertica server."
           },
           "port": {
-            "type": "integer",
+            "$ref": "#/$defs/Port",
             "description": "The port of the Vertica server."
           },
           "database": {
@@ -1621,6 +2135,14 @@
         "businessName": {
           "type": "string",
           "description": "The business name of the element."
+        },
+        "deprecated": {
+          "type": "boolean",
+          "description": "Indicates this element is deprecated and should not be used in new implementations. Defaults to false.",
+          "default": false
+        },
+        "synonyms": {
+          "$ref": "#/$defs/Synonyms"
         },
         "authoritativeDefinitions": {
           "$ref": "#/$defs/AuthoritativeDefinitions"
@@ -1667,6 +2189,9 @@
         },
         "quality": {
           "$ref": "#/$defs/DataQualityChecks"
+        },
+        "context": {
+          "$ref": "#/$defs/Context"
         }
       },
       "allOf": [
@@ -1692,7 +2217,7 @@
         "logicalType": {
           "type": "string",
           "description": "The logical element data type.",
-          "enum": ["string", "date", "timestamp", "time", "number", "integer", "object", "array", "boolean"]
+          "enum": ["string", "date", "timestamp", "time", "number", "integer", "object", "array", "boolean", "map", "vector"]
         },
         "logicalTypeOptions": {
           "type": "object",
@@ -1716,6 +2241,12 @@
           "type": "boolean",
           "default": false,
           "description": "Indicates if the element contains unique values; possible values are true and false. Default is false."
+        },
+        "semanticType": {
+          "type": "string",
+          "enum": ["column", "measure", "dimension"],
+          "default": "column",
+          "description": "The semantic role the property plays in the data model. `column` (the default) is a physical column in the underlying data store; `measure` is an aggregated value (e.g., `SUM(revenue)`) whose aggregation expression is held in `transformLogic`; `dimension` is a categorical attribute used for grouping and filtering. See RFC 0034."
         },
         "partitioned": {
           "type": "boolean",
@@ -1756,6 +2287,15 @@
           "description": "List of sample element values.",
           "items": {
             "$ref": "#/$defs/AnyType"
+          }
+        },
+        "enum": {
+          "type": "array",
+          "description": "Enumeration of allowed values for this property. Each entry is an object with at least a `value`. See RFC 0033.",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/EnumValue"
           }
         },
         "criticalDataElement": {
@@ -2100,6 +2640,87 @@
               }
             }
           }
+        },
+        {
+          "if": {
+            "properties": {
+              "logicalType": {
+                "const": "map"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "map": {
+                "type": "object",
+                "description": "Key/value definition for a map (only applicable when `logicalType: map`). See RFC 0030.",
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "$ref": "#/$defs/SchemaItemProperty",
+                    "description": "Definition of the map's key."
+                  },
+                  "value": {
+                    "$ref": "#/$defs/SchemaItemProperty",
+                    "description": "Definition of the map's value."
+                  }
+                },
+                "required": ["key", "value"]
+              }
+            },
+            "required": ["map"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "logicalType": {
+                "const": "vector"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "logicalTypeOptions": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "dimensions": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "The fixed length of the vector. Positive integer (only applicable when `logicalType: vector`). See RFC 0042.",
+                    "examples": [384, 768, 1024, 1536, 3072]
+                  },
+                  "elementType": {
+                    "type": "string",
+                    "enum": ["bfloat16", "binary", "float16", "float32", "float64", "int8", "uint8"],
+                    "default": "float32",
+                    "description": "Numeric type of each vector element. `binary` means each element is one bit (binary-quantized vectors)."
+                  },
+                  "distanceMetric": {
+                    "type": "string",
+                    "enum": ["cosine", "dotProduct", "euclidean", "hamming", "manhattan"],
+                    "description": "Intended similarity metric. Advisory \u2014 the physical index may differ."
+                  },
+                  "embeddingModel": {
+                    "type": "string",
+                    "description": "Identifier of the model used to produce the vectors.",
+                    "examples": ["openai/text-embedding-3-small", "cohere/embed-english-v3.0"]
+                  },
+                  "embeddingModelVersion": {
+                    "type": "string",
+                    "description": "Version or revision of the embedding model, when the model identifier does not already carry one."
+                  },
+                  "normalized": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "True if vectors are L2-normalized before storage, which makes cosine and dotProduct equivalent."
+                  }
+                },
+                "required": ["dimensions"]
+              }
+            }
+          }
         }
       ],
       "unevaluatedProperties": false
@@ -2427,8 +3048,8 @@
           },
           "type": {
             "type": "string",
-            "description": "Type of definition for authority: v2.3 adds standard values: `businessDefinition`, `transformationImplementation`, `videoTutorial`, `tutorial`, and `implementation`.",
-            "examples": ["businessDefinition", "transformationImplementation", "videoTutorial", "tutorial", "implementation"]
+            "description": "Type of definition for authority. See the recommended values in the documentation.",
+            "examples": ["businessDefinition", "canonicalUrl", "glossary", "implementation", "ontology", "taxonomy", "transformationImplementation", "tutorial", "videoTutorial"]
           },
           "description": {
             "type": "string",
@@ -2692,6 +3313,12 @@
           "type": "string",
           "description": "Configuration information for the scheduling tool, for cron a possible value is 0 20 * * *.",
           "examples": ["0 20 * * *"]
+        },
+        "customProperties": {
+          "$ref": "#/$defs/CustomProperties"
+        },
+        "authoritativeDefinitions": {
+          "$ref": "#/$defs/AuthoritativeDefinitions"
         }
       },
       "required": ["property", "value"],
@@ -2703,6 +3330,83 @@
       "items": {
         "$ref": "#/$defs/CustomProperty"
       }
+    },
+    "EnumValue": {
+      "type": "object",
+      "description": "An allowed value within a property's enumeration. See RFC 0033.",
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/AnyNonCollectionType",
+          "description": "The allowed value. Required."
+        },
+        "label": {
+          "type": "string",
+          "description": "Human-readable label for the value, suitable for UI display."
+        },
+        "id": {
+          "$ref": "#/$defs/StableId"
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional description of what this enum value represents."
+        },
+        "customProperties": {
+          "type": "array",
+          "description": "Custom properties attached to this enum value (e.g., translations).",
+          "items": {
+            "$ref": "#/$defs/CustomProperty"
+          }
+        },
+        "authoritativeDefinitions": {
+          "$ref": "#/$defs/AuthoritativeDefinitions"
+        },
+        "tags": {
+          "$ref": "#/$defs/Tags"
+        }
+      },
+      "required": ["value"],
+      "additionalProperties": false
+    },
+    "Synonyms": {
+      "type": "array",
+      "description": "A list of alternative names for the object. See RFC 0041.",
+      "items": {
+        "$ref": "#/$defs/Synonym"
+      }
+    },
+    "Synonym": {
+      "type": "object",
+      "description": "An alternative name for a named object, helping catalogs, AI/LLM tools, and natural language interfaces resolve business vocabulary to the underlying object. See RFC 0041.",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/StableId"
+        },
+        "synonym": {
+          "type": "string",
+          "description": "The synonymous term."
+        },
+        "description": {
+          "type": "string",
+          "description": "Short human-readable note about when or why this synonym is used."
+        },
+        "locale": {
+          "type": "string",
+          "description": "BCP 47 language tag (e.g., `en-US`, `fr-FR`) when the synonym is language-specific."
+        },
+        "source": {
+          "type": "string",
+          "description": "Origin of the synonym (e.g., `glossary`, `finance-team`, `legacy-system`)."
+        },
+        "status": {
+          "type": "string",
+          "description": "Lifecycle status of the synonym (e.g., `active`, `deprecated`)."
+        },
+        "customProperties": {
+          "$ref": "#/$defs/CustomProperties"
+        }
+      },
+      "required": ["synonym"],
+      "additionalProperties": false
     },
     "CustomProperty": {
       "type": "object",
@@ -2721,6 +3425,11 @@
         "description": {
           "type": "string",
           "description": "Description of the custom property."
+        },
+        "vendor": {
+          "type": "string",
+          "description": "Identifies the vendor, provider, or external system associated with this custom property. SHOULD be a stable, lowercase identifier matching ^[a-z0-9][a-z0-9-]*$ (e.g. confluent, zeenea, atlan, soda). Tools MUST preserve unknown vendor values.",
+          "examples": ["confluent", "zeenea", "atlan", "soda"]
         }
       },
       "required": ["property", "value"],
@@ -2774,6 +3483,10 @@
       "type": "object",
       "description": "Base definition for relationships between properties, typically for foreign key constraints.",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": "Optional stable identifier for this relationship, unique within its containing relationships array. SHOULD remain stable across contract versions. Cannot contain: . # / \\ @ ! % & ^"
+        },
         "type": {
           "type": "string",
           "description": "The type of relationship. Defaults to 'foreignKey'.",

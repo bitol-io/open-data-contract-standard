@@ -2,6 +2,11 @@
 title: "Team"
 description: "This section lists team members and the history of their relation with this data contract."
 ---
+
+<!--
+Copyright 2026 The Bitol Contributors
+SPDX-License-Identifier: Apache-2.0
+-->
 # Team
 
 This section lists team members and the history of their relation with this data contract. 
@@ -41,27 +46,27 @@ team:
 
 ## Definitions
 
-| Key                                   | Type   | UX label                  | Required | Description                                                                                                                                                                                |
-|---------------------------------------|--------|---------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| team                                  | object | Team                      | No       | Object representing a team.                                                                                                                                                                |
-| team.id                               | string | ID                        | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details. |
-| team.name                             | string | Name                      | No       | Team name.                                                                                                                                                                                 |    
-| team.description                      | string | Description               | No       | Team description.                                                                                                                                                                          |
-| team.customProperties                 | array  | Custom Properties         | No       | Custom properties block.                                                                                                                                                                   | 
-| team.authoritativeDefinitions         | array  | Authoritative Definitions | No       | Authoritative definitions block.                                                                                                                                                           | 
-| team.tags                             | array  | Tags                      | No       | Tags as a list.                                                                                                                                                                            | 
-| team.members                          | array  | Team Members              | No       | List of members                                                                                                                                                                            |
-| team.members.**username**             | string | Username                  | Yes      | The user's username or email.                                                                                                                                                              |
-| team.members.name                     | string | Name                      | No       | The user's name.                                                                                                                                                                           |
-| team.members.description              | string | Description               | No       | A description of the user, such as their responsibilities.                                                                                                                 |
-| team.members.role                     | string | Role                      | No       | The user's job role; Examples might be owner, data steward. There is no limit on the role.                                                                                                 |
-| team.members.dateIn                   | string | Date In                   | No       | The date when the user joined the team.                                                                                                                                                    |
-| team.members.dateOut                  | string | Date Out                  | No       | The date when the user ceased to be part of the team.                                                                                                                                      |
-| team.members.replacedByUsername       | string | Replaced By Username      | No       | The username of the user who replaced the previous user.                                                                                                                                   |
-| team.members.customProperties         | array  | Custom Properties         | No       | Custom properties block.                                                                                                                                                                   | 
-| team.members.authoritativeDefinitions | array  | Authoritative Definitions | No       | Authoritative definitions block.                                                                                                                                                           | 
-| team.members.tags                     | array  | Tags                      | No       | Tags as a list.                                                                                                                                                                            | 
-| team.members.id                       | string | Id                        | No       | Identifier.                                                                                                                                                                                | 
+| Key                                     | Type   | UX label                  | Required | Description                                                                                                                                                                                |
+| --------------------------------------- | ------ | ------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| team                                    | object | Team                      | No       | Object representing a team.                                                                                                                                                                |
+| team.description                        | string | Description               | No       | Team description.                                                                                                                                                                          |
+| team.id                                 | string | ID                        | No       | A unique identifier for the element used to create stable, refactor-safe references. Recommended for elements that will be referenced. See [References](./references.md) for more details. |
+| team.name                               | string | Name                      | No       | Team name.                                                                                                                                                                                 |
+| team.authoritativeDefinitions           | array  | Authoritative Definitions | No       | Authoritative definitions block.                                                                                                                                                           |
+| team.tags                               | array  | Tags                      | No       | Tags applied to the team. See [Tags](./tags.md).                                                                                                                                           |
+| team.customProperties                   | array  | Custom Properties         | No       | Custom properties block.                                                                                                                                                                   |
+| team.members                            | array  | Team Members              | No       | List of members.                                                                                                                                                                           |
+| team.members[].dateIn                   | string | Date In                   | No       | The date when the user joined the team.                                                                                                                                                    |
+| team.members[].dateOut                  | string | Date Out                  | No       | The date when the user ceased to be part of the team.                                                                                                                                      |
+| team.members[].description              | string | Description               | No       | A description of the user, such as their responsibilities.                                                                                                                                 |
+| team.members[].id                       | string | ID                        | No       | Identifier.                                                                                                                                                                                |
+| team.members[].name                     | string | Name                      | No       | The user's name.                                                                                                                                                                           |
+| team.members[].replacedByUsername       | string | Replaced By Username      | No       | The username of the user who replaced the previous user.                                                                                                                                   |
+| team.members[].role                     | string | Role                      | No       | The user's job role; Examples might be owner, data steward. There is no limit on the role.                                                                                                 |
+| team.members[].**username**             | string | Username                  | Yes      | The user's username or email.                                                                                                                                                              |
+| team.members[].authoritativeDefinitions | array  | Authoritative Definitions | No       | Authoritative definitions block.                                                                                                                                                           |
+| team.members[].tags                     | array  | Tags                      | No       | Tags applied to the team member. See [Tags](./tags.md).                                                                                                                                    |
+| team.members[].customProperties         | array  | Custom Properties         | No       | Custom properties block.                                                                                                                                                                   |
 
 ## Deprecated Structure
 
@@ -89,15 +94,15 @@ team:
 
 The UX label is the label used in the UI and other user experiences.
 
-| Key                     | Type   | UX label             | Required | Description                                                                                |
-|-------------------------|--------|----------------------|----------|--------------------------------------------------------------------------------------------|
-| team                    | array  | Team                 | No       | Object                                                                                     |
-| team.username           | string | Username             | No       | The user's username or email.                                                              |
-| team.name               | string | Name                 | No       | The user's name.                                                                           |
-| team.description        | string | Description          | No       | The user's name.                                                                           |
-| team.role               | string | Role                 | No       | The user's job role; Examples might be owner, data steward. There is no limit on the role. |
-| team.dateIn             | string | Date In              | No       | The date when the user joined the team.                                                    |
-| team.dateOut            | string | Date Out             | No       | The date when the user ceased to be part of the team.                                      |
-| team.replacedByUsername | string | Replaced By Username | No       | The username of the user who replaced the previous user.                                   |
+| Key                       | Type   | UX label             | Required | Description                                                                                |
+| ------------------------- | ------ | -------------------- | -------- | ------------------------------------------------------------------------------------------ |
+| team                      | array  | Team                 | No       | Object                                                                                     |
+| team[].dateIn             | string | Date In              | No       | The date when the user joined the team.                                                    |
+| team[].dateOut            | string | Date Out             | No       | The date when the user ceased to be part of the team.                                      |
+| team[].description        | string | Description          | No       | The user's name.                                                                           |
+| team[].name               | string | Name                 | No       | The user's name.                                                                           |
+| team[].replacedByUsername | string | Replaced By Username | No       | The username of the user who replaced the previous user.                                   |
+| team[].role               | string | Role                 | No       | The user's job role; Examples might be owner, data steward. There is no limit on the role. |
+| team[].username           | string | Username             | No       | The user's username or email.                                                              |
 
 [Back to TOC](README.md)
