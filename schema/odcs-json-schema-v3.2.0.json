@@ -2646,10 +2646,7 @@
               "logicalType": {
                 "const": "map"
               }
-            },
-            "required": [
-              "logicalType"
-            ]
+            }
           },
           "then": {
             "properties": {
@@ -2679,10 +2676,7 @@
               "logicalType": {
                 "const": "vector"
               }
-            },
-            "required": [
-              "logicalType"
-            ]
+            }
           },
           "then": {
             "properties": {
