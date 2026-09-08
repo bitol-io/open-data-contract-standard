@@ -1,0 +1,18 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# RFC-0026a denies '.', '#', '/', '\', '@', '!', '%', '&' and '^' in an id.
+# This id uses a dot, which would also make the reference grammar ambiguous
+# with the shorthand (table.column) notation, so it must be rejected.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 7d4e9a02-8b13-4c56-aa2f-3e19d6b4c807
+status: active
+schema:
+  - id: fdir.dataset
+    name: dataset
+    physicalType: table
+    properties:
+      - name: field
