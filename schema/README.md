@@ -90,6 +90,7 @@ Concise summary of what changed between each retained dated snapshot.
 | 2026-02-25 | Shorthand reference regex relaxed to allow more than two segments (e.g., `a.b.c.d` is now valid).                                                                            |
 | 2026-04-15 | Athena server: `stagingDir` made optional; new optional `workgroup` field added.                                                                                             |
 | 2026-04-29 | Athena changes from 2026-04-15 reverted out of the v3.1.0 line to keep it stable; same changes are carried forward in `latest` and `v3.2.0` instead.                         |
+| 2026-09-08 | `StableId` and the id segments of `FullyQualifiedReference` widened to match RFC-0026a, which denies only `.` `#` `/` `\` `@` `!` `%` `&` `^` (and, editorially, whitespace) rather than allowing only `[A-Za-z0-9_-]`. Colon-bearing ids such as `fdir:ISU:TAD` and `urn:uuid:…` now validate. Also carries the `dataProduct` deprecation flag that landed on the rolling file on 2026-07-01 without a snapshot being cut. |
 
 ### v3.2.0 line
 
