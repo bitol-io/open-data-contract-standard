@@ -38,6 +38,24 @@ ODCS uses a fully qualified notation with the `id` field and slash-separated pat
 - When refactoring is expected
 - Cross-contract references
 
+### Allowed characters in an `id`
+
+An `id` cannot contain any of the following characters:
+
+```text
+. # / \ @ ! % & ^
+```
+
+Whitespace is not allowed either. Every other character is legal, including `:`, so namespaced
+identifiers such as `fdir:ISU:TAD` or `urn:uuid:0f6d2c11-4a7e-4a1d-9b3f-8c5e2a7d1b40` are valid ids
+and may appear in a fully qualified reference.
+
+The three structural characters are denied for a reason: `.` separates the segments of a shorthand
+reference (`table_name.column_name`, see
+[Reference Notation for Foreign Keys](#reference-notation-for-foreign-keys)), `/` separates the
+segments of a fully qualified reference, and `#` marks entry into an external contract file.
+Allowing them inside an id would make a reference ambiguous to parse.
+
 ## Reference Structure
 
 A fully formatted reference follows this structure:

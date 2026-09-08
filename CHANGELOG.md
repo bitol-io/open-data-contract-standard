@@ -82,6 +82,11 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
   * Non-breaking: adds four optional server types and two synonyms. No existing value changes meaning.
 * **Changes** to Servers:
   * Add optional Athena Server `workgroup` field and fix `stagingDir` to be optional in schema.
+* **Fixes** the `id` character set to match [RFC-0026a](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/odcs-v3.1.0/0026a-reference-id.md):
+  * The JSON schema implemented an allowlist (`^[A-Za-z0-9_-]+$`) where the RFC defines a denylist — an id cannot contain `.`, `#`, `/`, `\`, `@`, `!`, `%`, `&` or `^`. The allowlist additionally rejected 23 punctuation characters and every non-ASCII letter.
+  * `StableId` and the id segments of `FullyQualifiedReference` now accept anything the RFC permits, so namespaced ids such as `fdir:ISU:TAD` and `urn:uuid:...` validate, along with references built from them.
+  * Whitespace is excluded as well, which the RFC leaves unstated.
+  * Non-breaking: the new pattern is strictly wider, so every previously valid id and reference stays valid. Also applied to the rolling v3.1.0 schema, where the mismatch originated.
 
 # v3.1.0 - 2025-12-08 - APPROVED
 

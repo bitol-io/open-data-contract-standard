@@ -210,12 +210,12 @@
     "FullyQualifiedReference": {
       "type": "string",
       "description": "Fully qualified notation using id fields (section/id/properties/id), optionally prefixed with external file reference",
-      "pattern": "^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.ya?ml#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+)*$"
+      "pattern": "^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.ya?ml#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[^\\s.#/\\\\@!%&^]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[^\\s.#/\\\\@!%&^]+)*$"
     },
     "StableId": {
       "type": "string",
-      "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed).",
-      "pattern": "^[A-Za-z0-9_-]+$"
+      "description": "Stable technical identifier for references. Must be unique within its containing array. Per RFC-0026a an id cannot contain '.', '#', '/', '\\', '@', '!', '%', '&' or '^', nor whitespace.",
+      "pattern": "^[^\\s.#/\\\\@!%&^]+$"
     },
     "Port": {
       "type": ["integer", "string"],
