@@ -19,6 +19,8 @@ jobs:
       - name: Install ajv
         run: |
           npm i -g ajv-cli ajv-formats
+      - name: Validate schema parity (latest == versioned)
+        run: bash src/script/validate-schema-parity.sh
       - name: Validate examples
         run: bash src/script/validate-examples.sh
       - name: Validate negative tests
