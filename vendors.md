@@ -17,6 +17,7 @@ A non-exhaustive, alphabetical list of organizations offering solutions natively
 * [Data Contract Playground](https://data-catering.github.io/data-contract-playground/) - Playground site for creating, exporting, and validating data contracts.
 * [DataVow](https://github.com/ludovicschmetz-stack/datavow) - Open-source CLI for ODCS v3.1 data contract enforcement with DuckDB validation, dbt test sync, GitHub Action, and Vow Score reporting
 * [DQC.ai | DQ PLATFORM](https://www.dqc.ai/dqc-platform) - [Enhancing Data Quality with ODCS: A Standard Ensured by the DQ Platform](https://www.dqc.ai/post/enhancing-data-quality-with-odcs-a-standard-ensured-by-the-dq-platform).
+* [DQX by Databricks Labs](https://github.com/databrickslabs/dqx) - Open Source data quality framework for PySpark on streaming and standard DataFrames. Generates checks natively from ODCS contracts, including `type: custom` with `engine: dqx`.
 * [Enkinex ODCS](https://odcs.enkinex.org) - Open-source KCL library for writing data governance as code. Provides modular, typed ODCS schemas (common, catalog, contract, iam, quality, server) with constraints, two-way
   validation, and YAML export.
 * [Entropy Data](https://www.entropy-data.com) - Data Product Marketplace built on Data Contracts. Allows contract-first development of data products.
