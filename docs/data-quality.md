@@ -259,6 +259,27 @@ quality:
       maxValue: 50000                          # (Great Expectations in this situation)
 ```
 
+### DQX Example
+
+[DQX](https://github.com/databrickslabs/dqx) reads the `implementation` block as a parsed mapping rather than an opaque text block, so it is written as YAML rather than with a `|` literal. This schema-level example applies one check to several columns and scopes it to a subset of rows.
+
+```yaml
+quality:
+- id: dqx_high_alert_contact
+  type: custom
+  engine: dqx
+  description: A technician and an alert email are mandatory for high severity alerts.
+  implementation:
+    name: contact_required_for_high_alerts       # DQX rule name
+    criticality: error                           # error or warn
+    filter: alert_level in ('high', 'critical')  # only checked on these rows
+    check:
+      function: is_not_null_and_not_empty        # applied to each column below
+      for_each_column:
+        - technician_id
+        - alert_email
+```
+
 ## Scheduling
 
 The data contract can contain scheduling information for executing the rules. You can use `schedule` and `scheduler` for those operation. In previous versions of ODCS, the only allowed scheduler was cron and its syntax was `scheduleCronExpression`.
