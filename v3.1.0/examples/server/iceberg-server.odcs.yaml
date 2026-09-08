@@ -1,0 +1,25 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# Demonstrates RFC-0049: the `iceberg` server type for Apache Iceberg catalogs
+# accessed through the standardized Iceberg REST API.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 7f2e4c91-3a6d-4b8e-9c0f-1d2e3f4a5b6c
+status: active
+servers:
+  - server: prod
+    type: iceberg
+    catalog: prod_catalog
+    catalogUrl: https://catalog.acme.com
+    namespace: acme_db.sales
+    warehouse: s3://acme-warehouse/sales/
+schema:
+  - name: sales
+    physicalType: table
+    properties:
+      - name: sale_id
+        logicalType: string
+        required: true
