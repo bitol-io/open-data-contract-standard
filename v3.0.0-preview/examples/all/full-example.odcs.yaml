@@ -15,6 +15,8 @@ tenant: ClimateQuantumInc
 kind: DataContract
 apiVersion: v3.0.0 # Standard version (follows semantic versioning)
 
+type: tables
+
 # Infrastructure & servers
 servers:
   - server: my-postgres
@@ -28,7 +30,6 @@ servers:
 schema:
   - name: tbl
     physicalName: tbl_1
-    physicalType: table
     description: Provides core payment metrics
     authoritativeDefinitions:
       - url: https://catalog.data.gov/dataset/air-quality
@@ -60,9 +61,6 @@ schema:
         examples:
           - "2022-10-03"
           - "2020-01-28"
-        customProperties:
-          - property: anonymizationStrategy
-            value: none
       - name: rcvr_id
         primaryKey: true
         primaryKeyPosition: 1
@@ -123,11 +121,6 @@ schema:
         businessImpact: operational
         schedule: 0 20 * * *
         scheduler: cron
-    customProperties:
-      - property: business-key
-        value:
-          - txn_ref_dt
-          - rcvr_id
 
 
 # Pricing
@@ -213,7 +206,7 @@ support:
     tool: email
     url: mailto:datacontract-ann@bitol.io
   - channel: Feedback  # Product Feedback
-    description: General Product Feedback (Public)
+    description: General Product Feedback (Public) 
     url: https://product-feedback.com
 
 # Tags

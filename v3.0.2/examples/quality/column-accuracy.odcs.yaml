@@ -3,7 +3,8 @@ kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 status: active
 name: my_table
-apiVersion: v3.1.0
+dataProduct: my_quantum
+apiVersion: v3.0.2
 schema:
   - name: Air_Quality
     description: Air quality of the city of New York
@@ -18,10 +19,14 @@ schema:
       logicalType: number
       physicalType: float(3,2)
       quality:
-      - type: sql
-        query: select count(*) from Air_Quality where DataValue <= 0 or DataValue >= 500
-        mustBe: 0
-        description: This column should contain positive values under 500
+      - type: library
+        rule: between
+        description: 'This name should contain positive values under 500'
         dimension: accuracy
         severity: error
         businessImpact: operational
+        customProperties:
+          - property: min
+            value: 0
+          - property: max
+            value: 500

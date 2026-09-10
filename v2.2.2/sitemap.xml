@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://bitol-io.github.io/open-data-contract-standard/v2.2.2/</loc>
-         <lastmod>2024-09-15</lastmod>
+         <loc>https://pflooky.github.io/open-data-contract-standard/v2.2.2/</loc>
+         <lastmod>2024-05-24</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://bitol-io.github.io/open-data-contract-standard/v2.2.2/changelog/</loc>
-         <lastmod>2024-09-15</lastmod>
+         <loc>https://pflooky.github.io/open-data-contract-standard/v2.2.2/changelog/</loc>
+         <lastmod>2024-05-24</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://bitol-io.github.io/open-data-contract-standard/v2.2.2/contributing/</loc>
-         <lastmod>2024-09-15</lastmod>
+         <loc>https://pflooky.github.io/open-data-contract-standard/v2.2.2/contributing/</loc>
+         <lastmod>2024-05-24</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://bitol-io.github.io/open-data-contract-standard/v2.2.2/home/</loc>
-         <lastmod>2024-09-15</lastmod>
+         <loc>https://pflooky.github.io/open-data-contract-standard/v2.2.2/standard/</loc>
+         <lastmod>2024-05-24</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://bitol-io.github.io/open-data-contract-standard/v2.2.2/vendors/</loc>
-         <lastmod>2024-09-15</lastmod>
-    </url>
-    <url>
-         <loc>https://bitol-io.github.io/open-data-contract-standard/v2.2.2/examples/</loc>
-         <lastmod>2024-09-15</lastmod>
+         <loc>https://pflooky.github.io/open-data-contract-standard/v2.2.2/examples/</loc>
+         <lastmod>2024-05-24</lastmod>
+         <changefreq>daily</changefreq>
     </url>
 </urlset>

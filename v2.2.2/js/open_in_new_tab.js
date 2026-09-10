@@ -19,7 +19,7 @@ function pdf_new_window ()
     }
     let links = document.getElementsByTagName("a");
     for (let eleLink=0; eleLink < links.length; eleLink ++) {
-    if ((links[eleLink].href.indexOf('.pdf') !== -1)||(links[eleLink].href.indexOf('.doc') !== -1)||(links[eleLink].href.indexOf('.json') !== -1)||(links[eleLink].href.indexOf('.docx') !== -1)) {
+    if ((links[eleLink].href.indexOf('.pdf') !== -1)||(links[eleLink].href.indexOf('.doc') !== -1)||(links[eleLink].href.indexOf('.docx') !== -1)) {
         links[eleLink].onclick =
         function() {
             window.open(this.href);

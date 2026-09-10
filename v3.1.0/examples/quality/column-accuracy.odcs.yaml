@@ -1,12 +1,9 @@
-# Copyright 2026 The Bitol Contributors
-# SPDX-License-Identifier: Apache-2.0
-
 version: 1.0.0
 kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553a
 status: active
 name: my_table
-apiVersion: v3.2.0
+apiVersion: v3.1.0
 schema:
   - name: Air_Quality
     description: Air quality of the city of New York
