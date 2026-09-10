@@ -151,7 +151,7 @@ properties:
       mustBe: 0
       description: "The value must be an IBAN."
       arguments:
-      pattern: '^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$'
+        pattern: '^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$'
 ```
 
 #### Duplicate Values
