@@ -99,6 +99,7 @@ Concise summary of what changed between each retained dated snapshot.
 |------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 2026-04-29 | First v3.2.0 snapshot. `apiVersion` default raised to `v3.2.0`. Adds RFC 0033 (Enum) — new `enum` array on schema properties and new `EnumValue` `$def`. Adds RFC 0030 (Maps) — new `map` value for `logicalType` and companion `map` block. |
 | 2026-06-23 | `FullyQualifiedReference` external-file pattern relaxed to accept the `.yml` extension in addition to `.yaml`.                                                                                                                              |
+| 2026-10-21 | `relationships[].type` no longer restricted to the `["foreignKey"]` enum. The specification defines it as a string that defaults to `foreignKey`, so other relationship types now validate.                                             |
 
 ## SchemaStore registration
 
