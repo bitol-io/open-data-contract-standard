@@ -2753,10 +2753,30 @@
     },
     "Tags": {
       "type": "array",
-      "description": "A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`.",
+      "description": "A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. Each tag is either a string, for example `finance`, `sensitive`, `employee_record`, or a single key/value pair, for example `pii: true`.",
       "examples": ["finance", "sensitive", "employee_record"],
       "items": {
-        "type": "string"
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/$defs/KeyValueTag"
+          }
+        ]
+      }
+    },
+    "KeyValueTag": {
+      "type": "object",
+      "description": "A tag written as a single key/value pair, for example `pii: true` or `data_classification: confidential`, matching platforms that model tags as key/value pairs, such as Databricks Unity Catalog, Snowflake, and cloud resource tags.",
+      "examples": [{ "pii": true }, { "data_classification": "confidential" }],
+      "minProperties": 1,
+      "maxProperties": 1,
+      "propertyNames": {
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": ["string", "number", "boolean"]
       }
     },
     "DataQuality": {
