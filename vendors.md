@@ -8,12 +8,12 @@ A non-exhaustive, alphabetical list of organizations offering solutions natively
 
 * [Actian Data Intelligence Platform](https://www.actian.com/data-intelligence/platform/) - A cloud-native, AI-ready solution that helps organizations discover, understand, trust, and activate their enterprise data assets at scale through intelligent metadata, governance, cataloging, and data marketplace capabilities.
 * [Collate](https://docs.getcollate.io/api-reference/data-contracts/odcs#import-from-odcs) - Managed cloud service built on the open-source [OpenMetadata](https://docs.open-metadata.org/latest/api-reference/data-contracts/odcs#import-from-odcs) platform for unified metadata management, data discovery, observability, and governance.
-* [ContractGate](https://github.com/nightmoose/contractgate) - Real-time semantic contract enforcement gateway. Enforces rich ODCS-aligned contracts (ontology, glossary, patterns, enums, computed metrics) at ingestion (<50µs p99). Rust engine + hosted SaaS platform. Patent pending. [Platform](https://app.datacontractgate.com/)
 * [CsvPath Framework](https://www.csvpath.org) - Open-source Edge Data Governance enterprise ingestion point data firewall supporting ODCS as a core data validation language
 * [Databricks Ontos](https://marketplace.databricks.com/details/8c582cfa-4c6b-4fdc-93a2-f63b35d93906/Databricks_Ontos) - Governance and metadata management application using ODCS and ODPS as the core standards for data contracts and data products
 * [Data Caterer](https://data.catering/latest/docs/guide/data-source/metadata/open-data-contract-standard/) - Test data management tool using data contracts as a metadata source
 * [Data Contract CLI](https://cli.datacontract.com) - Open Source tooling for ODCS data contracts. Supports data contract linting, testing against all popular databases, and has imports and exports for all popular schema formats and html.
 * [Data Contract Editor](https://editor.datacontract.com) - Open Source editor for ODCS data contracts. Integrates with Data Contract CLI.
+* [DataContractGate](https://datacontractgate.com) - Enforces ODCS data contracts at ingestion, with validation, quarantine and replay.
 * [Data Contract Manager](https://datacontract-manager.com) - Professional data contract management tool with Data Marketplace, Access Management, and Data Governance AI.
 * [Data Contract Playground](https://data-catering.github.io/data-contract-playground/) - Playground site for creating, exporting, and validating data contracts.
 * [DataVow](https://github.com/ludovicschmetz-stack/datavow) - Open-source CLI for ODCS v3.1 data contract enforcement with DuckDB validation, dbt test sync, GitHub Action, and Vow Score reporting
