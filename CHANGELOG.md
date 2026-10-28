@@ -87,6 +87,9 @@ RFCs targeting v3.2.0 are tracked under [`tsc/rfcs/`](https://github.com/bitol-i
   * `StableId` and the id segments of `FullyQualifiedReference` now accept anything the RFC permits, so namespaced ids such as `fdir:ISU:TAD` and `urn:uuid:...` validate, along with references built from them.
   * Whitespace is excluded as well, which the RFC leaves unstated.
   * Non-breaking: the new pattern is strictly wider, so every previously valid id and reference stays valid. Also applied to the rolling v3.1.0 schema, where the mismatch originated.
+* **Fixes** data quality rules that combine operators, as [Data Quality](docs/data-quality.md#valid-properties-for-operator) allows ("Multiple values are allowed"):
+  * `DataQualityOperators` used `oneOf`, so a rule with more than one operator, such as the documented `mustBeGreaterThan: 0` with `mustBeLessThan: 100`, failed validation. It now uses `anyOf`: a `library` or `sql` rule still needs at least one operator, and every operator present must still be valid.
+  * Non-breaking: strictly wider, so every previously valid rule stays valid. Also applied to the rolling v3.1.0 schema, where the `oneOf` was introduced.
 
 # v3.1.0 - 2025-12-08 - APPROVED
 
