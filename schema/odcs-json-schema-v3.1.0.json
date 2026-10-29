@@ -2777,8 +2777,7 @@
         "type": {
           "type": "string",
           "description": "The type of relationship. Defaults to 'foreignKey'.",
-          "default": "foreignKey",
-          "enum": ["foreignKey"]
+          "default": "foreignKey"
         },
         "from": {
           "oneOf": [

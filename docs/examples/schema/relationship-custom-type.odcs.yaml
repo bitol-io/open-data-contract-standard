@@ -1,0 +1,53 @@
+apiVersion: v3.1.0
+kind: DataContract
+id: org_structure
+status: active
+name: Organization Structure
+version: 1.0.0
+description:
+  purpose: Demonstrates that the relationship type is a free string. It defaults to foreignKey, but other values are valid.
+
+schema:
+  - id: departments_obj
+    name: departments
+    physicalName: departments
+    logicalType: object
+    physicalType: table
+    description: Departments of the organization.
+    properties:
+      - name: id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: varchar(36)
+        required: true
+
+  - id: employees_obj
+    name: employees
+    physicalName: employees
+    logicalType: object
+    physicalType: table
+    description: Employees with a reference to their manager and their department.
+    relationships:
+      # Schema-level relationship with a type other than foreignKey.
+      - type: hierarchy
+        from: employees.manager_id
+        to: employees.id
+    properties:
+      - name: id
+        primaryKey: true
+        primaryKeyPosition: 1
+        logicalType: string
+        physicalType: varchar(36)
+        required: true
+      - name: manager_id
+        logicalType: string
+        physicalType: varchar(36)
+      - name: department_id
+        logicalType: string
+        physicalType: varchar(36)
+        required: true
+        description: Property-level relationship with a type other than foreignKey.
+        relationships:
+          - to: departments.id
+            type: membership
