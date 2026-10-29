@@ -342,11 +342,9 @@ schema:
         relationships:
           # Fully qualified notation
           - to: schema/accounts_tbl/properties/acct_user_id
-            description: "Fully qualified reference using id fields"
 
           # Shorthand notation
           - to: accounts.user_id
-            description: "Shorthand reference using name fields"
 
           # With custom properties
           - to: schema/departments_tbl/properties/dept_manager_id
