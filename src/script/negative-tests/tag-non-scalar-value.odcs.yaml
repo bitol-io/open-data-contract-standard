@@ -1,0 +1,16 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# Tag values must be a string, number, or boolean, not a nested object.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: d1a7c3e5-2f9b-4c80-9e6a-7b4d0f2c8e13
+status: active
+schema:
+  - name: customers
+    physicalType: table
+    tags:
+      - pii:
+          type: email
