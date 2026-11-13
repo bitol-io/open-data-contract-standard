@@ -76,8 +76,8 @@ properties:
 | `missingValues`   | Property | Counts values considered as missing (empty strings, N/A, etc.) | `missingValues`: Array of values considered missing              | `missingValues: [null, '', 'N/A']`                                   |
 | `invalidValues`   | Property | Counts values that don't match valid criteria                  | `validValues`: Array of valid values<br>`pattern`: Regex pattern | `validValues: ['pounds', 'kg']`<br>`pattern: '^[A-Z]{2}[0-9]{2}...'` |
 | `duplicateValues` | Property | Counts duplicate values in a column                            | None                                                             |                                                                      |
-| `duplicateValues` | Schema   | Counts duplicate values across multiple columns                | `properties`: Array of property names                            | `properties: ['tenant_id', 'order_id']`                              |
-| `rowCount`        | Schema   | Counts total number of rows in a table/object store            | None                                                             |                                                                      |
+| `duplicateValues` | Object   | Counts duplicate values across multiple columns                | `properties`: Array of property names                            | `properties: ['tenant_id', 'order_id']`                              |
+| `rowCount`        | Object   | Counts total number of rows in a table/object store            | None                                                             |                                                                      |
 
 #### Null Values
 
