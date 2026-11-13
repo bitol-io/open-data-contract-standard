@@ -112,6 +112,7 @@ Linking the contract — at root, element, and property scope — to external so
 Lightweight classification labels at every supported scope: contract root, schema element, schema property, enum value, quality rule, team, and team member.
 
 - [Tags](tags/tags.md)
+- [Key/value tags](tags/key-value-tags.md)
 
 ## Custom & other properties
 
