@@ -1,0 +1,28 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 53581432-6c55-4ba2-a65f-72344a91553a
+status: active
+name: orders
+schema:
+  - name: orders
+    physicalType: table
+    quality:
+      - metric: rowCount
+        mustBeGreaterOrEqualTo: 100
+        mustBeLessOrEqualTo: 120
+        description: The table holds between 100 and 120 rows, both included
+    properties:
+      - name: order_id
+        logicalType: string
+        physicalType: varchar
+        quality:
+          - type: sql
+            query: |
+              SELECT COUNT(*) FROM ${object} WHERE ${property} IS NOT NULL
+            mustBeGreaterThan: 0
+            mustBeLessThan: 100
+            description: Several operators on one rule must all hold

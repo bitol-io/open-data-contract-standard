@@ -76,8 +76,8 @@ properties:
 | `missingValues`   | Property | Counts values considered as missing (empty strings, N/A, etc.) | `missingValues`: Array of values considered missing              | `missingValues: [null, '', 'N/A']`                                   |
 | `invalidValues`   | Property | Counts values that don't match valid criteria                  | `validValues`: Array of valid values<br>`pattern`: Regex pattern | `validValues: ['pounds', 'kg']`<br>`pattern: '^[A-Z]{2}[0-9]{2}...'` |
 | `duplicateValues` | Property | Counts duplicate values in a column                            | None                                                             |                                                                      |
-| `duplicateValues` | Schema   | Counts duplicate values across multiple columns                | `properties`: Array of property names                            | `properties: ['tenant_id', 'order_id']`                              |
-| `rowCount`        | Schema   | Counts total number of rows in a table/object store            | None                                                             |                                                                      |
+| `duplicateValues` | Object   | Counts duplicate values across multiple columns                | `properties`: Array of property names                            | `properties: ['tenant_id', 'order_id']`                              |
+| `rowCount`        | Object   | Counts total number of rows in a table/object store            | None                                                             |                                                                      |
 
 #### Null Values
 
@@ -257,6 +257,27 @@ quality:
     kwargs:                                    # passed as-is
       minValue: 10000                          # to the tool
       maxValue: 50000                          # (Great Expectations in this situation)
+```
+
+### DQX Example
+
+[DQX](https://github.com/databrickslabs/dqx) reads the `implementation` block as a parsed mapping rather than an opaque text block, so it is written as YAML rather than with a `|` literal. This schema-level example applies one check to several columns and scopes it to a subset of rows.
+
+```yaml
+quality:
+- id: dqx_high_alert_contact
+  type: custom
+  engine: dqx
+  description: A technician and an alert email are mandatory for high severity alerts.
+  implementation:
+    name: contact_required_for_high_alerts       # DQX rule name
+    criticality: error                           # error or warn
+    filter: alert_level in ('high', 'critical')  # only checked on these rows
+    check:
+      function: is_not_null_and_not_empty        # applied to each column below
+      for_each_column:
+        - technician_id
+        - alert_email
 ```
 
 ## Scheduling

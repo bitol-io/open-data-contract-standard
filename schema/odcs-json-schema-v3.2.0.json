@@ -2892,7 +2892,7 @@
     "DataQualityOperators": {
       "type": "object",
       "description": "Common comparison operators for data quality checks.",
-      "oneOf": [
+      "anyOf": [
         {
           "properties": {
             "mustBe": {

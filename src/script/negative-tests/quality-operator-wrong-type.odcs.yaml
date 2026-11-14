@@ -17,4 +17,4 @@ schema:
           - type: library
             metric: nullValues
             mustBe: 0
-            mustNotBe: 5
+            mustBeLessThan: five

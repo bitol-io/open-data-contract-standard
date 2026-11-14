@@ -2,12 +2,14 @@
 # SPDX-License-Identifier: Apache-2.0
 
 name: docs-site-deploy
+
+# Publish docs only for a release tag, into that tag's own folder. Deploying
+# on pushes to main wrote unreleased docs into the previous release's folder
+# (see #339).
 on:
   push:
     tags:
-      - '*'
-    branches:
-      - main
+      - 'v*'
 permissions:
   contents: write
 jobs:
@@ -24,7 +26,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+      - run: echo "cache_id=$(date --utc '+%V')" >> "$GITHUB_ENV"
       - uses: actions/cache@v4
         with:
           key: mkdocs-material-${{ env.cache_id }}
@@ -33,6 +35,14 @@ jobs:
             mkdocs-material-
       - run: pip install mkdocs-material mkdocs-open-in-new-tab "mkdocs-material[imaging]" mkdocs-awesome-pages-plugin mike
       - run: bash src/script/build_docs.sh
-      - run: |
-          latest_tag=$(git describe --tags --abbrev=0)
-          mike deploy --push --update-aliases "$latest_tag" latest
+      - name: Deploy the pushed tag
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          # Only the highest non-pre-release tag moves `latest`.
+          highest=$(git tag --list 'v*' --sort=-v:refname | grep -v -e '-' | head -1)
+          if [ "$TAG" = "$highest" ]; then
+            mike deploy --push --update-aliases "$TAG" latest
+          else
+            mike deploy --push "$TAG"
+          fi
