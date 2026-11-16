@@ -1,0 +1,77 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 3f7a1c2d-8e4b-4f5a-9c1d-2e3f4a5b6c7d
+status: active
+name: spatial_datasets
+
+schema:
+  - name: cadastral_parcels
+    physicalName: cadastral_parcels
+    description: Land parcel boundaries in the Dutch national projection.
+    spatialExtent:
+      bbox: [3.2, 50.75, 7.22, 53.55]
+    properties:
+      - name: parcel_id
+        logicalType: string
+        primaryKey: true
+        required: true
+      - name: municipality
+        logicalType: string
+        required: true
+      - name: boundary
+        logicalType: geometry
+        physicalType: geometry
+        required: true
+        description: Parcel boundary polygon in the Dutch RD New projection.
+        logicalTypeOptions:
+          subType: Polygon
+          crs: EPSG:28992
+          dimensions: 2
+          encoding: wkb
+          bbox: [3.2, 50.75, 7.22, 53.55]
+      - name: centroid
+        logicalType: geometry
+        physicalType: geometry
+        logicalTypeOptions:
+          subType: Point
+          crs: EPSG:28992
+          dimensions: 2
+          encoding: wkt
+
+  - name: vehicle_locations
+    physicalName: vehicle_locations
+    properties:
+      - name: vehicle_id
+        logicalType: string
+        primaryKey: true
+        required: true
+      - name: location
+        logicalType: geography
+        physicalType: GEOGRAPHY
+        required: true
+        logicalTypeOptions:
+          subType: Point
+          encoding: wkt
+
+  - name: flight_trajectories
+    physicalName: flight_trajectories
+    properties:
+      - name: flight_id
+        logicalType: string
+        primaryKey: true
+        required: true
+      - name: trajectory
+        logicalType: geography
+        physicalType: GEOGRAPHY
+        required: true
+        description: Full 3D flight path (longitude, latitude, altitude in metres).
+        logicalTypeOptions:
+          subType: LineString
+          crs: EPSG:4326
+          dimensions: 3
+          algorithm: vincenty
+          encoding: wkb

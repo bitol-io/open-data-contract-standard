@@ -9,11 +9,18 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+root_dir="${script_dir}/../.."
 json_schema_version=${JSON_SCHEMA_VERSION:-v3.2.0}
 num_failed_validation=0
 
+python="${root_dir}/.venv/bin/python"
+if [ ! -x "${python}" ]; then
+  echo -e "${RED}.venv not found. Run: python3 -m venv .venv && .venv/bin/pip install -r requirements.txt${NC}"
+  exit 1
+fi
+
 echo "Checking if $json_schema_version JSON schema is valid"
-if ajv compile --spec=draft2019 -c ajv-formats -s "${script_dir}/../../schema/odcs-json-schema-${json_schema_version}.json"; then
+if "${python}" "${script_dir}/validate.py" compile -s "${root_dir}/schema/odcs-json-schema-${json_schema_version}.json"; then
   echo -e "${GREEN}Valid JSON schema${NC}"
 else
   echo -e "${RED}Invalid JSON schema, exiting${NC}"
@@ -24,9 +31,9 @@ echo -e "Running negative validation tests against ${json_schema_version} JSON s
 echo -e "Each file is expected to FAIL schema validation."
 
 for file in "${script_dir}/negative-tests/"*.odcs.yaml; do
-  if ajv validate --spec=draft2019 --all-errors -c ajv-formats \
-      -s "${script_dir}/../../schema/odcs-json-schema-${json_schema_version}.json" \
-      -d "${file}" 2>&1; then
+  if "${python}" "${script_dir}/validate.py" validate \
+      -s "${root_dir}/schema/odcs-json-schema-${json_schema_version}.json" \
+      -d "${file}" 2>/dev/null; then
     echo -e "${RED}FAILED (schema should have rejected this file): file=${file}${NC}"
     num_failed_validation=$((num_failed_validation+1))
   else

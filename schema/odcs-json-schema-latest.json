@@ -2192,11 +2192,47 @@
         },
         "context": {
           "$ref": "#/$defs/Context"
+        },
+        "spatialExtent": {
+          "type": "object",
+          "description": "The combined geographic footprint of the dataset expressed as a bounding box in EPSG:4326 (WGS 84 longitude/latitude).",
+          "additionalProperties": false,
+          "properties": {
+            "bbox": {
+              "type": "array",
+              "description": "Bounding box as [xmin, ymin, xmax, ymax] in EPSG:4326 (WGS 84 longitude/latitude), following the GeoParquet convention.",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            }
+          }
         }
       },
       "allOf": [
         {
           "$ref": "#/$defs/SchemaElement"
+        },
+        {
+          "if": {
+            "required": ["spatialExtent"]
+          },
+          "then": {
+            "properties": {
+              "properties": {
+                "contains": {
+                  "properties": {
+                    "logicalType": {
+                      "enum": ["geometry", "geography"]
+                    }
+                  },
+                  "required": ["logicalType"]
+                }
+              }
+            },
+            "required": ["properties"]
+          }
         }
       ],
       "required": ["name"],
@@ -2217,7 +2253,7 @@
         "logicalType": {
           "type": "string",
           "description": "The logical element data type.",
-          "enum": ["string", "date", "timestamp", "time", "number", "integer", "object", "array", "boolean", "map", "vector"]
+          "enum": ["string", "date", "timestamp", "time", "number", "integer", "object", "array", "boolean", "map", "vector", "geometry", "geography"]
         },
         "logicalTypeOptions": {
           "type": "object",
@@ -2724,6 +2760,118 @@
                   }
                 },
                 "required": ["dimensions"]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "logicalType": {
+                "const": "geometry"
+              }
+            },
+            "required": [
+              "logicalType"
+            ]
+          },
+          "then": {
+            "properties": {
+              "logicalTypeOptions": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["crs"],
+                "properties": {
+                  "subType": {
+                    "type": "string",
+                    "enum": ["Point", "LineString", "Polygon", "MultiPoint", "MultiLineString", "MultiPolygon", "GeometryCollection"],
+                    "description": "The geometry subtype per ISO 19125-1. When omitted, any subtype is accepted."
+                  },
+                  "crs": {
+                    "type": "string",
+                    "description": "The Coordinate Reference System. EPSG codes (e.g. EPSG:4326) are recommended; OGC URN identifiers (e.g. urn:ogc:def:crs:EPSG::4326) are also accepted. Required — no universal default exists for planar coordinate systems.",
+                    "examples": ["EPSG:4326", "EPSG:28992", "urn:ogc:def:crs:EPSG::4326"]
+                  },
+                  "dimensions": {
+                    "type": "integer",
+                    "enum": [2, 3, 4],
+                    "default": 2,
+                    "description": "Number of coordinate dimensions: 2 (XY, default), 3 (XYZ or XYM), 4 (XYZM)."
+                  },
+                  "encoding": {
+                    "type": "string",
+                    "enum": ["wkt", "wkb", "geojson", "ewkt", "ewkb"],
+                    "description": "The physical serialisation format of the geometry value. When omitted, the encoding is system-defined or unspecified."
+                  },
+                  "bbox": {
+                    "type": "array",
+                    "description": "Bounding box of the column's spatial data as [xmin, ymin, xmax, ymax] in EPSG:4326 (WGS 84 longitude/latitude), following the GeoParquet convention.",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 4,
+                    "maxItems": 4
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "logicalType": {
+                "const": "geography"
+              }
+            },
+            "required": [
+              "logicalType"
+            ]
+          },
+          "then": {
+            "properties": {
+              "logicalTypeOptions": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "subType": {
+                    "type": "string",
+                    "enum": ["Point", "LineString", "Polygon", "MultiPoint", "MultiLineString", "MultiPolygon", "GeometryCollection"],
+                    "description": "The geometry subtype per ISO 19125-1. When omitted, any subtype is accepted."
+                  },
+                  "crs": {
+                    "type": "string",
+                    "description": "The Coordinate Reference System. EPSG codes (e.g. EPSG:4326) are recommended; OGC URN identifiers (e.g. urn:ogc:def:crs:EPSG::4326) are also accepted. When omitted, EPSG:4326 (WGS 84) is assumed.",
+                    "default": "EPSG:4326",
+                    "examples": ["EPSG:4326", "urn:ogc:def:crs:EPSG::4326"]
+                  },
+                  "dimensions": {
+                    "type": "integer",
+                    "enum": [2, 3, 4],
+                    "default": 2,
+                    "description": "Number of coordinate dimensions: 2 (XY, default), 3 (XYZ or XYM), 4 (XYZM)."
+                  },
+                  "algorithm": {
+                    "type": "string",
+                    "enum": ["spherical", "vincenty"],
+                    "default": "spherical",
+                    "description": "Interpretation of edges between vertices: spherical uses great-circle arcs on the unit sphere (default); vincenty uses geodesics on a reference ellipsoid."
+                  },
+                  "encoding": {
+                    "type": "string",
+                    "enum": ["wkt", "wkb", "geojson", "ewkt", "ewkb"],
+                    "description": "The physical serialisation format of the geography value. When omitted, the encoding is system-defined or unspecified."
+                  },
+                  "bbox": {
+                    "type": "array",
+                    "description": "Bounding box of the column's spatial data as [xmin, ymin, xmax, ymax] in EPSG:4326 (WGS 84 longitude/latitude), following the GeoParquet convention.",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 4,
+                    "maxItems": 4
+                  }
+                }
               }
             }
           }

@@ -1,0 +1,24 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# Negative test: `spatialExtent` is only valid on a schema object that has at
+# least one property with logicalType `geometry` or `geography`.
+# Here no such property exists, so the schema MUST reject this contract.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 5b9c3d4e-6f7a-8b9c-0d1e-2f3a4b5c6d7e
+status: active
+schema:
+  - name: orders
+    physicalType: table
+    spatialExtent:
+      bbox: [3.2, 50.75, 7.22, 53.55]
+    properties:
+      - name: order_id
+        logicalType: string
+        primaryKey: true
+        required: true
+      - name: amount
+        logicalType: number
