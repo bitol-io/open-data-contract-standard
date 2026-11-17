@@ -51,8 +51,7 @@
     },
     "dataProduct": {
       "type": "string",
-      "description": "The name of the data product. DEPRECATED since v3.1.0.",
-      "deprecated": true
+      "description": "The name of the data product. DEPRECATED since v3.1.0."
     },
     "description": {
       "type": "object",
@@ -210,12 +209,12 @@
     "FullyQualifiedReference": {
       "type": "string",
       "description": "Fully qualified notation using id fields (section/id/properties/id), optionally prefixed with external file reference",
-      "pattern": "^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.ya?ml#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[^\\s.#/\\\\@!%&^]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[^\\s.#/\\\\@!%&^]+)*$"
+      "pattern": "^(?:(?:https?:\\/\\/)?[A-Za-z0-9._\\-\\/]+\\.ya?ml#)?\\/?[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+(?:\\/[A-Za-z_][A-Za-z0-9_]*\\/[A-Za-z0-9_-]+)*$"
     },
     "StableId": {
       "type": "string",
-      "description": "Stable technical identifier for references. Must be unique within its containing array. Per RFC-0026a an id cannot contain '.', '#', '/', '\\', '@', '!', '%', '&' or '^', nor whitespace.",
-      "pattern": "^[^\\s.#/\\\\@!%&^]+$"
+      "description": "Stable technical identifier for references. Must be unique within its containing array. Cannot contain special characters ('-', '_' allowed).",
+      "pattern": "^[A-Za-z0-9_-]+$"
     },
     "Port": {
       "type": ["integer", "string"],
@@ -2647,10 +2646,7 @@
               "logicalType": {
                 "const": "map"
               }
-            },
-            "required": [
-              "logicalType"
-            ]
+            }
           },
           "then": {
             "properties": {
@@ -2680,10 +2676,7 @@
               "logicalType": {
                 "const": "vector"
               }
-            },
-            "required": [
-              "logicalType"
-            ]
+            }
           },
           "then": {
             "properties": {
@@ -3496,7 +3489,8 @@
         "type": {
           "type": "string",
           "description": "The type of relationship. Defaults to 'foreignKey'.",
-          "default": "foreignKey"
+          "default": "foreignKey",
+          "enum": ["foreignKey"]
         },
         "from": {
           "oneOf": [
