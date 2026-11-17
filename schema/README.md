@@ -95,6 +95,7 @@ Concise summary of what changed between each retained dated snapshot.
 | 2026-07-01 | `dataProduct` deprecation (see 2026-05-05) reaches the rolling file on `dev` with the `dev-v3.2.0` merge, on top of every earlier change. |
 | 2026-09-08 | `StableId` and the id segments of `FullyQualifiedReference` widened to match RFC-0026a, which denies only `.` `#` `/` `\` `@` `!` `%` `&` `^` (and, editorially, whitespace) rather than allowing only `[A-Za-z0-9_-]`. Colon-bearing ids such as `fdir:ISU:TAD` and `urn:uuid:…` now validate. |
 | 2026-10-29 | `DataQualityOperators` switched from `oneOf` to `anyOf`, so a `library` or `sql` rule may combine several operators (e.g., `mustBeGreaterThan` with `mustBeLessThan`); at least one operator is still required and each must be valid. |
+| 2026-11-17 | `relationships[].type` no longer restricted to the `["foreignKey"]` enum. The specification defines it as a string that defaults to `foreignKey`, so other relationship types now validate. |
 
 ### v3.2.0 line
 
@@ -103,6 +104,7 @@ Concise summary of what changed between each retained dated snapshot.
 | 2026-08-28 | Pre-release pin — final development state immediately before the 2026-09-08 v3.2.0 release. |
 | 2026-09-08 | **Initial v3.2.0 release** (also incorporates the same-day fixes: the `map` conditional applies only when `logicalType` is present (#324), `latest` made byte-identical to `v3.2.0` and enforced in CI, which also brings `deprecated: true` on `dataProduct` (#332), `StableId` and `FullyQualifiedReference` id segments widened to RFC-0026a (#334)). |
 | 2026-10-29 | `DataQualityOperators` switched from `oneOf` to `anyOf`, so a `library` or `sql` rule may combine several operators (e.g., `mustBeGreaterThan` with `mustBeLessThan`); at least one operator is still required and each must be valid. |
+| 2026-11-17 | `relationships[].type` no longer restricted to the `["foreignKey"]` enum. The specification defines it as a string that defaults to `foreignKey`, so other relationship types now validate. |
 
 ## SchemaStore registration
 
