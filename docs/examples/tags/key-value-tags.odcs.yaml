@@ -1,0 +1,30 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# Demonstrates key/value tags: each `tags` entry is either a string or a
+# single key/value pair with a string, number, or boolean value.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 9c4f7e21-3b8a-4d5e-a1f6-2e7b9c0d4a85
+status: active
+tags:
+  - finance
+  - domain: sales
+schema:
+  - name: customers
+    physicalType: table
+    tags:
+      - data_classification: confidential
+      - certified
+      - retention_days: 365
+    properties:
+      - name: customer_id
+        logicalType: string
+        required: true
+      - name: email
+        logicalType: string
+        tags:
+          - pii: true
+          - pii_type: email

@@ -28,11 +28,28 @@ Tags are deliberately not a controlled vocabulary in ODCS: your organisation def
 
 ## Structure
 
-A `tags` value is always an **array of strings**. Empty arrays are allowed; duplicate strings within the same array should be avoided.
+A `tags` value is always an **array**. Each entry is either a **string** or a **single key/value pair**. Both forms can be mixed in the same array. Empty arrays are allowed; duplicate entries within the same array should be avoided.
 
 ```yaml
 tags: ['finance', 'sensitive']
 ```
+
+```yaml
+tags:
+  - finance
+  - pii: true
+  - data_classification: confidential
+```
+
+The key/value form matches platforms that model tags as key/value pairs, such as Databricks Unity Catalog (including governed tags), Snowflake object tags, cloud resource tags and labels, and Kubernetes labels. Tools that sync contract tags to such platforms can map each entry directly instead of parsing a delimiter out of a string.
+
+A key/value entry:
+
+- holds **exactly one** key; write two tags as two entries, not one entry with two keys;
+- has a non-empty key;
+- has a scalar value: a string, number, or boolean. Platforms that store tag values as strings receive the value's string form, so `pii: true` becomes the value `true`.
+
+A tag without a value is written as a plain string (`- certified`).
 
 The same structure applies wherever `tags` is permitted.
 
@@ -56,6 +73,7 @@ The same structure applies wherever `tags` is permitted.
 - **Be consistent.** A tag `pii` in one contract and `PII` in another defeats the purpose. Document your tag taxonomy organisation-wide.
 - **Prefer specific over generic.** `customer_pii` is more useful than `sensitive` once you have many contracts.
 - **Avoid encoding hierarchy in tag strings.** `finance/regulatory` is harder for tooling than two separate tags `finance`, `regulatory`.
+- **Use the key/value form instead of delimiters.** Write `- pii: true`, not `- 'pii:true'`.
 - **Keep tags small in number.** A handful per element is plenty; long tag lists become noise.
 
 [Back to TOC](README.md)

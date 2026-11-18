@@ -1,0 +1,15 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+
+# A key/value tag must hold one key; an empty object is not a tag.
+
+version: 1.0.0
+apiVersion: v3.2.0
+kind: DataContract
+id: 4e8b2a6f-1c3d-4f97-a0b5-9d2e7c1f3a48
+status: active
+schema:
+  - name: customers
+    physicalType: table
+    tags:
+      - {}
