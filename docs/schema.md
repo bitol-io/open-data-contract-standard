@@ -251,48 +251,50 @@ status: active
 name: date_example
 apiVersion: v3.2.0
 schema:
-  # Date Only
-  - name: event_date
-    logicalType: date
-    logicalTypeOptions:
-      format: "yyyy-MM-dd"
-    examples:
-      - "2024-07-10"
+  - name: events
+    properties:
+      # Date Only
+      - name: event_date
+        logicalType: date
+        logicalTypeOptions:
+          format: "yyyy-MM-dd"
+        examples:
+          - "2024-07-10"
 
-  # Date & Time (UTC)
-  - name: created_at
-    logicalType: timestamp
-    logicalTypeOptions:
-      format: "yyyy-MM-ddTHH:mm:ssZ"
-    examples:
-      - "2024-03-10T14:22:35Z"
+      # Date & Time (UTC)
+      - name: created_at
+        logicalType: timestamp
+        logicalTypeOptions:
+          format: "yyyy-MM-ddTHH:mm:ssZ"
+        examples:
+          - "2024-03-10T14:22:35Z"
 
-  # Date & Time (Australia/Sydney)
-  - name: created_at_sydney
-    logicalType: timestamp
-    logicalTypeOptions:
-      format: "yyyy-MM-ddTHH:mm:ssZ"
-      timezone: true
-      defaultTimezone: "Australia/Sydney"
-    examples:
-      - "2024-03-10T14:22:35+10:00"
+      # Date & Time (Australia/Sydney)
+      - name: created_at_sydney
+        logicalType: timestamp
+        logicalTypeOptions:
+          format: "yyyy-MM-ddTHH:mm:ssZ"
+          timezone: true
+          defaultTimezone: "Australia/Sydney"
+        examples:
+          - "2024-03-10T14:22:35+10:00"
 
-  # Time Only
-  - name: event_start_time
-    logicalType: time
-    logicalTypeOptions:
-      format: "HH:mm:ss"
-    examples:
-      - "08:30:00"
+      # Time Only
+      - name: event_start_time
+        logicalType: time
+        logicalTypeOptions:
+          format: "HH:mm:ss"
+        examples:
+          - "08:30:00"
 
-    # Physical Type with Date & Time (UTC)
-  - name: event_date
-    logicalType: timestamp
-    physicalType: DATETIME
-    logicalTypeOptions:
-      format: "yyyy-MM-ddTHH:mm:ssZ"
-    examples:
-      - "2024-03-10T14:22:35Z"
+      # Physical Type with Date & Time (UTC)
+      - name: event_datetime
+        logicalType: timestamp
+        physicalType: DATETIME
+        logicalTypeOptions:
+          format: "yyyy-MM-ddTHH:mm:ssZ"
+        examples:
+          - "2024-03-10T14:22:35Z"
 ```
 
 ## Maps
