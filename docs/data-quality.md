@@ -1,6 +1,6 @@
 ---
 title: "Data Quality"
-description: "his section describes data quality rules & parameters."
+description: "This section describes data quality rules & parameters."
 ---
 
 <!--
